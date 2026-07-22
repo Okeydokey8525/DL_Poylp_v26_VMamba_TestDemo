@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Copies and backups
+ultralytics-main - Copy/
+
+# Compressed archives
+*.rar
+*.zip
+*.tar.gz
+
+# Large weights files exceeding GitHub 100MB limit
+archive/KQ_Poylp/**/weights/best.pt
+archive/KQ_Poylp/**/weights/last.pt
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# Environment & IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs and cache
+*.log
+.pytest_cache/
+runs/
+wandb/

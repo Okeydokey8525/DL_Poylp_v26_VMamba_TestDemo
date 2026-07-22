@@ -1,0 +1,68 @@
+{
+  "overview": {
+    "total_images": 1000,
+    "train_images": 880,
+    "val_images": 120,
+    "validation_images": 120,
+    "total_polyps": 1063,
+    "average_polyps_per_image": 1.063,
+    "max_polyps_image": "cju3uhb79gcgr0871orbrbi3x",
+    "max_polyps_count": 10
+  },
+  "polygon_optimization": {
+    "avg_points_before": 333.16,
+    "avg_points_after": 24.64,
+    "points_reduction_percentage": 92.6
+  },
+  "distributions": {
+    "bbox_width": {
+      "min": 30.0,
+      "max": 1346.0,
+      "median": 214.0,
+      "mean": 240.05926622765756,
+      "std": 133.21491582032272
+    },
+    "bbox_height": {
+      "min": 25.0,
+      "max": 1070.0,
+      "median": 233.0,
+      "mean": 251.51740357478835,
+      "std": 126.3569338051297
+    },
+    "bbox_area": {
+      "min": 868.0,
+      "max": 1440220.0,
+      "median": 49660.0,
+      "mean": 74790.84195672625,
+      "std": 92902.8804091736
+    },
+    "contour_area": {
+      "min": 508.5,
+      "max": 1099180.0,
+      "median": 34020.0,
+      "mean": 51450.47224835372,
+      "std": 65928.31437849508
+    },
+    "polygon_points": {
+      "min": 10.0,
+      "max": 80.0,
+      "median": 22.0,
+      "mean": 24.636876763875822,
+      "std": 9.44080106613446
+    }
+  },
+  "object_size_classification_coco": {
+    "small_less_1024_px2": {
+      "count": 7,
+      "percentage": 0.66
+    },
+    "medium_1024_to_9216_px2": {
+      "count": 114,
+      "percentage": 10.72
+    },
+    "large_greater_9216_px2": {
+      "count": 942,
+      "percentage": 88.62
+    }
+  }
+}
