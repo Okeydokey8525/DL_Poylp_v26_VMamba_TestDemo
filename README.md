@@ -14,10 +14,10 @@ Mục tiêu cốt lõi của đề tài là giải quyết thách thức lớn n
 ## 💡 2. ĐỘNG LỰC KHÓA HỌC & LÝ DO TÍCH HỢP VMAMBA
 
 ### 2.1. Nút Thắt Chi Tiết Đường Biên (Boundary Precision Gap) Từ Kết Quả Audit
-Qua quá trình rà soát và kiểm toán thực nghiệm 12 lượt huấn luyện độc lập (**Baseline Benchmark Audit**) trên bộ dữ liệu chuẩn Kvasir-SEG (880 ảnh train / 120 ảnh val):
+Qua quá trình rà soát và kiểm toán thực nghiệm 10 lượt huấn luyện độc lập trên bộ dữ liệu chuẩn Kvasir-SEG (880 ảnh train / 120 ảnh val):
 
-1. **Định vị chính xác vùng u (mAP50 rất cao):** Tất cả các biến thể YOLO11-seg và YOLO26-seg nguyên bản đều đạt điểm `Mask mAP50` từ **0.8982** đến **0.9360**, chứng minh mạng CNN phát hiện và khoanh vùng vị trí u rất nhạy.
-2. **Độ suy giảm khi siết chặt chỉ số IoU (mAP50-95 sụt giảm mạnh):** Khi đánh giá chỉ số IoU trung bình từ 0.50 đến 0.95 (`Mask mAP50-95`), điểm số sụt giảm xuống khoảng **0.6981 – 0.7222** (sụt giảm >20%).
+1. **Định vị chính xác vùng u (mAP50 rất cao):** Các biến thể YOLO26-seg nguyên bản đều đạt điểm `Mask mAP50` từ **0.9141** đến **0.9282**.
+2. **Độ suy giảm khi siết chặt chỉ số IoU (mAP50-95 sụt giảm mạnh):** Khi đánh giá chỉ số IoU trung bình từ 0.50 đến 0.95 (`Mask mAP50-95`), điểm số sụt giảm xuống khoảng **0.7084 – 0.7280** (sụt giảm ~20%).
 3. **Nguyên nhân gốc rễ:** Phép cuộn cục bộ (local convolution) trong các khối C3k2/C2PSA của YOLO11/YOLO26 có trường tiếp nhận (receptive field) giới hạn. Khi gặp các polyp có viền mờ, bờ không đều, nhầy sáng phản xạ hoặc cuống ẩn, mask dự đoán bị răng cưa, co hụt hoặc lấn ra nền.
 
 ### 2.2. Giải Pháp Tích Hợp Khối VMamba (Visual Mamba / SS2D)
@@ -93,14 +93,34 @@ graph TD
 
 ---
 
-## 📊 4. KẾT QUẢ KIỂM TOÁN VÀ BENCHMARK BASELINE (AUDIT RESULTS)
+## 📊 4. KẾT QUẢ KIỂM TOÁN VÀ BENCHMARK (AUDIT RESULTS)
 
-Toàn bộ 12 run dưới đây được ghi nhận thực tế 100% từ thư mục `archive/KQ_Poylp/` trên tập dữ liệu **Kvasir-SEG (880 train / 120 val, 640x640)**:
+Toàn bộ 10 run dưới đây được ghi nhận thực tế 100% từ thư mục `archive/KQ_Poylp/` trên tập dữ liệu **Kvasir-SEG (880 train / 120 val, 640x640)**:
 
-### 🏆 4.1. Bảng Master Benchmark Tổng Hợp (12 Training Runs)
+### 🏆 4.1. Bảng Master Benchmark Tổng Hợp (10 Training Runs)
 
-| STT | Tên Run (`run_name`) | Task | Model Baseline | Epoch | Batch | Best Mask P | Best Mask R | Best Mask mAP50 | **Best Mask mAP50-95** | Best Epoch | Parameters | File Size `best.pt` |
-| :--: | :--- | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| STT | Kiến trúc | Tên Run | Epoch | mAP50 | mAP50-95 | Best Epoch |
+| :--: | :--- | :--- | :---: | :---: | :---: | :---: |
+| 1 | Baseline | `Kvasir_YOLO26n_seg_100e_16b` | 100 | 0.9141 | **0.7238** | 89 |
+| 2 | Baseline | `Kvasir_YOLO26s_seg_100e_16b` | 100 | 0.9282 | **0.7280** | 94 |
+| 3 | Baseline | `Kvasir_YOLO26m_seg_100e_16b` | 100 | 0.9164 | **0.7084** | 80 |
+| 4 | Baseline | `Kvasir_YOLO26l_seg_100e_16b` | 100 | 0.9169 | **0.7215** | 82 |
+| 5 | Baseline | `Kvasir_YOLO26x_seg_100e_16b` | 100 | 0.9203 | **0.7116** | 92 |
+| 6 | VMamba Lai | `Kvasir_YOLO26n_VMamba_seg_100e_16b` | 100 | 0.8365 | 0.6095 | 100 |
+| 7 | VMamba Lai | `Kvasir_YOLO26s_VMamba_seg_100e_16b` | 100 | 0.8321 | 0.5883 | 100 |
+| 8 | VMamba Lai | `Kvasir_YOLO26m_VMamba_seg_100e_16b` | 100 | 0.8122 | 0.5780 | 99 |
+| 9 | VMamba Lai | `Kvasir_YOLO26l_VMamba_seg_100e_16b` | 100 | 0.8045 | 0.5439 | 76 |
+| 10 | VMamba Lai | `Kvasir_YOLO26x_VMamba_seg_100e_16b` | 100 | 0.7897 | 0.5449 | 92 |
+
+### 📈 4.2. So Sánh Kiến Trúc YOLO26-seg vs YOLO26-VMamba-seg
+1. **Dòng Baseline (YOLO26-seg):**  
+   - Các biến thể đều đạt hiệu năng xuất sắc trên tập Kvasir-SEG, đỉnh cao là bản `s` (mAP50-95 đạt 0.7280) và bản `n` (mAP50-95 đạt 0.7238).
+2. **Dòng Tích Hợp VMamba (YOLO26-VMamba-seg):**  
+   - Hiện tại, các kết quả của bản VMamba (mAP50-95 dao động 0.54 - 0.60) đang kém hơn baseline. Điều này chỉ ra rằng cần xem xét lại vị trí đặt khối `VMambaBlock` hoặc chiến lược tinh chỉnh hyperparameter để phát huy hiệu quả của State Space Model.
+
+---
+
+ | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 1 | `Poylp_Yolov11m-seg_100e_32b` | segment | `yolo11m-seg.pt` | 100 | 32 | 0.9080 | 0.8990 | 0.9193 | **0.7222** | **Epoch 93** | 22.43 M | 43.07 MB |
 | 2 | `Poylp_Yolov11x-seg_100e_16b` | segment | `yolo11x-seg.pt` | 100 | 16 | 0.9207 | 0.9291 | 0.9360 | **0.7198** | **Epoch 98** | 62.17 M | 119.00 MB |
 | 3 | `Poylp_Yolov11l-seg_100e_32b` | segment | `yolo11l-seg.pt` | 100 | 32 | 0.9086 | 0.9213 | 0.9261 | **0.7186** | **Epoch 95** | 27.71 M | 53.25 MB |
