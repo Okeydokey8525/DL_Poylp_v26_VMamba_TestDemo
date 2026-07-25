@@ -1,7 +1,7 @@
 # BÁO CÁO KIỂM TOÁN KẾT QUẢ HUẤN LUYỆN (TRAINING RESULTS AUDIT REPORT)
 
 **Dự án khóa luận:** *Nghiên cứu phương pháp tích hợp VMamba vào mô hình YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng.*  
-**Đối tượng kiểm toán:** Toàn bộ lịch sử huấn luyện hiện có trong workspace (`c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp`).  
+**Đối tượng kiểm toán:** Toàn bộ lịch sử huấn luyện hiện có trong workspace (`archive/KQ_Poylp`).  
 **Phương pháp kiểm toán:** AI Research Auditor – Đọc, xác thực và trích xuất số liệu thực tế 100% từ các file artifact (`results.csv`, `args.yaml`, `weights/best.pt`, `weights/last.pt`, các biểu đồ và ảnh dự đoán), **không tự huấn luyện lại, không sửa đổi mã nguồn, không suy đoán số liệu bị thiếu.**
 
 ---
@@ -42,7 +42,7 @@ Bảng dưới đây tổng hợp đường dẫn, tác vụ, mô hình và tìn
 | 11| `Poylp_Yolov26s-seg_100e_32b` | segment | `yolo26s-seg.pt` | 100 / 100 | Có (22.26 MB) | Có (22.26 MB) | Có | Có | Đầy đủ |
 | 12| `Poylp_Yolov26x-seg_100e_16b` | segment | `yolo26x-seg.pt` | 100 / 100 | Có (135.16 MB)| Có (135.16 MB)| Có | Có | Đầy đủ |
 
-*Ghi chú:* Tất cả các thư mục run nằm tại `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\<run_name>`. Ngày giờ sửa đổi gần nhất (`mtime`) được ghi nhận là vào tháng 7/2026. Riêng run số 5 (`Poylp_Yolov11n-seg_150e_32b`) yêu cầu `epochs: 150` trong `args.yaml` nhưng `results.csv` dừng lại ở epoch 100 (được phân tích sâu tại Phần 4).
+*Ghi chú:* Tất cả các thư mục run nằm tại `archive/KQ_Poylp/<run_name>`. Ngày giờ sửa đổi gần nhất (`mtime`) được ghi nhận là vào tháng 7/2026. Riêng run số 5 (`Poylp_Yolov11n-seg_150e_32b`) yêu cầu `epochs: 150` trong `args.yaml` nhưng `results.csv` dừng lại ở epoch 100 (được phân tích sâu tại Phần 4).
 
 ---
 
@@ -245,16 +245,16 @@ Dựa trên số liệu kiểm toán thực tế, dưới đây là giải đáp
 2. **`training_runs_summary.csv`** *(Bảng tổng hợp số liệu 23 cột của toàn bộ 12 run)*
 
 ### Các file artifact gốc từ run tốt nhất `Poylp_Yolov26m-seg_100e_32b`:
-3. `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\Poylp_Yolov26m-seg_100e_32b\results.csv`
-4. `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\Poylp_Yolov26m-seg_100e_32b\args.yaml`
-5. `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\Poylp_Yolov26m-seg_100e_32b\results.png`
-6. `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\Poylp_Yolov26m-seg_100e_32b\MaskPR_curve.png`
-7. `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\Poylp_Yolov26m-seg_100e_32b\MaskF1_curve.png`
-8. `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\Poylp_Yolov26m-seg_100e_32b\MaskP_curve.png`
-9. `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\Poylp_Yolov26m-seg_100e_32b\MaskR_curve.png`
-10. `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\Poylp_Yolov26m-seg_100e_32b\confusion_matrix_normalized.png`
-11. `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\Poylp_Yolov26m-seg_100e_32b\val_batch0_labels.jpg`
-12. `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Poylp\Poylp_Yolov26m-seg_100e_32b\val_batch0_pred.jpg`
+3. `archive/KQ_Poylp/Poylp_Yolov26m-seg_100e_32b/results.csv`
+4. `archive/KQ_Poylp/Poylp_Yolov26m-seg_100e_32b/args.yaml`
+5. `archive/KQ_Poylp/Poylp_Yolov26m-seg_100e_32b/results.png`
+6. `archive/KQ_Poylp/Poylp_Yolov26m-seg_100e_32b/MaskPR_curve.png`
+7. `archive/KQ_Poylp/Poylp_Yolov26m-seg_100e_32b/MaskF1_curve.png`
+8. `archive/KQ_Poylp/Poylp_Yolov26m-seg_100e_32b/MaskP_curve.png`
+9. `archive/KQ_Poylp/Poylp_Yolov26m-seg_100e_32b/MaskR_curve.png`
+10. `archive/KQ_Poylp/Poylp_Yolov26m-seg_100e_32b/confusion_matrix_normalized.png`
+11. `archive/KQ_Poylp/Poylp_Yolov26m-seg_100e_32b/val_batch0_labels.jpg`
+12. `archive/KQ_Poylp/Poylp_Yolov26m-seg_100e_32b/val_batch0_pred.jpg`
 
 ---
 *Báo cáo được hoàn thành theo tiêu chuẩn kiểm toán khoa học nghiêm ngặt.*
