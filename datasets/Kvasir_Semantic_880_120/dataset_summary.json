@@ -1,0 +1,14 @@
+{
+    "dataset_name": "Kvasir_Semantic_880_120",
+    "mask_rule": "grayscale > 127 = 255, else 0. PNG lossless.",
+    "threshold": 127,
+    "foreground_rule": "pixel > 127",
+    "output_values": [
+        0,
+        255
+    ],
+    "train_count": 880,
+    "val_count": 120,
+    "total_count": 1000,
+    "train_val_overlap": 0
+}

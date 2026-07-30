@@ -1,0 +1,25 @@
+# Tasks for Kvasir-SEG Pipeline
+
+- `[x]` Setup basic project structure (folders `data_prep`, `datasets`, `tests/unit`, `tests/integration`).
+- `[x]` Implement `data_prep/prepare_kvasir_semantic.py`
+  - `[x]` Parse CLI arguments.
+  - `[x]` Read and validate `train.txt` and `val.txt`.
+  - `[x]` Implement robust file matching by stem (supporting multiple extensions).
+  - `[x]` Implement checks for duplicate stems and missing pairs.
+  - `[x]` Implement hashing (SHA-256) and copy logic for images and original masks.
+  - `[x]` Implement mask binarization (grayscale -> `> 127` -> `0/255`), saving as lossless PNG.
+  - `[x]` Validate empty and full masks, duplicate hashes (within and across splits), and final mask values.
+  - `[x]` Generate `split_manifest.csv`.
+  - `[x]` Implement QA previews (Original, GT, Overlay) for random and edge cases (min/max size, max components, median ratio).
+  - `[x]` Generate `dataset_summary.json` and `qa_report.md`.
+  - `[x]` Implement idempotency (check manifest and hashes if output exists and overwrite is false).
+- `[x]` Implement `datasets/kvasir_semantic_dataset.py`
+  - `[x]` Inherit from `torch.utils.data.Dataset`.
+  - `[x]` Load images and binary masks.
+  - `[x]` Support Albumentations (`transform(image=image, mask=mask)`).
+  - `[x]` Output formatting: image `[3, H, W]` float32 (0-1), mask `[1, H, W]` float32 (0/1). No double normalization.
+- `[x]` Write Tests
+  - `[x]` `tests/unit/test_prepare_kvasir_semantic.py` (hash functions, duplicate checks, binarization logic).
+  - `[x]` `tests/unit/test_kvasir_semantic_dataset.py` (dummy data, tensor shapes, transform interactions).
+  - `[x]` `tests/integration/test_kvasir_pipeline_integration.py` (skip if no env vars, check exact split counts and integrity on real data).
+- `[x]` Verify execution locally if possible and create walkthrough.
