@@ -1,0 +1,5 @@
+path: /kaggle/input/datasets/okeydoke8525/poypl-daitrang/Kvasir_YOLO_SEG
+train: images/train
+val: images/val
+names:
+  0: polyp

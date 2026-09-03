@@ -1,0 +1,15 @@
+{
+  "data_root": "/kaggle/input/datasets/okeydokey0805/kvasir-semantic-880-120/Kvasir_Semantic_880_120",
+  "output_dir": "/kaggle/working/runs/unet_resnet34_640_seed0_100e",
+  "epochs": 100,
+  "batch_size": 16,
+  "image_size": 640,
+  "lr": 0.0001,
+  "weight_decay": 0.0001,
+  "workers": 2,
+  "threshold": 0.5,
+  "early_stopping": 20,
+  "seed": 0,
+  "resume": "",
+  "amp": true
+}

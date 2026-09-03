@@ -1,0 +1,69 @@
+{
+  "dataset_name": "CVC-ClinicDB",
+  "overview": {
+    "total_images": 612,
+    "train_images": 489,
+    "val_images": 123,
+    "validation_images": 123,
+    "total_polyps": 646,
+    "average_polyps_per_image": 1.056,
+    "max_polyps_image": "72",
+    "max_polyps_count": 3
+  },
+  "polygon_optimization": {
+    "avg_points_before": 146.94,
+    "avg_points_after": 40.83,
+    "points_reduction_percentage": 72.21
+  },
+  "distributions": {
+    "bbox_width": {
+      "min": 16.0,
+      "max": 313.0,
+      "median": 98.0,
+      "mean": 114.78018575851394,
+      "std": 64.6878045168969
+    },
+    "bbox_height": {
+      "min": 16.0,
+      "max": 270.0,
+      "median": 93.0,
+      "mean": 107.53405572755418,
+      "std": 58.26392857261824
+    },
+    "bbox_area": {
+      "min": 256.0,
+      "max": 79344.0,
+      "median": 9832.0,
+      "mean": 14533.928792569659,
+      "std": 13610.148096837143
+    },
+    "contour_area": {
+      "min": 167.0,
+      "max": 53761.0,
+      "median": 6857.5,
+      "mean": 9437.122291021671,
+      "std": 8352.392282379946
+    },
+    "polygon_points": {
+      "min": 15.0,
+      "max": 75.0,
+      "median": 38.0,
+      "mean": 40.8297213622291,
+      "std": 12.888739736555488
+    }
+  },
+  "object_size_classification_coco": {
+    "small_less_1024_px2": {
+      "count": 33,
+      "percentage": 5.11
+    },
+    "medium_1024_to_9216_px2": {
+      "count": 367,
+      "percentage": 56.81
+    },
+    "large_greater_9216_px2": {
+      "count": 246,
+      "percentage": 38.08
+    }
+  }
+}

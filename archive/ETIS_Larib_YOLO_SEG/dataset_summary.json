@@ -1,0 +1,69 @@
+{
+  "dataset_name": "ETIS-Larib PolypDB",
+  "overview": {
+    "total_images": 196,
+    "train_images": 156,
+    "val_images": 40,
+    "validation_images": 40,
+    "total_polyps": 208,
+    "average_polyps_per_image": 1.061,
+    "max_polyps_image": "43",
+    "max_polyps_count": 3
+  },
+  "polygon_optimization": {
+    "avg_points_before": 317.29,
+    "avg_points_after": 29.91,
+    "points_reduction_percentage": 90.57
+  },
+  "distributions": {
+    "bbox_width": {
+      "min": 31.0,
+      "max": 775.0,
+      "median": 178.0,
+      "mean": 228.25480769230768,
+      "std": 158.3351104096137
+    },
+    "bbox_height": {
+      "min": 42.0,
+      "max": 695.0,
+      "median": 200.0,
+      "mean": 232.50480769230768,
+      "std": 147.15683671603813
+    },
+    "bbox_area": {
+      "min": 1596.0,
+      "max": 482050.0,
+      "median": 31898.5,
+      "mean": 73337.59615384616,
+      "std": 94879.94354557716
+    },
+    "contour_area": {
+      "min": 1196.0,
+      "max": 342808.5,
+      "median": 22979.5,
+      "mean": 50161.033653846156,
+      "std": 67198.5529240251
+    },
+    "polygon_points": {
+      "min": 15.0,
+      "max": 67.0,
+      "median": 26.0,
+      "mean": 29.91346153846154,
+      "std": 10.68077944516284
+    }
+  },
+  "object_size_classification_coco": {
+    "small_less_1024_px2": {
+      "count": 0,
+      "percentage": 0.0
+    },
+    "medium_1024_to_9216_px2": {
+      "count": 47,
+      "percentage": 22.6
+    },
+    "large_greater_9216_px2": {
+      "count": 161,
+      "percentage": 77.4
+    }
+  }
+}
