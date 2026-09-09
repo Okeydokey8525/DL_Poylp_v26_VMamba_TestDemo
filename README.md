@@ -1,410 +1,273 @@
-# DL_Poylp_v26_VMamba_TestDemo
+# 🔬 Nghiên Cứu Phương Pháp Tích Hợp Topology-Shape-aware VMamba Vào YOLO26-seg Cho Phân Đoạn Polyp Từ Ảnh Nội Soi Đại Trực Tràng
 
-## Nghiên cứu tích hợp VMamba vào YOLO26-seg cho phân đoạn polyp đại trực tràng
-
-Repository này phục vụ khóa luận:
-
-> **Nghiên cứu phương pháp tích hợp VMamba vào mô hình YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng.**
-
-Dự án tập trung vào **nghiên cứu kiến trúc, dữ liệu và thực nghiệm mô hình**. Phần web hoặc ứng dụng di động trong tương lai chỉ dùng để **minh họa kết quả nghiên cứu**, không phải phần mềm chẩn đoán y tế và không thay thế đánh giá của bác sĩ.
+> **Dự án Khóa luận tốt nghiệp Cử nhân / Đồ án Nghiên cứu Deep Learning y khoa**  
+> **Chủ đề:** Tích hợp mô hình trạng thái không gian (State Space Models / VMamba) kết hợp đặc trưng hình học (Shape) và cấu trúc liên kết (Topology) vào kiến trúc YOLO26-seg trong bài toán phân đoạn polyp trực tràng.
 
 ---
 
-## 1. Tình trạng repository hiện tại
+## 📑 Liên Kết Nhanh & Tài Liệu Quan Trọng
 
-Repository hiện được sử dụng chủ yếu để lưu:
-
-- dữ liệu và các tệp hỗ trợ tiền xử lý Kvasir-SEG;
-- kết quả huấn luyện YOLO26-seg baseline;
-- kết quả huấn luyện YOLO26-VMamba-seg;
-- báo cáo kiểm toán kết quả;
-- cấu hình, biểu đồ, log và trọng số của các run đã thực hiện.
-
-### Lưu ý quan trọng
-
-Hai thư mục mã nguồn Ultralytics từng được đưa vào repository đã được xóa để tránh lưu trùng toàn bộ source gốc và làm repository quá lớn.
-
-Vì vậy, phiên bản hiện tại **không chứa đầy đủ source Ultralytics custom để dựng lại mô hình trực tiếp chỉ bằng cách clone repository này**. Khi tiếp tục phát triển, nhóm sẽ:
-
-1. lấy source sạch từ repository chính thức của Ultralytics;
-2. cố định phiên bản hoặc commit nền;
-3. bổ sung riêng các file thay đổi liên quan đến VMamba;
-4. ghi rõ hướng dẫn tích hợp và tái lập thí nghiệm.
-
-README cũ từng mô tả cả source Ultralytics đã bị xóa và chứa bảng kết quả YOLO11 không còn phù hợp với nội dung hiện tại. README này chỉ tổng hợp phần được xác nhận cho **YOLO26-seg và YOLO26-VMamba-seg**.
+* 📘 **[BÁO CÁO ĐẶC TẢ HƯỚNG NGHIÊN CỨU (Full Specification)](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/BAO_CAO_DAC_TA_HUONG_NGHIEN_CUU.md)**: Tài liệu chi tiết 33 mục đặc tả cơ sở lý thuyết, kiến trúc module lai `C2TSVMamba`, vai trò của từng nhánh (VMamba, Shape, Topology), cơ chế Gating/Fusion, thiết kế ablation study và hướng dẫn trả lời phản biện.
+* 💻 **[Mã nguồn Ultralytics Topology-Shape-aware VMamba](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/ultralytics_Topology-Shape-aware%20VMamba)**: Source code Ultralytics tùy biến hoàn chỉnh (365 files) tích hợp module `C2TSVMamba` và cấu hình mô hình `yolo26-seg-TopologyShapeVMamba.yaml`.
+* 📊 **[Thư mục Kết Quả Huấn Luyện & Đánh Giá (Ket_Qua)](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua)**: Báo cáo, bảng dữ liệu `results.csv`, cấu hình `args.yaml`, đường cong PR/F1, ma trận nhầm lẫn của tất cả các thử nghiệm trên Kvasir-SEG và các tập ngoài miền.
+* 📈 **[Artifact các run huấn luyện đối chứng (KQ_Poylp)](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Poylp)**: Dữ liệu chi tiết các lượt huấn luyện đối chứng các thang đo (scale n, s, m, l, x) của YOLOv11, YOLO26, và YOLO26-VMamba.
+* 🗂️ **[Tập dữ liệu chuẩn hóa Kvasir_YOLO_SEG](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Kvasir_YOLO_SEG)**: Bộ dữ liệu 1.000 ảnh (880 train / 120 val) đã tối ưu hóa đa giác phân đoạn cho YOLO.
+* 🌐 **[Các tập dữ liệu kiểm thử ngoài miền (Cac_Dataset)](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Cac_Dataset)**: Bộ dữ liệu CVC-ClinicDB, CVC-ColonDB và ETIS-Larib PolypDB phục vụ đánh giá tính khái quát hóa.
+* 📋 **[Đặc tả đầu ra dữ liệu Kvasir-SEG](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/kvasir_yolo_seg_output_spec.md)** & **[Báo cáo kiểm toán kết quả 10 run YOLO26](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/training_results_audit.md)**.
 
 ---
 
-## 2. Mục tiêu nghiên cứu
+## 1. Giới Thiệu Đề Tài & Ý Tưởng Nghiên Cứu Cốt Lõi
 
-Các mục tiêu chính của dự án gồm:
+### 1.1. Thách thức trong phân đoạn polyp đại trực tràng
+Phân đoạn polyp nội soi (Polyp Instance Segmentation) là nhiệm vụ tiền đề quan trọng hỗ trợ phát hiện sớm ung thư đại trực tràng. Tuy nhiên, các mô hình phân đoạn truyền thống thường gặp khó khăn bởi 3 yếu tố:
+1. **Hình dạng đa dạng & biến thiên phức tạp:** Polyp có thể phẳng, dài, có cuống, viền gồ ghề hoặc lồi lõm bất thường.
+2. **Biên polyp mờ và ánh sáng phức tạp:** Ánh sáng phản chiếu của niêm mạc ruột, bọt dịch, viền polyp trùng màu với thành ruột dễ khiến viền mask dự đoán bị lõm, đứt gãy hoặc ăn lan ra ngoài.
+3. **Mối quan hệ không gian & ngữ cảnh dài hạn:** Phân biệt chính xác một vùng mô nghi ngờ ở biên đòi hỏi phải đối chiếu thông tin ngữ cảnh toàn diện của cả vùng polyp và cấu trúc mô xung quanh.
 
-1. Khảo sát các phương pháp phân đoạn polyp, kiến trúc YOLO26-seg, State Space Model, Mamba và VMamba.
-2. Xây dựng quy trình dữ liệu Kvasir-SEG có thể kiểm tra và tái lập.
-3. Huấn luyện YOLO26-seg nguyên bản làm mô hình cơ sở.
-4. Nghiên cứu nhiều phương án tích hợp một hoặc nhiều khối Visual State-Space vào backbone hoặc vùng kết hợp đặc trưng đa tỉ lệ.
-5. So sánh mô hình đề xuất với YOLO26-seg baseline và ít nhất một mô hình phân đoạn đối chứng.
-6. Đánh giá đồng thời chất lượng phân đoạn và chi phí tính toán.
-7. Thực hiện ablation study về vị trí tích hợp, số lượng block và cấu hình VMamba.
-8. Xây dựng web/app minh họa kết quả của mô hình tốt nhất sau thực nghiệm.
-
----
-
-## 3. Phạm vi nghiên cứu
-
-### Bài toán
-
-- Đầu vào: ảnh nội soi đại trực tràng.
-- Đầu ra: mặt nạ vùng polyp, đường biên, hộp bao và độ tin cậy dự đoán.
-- Số lớp: `1` lớp `polyp`.
-- Nhiệm vụ chính: instance segmentation.
-
-### Không thuộc phạm vi
-
-Dự án không thực hiện:
-
-- chẩn đoán loại mô bệnh học;
-- đánh giá mức độ ác tính;
-- tư vấn hoặc khuyến nghị điều trị;
-- triển khai lâm sàng trong bệnh viện;
-- sử dụng ứng dụng minh họa để thay thế bác sĩ.
-
----
-
-## 4. Dữ liệu Kvasir-SEG
-
-Dữ liệu chính là **Kvasir-SEG**, gồm ảnh nội soi và mặt nạ phân đoạn mức điểm ảnh.
-
-Giao thức hiện tại:
-
-| Tập dữ liệu | Số ảnh |
-|---|---:|
-| Train | 880 |
-| Validation | 120 |
-| Tổng | 1.000 |
-
-Repository sử dụng split cố định `880/120` để các mô hình được huấn luyện và đánh giá trong cùng điều kiện.
-
-### Tiền xử lý
-
-File chính:
+### 1.2. Giải pháp: Module lai `C2TSVMamba` (Topology-Shape-aware VMamba)
+Thay vì tích hợp VMamba một cách đơn thuần, đề tài đề xuất module lai **C2TSVMamba** thay thế block `C2PSA` tại Layer 10 (tầng cổ chai sâu nhất của Backbone/Neck) trong kiến trúc YOLO26-seg:
 
 ```text
-archive/convert_kvasir_to_yolo_seg.py
+                                Input Feature X
+                                       │
+                                       ▼
+                           ┌──────────────────────┐
+                           │     C2 Structure     │
+                           └──────────┬───────────┘
+                                      │
+                        ┌─────────────┴─────────────┐
+                        │                           │
+                        ▼                           ▼
+                 ┌──────────────┐           ┌─────────────────┐
+                 │    VMamba    │           │ Shape/Topology  │
+                 │    Branch    │           │     Branch      │
+                 └──────┬───────┘           └────────┬────────┘
+                        │                            │
+                        │ F_M                        │ F_TS
+                        │                            │
+                        │                     ┌──────┴───────┐
+                        │                     │              │
+                        │                     ▼              ▼
+                        │                  Shape Gate   Topology Gate
+                        │                     │              │
+                        │                     └──────┬───────┘
+                        │                            │
+                        │                            ▼
+                        │                         G_TS
+                        │                            │
+                        └────────────────────────────┤
+                                                     ▼
+                                     F_M' = F_M ⊙ (1 + G_TS)
+                                                     │
+                              ┌──────────────────────┴──────────────┐
+                              │                                     │
+                              ▼                                     ▼
+                           F_M'                                  F_TS
+                              │                                     │
+                              └──────────────┬──────────────────────┘
+                                             ▼
+                                          Concat
+                                             │
+                                             ▼
+                                         Conv 1×1
+                                             │
+                                             ▼
+                                            FFN
+                                             │
+                                             ▼
+                                     Residual + γ
+                                             │
+                                             ▼
+                                     Output Feature Y
 ```
 
-Script này thực hiện các công việc như:
-
-- tìm ảnh và mask Kvasir-SEG;
-- chuẩn hóa mặt nạ;
-- dùng threshold để tách vùng polyp;
-- làm sạch mask bằng phép toán hình thái;
-- trích contour;
-- đơn giản hóa polygon;
-- chuyển nhãn sang định dạng YOLO segmentation;
-- thống kê đặc điểm vùng polyp;
-- tạo ảnh preview kiểm tra nhãn;
-- tạo biểu đồ và tệp tổng hợp dữ liệu.
-
-Định dạng đầu ra dự kiến:
-
-```text
-Kvasir_YOLO_SEG/
-├── images/
-│   ├── train/
-│   └── val/
-├── labels/
-│   ├── train/
-│   └── val/
-└── dataset.yaml
-```
+Ba thành phần cốt lõi của module:
+1. **VMamba Branch (2D Selective Scan - SS2D):** Khai thác ngữ cảnh không gian dài hạn hai chiều với độ phức tạp tuyến tính $\mathcal{O}(N)$, giúp mô hình "nhìn rộng" hơn CNN cục bộ.
+2. **Shape-aware Branch:** Sử dụng tích chập đa hướng (directional conv $1\times 5, 5\times 1$, curvature $3\times 3$) và gradient viền để mô hình "nhìn rõ hình dạng và đường viền".
+3. **Topology-aware Mechanism:** Định hướng bảo toàn cấu trúc liên kết và tính liên thông của vùng phân đoạn, hạn chế tối đa việc mask bị chia tách hoặc đục lỗ bất thường.
+4. **Modulation & Residual Scaling:** Dùng gate đặc trưng hình học/cấu trúc để điều biến feature map của VMamba, kết hợp qua FFN và scale bằng tham số học được $\gamma$ để bảo đảm độ ổn định khi tích hợp vào YOLO26.
 
 ---
 
-## 5. Các mô hình trong thực nghiệm hiện tại
+## 2. Cấu Trúc Toàn Diện Của Repository
 
-### 5.1. YOLO26-seg baseline
-
-Đã huấn luyện các scale:
-
-- YOLO26n-seg;
-- YOLO26s-seg;
-- YOLO26m-seg;
-- YOLO26l-seg;
-- YOLO26x-seg.
-
-Baseline được dùng để:
-
-- kiểm tra dữ liệu;
-- tạo mốc so sánh;
-- đánh giá ảnh hưởng thực sự của VMamba;
-- so sánh độ chính xác, số tham số và tốc độ.
-
-### 5.2. YOLO26-VMamba-seg
-
-Phiên bản VMamba đã thử nghiệm trong các run hiện tại sử dụng một khối Visual State-Space tích hợp vào phần đặc trưng sâu của YOLO26-seg.
-
-Cấu hình tham chiếu đã thử:
-
-```text
-YOLO26-seg backbone
-→ C2PSA
-→ VMambaBlock
-→ neck đa tỉ lệ
-→ Segment26 head
-```
-
-Khối VMamba trong phương án này hướng đến:
-
-- khai thác quan hệ không gian dài;
-- kết hợp ngữ cảnh toàn cục;
-- xử lý feature map hai chiều bằng selective scan;
-- giữ đầu ra tương thích với neck và segmentation head.
-
-Đây chỉ là **một phương án tích hợp đã thử nghiệm**, không phải vị trí duy nhất hoặc kiến trúc cuối cùng của đề tài. Các hướng khác như tích hợp tại tầng trung gian của backbone hoặc trong neck vẫn cần được nghiên cứu và ablation.
-
----
-
-## 6. Kết quả huấn luyện đã xác nhận
-
-Các kết quả dưới đây được tổng hợp từ:
-
-```text
-archive/training_results_audit.md
-```
-
-Tất cả run sử dụng Kvasir-SEG với split `880 train / 120 validation`, ảnh đầu vào `640 × 640` và 100 epoch.
-
-| STT | Dòng mô hình | Run | Mask mAP50 | Mask mAP50-95 | Best epoch |
-|---:|---|---|---:|---:|---:|
-| 1 | Baseline | `Kvasir_YOLO26n_seg_100e_16b` | 0.9141 | 0.7238 | 89 |
-| 2 | Baseline | `Kvasir_YOLO26s_seg_100e_16b` | **0.9282** | **0.7280** | 94 |
-| 3 | Baseline | `Kvasir_YOLO26m_seg_100e_16b` | 0.9164 | 0.7084 | 80 |
-| 4 | Baseline | `Kvasir_YOLO26l_seg_100e_16b` | 0.9169 | 0.7215 | 82 |
-| 5 | Baseline | `Kvasir_YOLO26x_seg_100e_16b` | 0.9203 | 0.7116 | 92 |
-| 6 | VMamba | `Kvasir_YOLO26n_VMamba_seg_100e_16b` | 0.8365 | 0.6095 | 100 |
-| 7 | VMamba | `Kvasir_YOLO26s_VMamba_seg_100e_16b` | 0.8321 | 0.5883 | 100 |
-| 8 | VMamba | `Kvasir_YOLO26m_VMamba_seg_100e_16b` | 0.8122 | 0.5780 | 99 |
-| 9 | VMamba | `Kvasir_YOLO26l_VMamba_seg_100e_16b` | 0.8045 | 0.5439 | 76 |
-| 10 | VMamba | `Kvasir_YOLO26x_VMamba_seg_100e_16b` | 0.7897 | 0.5449 | 92 |
-
-### Nhận xét hiện tại
-
-- Baseline tốt nhất trong nhóm run hiện có là `YOLO26s-seg`, đạt `Mask mAP50-95 = 0.7280`.
-- Các cấu hình VMamba hiện tại đạt `Mask mAP50-95` trong khoảng `0.5439–0.6095`.
-- Phương án VMamba hiện tại **chưa cải thiện độ chính xác so với baseline**.
-- Một số run VMamba đạt best epoch ở cuối quá trình huấn luyện, cho thấy mô hình có thể hội tụ chậm hoặc cấu hình tích hợp chưa phù hợp.
-- Kết quả này là cơ sở để tiếp tục nghiên cứu vị trí chèn, số lượng block, residual scaling, learning rate, warm-up và chiến lược nạp pretrained.
-
-Không được dùng các kết quả trên để tuyên bố rằng VMamba đã nâng cao hiệu quả mô hình. Kết luận đúng ở thời điểm hiện tại là:
-
-> Phương án tích hợp VMamba đã thử nghiệm có thể huấn luyện và đánh giá, nhưng chưa vượt YOLO26-seg baseline.
-
----
-
-## 7. Đánh giá thực nghiệm
-
-### Chất lượng mặt nạ
-
-Các chỉ số dự kiến sử dụng:
-
-- Dice Score;
-- IoU/Jaccard;
-- Precision;
-- Recall;
-- F1-score;
-- Mask mAP50;
-- Mask mAP50-95.
-
-### Hiệu quả tính toán
-
-- số tham số;
-- GFLOPs;
-- kích thước trọng số;
-- VRAM;
-- thời gian huấn luyện;
-- latency trên một ảnh;
-- FPS.
-
-### Phân tích định tính
-
-Cần phân tích riêng các trường hợp:
-
-- polyp nhỏ;
-- polyp phẳng;
-- biên mờ;
-- màu gần nền;
-- phản sáng;
-- nhiễu;
-- false positive;
-- false negative;
-- mask co hụt hoặc lấn nền.
-
----
-
-## 8. Kế hoạch ablation study
-
-### Ablation 1 — Vị trí tích hợp
-
-So sánh các phương án như:
-
-- không dùng VMamba;
-- VMamba tại tầng sâu của backbone;
-- VMamba tại tầng trung gian của backbone;
-- VMamba tại vùng fusion đa tỉ lệ trong neck.
-
-### Ablation 2 — Số lượng block
-
-- 0 block;
-- 1 block;
-- 2 block.
-
-### Ablation 3 — Cấu hình block
-
-Có thể khảo sát một biến tại một thời điểm, ví dụ:
-
-- residual thường và residual scaling;
-- selective scan hai hướng và bốn hướng;
-- thay đổi `d_state`;
-- có hoặc không có local convolution branch.
-
-### Thí nghiệm mở rộng về scale
-
-Ưu tiên các scale:
-
-- n;
-- s;
-- m.
-
-Các scale l và x chỉ thực hiện khi tài nguyên cho phép. Khảo sát scale là thí nghiệm mở rộng về quy mô mô hình, không phải ablation chính của VMamba.
-
----
-
-## 9. Cấu trúc nội dung chính của repository
+Repository được tổ chức chuẩn mực theo hệ thống các folder chức năng. **Lưu ý:** Mã nguồn tùy biến, các bộ dữ liệu và toàn bộ kết quả thực nghiệm nằm tập trung bên trong thư mục `archive/`:
 
 ```text
 DL_Poylp_v26_VMamba_TestDemo/
-├── README.md
-└── archive/
-    ├── KQ_Poylp/                       # Artifact các run huấn luyện
-    ├── Kvasir-SEG/                     # Dữ liệu Kvasir-SEG gốc nếu được lưu trong repo
-    ├── Kvasir_YOLO_SEG/                # Dữ liệu đã chuyển sang YOLO segmentation
-    ├── convert_kvasir_to_yolo_seg.py   # Script chuyển mask sang polygon YOLO
-    ├── train.txt                       # Danh sách ảnh train
-    ├── val.txt                         # Danh sách ảnh validation
-    ├── training_results_audit.md       # Báo cáo chính thức của 10 run YOLO26
-    └── audit_runs_data.json            # Metadata kiểm toán cũ
-```
-
-### Lưu ý về `audit_runs_data.json`
-
-Tệp `archive/audit_runs_data.json` còn chứa metadata lịch sử của một số run YOLO11 từ giai đoạn khảo sát trước. Nội dung này **không phải bảng kết quả chính thức hiện tại của repository**.
-
-Khi xem kết quả chính thức của đề tài ở trạng thái hiện tại, ưu tiên:
-
-```text
-archive/training_results_audit.md
-```
-
-và các artifact thực tế trong:
-
-```text
-archive/KQ_Poylp/
+├── BAO_CAO_DAC_TA_HUONG_NGHIEN_CUU.md       # [ĐẶC TẢ] Báo cáo chi tiết 33 mục về phương pháp & thực nghiệm
+├── README.md                                # Tài liệu tổng quan toàn bộ repository
+├── datasets/                                # Pipeline dữ liệu Kvasir Semantic 880/120
+│   ├── Kvasir_Semantic_880_120/             # Dữ liệu semantic segmentation
+│   └── kvasir_semantic_dataset.py           # Tiện ích xây dựng dataset
+├── tests/                                   # Các kiểm thử tích hợp (integration tests)
+└── archive/                                 # THƯ MỤC TRỌNG TÂM CỦA DỰ ÁN
+    ├── BAO_CAO_DAC_TA_HUONG_NGHIEN_CUU.md   # Bản sao đặc tả hướng nghiên cứu
+    │
+    ├── ultralytics_Topology-Shape-aware VMamba/ # [MÃ NGUỒN] Thư viện Ultralytics tích hợp C2TSVMamba
+    │   ├── nn/modules/topology_shape_vmamba.py  # Triển khai module Topology-Shape-aware VMamba
+    │   ├── cfg/models/26/                       # File cấu hình kiến trúc YOLO26s-TopologyShapeVMamba
+    │   ├── models/yolo/segment/                 # Pipeline huấn luyện và đánh giá segmentation
+    │   └── ... (365 files mã nguồn đầy đủ)
+    │
+    ├── Ket_Qua/                                 # [KẾT QUẢ] Thư mục kết quả chính thức của các mô hình
+    │   ├── CVC_ClinicDB/                        # Kết quả thử nghiệm trên tập ClinicDB
+    │   ├── ColonDB/                             # Kết quả thử nghiệm trên tập ColonDB
+    │   ├── ETIS_Larib/                          # Kết quả thử nghiệm trên tập ETIS-Larib
+    │   ├── Kvasir_YOLO26s_seg/                  # Kết quả mô hình baseline YOLO26s trên Kvasir-SEG
+    │   ├── Kvasir_YOLO26s_seg_Topology-Shape-awar/ # Kết quả mô hình đề xuất TS-VMamba
+    │   ├── Cac_Mo_Hinh_Khac/                    # Kết quả các biến thể thử nghiệm khác
+    │   └── Bao_cao/                             # Đồ thị so sánh tổng hợp (F1, PR, metrics)
+    │
+    ├── KQ_Poylp/                                # [ARTIFACTS] Chi tiết các run huấn luyện đối chứng
+    │   ├── YOLOv11-seg/                         # Huấn luyện YOLO11 (n, s, m, l, x)
+    │   ├── YOLOv26-seg/                         # Huấn luyện YOLO26 (n, s, m, l, x)
+    │   └── YOLOv26-seg-VMamba_P5_sau_C2PSA/     # Huấn luyện YOLO26 tích hợp VMamba P5
+    │
+    ├── Kvasir_YOLO_SEG/                         # [DATASET CHÍNH] Kvasir-SEG chuyển đổi sang YOLO
+    │   ├── images/ (train: 880 ảnh, val: 120 ảnh)
+    │   ├── labels/ (train: 880 tệp nhãn, val: 120 tệp nhãn)
+    │   ├── dataset.yaml                         # Cấu hình nạp dataset của YOLO
+    │   ├── dataset_statistics.csv               # Bảng thống kê kích thước, đa giác, diện tích
+    │   ├── dataset_summary.json                 # Tóm tắt phân bố dữ liệu JSON
+    │   ├── report.txt                           # Báo cáo tổng hợp số liệu dataset
+    │   └── dataset_plots/                       # 5 biểu đồ phân bố độ phân giải, diện tích, bbox
+    │
+    ├── Cac_Dataset/                             # [DATASET MỞ RỘNG] Kiểm tra tính khái quát hóa
+    │   ├── CVC-ClinicDB/ & CVC_ClinicDB_YOLO_SEG/
+    │   ├── CVC-ColonDB_data/ & CVC_ColonDB_YOLO_SEG/
+    │   └── ETIS-Larib PolypDB/ & ETIS_Larib_YOLO_SEG/
+    │
+    ├── convert_kvasir_to_yolo_seg.py            # Script chuẩn hóa Kvasir-SEG sang YOLO-seg
+    ├── convert_datasets_to_yolo_seg.py          # Script chuẩn hóa ClinicDB, ColonDB, ETIS sang YOLO-seg
+    ├── kvasir_yolo_seg_output_spec.md           # Tài liệu đặc tả kỹ thuật tiền xử lý dữ liệu
+    └── training_results_audit.md                # Báo cáo kiểm toán 10 run huấn luyện đối chứng
 ```
 
 ---
 
-## 10. Cách sử dụng repository hiện tại
+## 3. Quy Trình Dữ Liệu Thực Nghiệm (Datasets)
 
-### Đọc kết quả nghiên cứu
+1. **Tập dữ liệu chính (In-Domain):**
+   * **Kvasir-SEG**: Gồm 1.000 ảnh nội soi đại trực tràng độ phân giải cao và mask chuyên gia.
+   * **Phân chia cứng chuẩn hóa:** **880 ảnh Train** ($88\%$) và **120 ảnh Validation** ($12\%$).
+   * Tỷ lệ chia được cố định trong `train.txt` và `val.txt` để đảm bảo 100% công bằng khi so sánh chéo (cross-evaluation).
 
-1. Đọc `README.md` để xem tổng quan.
-2. Đọc `archive/training_results_audit.md` để xem kết quả 10 run đã xác nhận.
-3. Mở từng thư mục run trong `archive/KQ_Poylp/` để xem:
-   - `args.yaml`;
-   - `results.csv`;
-   - biểu đồ metric;
-   - confusion matrix;
-   - ảnh validation;
-   - `best.pt` và `last.pt` nếu được lưu.
+2. **Các tập dữ liệu ngoài miền (Out-of-Distribution - OOD Testing):**
+   * **CVC-ClinicDB:** 612 ảnh nội soi trích xuất từ 29 video nội soi tiêu hóa khác nhau.
+   * **CVC-ColonDB:** 380 ảnh nội soi đại tràng chứa nhiều polyp phẳng và kích thước nhỏ.
+   * **ETIS-Larib PolypDB:** 196 ảnh nội soi từ máy nội soi Pentax độ nét cao, là bộ dữ liệu thử thách cao với nhiều polyp khó phát hiện.
 
-### Tiền xử lý dữ liệu
+---
 
-Sử dụng:
+## 4. Chính Sách Lưu Trữ Trọng Số Mô Hình (Weights Policy)
+
+> [!NOTE]
+> **Tại sao không thấy thư mục `weights/` trên GitHub?**  
+> GitHub giới hạn kích thước mỗi file tối đa là **100 MB** và không khuyến nghị lưu trữ trực tiếp các file nhị phân lớn trong Git tree. Trong dự án này, toàn bộ 710 file checkpoint `.pt` (PyTorch model weights) có tổng dung lượng lên đến **~16.92 GB** (nhiều file mô hình lớn như YOLO26x, PraNet, UNet nặng từ 119 MB đến 357 MB).  
+> Do đó, file [.gitignore](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/.gitignore) đã chặn theo dõi `*.pt` để bảo đảm repository hoạt động nhẹ và ổn định.
+
+* **Những gì đã được lưu đầy đủ 100% trên GitHub:**
+  * Toàn bộ bảng log huấn luyện chi tiết từng epoch (`results.csv`).
+  * Toàn bộ các ảnh trực quan hóa: biểu đồ huấn luyện (`results.png`), ma trận nhầm lẫn (`confusion_matrix.png`), đường cong precision-recall (`PR_curve.png`), đường cong F1 (`F1_curve.png`).
+  * File cấu hình siêu tham số (`args.yaml`).
+* **Cách truy cập/tải trọng số mô hình tốt nhất (`best.pt`):**
+  * Các file trọng số của các mô hình tốt nhất sẽ được đóng gói và phát hành chính thức qua mục **GitHub Releases** của repository này hoặc Google Drive chia sẻ của nhóm nghiên cứu.
+
+---
+
+## 5. Hướng Dẫn Cài Đặt & Chạy Thực Nghiệm (Quickstart)
+
+### 5.1. Khởi tạo môi trường
+Yêu cầu hệ thống: Python $\ge$ 3.10, PyTorch $\ge$ 2.0, CUDA $\ge$ 11.8 (nếu sử dụng GPU).
 
 ```bash
-python archive/convert_kvasir_to_yolo_seg.py
+# Clone repository
+git clone https://github.com/Okeydokey8525/DL_Poylp_v26_VMamba_TestDemo.git
+cd DL_Poylp_v26_VMamba_TestDemo
+
+# Cài đặt mã nguồn Ultralytics tùy biến ở chế độ editable
+cd "archive/ultralytics_Topology-Shape-aware VMamba"
+pip install -e .
 ```
 
-Trước khi chạy cần kiểm tra lại đường dẫn dữ liệu và tham số trong script để phù hợp với máy local hoặc Kaggle.
+### 5.2. Tiền xử lý dữ liệu (nếu tải mới từ nguồn thô)
+```bash
+# Chuyển đổi bộ dữ liệu Kvasir-SEG sang định dạng YOLO Segmentation
+python archive/convert_kvasir_to_yolo_seg.py
 
-### Tái lập mô hình
+# Chuyển đổi 3 bộ dữ liệu ClinicDB, ColonDB, ETIS-Larib
+python archive/convert_datasets_to_yolo_seg.py
+```
 
-Source custom hiện chưa được lưu đầy đủ trong repository. Để tái lập mô hình, nhóm cần bổ sung trong giai đoạn tiếp theo:
+### 5.3. Huấn luyện mô hình
+```bash
+# 1. Huấn luyện Baseline YOLO26s-seg (chuẩn 100 epochs, batch 16, imgsz 640)
+yolo segment train \
+  data=archive/Kvasir_YOLO_SEG/dataset.yaml \
+  model=yolo26s-seg.yaml \
+  epochs=100 \
+  batch=16 \
+  imgsz=640 \
+  seed=0 \
+  project=archive/Ket_Qua/Kvasir_YOLO26s_seg
 
-- commit Ultralytics nền;
-- module VMamba;
-- file đăng ký module;
-- YAML mô hình;
-- utility chuyển trọng số pretrained;
-- notebook hoặc script Kaggle;
-- requirements và hướng dẫn môi trường.
+# 2. Huấn luyện Mô hình đề xuất YOLO26s-TopologyShapeVMamba
+yolo segment train \
+  data=archive/Kvasir_YOLO_SEG/dataset.yaml \
+  model="archive/ultralytics_Topology-Shape-aware VMamba/cfg/models/26/yolo26-seg-TopologyShapeVMamba.yaml" \
+  epochs=100 \
+  batch=16 \
+  imgsz=640 \
+  seed=0 \
+  project=archive/Ket_Qua/Kvasir_YOLO26s_seg_Topology-Shape-awar
+```
 
----
+### 5.4. Đánh giá kiểm định & Kiểm tra ngoài miền
+```bash
+# Đánh giá trên tập validation của Kvasir-SEG
+yolo segment val \
+  data=archive/Kvasir_YOLO_SEG/dataset.yaml \
+  model=path/to/best.pt \
+  imgsz=640
 
-## 11. Ứng dụng minh họa dự kiến
-
-Ứng dụng chỉ phục vụ nghiên cứu và trình bày kết quả.
-
-Các chức năng dự kiến:
-
-- tải ảnh nội soi;
-- chọn mô hình baseline hoặc VMamba;
-- hiển thị ảnh gốc;
-- hiển thị mask;
-- hiển thị contour và overlay;
-- hiển thị bounding box;
-- hiển thị confidence;
-- hiển thị latency;
-- so sánh trực quan hai mô hình;
-- lưu hoặc tải ảnh kết quả.
-
-Web và ứng dụng di động nên dùng chung một backend suy luận để tránh triển khai hai pipeline mô hình khác nhau.
-
----
-
-## 12. Hướng phát triển tiếp theo
-
-1. Chuẩn hóa lại cấu trúc repository sau khi xóa source Ultralytics trùng lặp.
-2. Lưu riêng các patch hoặc file custom thay vì đưa toàn bộ Ultralytics vào repository.
-3. Hoàn thiện ba phương án VMamba độc lập của ba thành viên.
-4. Sàng lọc kiến trúc bằng unit test và smoke train.
-5. Thực hiện ablation về vị trí, số block và cấu hình block.
-6. Huấn luyện ít nhất một mô hình đối chứng như U-Net hoặc PraNet.
-7. Tính Dice, IoU và F1-score chung cho các mô hình.
-8. Đánh giá ngoài miền trên CVC-ClinicDB, CVC-ColonDB hoặc ETIS-Larib khi có điều kiện.
-9. Xây dựng backend inference dùng chung.
-10. Hoàn thiện web và app di động minh họa.
+# Đánh giá khái quát hóa trên tập CVC-ClinicDB
+yolo segment val \
+  data=archive/Cac_Dataset/CVC_ClinicDB_YOLO_SEG/dataset.yaml \
+  model=path/to/best.pt \
+  imgsz=640
+```
 
 ---
 
-## 13. Thành viên thực hiện
+## 6. Thiết Kế Thực Nghiệm Ablation Study
 
-- **Lê Đức Lương** — MSSV: 2001230490
-- **Phùng Tuấn Huy** — MSSV: 2001230312
-- **Trần Mạnh Toàn** — MSSV: 2001230830
+Nhằm chứng minh tính khoa học và đóng góp độc lập của từng thành phần, đề tài triển khai kế hoạch ablation study theo bảng đối chứng nghiêm ngặt:
 
-Giảng viên hướng dẫn: **TS. Phùng Thế Bảo**.
+| Thứ tự | Mô hình | VMamba (SS2D) | Shape-aware | Topology-aware | Mục tiêu khoa học |
+|:---:|:---|:---:|:---:|:---:|:---|
+| **Exp 1** | **YOLO26-seg (Baseline)** | ❌ | ❌ | ❌ | Thiết lập chuẩn đối chứng gốc |
+| **Exp 2** | **YOLO26 + VMamba** | ✅ | ❌ | ❌ | Đánh giá riêng hiệu quả mô hình hóa ngữ cảnh rộng |
+| **Exp 3** | **YOLO26 + Shape-aware** | ❌ | ✅ | ❌ | Đánh giá riêng khả năng biểu diễn biên và độ cong |
+| **Exp 4** | **YOLO26 + VMamba + Shape** | ✅ | ✅ | ❌ | Đánh giá sự tương tác giữa Context và Shape |
+| **Exp 5** | **YOLO26 + C2TSVMamba (Đề xuất)** | ✅ | ✅ | ✅ | Đánh giá hoàn chỉnh khi có ràng buộc Topology |
+
+Tất cả các mô hình trong bảng ablation được kiểm soát đồng nhất 100% về: cùng tập dữ liệu, cùng phân chia train/val, cùng kích thước ảnh `imgsz=640`, cùng optimizer, learning rate, số epoch (100 epochs) và random seed.
 
 ---
 
-## 14. Tuyên bố giới hạn sử dụng
+## 7. Thành Viên Thực Hiện & Cố Vấn
 
-Repository và các ứng dụng liên quan chỉ phục vụ:
+* **Sinh viên thực hiện:**
+  * **Lê Đức Lương** — MSSV: `2001230490`
+  * **Phùng Tuấn Huy** — MSSV: `2001230312`
+  * **Trần Mạnh Toàn** — MSSV: `2001230830`
+* **Giảng viên hướng dẫn:** **TS. Phùng Thế Bảo**
+* **Đơn vị:** Khoa Công nghệ Thông tin, Trường Đại học Công Thương TP. Hồ Chí Minh (HUIT).
 
-- học tập;
-- nghiên cứu;
-- đánh giá thuật toán;
-- trình bày khóa luận.
+---
 
-Kết quả mô hình không được sử dụng như một công cụ chẩn đoán, tiên lượng hoặc quyết định điều trị trong thực tế y tế.
+## 8. Tuyên Bố Giới Hạn Sử Dụng (Disclaimer)
+
+Dự án và mã nguồn được phát triển phục vụ mục đích **học tập, nghiên cứu khoa học và bảo vệ khóa luận tốt nghiệp cử nhân**. Các kết quả dự đoán của mô hình không được sử dụng thay thế các chẩn đoán, kết luận y khoa hoặc phác đồ điều trị của các bác sĩ chuyên khoa trong thực tế lâm sàng.
