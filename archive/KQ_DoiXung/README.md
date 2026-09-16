@@ -65,3 +65,19 @@ Thư mục này chứa toàn bộ các biểu đồ đối sánh định lượn
     - Ma trận nhầm lẫn chuẩn hóa đặt cạnh nhau giữa Baseline (s4) và C2TSVMamba (s5) trên 127 tổn thương polyp.
 22. `09_mask_pr_curve_side_by_side.png`:
     - Đường cong Precision-Recall của Mask (AUC) ở ngưỡng IoU 0.5.
+
+
+---
+
+### PHẦN 3: CÁC BIỂU ĐỒ DẠNG CỘT (BAR CHARTS) RIÊNG CHO VAL/SEG_LOSS
+*Được thiết kế chuyên biệt để nhìn rõ ràng mức độ giảm mất mát phân đoạn giữa Baseline và TSVM mà không bị nén thang đo như biểu đồ đường 100 epoch.*
+
+23. `val_seg_loss_barchart_comparison.png` (hoặc `01a_val_seg_loss_barchart.png`):
+    - **Tên:** Biểu đồ cột nhóm so sánh val/seg_loss từng Seed (Seed 0 đến Seed 5) và Cột Tổng hợp Trung bình (Mean ± 1 Std).
+    - **Đặc điểm:** Thang đo được căn chỉnh tối ưu (1.22 đến 1.58), hiển thị chính xác giá trị số thập phân trên từng cột. Nhìn vào thấy ngay TSVM thấp hơn Baseline ở 5/6 seed và ở mức trung bình.
+24. `val_seg_loss_comprehensive_barchart.png`:
+    - **Tên:** Biểu đồ cột 2 phần: (a) So sánh giá trị Trung bình 6 seed của cả 3 dòng mô hình (Baseline, P5_Attention, TSVM), và (b) Chi tiết đối đầu trực tiếp 6 seed.
+    - **Ý nghĩa:** Làm nổi bật sự thất bại của P5_Attention (loss tăng vọt lên 1.4630) và sự thành công của TSVM (loss giảm sâu xuống 1.3812).
+25. `val_seg_loss_reduction_barchart.png`:
+    - **Tên:** Biểu đồ mức giảm Loss (Delta = Baseline - TSVM) qua từng seed.
+    - **Ý nghĩa:** Cột màu xanh lá cây (> 0) khẳng định TSVM giảm loss thành công ở 5/6 seed với mức giảm trung bình +0.0352.
