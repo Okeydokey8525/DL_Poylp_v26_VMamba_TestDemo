@@ -43,14 +43,26 @@ Trong quá trình nghiên cứu thực nghiệm, nhóm đã phát triển và ch
 
 ---
 
-## 3. TỔNG QUAN CÁC TÀI LIỆU TIẾP QUẢN TRONG THƯ MỤC `doc/`
+## 3. TỔNG QUAN HỆ THỐNG TÀI LIỆU TIẾP QUẢN TRONG THƯ MỤC `doc/`
 
-Để hỗ trợ AI hoặc thành viên tiếp quản nắm bắt ngay lập tức toàn bộ dự án, hệ thống tài liệu được phân chia thành các tệp chuyên sâu:
+Để hỗ trợ AI hoặc thành viên tiếp quản nắm bắt ngay lập tức toàn bộ dự án, hệ thống tài liệu được tổ chức theo chuẩn **AI-Consumable Project Knowledge Base** (phù hợp với `nguyen-tac-lam-viec-dai.md`):
 
-1. [`00_TONG_QUAN_VA_TINH_HINH_DU_AN.md`](file:///c:/LeDucLuong/HK VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/00_TONG_QUAN_VA_TINH_HINH_DU_AN.md): Bản tóm lược điều hành, bối cảnh, các quyết định cốt lõi và lộ trình tiếp theo.
-2. [`01_KIEN_TRUC_TSVM_TANG_10.md`](file:///c:/LeDucLuong/HK VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/01_KIEN_TRUC_TSVM_TANG_10.md): Phân tích kỹ thuật chuyên sâu về mã nguồn của module `C2TSVMamba` tại tầng 10, cấu trúc toán học của 6 khối con, luồng tensor và file YAML.
-3. [`02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md`](file:///c:/LeDucLuong/HK VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md): Toàn bộ bảng số liệu thực tế 6-fold, kiểm định thống kê Paired t-test ($p$-values), phân tích ưu/nhược điểm và lập luận khoa học cho luận văn.
-4. [`03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md`](file:///c:/LeDucLuong/HK VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md): Bản đồ phân bố file trong toàn bộ workspace, vị trí code, script thực thi tại `Stracth/`, và hướng dẫn tái lập kết quả 100%.
+### Nhóm 1: Tài liệu Kiến trúc & Điều hành Cốt lõi
+1. [`00_TONG_QUAN_VA_TINH_HINH_DU_AN.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/00_TONG_QUAN_VA_TINH_HINH_DU_AN.md): Bản tóm lược điều hành, bối cảnh, các quyết định cốt lõi và lộ trình tiếp theo.
+2. [`01_KIEN_TRUC_TSVM_TANG_10.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/01_KIEN_TRUC_TSVM_TANG_10.md): Phân tích kỹ thuật chuyên sâu về mã nguồn module `C2TSVMamba` tại tầng 10, cấu trúc toán học của 6 khối con, luồng tensor và file YAML.
+3. [`02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md): Bảng số liệu tổng hợp đối chiếu 6-fold, kiểm định thống kê Paired t-test ($p$-values) và các kết luận cốt lõi.
+4. [`03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md): Bản đồ phân bố file trong toàn bộ workspace, vị trí code, script thực thi tại `Stracth/`, và hướng dẫn tái lập kết quả 100%.
+
+### Nhóm 2: Hồ sơ Chuyên sâu Từng Kết quả Thực nghiệm (Deep-Dive Result Dossiers)
+5. [`04_KET_QUA_LOSS_VA_HOI_TU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/04_KET_QUA_LOSS_VA_HOI_TU.md): Phân tích hàm mất mát phân đoạn (`val/seg_loss`), động lực học hội tụ 100 epochs, kiểm soát quá khớp (overfitting bounce) và kiểm định $p = 0.0363$.
+6. [`05_KET_QUA_MAP_VA_DO_ON_DINH_SEED.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/05_KET_QUA_MAP_VA_DO_ON_DINH_SEED.md): Phân tích chi tiết Mask mAP@50 (0.9134), Mask mAP@50-95 (0.7246) và phát hiện đột phá: **thu hẹp độ lệch chuẩn (Std) 3 lần** ($0.0150 
+ightarrow 0.0050$).
+7. [`06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md): Phân tích sự đánh đổi Precision (91.71%) vs Recall (85.45%), nguyên nhân hình thái học ở polyp dạng phẳng (Paris IIb, < 5mm) và giá trị sống còn trong phẫu thuật EMR/ESD.
+8. [`07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md): Ma trận nhầm lẫn và đếm số ca tổn thương trên 127 polyp kiểm thử, đối chiếu cặp từng seed (Paired Head-to-Head), lý giải tính chất các ca False Negative.
+9. [`08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md): Tham số (12.09M), GFLOPs (42.3), dung lượng tệp `best.pt` (23.86 MB), phân rã độ trễ 3 pha (Pre 0.4ms, Inf 19.0ms, Post 1.8ms), thông lượng 47.2 FPS đáp ứng chuẩn nội soi thời gian thực (25-30 FPS).
+10. [`09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md): Nghiên cứu triệt tiêu (Ablation Study) chứng minh vì sao tích hợp tại Tầng 10 (Neck chuyển tiếp, stride 16) vượt trội hoàn toàn so với đặt tại tầng P5 sâu nhất (stride 32).
+11. [`10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md): Đánh giá định tính hình thái mặt nạ, triệt tiêu răng cưa, chống lem mô lành và kháng phản xạ ánh sáng (glare).
+12. [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md): Báo cáo chi tiết số liệu 6-fold của biến thể P5_Attention_VMamba, phân tích nguyên nhân suy thoái hiệu năng và giá trị trong Ablation Study.](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md): Đánh giá định tính hình thái mặt nạ trực quan, triệt tiêu răng cưa, chống lem viền mô lành và khả năng kháng nhiễu phản xạ ánh sáng (glare reflection).
 
 ---
 

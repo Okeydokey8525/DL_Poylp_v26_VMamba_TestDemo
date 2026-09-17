@@ -5,6 +5,37 @@ Thư mục này chứa toàn bộ các biểu đồ đối sánh định lượn
 
 ---
 
+### PHẦN 0: DỮ LIỆU TỔNG HỢP TRUNG BÌNH (MEAN ± STD) CHO 2 MÔ HÌNH
+Để thuận tiện cho việc đối chiếu và lập trình tạo các biểu đồ mới mà không cần đọc lặp lại 12 file kết quả riêng lẻ của 6 seed trong scratch_summary.csv, thư mục này cung cấp 2 file CSV chuẩn hóa đã tính sẵn giá trị trung bình kèm độ lệch chuẩn (Mean ± Std):
+
+1. **summary_mean_std_2models.csv** (Dạng bảng đối sánh theo từng chỉ số - Tương đương Bảng 1 báo cáo):
+   - **Cấu trúc:** Mỗi dòng là một chỉ số (metric, display_name, category).
+   - **Các cột số liệu:** aseline_mean, aseline_std, aseline_mean_pm_std (chuỗi định dạng Mean ± Std), aseline_range ([Min – Max]), 	svm_mean, 	svm_std, 	svm_mean_pm_std, 	svm_range, delta ($\Delta$), delta_pct (%), p_value (Kiểm định Paired t-test qua 6 seed), significance (mức ý nghĩa), clinical_interpretation (ý nghĩa lâm sàng).
+   - **Mục đích:** Tra cứu nhanh số liệu làm bảng Word, báo cáo, và làm nhãn biểu đồ.
+
+2. **summary_models_2rows.csv** (Dạng bảng 2 dòng cho 2 mô hình - Sẵn sàng cho code Python):
+   - **Cấu trúc:** Dòng 1 là Baseline YOLO26s-seg, Dòng 2 là C2TSVMamba (Proposed).
+   - **Mục đích:** Phù hợp cho code vẽ đồ thị cột (Bar chart), đồ thị radar (Radar chart) chỉ với cú pháp df['mask_map50_95_mean'] và yerr=df['mask_map50_95_std'].
+
+`python
+# Ví dụ vẽ biểu đồ cột từ summary_mean_std_2models.csv:
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('summary_mean_std_2models.csv')
+row = df[df['metric'] == 'mask_map50_95'].iloc[0]
+models = ['Baseline', 'C2TSVMamba']
+means = [row['baseline_mean'], row['tsvm_mean']]
+stds = [row['baseline_std'], row['tsvm_std']]
+
+plt.figure(figsize=(6, 4), dpi=300)
+plt.bar(models, means, yerr=stds, capsize=6, color=['#2563EB', '#DC2626'], alpha=0.85)
+plt.ylabel('Mask mAP@50-95')
+plt.title('So sánh Mask mAP@50-95 (Mean ± Std, 6 Seeds)')
+plt.savefig('map50_95_demo.png', bbox_inches='tight')
+`
+
+---
 ### PHẦN 1: CÁC BIỂU ĐỒ ĐƠN LẺ (1 HÌNH 1 BIỂU ĐỒ - KHÔNG GHI CHÚ CALLOUT / SẠCH SẼ)
 *Được tạo theo yêu cầu riêng biệt để nhìn rõ ràng, dễ chèn vào slide và các mục báo cáo chuyên sâu; lấy trung bình 6 seed độc lập (s0 đến s5) kèm dải độ lệch chuẩn ±1σ.*
 

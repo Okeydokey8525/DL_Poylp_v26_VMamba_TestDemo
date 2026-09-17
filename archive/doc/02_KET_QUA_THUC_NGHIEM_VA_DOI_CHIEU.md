@@ -88,3 +88,19 @@ Dưới đây là giá trị thực tế tại epoch đạt điểm đánh giá 
 1. **Chỉ số mAP tổng thể không tăng đột biến:** Mask mAP@50 đạt 0.9141 (so với 0.9144 của Baseline); Mask mAP@50-95 đạt 0.7231 (so với 0.7291 của Baseline). Cải tiến không mang lại sự bứt phá về mAP toàn dải.
 2. **Sự đánh đổi về Mask Recall:** Do ràng buộc hình học topo quá chặt chẽ, TSVM có xu hướng dự đoán thận trọng, dẫn đến Mask Recall giảm nhẹ từ **0.8760** xuống **0.8493** ($-3.04\%$, $p = 0.0495$).
 3. **Chi phí thời gian:** Thuật toán quét 2D (SS2D) làm tăng thời gian huấn luyện gấp 2.06 lần trên GPU.
+
+
+---
+
+## 4. DANH MỤC CÁC HỒ SƠ PHÂN TÍCH TỪNG KẾT QUẢ CHUYÊN SÂU
+
+Để tra cứu chi tiết từng khía cạnh kết quả thực nghiệm theo nguyên tắc minh bạch dữ liệu:
+
+- **Hàm mất mát & Động lực học hội tụ:** Chi tiết tại [`04_KET_QUA_LOSS_VA_HOI_TU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/04_KET_QUA_LOSS_VA_HOI_TU.md)
+- **Chỉ số mAP & Phân tích giảm phương sai 3 lần:** Chi tiết tại [`05_KET_QUA_MAP_VA_DO_ON_DINH_SEED.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/05_KET_QUA_MAP_VA_DO_ON_DINH_SEED.md)
+- **Đánh đổi Precision - Recall & Ý nghĩa phẫu thuật EMR/ESD:** Chi tiết tại [`06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md)
+- **Ma trận nhầm lẫn & Phân tích 127 ca tổn thương:** Chi tiết tại [`07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md)
+- **Chi phí tính toán, Độ trễ 3 pha & Khả năng triển khai Edge:** Chi tiết tại [`08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md)
+- **Nghiên cứu triệt tiêu Ablation Study (Tầng 10 vs Tầng P5):** Chi tiết tại [`09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md)
+- **Đánh giá định tính chất lượng mặt nạ thị giác:** Chi tiết tại [`10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md)
+- **Hồ sơ chi tiết biến thể P5 (Ablation Study):** Chi tiết tại [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md)

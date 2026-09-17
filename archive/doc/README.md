@@ -7,6 +7,29 @@
 
 ## 📑 Liên Kết Nhanh & Tài Liệu Quan Trọng
 
+### 📚 HỆ THỐNG HỒ SƠ PHÂN TÍCH THỰC NGHIỆM ĐỊNH LƯỢNG (AI KNOWLEDGE BASE)
+
+Hệ thống tài liệu Markdown phân rã toàn diện từng kết quả theo chuẩn `nguyen-tac-lam-viec-dai.md`:
+
+* 📑 **Kiến trúc & Bàn giao Điều hành:**
+  * [`00_TONG_QUAN_VA_TINH_HINH_DU_AN.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/00_TONG_QUAN_VA_TINH_HINH_DU_AN.md): Bối cảnh nghiên cứu, quyết định chiến lược và hướng dẫn tiếp quản.
+  * [`01_KIEN_TRUC_TSVM_TANG_10.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/01_KIEN_TRUC_TSVM_TANG_10.md): Phân tích module `C2TSVMamba` tại tầng 10, cấu trúc toán học 6 khối con và file YAML.
+  * [`02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md): Bảng số liệu tổng hợp 6-fold cross-validation và kiểm định thống kê Paired t-test.
+  * [`03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md): Sơ đồ cây thư mục và hướng dẫn tái lập kết quả thực nghiệm 100%.
+
+* 🔬 **Hồ sơ Phân tích Từng Kết quả Chuyên sâu (Deep-Dive Result Dossiers):**
+  * [`04_KET_QUA_LOSS_VA_HOI_TU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/04_KET_QUA_LOSS_VA_HOI_TU.md): Phân tích `val/seg_loss` (1.3812 vs 1.4164, giảm -2.48%, $p = 0.0363$) và kiểm soát quá khớp.
+  * [`05_KET_QUA_MAP_VA_DO_ON_DINH_SEED.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/05_KET_QUA_MAP_VA_DO_ON_DINH_SEED.md): Mask mAP@50 (0.9134), Mask mAP@50-95 (0.7246) và sự **thu hẹp độ lệch chuẩn 3 lần** ($0.0150 
+ightarrow 0.0050$).
+  * [`06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md): Đánh đổi Precision (91.71%) vs Recall (85.45%), polyp dạng phẳng (Paris IIb, < 5mm) và ý nghĩa trong phẫu thuật EMR/ESD.
+  * [`07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md): Ma trận nhầm lẫn 127 ca tổn thương, đối chiếu cặp Paired Head-to-Head trên từng seed.
+  * [`08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md): Tham số (12.09M), GFLOPs (42.3), checkpoint 23.86 MB, độ trễ 3 pha (21.2 ms = 47.2 FPS) đáp ứng thời gian thực chuẩn nội soi 25–30 FPS.
+  * [`09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md): Nghiên cứu triệt tiêu chứng minh lý do Tầng 10 (Neck chuyển tiếp, stride 16, 40x40) vượt trội hơn đặt tại P5 (stride 32, 20x20).
+  * [`10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md): Đánh giá định tính chất lượng mặt nạ, độ trơn nhẵn, chống lem mô lành và kháng phản xạ ánh sáng (glare).
+  * [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md): Toàn bộ số liệu 6-fold biến thể P5_Attention_VMamba và phân tích lý do thất bại kỹ thuật.
+
+
+
 * 📘 **[BÁO CÁO ĐẶC TẢ HƯỚNG NGHIÊN CỨU (Full Specification)](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/BAO_CAO_DAC_TA_HUONG_NGHIEN_CUU.md)**: Tài liệu chi tiết 33 mục đặc tả cơ sở lý thuyết, kiến trúc module lai `C2TSVMamba`, vai trò của từng nhánh (VMamba, Shape, Topology), cơ chế Gating/Fusion, thiết kế ablation study và hướng dẫn trả lời phản biện.
 * 💻 **[Mã nguồn Ultralytics Topology-Shape-aware VMamba](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/ultralytics_Topology-Shape-aware%20VMamba)**: Source code Ultralytics tùy biến hoàn chỉnh (365 files) tích hợp module `C2TSVMamba` và cấu hình mô hình `yolo26-seg-TopologyShapeVMamba.yaml`.
 * 📊 **[Thư mục Kết Quả Huấn Luyện & Đánh Giá (Ket_Qua)](file:///C:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua)**: Báo cáo, bảng dữ liệu `results.csv`, cấu hình `args.yaml`, đường cong PR/F1, ma trận nhầm lẫn của tất cả các thử nghiệm trên Kvasir-SEG và các tập ngoài miền.
