@@ -1,0 +1,17 @@
+metric_code,display_name,category,baseline_mean_std,tsvm_mean_std,iavm_mean_std,iavm_vs_base_diff,iavm_vs_base_p,iavm_vs_tsvm_diff,iavm_vs_tsvm_p
+mask_map50_95,Mask mAP@50-95 (Segmentation),Segmentation (Mask),0.7291 ± 0.0153,0.7231 ± 0.0055,0.7361 ± 0.0073,0.00703,0.3569,0.01303,0.0173
+mask_map50,Mask mAP@50 (Segmentation),Segmentation (Mask),0.9144 ± 0.0065,0.9141 ± 0.0088,0.9149 ± 0.0109,0.00052,0.8701,0.00079,0.918
+mask_precision,Mask Precision (Độ chính xác),Segmentation (Mask),0.9198 ± 0.0139,0.9192 ± 0.0192,0.8876 ± 0.0275,-0.03223,0.064,-0.03162,0.0727
+mask_recall,Mask Recall (Độ nhạy phân đoạn),Segmentation (Mask),0.8760 ± 0.0175,0.8493 ± 0.0243,0.8875 ± 0.0195,0.01153,0.4056,0.03817,0.0389
+mask_f1,Mask F1-Score (Hài hòa P & R),Segmentation (Mask),0.8972 ± 0.0054,0.8825 ± 0.0094,0.8871 ± 0.0090,-0.01007,0.0289,0.00458,0.4071
+val_seg_loss,Validation Seg Loss (Hàm phạt mặt nạ),Loss & Convergence,1.4314 ± 0.0540,1.3936 ± 0.0366,1.3987 ± 0.0695,-0.03275,0.5151,0.00507,0.9052
+val_box_loss,Validation Box Loss (Hàm phạt khung),Loss & Convergence,0.7503 ± 0.0137,0.7687 ± 0.0385,0.7571 ± 0.0276,0.00677,0.6666,-0.01157,0.567
+val_cls_loss,Validation Cls Loss (Hàm phạt phân loại),Loss & Convergence,0.5681 ± 0.0400,0.5938 ± 0.0302,0.5902 ± 0.0524,0.02206,0.366,-0.00362,0.8781
+box_map50_95,Box mAP@50-95 (Bounding Box),Detection (Box),0.7404 ± 0.0112,0.7398 ± 0.0087,0.7418 ± 0.0057,0.00136,0.8087,0.00201,0.5524
+box_map50,Box mAP@50 (Bounding Box),Detection (Box),0.9099 ± 0.0068,0.9056 ± 0.0093,0.9151 ± 0.0086,0.00518,0.2653,0.00955,0.0693
+box_precision,Box Precision (Độ chính xác hộp),Detection (Box),0.9173 ± 0.0137,0.9058 ± 0.0184,0.8842 ± 0.0301,-0.0331,0.0826,-0.02154,0.2453
+box_recall,Box Recall (Độ nhạy hộp bao),Detection (Box),0.8664 ± 0.0246,0.8429 ± 0.0282,0.8842 ± 0.0185,0.01782,0.2425,0.04131,0.0474
+box_f1,Box F1-Score (Hộp bao),Detection (Box),0.8908 ± 0.0082,0.8727 ± 0.0111,0.8837 ± 0.0111,-0.00706,0.0535,0.01099,0.1231
+best_fit_epoch,Best Fitness Epoch (Epoch tối ưu),Training Dynamics,91.8333 ± 8.6352,85.1667 ± 13.1669,87.1667 ± 7.7567,-4.66667,0.0875,2.0,0.737
+mask_map50_95_epoch100,Mask mAP@50-95 (Epoch 100),Epoch 100,0.7186 ± 0.0186,0.7194 ± 0.0065,0.7213 ± 0.0163,0.0027,0.7635,0.00195,0.7601
+val_seg_loss_epoch100,Validation Seg Loss (Epoch 100),Epoch 100,1.4443 ± 0.0615,1.4265 ± 0.0305,1.3989 ± 0.0502,-0.04542,0.2967,-0.02758,0.3678

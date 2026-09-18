@@ -112,3 +112,41 @@ plt.savefig('map50_95_demo.png', bbox_inches='tight')
 25. `val_seg_loss_reduction_barchart.png`:
     - **Tên:** Biểu đồ mức giảm Loss (Delta = Baseline - TSVM) qua từng seed.
     - **Ý nghĩa:** Cột màu xanh lá cây (> 0) khẳng định TSVM giảm loss thành công ở 5/6 seed với mức giảm trung bình +0.0352.
+
+
+---
+
+### PHẦN 4: BỔ SUNG CÁC BIỂU ĐỒ TRÒN (DONUT), HỘP (BOXPLOT) & CHI PHÍ TÍNH TOÁN
+*Được cập nhật đồng bộ theo chuẩn thiết kế đối chứng toàn diện (300 DPI, trung bình 6 seed $\pm$ std).*
+
+#### 1. Biểu đồ Donut Ý nghĩa Lâm sàng: Phát hiện Polyp Thực tế (`07a_pie_polyp_clinical_breakdown.png`)
+- **Nội dung:** Thể hiện tỷ lệ phát hiện đúng (True Positive) và bỏ sót (False Negative) trên 127 polyp của tập kiểm thử.
+- **Ý nghĩa:**
+  - Baseline: Phát hiện đúng $87.60\%$ ($111.3$ polyp) | Bỏ sót $12.40\%$ ($15.7$ polyp).
+  - TSVM: Phát hiện đúng $84.93\%$ ($107.9$ polyp) | Bỏ sót $15.07\%$ ($19.1$ polyp).
+  - Biểu đồ minh họa trực quan rủi ro lâm sàng lớn nhất của TSVM: dù giảm Loss nhưng việc thu nhỏ biên (Boundary Overshrinking) làm tăng số polyp bị bỏ sót thêm $3.4$ tổn thương/lần soi.
+
+#### 2. Biểu đồ Donut Tỷ lệ Thắng Đối đầu Trực tiếp (`07b_pie_head_to_head_winrate.png`)
+- **Nội dung:** So sánh 2 khía cạnh:
+  - (a) Về Mask mAP@50-95: Baseline thắng 4/6 seeds ($66.67\%$), TSVM thắng 2/6 seeds ($33.33\%$).
+  - (b) Về Validation Seg Loss: TSVM thắng áp đảo 5/6 seeds ($83.33\%$, kiểm định $p = 0.0363$).
+
+#### 3. Biểu đồ Donut Phân bổ Độ trễ Xử lý Khung hình (`07c_pie_inference_latency_breakdown.png`)
+- **Nội dung:** Chi tiết thời gian 3 pha (Tiền xử lý, Suy luận, Hậu xử lý NMS):
+  - Baseline: $21.5\text{ ms}$ (~$46.5\text{ FPS}$).
+  - TSVM: $28.5\text{ ms}$ (~$35.1\text{ FPS}$).
+  - Cả hai đều đạt chuẩn thời gian thực ($>30\text{ FPS}$), nhưng TSVM trễ hơn do tính toán toán tử hình thái học Sobel.
+
+#### 4. Biểu đồ Hộp Phân bố Phương sai (`08_boxplot_variance_comparison.png`)
+- **Nội dung:** Box & Whisker plots cho Mask mAP@50-95, Mask Recall và Val Seg Loss qua 6 folds.
+- **Ý nghĩa:** Minh chứng rõ ràng việc TSVM co hẹp phương sai gấp 3 lần (Std $0.0055$ vs $0.0153$), khoảng biến thiên cực kỳ hẹp, chứng minh tính ổn định toán học dù Recall suy giảm.
+
+#### 5. Biểu đồ Cột Độ nhạy Từng Seed (`05b_fold_by_fold_recall.png`)
+- **Nội dung:** So sánh Mask Recall ở từng seed `s0` đến `s5` giữa Baseline và TSVM.
+- **Ý nghĩa:** Chứng minh hiện tượng giảm Recall của TSVM xuất hiện có hệ thống trên $5/6$ seed.
+
+#### 6. Biểu đồ Cột Chi phí Tính toán Phần cứng (`05c_computational_resources_barchart.png`)
+- **Nội dung:** So sánh Thời gian huấn luyện (1.91h vs 3.92h - chậm hơn 2.05 lần), VRAM (6.42GB vs 7.35GB), Tham số (11.77M vs 12.35M), và GFLOPs (39.4 vs 41.2).
+
+#### 7. Biểu đồ Cột Tổng hợp Hàm Mất Mát (`val_losses_barchart.png`)
+- **Nội dung:** So sánh Val Seg Loss, Val Box Loss, Val Cls Loss trên cùng một trục trực quan kèm thanh sai số $\pm 1\text{ Std}$.

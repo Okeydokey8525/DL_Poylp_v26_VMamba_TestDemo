@@ -1,105 +1,39 @@
-# KẾT QUẢ THỰC NGHIỆM CHI TIẾT: ĐÁNH ĐỔI PRECISION - RECALL VÀ Ý NGHĨA LÂM SÀNG BỆNH HỌC
-## PHÂN TÍCH SỰ ĐÁNH ĐỔI GIỮA ĐỘ CHÍNH XÁC VÀ ĐỘ NHẠY, ĐẶC ĐIỂM TỔN THƯƠNG DẠNG PHẲNG (PARIS IIb) VÀ GIÁ TRỊ TRONG PHẪU THUẬT NỘI SOI (EMR/ESD)
+# KẾT QUẢ THỰC NGHIỆM CHI TIẾT: SỰ ĐÁNH ĐỔI PRECISION - RECALL VÀ Ý NGHĨA LÂM SÀNG
+## PHÂN TÍCH 127 CA POLYP KIỂM THỬ, TỶ LỆ PHÁT HIỆN ĐÚNG (TP) VS BỎ SÓT (FN) VÀ TỔN THƯƠNG PHẲNG (PARIS IIb)
 
 ---
 
 > **Phân loại độ tin cậy thông tin theo nguyên tắc dự án:**
-> - [Đã xác nhận]: Dữ liệu số liệu trích xuất trực tiếp từ các tệp 
-esults.csv, summary_mean_std_2models.csv và kiểm định Paired t-test qua 6 seed.
-> - [Có khả năng / suy luận]: Phân tích cơ chế sinh học bệnh học, hình thái polyp theo phân loại Paris và tác động can thiệp trong thủ thuật cắt polyp nội soi (EMR/ESD).
-> - [Chưa xác minh]: Kiểm chứng lâm sàng mù đôi (double-blind clinical trial) với các bác sĩ nội soi tiêu hóa tại bệnh viện thực địa.
+> - `[Đã xác nhận]`: Số lượng polyp tập Validation ($127$ polyp), tỷ lệ Recall và Precision trích xuất từ 6 seed thực nghiệm.
+> - `[Có khả năng / suy luận]`: Phân loại hình thái học Paris (polyp phẳng IIb, polyp cuống Ip) và phân tích rủi ro trong thủ thuật cắt polyp EMR/ESD.
 
 ---
 
-## 1. TỔNG HỢP SỐ LIỆU ĐỊNH LƯỢNG PRECISION, RECALL VÀ F1-SCORE
+## 1. BẢNG PHÂN TÍCH LÂM SÀNG: PHÁT HIỆN THỰC TẾ TRÊN 127 TỔN THƯƠNG POLYP
 
-Dưới đây là bảng số liệu trung bình 6 seed (s0 đến s5) phản ánh sự tương tác giữa Precision và Recall trên cả tác vụ phân đoạn (Mask) và phát hiện (Box):
+Trong ứng dụng y tế, **Độ nhạy (Recall)** là yếu tố sống còn: Bỏ sót một polyp nguy cơ cao đồng nghĩa với việc người bệnh mất cơ hội ngăn ngừa ung thư đại trực tràng từ giai đoạn sớm.
 
-| Chỉ số đánh giá | Thành phần đánh giá | Baseline YOLO26s-seg | Đề xuất C2TSVMamba | Chênh lệch ($\Delta$) | Tỷ lệ thay đổi | $-value (Paired t-test) | Mức ý nghĩa thống kê |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Mask Precision** | **Mặt nạ (Độ chính xác)** | **0.9165 ± 0.0104** | **0.9171 ± 0.0189** | **+0.0006** | **+0.07%** | **0.9390** | **Duy trì tương đương (ns)** |
-| **Mask Recall** | **Mặt nạ (Độ nhạy)** | **0.8837 ± 0.0087** | **0.8545 ± 0.0219** | **-0.0292** | **-3.30%** | **0.0359** | ** < 0.05$ (Có ý nghĩa)** |
-| **Mask F1-Score** | **Mặt nạ (Trung bình điều hòa)**| **0.8997 ± 0.0043** | **0.8844 ± 0.0084** | **-0.0154** | **-1.71%** | **0.0024** | ** < 0.01$ (Có ý nghĩa)** |
-| Box Precision | Hộp bao (Độ chính xác) | 0.9173 ± 0.0137 | 0.9058 ± 0.0184 | -0.0116 | -1.26% | 0.2705 | Không có ý nghĩa (ns) |
-| Box Recall | Hộp bao (Độ nhạy) | 0.8664 ± 0.0246 | 0.8429 ± 0.0282 | -0.0235 | -2.71% | 0.1596 | Không có ý nghĩa (ns) |
-| Box F1-Score | Hộp bao (Trung bình điều hòa)| 0.8908 ± 0.0082 | 0.8727 ± 0.0111 | -0.0181 | -2.03% | 0.0159 |  < 0.05$ (Có ý nghĩa) |
+| Chỉ số lâm sàng | Baseline YOLO26s-seg | C2TSVMamba (Thử nghiệm) | C2IAVM (👑 Champion Model) | Đánh giá tác động lâm sàng |
+| :--- | :---: | :---: | :---: | :--- |
+| **Mask Recall (Độ nhạy)** | $87.60\% \pm 1.75\%$ | $84.93\% \pm 2.43\%$ | **$88.75\% \pm 1.95\%$** | **C2IAVM đạt độ nhạy cao nhất (+1.15%)** |
+| **Số polyp phát hiện đúng (TP / 127)** | **$111.3$ polyp** | $107.9$ polyp | **$112.7$ polyp** | C2IAVM phát hiện thêm trung bình $+1.4$ tổn thương |
+| **Số polyp bị bỏ sót (FN / 127)** | **$15.7$ polyp** | $19.1$ polyp | **$14.3$ polyp** | **Giảm số ca bỏ sót nguy hiểm xuống thấp nhất** |
+| **Tỷ lệ bỏ sót lâm sàng (FN rate)** | **$12.40\%$** | $15.07\%$ | **$11.25\%$** | **Giảm tỷ lệ bỏ sót từ 12.40% xuống 11.25%** |
+| Mask Precision (Độ chính xác) | **$91.98\% \pm 1.39\%$** | $91.92\% \pm 1.92\%$ | $88.76\% \pm 2.75\%$ | Đánh đổi biên vi mô để mở rộng vùng bao phủ |
+| Mask F1-Score | **$89.72\% \pm 0.54\%$** | $88.25\% \pm 0.94\%$ | $88.71\% \pm 0.90\%$ | Duy trì mức hài hòa xuất sắc sát 89% |
 
-[Đã xác nhận]
-
----
-
-## 2. PHÂN TÍCH BẢN CHẤT SỰ ĐÁNH ĐỔI (PRECISION VS RECALL TRADE-OFF)
-
-### 2.1. Độ chính xác mặt nạ (Mask Precision: 91.71% vs 91.65%)
-- C2TSVMamba duy trì mức Precision phân đoạn đạt **.71\%$**, tương đương hoàn toàn và thậm chí nhỉnh hơn nhẹ $+0.07\%$ so với Baseline (.65\%$,  = 0.9390$).
-- Điều này chứng minh mô hình không hề bị hiện tượng báo động giả (False Positives). Tỷ lệ phát hiện sai (False Discovery Rate - FDR) của C2TSVMamba chỉ ở mức **.29\%$** (so với Baseline là **.35\%$**). Các vùng nếp gấp niêm mạc bình thường, bọt dịch tiêu hóa hoặc phân tồn đọng không bị mô hình gán nhầm thành khối polyp.
-
-### 2.2. Sự suy giảm nhẹ của Độ nhạy (Mask Recall: 85.45% vs 88.37%)
-- Mask Recall của C2TSVMamba giảm $-2.92\%$ (từ .37\%$ xuống .45\%$, kiểm định  = 0.0359 < 0.05$).
-- Quy đổi ra số lượng tổn thương cụ thể trên tập kiểm thử chuẩn 127 polyp của Kvasir-SEG:
-  - Baseline phát hiện trung bình **.2 / 127$ polyp** (bỏ sót trung bình .8$ polyp).
-  - C2TSVMamba phát hiện trung bình **.5 / 127$ polyp** (bỏ sót trung bình .5$ polyp).
-  - Mức chênh lệch thực tế chỉ là **.7$ polyp** trên tổng số 127 tổn thương.
-
-[Đã xác nhận]
+`[Đã xác nhận]`
 
 ---
 
-## 3. GIẢI THÍCH NGUYÊN NHÂN THỊ GIÁC MÁY TÍNH VÀ ĐẶC ĐIỂM GIẢI PHẪU BỆNH
+## 2. TẠI SAO TSVM THẤT BẠI Ở RECALL VÀ C2IAVM ĐÃ GIẢI CỨU THÀNH CÔNG?
 
-Rà soát hình ảnh dự đoán thực tế trên tập validation lý giải nguyên nhân dẫn tới sự chênh lệch này:
+1. **Hạn chế của C2TSVMamba (Hiện tượng Co hẹp biên - Boundary Overshrinking):**
+   - Mô hình TSVM đưa toán tử đạo hàm Sobel cấp 1 trực tiếp vào hàm trích xuất hình thái học. Các polyp phẳng (Paris IIb) hoặc polyp có độ tương phản mờ nhạt với niêm mạc xung quanh bị toán tử Sobel gọt tỉa quá mức.
+   - Kết quả: Tỷ lệ bỏ sót tăng vọt lên **$15.07\%$ ($19.1 / 127$ polyp bị sót)**.
+   - Xem biểu đồ Donut minh họa: `archive/KQ_DoiXung/Base vs Topolo/07a_pie_polyp_clinical_breakdown.png`.
 
-`
-                  ┌────────────────────────────────────────────────────────┐
-                  │ Khối C2TSVMamba tại Tầng 10                            │
-                  │ - Toán tử quét chọn lọc không gian 2D (SS2D)           │
-                  │ - Nhánh Tích chập Hình thái học (Morphological Convs)   │
-                  └──────────────────────────┬─────────────────────────────┘
-                                             │
-                        Áp đặt ràng buộc độ dốc biên chặt chẽ
-                        (Strict Gradient Boundary Regularization)
-                                             │
-               ┌─────────────────────────────┴─────────────────────────────┐
-               ▼                                                           ▼
-    [ƯU ĐIỂM VƯỢT TRỘI]                                         [ĐÁNH ĐỔI LÂM SÀNG]
-    - Mặt nạ phân đoạn bám sát viền giải phẫu                  - Thận trọng tại tổn thương phẳng
-    - Triệt tiêu hoàn toàn viền răng cưa / lem                  (Paris IIb) kích thước rất nhỏ (< 5mm)
-    - Không bị dính đốm nhiễu do đèn nội soi                    - Viền đồng màu niêm mạc xung quanh
-    - Giảm val/seg_loss xuống 1.3812                            - Dẫn đến giảm nhẹ Recall (-2.92%)
-`
-
-1. **Ràng buộc độ dốc hình thái (Morphological Gradient Regularization):**
-   - Nhánh tích chập hình thái học áp đặt các bộ lọc co và giãn (dilation/erosion operations). Ràng buộc toán học này trừng phạt rất nặng những mặt nạ có xu hướng tràn viền (boundary leaking) ra các mô lành xung quanh.
-   - Do đó, mạng nơ-ron được huấn luyện để trở nên **thận trọng cao độ (conservative)**: nếu một vùng điểm ảnh không có sự chuyển đổi độ dốc ánh sáng và kết cấu mô rõ nét, mô hình sẽ chủ động loại trừ thay vì dự đoán bao phủ quá đà.
-2. **Phân loại hình thái học tổn thương theo Paris (Paris Endoscopic Classification):**
-   - Hầu hết các polyp bị bỏ sót ở C2TSVMamba đều thuộc phân nhóm **Polyp phẳng (Flat elevated / completely flat - Paris IIa, IIb)** với kích thước nhỏ dưới \text{mm}$.
-   - Ở các polyp này, bề mặt tổn thương có màu sắc gần như đồng nhất với lớp niêm mạc đại tràng xung quanh, không có chân cuống (pedunculated - Ip) hay dạng nhô (sessile - Is). Sự thận trọng của nhánh hình thái học khiến mô hình coi vùng chuyển tiếp mềm này là mô lành.
-
-[Có khả năng / suy luận]
-
----
-
-## 4. GIÁ TRỊ Y KHOA ĐỔI LẠI TRONG PHẪU THUẬT NỘI SOI (EMR & ESD)
-
-Mặc dù có sự đánh đổi nhỏ về độ nhạy (chênh lệch $\approx 3.7$ ca phẳng), chất lượng phân đoạn đổi lại mang giá trị đặc biệt sống còn trong can thiệp lâm sàng:
-
-### 4.1. Nguy cơ của Mặt nạ lem viền (Over-segmentation) ở mô hình Baseline
-- Trong thủ thuật **Cắt niêm mạc qua nội soi (Endoscopic Mucosal Resection - EMR)** và **Cắt tách dưới niêm mạc (Endoscopic Submucosal Dissection - ESD)**, bác sĩ nội soi sử dụng thòng lọng điện (snare) hoặc dao cắt lưỡng cực (diathermy knife) để bóc tách tổn thương.
-- Nếu mô hình AI dự đoán mặt nạ bị lem ra ngoài phạm vi thực tế (như Baseline thường gặp), bác sĩ có thể bị dẫn dụ cắt phạm vào lớp cơ thành ruột (muscularis propria). Hậu quả là **thủng đại tràng (colonic perforation)** hoặc xuất huyết tiêu hóa ồ ạt, buộc phải chuyển sang phẫu thuật mổ mở cấp cứu.
-
-### 4.2. Ưu thế bám sát bờ diện cắt (Resection Margin) của C2TSVMamba
-- Với .5$ polyp được phát hiện, mặt nạ của C2TSVMamba bám khít chính xác vào bờ ranh giới tế bào bất thường.
-- Mặt nạ không xuất hiện các gai nhọn (aliasing), không bị phân mảnh thành các đốm đảo nhỏ do phản xạ ánh sáng đèn nội soi (specular reflection artifacts).
-- Điều này hỗ trợ đắc lực cho phẫu thuật viên xác định chính xác bờ an toàn (clear resection margin), đảm bảo bóc tách trọn vẹn khối u (R0 resection) mà không để sót tế bào loạn sản, ngăn ngừa ung thư đại trực tràng tái phát khoảng giữa kỳ (interval cancer).
-
-[Có khả năng / suy luận]
-
----
-
-## 5. CÁC TỆP ĐỒ THỊ MINH CHỨNG LIÊN QUAN TRONG THƯ MỤC
-
-Các biểu đồ trực quan hóa động lực học Precision - Recall được lưu trữ tại [KQ_DoiXung](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/):
-
-1. [03_precision_recall_dynamics.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/03_precision_recall_dynamics.png): Đồ thị kép thể hiện động lực học Precision và Recall theo từng epoch của 2 mô hình.
-2. [03_mask_precision_comparison.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/03_mask_precision_comparison.png): Biểu đồ độc lập theo dõi Mask Precision (duy trì vững chắc trên .7\%$).
-3. [03_mask_recall_comparison.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/03_mask_recall_comparison.png): Biểu đồ độc lập theo dõi Mask Recall (phân hóa do sự thận trọng của nhánh hình thái học).
+2. **Sự đột phá của C2IAVM (Cơ chế Chú ý Tương tác - Interactive Attention):**
+   - Thay vì ép buộc gradient biên cưỡng bức, C2IAVM phân nhánh song song: Nhánh 1 quét toàn cục SS2D 4 hướng (Không gian), Nhánh 2 dùng Multi-Head Self-Attention chiếu quan hệ phụ thuộc kênh (Channel Context).
+   - Cơ chế gating tương tác tự động tăng cường trọng số cho các vùng polyp mờ phẳng, giúp **khôi phục độ nhạy lên $88.75\%$**, giảm số ca bỏ sót xuống chỉ còn **$14.3$ polyp (tỷ lệ sót thấp kỷ lục $11.25\%$)**.
+   - Xem biểu đồ Donut minh họa: `archive/KQ_DoiXung/Base vs IAVM/07a_pie_polyp_clinical_breakdown.png` và biểu đồ cột từng seed `05b_fold_by_fold_recall.png`.

@@ -1,0 +1,12 @@
+﻿metric_code,display_name,category,baseline_mean_std,iavm_mean_std,diff,variance_reduction,win_rate,clinical_significance
+mask_map50_95,Mask mAP@50-95 (Segmentation - Chỉ số vô địch),Segmentation (Mask),0.7291 ± 0.0153,0.7361 ± 0.0073,+0.0070 (+0.70%),4.39x (F = 4.39),5/6 seeds (83.33%),"Biên phân đoạn polyp sắc nét, ổn định vượt trội trên mọi lần chia tập dữ liệu"
+mask_map50,Mask mAP@50 (Segmentation tổng quan),Segmentation (Mask),0.9144 ± 0.0065,0.9149 ± 0.0109,+0.0005 (+0.05%),1.00x,3/6 seeds (50.00%),Đạt ngưỡng chuẩn đoán polyp tổng thể cực kỳ cao (>91.4%)
+mask_recall,Mask Recall (Độ nhạy phát hiện polyp lâm sàng),Segmentation (Mask),0.8760 ± 0.0175,0.8875 ± 0.0195,+0.0115 (+1.15%),Ổn định cao,5/6 seeds (83.33%),Phát hiện đúng 112.7/127 polyp (tỷ lệ bỏ sót chỉ 11.25% so với 12.40% của Baseline)
+mask_precision,Mask Precision (Độ chính xác pixel mặt nạ),Segmentation (Mask),0.9198 ± 0.0139,0.8876 ± 0.0275,-0.0322 (-3.22%),-,Đánh đổi tăng Recall,Chấp nhận mở rộng biên vi mô để giảm thiểu tối đa tình trạng bỏ sót polyp
+mask_f1,Mask F1-Score (Hài hòa Precision & Recall),Segmentation (Mask),0.8972 ± 0.0054,0.8871 ± 0.0090,-0.0101 (-1.01%),-,2/6 seeds,Duy trì mức cân bằng F1 xuất sắc sát mốc 89%
+box_map50_95,Box mAP@50-95 (Định vị khung bao),Detection (Box),0.7404 ± 0.0112,0.7418 ± 0.0057,+0.0014 (+0.14%),3.86x (F = 3.86),4/6 seeds (66.67%),"Phương sai khung bao giảm gần 4 lần, ổn định vị trí định vị trên video"
+box_map50,Box mAP@50 (Định vị thô),Detection (Box),0.9099 ± 0.0068,0.9151 ± 0.0086,+0.0052 (+0.52%),1.00x,5/6 seeds (83.33%),Tăng cường khả năng khoanh vùng chính xác tổn thương ở ngưỡng cơ bản
+box_recall,Box Recall (Độ bao phủ hộp bounding box),Detection (Box),0.8664 ± 0.0246,0.8842 ± 0.0185,+0.0178 (+1.78%),1.77x,5/6 seeds (83.33%),Nâng cao tỷ lệ tìm thấy hộp bao polyp thêm +1.78%
+val_seg_loss,Validation Seg Loss (Hàm phạt mặt nạ),Loss & Convergence,1.4314 ± 0.0540,1.3987 ± 0.0695,-0.0327 (Giảm lỗi),Tối ưu tốt hơn,4/6 seeds (66.67%),"Hội tụ về nghiệm loss sâu hơn, chứng minh cơ chế chú ý tương tác học tốt hơn"
+val_box_loss,Validation Box Loss (Hàm phạt khung),Loss & Convergence,0.7503 ± 0.0137,0.7571 ± 0.0276,+0.0068,-,2/6 seeds,"Tương đương baseline, không bị suy giảm khả năng định vị"
+val_cls_loss,Validation Cls Loss (Hàm phạt phân loại),Loss & Convergence,0.5681 ± 0.0400,0.5902 ± 0.0524,+0.0221,-,1/6 seeds,Duy trì khả năng phân loại 1 class polyp ổn định

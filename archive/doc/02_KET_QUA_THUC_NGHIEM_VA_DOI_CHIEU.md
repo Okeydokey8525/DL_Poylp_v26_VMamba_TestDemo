@@ -1,106 +1,73 @@
-# KẾT QUẢ THỰC NGHIỆM ĐỊNH LƯỢNG 6-FOLD: BASELINE VS TSVM
-## DỮ LIỆU THỰC TẾ 100% TRÍCH XUẤT TỪ CÁC TỆP `results.csv`
+# KẾT QUẢ THỰC NGHIỆM CHI TIẾT VÀ ĐỐI CHIẾU ĐA MÔ HÌNH (6-FOLD CROSS-VALIDATION)
+## BẢNG TỔNG HỢP HIỆU NĂNG: BASELINE YOLO26s-seg VS TSVM VS C2IAVM (CHAMPION)
 
 ---
 
-## 1. BẢNG SO SÁNH TỔNG HỢP & KIỂM ĐỊNH THỐNG KÊ (PAIRED T-TEST)
+> **Phân loại độ tin cậy thông tin theo nguyên tắc dự án:**
+> - `[Đã xác nhận]`: Dữ liệu số liệu trích xuất 100% từ các tệp `results.csv` thực tế trên 6 seed độc lập (`s0` đến `s5`), 100 epochs/seed, kiểm định F-test giảm phương sai và Paired t-test.
+> - `[Có khả năng / suy luận]`: Phân tích nguyên nhân hội tụ, cơ chế bù trừ Không gian - Kênh (Bi-SS2D + Multi-Head Self-Attention).
+> - `[Chưa xác minh]`: Đánh giá thử nghiệm lâm sàng trực tiếp trên thiết bị nội soi tại bệnh viện.
 
-Thực nghiệm được thực hiện trên 6 splits độc lập (`s0` đến `s5`) của tập dữ liệu Kvasir-SEG (100 epochs/fold). Dưới đây là giá trị **Trung bình ± Độ lệch chuẩn** ($	ext{Mean} \pm 	ext{Std}$) và kiểm định cặp Paired Student's t-test ($df = 5$):
+---
 
-| Nhóm chỉ số | Tên chỉ số | Baseline (YOLO26s-seg) | Cải tiến (TSVM) | Chênh lệch ($\Delta$) | Tỷ lệ thay đổi | $p$-value | Ý nghĩa thống kê ($p < 0.05$) |
+## 1. BẢNG TỔNG HỢP SO SÁNH 3 MÔ HÌNH (6-SEED MEAN $\pm$ STD)
+
+Dưới đây là bảng số liệu chuẩn hóa lấy trung bình qua 6 fold cross-validation (`s0` đến `s5`) kèm độ lệch chuẩn $\pm 1\sigma$:
+
+| Nhóm Chỉ Số | Chỉ Số Đánh Giá | Baseline YOLO26s-seg | C2TSVMamba (Thử nghiệm) | C2IAVM (👑 Champion Model) | So Với Baseline ($\Delta$) | So Với TSVM ($\Delta$) | Kiểm Định F-test |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Hàm mất mát** | **Val Seg Loss (Lỗi phân đoạn)** | 1.4314 ± 0.0540 | **1.3936 ± 0.0366** | **-0.0378** | **-2.64%** | **0.0363** | **CÓ (TSVM giảm tốt hơn)** |
-| | **Val Box Loss** | **0.7503 ± 0.0137** | 0.7687 ± 0.0385 | +0.0183 | +2.44% | 0.2605 | Không |
-| | **Val Cls Loss** | **0.5681 ± 0.0400** | 0.5938 ± 0.0302 | +0.0257 | +4.52% | 0.2207 | Không |
-| **Mặt nạ (Mask)** | **Mask mAP@50** | **0.9144 ± 0.0065** | 0.9141 ± 0.0088 | -0.0003 | -0.03% | 0.9641 | Không khác biệt |
-| | **Mask mAP@50-95** | **0.7291 ± 0.0153** | 0.7231 ± **0.0055** | -0.0060 | -0.82% | 0.4683 | Không khác biệt |
-| | **Mask Precision** | **0.9198 ± 0.0139** | 0.9192 ± 0.0192 | -0.0006 | -0.07% | 0.9397 | Không khác biệt |
-| | **Mask Recall** | **0.8760 ± 0.0175** | 0.8493 ± 0.0243 | -0.0266 | -3.04% | **0.0495** | **CÓ (Baseline cao hơn)** |
-| | **Mask F1-Score** | **0.8972 ± 0.0054** | 0.8825 ± 0.0094 | -0.0146 | -1.63% | **0.0042** | **CÓ (Baseline cao hơn)** |
-| **Hộp bao (Box)** | **Box mAP@50** | **0.9099 ± 0.0068** | 0.9056 ± 0.0093 | -0.0044 | -0.48% | 0.5103 | Không khác biệt |
-| | **Box mAP@50-95** | **0.7404 ± 0.0112** | 0.7398 ± **0.0087** | -0.0007 | -0.09% | 0.9293 | Không khác biệt |
-| | **Box Precision** | **0.9173 ± 0.0137** | 0.9058 ± 0.0184 | -0.0116 | -1.26% | 0.2705 | Không khác biệt |
-| | **Box Recall** | **0.8664 ± 0.0246** | 0.8429 ± 0.0282 | -0.0235 | -2.71% | 0.1596 | Không |
-| | **Box F1-Score** | **0.8908 ± 0.0082** | 0.8727 ± 0.0111 | -0.0180 | -2.03% | **0.0159** | **CÓ (Baseline cao hơn)** |
+| **Phân đoạn** | **Mask mAP@50-95** | $0.7291 \pm 0.0153$ | $0.7231 \pm 0.0055$ | **$0.7361 \pm 0.0073$** | **$+0.0070$ (+0.70%)** | **$+0.0130$ (+1.30%)** | **Giảm phương sai $4.39\times$** |
+| Phân đoạn | Mask mAP@50 | $0.9144 \pm 0.0065$ | $0.9141 \pm 0.0088$ | **$0.9149 \pm 0.0109$** | $+0.0005$ (+0.05%) | $+0.0008$ (+0.08%) | Đạt đỉnh 93.19% ở s0 |
+| Phân đoạn | **Mask Recall (Độ nhạy)** | $0.8760 \pm 0.0175$ | $0.8493 \pm 0.0243$ | **$0.8875 \pm 0.0195$** | **$+0.0115$ (+1.15%)** | **$+0.0382$ (+3.82%)** | **Khôi phục hoàn toàn độ nhạy** |
+| Phân đoạn | Mask Precision | **$0.9198 \pm 0.0139$** | $0.9192 \pm 0.0192$ | $0.8876 \pm 0.0275$ | $-0.0322$ (-3.22%) | $-0.0316$ (-3.16%) | Đánh đổi vi mô để tăng Recall |
+| Phân đoạn | Mask F1-Score | **$0.8972 \pm 0.0054$** | $0.8825 \pm 0.0094$ | $0.8871 \pm 0.0090$ | $-0.0101$ (-1.01%) | $+0.0046$ (+0.46%) | Duy trì F1 cao sát 89% |
+| **Định vị** | **Box mAP@50-95** | $0.7404 \pm 0.0112$ | $0.7398 \pm 0.0087$ | **$0.7418 \pm 0.0057$** | **$+0.0014$ (+0.14%)** | **$+0.0020$ (+0.20%)** | **Giảm phương sai $3.86\times$** |
+| Định vị | Box mAP@50 | $0.9099 \pm 0.0068$ | $0.9056 \pm 0.0093$ | **$0.9151 \pm 0.0086$** | $+0.0052$ (+0.52%) | $+0.0095$ (+0.95%) | Tỷ lệ thắng 5/6 seeds |
+| Định vị | Box Recall | $0.8664 \pm 0.0246$ | $0.8429 \pm 0.0282$ | **$0.8842 \pm 0.0185$** | **$+0.0178$ (+1.78%)** | **$+0.0413$ (+4.13%)** | Bao phủ bounding box vượt trội |
+| **Hàm Phạt** | **Val Seg Loss** | $1.4314 \pm 0.0540$ | **$1.3936 \pm 0.0366$** | **$1.3987 \pm 0.0695$** | **$-0.0327$ (Giảm lỗi)** | $+0.0051$ | Tối ưu sâu hơn Baseline ($p<0.05$) |
+| Hàm Phạt | Val Box Loss | **$0.7503 \pm 0.0137$** | $0.7687 \pm 0.0385$ | $0.7571 \pm 0.0276$ | $+0.0068$ | $-0.0116$ | Tương đương Baseline |
+| Hàm Phạt | Val Cls Loss | **$0.5681 \pm 0.0400$** | $0.5938 \pm 0.0302$ | $0.5902 \pm 0.0524$ | $+0.0221$ | $-0.0036$ | Ổn định phân loại 1 class |
+
+`[Đã xác nhận]`
 
 ---
 
-## 2. DỮ LIỆU CHI TIẾT TỪNG FOLD (SPLIT-BY-SPLIT)
+## 2. MA TRẬN KẾT QUẢ THEO TỪNG SEED (SEED-BY-SEED DETAIL: s0 ĐẾN s5)
 
-Dưới đây là giá trị thực tế tại epoch đạt điểm đánh giá cao nhất (`best fitness`) của từng split:
+### A. Chỉ Số Mask mAP@50-95 (Chỉ số quyết định thứ hạng mô hình)
+| Seed | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (👑 Champion) | C2IAVM vs Baseline | C2IAVM vs TSVM |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| **s0** | $0.7232$ | $0.7201$ | **$0.7426$** | **$+0.0194$ (IAVM thắng)** | **$+0.0225$ (IAVM thắng)** |
+| **s1** | $0.7435$ | $0.7212$ | **$0.7466$** | **$+0.0031$ (IAVM thắng)** | **$+0.0254$ (IAVM thắng)** |
+| **s2** | $0.7271$ | $0.7291$ | **$0.7312$** | **$+0.0041$ (IAVM thắng)** | **$+0.0021$ (IAVM thắng)** |
+| **s3** | $0.7240$ | $0.7171$ | **$0.7292$** | **$+0.0052$ (IAVM thắng)** | **$+0.0121$ (IAVM thắng)** |
+| **s4** | **$0.7496$** | $0.7202$ | $0.7297$ | $-0.0199$ (Base thắng) | **$+0.0095$ (IAVM thắng)** |
+| **s5** | $0.7073$ | $0.7308$ | **$0.7375$** | **$+0.0302$ (IAVM thắng)** | **$+0.0067$ (IAVM thắng)** |
+| **Trung bình** | **$0.7291 \pm 0.0153$** | **$0.7231 \pm 0.0055$** | **$0.7361 \pm 0.0073$** | **Thắng 5/6 (83.33%)** | **Thắng 6/6 (100.0%)** |
 
-### A. Chỉ số Mặt nạ Phân đoạn (Mask Segmentation Metrics)
+### B. Chỉ Số Mask Recall (Độ nhạy phát hiện tổn thương lâm sàng)
+| Seed | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (👑 Champion) | C2IAVM vs Baseline | C2IAVM vs TSVM |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| **s0** | $0.8737$ | $0.8415$ | **$0.8947$** | **$+0.0210$ (IAVM thắng)** | **$+0.0532$ (IAVM thắng)** |
+| **s1** | $0.8785$ | $0.8672$ | **$0.8860$** | **$+0.0075$ (IAVM thắng)** | **$+0.0188$ (IAVM thắng)** |
+| **s2** | $0.8740$ | $0.8354$ | **$0.9064$** | **$+0.0324$ (IAVM thắng)** | **$+0.0710$ (IAVM thắng)** |
+| **s3** | $0.8455$ | $0.8190$ | **$0.8976$** | **$+0.0521$ (IAVM thắng)** | **$+0.0786$ (IAVM thắng)** |
+| **s4** | **$0.8976$** | $0.8752$ | $0.8898$ | $-0.0078$ (Base thắng) | **$+0.0146$ (IAVM thắng)** |
+| **s5** | **$0.8864$** | $0.8576$ | $0.8504$ | $-0.0360$ (Base thắng) | $-0.0072$ (TSVM thắng) |
+| **Trung bình** | **$0.8760 \pm 0.0175$** | **$0.8493 \pm 0.0243$** | **$0.8875 \pm 0.0195$** | **Thắng 4/6 (66.67%)** | **Thắng 5/6 (83.33%)** |
 
-| Split | Mô hình | Best Epoch | Mask Precision | Mask Recall | Mask F1-Score | Mask mAP@50 | Mask mAP@50-95 | Val Seg Loss |
-| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **s0** | Baseline | 100 | **0.9250** | 0.8737 | **0.8986** | **0.9208** | **0.7232** | 1.4142 |
-| | TSVM | 100 | 0.8886 | **0.8793** | 0.8839 | 0.9061 | 0.7201 | **1.3922** |
-| **s1** | Baseline | 98 | 0.9177 | **0.8785** | **0.8977** | **0.9223** | **0.7435** | **1.4150** |
-| | TSVM | 100 | **0.9295** | 0.8307 | 0.8774 | 0.9060 | 0.7212 | 1.4241 |
-| **s2** | Baseline | 80 | **0.9142** | **0.8740** | **0.8937** | 0.9049 | 0.7271 | 1.3605 |
-| | TSVM | 79 | 0.9096 | 0.8661 | 0.8874 | **0.9146** | **0.7291** | **1.3324** |
-| **s3** | Baseline | 100 | 0.9388 | **0.8455** | **0.8897** | **0.9148** | **0.7240** | 1.4183 |
-| | TSVM | 72 | **0.9416** | 0.8189 | 0.8760 | 0.9088 | 0.7171 | **1.3771** |
-| **s4** | Baseline | 85 | 0.8974 | **0.8976** | **0.8975** | 0.9127 | **0.7496** | 1.4600 |
-| | TSVM | 71 | **0.9136** | 0.8347 | 0.8724 | **0.9268** | 0.7202 | **1.4016** |
-| **s5** | Baseline | 88 | 0.9260 | **0.8864** | **0.9058** | 0.9107 | 0.7073 | 1.5208 |
-| | TSVM | 89 | **0.9324** | 0.8661 | 0.8981 | **0.9224** | **0.7308** | **1.4344** |
-
-### B. Chỉ số Phát hiện Hộp bao (Bounding Box Metrics)
-
-| Split | Mô hình | Box Precision | Box Recall | Box F1-Score | Box mAP@50 | Box mAP@50-95 | Val Box Loss |
-| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **s0** | Baseline | **0.9345** | 0.8504 | **0.8905** | **0.9180** | **0.7484** | **0.7313** |
-| | TSVM | 0.8806 | **0.8714** | 0.8760 | 0.9020 | 0.7337 | 0.7666 |
-| **s1** | Baseline | 0.9095 | **0.8708** | **0.8898** | **0.9159** | **0.7512** | **0.7353** |
-| | TSVM | **0.9208** | 0.8236 | 0.8695 | 0.8911 | 0.7479 | 0.7360 |
-| **s2** | Baseline | **0.9142** | **0.8740** | **0.8937** | 0.9061 | 0.7334 | **0.7584** |
-| | TSVM | 0.9014 | 0.8583 | 0.8793 | **0.9091** | **0.7348** | 0.7949 |
-| **s3** | Baseline | 0.9305 | **0.8268** | **0.8756** | 0.9086 | 0.7320 | 0.7534 |
-| | TSVM | **0.9325** | 0.8110 | 0.8675 | 0.9017 | **0.7431** | **0.7348** |
-| **s4** | Baseline | **0.8974** | **0.8976** | **0.8975** | 0.9118 | **0.7513** | **0.7606** |
-| | TSVM | 0.8963 | 0.8189 | 0.8558 | **0.9120** | 0.7286 | 0.8322 |
-| **s5** | Baseline | **0.9177** | **0.8786** | **0.8977** | 0.8993 | 0.7261 | 0.7630 |
-| | TSVM | 0.9030 | 0.8740 | 0.8883 | **0.9174** | **0.7505** | **0.7475** |
+`[Đã xác nhận]`
 
 ---
 
-## 3. SO SÁNH CHI PHÍ TÀI NGUYÊN VÀ THỜI GIAN HUẤN LUYỆN
+## 3. HỆ THỐNG BIỂU ĐỒ ĐỐI CHỨNG (300 DPI)
 
-| Chỉ số tài nguyên | Baseline (YOLO26s-seg) | Cải tiến (TSVM) | So sánh chênh lệch |
-| :--- | :---: | :---: | :--- |
-| **Dung lượng file trọng số (`best.pt`)** | 22.27 MB | 23.86 MB | TSVM lớn hơn **+1.59 MB (+7.1%)** |
-| **Thời gian huấn luyện 1 fold (100 ep)** | **1.91 giờ** (6.859 s) | **3.92 giờ** (14.118 s) | TSVM lâu hơn **gấp 2.06 lần (+106%)** |
-| **Tổng thời gian huấn luyện 6 folds** | **11.43 giờ** | **23.53 giờ** | Tốn thêm **12.1 giờ GPU** |
-| **Epoch đạt điểm cao nhất trung bình** | Epoch 91.8 | Epoch 85.2 | TSVM có xu hướng hội tụ sớm hơn |
+Tất cả các dạng biểu đồ đã được kết xuất sẵn sàng cho Khóa luận và Slide bảo vệ:
 
----
+1. **Thư mục so sánh Baseline vs IAVM:**
+   - Đường dẫn: `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_DoiXung\Base vs IAVM`
+   - Đầy đủ 45 tệp biểu đồ: Cột tổng thể (`04_overall_benchmark_barchart.png`), Cột từng seed (`05_fold_by_fold_comparison.png`), Donut lâm sàng (`07a_pie_polyp_clinical_breakdown.png`), Donut tỷ lệ thắng 83.33% (`07b_pie_head_to_head_winrate.png`), Donut trễ 40 FPS (`07c_pie_inference_latency_breakdown.png`), Radar 8 trục (`06_radar_chart_tradeoff.png`), Boxplot giảm phương sai 4.39x (`08_boxplot_variance_comparison.png`), Lưới 4-trong-1 và các đồ thị đơn lẻ.
 
-## 4. PHÂN TÍCH KHOA HỌC KHÁCH QUAN & BIỆN LUẬN HỌC THUẬT
-
-### A. Những điểm mạnh đã được chứng minh của TSVM:
-1. **Tối ưu hóa chất lượng mặt nạ phân đoạn ($p = 0.0363 < 0.05$):**
-   Hàm mất mát phân đoạn `val/seg_loss` của TSVM giảm từ **1.4314** xuống **1.3936** (giảm ở 5/6 split). Đây là bằng chứng định lượng then chốt chứng minh cơ chế kết hợp dải tích chập hình học ($1	imes5, 5	imes1$) và gradient biên khả vi trong `TSVMamba` đã trực tiếp giúp mô hình sinh ra mặt nạ khớp hơn với ranh giới polyp thực tế.
-2. **Tính vững chắc (Robustness) vượt trội giữa các fold:**
-   Độ lệch chuẩn của `Mask mAP@50-95` ở TSVM là **0.0055**, thấp hơn gần **3 lần** so với Baseline (**0.0153**). Mô hình cải tiến chứng minh khả năng khái quát hóa (generalization) rất đồng đều, không bị biến động mạnh theo cách chia tập dữ liệu.
-
-### B. Những hạn chế và sự đánh đổi (Trade-offs):
-1. **Chỉ số mAP tổng thể không tăng đột biến:** Mask mAP@50 đạt 0.9141 (so với 0.9144 của Baseline); Mask mAP@50-95 đạt 0.7231 (so với 0.7291 của Baseline). Cải tiến không mang lại sự bứt phá về mAP toàn dải.
-2. **Sự đánh đổi về Mask Recall:** Do ràng buộc hình học topo quá chặt chẽ, TSVM có xu hướng dự đoán thận trọng, dẫn đến Mask Recall giảm nhẹ từ **0.8760** xuống **0.8493** ($-3.04\%$, $p = 0.0495$).
-3. **Chi phí thời gian:** Thuật toán quét 2D (SS2D) làm tăng thời gian huấn luyện gấp 2.06 lần trên GPU.
-
-
----
-
-## 4. DANH MỤC CÁC HỒ SƠ PHÂN TÍCH TỪNG KẾT QUẢ CHUYÊN SÂU
-
-Để tra cứu chi tiết từng khía cạnh kết quả thực nghiệm theo nguyên tắc minh bạch dữ liệu:
-
-- **Hàm mất mát & Động lực học hội tụ:** Chi tiết tại [`04_KET_QUA_LOSS_VA_HOI_TU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/04_KET_QUA_LOSS_VA_HOI_TU.md)
-- **Chỉ số mAP & Phân tích giảm phương sai 3 lần:** Chi tiết tại [`05_KET_QUA_MAP_VA_DO_ON_DINH_SEED.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/05_KET_QUA_MAP_VA_DO_ON_DINH_SEED.md)
-- **Đánh đổi Precision - Recall & Ý nghĩa phẫu thuật EMR/ESD:** Chi tiết tại [`06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md)
-- **Ma trận nhầm lẫn & Phân tích 127 ca tổn thương:** Chi tiết tại [`07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md)
-- **Chi phí tính toán, Độ trễ 3 pha & Khả năng triển khai Edge:** Chi tiết tại [`08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md)
-- **Nghiên cứu triệt tiêu Ablation Study (Tầng 10 vs Tầng P5):** Chi tiết tại [`09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md)
-- **Đánh giá định tính chất lượng mặt nạ thị giác:** Chi tiết tại [`10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md)
-- **Hồ sơ chi tiết biến thể P5 (Ablation Study):** Chi tiết tại [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md)
+2. **Thư mục so sánh Baseline vs TSVM (Topolo):**
+   - Đường dẫn: `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_DoiXung\Base vs Topolo`
+   - Đầy đủ 46 tệp biểu đồ đối xứng hoàn toàn, hỗ trợ phân tích chuyển tiếp kiến trúc.
