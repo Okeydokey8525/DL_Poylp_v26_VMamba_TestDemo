@@ -75,3 +75,15 @@ Mô hình `C2IAVM` giải quyết triệt để tất cả các khuyết tật t
 | **C2IAVM (Proposed Champion)**| P5 ($20\times 20$) | **Tương tác chéo Attention $\rightleftharpoons$ VMamba**| **`0.7365 ± 0.0074`** | **`88.75%`** | **`88.85%`** | **VÔ ĐỊCH TOÀN DIỆN: mAP cao nhất, Recall cao nhất, phương sai giảm 4.15 lần** |
 
 `[Đã xác nhận]`
+
+
+---
+
+## 5. ĐỐI CHUẨN ABLATION CHUYÊN SÂU: HƯỚNG 1 (TSVM) VS HƯỚNG 3 (ITSMAMBA) VS HƯỚNG 4 (C2IAVM)
+
+| Mô hình kiểm nghiệm | Cơ chế tích hợp tại Layer 10 | Mask mAP@50-95 (Mean ± Std) | Mask Recall (Độ nhạy) | Phương sai ($F$-ratio) | Nguyên nhân & Bài học khoa học rút ra |
+| :--- | :--- | :---: | :---: | :---: | :--- |
+| **Hướng 1: TSVM** | VMamba + Topology đơn chiều ($F_M' = F_M(1+G_{TS})$) | $0.7231 \pm 0.0055$ | $84.93\%$ (Tụt $-2.67\%$) | $7.73\times$ | Giảm loss tốt nhưng bị co hẹp biên quá mức (*Boundary Overshrinking*), tăng bỏ sót polyp. |
+| **Hướng 2: P5 Attention-VM**| Ghép tĩnh không tương tác ($\text{Conv}(\text{Concat}([F_A, F_M]))$) | $0.7186 \pm 0.0119$ | $86.96\%$ | $1.65\times$ | Ghép thô sơ gây xung đột gradient giữa Attention và VMamba, Precision rớt thảm hại ($90.56\%$). |
+| **Hướng 3: ITSMamba**| Topology + VMamba tương tác hai chiều chéo | **$0.7251 \pm 0.0049$** | **$88.35\%$ ($+3.42\%$)** | **$9.84\times$ (Kỷ lục)** | **Giải cứu Recall ngoạn mục**, đạt độ ổn định phương sai kỷ lục, nhưng trần mAP bị giới hạn bởi Sobel bias. |
+| **Hướng 4: C2IAVM (👑)**| Attention + VMamba tương tác hai chiều chéo | **$0.7361 \pm 0.0073$** | **$88.75\%$ (Đỉnh cao)** | $4.39\times$ | **Vô địch tuyệt đối**: Cân bằng tối hảo Không gian (SS2D) và Kênh (MHSA), thắng 6/6 seed trước ITSMamba. |

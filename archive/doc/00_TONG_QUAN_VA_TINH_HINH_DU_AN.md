@@ -94,3 +94,12 @@ Toàn bộ tri thức của dự án được module hóa thành các tệp chuy
 11. [`10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md): Đánh giá định tính chất lượng mặt nạ, độ mượt ranh giới và kháng phản xạ ánh sáng.
 12. [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md): Báo cáo chi tiết số liệu 6-fold của biến thể ghép tĩnh P5_Attention_VMamba.
 13. [`12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md): Hồ sơ thực nghiệm đầy đủ của Mô hình Vô địch `C2IAVM` (kỷ lục 74.7% mAP, 90.6% Recall).
+
+
+---
+
+## 5. CẬP NHẬT KẾT QUẢ HOÀN TẤT 6 SEED CỦA HƯỚNG 3: ITSMamba (`C2ITSMamba`)
+- **Mô hình:** `YOLO26s_seg_ITSMamba` (Interactive Topology-Shape VMamba).
+- **Kết quả 6 seed:** Mask mAP@50-95 đạt **`0.7251 ± 0.0049`**, Mask Recall đạt **`0.8835 ± 0.0177`**, Val Seg Loss đạt **`1.4151 ± 0.0717`**.
+- **Kỷ lục phương sai:** Tỷ số F-test đạt **$F = 9.84\times$** (độ lệch chuẩn thấp nhất đề tài: $\sigma = \pm 0.0049$).
+- **Vị thế:** Đóng vai trò là nghiên cứu bóc tách hoàn hảo (Ablation Study) chứng minh cơ chế Interactive Exchange giải cứu Recall (+3.42%), đồng thời tôn vinh `C2IAVM` ($0.7361$, thắng 6/6 seed) là Mô hình Vô địch Toàn diện.

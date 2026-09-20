@@ -101,8 +101,8 @@ Thực hiện theo chỉ đạo của Thầy về việc xây dựng mô hình k
 Toàn bộ 18 lượt huấn luyện độc lập (6 seed $	imes$ 3 dòng mô hình) được thực hiện trên cùng môi trường phần cứng với bộ siêu tham số đồng nhất: kích thước ảnh 640x640, 100 epoch, batch size 16, bộ tối ưu SGD (lr=0.01, cos_lr=True, warmup 3 epoch). Các chỉ số được trích xuất tại epoch tối ưu (Best Mask mAP50-95) từ tệp `results.csv` của từng lượt chạy.
 
 > **Tài nguyên Dữ liệu Đi kèm:** Toàn bộ bảng giá trị trung bình $\pm$ độ lệch chuẩn (Mean ± Std), Min, Max, Delta $\Delta$, tỷ lệ cải thiện và kiểm định thống kê Paired t-test đã được kết xuất sẵn tại tệp CSV:  
-> - **[summary_mean_std_2models.csv](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/summary_mean_std_2models.csv)** (hoặc tại Ket_Qua_2/summary_mean_std_2models.csv): Bảng đối sánh chi tiết theo từng chỉ số kèm chuỗi Mean ± Std.  
-> - **[summary_models_2rows.csv](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/summary_models_2rows.csv)**: Bảng 2 dòng gọn nhẹ cho Baseline và C2TSVMamba, sẵn sàng nạp vào mã nguồn Python vẽ biểu đồ.
+> - **[summary_mean_std_2models.csv](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/summary_mean_std_2models.csv)** (hoặc tại Ket_Qua_2/summary_mean_std_2models.csv): Bảng đối sánh chi tiết theo từng chỉ số kèm chuỗi Mean ± Std.  
+> - **[summary_models_2rows.csv](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/summary_models_2rows.csv)**: Bảng 2 dòng gọn nhẹ cho Baseline và C2TSVMamba, sẵn sàng nạp vào mã nguồn Python vẽ biểu đồ.
 
 ### 3.1. Bảng so sánh tổng hợp chỉ số định lượng
 
@@ -189,15 +189,15 @@ Ma trận nhầm lẫn phản ánh trực tiếp năng lực phân loại giữa
 
 Dưới đây là danh mục 9 hình ảnh minh chứng khoa học độ phân giải cao 300 DPI nằm trong thư mục [archive/KQ_DoiXung](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung) phục vụ trực tiếp cho báo cáo và luận văn:
 
-1. **[01_loss_curves_comparison.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/01_loss_curves_comparison.png):** Đồ thị đường cong hội tụ 4 hàm mất mát (Train/Val Seg Loss & Box Loss) qua 100 epoch.
-2. **[02_metric_curves_mAP_comparison.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/02_metric_curves_mAP_comparison.png):** Đồ thị phát triển Mask mAP50 và mAP50-95 qua 100 epoch kèm dải mờ $\pm 1\sigma$.
-3. **[03_precision_recall_dynamics.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/03_precision_recall_dynamics.png):** Động thái đánh đổi Precision - Recall qua 6 seed.
-4. **[04_overall_benchmark_barchart.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/04_overall_benchmark_barchart.png):** Biểu đồ cột tổng thể các chỉ số đo lường kèm thanh sai số $\pm 1\sigma$.
-5. **[05_fold_by_fold_comparison.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/05_fold_by_fold_comparison.png):** Biểu đồ so sánh đối đầu từng seed (s0 đến s5) giữa Baseline và TSVM.
-6. **[06_radar_chart_tradeoff.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/06_radar_chart_tradeoff.png):** Biểu đồ mạng nhện (Radar Chart) đánh giá toàn diện đa tiêu chí.
-7. **[07_qualitative_prediction_comparison.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/07_qualitative_prediction_comparison.png):** Minh chứng phân đoạn định tính thực tế trên ảnh nội soi (Ảnh gốc, Ground Truth, Baseline, C2TSVMamba).
-8. **[08_confusion_matrix_side_by_side.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/08_confusion_matrix_side_by_side.png):** Ma trận nhầm lẫn chuẩn hóa đối chiếu trực tiếp.
-9. **[09_mask_pr_curve_side_by_side.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/09_mask_pr_curve_side_by_side.png):** Đường cong Precision-Recall của Mask theo các ngưỡng tin cậy.
+1. **[01_loss_curves_comparison.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/01_loss_curves_comparison.png):** Đồ thị đường cong hội tụ 4 hàm mất mát (Train/Val Seg Loss & Box Loss) qua 100 epoch.
+2. **[02_metric_curves_mAP_comparison.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/02_metric_curves_mAP_comparison.png):** Đồ thị phát triển Mask mAP50 và mAP50-95 qua 100 epoch kèm dải mờ $\pm 1\sigma$.
+3. **[03_precision_recall_dynamics.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/03_precision_recall_dynamics.png):** Động thái đánh đổi Precision - Recall qua 6 seed.
+4. **[04_overall_benchmark_barchart.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/04_overall_benchmark_barchart.png):** Biểu đồ cột tổng thể các chỉ số đo lường kèm thanh sai số $\pm 1\sigma$.
+5. **[05_fold_by_fold_comparison.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/05_fold_by_fold_comparison.png):** Biểu đồ so sánh đối đầu từng seed (s0 đến s5) giữa Baseline và TSVM.
+6. **[06_radar_chart_tradeoff.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/06_radar_chart_tradeoff.png):** Biểu đồ mạng nhện (Radar Chart) đánh giá toàn diện đa tiêu chí.
+7. **[07_qualitative_prediction_comparison.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/07_qualitative_prediction_comparison.png):** Minh chứng phân đoạn định tính thực tế trên ảnh nội soi (Ảnh gốc, Ground Truth, Baseline, C2TSVMamba).
+8. **[08_confusion_matrix_side_by_side.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/08_confusion_matrix_side_by_side.png):** Ma trận nhầm lẫn chuẩn hóa đối chiếu trực tiếp.
+9. **[09_mask_pr_curve_side_by_side.png](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo/09_mask_pr_curve_side_by_side.png):** Đường cong Precision-Recall của Mask theo các ngưỡng tin cậy.
 
 ---
 

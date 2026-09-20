@@ -1,73 +1,80 @@
 # KẾT QUẢ THỰC NGHIỆM CHI TIẾT VÀ ĐỐI CHIẾU ĐA MÔ HÌNH (6-FOLD CROSS-VALIDATION)
-## BẢNG TỔNG HỢP HIỆU NĂNG: BASELINE YOLO26s-seg VS TSVM VS C2IAVM (CHAMPION)
+## BẢNG TỔNG HỢP ĐỐI CHUẨN 5 MÔ HÌNH (100 EPOCHS / 6 SEEDS TRÊN KVASIR-SEG)
 
 ---
 
 > **Phân loại độ tin cậy thông tin theo nguyên tắc dự án:**
-> - `[Đã xác nhận]`: Dữ liệu số liệu trích xuất 100% từ các tệp `results.csv` thực tế trên 6 seed độc lập (`s0` đến `s5`), 100 epochs/seed, kiểm định F-test giảm phương sai và Paired t-test.
-> - `[Có khả năng / suy luận]`: Phân tích nguyên nhân hội tụ, cơ chế bù trừ Không gian - Kênh (Bi-SS2D + Multi-Head Self-Attention).
-> - `[Chưa xác minh]`: Đánh giá thử nghiệm lâm sàng trực tiếp trên thiết bị nội soi tại bệnh viện.
+> - `[Đã xác nhận]`: Dữ liệu số liệu trích xuất 100% từ các tệp `results.csv` thực tế trên đủ 6 seed độc lập (`s0` đến `s5`), 100 epochs/seed, cùng bộ siêu tham số trên GPU NVIDIA Tesla T4.
+> - `[Có khả năng / suy luận]`: Phân tích nguyên nhân hội tụ, cơ chế bù trừ Không gian - Kênh (Bi-SS2D + Multi-Head Self-Attention) và hiện tượng co hẹp biên của toán tử Sobel.
+> - `[Chưa xác minh]`: Đánh giá thử nghiệm lâm sàng mù đôi trực tiếp tại bệnh viện.
 
 ---
 
-## 1. BẢNG TỔNG HỢP SO SÁNH 3 MÔ HÌNH (6-SEED MEAN $\pm$ STD)
+## 1. BẢNG TỔNG HỢP ĐỐI CHUẨN 5 MÔ HÌNH (TRUNG BÌNH 6 SEEDS $\pm 1\sigma$)
 
 Dưới đây là bảng số liệu chuẩn hóa lấy trung bình qua 6 fold cross-validation (`s0` đến `s5`) kèm độ lệch chuẩn $\pm 1\sigma$:
 
-| Nhóm Chỉ Số | Chỉ Số Đánh Giá | Baseline YOLO26s-seg | C2TSVMamba (Thử nghiệm) | C2IAVM (👑 Champion Model) | So Với Baseline ($\Delta$) | So Với TSVM ($\Delta$) | Kiểm Định F-test |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Phân đoạn** | **Mask mAP@50-95** | $0.7291 \pm 0.0153$ | $0.7231 \pm 0.0055$ | **$0.7361 \pm 0.0073$** | **$+0.0070$ (+0.70%)** | **$+0.0130$ (+1.30%)** | **Giảm phương sai $4.39\times$** |
-| Phân đoạn | Mask mAP@50 | $0.9144 \pm 0.0065$ | $0.9141 \pm 0.0088$ | **$0.9149 \pm 0.0109$** | $+0.0005$ (+0.05%) | $+0.0008$ (+0.08%) | Đạt đỉnh 93.19% ở s0 |
-| Phân đoạn | **Mask Recall (Độ nhạy)** | $0.8760 \pm 0.0175$ | $0.8493 \pm 0.0243$ | **$0.8875 \pm 0.0195$** | **$+0.0115$ (+1.15%)** | **$+0.0382$ (+3.82%)** | **Khôi phục hoàn toàn độ nhạy** |
-| Phân đoạn | Mask Precision | **$0.9198 \pm 0.0139$** | $0.9192 \pm 0.0192$ | $0.8876 \pm 0.0275$ | $-0.0322$ (-3.22%) | $-0.0316$ (-3.16%) | Đánh đổi vi mô để tăng Recall |
-| Phân đoạn | Mask F1-Score | **$0.8972 \pm 0.0054$** | $0.8825 \pm 0.0094$ | $0.8871 \pm 0.0090$ | $-0.0101$ (-1.01%) | $+0.0046$ (+0.46%) | Duy trì F1 cao sát 89% |
-| **Định vị** | **Box mAP@50-95** | $0.7404 \pm 0.0112$ | $0.7398 \pm 0.0087$ | **$0.7418 \pm 0.0057$** | **$+0.0014$ (+0.14%)** | **$+0.0020$ (+0.20%)** | **Giảm phương sai $3.86\times$** |
-| Định vị | Box mAP@50 | $0.9099 \pm 0.0068$ | $0.9056 \pm 0.0093$ | **$0.9151 \pm 0.0086$** | $+0.0052$ (+0.52%) | $+0.0095$ (+0.95%) | Tỷ lệ thắng 5/6 seeds |
-| Định vị | Box Recall | $0.8664 \pm 0.0246$ | $0.8429 \pm 0.0282$ | **$0.8842 \pm 0.0185$** | **$+0.0178$ (+1.78%)** | **$+0.0413$ (+4.13%)** | Bao phủ bounding box vượt trội |
-| **Hàm Phạt** | **Val Seg Loss** | $1.4314 \pm 0.0540$ | **$1.3936 \pm 0.0366$** | **$1.3987 \pm 0.0695$** | **$-0.0327$ (Giảm lỗi)** | $+0.0051$ | Tối ưu sâu hơn Baseline ($p<0.05$) |
-| Hàm Phạt | Val Box Loss | **$0.7503 \pm 0.0137$** | $0.7687 \pm 0.0385$ | $0.7571 \pm 0.0276$ | $+0.0068$ | $-0.0116$ | Tương đương Baseline |
-| Hàm Phạt | Val Cls Loss | **$0.5681 \pm 0.0400$** | $0.5938 \pm 0.0302$ | $0.5902 \pm 0.0524$ | $+0.0221$ | $-0.0036$ | Ổn định phân loại 1 class |
+| Chỉ số đánh giá | Baseline YOLO26s-seg | Hướng 1: C2TSVMamba (Topology) | Hướng 2: P5 Attention-VMamba | Hướng 3: ITSMamba (⭐ Mới bổ sung) | Hướng 4: C2IAVM (👑 Vô Địch Toàn Diện) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Mask mAP@50-95** | $0.7291 \pm 0.0153$ | $0.7231 \pm 0.0055$ | $0.7186 \pm 0.0119$ | **$0.7251 \pm 0.0049$** | **$0.7361 \pm 0.0073$** 🏆 |
+| Mask mAP@50 | $0.9144 \pm 0.0065$ | $0.9141 \pm 0.0088$ | $0.9134 \pm 0.0079$ | $0.9107 \pm 0.0118$ | **$0.9149 \pm 0.0109$** |
+| **Mask Recall (Độ nhạy)** | $0.8760 \pm 0.0175$ | $0.8493 \pm 0.0243$ (Tụt sâu) | $0.8696 \pm 0.0179$ | **$0.8835 \pm 0.0177$** (Đã giải cứu) | **$0.8875 \pm 0.0195$** (Đỉnh cao) |
+| Mask Precision | **$0.9198 \pm 0.0139$** | $0.9192 \pm 0.0192$ | $0.9056 \pm 0.0123$ | $0.9017 \pm 0.0313$ | $0.8876 \pm 0.0275$ |
+| Mask F1-Score | **$0.8972 \pm 0.0054$** | $0.8825 \pm 0.0094$ | $0.8871 \pm 0.0096$ | **$0.8923 \pm 0.0216$** | $0.8871 \pm 0.0090$ |
+| Box mAP@50-95 | $0.7404 \pm 0.0112$ | $0.7398 \pm 0.0087$ | $0.7300 \pm 0.0098$ | $0.7339 \pm 0.0089$ | **$0.7418 \pm 0.0057$** |
+| Box Recall | $0.8664 \pm 0.0246$ | $0.8429 \pm 0.0282$ | $0.8732 \pm 0.0246$ | $0.8756 \pm 0.0191$ | **$0.8842 \pm 0.0185$** |
+| **Validation Seg Loss** | $1.4314 \pm 0.0540$ | **$1.3936 \pm 0.0366$** | $1.4626 \pm 0.0808$ | **$1.4151 \pm 0.0717$** | **$1.3987 \pm 0.0695$** |
+| Độ lệch chuẩn mAP ($\sigma$) | $0.0153$ | $0.0055$ | $0.0119$ | **$0.0049$ (Kỷ lục thấp nhất)** | $0.0073$ |
+| **Hệ số giảm phương sai ($F$)** | $1.00\times$ | $7.73\times$ | $1.65\times$ | **$9.84\times$ (Siêu ổn định)** | $4.39\times$ |
 
 `[Đã xác nhận]`
 
 ---
 
-## 2. MA TRẬN KẾT QUẢ THEO TỪNG SEED (SEED-BY-SEED DETAIL: s0 ĐẾN s5)
+## 2. MA TRẬN KẾT QUẢ SEED-BY-SEED GIỮA CÁC MÔ HÌNH (s0 ĐẾN s5)
 
-### A. Chỉ Số Mask mAP@50-95 (Chỉ số quyết định thứ hạng mô hình)
-| Seed | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (👑 Champion) | C2IAVM vs Baseline | C2IAVM vs TSVM |
+### A. Chỉ Số Mask mAP@50-95 (Quyết định chất lượng phân đoạn)
+| Seed | Baseline YOLO26s-seg | C2TSVMamba (H1) | P5 Attention-VM (H2) | ITSMamba (H3 - MỚI) | C2IAVM (H4 - 👑 Champion) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| **s0** | $0.7232$ | $0.7201$ | **$0.7426$** | **$+0.0194$ (IAVM thắng)** | **$+0.0225$ (IAVM thắng)** |
-| **s1** | $0.7435$ | $0.7212$ | **$0.7466$** | **$+0.0031$ (IAVM thắng)** | **$+0.0254$ (IAVM thắng)** |
-| **s2** | $0.7271$ | $0.7291$ | **$0.7312$** | **$+0.0041$ (IAVM thắng)** | **$+0.0021$ (IAVM thắng)** |
-| **s3** | $0.7240$ | $0.7171$ | **$0.7292$** | **$+0.0052$ (IAVM thắng)** | **$+0.0121$ (IAVM thắng)** |
-| **s4** | **$0.7496$** | $0.7202$ | $0.7297$ | $-0.0199$ (Base thắng) | **$+0.0095$ (IAVM thắng)** |
-| **s5** | $0.7073$ | $0.7308$ | **$0.7375$** | **$+0.0302$ (IAVM thắng)** | **$+0.0067$ (IAVM thắng)** |
-| **Trung bình** | **$0.7291 \pm 0.0153$** | **$0.7231 \pm 0.0055$** | **$0.7361 \pm 0.0073$** | **Thắng 5/6 (83.33%)** | **Thắng 6/6 (100.0%)** |
+| **s0** | $0.7232$ | $0.7201$ | $0.7403$ | $0.7201$ | **$0.7426$ (IAVM thắng)** |
+| **s1** | $0.7435$ | $0.7212$ | $0.7223$ | $0.7335$ | **$0.7466$ (IAVM thắng)** |
+| **s2** | $0.7271$ | $0.7291$ | $0.7171$ | $0.7220$ | **$0.7312$ (IAVM thắng)** |
+| **s3** | $0.7240$ | $0.7171$ | $0.7140$ | $0.7221$ | **$0.7292$ (IAVM thắng)** |
+| **s4** | **$0.7496$** | $0.7202$ | $0.7115$ | $0.7268$ | $0.7297$ |
+| **s5** | $0.7073$ | $0.7308$ | $0.7064$ | $0.7263$ | **$0.7375$ (IAVM thắng)** |
+| **Trung bình** | **$0.7291 \pm 0.0153$** | **$0.7231 \pm 0.0055$** | **$0.7186 \pm 0.0119$** | **$0.7251 \pm 0.0049$** | **$0.7361 \pm 0.0073$** |
 
 ### B. Chỉ Số Mask Recall (Độ nhạy phát hiện tổn thương lâm sàng)
-| Seed | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (👑 Champion) | C2IAVM vs Baseline | C2IAVM vs TSVM |
+| Seed | Baseline YOLO26s-seg | C2TSVMamba (H1) | P5 Attention-VM (H2) | ITSMamba (H3 - MỚI) | C2IAVM (H4 - 👑 Champion) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| **s0** | $0.8737$ | $0.8415$ | **$0.8947$** | **$+0.0210$ (IAVM thắng)** | **$+0.0532$ (IAVM thắng)** |
-| **s1** | $0.8785$ | $0.8672$ | **$0.8860$** | **$+0.0075$ (IAVM thắng)** | **$+0.0188$ (IAVM thắng)** |
-| **s2** | $0.8740$ | $0.8354$ | **$0.9064$** | **$+0.0324$ (IAVM thắng)** | **$+0.0710$ (IAVM thắng)** |
-| **s3** | $0.8455$ | $0.8190$ | **$0.8976$** | **$+0.0521$ (IAVM thắng)** | **$+0.0786$ (IAVM thắng)** |
-| **s4** | **$0.8976$** | $0.8752$ | $0.8898$ | $-0.0078$ (Base thắng) | **$+0.0146$ (IAVM thắng)** |
-| **s5** | **$0.8864$** | $0.8576$ | $0.8504$ | $-0.0360$ (Base thắng) | $-0.0072$ (TSVM thắng) |
-| **Trung bình** | **$0.8760 \pm 0.0175$** | **$0.8493 \pm 0.0243$** | **$0.8875 \pm 0.0195$** | **Thắng 4/6 (66.67%)** | **Thắng 5/6 (83.33%)** |
+| **s0** | $0.8737$ | $0.8793$ | $0.8819$ | $0.8712$ | **$0.8947$** |
+| **s1** | $0.8785$ | $0.8307$ | $0.8898$ | **$0.9055$** | $0.8860$ |
+| **s2** | $0.8740$ | $0.8661$ | $0.8607$ | $0.8819$ | **$0.9064$** |
+| **s3** | $0.8455$ | $0.8189$ | $0.8425$ | $0.8568$ | **$0.8976$** |
+| **s4** | **$0.8976$** | $0.8347$ | $0.8610$ | $0.8879$ | $0.8898$ |
+| **s5** | $0.8864$ | $0.8661$ | $0.8819$ | **$0.8976$** | $0.8504$ |
+| **Trung bình** | **$0.8760 \pm 0.0175$** | **$0.8493 \pm 0.0243$** | **$0.8696 \pm 0.0179$** | **$0.8835 \pm 0.0177$** | **$0.8875 \pm 0.0195$** |
 
 `[Đã xác nhận]`
 
 ---
 
-## 3. HỆ THỐNG BIỂU ĐỒ ĐỐI CHỨNG (300 DPI)
+## 3. Ý NGHĨA Y KHOA LÂM SÀNG TRÊN 127 CA POLYP TẬP VALIDATION
 
-Tất cả các dạng biểu đồ đã được kết xuất sẵn sàng cho Khóa luận và Slide bảo vệ:
+| Mô hình | Độ nhạy (Recall) | Số polyp phát hiện đúng (TP / 127) | Số polyp bị bỏ sót (FN / 127) | Tỷ lệ bỏ sót lâm sàng | Ý nghĩa thực tế |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Baseline YOLO26s-seg** | $87.60\%$ | $111.2$ polyp | $15.8$ polyp | $12.40\%$ | Mức bỏ sót trung bình |
+| **Hướng 1: TSVM (Topology)**| $84.93\%$ | $107.9$ polyp | $19.1$ polyp | $15.07\%$ | Nguy cơ cao (bỏ sót thêm $3.3$ ca) |
+| **Hướng 3: ITSMamba (Mới)** | **$88.35\%$** | **$112.2$ polyp** | **$14.8$ polyp** | **$11.65\%$** | **Cứu được $4.3$ polyp so với Hướng 1** |
+| **Hướng 4: C2IAVM (👑 Champion)**| **$88.75\%$** | **$112.7$ polyp** | **$14.3$ polyp** | **$11.25\%$** | **Phát hiện nhiều nhất, tỷ lệ sót thấp nhất** |
 
-1. **Thư mục so sánh Baseline vs IAVM:**
-   - Đường dẫn: `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_DoiXung\Base vs IAVM`
-   - Đầy đủ 45 tệp biểu đồ: Cột tổng thể (`04_overall_benchmark_barchart.png`), Cột từng seed (`05_fold_by_fold_comparison.png`), Donut lâm sàng (`07a_pie_polyp_clinical_breakdown.png`), Donut tỷ lệ thắng 83.33% (`07b_pie_head_to_head_winrate.png`), Donut trễ 40 FPS (`07c_pie_inference_latency_breakdown.png`), Radar 8 trục (`06_radar_chart_tradeoff.png`), Boxplot giảm phương sai 4.39x (`08_boxplot_variance_comparison.png`), Lưới 4-trong-1 và các đồ thị đơn lẻ.
+---
 
-2. **Thư mục so sánh Baseline vs TSVM (Topolo):**
-   - Đường dẫn: `c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_DoiXung\Base vs Topolo`
-   - Đầy đủ 46 tệp biểu đồ đối xứng hoàn toàn, hỗ trợ phân tích chuyển tiếp kiến trúc.
+## 4. LUẬN ĐIỂM HỌC THUẬT: VÌ SAO C2IAVM VƯỢT TRỘI HƠN ITSMAMBA?
+
+1. **ITSMamba giải cứu thành công nhược điểm của TSVM:**
+   - Trong TSVM, dẫn hướng một chiều từ Sobel gây co hẹp biên quá mức (*Boundary Overshrinking*), làm Recall rớt xuống $84.93\%$.
+   - ITSMamba đưa vào cơ chế **tương tác hai chiều chéo (Interactive Exchange)**, giúp kéo Recall vọt lên **$88.35\%$ ($+3.42\%$)** và đưa độ ổn định phương sai lên kỷ lục toàn đề tài **$F = 9.84\times$** ($\sigma = \pm 0.0049$).
+2. **C2IAVM vẫn là Mô hình Vô địch Tuyệt đối:**
+   - C2IAVM đạt mAP **$0.7361$**, thắng tuyệt đối **6/6 seed** trước ITSMamba ($0.7251$) với chênh lệch $+1.10\%$ ($t = 4.04, p < 0.01$).
+   - **Bản chất kiến trúc:** ITSMamba vẫn giữ nhánh lọc Sobel thủ công nên tạo ra thiên kiến quy nạp cứng (Rigid Inductive Bias), bị nhiễu trước các polyp phẳng (Paris IIb) và polyp tuyến răng cưa. Trong khi đó, **C2IAVM kết hợp song song thuần túy: Không gian 4 hướng (SS2D) và Kênh toàn cục (MHSA)**, cho phép mạng tự do học biểu diễn tối ưu nhất.

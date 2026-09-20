@@ -28,6 +28,7 @@ Toàn bộ hệ thống tài liệu được module hóa chặt chẽ theo chu�
 * 🖼️ [`10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md): So sánh trực quan chất lượng mặt nạ phân đoạn đối chiếu Ground Truth.
 * 📋 [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md): Chi tiết kết quả thực nghiệm biến thể P5.
 * 🏆 [`12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md): Hồ sơ toàn diện về mô hình vô địch C2IAVM.
+* 🔬 [`14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md): Hồ sơ toàn diện về mô hình Interactive Topology-Shape VMamba (`ITSMamba`) - Đạt kỷ lục phương sai $F=9.84\times$.
 
 ---
 
