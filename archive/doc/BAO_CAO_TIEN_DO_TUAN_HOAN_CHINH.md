@@ -1,7 +1,7 @@
 # BÁO CÁO TIẾN ĐỘ THỰC NGHIỆM VÀ KẾT QUẢ NGHIÊN CỨU TUẦN
-**Đề tài:** Nghiên cứu phương pháp tích hợp Topology-Shape-aware VMamba vào mô hình YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng  
+**Đề tài:** Nghiên cứu phương pháp tích hợp VMamba vào mô hình YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng  
 **Mã đề tài:** CNTT_KLCN182 — Khóa luận Cử nhân ngành CNTT (2026 – 2027)  
-**Giảng viên hướng dẫn:** ThS. Phùng Thế Bảo (Email: baopt@huit.edu.vn)  
+**Giảng viên hướng dẫn:** TS. Phùng Thế Bảo (Email: baopt@huit.edu.vn)  
 **Nhóm sinh viên thực hiện:**
 1. Lê Đức Lương (MSSV: 2001230490 — Lớp: 14DHTH09)
 2. Phùng Tuấn Huy (MSSV: 2001230312 — Lớp: 14DHTH13)

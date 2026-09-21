@@ -7,7 +7,7 @@
 > **THÔNG TIN ĐỀ TÀI KHÓA LUẬN CỬ NHÂN (2026 – 2027)**
 > - **Mã đề tài:** `CNTT_KLCN182`
 > - **Tên đề tài chính thức:** *"Nghiên cứu phương pháp tích hợp VMamba vào mô hình YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng"*
-> - **Giảng viên hướng dẫn (GVHD):** ThS. Phùng Thế Bảo (`baopt@huit.edu.vn`) - Khoa CNTT, Trường Đại học Công Thương TP.HCM (HUIT)
+> - **Giảng viên hướng dẫn (GVHD):** TS. Phùng Thế Bảo (`baopt@huit.edu.vn`) - Khoa CNTT, Trường Đại học Công Thương TP.HCM (HUIT)
 > - **Nhóm sinh viên thực hiện:** 
 >   1. Lê Đức Lương (MSSV: `2001230490` - Nhóm trưởng)
 >   2. Phùng Tuấn Huy (MSSV: `2001230312`)

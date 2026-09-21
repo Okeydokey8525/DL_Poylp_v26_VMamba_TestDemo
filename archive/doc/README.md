@@ -2,7 +2,7 @@
 
 > **Khóa luận Cử nhân ngành Công Nghệ Thông Tin (2026 – 2027) — Trường Đại học Công Thương TP.HCM (HUIT)**  
 > **Mã đề tài:** `CNTT_KLCN182`  
-> **Giảng viên hướng dẫn:** ThS. Phùng Thế Bảo (`baopt@huit.edu.vn`)  
+> **Giảng viên hướng dẫn:** TS. Phùng Thế Bảo (`baopt@huit.edu.vn`)  
 > **Nhóm sinh viên thực hiện:** Lê Đức Lương (2001230490), Phùng Tuấn Huy (2001230312), Trần Mạnh Toàn (2001230830)  
 > **Mô hình đề xuất cốt lõi (👑 PROPOSED CHAMPION MODEL):** `Attention-VMamba Fusion` (`C2IAVM`)
 
@@ -37,3 +37,4 @@ Toàn bộ hệ thống tài liệu được module hóa chặt chẽ theo chu�
 Hai thư mục biểu đồ đã được kết xuất hoàn chỉnh, đối xứng 100%:
 1. 📁 [`KQ_DoiXung/Base vs IAVM`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20IAVM): **45 tệp biểu đồ** đối chiếu Baseline vs Mô hình vô địch C2IAVM (Cột, Tròn/Donut, Radar, Boxplot, Đường cong hội tụ 100 epoch).
 2. 📁 [`KQ_DoiXung/Base vs Topolo`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo): **46 tệp biểu đồ** đối chiếu Baseline vs Mô hình thử nghiệm TSVM.
+* [15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md](file:///c:\LeDucLuong\HK%20VII\LuanCuNhan\DeepLearning\Test_Mau\archive\doc\15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md): Cẩm nang phong cách thiết kế Word và ngôn ngữ học thuật báo cáo.\n
