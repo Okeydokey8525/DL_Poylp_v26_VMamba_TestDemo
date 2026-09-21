@@ -1,0 +1,14 @@
+# Dataset Kvasir-SEG mở rộng bổ sung 20% ảnh nền âm tính (normal-cecum)
+path: C:/LeDucLuong/HK VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Kvasir_YOLO_SEG_BG20
+train: images/train
+val: images/val
+
+names:
+  0: polyp
+
+metadata:
+  total_images: 1200
+  train_images: 1040  # 880 polyp + 160 background
+  val_images: 160     # 120 polyp + 40 background
+  background_source: normal-cecum (Kvasir v2)
+  random_seed: 42

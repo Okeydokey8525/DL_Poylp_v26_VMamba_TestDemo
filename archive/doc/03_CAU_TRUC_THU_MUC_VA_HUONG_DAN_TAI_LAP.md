@@ -31,7 +31,20 @@ c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\
 │   ├── 02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md  (Bảng số liệu thực nghiệm & kiểm định p-value)
 │   └── 03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md (Bản đồ thư mục & hướng dẫn thực thi)
 │
+├── Kvasir_YOLO_SEG_BG20\                       <-- BỘ DỮ LIỆU MỞ RỘNG BỔ SUNG 20% ẢNH NỀN (1.200 ẢNH)
+│   ├── images\ (train: 1.040, val: 160)
+│   ├── labels\ (train: 1.040 [160 rỗng], val: 160 [40 rỗng])
+│   ├── selected_normal_cecum_train_160.txt     (Lưu vết ID 160 ảnh nền train)
+│   ├── selected_normal_cecum_val_40.txt       (Lưu vết ID 40 ảnh nền val)
+│   └── data_bg20.yaml                         (File cấu hình Ultralytics YOLO cho tập BG20)
+│
+├── normal-cecum\                              <-- KHO DỮ LIỆU GỐC 1.000 ẢNH KHÔNG BỆNH (KVASIR V2)
+│   └── normal-cecum\                          (1.000 file ảnh .jpg niêm mạc manh tràng lành)
+│
+├── data_bg20.yaml                             (Bản sao cấu hình YAML tại thư mục gốc)
+│
 ├── Stracth\                                    <-- CÁC SCRIPT PYTHON THỰC THI ĐỘC LẬP
+│   ├── convert_kvasir_with_background_to_yolo_seg.py (Script tiền xử lý độc lập tạo dataset BG20)
 │   ├── evaluate_baseline_vs_tsvm.py            (Tính toán & in bảng kiểm định thống kê)
 │   ├── verify_tsvm_layer10.py                  (Kiểm thử forward/backward tensor tầng 10)
 │   ├── export_benchmark_summary.py             (Xuất dữ liệu 6-fold ra các file CSV)

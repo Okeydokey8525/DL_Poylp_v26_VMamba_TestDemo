@@ -97,3 +97,22 @@ Qua rà soát hình ảnh dự đoán thực tế của các ca False Negative t
    - Đối với các tổn thương phẳng nhỏ < 5mm, bác sĩ nội soi được khuyến cáo sử dụng các chế độ nội soi tăng cường hình ảnh quang học ảo (như NBI - Narrow Band Imaging hoặc BLI - Blue Light Imaging) để tăng độ tương phản bờ viền trước khi AI đưa ra khoanh vùng can thiệp.
 
 `[Có khả năng / suy luận]`
+
+---
+
+## 6. PHÂN TÍCH HIỆN TƯỢNG GIÁ TRỊ 1.00 TRÊN CỘT BACKGROUND VÀ GIẢI PHÁP THỰC NGHIỆM BG20
+
+### 6.1. Nguyên nhân toán học và cấu trúc của con số 1.00
+Trong ảnh ma trận nhầm lẫn chuẩn hóa của Ultralytics YOLO (`confusion_matrix_normalized.png`), ô `[Predicted: polyp, True: background]` luôn hiển thị giá trị kịch trần là **`1.00`** (100%):
+* **Không định nghĩa True Negative (TN) cho ảnh chỉ chứa polyp:** Tập kiểm thử Kvasir-SEG gốc chứa 120 ảnh đều có ít nhất một polyp. Không có bức ảnh nào là niêm mạc ruột lành tính hoàn toàn.
+* **Cơ chế chuẩn hóa theo cột (Column-normalized):**
+  $$\text{Giá trị ô [Predicted: polyp, True: background]} = \frac{\text{FP}}{\text{FP} + \text{TN}} = \frac{\text{FP}}{\text{FP} + 0} = 1.00$$
+* Do đó, con số `1.00` **không có nghĩa là mô hình dự đoán sai 100% diện tích nền**, mà phản ánh đặc thù toán học: trong số các lần mô hình "đụng chạm" đến nền, 100% số lần đó đều là báo động giả (FP) vì hệ thống không đếm TN trên tập dữ liệu thuần bệnh học.
+
+### 6.2. Bộ dữ liệu mở rộng Kvasir_YOLO_SEG_BG20 (Bổ sung 20% ảnh âm tính)
+Để kiểm định chính xác độ đặc hiệu (Specificity) lâm sàng và khắc phục hiện tượng `1.00` này:
+* Nhóm nghiên cứu đã xây dựng bộ dữ liệu độc lập **`Kvasir_YOLO_SEG_BG20`** (1.200 ảnh) bổ sung 200 ảnh niêm mạc lành tính từ kho `normal-cecum` (Kvasir v2), với cấu trúc 160 ảnh train và 40 ảnh val đi kèm file nhãn rỗng 0-byte.
+* Chi tiết triển khai và huấn luyện được tài liệu hóa tại [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md).
+
+`[Đã xác nhận]`
+

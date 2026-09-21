@@ -1,0 +1,15 @@
+{
+  "status": "SUCCESS",
+  "output_directory": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Kvasir_YOLO_SEG_BG20",
+  "dataset_yaml": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Kvasir_YOLO_SEG_BG20\\data_bg20.yaml",
+  "train_polyp_images": 880,
+  "train_background_images": 160,
+  "total_train": 1040,
+  "val_polyp_images": 120,
+  "val_background_images": 40,
+  "total_val": 160,
+  "total_dataset_images": 1200,
+  "empty_labels_train": 160,
+  "empty_labels_val": 40,
+  "total_polyps_val": 127
+}

@@ -29,6 +29,8 @@ Toàn bộ hệ thống tài liệu được module hóa chặt chẽ theo chu�
 * 📋 [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md): Chi tiết kết quả thực nghiệm biến thể P5.
 * 🏆 [`12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md): Hồ sơ toàn diện về mô hình vô địch C2IAVM.
 * 🔬 [`14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md): Hồ sơ toàn diện về mô hình Interactive Topology-Shape VMamba (`ITSMamba`) - Đạt kỷ lục phương sai $F=9.84\times$.
+* 📑 [`15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md): Cẩm nang phong cách thiết kế Word và ngôn ngữ học thuật báo cáo.
+* 🧪 [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md): Hồ sơ thực nghiệm mở rộng bộ dữ liệu BG20 (1.200 ảnh bổ sung 20% ảnh nền âm tính), triệt tiêu hiện tượng báo động giả 1.00 và hướng dẫn huấn luyện Kaggle.
 
 ---
 
@@ -36,5 +38,4 @@ Toàn bộ hệ thống tài liệu được module hóa chặt chẽ theo chu�
 
 Hai thư mục biểu đồ đã được kết xuất hoàn chỉnh, đối xứng 100%:
 1. 📁 [`KQ_DoiXung/Base vs IAVM`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20IAVM): **45 tệp biểu đồ** đối chiếu Baseline vs Mô hình vô địch C2IAVM (Cột, Tròn/Donut, Radar, Boxplot, Đường cong hội tụ 100 epoch).
-2. 📁 [`KQ_DoiXung/Base vs Topolo`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo): **46 tệp biểu đồ** đối chiếu Baseline vs Mô hình thử nghiệm TSVM.
-* [15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md](file:///c:\LeDucLuong\HK%20VII\LuanCuNhan\DeepLearning\Test_Mau\archive\doc\15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md): Cẩm nang phong cách thiết kế Word và ngôn ngữ học thuật báo cáo.\n
+2. 📁 [`KQ_DoiXung/Base vs Topolo`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo): **46 tệp biểu đồ** đối chiếu Baseline vs Mô hình thử nghiệm TSVM.
