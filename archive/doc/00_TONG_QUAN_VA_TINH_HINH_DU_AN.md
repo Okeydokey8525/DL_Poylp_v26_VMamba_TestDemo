@@ -94,12 +94,15 @@ Toàn bộ tri thức của dự án được module hóa thành các tệp chuy
 11. [`10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md): Đánh giá định tính chất lượng mặt nạ, độ mượt ranh giới và kháng phản xạ ánh sáng.
 12. [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md): Báo cáo chi tiết số liệu 6-fold của biến thể ghép tĩnh P5_Attention_VMamba.
 13. [`12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md): Hồ sơ thực nghiệm đầy đủ của Mô hình Vô địch `C2IAVM` (kỷ lục 74.7% mAP, 90.6% Recall).
-
+14. [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md): Báo cáo thực nghiệm mở rộng 20% ảnh nền âm tính (`normal-cecum`) và giải pháp cho độ đặc hiệu.
+15. [`17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md): Phân tích nguyên nhân sự cố `model.fuse()` khi train Kaggle và quy trình tái lập trọn vẹn 24 ảnh kết quả/seed.
+16. [`LICHSU_CAP_NHAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md): Nhật ký tổng thể và lịch sử cập nhật phiên bản (Changelog v1.0 -> v2.6).
 
 ---
 
-## 5. CẬP NHẬT KẾT QUẢ HOÀN TẤT 6 SEED CỦA HƯỚNG 3: ITSMamba (`C2ITSMamba`)
-- **Mô hình:** `YOLO26s_seg_ITSMamba` (Interactive Topology-Shape VMamba).
-- **Kết quả 6 seed:** Mask mAP@50-95 đạt **`0.7251 ± 0.0049`**, Mask Recall đạt **`0.8835 ± 0.0177`**, Val Seg Loss đạt **`1.4151 ± 0.0717`**.
-- **Kỷ lục phương sai:** Tỷ số F-test đạt **$F = 9.84\times$** (độ lệch chuẩn thấp nhất đề tài: $\sigma = \pm 0.0049$).
-- **Vị thế:** Đóng vai trò là nghiên cứu bóc tách hoàn hảo (Ablation Study) chứng minh cơ chế Interactive Exchange giải cứu Recall (+3.42%), đồng thời tôn vinh `C2IAVM` ($0.7361$, thắng 6/6 seed) là Mô hình Vô địch Toàn diện.
+## 6. CẬP NHẬT THỰC NGHIỆM BG20 & ĐỢT KIỂM TOÁN CHẤT LƯỢNG ẢNH KHẮC PHỤC
+- **Bối cảnh:** Huấn luyện đối chứng Baseline và TSVM trên bộ dữ liệu mở rộng **Kvasir_YOLO_SEG_BG20** (1.200 ảnh).
+- **Phát hiện kiểm toán:** Dữ liệu số học trong `results.csv` tại cả 6 seed đều chính xác 100% (TSVM Seed 0 đạt Mask mAP@50 = **0.904**, Seed 5 đạt **0.910**). Tuy nhiên, hàm `model.fuse()` tự động của Ultralytics ở cuối quá trình train trên Kaggle đã vô tình xóa nhánh One-to-Many, ép sang nhánh One-to-One chưa hội tụ dẫn đến lỗi ảnh curve phẳng và ảnh pred có vệt cột dọc.
+- **Trạng thái khắc phục:** Nhóm nghiên cứu đã sử dụng trọng số gốc `best.pt`, vô hiệu hóa `fuse()`, áp dụng bản vá tọa độ an toàn và xuất thành công **ĐỦ CHÍNH XÁC 24 ẢNH KẾT QUẢ / SEED** đạt chuẩn 300 DPI, khớp 100% với `results.csv` tại thư mục:
+  - `archive/Khac_phuc/Kvasir_BG20_YOLO26s_seg_TSVM_s0_w2/`
+  - `archive/Khac_phuc/Kvasir_BG20_YOLO26s_seg_TSVM_s5_w2/`

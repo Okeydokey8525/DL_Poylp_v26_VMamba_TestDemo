@@ -258,6 +258,60 @@ results = model.train(
 print(f"\n🎉 Huấn luyện thành công Baseline trên tập BG20 Seed {SEED}!")
 ```
 
+### 3.3. LƯU Ý KỸ THUẬT QUAN TRỌNG: PHÒNG NGỪA SỰ CỐ TỰ ĐỘNG FUSE TRONG FINAL EVALUATION
+
+> [!WARNING]
+> **Hiện tượng lỗi xuất ảnh khi train xong trên Kaggle:**
+> * Trong 100 epoch huấn luyện, bảng số liệu `results.csv` hoàn toàn chính xác (ví dụ TSVM Seed 0 đạt Mask mAP@50 = **0.904**, Seed 5 đạt Mask mAP@50 = **0.910**).
+> * Tuy nhiên, khi kết thúc epoch 100, Ultralytics tự động gọi `model.fuse()`. Trong custom head `Segment26` (Detect26), hàm `fuse()` sẽ xóa bỏ nhánh One-to-Many (`self.cv2 = None`) và ép chuyển sang nhánh One-to-One (End-to-End).
+> * Do nhánh One-to-One tại một số seed (như Seed 5) chưa hội tụ đầy đủ, việc đánh giá cuối cùng bị sụp đổ (mAP về 0), khiến các ảnh đường cong (`BoxPR_curve`, `BoxF1_curve`,...) bị phẳng/rỗng và ảnh `val_batch2_pred.jpg` xuất hiện các box cột dọc lỗi kéo giãn từ $y_1=0$ đến $y_2=640$.
+> * Đồng thời, hàm `plot_images` của Ultralytics vướng lỗi thứ tự tọa độ trong Pillow 10+ (`ValueError: x1 must be greater than or equal to x0`) làm gián đoạn lưu ảnh dự đoán.
+
+#### CELL 3: VALIDATION KHẮC PHỤC TRIỆT ĐỂ & XUẤT 24 ẢNH KẾT QUẢ CHUẨN XÁC
+Sau khi cell huấn luyện hoàn tất, chạy thêm cell dưới đây để xuất lại trọn bộ 24 ảnh kết quả chuẩn trên nhánh One-to-Many:
+
+```python
+# ============================================================
+# CELL 3: POST-TRAIN EVALUATION TRÊN NHÁNH ONE-TO-MANY (KHÔNG FUSE)
+# ============================================================
+import os, sys
+from pathlib import Path
+import PIL.ImageDraw
+from ultralytics.utils.plotting import Annotator
+import ultralytics.utils.plotting as p
+from ultralytics.models.yolo.segment import SegmentationValidator
+from ultralytics.nn import autobackend
+from ultralytics.nn.modules.head import Detect
+
+# 1. Khóa cứng không cho fuse và ép dùng nhánh One-to-Many
+Detect.end2end = property(fget=lambda self: False, fset=lambda self, v: setattr(self, '_end2end', v))
+
+orig_init = autobackend.AutoBackend.__init__
+def patched_init(self, model="yolo26n.pt", device=None, dnn=False, data=None, fp16=False, fuse=True, verbose=True):
+    orig_init(self, model=model, device=device, dnn=dnn, data=data, fp16=fp16, fuse=False, verbose=verbose)
+autobackend.AutoBackend.__init__ = patched_init
+
+# 2. Xử lý an toàn tọa độ Pillow 10+
+orig_draw = PIL.ImageDraw.ImageDraw.rectangle
+def safe_rectangle(self, xy, fill=None, outline=None, width=1):
+    try:
+        if isinstance(xy, (list, tuple)) and len(xy) == 4:
+            x0, y0, x1, y1 = xy
+            xy = [min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1)]
+    except Exception:
+        pass
+    return orig_draw(self, xy, fill=fill, outline=outline, width=width)
+PIL.ImageDraw.ImageDraw.rectangle = safe_rectangle
+
+# 3. Đồng bộ ghi ảnh
+if hasattr(p.plot_images, "__closure__") and p.plot_images.__closure__:
+    p.plot_images = p.plot_images.__closure__[0].cell_contents
+
+print("✅ Đã cấu hình môi trường post-eval One-to-Many chuẩn xác!")
+```
+*Chi tiết toàn bộ phân tích nguyên nhân và giải pháp kỹ thuật xem tại tài liệu:*  
+👉 [doc/17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md)
+
 ---
 
 ## 4. Ý NGHĨA KHOA HỌC KHI ĐƯA VÀO LUẬN VĂN

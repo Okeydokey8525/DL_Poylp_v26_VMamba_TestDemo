@@ -1,6 +1,0 @@
-{
-  "best_val_dice": 0.8771804606930561,
-  "completed_epochs": 60,
-  "world_size": 2,
-  "effective_batch_size": 32
-}

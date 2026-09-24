@@ -1,0 +1,6 @@
+names:
+  0: polyp
+nc: 1
+path: c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\Kvasir_YOLO_SEG_BG20
+train: images/train
+val: images/val

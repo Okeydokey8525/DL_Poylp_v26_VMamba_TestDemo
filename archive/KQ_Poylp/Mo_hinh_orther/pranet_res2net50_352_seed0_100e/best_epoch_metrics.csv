@@ -1,2 +1,0 @@
-model,backbone,input_size,epoch,val_loss,val_dice,val_iou,val_precision,val_recall,val_specificity,learning_rate
-PraNet,Res2Net-50,352,41,2.153601145744324,0.8947784000383564,0.8095918502401811,0.908637078574852,0.8813361201016361,0.9839790444859948,1.25e-05

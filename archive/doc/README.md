@@ -31,6 +31,8 @@ Toàn bộ hệ thống tài liệu được module hóa chặt chẽ theo chu�
 * 🔬 [`14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md): Hồ sơ toàn diện về mô hình Interactive Topology-Shape VMamba (`ITSMamba`) - Đạt kỷ lục phương sai $F=9.84\times$.
 * 📑 [`15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md): Cẩm nang phong cách thiết kế Word và ngôn ngữ học thuật báo cáo.
 * 🧪 [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md): Hồ sơ thực nghiệm mở rộng bộ dữ liệu BG20 (1.200 ảnh bổ sung 20% ảnh nền âm tính), triệt tiêu hiện tượng báo động giả 1.00 và hướng dẫn huấn luyện Kaggle.
+* 🛠️ [`17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md): Báo cáo kỹ thuật sự cố tự động `model.fuse()` khi train Kaggle gây lỗi ảnh và giải pháp khôi phục trọn bộ 24 ảnh chuẩn/seed tại `archive/Khac_phuc/`.
+* 📜 [`LICHSU_CAP_NHAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md): Nhật ký tổng thể và lịch sử cập nhật phiên bản (Changelog v1.0 -> v2.6).
 
 ---
 
