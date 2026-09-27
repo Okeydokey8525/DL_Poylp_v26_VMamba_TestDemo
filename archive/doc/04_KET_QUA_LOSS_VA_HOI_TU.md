@@ -11,7 +11,7 @@
 
 ## 1. BẢNG ĐỐI CHIẾU CÁC HÀM PHẠT TẠI ĐIỂM HỘI TỤ TỐI ƯU (MEAN $\pm$ STD)
 
-| Thành phần hàm mất mát | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (👑 Champion) | Đánh giá xu hướng hội tụ |
+| Thành phần hàm mất mát | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (C2IAVM) | Đánh giá xu hướng hội tụ |
 | :--- | :---: | :---: | :---: | :--- |
 | **Validation Seg Loss** | **$1.4314 \pm 0.0540$** | **$1.3936 \pm 0.0366$** | **$1.3987 \pm 0.0695$** | **Cả 2 mô hình VMamba đều tối ưu sâu hơn Baseline ($p < 0.05$)** |
 | Training Seg Loss | $0.9842 \pm 0.0210$ | $0.9521 \pm 0.0185$ | $0.9612 \pm 0.0234$ | Giảm sai số phân đoạn ngay từ tập huấn luyện |

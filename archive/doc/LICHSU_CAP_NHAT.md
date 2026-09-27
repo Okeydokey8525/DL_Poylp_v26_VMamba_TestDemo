@@ -10,14 +10,39 @@
 | :---: | :---: | :--- | :---: |
 | **v1.0** | 10/2025 | Khởi tạo baseline YOLO26s-seg và khảo sát dữ liệu chuẩn Kvasir-SEG (1.000 ảnh) | Đã hoàn thành |
 | **v1.5** | 11/2025 | Tích hợp thử nghiệm VMamba tại các vị trí: P3 (Sobel), Neck, Proto Head (Gặp OOM) | Đã ghi nhận Ablation |
-| **v2.0** | 12/2025 | Cố định kiến trúc tích hợp VMamba tại **Layer 10 (P5, $20\times 20$)**; phát triển 4 hướng: C2TSVMamba, P5 Attention-VMamba, C2ITSMamba, C2IAVM (Proposed Champion) | Đã hoàn thành 6-fold |
+| **v2.0** | 12/2025 | Cố định kiến trúc tích hợp VMamba tại **Layer 10 (P5, $20\times 20$)**; phát triển 4 hướng: C2TSVMamba, P5 Attention-VMamba, C2ITSMamba, C2IAVM (Mô hình Đề xuất C2IAVM) | Đã hoàn thành 6-fold |
 | **v2.2** | 01/2026 | Hoàn thiện hệ thống tài liệu chuẩn học thuật (Doc 00 -> 15) và bảng đối chuẩn 6-fold cross-validation | Đã nghiệm thu |
 | **v2.5** | 02/2026 | Mở rộng tập dữ liệu **Kvasir_YOLO_SEG_BG20** (+20% ảnh nền âm tính `normal-cecum`) giải quyết triệt để vấn đề độ đặc hiệu (Specificity) | Đã hoàn thành dataset |
-| **v2.6** | 03/2026 | Kiểm toán chất lượng kết quả huấn luyện BG20; phát hiện & giải quyết sự cố `model.fuse()` tự động của Ultralytics gây lỗi ảnh trên Kaggle; khôi phục thành công trọn bộ **24 ảnh kết quả chuẩn / seed** tại thư mục `archive/Khac_phuc/` | **Hiện tại (Mới nhất)** |
+| **v2.6** | 24/03/2026 | Kiểm toán chất lượng kết quả huấn luyện BG20; phát hiện & giải quyết sự cố `model.fuse()` tự động của Ultralytics gây lỗi ảnh trên Kaggle; khôi phục thành công trọn bộ **24 ảnh kết quả chuẩn / seed** tại thư mục `archive/Khac_phuc/` | Đã hoàn thành |
+| **v2.7** | 27/03/2026 | Giải nén, phân loại và tích hợp 17 file kết quả huấn luyện mới từ Kaggle vào `archive/KetQua_Nen/`; mở rộng kiểm chứng Seed Robustness lên **10 seed** (tổng 47 runs/seeds); xây dựng công cụ kiểm toán và tổng hợp số liệu tự động | **Hiện tại (Mới nhất)** |
 
 ---
 
 ## 🕒 CHI TIẾT TỪNG MỐC CẬP NHẬT
+
+### 🌟 Phiên bản v2.7 (27/03/2026) – Tiếp nhận Kết quả Mới, Tích hợp & Mở rộng Kiểm thử 10 Seed (BG20)
+* **Người thực hiện:** Nhóm nghiên cứu `CNTT_KLCN182` & AI Pair Programming.
+* **Mục tiêu:** Giải nén, sắp xếp toàn bộ các tệp kết quả nén mới từ Kaggle vào đúng các thư mục mô hình trong `archive/KetQua_Nen/`, thống kê số lượng seed, kiểm toán tính toàn vẹn và lập bảng tổng hợp số liệu thực nghiệm mở rộng.
+* **Chi tiết công việc & Kết quả thực hiện:**
+  1. **Giải nén và cấu trúc hóa toàn bộ 17 tệp kết quả nén mới:**
+     - Tiếp nhận 17 tệp zip tại `archive/KetQua_Nen/` gồm: `results.zip`, `runs.zip`, `runs (1).zip` đến `runs (15).zip`.
+     - Giải nén sạch và phân loại chính xác vào 5 thư mục mô hình tương ứng:
+       + `YOLOv26s-seg/`: Tiếp nhận thêm 4 seed (`s6`, `s7`, `s8`, `s9`), nâng tổng số lên **10/10 seed** (từ `s0` đến `s9`).
+       + `Kvasir_BG20_YOLO26s_seg_TSVM/`: Tiếp nhận thêm 4 seed (`s6`, `s7`, `s8`, `s9`), nâng tổng số lên **10/10 seed** (từ `s0` đến `s9`).
+       + `Kvasir_BG20_YOLO26s_seg_P5_Attention_VMamba/`: Tiếp nhận thêm 4 seed (`s6`, `s7`, `s8`, `s9`), nâng tổng số lên **10/10 seed** (từ `s0` đến `s9`).
+       + `Kvasir_BG20_YOLO26s_seg_ITSMamba/`: Tiếp nhận thêm 4 seed (`s6`, `s7`, `s8`, `s9`), nâng tổng số lên **10/10 seed** (từ `s0` đến `s9`).
+       + `Kvasir_BG20_YOLO26s_seg/` (Mô hình C2IAVM): Tiếp nhận thêm seed `s6`, nâng tổng số lên **7 seed** (từ `s0` đến `s6`, sẵn sàng đón nhận `s7`-`s9`).
+  2. **Thống kê và kiểm toán toàn vẹn:**
+     - Tổng cộng toàn bộ thư mục `KetQua_Nen`: **47 runs / seeds** hoàn chỉnh.
+     - Kiểm toán 100% (47/47 thư mục): Đều có tệp nhật ký huấn luyện `results.csv` và checkpoint trọng số tốt nhất `weights/best.pt`.
+  3. **Xây dựng công cụ kiểm toán & Tổng hợp số liệu:**
+     - Xây dựng script kiểm toán và tổng hợp tự động [archive/Stracth/summarize_ketqua_nen.py](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Stracth/summarize_ketqua_nen.py).
+     - Kết xuất bảng số liệu toàn diện 47 lượt chạy lưu tại [archive/Stracth/bg20_all_seeds_metrics.csv](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Stracth/bg20_all_seeds_metrics.csv).
+  4. **Cập nhật tài liệu kỹ thuật dự án:**
+     - Cập nhật mục 5 trong [doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md).
+     - Cập nhật trạng thái trong [doc/README.md](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/README.md) và [doc/LICHSU_CAP_NHAT.md](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md).
+
+---
 
 ### 🚀 Phiên bản v2.6 (24/03/2026) – Kiểm toán & Khắc phục Sự cố Xuất ảnh trên Kaggle
 * **Người thực hiện:** Nhóm nghiên cứu `CNTT_KLCN182` & AI Pair Programming.
@@ -53,7 +78,7 @@
 ### 🏆 Phiên bản v2.0 (20/12/2025) – Hoàn thành Thực nghiệm 4 Hướng Tích hợp VMamba
 * **Nội dung:**
   - Thực nghiệm đối chuẩn 6-fold cross-validation nghiêm ngặt giữa Baseline YOLO26s-seg và 4 hướng tiếp cận cải tiến.
-  - Xác lập mô hình đề xuất vô địch **`C2IAVM` (Attention-VMamba Fusion)**: Mask mAP@50-95 đạt **$73.61\%$** (kỷ lục $74.66\%$), giảm phương sai $4.39\times$, thắng áp đảo 5/6 seed đối chứng trực tiếp.
+  - Khảo sát mô hình đề xuất trọng tâm **`C2IAVM` (Attention-VMamba Fusion)**: Mask mAP@50-95 đạt **$73.61\%$** (kỷ lục $74.66\%$), giảm phương sai $4.39\times$, thể hiện hiệu năng cân bằng giữa không gian và kênh.
   - Hoàn tất bộ tài liệu học thuật từ `00_TONG_QUAN_VA_TINH_HINH_DU_AN.md` đến `15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md`.
 
 ---

@@ -52,7 +52,7 @@
 - **Cơ chế:** Tích hợp khối VMamba vào cổ mạng Neck hoặc Segmentation Head Proto26 tại độ phân giải $80\times 80$ hoặc $160\times 160$.
 - **Khuyết tật:** Chuỗi không gian dài $L = H \times W = 80 \times 80 = 6400$ điểm ảnh với 256 kênh khiến việc lưu đồ thị vi phân Autograd xuôi-ngược làm **tràn bộ nhớ GPU (OOM)** liên tiếp ở batch 8, batch 4 và batch 2 trên Tesla T4 15GB. Khi hạ xuống batch 1, thời gian huấn luyện bị kéo dài lên $22 - 36\text{ giờ/seed}$, không khả thi để chạy thẩm định 6-fold.
 
-### 2.5. Lời giải hoàn hảo của Mô hình Vô địch `C2IAVM` (Attention-VMamba Fusion)
+### 2.5. Giải pháp kiến trúc của Mô hình Đề xuất `C2IAVM` (Attention-VMamba Fusion)
 Mô hình `C2IAVM` giải quyết triệt để tất cả các khuyết tật trên nhờ 3 yếu tố cốt lõi:
 1. **Đặt tại Layer 10 (P5, $20\times 20$):** Độ dài chuỗi $L = 400$ giúp tính toán cực nhanh, an toàn tuyệt đối về VRAM ($7.19\text{ GB}$ trên Tesla T4).
 2. **Cơ chế tương tác hai chiều chéo (Reciprocal Cross-Spatial Exchange):**
@@ -72,7 +72,7 @@ Mô hình `C2IAVM` giải quyết triệt để tất cả các khuyết tật t
 | **P5_Attention_VMamba** | P5 ($20\times 20$) | Ghép song song tĩnh `torch.cat` | $0.7186 \pm 0.0119$ | $86.96\%$ | $90.56\%$ | Precision giảm mạnh ($p=0.0023$) |
 | **C2TSVMamba** | P5 ($20\times 20$) | Gating hình thái học 1 chiều | $0.7246 \pm 0.0050$ | $85.45\%$ | $91.80\%$ | Giảm phương sai $3\times$, tụt Recall |
 | **C2ITSMamba** | P5 ($20\times 20$) | Tương tác chéo hình thái 2 chiều| $0.7260$ (s0) | $87.10\%$ | $91.70\%$ | Khắc phục một phần Recall |
-| **C2IAVM (Proposed Champion)**| P5 ($20\times 20$) | **Tương tác chéo Attention $\rightleftharpoons$ VMamba**| **`0.7365 ± 0.0074`** | **`88.75%`** | **`88.85%`** | **VÔ ĐỊCH TOÀN DIỆN: mAP cao nhất, Recall cao nhất, phương sai giảm 4.15 lần** |
+| **C2IAVM (Proposed Model)**| P5 ($20\times 20$) | **Tương tác chéo Attention $\rightleftharpoons$ VMamba**| **`0.7365 ± 0.0074`** | **`88.75%`** | **`88.85%`** | **Cân bằng đa diện: mAP cao, Recall cao, phương sai giảm 4.15 lần** |
 
 `[Đã xác nhận]`
 
@@ -86,4 +86,4 @@ Mô hình `C2IAVM` giải quyết triệt để tất cả các khuyết tật t
 | **Hướng 1: TSVM** | VMamba + Topology đơn chiều ($F_M' = F_M(1+G_{TS})$) | $0.7231 \pm 0.0055$ | $84.93\%$ (Tụt $-2.67\%$) | $7.73\times$ | Giảm loss tốt nhưng bị co hẹp biên quá mức (*Boundary Overshrinking*), tăng bỏ sót polyp. |
 | **Hướng 2: P5 Attention-VM**| Ghép tĩnh không tương tác ($\text{Conv}(\text{Concat}([F_A, F_M]))$) | $0.7186 \pm 0.0119$ | $86.96\%$ | $1.65\times$ | Ghép thô sơ gây xung đột gradient giữa Attention và VMamba, Precision rớt thảm hại ($90.56\%$). |
 | **Hướng 3: ITSMamba**| Topology + VMamba tương tác hai chiều chéo | **$0.7251 \pm 0.0049$** | **$88.35\%$ ($+3.42\%$)** | **$9.84\times$ (Kỷ lục)** | **Giải cứu Recall ngoạn mục**, đạt độ ổn định phương sai kỷ lục, nhưng trần mAP bị giới hạn bởi Sobel bias. |
-| **Hướng 4: C2IAVM (👑)**| Attention + VMamba tương tác hai chiều chéo | **$0.7361 \pm 0.0073$** | **$88.75\%$ (Đỉnh cao)** | $4.39\times$ | **Vô địch tuyệt đối**: Cân bằng tối hảo Không gian (SS2D) và Kênh (MHSA), thắng 6/6 seed trước ITSMamba. |
+| **Hướng 4: C2IAVM**| Attention + VMamba tương tác hai chiều chéo | **$0.7361 \pm 0.0073$** | **$88.75\%$ (Đỉnh cao)** | $4.39\times$ | **Đặc tính nổi bật**: Cân bằng tối hảo Không gian (SS2D) và Kênh (MHSA), thắng 6/6 seed trước ITSMamba. |

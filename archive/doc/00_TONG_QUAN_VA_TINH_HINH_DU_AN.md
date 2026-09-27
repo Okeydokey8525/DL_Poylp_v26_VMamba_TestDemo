@@ -22,9 +22,10 @@
 
 1. **Thách thức lâm sàng:** Polyp đại trực tràng có hình thái biến thiên phức tạp (phẳng, không cuống, gồ ghề), đường biên mờ hòa lẫn vào nếp gấp niêm mạc ruột và bề mặt thường xuyên bị lóa sáng (specular glare) do đèn nội soi Xenon/LED. Các kiến trúc CNN thuần túy (như YOLO-seg tiêu chuẩn) thường sinh mặt nạ bị rách biên, lem sang mô lành hoặc bị thủng lỗ do lóa sáng.
 2. **Giải pháp cốt lõi:** Tích hợp cơ chế Không gian Trạng thái Thị giác (**Visual State-Space - VMamba / SS2D**) với độ phức tạp tuyến tính $\mathcal{O}(N)$ kết hợp với cơ chế Chú ý Tương tác (**Interactive Attention**) để vừa bao quát ngữ cảnh toàn diện, vừa bắt dính ranh giới giải phẫu học của polyp.
-3. **Mô hình Đề xuất Vô địch (👑 PROPOSED CHAMPION MODEL):**
-   - **`Attention-VMamba Fusion` (`C2IAVM`):** Tích hợp tại **Layer 10 (Backbone P5, $20\times 20$)**, tương tác hai chiều chéo (Reciprocal Cross-Spatial Exchange) giữa Self-Attention và VMamba (SS2D 4 hướng).
-   - Đạt kỷ lục hiệu năng toàn đề tài: **Mask mAP@50-95 đạt $73.65\%$** (kỷ lục $74.70\%$ tại seed s1), **Mask Recall đạt $88.75\%$** (kỷ lục $90.60\%$ tại seed s2), **giảm phương sai $4.15\times$** so với Baseline, thắng trực tiếp 5/6 seed ($83.3\%$ win rate).
+3. **Các Kiến trúc Đề xuất Tích hợp VMamba:**
+   - **`C2TSVMamba` (Topology-Shape-aware VMamba):** Tích hợp tại **Layer 10 (Backbone P5, $20\times 20$)**, kết hợp tích chập hình thái học đa hướng với SS2D 4 hướng quét, thể hiện ưu thế vượt trội về độ ổn định qua các seed và tối ưu hóa hàm mất mát phân đoạn.
+   - **`C2IAVM` (Attention-VMamba Fusion):** Tích hợp tại **Layer 10 (Backbone P5, $20\times 20$)**, tương tác hai chiều chéo giữa Self-Attention và VMamba (SS2D 4 hướng), nâng cao độ nhạy bắt dính ranh giới tổn thương.
+   - **`C2ITSMamba` (Interactive Topology-Shape VMamba):** Tương tác hai chiều giữa nhánh hình thái học và SS2D, tối ưu hóa độ chính xác Precision và ngăn ngừa báo động giả trên mô lành.
 
 ---
 
@@ -35,9 +36,9 @@ Dự án phát triển một hệ thống toàn diện gồm 8 biến thể ph�
 | STT | Tên mô hình / Thư mục mã nguồn | Vị trí tích hợp | Cơ chế hoạt động | Vai trò trong đề tài |
 | :---: | :--- | :---: | :--- | :--- |
 | 1 | `ultralytics/` | Gốc | YOLO26s-seg chuẩn với khối `C2PSA` | **Baseline đối chứng sạch** |
-| 2 | `ultralytics_Attention_VMamba_Fusion/` (`C2IAVM`) | Layer 10 (P5, $20\times 20$) | Tương tác chéo hai chiều Self-Attention $\rightleftharpoons$ VMamba SS2D | **👑 MÔ HÌNH ĐỀ XUẤT VÔ ĐỊCH** |
+| 2 | `ultralytics_Attention_VMamba_Fusion/` (`C2IAVM`) | Layer 10 (P5, $20\times 20$) | Tương tác chéo hai chiều Self-Attention $\rightleftharpoons$ VMamba SS2D | **Mô hình đề xuất tích hợp Attention-VMamba** |
 | 3 | `ultralytics_Interactive_Topology_VMamba/` (`C2ITSMamba`) | Layer 10 (P5, $20\times 20$) | Tương tác chéo hai chiều SS2D $\rightleftharpoons$ Hình thái học ($1\times 5, 5\times 1$) | Biến thể tương tác hình thái |
-| 4 | `ultralytics_Topology-Shape-aware VMamba/` (`C2TSVMamba`)| Layer 10 (P5, $20\times 20$) | Gating một chiều từ Tích chập hình thái học $\to$ SS2D | Ablation: Hình thái học đơn hướng |
+| 4 | `ultralytics_Topology-Shape-aware VMamba/` (`C2TSVMamba`)| Layer 10 (P5, $20\times 20$) | Gating một chiều từ Tích chập hình thái học $\to$ SS2D | Mô hình tích hợp Topology-Shape |
 | 5 | `ultralytics_Attention_VMamba/` (`P5_Attention_VMamba`) | Layer 10 (P5, $20\times 20$) | Ghép song song tĩnh `torch.cat([Attn, VMamba])` | Ablation: Ghép kênh song song thô |
 | 6 | `ultralytics_Boundary-aware VMamba/` | Layer 5 (P3, $80\times 80$) | Bộ lọc vi phân biên Sobel bậc một | Ablation: Khuyết tật lọc thông cao ở tầng sớm |
 | 7 | `ultralytics_VMamba Multi-scale Fusion/` | Cổ mạng Neck ($80\times 80$) | Hợp nhất đa tỉ lệ P3, P4, P5 | Ablation: Giới hạn phần cứng chuỗi dài $L=6400$ |
@@ -53,11 +54,11 @@ Dự án phát triển một hệ thống toàn diện gồm 8 biến thể ph�
 
 ---
 
-## 4. TỔNG HỢP KẾT QUẢ ĐỘT PHÁ CỦA MÔ HÌNH VÔ ĐỊCH C2IAVM
+## 4. TỔNG HỢP KẾT QUẢ ĐỐI CHUẨN CỦA MÔ HÌNH C2IAVM TRÊN TẬP KVASIR-SEG GỐC
 
 Bảng đối chứng trung bình 6 seed (`s0` đến `s5`, 100 epochs/seed):
 
-| Chỉ số thực nghiệm | Baseline YOLO26s-seg | C2IAVM (Proposed Champion) | Mức cải thiện ($\Delta$) | Ý nghĩa thực nghiệm |
+| Chỉ số thực nghiệm | Baseline YOLO26s-seg | C2IAVM (Proposed Model) | Mức cải thiện ($\Delta$) | Ý nghĩa thực nghiệm |
 | :--- | :---: | :---: | :---: | :--- |
 | **Mask mAP@50-95** | $0.7298 \pm 0.0150$ | **`0.7365 ± 0.0074`** | **$+0.0067$ ($+0.67\%$)** | Kỷ lục toàn đề tài: **$74.70\%$ (Seed 1)** |
 | **Mask mAP@50** | $0.9129 \pm 0.0070$ | **`0.9150 ± 0.0112`** | **$+0.0021$ ($+0.21\%$)** | Đỉnh cao: **$93.20\%$ (Seed 0)** |
@@ -93,10 +94,10 @@ Toàn bộ tri thức của dự án được module hóa thành các tệp chuy
 10. [`09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md): Bức tranh toàn cảnh Ablation Studies (tại sao các biến thể khác gặp khuyết tật và tại sao C2IAVM chiến thắng).
 11. [`10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md): Đánh giá định tính chất lượng mặt nạ, độ mượt ranh giới và kháng phản xạ ánh sáng.
 12. [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md): Báo cáo chi tiết số liệu 6-fold của biến thể ghép tĩnh P5_Attention_VMamba.
-13. [`12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md): Hồ sơ thực nghiệm đầy đủ của Mô hình Vô địch `C2IAVM` (kỷ lục 74.7% mAP, 90.6% Recall).
+13. [`12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md): Hồ sơ thực nghiệm đầy đủ của mô hình `C2IAVM` (kỷ lục 74.7% mAP, 90.6% Recall).
 14. [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md): Báo cáo thực nghiệm mở rộng 20% ảnh nền âm tính (`normal-cecum`) và giải pháp cho độ đặc hiệu.
 15. [`17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md): Phân tích nguyên nhân sự cố `model.fuse()` khi train Kaggle và quy trình tái lập trọn vẹn 24 ảnh kết quả/seed.
-16. [`LICHSU_CAP_NHAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md): Nhật ký tổng thể và lịch sử cập nhật phiên bản (Changelog v1.0 -> v2.6).
+16. [`LICHSU_CAP_NHAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md): Nhật ký tổng thể và lịch sử cập nhật phiên bản (Changelog v1.0 -> v2.7).
 
 ---
 

@@ -1,4 +1,4 @@
-# BẢN ĐẶC TẢ KỸ THUẬT KIẾN TRÚC & LUỒNG DỮ LIỆU: HỌ TOPOLOGY-SHAPE VÀ MÔ HÌNH VÔ ĐỊCH C2IAVM
+# BẢN ĐẶC TẢ KỸ THUẬT KIẾN TRÚC & LUỒNG DỮ LIỆU: HỌ TOPOLOGY-SHAPE VÀ MÔ HÌNH C2IAVM
 ## PHÂN TÍCH TOÁN HỌC, LUỒNG TENSOR, CƠ CHẾ QUÉT SS2D VÀ VI PHÂN GIẢI TÍCH `SelectiveScanAutograd`
 
 ---
@@ -71,9 +71,9 @@ Họ mô hình này ra đời từ ý tưởng: *VMamba bắt ngữ cảnh toàn
 
 ---
 
-## 3. NHÁNH 2: MÔ HÌNH VÔ ĐỊCH ATTENTION-VMAMBA FUSION (`C2IAVM`)
+## 3. NHÁNH 2: MÔ HÌNH ATTENTION-VMAMBA FUSION (`C2IAVM`)
 
-Đây là **Proposed Champion Model** của toàn bộ đề tài, giải quyết triệt để bài toán dung hòa giữa **Tính bao quát toàn cục của Self-Attention** và **Tính liền mạch định hướng của Visual Mamba**.
+Đây là **Mô hình Đề xuất C2IAVM** của toàn bộ đề tài, giải quyết triệt để bài toán dung hòa giữa **Tính bao quát toàn cục của Self-Attention** và **Tính liền mạch định hướng của Visual Mamba**.
 
 * **File mã nguồn:** `ultralytics_Attention_VMamba_Fusion/nn/modules/interactive_attention_vmamba.py`
 * **File cấu hình YAML:** `cfg/models/26/yolo26-seg-InteractiveAttentionVMamba.yaml`
@@ -183,7 +183,7 @@ Sau khi có $\mathbf{F}_A$ (từ Attention) và $\mathbf{F}_M$ (từ VMamba):
 
 ---
 
-## 5. TẠI SAO C2IAVM TRỞ THÀNH MÔ HÌNH VÔ ĐỊCH TOÀN DIỆN?
+## 5. PHÂN TÍCH ƯU THẾ KIẾN TRÚC VÀ CÂN BẰNG ĐA DIỆN CỦA C2IAVM
 
 1. **Khắc phục triệt để nghịch lý công nghệ:**
    * *Attention đơn lẻ:* Bắt ngữ cảnh rộng không biên giới nhưng dễ bị nhiễu do bọt dịch và ánh sáng lóa, sinh mặt nạ rách biên hoặc răng cưa.

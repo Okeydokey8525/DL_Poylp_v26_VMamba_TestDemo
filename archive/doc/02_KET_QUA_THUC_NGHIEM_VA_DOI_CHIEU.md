@@ -14,7 +14,7 @@
 
 Dưới đây là bảng số liệu chuẩn hóa lấy trung bình qua 6 fold cross-validation (`s0` đến `s5`) kèm độ lệch chuẩn $\pm 1\sigma$:
 
-| Chỉ số đánh giá | Baseline YOLO26s-seg | Hướng 1: C2TSVMamba (Topology) | Hướng 2: P5 Attention-VMamba | Hướng 3: ITSMamba (⭐ Mới bổ sung) | Hướng 4: C2IAVM (👑 Vô Địch Toàn Diện) |
+| Chỉ số đánh giá | Baseline YOLO26s-seg | Hướng 1: C2TSVMamba (Topology) | Hướng 2: P5 Attention-VMamba | Hướng 3: ITSMamba (⭐ Mới bổ sung) | Hướng 4: C2IAVM (Attention-VMamba Fusion) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Mask mAP@50-95** | $0.7291 \pm 0.0153$ | $0.7231 \pm 0.0055$ | $0.7186 \pm 0.0119$ | **$0.7251 \pm 0.0049$** | **$0.7361 \pm 0.0073$** 🏆 |
 | Mask mAP@50 | $0.9144 \pm 0.0065$ | $0.9141 \pm 0.0088$ | $0.9134 \pm 0.0079$ | $0.9107 \pm 0.0118$ | **$0.9149 \pm 0.0109$** |
@@ -34,18 +34,18 @@ Dưới đây là bảng số liệu chuẩn hóa lấy trung bình qua 6 fold c
 ## 2. MA TRẬN KẾT QUẢ SEED-BY-SEED GIỮA CÁC MÔ HÌNH (s0 ĐẾN s5)
 
 ### A. Chỉ Số Mask mAP@50-95 (Quyết định chất lượng phân đoạn)
-| Seed | Baseline YOLO26s-seg | C2TSVMamba (H1) | P5 Attention-VM (H2) | ITSMamba (H3 - MỚI) | C2IAVM (H4 - 👑 Champion) |
+| Seed | Baseline YOLO26s-seg | C2TSVMamba (H1) | P5 Attention-VM (H2) | ITSMamba (H3 - MỚI) | C2IAVM (H4) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| **s0** | $0.7232$ | $0.7201$ | $0.7403$ | $0.7201$ | **$0.7426$ (IAVM thắng)** |
-| **s1** | $0.7435$ | $0.7212$ | $0.7223$ | $0.7335$ | **$0.7466$ (IAVM thắng)** |
-| **s2** | $0.7271$ | $0.7291$ | $0.7171$ | $0.7220$ | **$0.7312$ (IAVM thắng)** |
-| **s3** | $0.7240$ | $0.7171$ | $0.7140$ | $0.7221$ | **$0.7292$ (IAVM thắng)** |
+| **s0** | $0.7232$ | $0.7201$ | $0.7403$ | $0.7201$ | **$0.7426$** |
+| **s1** | $0.7435$ | $0.7212$ | $0.7223$ | $0.7335$ | **$0.7466$** |
+| **s2** | $0.7271$ | $0.7291$ | $0.7171$ | $0.7220$ | **$0.7312$** |
+| **s3** | $0.7240$ | $0.7171$ | $0.7140$ | $0.7221$ | **$0.7292$** |
 | **s4** | **$0.7496$** | $0.7202$ | $0.7115$ | $0.7268$ | $0.7297$ |
-| **s5** | $0.7073$ | $0.7308$ | $0.7064$ | $0.7263$ | **$0.7375$ (IAVM thắng)** |
+| **s5** | $0.7073$ | $0.7308$ | $0.7064$ | $0.7263$ | **$0.7375$** |
 | **Trung bình** | **$0.7291 \pm 0.0153$** | **$0.7231 \pm 0.0055$** | **$0.7186 \pm 0.0119$** | **$0.7251 \pm 0.0049$** | **$0.7361 \pm 0.0073$** |
 
 ### B. Chỉ Số Mask Recall (Độ nhạy phát hiện tổn thương lâm sàng)
-| Seed | Baseline YOLO26s-seg | C2TSVMamba (H1) | P5 Attention-VM (H2) | ITSMamba (H3 - MỚI) | C2IAVM (H4 - 👑 Champion) |
+| Seed | Baseline YOLO26s-seg | C2TSVMamba (H1) | P5 Attention-VM (H2) | ITSMamba (H3 - MỚI) | C2IAVM (H4) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | **s0** | $0.8737$ | $0.8793$ | $0.8819$ | $0.8712$ | **$0.8947$** |
 | **s1** | $0.8785$ | $0.8307$ | $0.8898$ | **$0.9055$** | $0.8860$ |
@@ -66,7 +66,7 @@ Dưới đây là bảng số liệu chuẩn hóa lấy trung bình qua 6 fold c
 | **Baseline YOLO26s-seg** | $87.60\%$ | $111.2$ polyp | $15.8$ polyp | $12.40\%$ | Mức bỏ sót trung bình |
 | **Hướng 1: TSVM (Topology)**| $84.93\%$ | $107.9$ polyp | $19.1$ polyp | $15.07\%$ | Nguy cơ cao (bỏ sót thêm $3.3$ ca) |
 | **Hướng 3: ITSMamba (Mới)** | **$88.35\%$** | **$112.2$ polyp** | **$14.8$ polyp** | **$11.65\%$** | **Cứu được $4.3$ polyp so với Hướng 1** |
-| **Hướng 4: C2IAVM (👑 Champion)**| **$88.75\%$** | **$112.7$ polyp** | **$14.3$ polyp** | **$11.25\%$** | **Phát hiện nhiều nhất, tỷ lệ sót thấp nhất** |
+| **Hướng 4: C2IAVM (Attention-VMamba)**| **$88.75\%$** | **$112.7$ polyp** | **$14.3$ polyp** | **$11.25\%$** | **Phát hiện nhiều nhất, tỷ lệ sót thấp nhất** |
 
 ---
 
@@ -75,6 +75,6 @@ Dưới đây là bảng số liệu chuẩn hóa lấy trung bình qua 6 fold c
 1. **ITSMamba giải cứu thành công nhược điểm của TSVM:**
    - Trong TSVM, dẫn hướng một chiều từ Sobel gây co hẹp biên quá mức (*Boundary Overshrinking*), làm Recall rớt xuống $84.93\%$.
    - ITSMamba đưa vào cơ chế **tương tác hai chiều chéo (Interactive Exchange)**, giúp kéo Recall vọt lên **$88.35\%$ ($+3.42\%$)** và đưa độ ổn định phương sai lên kỷ lục toàn đề tài **$F = 9.84\times$** ($\sigma = \pm 0.0049$).
-2. **C2IAVM vẫn là Mô hình Vô địch Tuyệt đối:**
+2. **Đặc trưng hiệu năng của mô hình C2IAVM:**
    - C2IAVM đạt mAP **$0.7361$**, thắng tuyệt đối **6/6 seed** trước ITSMamba ($0.7251$) với chênh lệch $+1.10\%$ ($t = 4.04, p < 0.01$).
    - **Bản chất kiến trúc:** ITSMamba vẫn giữ nhánh lọc Sobel thủ công nên tạo ra thiên kiến quy nạp cứng (Rigid Inductive Bias), bị nhiễu trước các polyp phẳng (Paris IIb) và polyp tuyến răng cưa. Trong khi đó, **C2IAVM kết hợp song song thuần túy: Không gian 4 hướng (SS2D) và Kênh toàn cục (MHSA)**, cho phép mạng tự do học biểu diễn tối ưu nhất.

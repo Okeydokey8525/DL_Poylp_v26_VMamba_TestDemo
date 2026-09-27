@@ -19,11 +19,22 @@ c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\
 │   └── tests\
 │       └── test_topology_shape_vmamba.py       (Bộ test suite 24 bài kiểm thử của nhóm)
 │
-├── Ket_Qua_2\                                  <-- DỮ LIỆU HUẤN LUYỆN 6-FOLD THỰC TẾ
-│   ├── Kvasir_Baseline_YOLO26s_seg_s0_w2\      (Kết quả Baseline fold 0: results.csv, weights)
-│   ├── ...                                     (s1 đến s5 của Baseline)
-│   ├── Kvasir_YOLO26s_seg_TSVM_s0_w2\          (Kết quả TSVM fold 0: results.csv, weights)
-│   └── ...                                     (s1 đến s5 của TSVM)
+├── Ket_Qua_2\                                  <-- DỮ LIỆU HUẤN LUYỆN 6-FOLD GỐC (KVASIR-SEG)
+│   ├── YOLO26s_seg_IAVM\                       (Kết quả C2IAVM 6 seed)
+│   ├── YOLO26s_seg_ITSMamba\                   (Kết quả ITSMamba 6 seed)
+│   ├── YOLO26s_seg_P5_Attention_VMamba\        (Kết quả P5_Attention 6 seed)
+│   └── YOLO26s_seg_TSVM\                       (Kết quả TSVM 6 seed)
+│
+├── KetQua_Nen\                                 <-- KHO KẾT QUẢ HUẤN LUYỆN TRÊN TẬP MỞ RỘNG BG20
+│   ├── YOLOv26s-seg\                           (Baseline YOLO26s-seg: Đủ 10 seed s0 -> s9)
+│   ├── Kvasir_BG20_YOLO26s_seg_TSVM\           (TSVM: Đủ 10 seed s0 -> s9)
+│   ├── Kvasir_BG20_YOLO26s_seg_P5_Attention_VMamba\ (P5_Attention: Đủ 10 seed s0 -> s9)
+│   ├── Kvasir_BG20_YOLO26s_seg_ITSMamba\       (ITSMamba: Đủ 10 seed s0 -> s9)
+│   └── Kvasir_BG20_YOLO26s_seg_IAVM\           (C2IAVM: Đã hoàn tất 7 seed s0 -> s6)
+│
+├── Khac_phuc\                                  <-- ARTIFACT KHÔI PHỤC 24 ẢNH CHUẨN (KHÔNG FUSE)
+│   ├── Kvasir_BG20_YOLO26s_seg_TSVM_s0_w2\     (Trọn bộ 24 ảnh chuẩn 300 DPI seed 0)
+│   └── Kvasir_BG20_YOLO26s_seg_TSVM_s5_w2\     (Trọn bộ 24 ảnh chuẩn 300 DPI seed 5)
 │
 ├── doc\                                        <-- TÀI LIỆU DÀNH CHO AI TIẾP QUẢN
 │   ├── 00_TONG_QUAN_VA_TINH_HINH_DU_AN.md      (Bản tóm lược điều hành & tình hình dự án)

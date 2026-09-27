@@ -4,7 +4,7 @@
 > **Mã đề tài:** `CNTT_KLCN182`  
 > **Giảng viên hướng dẫn:** TS. Phùng Thế Bảo (`baopt@huit.edu.vn`)  
 > **Nhóm sinh viên thực hiện:** Lê Đức Lương (2001230490), Phùng Tuấn Huy (2001230312), Trần Mạnh Toàn (2001230830)  
-> **Mô hình đề xuất cốt lõi (👑 PROPOSED CHAMPION MODEL):** `Attention-VMamba Fusion` (`C2IAVM`)
+> **Mô hình đề xuất cốt lõi (MÔ HÌNH ĐỀ XUẤT C2IAVM):** `Attention-VMamba Fusion` (`C2IAVM`)
 
 ---
 
@@ -27,17 +27,17 @@ Toàn bộ hệ thống tài liệu được module hóa chặt chẽ theo chu�
 * 🔬 [`09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md): Khảo sát thực nghiệm bóc tách 8 biến thể (P5 vs P3 Sobel vs Ghép tĩnh vs C2IAVM).
 * 🖼️ [`10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md): So sánh trực quan chất lượng mặt nạ phân đoạn đối chiếu Ground Truth.
 * 📋 [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md): Chi tiết kết quả thực nghiệm biến thể P5.
-* 🏆 [`12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md): Hồ sơ toàn diện về mô hình vô địch C2IAVM.
+* 🏆 [`12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md): Hồ sơ toàn diện về mô hình C2IAVM.
 * 🔬 [`14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md): Hồ sơ toàn diện về mô hình Interactive Topology-Shape VMamba (`ITSMamba`) - Đạt kỷ lục phương sai $F=9.84\times$.
 * 📑 [`15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md): Cẩm nang phong cách thiết kế Word và ngôn ngữ học thuật báo cáo.
 * 🧪 [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md): Hồ sơ thực nghiệm mở rộng bộ dữ liệu BG20 (1.200 ảnh bổ sung 20% ảnh nền âm tính), triệt tiêu hiện tượng báo động giả 1.00 và hướng dẫn huấn luyện Kaggle.
 * 🛠️ [`17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md): Báo cáo kỹ thuật sự cố tự động `model.fuse()` khi train Kaggle gây lỗi ảnh và giải pháp khôi phục trọn bộ 24 ảnh chuẩn/seed tại `archive/Khac_phuc/`.
-* 📜 [`LICHSU_CAP_NHAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md): Nhật ký tổng thể và lịch sử cập nhật phiên bản (Changelog v1.0 -> v2.6).
+* 📜 [`LICHSU_CAP_NHAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md): Nhật ký tổng thể và lịch sử cập nhật phiên bản (Changelog v1.0 -> v2.7: tiếp nhận, phân loại và thống kê mở rộng 10 seed trên BG20).
 
 ---
 
 ## 🎨 HỆ THỐNG BIỂU ĐỒ ĐỐI CHUẨN XUẤT BẢN (300 DPI)
 
 Hai thư mục biểu đồ đã được kết xuất hoàn chỉnh, đối xứng 100%:
-1. 📁 [`KQ_DoiXung/Base vs IAVM`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20IAVM): **45 tệp biểu đồ** đối chiếu Baseline vs Mô hình vô địch C2IAVM (Cột, Tròn/Donut, Radar, Boxplot, Đường cong hội tụ 100 epoch).
-2. 📁 [`KQ_DoiXung/Base vs Topolo`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo): **46 tệp biểu đồ** đối chiếu Baseline vs Mô hình thử nghiệm TSVM.
+1. 📁 [`KQ_DoiXung/Base vs IAVM`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20IAVM): **45 tệp biểu đồ** đối chiếu Baseline vs Mô hình C2IAVM (Cột, Tròn/Donut, Radar, Boxplot, Đường cong hội tụ 100 epoch).
+2. 📁 [`KQ_DoiXung/Base vs Topolo`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo): **46 tệp biểu đồ** đối chiếu Baseline vs Mô hình thử nghiệm TSVM.

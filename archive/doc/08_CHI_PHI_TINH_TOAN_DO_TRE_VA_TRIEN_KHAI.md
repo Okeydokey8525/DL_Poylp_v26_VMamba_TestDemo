@@ -11,7 +11,7 @@
 
 ## 1. BẢNG ĐỐI CHIẾU CHI PHÍ TÍNH TOÁN VÀ DUNG LƯỢNG MÔ HÌNH (3 MÔ HÌNH)
 
-| Tiêu chí phần cứng & tính toán | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (👑 Champion Model) | Đánh giá tính khả thi triển khai |
+| Tiêu chí phần cứng & tính toán | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (C2IAVM) | Đánh giá tính khả thi triển khai |
 | :--- | :---: | :---: | :---: | :--- |
 | **Số lượng tham số (Parameters)** | **$11.77\text{ M}$** | $12.35\text{ M}$ ($+4.9\%$) | **$12.14\text{ M}$ ($+3.1\%$)** | Cực kỳ gọn nhẹ, chỉ tăng nhẹ $0.37\text{ M}$ |
 | **Khối lượng tính toán (GFLOPs)** | **$39.4\text{ GFLOPs}$** | $41.2\text{ GFLOPs}$ ($+4.6\%$) | **$40.8\text{ GFLOPs}$ ($+3.5\%$)** | Tính toán tuyến tính, không bùng nổ bậc 2 |
@@ -27,7 +27,7 @@
 
 Chuẩn camera nội soi tiêu hóa lâm sàng hiện hành yêu cầu tần số quét tối thiểu **$25 - 30\text{ FPS}$** (tương đương độ trễ tối đa $< 33.3\text{ ms}$ cho mỗi khung hình):
 
-| Pha đo lường độ trễ (Latency) | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (👑 Champion Model) | Ghi chú kỹ thuật |
+| Pha đo lường độ trễ (Latency) | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (C2IAVM) | Ghi chú kỹ thuật |
 | :--- | :---: | :---: | :---: | :--- |
 | **Pha 1: Tiền xử lý (Pre-process)** | $1.8\text{ ms}$ | $2.6\text{ ms}$ | **$1.8\text{ ms}$** | Letterbox, chuyển đổi màu RGB, FP16 scaling |
 | **Pha 2: Suy luận mô hình (Inference)** | $17.5\text{ ms}$ | $23.4\text{ ms}$ | **$20.9\text{ ms}$** | Lan truyền tiến qua Backbone, C2IAVM, Heads |

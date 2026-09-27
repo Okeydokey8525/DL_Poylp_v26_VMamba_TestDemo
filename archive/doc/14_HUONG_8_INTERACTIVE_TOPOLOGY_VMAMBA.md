@@ -360,7 +360,7 @@ Mô hình `YOLO26s_seg_ITSMamba` đã hoàn thành trọn vẹn **toàn bộ 6 s
 
 ### 5.4. Bảng Tổng Hợp Đối Chuẩn 5 Mô Hình Cốt Lõi (Trung Bình 6 Seeds $\pm 1\sigma$)
 
-| Chỉ số đánh giá | Baseline YOLO26s-seg | Hướng 1: C2TSVMamba (Topology) | Hướng 2: P5 Attention-VMamba | Hướng 3: ITSMamba (⭐ Mới bổ sung) | Hướng 4: C2IAVM (👑 Vô Địch) |
+| Chỉ số đánh giá | Baseline YOLO26s-seg | Hướng 1: C2TSVMamba (Topology) | Hướng 2: P5 Attention-VMamba | Hướng 3: ITSMamba (⭐ Mới bổ sung) | Hướng 4: C2IAVM (Attention-VMamba Fusion) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Mask mAP@50-95** | $0.7291 \pm 0.0153$ | $0.7231 \pm 0.0055$ | $0.7186 \pm 0.0119$ | **$0.7251 \pm 0.0049$** | **$0.7361 \pm 0.0073$** |
 | Mask mAP@50 | $0.9144 \pm 0.0065$ | $0.9141 \pm 0.0088$ | $0.9134 \pm 0.0079$ | $0.9107 \pm 0.0118$ | **$0.9149 \pm 0.0109$** |
@@ -386,7 +386,7 @@ Mô hình `YOLO26s_seg_ITSMamba` đã hoàn thành trọn vẹn **toàn bộ 6 s
    * Độ lệch chuẩn mAP qua 6 seeds của ITSMamba đạt con số siêu nhỏ **$\sigma = 0.0049$** (Baseline là $\pm 0.0153$).
    * Tỉ số F-ratio đạt **$9.84\times$**, khoảng dao động cực hẹp $[0.7201 - 0.7335]$ (khoảng cách chỉ $0.0134$), triệt tiêu hoàn toàn hiện tượng suy biến seed.
 
-3. **Lý do `C2IAVM` vẫn giữ vững ngôi vị Quán quân Toàn diện (Champion Model):**
+3. **Lý do `C2IAVM` vẫn giữ vững ưu thế cân bằng toàn diện:**
    * So với ITSMamba, `C2IAVM` đạt Mask mAP@50-95 vượt trội **$0.7361$** (vượt $+1.10\%$, Paired t-test $t = 4.04, p < 0.01$).
    * `C2IAVM` **chiến thắng tuyệt đối 6/6 seed** khi đối đầu trực tiếp với ITSMamba.
    * **Nguyên nhân kiến trúc:** Nhánh Topology trong ITSMamba áp đặt một "thiên kiến quy nạp cứng" (Rigid Inductive Bias) dựa trên đạo hàm Sobel, làm hạn chế khả năng nhận diện các polyp tuyến răng cưa (Sessile Serrated Adenoma) có viền biến dạng bất định. Trong khi đó, `C2IAVM` kết hợp song song thuần túy: Không gian 4 hướng (SS2D) và Kênh toàn cục (Multi-Head Self-Attention), giúp mạng tự do học không gian biểu diễn tối ưu nhất.
@@ -398,6 +398,6 @@ Mô hình `YOLO26s_seg_ITSMamba` đã hoàn thành trọn vẹn **toàn bộ 6 s
 | **Baseline YOLO26s-seg** | $87.60\%$ | $111.2$ polyp | $15.8$ polyp | $12.40\%$ | Bỏ sót mức trung bình |
 | **TSVM (Topology thuần)** | $84.93\%$ | $107.9$ polyp | $19.1$ polyp | $15.07\%$ | Rủi ro cao do bỏ sót thêm $3.3$ polyp |
 | **ITSMamba (Mới)** | **$88.35\%$** | **$112.2$ polyp** | **$14.8$ polyp** | **$11.65\%$** | **Cứu được $4.3$ polyp so với TSVM** |
-| **C2IAVM (👑 Champion)** | **$88.75\%$** | **$112.7$ polyp** | **$14.3$ polyp** | **$11.25\%$** | **Phát hiện nhiều nhất, tỷ lệ sót thấp nhất** |
+| **C2IAVM (C2IAVM)** | **$88.75\%$** | **$112.7$ polyp** | **$14.3$ polyp** | **$11.25\%$** | **Phát hiện nhiều nhất, tỷ lệ sót thấp nhất** |
 
 

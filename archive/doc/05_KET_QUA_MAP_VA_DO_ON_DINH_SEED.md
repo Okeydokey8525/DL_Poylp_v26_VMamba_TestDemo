@@ -13,7 +13,7 @@
 
 Chỉ số then chốt thể hiện độ tin cậy của thuật toán học sâu y tế là độ phân tán khi thay đổi hạt giống ngẫu nhiên (Random Seed Cross-Validation):
 
-| Tiêu chí thống kê | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (👑 Champion Model) | Nhận xét so sánh |
+| Tiêu chí thống kê | Baseline YOLO26s-seg | C2TSVMamba | C2IAVM (C2IAVM) | Nhận xét so sánh |
 | :--- | :---: | :---: | :---: | :--- |
 | **Mask mAP@50-95 (Mean)** | $0.7291$ | $0.7231$ | **$0.7361$** | C2IAVM cao nhất ($+0.70\%$ so với Base, $+1.30\%$ so với TSVM) |
 | **Độ lệch chuẩn (Std $\sigma$)** | $0.0153$ | **$0.0055$** | **$0.0073$** | Độ lệch chuẩn giảm hơn $2\times$ so với Baseline |

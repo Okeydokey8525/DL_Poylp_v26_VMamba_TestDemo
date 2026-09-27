@@ -13,7 +13,7 @@
 
 Trong ứng dụng y tế, **Độ nhạy (Recall)** là yếu tố sống còn: Bỏ sót một polyp nguy cơ cao đồng nghĩa với việc người bệnh mất cơ hội ngăn ngừa ung thư đại trực tràng từ giai đoạn sớm.
 
-| Chỉ số lâm sàng | Baseline YOLO26s-seg | C2TSVMamba (Thử nghiệm) | C2IAVM (👑 Champion Model) | Đánh giá tác động lâm sàng |
+| Chỉ số lâm sàng | Baseline YOLO26s-seg | C2TSVMamba (Thử nghiệm) | C2IAVM (C2IAVM) | Đánh giá tác động lâm sàng |
 | :--- | :---: | :---: | :---: | :--- |
 | **Mask Recall (Độ nhạy)** | $87.60\% \pm 1.75\%$ | $84.93\% \pm 2.43\%$ | **$88.75\% \pm 1.95\%$** | **C2IAVM đạt độ nhạy cao nhất (+1.15%)** |
 | **Số polyp phát hiện đúng (TP / 127)** | **$111.3$ polyp** | $107.9$ polyp | **$112.7$ polyp** | C2IAVM phát hiện thêm trung bình $+1.4$ tổn thương |
