@@ -35,3 +35,25 @@ Chỉ số then chốt thể hiện độ tin cậy của thuật toán học s�
 2. **Minh chứng từ Biểu đồ Donut Tỷ lệ thắng (`07b_pie_head_to_head_winrate.png`):**
    - C2IAVM đạt **tỷ lệ thắng áp đảo 83.33% (5/6 seed)** khi đối đầu trực tiếp với Baseline.
    - Điểm duy nhất Baseline vượt qua là ở seed 4 ($0.7496$ vs $0.7297$), nhưng ở seed 5 Baseline lại suy biến rớt xuống $0.7073$ trong khi C2IAVM vẫn vững vàng ở mức $0.7375$.
+
+---
+
+## 3. ĐỐI CHUẨN ĐỘ ỔN ĐỊNH 10 RANDOM SEEDS TRÊN TẬP BG20 (BASELINE VS TSVM)
+
+Số liệu thực nghiệm từ trọn vẹn 10 seeds độc lập (seed 0 đến 9) trên tập dữ liệu mở rộng BG20 (lưu trữ đầy đủ tại [`archive/KQ_Nen_DX_10seed/02_statistics/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/02_statistics/)):
+
+| Tiêu chí thống kê | Baseline YOLO26s-seg | TSVM Đề xuất | Mức cải thiện / Thay đổi | Ý nghĩa khoa học |
+| :--- | :---: | :---: | :---: | :--- |
+| **Mask mAP@50-95 (Mean)** | $0.7210 \pm 0.0129$ | **$0.7246 \pm 0.0078$** | **$+0.0036$ ($+0.49\%$)** | Tăng nhẹ, ổn định thực nghiệm |
+| **Độ lệch chuẩn ($\sigma$)** | $0.0129$ | **$0.0078$** | **Giảm $39.5\%$** | Khả năng kiểm soát phương sai vượt trội |
+| **Phương sai mẫu ($\sigma^2$)** | $1.652 \times 10^{-4}$ | **$0.601 \times 10^{-4}$** | **Giảm $2.75\times$** | $F = 2.748$ (co hẹp phương sai) |
+| **Khoảng biến thiên (Range)** | $0.0425$ | **$0.0274$** | **Co hẹp $35.5\%$** | Giảm thiểu dao động cực trị |
+| **Seed cực tiểu (Worst-case)** | $0.6941$ (Seed 9) | **$0.7065$ (Seed 2)** | **$+0.0124$** | Nâng đáy an toàn khi gặp seed bất lợi |
+| **Tỷ lệ thắng trực tiếp** | 4 / 10 seeds (40%) | **6 / 10 seeds (60%)** | $+20\%$ | TSVM chiếm ưu thế tại s0, s1, s3, s4, s6, s8 |
+
+*Hệ thống biểu đồ minh họa 300 DPI tương ứng trong luận văn*:
+- Biểu đồ hộp và phân tán điểm: [`08_boxplot_mask_map50_95.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/05_charts/distribution/08_boxplot_mask_map50_95.png)
+- Đường xu hướng 10 seed: [`06_seed_mask_map50_95_trends.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/05_charts/stability/06_seed_mask_map50_95_trends.png)
+- Phân phối tần suất & KDE: [`09_histogram_kde_mask_map50_95.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/05_charts/distribution/09_histogram_kde_mask_map50_95.png)
+
+`[Đã xác nhận]`

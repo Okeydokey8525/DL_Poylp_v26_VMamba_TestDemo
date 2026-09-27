@@ -14,11 +14,35 @@
 | **v2.2** | 01/2026 | Hoàn thiện hệ thống tài liệu chuẩn học thuật (Doc 00 -> 15) và bảng đối chuẩn 6-fold cross-validation | Đã nghiệm thu |
 | **v2.5** | 02/2026 | Mở rộng tập dữ liệu **Kvasir_YOLO_SEG_BG20** (+20% ảnh nền âm tính `normal-cecum`) giải quyết triệt để vấn đề độ đặc hiệu (Specificity) | Đã hoàn thành dataset |
 | **v2.6** | 24/03/2026 | Kiểm toán chất lượng kết quả huấn luyện BG20; phát hiện & giải quyết sự cố `model.fuse()` tự động của Ultralytics gây lỗi ảnh trên Kaggle; khôi phục thành công trọn bộ **24 ảnh kết quả chuẩn / seed** tại thư mục `archive/Khac_phuc/` | Đã hoàn thành |
-| **v2.7** | 27/03/2026 | Giải nén, phân loại và tích hợp 17 file kết quả huấn luyện mới từ Kaggle vào `archive/KetQua_Nen/`; mở rộng kiểm chứng Seed Robustness lên **10 seed** (tổng 47 runs/seeds); xây dựng công cụ kiểm toán và tổng hợp số liệu tự động | **Hiện tại (Mới nhất)** |
+| **v2.7** | 27/03/2026 | Giải nén, phân loại và tích hợp 17 file kết quả huấn luyện mới từ Kaggle vào `archive/KetQua_Nen/`; mở rộng kiểm chứng Seed Robustness lên **10 seed** (tổng 47 runs/seeds); xây dựng công cụ kiểm toán và tổng hợp số liệu tự động | Đã hoàn thành |
+| **v2.8** | 27/03/2026 | Hoàn thành bộ phân tích chuyên sâu và trực quan hóa kết quả thực nghiệm 10 seed giữa **Baseline (YOLO26s-seg)** và **TSVM (Topology-Shape)** đạt chuẩn luận văn (39 files, 11 bảng CSV, 20 biểu đồ 300 DPI) tại `archive/KQ_Nen_DX_10seed/` | **Hiện tại (Mới nhất)** |
 
 ---
 
 ## 🕒 CHI TIẾT TỪNG MỐC CẬP NHẬT
+
+### 🌟 Phiên bản v2.8 (27/03/2026) – Xây Dựng Trọn Bộ Phân Tích & Hệ Thống Biểu Đồ 10 Seed Chuẩn Luận Văn
+* **Người thực hiện:** Nhóm nghiên cứu `CNTT_KLCN182` & AI Pair Programming.
+* **Mục tiêu:** Xây dựng quy trình khép kín từ trích xuất dữ liệu, tính toán thống kê mô tả, kiểm định giả thuyết (Paired t-test, Wilcoxon), ma trận nhầm lẫn chuẩn hóa và 20 biểu đồ khoa học 300 DPI phục vụ luận văn tốt nghiệp.
+* **Chi tiết công việc & Kết quả thực hiện:**
+  1. **Khởi tạo và chuẩn hóa thư mục đích:**
+     - Thiết lập cấu trúc [`archive/KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed) với 6 phân hệ con: `01_raw_analysis`, `02_statistics`, `03_metrics`, `04_confusion_matrix`, `05_charts`, `06_reports`.
+  2. **Trích xuất dữ liệu thực tế 100% (Không suy diễn số liệu):**
+     - Đọc trọn vẹn 10 seeds (`s0` đến `s9`) của Baseline và TSVM từ `results.csv` tại epoch tối ưu Mask mAP@50-95.
+     - Kiểm định ma trận nhầm lẫn 2x2 trên 160 ảnh kiểm định (127 polyp GT + 40 ảnh nền âm tính), tính ma trận đếm trung bình và ma trận phần trăm chuẩn hóa theo hàng.
+  3. **Kết xuất 20 biểu đồ khoa học đạt chuẩn 300 DPI:**
+     - 5 biểu đồ Performance (Mask mAP50-95, mAP50, Precision/Recall, Bounding Box, Val Seg Loss).
+     - 3 biểu đồ Stability (Đường xu hướng 10 seed mAP@50-95, Box mAP@50-95, Error bar đa chỉ số).
+     - 2 biểu đồ Distribution (Boxplot kèm jitter strip plot, Histogram kèm KDE).
+     - 3 biểu đồ Correlation (Phân tán Precision vs Recall, tương quan mAP với Precision và Recall).
+     - 4 biểu đồ Confusion Matrix (Heatmap đếm và chuẩn hóa % cho Baseline và TSVM).
+     - 3 biểu đồ Summary (Grouped bar chart tổng hợp, Radar chart đa chiều, Thanh ngang phân kỳ $\Delta$).
+  4. **Soạn thảo báo cáo học thuật chuẩn mực:**
+     - [`summary.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/summary.md): Bảng tổng hợp Mean ± Std, Min/Max/Range, Tỷ lệ thắng seed.
+     - [`conclusions.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/conclusions.md): Đánh giá khách quan theo 6 nhóm tiêu chí khoa học, không dùng từ ngữ tâng bốc.
+     - [`README.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/README.md): Hướng dẫn sử dụng và mục lục hệ thống.
+
+---
 
 ### 🌟 Phiên bản v2.7 (27/03/2026) – Tiếp nhận Kết quả Mới, Tích hợp & Mở rộng Kiểm thử 10 Seed (BG20)
 * **Người thực hiện:** Nhóm nghiên cứu `CNTT_KLCN182` & AI Pair Programming.

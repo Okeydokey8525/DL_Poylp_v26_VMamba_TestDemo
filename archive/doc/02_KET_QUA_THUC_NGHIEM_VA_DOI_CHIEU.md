@@ -78,3 +78,26 @@ Dưới đây là bảng số liệu chuẩn hóa lấy trung bình qua 6 fold c
 2. **Đặc trưng hiệu năng của mô hình C2IAVM:**
    - C2IAVM đạt mAP **$0.7361$**, thắng tuyệt đối **6/6 seed** trước ITSMamba ($0.7251$) với chênh lệch $+1.10\%$ ($t = 4.04, p < 0.01$).
    - **Bản chất kiến trúc:** ITSMamba vẫn giữ nhánh lọc Sobel thủ công nên tạo ra thiên kiến quy nạp cứng (Rigid Inductive Bias), bị nhiễu trước các polyp phẳng (Paris IIb) và polyp tuyến răng cưa. Trong khi đó, **C2IAVM kết hợp song song thuần túy: Không gian 4 hướng (SS2D) và Kênh toàn cục (MHSA)**, cho phép mạng tự do học biểu diễn tối ưu nhất.
+
+---
+
+## 5. ĐỐI CHUẨN MỞ RỘNG 10 RANDOM SEEDS TRÊN TẬP DỮ LIỆU BG20 (BASELINE VS TSVM)
+
+Bộ dữ liệu kiểm định gồm **160 ảnh** (120 ảnh polyp có nhãn chứa 127 đối tượng ground-truth, 40 ảnh nền âm tính `normal-cecum`). Toàn bộ phân tích, kiểm định thống kê và 20 biểu đồ khoa học 300 DPI được lưu trữ độc lập tại [`archive/KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed).
+
+| Nhóm chỉ số | Metric | Baseline YOLO26s-seg (Mean ± Std) | TSVM Đề xuất (Mean ± Std) | Δ (TSVM - Base) | % Thay đổi | p-value (Paired t-test) | Ý nghĩa ($\alpha=0.05$) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Segmentation** | **Mask mAP@50-95** | $0.7210 \pm 0.0129$ | **$0.7246 \pm 0.0078$** | **$+0.0036$** | **$+0.49\%$** | 0.3839 | Chưa ($p > 0.05$) |
+| | Mask mAP@50 | **$0.9119 \pm 0.0107$** | $0.9062 \pm 0.0082$ | $-0.0056$ | $-0.62\%$ | 0.2273 | Chưa ($p > 0.05$) |
+| | Mask Precision | $0.9023 \pm 0.0339$ | **$0.9118 \pm 0.0246$** | **$+0.0095$** | **$+1.05\%$** | 0.5428 | Chưa ($p > 0.05$) |
+| | Mask Recall | $0.8584 \pm 0.0252$ | **$0.8625 \pm 0.0173$** | **$+0.0041$** | **$+0.48\%$** | 0.5907 | Chưa ($p > 0.05$) |
+| **Bounding Box** | Box mAP@50-95 | $0.7262 \pm 0.0198$ | **$0.7285 \pm 0.0141$** | **$+0.0023$** | **$+0.32\%$** | 0.7152 | Chưa ($p > 0.05$) |
+| | Box Precision | $0.8992 \pm 0.0326$ | **$0.9062 \pm 0.0251$** | **$+0.0070$** | **$+0.78\%$** | 0.5921 | Chưa ($p > 0.05$) |
+| | Box Recall | $0.8434 \pm 0.0337$ | **$0.8567 \pm 0.0152$** | **$+0.0133$** | **$+1.58\%$** | 0.2674 | Chưa ($p > 0.05$) |
+| **Loss** | **Val Seg Loss** | $1.3045 \pm 0.0867$ | **$1.2424 \pm 0.0387$** | **$-0.0622$** | **$-4.76\%$** | **0.0908** | Cận ý nghĩa ($\alpha=0.10$) |
+| **Độ ổn định** | Phương sai mAP ($\sigma^2$) | $1.652 \times 10^{-4}$ | **$0.601 \times 10^{-4}$** | - | **Giảm $2.75\times$** | $F = 2.748$ | Phương sai co hẹp mạnh |
+| | Khoảng dao động (Range) | $0.0425$ | **$0.0274$** | **$-0.0151$** | **$-35.53\%$** | - | Biên độ biến thiên giảm sâu |
+| | Seed thấp nhất (Worst-case) | $0.6941$ (Seed 9) | **$0.7065$ (Seed 2)** | **$+0.0124$** | **$+1.79\%$** | - | Đáy hiệu năng được nâng đỡ |
+| | Tỷ lệ thắng đối đầu seed | - | **6 / 10 seeds (60%)** | - | - | - | TSVM thắng tại s0, s1, s3, s4, s6, s8 |
+
+`[Đã xác nhận]`

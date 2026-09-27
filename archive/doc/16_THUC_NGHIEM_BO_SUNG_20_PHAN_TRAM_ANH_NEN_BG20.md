@@ -418,3 +418,26 @@ Khi đưa thêm 20% ảnh nội soi âm tính (niêm mạc lành `normal-cecum`)
 5. **Mô hình P5_Attention_VMamba:**
    * Thể hiện hiệu năng thấp hơn các biến thể tương tác có cấu trúc ($0.7165$ mAP@50-95, Recall $83.38\%$), củng cố luận điểm khoa học rằng việc ghép kênh song song tĩnh thiếu cơ chế dẫn hướng hình thái hoặc tương tác chéo sẽ làm phân tán các đặc trưng biên cục bộ.
 
+---
+
+### 5.6. Gói Tài Liệu Phân Tích & Bộ Trực Quan Hóa Đồ Án 10 Seed (`archive/KQ_Nen_DX_10seed/`)
+
+Để phục vụ trực tiếp việc viết chương thực nghiệm và đóng góp kết quả cho luận văn, nhóm nghiên cứu đã xây dựng hoàn chỉnh gói phân tích đối sánh 10 seed giữa **Baseline (YOLO26s-seg)** và **TSVM (Topology-Shape)** tại thư mục:
+
+📁 [`archive/KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed)
+
+**Nội dung cốt lõi của gói sản phẩm**:
+* **20 Biểu đồ nghiên cứu khoa học đạt chuẩn xuất bản (300 DPI)**:
+  - *Performance (01-05)*: So sánh Mean ± Std của Mask mAP50-95, Mask mAP50, Precision/Recall, Bounding Box và Val Seg Loss.
+  - *Stability (06, 07, 10)*: Đường xu hướng 10 seed mAP@50-95, Box mAP@50-95 và biểu đồ Error bar đa chỉ số.
+  - *Distribution (08, 09)*: Boxplot kèm điểm dữ liệu phân tán và biểu đồ phân phối tần suất / đường cong mật độ nhân KDE.
+  - *Correlation (11, 12, 13)*: Biểu đồ phân tán đánh đổi Precision vs Recall, tương quan mAP với Precision và Recall.
+  - *Confusion Matrix (14, 15, 16, 17)*: Heatmap ma trận nhầm lẫn đếm và chuẩn hóa % trung bình qua 10 seed.
+  - *Summary (18, 19, 20)*: Grouped bar chart tổng hợp, Radar chart đa chiều và đồ thị thanh ngang phân kỳ $\Delta = \text{TSVM} - \text{Baseline}$.
+* **11 Bảng thống kê chuẩn hóa (CSV)**: Phân bố trong các thư mục `02_statistics/`, `03_metrics/`, `04_confusion_matrix/`.
+* **2 Báo cáo học thuật chi tiết**:
+  - [`summary.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/summary.md): Báo cáo tóm tắt toàn bộ số liệu thống kê mô tả.
+  - [`conclusions.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/conclusions.md): Báo cáo nhận xét học thuật khách quan theo 6 nhóm tiêu chí (Performance, Stability, Precision/Recall, Loss, Confusion Matrix, Seed Consistency).
+
+`[Đã xác nhận]`
+

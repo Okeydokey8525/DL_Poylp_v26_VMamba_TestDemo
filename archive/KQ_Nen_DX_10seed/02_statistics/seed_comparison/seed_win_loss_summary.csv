@@ -1,0 +1,14 @@
+Metric,TSVM Thắng (số seed),Baseline Thắng (số seed),Hòa
+Mask mAP@50-95,6,4,0
+Mask mAP@50,3,7,0
+Mask Precision,5,5,0
+Mask Recall,6,4,0
+Box mAP@50-95,6,4,0
+Box mAP@50,5,5,0
+Box Precision,5,5,0
+Box Recall,6,4,0
+Val Seg Loss,8,2,0
+Val Box Loss,6,4,0
+Val Cls Loss,2,8,0
+Val L1 Loss,6,4,0
+Best Epoch,4,5,1

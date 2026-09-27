@@ -32,12 +32,13 @@ Toàn bộ hệ thống tài liệu được module hóa chặt chẽ theo chu�
 * 📑 [`15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md): Cẩm nang phong cách thiết kế Word và ngôn ngữ học thuật báo cáo.
 * 🧪 [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md): Hồ sơ thực nghiệm mở rộng bộ dữ liệu BG20 (1.200 ảnh bổ sung 20% ảnh nền âm tính), triệt tiêu hiện tượng báo động giả 1.00 và hướng dẫn huấn luyện Kaggle.
 * 🛠️ [`17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md): Báo cáo kỹ thuật sự cố tự động `model.fuse()` khi train Kaggle gây lỗi ảnh và giải pháp khôi phục trọn bộ 24 ảnh chuẩn/seed tại `archive/Khac_phuc/`.
-* 📜 [`LICHSU_CAP_NHAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md): Nhật ký tổng thể và lịch sử cập nhật phiên bản (Changelog v1.0 -> v2.7: tiếp nhận, phân loại và thống kê mở rộng 10 seed trên BG20).
+* 📜 [`LICHSU_CAP_NHAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md): Nhật ký tổng thể và lịch sử cập nhật phiên bản (Changelog v1.0 -> v2.8: hoàn thành gói phân tích thực nghiệm 10 seed tại `archive/KQ_Nen_DX_10seed/`).
 
 ---
 
-## 🎨 HỆ THỐNG BIỂU ĐỒ ĐỐI CHUẨN XUẤT BẢN (300 DPI)
+## 🎨 HỆ THỐNG BIỂU ĐỒ & DỮ LIỆU ĐỐI CHUẨN XUẤT BẢN (300 DPI)
 
-Hai thư mục biểu đồ đã được kết xuất hoàn chỉnh, đối xứng 100%:
-1. 📁 [`KQ_DoiXung/Base vs IAVM`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20IAVM): **45 tệp biểu đồ** đối chiếu Baseline vs Mô hình C2IAVM (Cột, Tròn/Donut, Radar, Boxplot, Đường cong hội tụ 100 epoch).
-2. 📁 [`KQ_DoiXung/Base vs Topolo`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo): **46 tệp biểu đồ** đối chiếu Baseline vs Mô hình thử nghiệm TSVM.
+Các kho lưu trữ biểu đồ và báo cáo khoa học của đề tài:
+1. 📁 [`KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed): **Gói phân tích chuyên sâu 10 seed (Baseline vs TSVM trên BG20)** phục vụ trực tiếp luận văn (39 files, 11 bảng CSV, 20 biểu đồ 300 DPI, phân tích thống kê mô tả, kiểm định giả thuyết và ma trận nhầm lẫn chuẩn hóa).
+2. 📁 [`KQ_DoiXung/Base vs IAVM`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20IAVM): **45 tệp biểu đồ** đối chiếu 6-fold Kvasir-SEG giữa Baseline vs Mô hình C2IAVM.
+3. 📁 [`KQ_DoiXung/Base vs Topolo`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo): **46 tệp biểu đồ** đối chiếu 6-fold Kvasir-SEG giữa Baseline vs Mô hình TSVM.

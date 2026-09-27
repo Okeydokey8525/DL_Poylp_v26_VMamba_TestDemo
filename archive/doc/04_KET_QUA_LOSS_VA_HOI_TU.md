@@ -34,3 +34,19 @@
    - Lưới 4 đồ thị tổng hợp: `01_loss_curves_comparison.png` (trong cả 2 thư mục `Base vs IAVM` và `Base vs Topolo`).
    - Đồ thị đơn Val Seg Loss: `01a_val_seg_loss_comparison.png` và `01a_val_seg_loss_comparison_zoomed.png` (phóng to dải epoch 10–100).
    - Biểu đồ cột tổng hợp 3 hàm mất mát: `val_losses_barchart.png`.
+
+---
+
+## 3. KẾT QUẢ ĐỐI CHUẨN LOSS TRÊN TẬP DỮ LIỆU BG20 VỚI 10 RANDOM SEEDS (BASELINE VS TSVM)
+
+Kết quả đo đạc chính xác từ 10 lần chạy độc lập (seed 0 đến 9) trích xuất tại epoch tối ưu (lưu trữ chi tiết tại [`archive/KQ_Nen_DX_10seed/03_metrics/loss/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/03_metrics/loss)):
+
+| Thành phần Loss | Baseline (Mean ± Std) | TSVM (Mean ± Std) | Δ (TSVM - Baseline) | % Thay đổi | p-value (t-test) | Nhận xét xu hướng |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Validation Seg Loss** | $1.3045 \pm 0.0867$ | **$1.2424 \pm 0.0387$** | **$-0.0622$** | **$-4.76\%$** | **$0.0908$** | TSVM giảm loss ở **8/10 seed**; độ lệch chuẩn giảm $55.4\%$ |
+| **Validation Box Loss** | **$0.7239 \pm 0.0434$** | $0.7305 \pm 0.0399$ | $+0.0066$ | $+0.91\%$ | $0.7008$ | Tương đương giữa hai mô hình |
+| **Validation Cls Loss** | **$0.5591 \pm 0.0635$** | $0.6148 \pm 0.0884$ | $+0.0557$ | $+9.97\%$ | $0.0943$ | TSVM phạt chặt hơn để chống báo động giả |
+
+*Biểu đồ đối chứng tương ứng trong luận văn*: [`KQ_Nen_DX_10seed/05_charts/performance/05_val_seg_loss_comparison.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/05_charts/performance/05_val_seg_loss_comparison.png).
+
+`[Đã xác nhận]`

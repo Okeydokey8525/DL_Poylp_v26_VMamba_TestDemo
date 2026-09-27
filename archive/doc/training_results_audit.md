@@ -50,3 +50,9 @@ Bảng dưới đây tổng hợp kết quả chính xác được trích xuất
 
 ---
 *Báo cáo được hoàn thành theo tiêu chuẩn kiểm toán khoa học nghiêm ngặt từ kết quả thực tế.*
+
+---
+
+## 4. CẬP NHẬT CÁC GIAI ĐOẠN NGHIÊN CỨU TIẾP THEO (GHI CHÚ HẬU KIỂM TOÁN)
+- **Giai đoạn 2 (Thực nghiệm 6-fold trên Kvasir-SEG gốc):** Xem [`archive/Ket_Qua_2/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_2) và [`02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md). Nhóm nghiên cứu đã cải tiến kiến trúc đưa VMamba vào tầng 10 (`C2TSVMamba`, `C2IAVM`, `ITSMamba`), khắc phục hoàn toàn hiện tượng suy giảm hiệu năng ban đầu và nâng Mask mAP@50-95 lên mức **$0.7231 - 0.7361$**.
+- **Giai đoạn 3 (Thực nghiệm mở rộng 10 seed trên bộ dữ liệu BG20):** Xem [`archive/KetQua_Nen/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KetQua_Nen) và gói phân tích luận văn [`archive/KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed). Bổ sung 20% ảnh nền âm tính `normal-cecum`, kiểm toán trên 47 runs, trong đó đối sánh 10 seed Baseline vs TSVM cho thấy TSVM duy trì Mask mAP@50-95 đạt **$0.7246 \pm 0.0078$**, co hẹp phương sai **$2.75\times$** và giảm 16.1% cảnh báo giả (FP) trên ảnh nền.

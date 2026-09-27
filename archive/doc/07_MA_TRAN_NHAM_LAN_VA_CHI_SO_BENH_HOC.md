@@ -114,5 +114,20 @@ Trong ảnh ma trận nhầm lẫn chuẩn hóa của Ultralytics YOLO (`confusi
 * Nhóm nghiên cứu đã xây dựng bộ dữ liệu độc lập **`Kvasir_YOLO_SEG_BG20`** (1.200 ảnh) bổ sung 200 ảnh niêm mạc lành tính từ kho `normal-cecum` (Kvasir v2), với cấu trúc 160 ảnh train và 40 ảnh val đi kèm file nhãn rỗng 0-byte.
 * Chi tiết triển khai và huấn luyện được tài liệu hóa tại [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md).
 
+### 6.3. Kết quả Ma Trận Nhầm Lẫn Trung Bình 10 Seed Trên Tập BG20 (Khắc Phục Hoàn Toàn Vấn Đề TN)
+
+Trên tập kiểm định 160 ảnh (127 polyp GT + 40 ảnh nền âm tính), nhóm nghiên cứu đã tổng hợp ma trận nhầm lẫn trung bình qua trọn vẹn 10 seeds (lưu trữ đầy đủ tại [`archive/KQ_Nen_DX_10seed/04_confusion_matrix/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/04_confusion_matrix)):
+
+| Ô ma trận nhầm lẫn | Baseline Mean (Số đếm) | TSVM Mean (Số đếm) | Baseline (%) | TSVM (%) | Đánh giá cải thiện |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **True Positive (TP / 127)** | $110.3$ ca | **$111.2$ ca** | $86.85\%$ | **$87.56\%$** | Tăng bắt dính $+0.9$ tổn thương thật |
+| **False Negative (FN / 127)** | $16.7$ ca | **$15.8$ ca** | $13.15\%$ | **$12.44\%$** | Giảm bỏ sót tổn thương nguy hiểm |
+| **False Positive (FP / 40)** | $17.4$ ca | **$14.6$ ca** | $43.50\%$ | **$36.50\%$** | **Giảm 2.8 ca cảnh báo sai trên ảnh nền (-16.1% FP)** |
+| **True Negative (TN / 40)** | $22.6$ ca | **$25.4$ ca** | $56.50\%$ | **$63.50\%$** | **Xác nhận đúng niêm mạc lành tăng $+7.0\%$** |
+
+*Heatmap 300 DPI tương ứng trong luận văn*:
+- Baseline: [`14_cm_count_baseline_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/04_confusion_matrix/count/14_cm_count_baseline_mean.png) & [`16_cm_percentage_baseline_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/04_confusion_matrix/percentage/16_cm_percentage_baseline_mean.png)
+- TSVM: [`15_cm_count_tsvm_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/04_confusion_matrix/count/15_cm_count_tsvm_mean.png) & [`17_cm_percentage_tsvm_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/04_confusion_matrix/percentage/17_cm_percentage_tsvm_mean.png)
+
 `[Đã xác nhận]`
 

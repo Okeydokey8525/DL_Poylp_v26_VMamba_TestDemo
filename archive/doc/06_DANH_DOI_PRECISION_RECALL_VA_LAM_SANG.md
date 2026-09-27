@@ -37,3 +37,23 @@ Trong ứng dụng y tế, **Độ nhạy (Recall)** là yếu tố sống còn:
    - Thay vì ép buộc gradient biên cưỡng bức, C2IAVM phân nhánh song song: Nhánh 1 quét toàn cục SS2D 4 hướng (Không gian), Nhánh 2 dùng Multi-Head Self-Attention chiếu quan hệ phụ thuộc kênh (Channel Context).
    - Cơ chế gating tương tác tự động tăng cường trọng số cho các vùng polyp mờ phẳng, giúp **khôi phục độ nhạy lên $88.75\%$**, giảm số ca bỏ sót xuống chỉ còn **$14.3$ polyp (tỷ lệ sót thấp kỷ lục $11.25\%$)**.
    - Xem biểu đồ Donut minh họa: `archive/KQ_DoiXung/Base vs IAVM/07a_pie_polyp_clinical_breakdown.png` và biểu đồ cột từng seed `05b_fold_by_fold_recall.png`.
+
+---
+
+## 3. ĐÁNH ĐỔI PRECISION - RECALL TRÊN TẬP BG20 VỚI 10 RANDOM SEEDS (BASELINE VS TSVM)
+
+Số liệu kiểm định trên 160 ảnh (127 polyp GT + 40 ảnh nền âm tính) qua trọn vẹn 10 seeds (lưu trữ tại [`archive/KQ_Nen_DX_10seed/03_metrics/segmentation/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/03_metrics/segmentation)):
+
+| Chỉ số phân đoạn | Baseline YOLO26s-seg | TSVM Đề xuất | Δ (TSVM - Baseline) | % Thay đổi | Ý nghĩa lâm sàng |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Mask Precision** | $90.23\% \pm 3.39\%$ | **$91.18\% \pm 2.46\%$** | **$+0.95\%$** | **$+1.05\%$** | TSVM thắng tại **7/10 seeds**; độ biến thiên giảm $27.4\%$ |
+| **Mask Recall** | $85.84\% \pm 2.52\%$ | **$86.25\% \pm 1.73\%$** | **$+0.41\%$** | **$+0.48\%$** | TSVM thắng tại **5/10 seeds** (hòa 1 seed); độ lệch chuẩn giảm $31.2\%$ |
+| **Số ca phát hiện đúng (TP/127)** | $110.3$ ca | **$111.2$ ca** | **$+0.9$ ca** | - | Tăng tỷ lệ bắt dính tổn thương thực tế |
+| **Số ca bỏ sót polyp (FN/127)** | $16.7$ ca | **$15.8$ ca** | **$-0.9$ ca** | - | Giảm số ca tổn thương bị bỏ lỡ |
+| **Số ca báo động giả (FP/40)** | $17.4$ ca | **$14.6$ ca** | **$-2.8$ ca** | **$-16.09\%$** | **Giảm 2.8 ca cảnh báo giả trên ảnh niêm mạc bình thường** |
+
+*Biểu đồ trực quan tương ứng trong luận văn (300 DPI)*:
+- Đồ thị phân tán Trade-off: [`11_scatter_precision_vs_recall.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/05_charts/correlation/11_scatter_precision_vs_recall.png) (minh họa các điểm TSVM co cụm vào góc trên bên phải tối ưu).
+- Cột kép so sánh P-R: [`03_precision_recall_comparison.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/05_charts/performance/03_precision_recall_comparison.png).
+
+`[Đã xác nhận]`

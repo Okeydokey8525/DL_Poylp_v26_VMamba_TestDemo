@@ -32,6 +32,15 @@ c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\
 │   ├── Kvasir_BG20_YOLO26s_seg_ITSMamba\       (ITSMamba: Đủ 10 seed s0 -> s9)
 │   └── Kvasir_BG20_YOLO26s_seg_IAVM\           (C2IAVM: Đã hoàn tất 7 seed s0 -> s6)
 │
+├── KQ_Nen_DX_10seed\                           <-- BỘ PHÂN TÍCH & TRỰC QUAN HÓA 10 SEED (BASELINE VS TSVM)
+│   ├── 01_raw_analysis\                        (20 records trích xuất từ results.csv và ma trận nhầm lẫn)
+│   ├── 02_statistics\                          (Mean±Std, Min-Max, Seed-by-seed deltas, Win/Loss)
+│   ├── 03_metrics\                             (Segmentation, Bounding Box, Loss sub-tables)
+│   ├── 04_confusion_matrix\                    (Ma trận đếm và ma trận % chuẩn hóa trung bình 10 seed)
+│   ├── 05_charts\                              (20 biểu đồ nghiên cứu khoa học đạt chuẩn 300 DPI)
+│   ├── 06_reports\                             (Báo cáo tổng hợp summary.md, conclusions.md, summary.csv)
+│   └── README.md                               (Tài liệu mục lục và hướng dẫn chi tiết gói 10 seed)
+│
 ├── Khac_phuc\                                  <-- ARTIFACT KHÔI PHỤC 24 ẢNH CHUẨN (KHÔNG FUSE)
 │   ├── Kvasir_BG20_YOLO26s_seg_TSVM_s0_w2\     (Trọn bộ 24 ảnh chuẩn 300 DPI seed 0)
 │   └── Kvasir_BG20_YOLO26s_seg_TSVM_s5_w2\     (Trọn bộ 24 ảnh chuẩn 300 DPI seed 5)

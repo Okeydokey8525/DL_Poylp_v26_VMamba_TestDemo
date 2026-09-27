@@ -107,3 +107,15 @@ Toàn bộ tri thức của dự án được module hóa thành các tệp chuy
 - **Trạng thái khắc phục:** Nhóm nghiên cứu đã sử dụng trọng số gốc `best.pt`, vô hiệu hóa `fuse()`, áp dụng bản vá tọa độ an toàn và xuất thành công **ĐỦ CHÍNH XÁC 24 ẢNH KẾT QUẢ / SEED** đạt chuẩn 300 DPI, khớp 100% với `results.csv` tại thư mục:
   - `archive/Khac_phuc/Kvasir_BG20_YOLO26s_seg_TSVM_s0_w2/`
   - `archive/Khac_phuc/Kvasir_BG20_YOLO26s_seg_TSVM_s5_w2/`
+
+---
+
+## 7. BỘ PHÂN TÍCH VÀ TRỰC QUAN HÓA KẾT QUẢ ĐỐI SÁNH 10 SEED (`archive/KQ_Nen_DX_10seed/`)
+- **Bối cảnh & Mục tiêu:** Nhằm chuẩn bị số liệu và hệ thống đồ thị đạt chuẩn xuất bản cho luận văn, nhóm nghiên cứu đã xây dựng quy trình phân tích và trực quan hóa tự động đối sánh trọn vẹn **10 random seeds (s0 đến s9)** giữa **YOLO26s-seg Baseline** và **YOLO26s-seg + TSVM** trên bộ dữ liệu mở rộng BG20 (160 ảnh kiểm định, 127 polyp ground-truth, 40 ảnh nền âm tính).
+- **Vị trí lưu trữ:** Toàn bộ sản phẩm được đóng gói độc lập tại thư mục [`archive/KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed).
+- **Quy mô kết quả:** Gồm **39 tệp dữ liệu**, **11 bảng thống kê chi tiết** (Mean ± Std, Min/Max/Median/Range, Seed Win/Loss, Paired Student's t-test), **20 biểu đồ khoa học 300 DPI** thuộc 5 phân hệ (Performance, Stability, Distribution, Correlation, Confusion Matrix, Summary) và 2 báo cáo tổng hợp chuyên sâu ([`summary.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/summary.md), [`conclusions.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/conclusions.md)).
+- **Các phát hiện thực nghiệm cốt lõi (10 Seeds):**
+  1. *Hiệu năng:* TSVM đạt Mask mAP@50-95 trung bình **$0.7246 \pm 0.0078$**, cao hơn Baseline **$0.7210 \pm 0.0129$** (+0.0036, +0.49%). Mask Precision đạt **$0.9118 \pm 0.0246$** (+1.05%).
+  2. *Độ ổn định phương sai:* Phương sai của Baseline gấp **$2.75\times$** so với TSVM; biên độ dao động Range của TSVM co hẹp $35.5\%$, đáy hiệu năng xấu nhất được nâng đỡ từ 0.6941 lên 0.7065.
+  3. *Mất mát phân đoạn:* `val/seg_loss` của TSVM giảm từ $1.3045$ xuống **$1.2424$** (-4.76%, $p = 0.0908$).
+  4. *Phân biệt ảnh nền:* Trên 40 ảnh nền âm tính, TSVM giảm cảnh báo dương tính giả (FP) từ 17.4 ca xuống **14.6 ca/seed** (giảm 16.1% FP), nâng tỷ lệ nhận diện đúng niêm mạc bình thường (TN) từ 56.5% lên 63.5%.
