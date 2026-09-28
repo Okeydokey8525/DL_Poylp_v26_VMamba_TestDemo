@@ -1,45 +1,71 @@
-# 🔬 Nghiên Cứu Phương Pháp Tích Hợp VMamba Vào YOLO26-seg Trong Phân Đoạn Polyp Nội Soi Đại Trực Tràng
+# 📚 PROJECT KNOWLEDGE BASE
 
-> **Khóa luận Cử nhân ngành Công Nghệ Thông Tin (2026 – 2027) — Trường Đại học Công Thương TP.HCM (HUIT)**  
-> **Mã đề tài:** `CNTT_KLCN182`  
-> **Giảng viên hướng dẫn:** TS. Phùng Thế Bảo (`baopt@huit.edu.vn`)  
-> **Nhóm sinh viên thực hiện:** Lê Đức Lương (2001230490), Phùng Tuấn Huy (2001230312), Trần Mạnh Toàn (2001230830)  
-> **Tập dữ liệu chính thức:** `Kvasir_YOLO_SEG_BG20` (1.200 ảnh: bổ sung 20% ảnh nền âm tính `normal-cecum`, gồm 1.040 ảnh train và 160 ảnh val, đã hoàn tất huấn luyện đối chuẩn qua 10 random seeds).  
-> **Mô hình đề xuất:** `Topology-Shape-aware VMamba` (`TSVM`) & `Attention-VMamba Fusion` (`C2IAVM`)
+> Knowledge Base của dự án nghiên cứu VMamba + YOLO26-seg.
+>
+> **Snapshot ưu tiên:** 28/09/2026.  
+> **Nguồn trạng thái:** `/CURRENT_PROJECT_STATUS.md` và `archive/doc/CURRENT_PROJECT_STATUS.md`.
 
----
+## 1. Cách đọc Knowledge Base
 
-## 📑 HỆ THỐNG TÀI LIỆU KNOWLEDGE BASE (13 TỆP MARKDOWN CHUYÊN SÂU)
+### Current / Verified
+Dùng trước:
+- `CURRENT_PROJECT_STATUS.md`
+- raw CSV/artifact trong `archive/Ket_Qua_V2/`
+- source/config trong `archive/ultralytics_Topology-Shape-aware VMamba/`
 
-Toàn bộ hệ thống tài liệu được module hóa chặt chẽ theo chuẩn AI-Consumable Knowledge Base:
+### Historical
+Các hồ sơ `00_...` đến `17_...` mô tả các giai đoạn nghiên cứu, thí nghiệm và sự cố đã xảy ra. Chúng được giữ để truy vết và không mặc định đại diện cho trạng thái hiện tại.
 
-### 1. Tài liệu Kiến trúc & Điều hành Cốt lõi
-* 📘 [`00_TONG_QUAN_VA_TINH_HINH_DU_AN.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/00_TONG_QUAN_VA_TINH_HINH_DU_AN.md): Bối cảnh đề tài, thông tin nhóm tác giả, quy chuẩn tính toán Pure PyTorch trên CUDA và bảng đối chứng 6 seed của `C2IAVM`.
-* 💻 [`01_KIEN_TRUC_C2IAVM_CHAMPION_VA_CAC_BIEN_THE.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/01_KIEN_TRUC_C2IAVM_CHAMPION_VA_CAC_BIEN_THE.md): Bản đặc tả kỹ thuật kiến trúc, luồng tensor, thuật toán quét Hillis-Steele $\mathcal{O}(\log_2 L)$ và lớp vi phân giải tích `SelectiveScanAutograd`.
-* 📊 [`02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md): Bảng số liệu thực nghiệm 6-fold đối chứng 3 mô hình (Baseline vs TSVM vs C2IAVM), kiểm định F-test giảm phương sai $4.39\times$ và Paired t-test.
-* 🗂️ [`03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md): Sơ đồ các thư mục workspace và hướng dẫn tái lập kết quả thực nghiệm 100%.
+### Working rules
+Đọc trước khi làm task quan trọng:
+- `archive/doc/AI_WORK_OPTIMIZATION_RULE.md`
+- `archive/doc/nguyen-tac-lam-viec-dai.md`
 
-### 2. Hồ sơ Phân tích Từng Kết quả Chuyên sâu (Deep-Dive Dossiers)
-* 📈 [`04_KET_QUA_LOSS_VA_HOI_TU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/04_KET_QUA_LOSS_VA_HOI_TU.md): Phân tích động lực học loss, kiểm soát hàm phạt phân đoạn và chống quá khớp cuối khóa.
-* 🎯 [`05_KET_QUA_MAP_VA_DO_ON_DINH_SEED.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/05_KET_QUA_MAP_VA_DO_ON_DINH_SEED.md): Phân tích chi tiết Mask mAP@50-95, kiểm định F-test co hẹp phương sai 4.39x và tỷ lệ thắng 83.33%.
-* ⚕️ [`06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md): Đánh đổi Precision vs Recall, phân tích lâm sàng phát hiện 112.7/127 polyp, giảm tỷ lệ bỏ sót xuống 11.25%.
-* 🔍 [`07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md): Ma trận nhầm lẫn chuẩn hóa đối chiếu và đường cong Precision-Recall phân đoạn.
-* ⚡ [`08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md): Tham số (12.14M), GFLOPs (40.8), độ trễ 3 pha (25.0 ms), tốc độ 40.0 FPS trên GPU T4.
-* 🔬 [`09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/09_KHAO_SAT_ABLATION_TANG_10_VS_P5.md): Khảo sát thực nghiệm bóc tách 8 biến thể (P5 vs P3 Sobel vs Ghép tĩnh vs C2IAVM).
-* 🖼️ [`10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md): So sánh trực quan chất lượng mặt nạ phân đoạn đối chiếu Ground Truth.
-* 📋 [`11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/11_CHI_TIET_KET_QUA_P5_ATTENTION_VMAMBA.md): Chi tiết kết quả thực nghiệm biến thể P5.
-* 🏆 [`12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md): Hồ sơ toàn diện về mô hình C2IAVM.
-* 🔬 [`14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md): Hồ sơ toàn diện về mô hình Interactive Topology-Shape VMamba (`ITSMamba`) - Đạt kỷ lục phương sai $F=9.84\times$.
-* 📑 [`15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md): Cẩm nang phong cách thiết kế Word và ngôn ngữ học thuật báo cáo.
-* 🧪 [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md): Hồ sơ bộ dữ liệu chính thức `Kvasir_YOLO_SEG_BG20` (1.200 ảnh bổ sung 20% ảnh nền âm tính `normal-cecum`, gồm 1.040 train và 160 val) và kết quả thực nghiệm huấn luyện 10 seed trên GPU Tesla T4.
-* 🛠️ [`17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md): Báo cáo kỹ thuật sự cố tự động `model.fuse()` khi train Kaggle gây lỗi ảnh và giải pháp khôi phục trọn bộ 24 ảnh chuẩn/seed tại `archive/Khac_phuc/`.
-* 📜 [`LICHSU_CAP_NHAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md): Nhật ký tổng thể và lịch sử cập nhật phiên bản (Changelog v1.0 -> v2.8: hoàn thành gói phân tích thực nghiệm 10 seed tại `archive/KQ_Nen_DX_10seed/`).
+## 2. Tài liệu cốt lõi
 
----
+- `00_TONG_QUAN_VA_TINH_HINH_DU_AN.md` — tổng quan/lịch sử giai đoạn nghiên cứu.
+- `01_KIEN_TRUC_TSVM_TANG_10.md` — chi tiết TSVM Layer 10/P5.
+- `01_KIEN_TRUC_C2IAVM_CHAMPION_VA_CAC_BIEN_THE.md` — hồ sơ C2IAVM, historical.
+- `02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md` — kết quả đối chiếu cũ, đọc theo context.
+- `03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md` — tài liệu cấu trúc/reproducibility.
+- `04_KET_QUA_LOSS_VA_HOI_TU.md` đến `12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md` — các hồ sơ phân tích từng hướng.
+- `14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md` — hồ sơ ITSMamba.
+- `15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md` — phong cách báo cáo.
+- `16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md` — BG20 và các thực nghiệm mở rộng.
+- `17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md` — sự cố/fix artifact.
+- `LICHSU_CAP_NHAT.md` — changelog.
+- `training_results_audit.md` — audit kết quả.
+- `kvasir_yolo_seg_output_spec.md` — đặc tả dữ liệu YOLO-seg.
 
-## 🎨 HỆ THỐNG BIỂU ĐỒ & DỮ LIỆU ĐỐI CHUẨN XUẤT BẢN (300 DPI)
+## 3. Cấu trúc artifact hiện tại
 
-Các kho lưu trữ biểu đồ và báo cáo khoa học của đề tài:
-1. 📁 [`KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed): **Gói phân tích chuyên sâu 10 seed (Baseline vs TSVM trên BG20)** phục vụ trực tiếp luận văn (39 files, 11 bảng CSV, 20 biểu đồ 300 DPI, phân tích thống kê mô tả, kiểm định giả thuyết và ma trận nhầm lẫn chuẩn hóa).
-2. 📁 [`KQ_DoiXung/Base vs IAVM`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20IAVM): **45 tệp biểu đồ** đối chiếu 6-fold Kvasir-SEG giữa Baseline vs Mô hình C2IAVM.
-3. 📁 [`KQ_DoiXung/Base vs Topolo`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_DoiXung/Base%20vs%20Topolo): **46 tệp biểu đồ** đối chiếu 6-fold Kvasir-SEG giữa Baseline vs Mô hình TSVM.
+Các nhóm chính trong GitHub:
+
+- `archive/Ket_Qua_V1/`
+- `archive/Ket_Qua_V2/`
+- `archive/Kvasir-SEG/`
+- `archive/Cac_Dataset/`
+- `archive/Stracth/`
+- `archive/ultralytics_Topology-Shape-aware VMamba/`
+
+Không sử dụng các tên thư mục cũ trong tài liệu lịch sử như `archive/Ket_Qua/` nếu tree hiện tại không có chúng.
+
+## 4. Dataset và kết quả hiện tại
+
+BG20:
+
+- 1.200 ảnh.
+- 1.040 train.
+- 160 validation.
+- 120 validation ảnh polyp + 40 background.
+- 127 ground-truth polyp instances trong phần validation polyp.
+
+Bộ 10-seed chính gồm Baseline, TSVM, P5 Attention-VMamba và ITSMamba. IAVM chưa đủ 10 seed trong repository.
+
+## 5. Quy tắc sử dụng tài liệu
+
+- Không lấy một tài liệu historical làm source of truth cho current state.
+- Không tự tạo số liệu.
+- Không sửa raw CSV để khớp báo cáo.
+- Nếu source/config chưa tồn tại trên GitHub, không mô tả nó là implementation hiện tại.
+- Khi local/Kaggle mới hơn GitHub, phải ghi rõ trạng thái chưa đồng bộ.
