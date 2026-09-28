@@ -1,12 +1,12 @@
-# BỘ DỮ LIỆU MỞ RỘNG KVASIR_YOLO_SEG_BG20 VÀ HƯỚNG DẪN HUẤN LUYỆN ĐỐI SÁNH
-## ĐÁNH GIÁ ĐỘ ĐẶC HIỆU (SPECIFICITY) VÀ TRIỆT TIÊU HIỆN TƯỢNG BÁO ĐỘNG GIẢ NỀN
+# BỘ DỮ LIỆU CHÍNH THỨC KVASIR_YOLO_SEG_BG20 VÀ KẾT QUẢ THỰC NGHIỆM HUẤN LUYỆN 10 SEEDS
+## ĐÁNH GIÁ ĐỘ ĐẶC HIỆU (SPECIFICITY), ĐỘ ỔN ĐỊNH VÀ TRIỆT TIÊU HIỆN TƯỢNG BÁO ĐỘNG GIẢ NỀN
 
 ---
 
 > **Phân loại độ tin cậy thông tin theo nguyên tắc dự án:**
-> - `[Đã xác nhận]`: Dữ liệu 1.000 ảnh polyp gốc (Kvasir-SEG), 200 ảnh nền manh tràng lành (`normal-cecum`), đường dẫn dataset Kaggle `/kaggle/input/datasets/luonglieu/kvasir-yolo-seg-bg20/Kvasir_YOLO_SEG_BG20`, mã nguồn huấn luyện trên Ultralytics 8.4.127.
-> - `[Có khả năng / suy luận]`: Khả năng hạ tỷ lệ ô `[Predicted: polyp, True: background]` từ 1.00 xuống dưới 0.15 khi có sự xuất hiện của 40 ảnh nền trong tập validation.
-> - `[Chưa xác minh]`: Sự biến thiên nhỏ của Mask mAP@50-95 khi bổ sung 20% ảnh nền (chờ kết quả chạy thực tế trên Kaggle GPU T4).
+> - `[Đã xác nhận]`: Dữ liệu 1.000 ảnh polyp gốc (Kvasir-SEG) kết hợp bổ sung 20% ảnh nền âm tính manh tràng lành 200 ảnh (`normal-cecum`), tạo thành bộ dữ liệu chính thức `Kvasir_YOLO_SEG_BG20` (1.200 ảnh: 1.040 ảnh train, 160 ảnh val).
+> - `[Đã xác nhận]`: Toàn bộ quá trình huấn luyện đối chuẩn trên tập dữ liệu BG20 đã hoàn tất thực tế qua 10 random seeds (`s0` đến `s9`) trên GPU NVIDIA Tesla T4 (lưu tại `archive/KetQua_Nen/`).
+> - `[Đã xác nhận]`: Toàn bộ kết quả phân tích thống kê, kiểm định Paired t-test, ma trận nhầm lẫn 2x2 trên 40 ảnh nền âm tính và hệ thống 20 biểu đồ 300 DPI đã được hoàn tất và kiểm toán tại `archive/KQ_Nen_DX_10seed/`.
 
 ---
 

@@ -113,3 +113,31 @@ Trích xuất trực tiếp từ kết quả chạy thực tế tại [`Kvasir_Y
   ```bash
   yolo segment train data=Kvasir_YOLO_SEG/dataset.yaml model=yolo11x-seg.pt epochs=100 imgsz=640 batch=16
   ```
+
+---
+
+## 4. NÂNG CẤP BỘ DỮ LIỆU CHÍNH THỨC: `KVASIR_YOLO_SEG_BG20` (1.200 ẢNH)
+
+Nhằm đo lường chính xác độ đặc hiệu (Specificity), kiểm soát hiện tượng báo động giả (False Positive) trên niêm mạc đại trực tràng bình thường và khắc phục nhược điểm thiếu vắng True Negative (TN) của tập dữ liệu thuần bệnh học, nhóm nghiên cứu đã mở rộng và chuẩn hóa bộ dữ liệu chính thức của đề tài thành **`Kvasir_YOLO_SEG_BG20`**.
+
+### 4.1. Quy cách Cấu trúc Bộ Dữ liệu Chính thức
+* **Thư mục lưu trữ trong workspace:** [`Kvasir_YOLO_SEG_BG20/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Kvasir_YOLO_SEG_BG20)
+* **Tệp cấu hình YOLO chính thức:** [`data_bg20.yaml`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/data_bg20.yaml)
+* **Tổng số lượng ảnh:** **1.200 ảnh** (tăng thêm đúng 200 ảnh nền âm tính, tương đương 20% lượng ảnh polyp ban đầu).
+* **Nguồn ảnh âm tính:** Trích xuất ngẫu nhiên cố định (`seed=42`) đúng 200 ảnh niêm mạc manh tràng khỏe mạnh từ tập dữ liệu Kvasir v2 (`normal-cecum`).
+
+| Phân vùng dữ liệu | Số ảnh Polyp (Kvasir-SEG) | Số ảnh Nền (`normal-cecum`) | Tổng số ảnh | Đặc tả tệp nhãn (`labels/`) |
+| :--- | :---: | :---: | :---: | :--- |
+| **Tập Train (`images/train/`)** | 880 ảnh | **160 ảnh** | **1.040 ảnh** | 880 tệp đa giác polygon + 160 tệp rỗng (0 byte) |
+| **Tập Val (`images/val/`)** | 120 ảnh (127 polyp GT) | **40 ảnh** | **160 ảnh** | 120 tệp đa giác polygon + 40 tệp rỗng (0 byte) |
+| **Tổng cộng** | **1.000 ảnh** | **200 ảnh** (20%) | **1.200 ảnh** | Duy trì chặt chẽ tỷ lệ chia tập 80/20 |
+
+### 4.2. Trạng thái Huấn luyện Thực tế (Đã Hoàn Tất)
+* **Không còn ở giai đoạn dự kiến:** Bộ dữ liệu `Kvasir_YOLO_SEG_BG20` đã được nạp trực tiếp vào pipeline huấn luyện thực tế trên Kaggle GPU Tesla T4.
+* **Quy mô thực nghiệm đã hoàn thành:** Huấn luyện thành công trọn vẹn **10 random seeds (s0 đến s9)** cho các dòng mô hình:
+  - Baseline: `YOLOv26s-seg` (Đủ 10 seeds tại `archive/KetQua_Nen/YOLOv26s-seg/`)
+  - Đề xuất: `C2TSVMamba` (Đủ 10 seeds tại `archive/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM/`)
+  - Đối chứng: `P5_Attention_VMamba` (Đủ 10 seeds) và `ITSMamba` (Đủ 10 seeds)
+* **Hiệu quả lâm sàng trên 40 ảnh nền kiểm định:**
+  - Nhờ 40 ảnh nền âm tính, ma trận nhầm lẫn đã định lượng được chính xác $TN + FP = 40$ mẫu nền.
+  - TSVM giúp giảm tỷ lệ báo động giả từ 17.4 ca xuống 14.6 ca/seed (giảm 16.1% FP trên ảnh nền), tăng tỷ lệ nhận diện đúng niêm mạc bình thường (TN) từ 56.5% lên 63.5%.

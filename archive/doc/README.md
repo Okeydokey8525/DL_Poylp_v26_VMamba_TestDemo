@@ -4,7 +4,8 @@
 > **Mã đề tài:** `CNTT_KLCN182`  
 > **Giảng viên hướng dẫn:** TS. Phùng Thế Bảo (`baopt@huit.edu.vn`)  
 > **Nhóm sinh viên thực hiện:** Lê Đức Lương (2001230490), Phùng Tuấn Huy (2001230312), Trần Mạnh Toàn (2001230830)  
-> **Mô hình đề xuất cốt lõi (MÔ HÌNH ĐỀ XUẤT C2IAVM):** `Attention-VMamba Fusion` (`C2IAVM`)
+> **Tập dữ liệu chính thức:** `Kvasir_YOLO_SEG_BG20` (1.200 ảnh: bổ sung 20% ảnh nền âm tính `normal-cecum`, gồm 1.040 ảnh train và 160 ảnh val, đã hoàn tất huấn luyện đối chuẩn qua 10 random seeds).  
+> **Mô hình đề xuất:** `Topology-Shape-aware VMamba` (`TSVM`) & `Attention-VMamba Fusion` (`C2IAVM`)
 
 ---
 
@@ -30,7 +31,7 @@ Toàn bộ hệ thống tài liệu được module hóa chặt chẽ theo chu�
 * 🏆 [`12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/12_CHI_TIET_KET_QUA_IAVM_INTERACTIVE_ATTENTION_VMAMBA.md): Hồ sơ toàn diện về mô hình C2IAVM.
 * 🔬 [`14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/14_HUONG_8_INTERACTIVE_TOPOLOGY_VMAMBA.md): Hồ sơ toàn diện về mô hình Interactive Topology-Shape VMamba (`ITSMamba`) - Đạt kỷ lục phương sai $F=9.84\times$.
 * 📑 [`15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md): Cẩm nang phong cách thiết kế Word và ngôn ngữ học thuật báo cáo.
-* 🧪 [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md): Hồ sơ thực nghiệm mở rộng bộ dữ liệu BG20 (1.200 ảnh bổ sung 20% ảnh nền âm tính), triệt tiêu hiện tượng báo động giả 1.00 và hướng dẫn huấn luyện Kaggle.
+* 🧪 [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md): Hồ sơ bộ dữ liệu chính thức `Kvasir_YOLO_SEG_BG20` (1.200 ảnh bổ sung 20% ảnh nền âm tính `normal-cecum`, gồm 1.040 train và 160 val) và kết quả thực nghiệm huấn luyện 10 seed trên GPU Tesla T4.
 * 🛠️ [`17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md): Báo cáo kỹ thuật sự cố tự động `model.fuse()` khi train Kaggle gây lỗi ảnh và giải pháp khôi phục trọn bộ 24 ảnh chuẩn/seed tại `archive/Khac_phuc/`.
 * 📜 [`LICHSU_CAP_NHAT.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/LICHSU_CAP_NHAT.md): Nhật ký tổng thể và lịch sử cập nhật phiên bản (Changelog v1.0 -> v2.8: hoàn thành gói phân tích thực nghiệm 10 seed tại `archive/KQ_Nen_DX_10seed/`).
 

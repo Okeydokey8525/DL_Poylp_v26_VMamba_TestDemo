@@ -15,11 +15,29 @@
 | **v2.5** | 02/2026 | Mở rộng tập dữ liệu **Kvasir_YOLO_SEG_BG20** (+20% ảnh nền âm tính `normal-cecum`) giải quyết triệt để vấn đề độ đặc hiệu (Specificity) | Đã hoàn thành dataset |
 | **v2.6** | 24/03/2026 | Kiểm toán chất lượng kết quả huấn luyện BG20; phát hiện & giải quyết sự cố `model.fuse()` tự động của Ultralytics gây lỗi ảnh trên Kaggle; khôi phục thành công trọn bộ **24 ảnh kết quả chuẩn / seed** tại thư mục `archive/Khac_phuc/` | Đã hoàn thành |
 | **v2.7** | 27/03/2026 | Giải nén, phân loại và tích hợp 17 file kết quả huấn luyện mới từ Kaggle vào `archive/KetQua_Nen/`; mở rộng kiểm chứng Seed Robustness lên **10 seed** (tổng 47 runs/seeds); xây dựng công cụ kiểm toán và tổng hợp số liệu tự động | Đã hoàn thành |
-| **v2.8** | 27/03/2026 | Hoàn thành bộ phân tích chuyên sâu và trực quan hóa kết quả thực nghiệm 10 seed giữa **Baseline (YOLO26s-seg)** và **TSVM (Topology-Shape)** đạt chuẩn luận văn (39 files, 11 bảng CSV, 20 biểu đồ 300 DPI) tại `archive/KQ_Nen_DX_10seed/` | **Hiện tại (Mới nhất)** |
+| **v2.8** | 27/03/2026 | Hoàn thành bộ phân tích chuyên sâu và trực quan hóa kết quả thực nghiệm 10 seed giữa **Baseline (YOLO26s-seg)** và **TSVM (Topology-Shape)** đạt chuẩn luận văn (39 files, 11 bảng CSV, 20 biểu đồ 300 DPI) tại `archive/KQ_Nen_DX_10seed/` | Đã hoàn thành |
+| **v2.9** | 28/03/2026 | Đồng bộ hóa toàn diện tập dữ liệu chính thức **`Kvasir_YOLO_SEG_BG20`** (1.200 ảnh, bổ sung 20% ảnh nền âm tính `normal-cecum`); xác nhận trạng thái đã hoàn tất huấn luyện 10 seed thực tế và cập nhật xuyên suốt hệ thống tài liệu `doc/` | **Hiện tại (Mới nhất)** |
 
 ---
 
 ## 🕒 CHI TIẾT TỪNG MỐC CẬP NHẬT
+
+### 🌟 Phiên bản v2.9 (28/03/2026) – Đồng Bộ Hóa Tập Dữ Liệu Chính Thức Kvasir_YOLO_SEG_BG20 Xuyên Suốt Tài Liệu
+* **Người thực hiện:** Nhóm nghiên cứu `CNTT_KLCN182` & AI Pair Programming.
+* **Mục tiêu:** Cập nhật dứt điểm định nghĩa tập dữ liệu trong toàn bộ hệ thống file `.md` tại `archive/doc/`, xác định `Kvasir_YOLO_SEG_BG20` là tập dữ liệu chính thức của đề tài, đã có 20% ảnh nền âm tính và các mô hình đã được huấn luyện đối chuẩn thực tế trên tập này qua 10 random seeds (không còn ở trạng thái dự kiến hay chờ kết quả).
+* **Chi tiết công việc & Kết quả thực hiện:**
+  1. **Quy cách bộ dữ liệu chính thức:**
+     - Tổng cộng 1.200 ảnh: gồm 1.000 ảnh polyp từ Kvasir-SEG và bổ sung 200 ảnh niêm mạc manh tràng bình thường (`normal-cecum`) từ Kvasir v2.
+     - Tập Train: 1.040 ảnh (880 ảnh polyp có nhãn đa giác + 160 ảnh nền rỗng 0-byte).
+     - Tập Validation: 160 ảnh (120 ảnh polyp chứa 127 polyp GT + 40 ảnh nền rỗng 0-byte).
+     - Tệp cấu hình chuẩn: `data_bg20.yaml`.
+  2. **Trạng thái thực nghiệm:**
+     - Toàn bộ các dòng mô hình (Baseline YOLO26s-seg, TSVM, P5_Attention, ITSMamba) đã được huấn luyện hoàn tất trên Kaggle GPU Tesla T4 (lưu trữ đầy đủ tại `archive/KetQua_Nen/`).
+     - Khắc phục triệt để hiện tượng 1.00 False Positive do thiếu True Negative trong tập thuần polyp cũ.
+  3. **Đồng bộ hóa tài liệu thuyết minh:**
+     - Cập nhật [`00_TONG_QUAN_VA_TINH_HINH_DU_AN.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/00_TONG_QUAN_VA_TINH_HINH_DU_AN.md), [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md), [`03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md), [`kvasir_yolo_seg_output_spec.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/kvasir_yolo_seg_output_spec.md), [`README.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/README.md), [`YEU_CAU_DAC_TA_DU_LIEU_BO_SUNG_CROSS_DATASET.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/YEU_CAU_DAC_TA_DU_LIEU_BO_SUNG_CROSS_DATASET.md).
+
+---
 
 ### 🌟 Phiên bản v2.8 (27/03/2026) – Xây Dựng Trọn Bộ Phân Tích & Hệ Thống Biểu Đồ 10 Seed Chuẩn Luận Văn
 * **Người thực hiện:** Nhóm nghiên cứu `CNTT_KLCN182` & AI Pair Programming.

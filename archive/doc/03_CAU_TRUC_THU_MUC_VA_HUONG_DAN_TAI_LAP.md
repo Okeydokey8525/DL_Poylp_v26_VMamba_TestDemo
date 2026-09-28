@@ -51,12 +51,12 @@ c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\
 │   ├── 02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md  (Bảng số liệu thực nghiệm & kiểm định p-value)
 │   └── 03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md (Bản đồ thư mục & hướng dẫn thực thi)
 │
-├── Kvasir_YOLO_SEG_BG20\                       <-- BỘ DỮ LIỆU MỞ RỘNG BỔ SUNG 20% ẢNH NỀN (1.200 ẢNH)
-│   ├── images\ (train: 1.040, val: 160)
-│   ├── labels\ (train: 1.040 [160 rỗng], val: 160 [40 rỗng])
+├── Kvasir_YOLO_SEG_BG20\                       <-- TẬP DỮ LIỆU CHÍNH THỨC CỦA ĐỀ TÀI (1.200 ẢNH, ĐÃ HUẤN LUYỆN 10 SEEDS)
+│   ├── images\ (train: 1.040 [880 polyp + 160 nền], val: 160 [120 polyp + 40 nền])
+│   ├── labels\ (train: 1.040 [160 rỗng 0-byte], val: 160 [40 rỗng 0-byte])
 │   ├── selected_normal_cecum_train_160.txt     (Lưu vết ID 160 ảnh nền train)
 │   ├── selected_normal_cecum_val_40.txt       (Lưu vết ID 40 ảnh nền val)
-│   └── data_bg20.yaml                         (File cấu hình Ultralytics YOLO cho tập BG20)
+│   └── data_bg20.yaml                         (File cấu hình Ultralytics YOLO chính thức cho tập BG20)
 │
 ├── normal-cecum\                              <-- KHO DỮ LIỆU GỐC 1.000 ẢNH KHÔNG BỆNH (KVASIR V2)
 │   └── normal-cecum\                          (1.000 file ảnh .jpg niêm mạc manh tràng lành)
@@ -90,28 +90,32 @@ python "c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\Stracth\ve
 ```
 *Kết quả kỳ vọng:* Xuất ra thông báo `[+] PASS: Forward Pass hoan hao` và `[+] PASS: Backward Pass thanh cong`.
 
-### Bước 2: Tái lập bảng so sánh thống kê 6-Fold
-Chạy script đọc 12 tệp `results.csv` và tính toán lại toàn bộ chỉ số kèm $p$-value:
+### Bước 2: Tái lập kiểm toán và phân tích 10 Seed trên tập BG20
+Chạy script tổng hợp và kiểm toán tự động kết quả thực nghiệm 10 seeds (`s0` đến `s9`) trên tập dữ liệu chính thức `Kvasir_YOLO_SEG_BG20`:
 ```bash
-python "c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\Stracth\evaluate_baseline_vs_tsvm.py"
+python "c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\Stracth\summarize_ketqua_nen.py"
 ```
-*Kết quả kỳ vọng:* In bảng so sánh Mean ± Std và khẳng định `val/seg_loss` có $p = 0.0363 < 0.05$.
+*Kết quả:* Kiểm toán 47 runs trong `KetQua_Nen/` và xuất file tổng hợp `bg20_all_seeds_metrics.csv`.
 
-### Bước 3: Xuất số liệu dạng bảng CSV sạch
-Chạy script xuất dữ liệu ra file bảng tính để chèn vào Excel hoặc Word:
-```bash
-python "c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\Stracth\export_benchmark_summary.py"
-```
-*Kết quả:* Tạo ra 2 tệp `baseline_vs_tsvm_folds.csv` và `baseline_vs_tsvm_aggregated.csv` trong thư mục `Stracth/`.
+### Bước 3: Tái lập toàn bộ 20 biểu đồ khoa học 10 Seed (Baseline vs TSVM)
+Chạy script phân tích đối sánh 10 seed tại thư mục `archive/KQ_Nen_DX_10seed/`:
+- Dữ liệu thống kê: [`06_reports/summary.csv`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/summary.csv)
+- Báo cáo nhận xét học thuật: [`06_reports/conclusions.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/conclusions.md)
+- 20 biểu đồ 300 DPI trong `05_charts/` và 12 biểu đồ template đối xứng chuẩn hóa trong `figures/`.
+
+### Bước 4: Tái lập Benchmark Hiệu năng Độc lập (Efficiency Benchmark)
+Thực thi đo đạc tham số, GFLOPs, dung lượng checkpoint, thời gian trễ và FPS trên CPU:
+- Báo cáo chi tiết: [`efficiency_benchmark/reports/benchmark_report.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/efficiency_benchmark/reports/benchmark_report.md)
+- Bảng tổng hợp: [`efficiency_benchmark/tables/accuracy_efficiency_summary.csv`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/efficiency_benchmark/tables/accuracy_efficiency_summary.csv)
 
 ---
 
-## 3. CHECKLIST CÔNG VIỆC CẦN LÀM TIẾP THEO (NEXT STEPS)
+## 3. CHECKLIST CÔNG VIỆC CỦA DỰ ÁN
 
-- [x] Giải nén toàn bộ các tệp kết quả của Baseline và TSVM ra thư mục làm việc.
-- [x] Phân tích code kiến trúc module Tầng 10 (`C2TSVMamba`).
-- [x] Lập bảng so sánh đối chiếu và kiểm định ý nghĩa thống kê Paired t-test ($p < 0.05$).
-- [x] Xây dựng các script thực thi độc lập đặt tại thư mục `Stracth/`.
-- [x] Viết tài liệu bàn giao dự án hoàn chỉnh tại thư mục `doc/`.
-- [ ] Cập nhật bảng số liệu thực tế này vào **Chương 5 (Kết quả thực nghiệm & Thảo luận)** của bản thảo luận văn `Baocao/Bao_cao_Khoa_luan_Cu_nhan_VMamba_YOLO26-seg_Polyp.docx`.
-- [ ] Chuẩn bị slide PowerPoint tóm tắt luận điểm: *"TSVM cải thiện đáng kể loss phân đoạn ranh giới polyp (p=0.0363) và giảm phương sai giữa các fold 3 lần, giải quyết đúng mục tiêu của đề tài."*
+- [x] Chuẩn hóa bộ dữ liệu chính thức `Kvasir_YOLO_SEG_BG20` (1.200 ảnh, bổ sung 20% ảnh nền âm tính `normal-cecum`).
+- [x] Huấn luyện hoàn tất 10 random seeds (`s0`–`s9`) trên Kaggle GPU Tesla T4 cho Baseline và TSVM (lưu tại `KetQua_Nen/`).
+- [x] Kiểm toán dữ liệu và giải quyết triệt để sự cố `model.fuse()` khi xuất ảnh Kaggle.
+- [x] Xây dựng bộ phân tích đối sánh 10 seed chuyên sâu (39 tệp dữ liệu, 20 biểu đồ 300 DPI) tại `KQ_Nen_DX_10seed/`.
+- [x] Đo đạc và xây dựng bộ benchmark hiệu năng tính toán độc lập tại `efficiency_benchmark/`.
+- [x] Đồng bộ hóa toàn bộ tài liệu thuyết minh và báo cáo kỹ thuật tại `doc/`.
+- [ ] Tích hợp bảng số liệu 10 seed và hệ thống biểu đồ đạt chuẩn vào bản thảo luận văn Word (`Baocao/Bao_cao_Khoa_luan_Cu_nhan_VMamba_YOLO26-seg_Polyp.docx`).

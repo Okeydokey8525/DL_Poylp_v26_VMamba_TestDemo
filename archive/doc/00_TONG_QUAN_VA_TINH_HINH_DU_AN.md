@@ -12,7 +12,7 @@
 >   1. Lê Đức Lương (MSSV: `2001230490` - Nhóm trưởng)
 >   2. Phùng Tuấn Huy (MSSV: `2001230312`)
 >   3. Trần Mạnh Toàn (MSSV: `2001230830`)
-> - **Tập dữ liệu chuẩn:** Kvasir-SEG (880 ảnh train, 120 ảnh validation, 127 polyp thực tế có ground-truth mask pixel).
+> - **Tập dữ liệu chính thức:** Kvasir_YOLO_SEG_BG20 (Tổng cộng 1.200 ảnh: gồm 1.000 ảnh polyp từ Kvasir-SEG và bổ sung 20% ảnh nền âm tính là 200 ảnh manh tràng bình thường `normal-cecum` từ Kvasir v2. Trong đó tập train gồm 1.040 ảnh [880 ảnh polyp + 160 ảnh nền rỗng], tập validation gồm 160 ảnh [120 ảnh polyp chứa 127 polyp thực tế ground-truth + 40 ảnh nền rỗng 0-byte]). Toàn bộ các mô hình đã được huấn luyện thực tế thành công trên bộ dữ liệu này qua 10 random seeds (s0–s9).
 > - **Môi trường huấn luyện:** Kaggle GPU NVIDIA Tesla T4 (14.912 MiB VRAM), PyTorch 2.10.0+cu128, Python 3.12.
 > - **Siêu tham số thực nghiệm cố định:** Epochs: 100, Imgsz: 640, Batch: 8, Workers: 2, Optimizer: AdamW (`lr0=0.001`, `warmup_epochs=5.0`), `close_mosaic=10`, AMP: `False` (FP32 nghiêm ngặt), khóa tất định 100%.
 
@@ -54,7 +54,9 @@ Dự án phát triển một hệ thống toàn diện gồm 8 biến thể ph�
 
 ---
 
-## 4. TỔNG HỢP KẾT QUẢ ĐỐI CHUẨN CỦA MÔ HÌNH C2IAVM TRÊN TẬP KVASIR-SEG GỐC
+## 4. TỔNG HỢP KẾT QUẢ ĐỐI CHUẨN TRÊN TẬP KVASIR-SEG GỐC (GIAI ĐOẠN KHẢO SÁT 6 SEEDS)
+
+*Ghi chú lịch sử:* Đây là kết quả ở giai đoạn khảo sát ban đầu trên 1.000 ảnh thuần polyp. Sau giai đoạn này, nhóm nghiên cứu đã nâng cấp và chính thức chuyển toàn bộ quá trình huấn luyện sang bộ dữ liệu mở rộng **Kvasir_YOLO_SEG_BG20** (1.200 ảnh: bổ sung 20% ảnh nền âm tính) như mô tả ở Mục 6 và Mục 7.
 
 Bảng đối chứng trung bình 6 seed (`s0` đến `s5`, 100 epochs/seed):
 

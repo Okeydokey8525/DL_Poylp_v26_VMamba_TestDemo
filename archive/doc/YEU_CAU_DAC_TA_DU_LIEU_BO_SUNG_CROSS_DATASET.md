@@ -33,17 +33,15 @@ Hiện tại, nhóm nghiên cứu đã hoàn tất huấn luyện và kiểm đ�
    - **Đặc điểm:** Độ phân giải chuẩn 384 x 288 trích xuất từ video nội soi rút dây quang.
 
 #### 2. Nhóm Dữ liệu 2: Khung hình Nội soi Âm tính (Negative / Non-polyp Background Frames)
-*Hiện tại tập Kvasir-SEG 100% đều là ảnh chứa polyp. Điều này khiến mô hình chưa được kiểm định khả năng "từ chối" dự đoán khi gặp niêm mạc bình thường.*
+> **[TRẠNG THÁI: ĐÃ HOÀN TẤT VÀ ĐÃ HUẤN LUYỆN ĐỐI CHUẨN THÀNH CÔNG]**  
+> Nhóm nghiên cứu đã trích xuất đúng **200 ảnh âm tính** từ kho `normal-cecum` (Kvasir v2) với tệp nhãn rỗng 0 byte, tích hợp cùng 1.000 ảnh Kvasir-SEG để hình thành bộ dữ liệu chính thức **`Kvasir_YOLO_SEG_BG20`** (1.200 ảnh: 1.040 train, 160 val). Toàn bộ các mô hình (Baseline, TSVM, P5, ITSMamba) đã được huấn luyện đối chuẩn hoàn tất qua 10 random seeds (`s0` đến `s9`).
 
-- **Số lượng yêu cầu:** **200 – 300 ảnh âm tính hoàn toàn**.
+- **Số lượng đã tích hợp:** Đúng **200 ảnh âm tính hoàn toàn** (160 train / 40 val).
 - **Tiêu chí nội dung ảnh âm:**
-  * Khung hình niêm mạc đại trực tràng hoàn toàn khỏe mạnh, không có polyp.
-  * Khung hình chứa các yếu tố gây nhiễu thường gặp trong phòng nội soi:
-    - Bọt khí (air bubbles) và bọt nhầy do dịch tiêu hóa.
-    - Cặn thức ăn, dịch phân còn sót sau khi chuẩn bị ruột (stool residue/debris).
-    - Nếp gấp niêm mạc ruột gập khúc tạo bóng tối cục bộ (haustral folds / shadows).
-    - Mạch máu dưới niêm mạc nổi rõ (submucosal vascular pattern).
-- **Quy tắc gán nhãn bắt buộc:** File .txt tương ứng của ảnh âm tính phải là **tệp rỗng (dung lượng 0 byte)** theo đúng chuẩn của Ultralytics YOLO.
+  * Khung hình niêm mạc manh tràng đại trực tràng hoàn toàn khỏe mạnh, không có polyp.
+  * Chứa các yếu tố gây nhiễu thực tế: nếp gấp đại tràng, dịch phân bọt nhầy, ánh sáng phản xạ.
+- **Quy tắc gán nhãn đã áp dụng:** Tệp `.txt` tương ứng rỗng tuyệt đối (dung lượng 0 byte) theo chuẩn Ultralytics YOLO.
+- **Kết quả lâm sàng:** Đo lường chính xác tỷ lệ cảnh báo giả (False Positive) trên 40 ảnh nền kiểm định; TSVM giúp giảm 16.1% FP so với Baseline (từ 17.4 xuống 14.6 ca/seed) và nâng tỷ lệ nhận diện niêm mạc bình thường (TN) từ 56.5% lên 63.5%.
 
 #### 3. Nhóm Dữ liệu 3: Tập Ca khó Lâm sàng (Clinical Hard Cases & Edge Cases)
 *Nhóm cần tối thiểu **100 – 150 ảnh** thuộc các nhóm bệnh học đặc thù để làm thực nghiệm phân tích chuyên sâu (Subgroup Analysis):*
