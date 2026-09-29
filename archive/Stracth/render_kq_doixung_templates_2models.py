@@ -13,18 +13,25 @@ fig_dir = r'c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\Ket_Qu
 os.makedirs(fig_dir, exist_ok=True)
 
 # EXACTLY 2 MODELS: Baseline and TSVM
+def find_model_dir(folder_name):
+    p1 = os.path.join(r'c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\Ket_Qua_V2\KetQua_Nen', folder_name)
+    if os.path.exists(p1):
+        return p1
+    p2 = os.path.join(r'c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KetQua_Nen', folder_name)
+    return p2
+
 models_info = [
     {
         'id': 'Baseline',
         'label': 'Baseline YOLO26s-seg',
         'color': '#1f77b4',
-        'dir': r'c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KetQua_Nen\YOLOv26s-seg'
+        'dir': find_model_dir('YOLOv26s-seg')
     },
     {
         'id': 'TSVM',
         'label': 'TSVM (Topology-Shape)',
         'color': '#ff7f0e',
-        'dir': r'c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KetQua_Nen\Kvasir_BG20_YOLO26s_seg_TSVM'
+        'dir': find_model_dir('Kvasir_BG20_YOLO26s_seg_TSVM')
     }
 ]
 
@@ -285,47 +292,64 @@ plt.close()
 print("Generated:", p6)
 
 # ==============================================================================
-# CHART 7: 10_radar_multiobjective_tradeoff.png (2 Models)
+# CHART 7: 10_radar_multiobjective_tradeoff.png (2 Models: Left BOX vs Right MASK)
 # ==============================================================================
-categories = ['Mask mAP50-95', 'Mask mAP50', 'Precision', 'Recall', 'Stability (1/Var)', 'Loss Opt (1/Loss)']
+categories = [
+    'Mask mAP@50-95',
+    'Mask mAP@50',
+    'Mask Precision',
+    'Mask Recall',
+    'Box Recall',
+    'Box Precision',
+    'Box mAP@50',
+    'Box mAP@50-95'
+]
+
+keys = [
+    'mask_map50_95',
+    'mask_map50',
+    'mask_precision',
+    'mask_recall',
+    'box_recall',
+    'box_precision',
+    'box_map50',
+    'box_map50_95'
+]
+
 N = len(categories)
-angles = [n / float(N) * 2 * np.pi for n in range(N)]
+angles = [np.pi/8 + n * (2 * np.pi / N) for n in range(N)]
 angles += angles[:1]
 
-fig, ax = plt.subplots(figsize=(7.5, 7.5), subplot_kw=dict(polar=True), dpi=300)
+fig, ax = plt.subplots(figsize=(8.2, 8.2), subplot_kw=dict(polar=True), dpi=300)
 
 for m in models_info:
     mid = m['id']
-    fm = final_metrics[mid]
-    # Normalize each metric scientifically into [50, 90] bounds for clean visualization
-    v_map = np.clip((fm['mask_map50_95'] - 0.70) / (0.74 - 0.70) * 40 + 50, 45, 95)
-    v_map50 = np.clip((fm['mask_map50'] - 0.88) / (0.94 - 0.88) * 40 + 50, 45, 95)
-    v_p = np.clip((fm['precision'] - 0.85) / (0.95 - 0.85) * 40 + 50, 45, 95)
-    v_r = np.clip((fm['recall'] - 0.80) / (0.90 - 0.80) * 40 + 50, 45, 95)
-    
-    # Stability: inverse variance of 10 seeds (higher is more stable)
-    inv_var = 1.0 / (fm['mask_map50_95_std']**2)
-    v_stab = np.clip((inv_var - 4000) / (18000 - 4000) * 40 + 50, 45, 95)
-    
-    # Loss Optimization: lower loss is better (val_seg_loss range [1.15, 1.40])
-    v_loss = np.clip(((1.40 - fm['val_seg_loss']) / (1.40 - 1.15)) * 40 + 50, 45, 95)
-    
-    vals = [float(v_map), float(v_map50), float(v_p), float(v_r), float(v_stab), float(v_loss)]
+    vals = [float(np.mean(final_metrics[mid][k])) if isinstance(final_metrics[mid][k], list) else float(final_metrics[mid][k]) for k in keys]
     vals += vals[:1]
-    
-    ax.plot(angles, vals, linewidth=2.2, linestyle='solid', label=m['label'], color=m['color'])
+    ax.plot(angles, vals, linewidth=2.4, linestyle='solid', label=m['label'], color=m['color'])
     ax.fill(angles, vals, color=m['color'], alpha=0.18)
 
 ax.set_theta_offset(np.pi / 2)
 ax.set_theta_direction(-1)
 ax.set_xticks(angles[:-1])
 ax.set_xticklabels(categories, fontsize=10.5, fontweight='bold')
-ax.set_ylim(40, 100)
-ax.set_yticks([50, 60, 70, 80, 90, 100])
-ax.set_yticklabels(['50', '60', '70', '80', '90', '100'], fontsize=9, color='#555555')
-plt.title("Đánh Đổi Đa Mục Tiêu (Multi-Objective Radar Profile)\nBaseline vs TSVM trên Bộ Dữ Liệu BG20 (10 Seeds)", fontsize=13, fontweight='bold', pad=22)
-plt.legend(loc='upper right', bbox_to_anchor=(1.30, 1.12), frameon=True, fontsize=10)
-plt.tight_layout()
+ax.tick_params(pad=14)
+
+ax.set_ylim(0.65, 0.95)
+ax.set_yticks([0.70, 0.75, 0.80, 0.85, 0.90, 0.95])
+ax.set_yticklabels(['0.70', '0.75', '0.80', '0.85', '0.90', '0.95'], fontsize=8.5, color='#555555')
+
+# Vertical divider
+ax.axvline(0, color='#888888', linestyle='--', alpha=0.5, linewidth=1.2)
+ax.axvline(np.pi, color='#888888', linestyle='--', alpha=0.5, linewidth=1.2)
+
+# Two badges for hemispheres
+plt.figtext(0.88, 0.50, 'MASK METRICS\n(Phân Đoạn)', ha='center', va='center', fontsize=10, fontweight='bold', color='#b34700', bbox=dict(boxstyle='round,pad=0.4', facecolor='#fff5eb', edgecolor='#ff7f0e', alpha=0.9))
+plt.figtext(0.12, 0.50, 'BOX METRICS\n(Phát Hiện)', ha='center', va='center', fontsize=10, fontweight='bold', color='#0f4c81', bbox=dict(boxstyle='round,pad=0.4', facecolor='#f0f7fc', edgecolor='#1f77b4', alpha=0.9))
+
+plt.title('Đối Chiếu Đa Chiều Toàn Diện (Multi-Metric Radar Comparison)\nBox Detection (Bên Trái) vs Mask Segmentation (Bên Phải) qua 10 Seeds', fontsize=12, fontweight='bold', pad=32)
+plt.legend(loc='lower center', bbox_to_anchor=(0.5, -0.11), ncol=2, frameon=True, fontsize=10.5)
+
 p7 = os.path.join(fig_dir, '10_radar_multiobjective_tradeoff.png')
 plt.savefig(p7, bbox_inches='tight')
 plt.close()
