@@ -464,10 +464,10 @@ cm_cells = ['True Positive (TP)\n[Phát hiện đúng]', 'False Negative (FN)\n[
 x = np.arange(len(cm_cells))
 width = 0.35
 
-vals_b = [112.4, 14.6, 13.5, 26.5]
-errs_b = [2.8, 2.8, 4.2, 4.2]
-vals_t = [113.8, 13.2, 11.8, 28.2]
-errs_t = [2.1, 2.1, 3.1, 3.1]
+vals_b = [final_metrics['Baseline'][k] for k in ['TP', 'FN', 'FP', 'TN']]
+errs_b = [final_metrics['Baseline'][f'{k}_std'] for k in ['TP', 'FN', 'FP', 'TN']]
+vals_t = [final_metrics['TSVM'][k] for k in ['TP', 'FN', 'FP', 'TN']]
+errs_t = [final_metrics['TSVM'][f'{k}_std'] for k in ['TP', 'FN', 'FP', 'TN']]
 
 r1 = plt.bar(x - width/2, vals_b, width, yerr=errs_b, capsize=5, label='Baseline YOLO26s-seg', color='#1f77b4', edgecolor='black', alpha=0.88)
 r2 = plt.bar(x + width/2, vals_t, width, yerr=errs_t, capsize=5, label='TSVM (Topology-Shape)', color='#ff7f0e', edgecolor='black', alpha=0.88)
