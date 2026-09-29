@@ -10,7 +10,7 @@ plt.rcParams['font.sans-serif'] = 'DejaVu Sans'
 plt.rcParams['axes.edgecolor'] = '#333333'
 plt.rcParams['axes.linewidth'] = 1.0
 
-fig_dir = r'c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Nen_DX_10seed\figures'
+fig_dir = r'c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Nen_DX_10seed\figures\legacy_4models'
 os.makedirs(fig_dir, exist_ok=True)
 
 # 4 models
@@ -59,55 +59,35 @@ for m in models_info:
 for m in models_info:
     print(f"Model {m['id']}: loaded {len(curves_data[m['id']])} seeds")
 
-# 10-seed final summary metrics (evaluated from official logs)
-final_metrics = {
-    'Baseline': {
-        'mask_map50_95': 0.7210, 'mask_map50_95_std': 0.0129,
-        'mask_map50': 0.8879, 'mask_map50_std': 0.0118,
-        'precision': 0.9023, 'precision_std': 0.0339,
-        'recall': 0.8584, 'recall_std': 0.0252,
-        'box_map50_95': 0.7816, 'box_map50_95_std': 0.0104,
-        'val_seg_loss': 1.7649, 'val_seg_loss_std': 0.0298,
-        'seeds_mAP': [0.7208, 0.7303, 0.7384, 0.7285, 0.7161, 0.7209, 0.7099, 0.7268, 0.6974, 0.7207],
-        'seeds_loss': [1.7770, 1.7454, 1.7163, 1.7423, 1.7827, 1.7627, 1.7915, 1.7582, 1.8151, 1.7582],
-        'TP': 112.4, 'TP_std': 2.8, 'FN': 14.6, 'FN_std': 2.8, 'FP': 13.5, 'FP_std': 4.2, 'TN': 26.5, 'TN_std': 4.2
-    },
-    'TSVM': {
-        'mask_map50_95': 0.7246, 'mask_map50_95_std': 0.0078,
-        'mask_map50': 0.8863, 'mask_map50_std': 0.0110,
-        'precision': 0.9118, 'precision_std': 0.0246,
-        'recall': 0.8625, 'recall_std': 0.0173,
-        'box_map50_95': 0.7869, 'box_map50_95_std': 0.0076,
-        'val_seg_loss': 1.7454, 'val_seg_loss_std': 0.0177,
-        'seeds_mAP': [0.7291, 0.7329, 0.7377, 0.7258, 0.7247, 0.7135, 0.7196, 0.7226, 0.7188, 0.7214],
-        'seeds_loss': [1.7460, 1.7335, 1.7197, 1.7508, 1.7562, 1.7723, 1.7538, 1.7441, 1.7314, 1.7465],
-        'TP': 113.8, 'TP_std': 2.1, 'FN': 13.2, 'FN_std': 2.1, 'FP': 11.8, 'FP_std': 3.1, 'TN': 28.2, 'TN_std': 3.1
-    },
-    'P5_VMamba': {
-        'mask_map50_95': 0.7165, 'mask_map50_95_std': 0.0075,
-        'mask_map50': 0.8756, 'mask_map50_std': 0.0121,
-        'precision': 0.8983, 'precision_std': 0.0285,
-        'recall': 0.8338, 'recall_std': 0.0220,
-        'box_map50_95': 0.7788, 'box_map50_95_std': 0.0084,
-        'val_seg_loss': 1.7582, 'val_seg_loss_std': 0.0199,
-        'seeds_mAP': [0.7211, 0.7154, 0.7235, 0.7089, 0.7201, 0.7052, 0.7248, 0.7163, 0.7124, 0.7171],
-        'seeds_loss': [1.7482, 1.7610, 1.7420, 1.7791, 1.7503, 1.7820, 1.7391, 1.7654, 1.7710, 1.7438],
-        'TP': 109.8, 'TP_std': 2.6, 'FN': 17.2, 'FN_std': 2.6, 'FP': 13.9, 'FP_std': 3.7, 'TN': 26.1, 'TN_std': 3.7
-    },
-    'ITSMamba': {
-        'mask_map50_95': 0.7203, 'mask_map50_95_std': 0.0101,
-        'mask_map50': 0.8824, 'mask_map50_std': 0.0089,
-        'precision': 0.9205, 'precision_std': 0.0268,
-        'recall': 0.8485, 'recall_std': 0.0261,
-        'box_map50_95': 0.7801, 'box_map50_95_std': 0.0125,
-        'val_seg_loss': 1.7630, 'val_seg_loss_std': 0.0210,
-        'seeds_mAP': [0.7185, 0.7251, 0.7312, 0.7140, 0.7228, 0.7084, 0.7305, 0.7199, 0.7089, 0.7237],
-        'seeds_loss': [1.7650, 1.7512, 1.7380, 1.7745, 1.7580, 1.7910, 1.7420, 1.7632, 1.7890, 1.7581],
-        'TP': 111.1, 'TP_std': 3.2, 'FN': 15.9, 'FN_std': 3.2, 'FP': 10.6, 'FP_std': 3.3, 'TN': 29.4, 'TN_std': 3.3
-    }
-}
+# Summary metrics are derived from each model's own results.csv files.
+FINAL_METRICS = {}
+for m in models_info:
+    mid = m['id']
+    seed_rows = []
+    for df in curves_data[mid]:
+        if 'metrics/mAP50-95(M)' not in df.columns:
+            continue
+        idx = df['metrics/mAP50-95(M)'].idxmax()
+        row = df.loc[idx]
+        seed_rows.append({
+            'mask_map50_95': float(row['metrics/mAP50-95(M)']),
+            'mask_map50': float(row['metrics/mAP50(M)']),
+            'precision': float(row['metrics/precision(M)']),
+            'recall': float(row['metrics/recall(M)']),
+            'box_map50_95': float(row['metrics/mAP50-95(B)']),
+            'val_seg_loss': float(row['val/seg_loss']),
+        })
+    if len(seed_rows) != 10:
+        raise RuntimeError(f"{mid}: expected 10 valid seed results, found {len(seed_rows)}")
+    FINAL_METRICS[mid] = {}
+    for key in ['mask_map50_95','mask_map50','precision','recall','box_map50_95','val_seg_loss']:
+        vals = np.array([r[key] for r in seed_rows], dtype=float)
+        FINAL_METRICS[mid][key] = float(vals.mean())
+        FINAL_METRICS[mid][f'{key}_std'] = float(vals.std(ddof=1))
+    FINAL_METRICS[mid]['seeds_mAP'] = [r['mask_map50-95'] for r in seed_rows] if False else [r['mask_map50_95'] for r in seed_rows]
+    FINAL_METRICS[mid]['seeds_loss'] = [r['val_seg_loss'] for r in seed_rows]
+final_metrics = FINAL_METRICS
 
-# ==============================================================================
 # CHART 1: 01_overall_benchmark_barchart.png
 # Template: KQ_DoiXung 01_overall_benchmark_barchart.png
 # Layout: Grouped barchart with 4 metrics, error bars (Mean ± 1 Std) for 4 models
