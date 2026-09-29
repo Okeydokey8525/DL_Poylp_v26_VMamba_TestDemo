@@ -451,7 +451,11 @@ print("Generated:", p9)
 plt.figure(figsize=(7, 6), dpi=300)
 diff_cm = cms[1] - cms[0]
 im = plt.imshow(diff_cm, cmap='RdBu_r', vmin=-0.15, vmax=0.15)
-plt.title("Ma Trận Chênh Lệch Hiệu Số (TSVM - Baseline)\nÔ FN Giảm (-0.011), Ô FP Giảm (-0.043)", fontsize=12, fontweight='bold', pad=15)
+fn_diff = diff_cm[0, 1]
+fp_diff = diff_cm[1, 0]
+fn_desc = f"Ô FN Giảm ({fn_diff:+.3f})" if fn_diff <= 0 else f"Ô FN Tăng ({fn_diff:+.3f})"
+fp_desc = f"Ô FP Giảm ({fp_diff:+.3f})" if fp_diff <= 0 else f"Ô FP Tăng ({fp_diff:+.3f})"
+plt.title(f"Ma Trận Chênh Lệch Hiệu Số (TSVM - Baseline)\n{fn_desc}, {fp_desc}", fontsize=12, fontweight='bold', pad=15)
 plt.xticks([0, 1], ['polyp', 'background'], fontsize=10.5, fontweight='bold')
 plt.yticks([0, 1], ['polyp', 'background'], fontsize=10.5, fontweight='bold')
 plt.xlabel("Predicted Label", fontsize=11, fontweight='bold')

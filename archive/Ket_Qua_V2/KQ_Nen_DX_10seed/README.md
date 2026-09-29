@@ -86,7 +86,7 @@ KQ_Nen_DX_10seed/
 ---
 
 ## 3. Các Phát Hiện Thực Nghiệm Chính
-1. **Hiệu năng trung bình**: TSVM cải thiện Mask mAP@50-95 từ **0.7210 lên 0.7246** (+0.0036, +0.50%), Mask Precision từ **0.9023 lên 0.9118** (+0.0095, +1.05%).
-2. **Độ ổn định hạt ngẫu nhiên**: Độ biến thiên giữa các seed của TSVM thu hẹp đáng kể (Std giảm từ 0.0129 xuống 0.0078, tỷ lệ phương sai giảm 2.74 lần; Range co hẹp 35.5%). Đáy hiệu năng kém nhất được nâng từ 0.6941 lên 0.7065.
-3. **Mất mát phân đoạn (Val Seg Loss)**: Thể hiện xu hướng giảm ổn định từ **1.3045 xuống 1.2424** (-4.76%, p = 0.0908, cận mức ý nghĩa thống kê với α=0.10).
-4. **Phân biệt nền & giảm cảnh báo giả**: Trên 40 ảnh nền âm tính, TSVM giảm số dự đoán dương tính giả từ 17.4 ca xuống 14.6 ca/seed (giảm 16.1% FP), nâng độ chính xác nhận diện nền TN từ 56.5% lên 63.5%.
+1. **Hiệu năng trung bình**: Mask mAP@50-95 của TSVM là **0.7246** so với **0.7210** của Baseline (+0.0036, +0.49%); Mask Precision là **0.9118** so với **0.9023**.
+2. **Độ ổn định hạt ngẫu nhiên**: Std Mask mAP@50-95 là **0.0129** ở Baseline và **0.0078** ở TSVM; Range lần lượt là **0.0425** và **0.0273**.
+3. **Mất mát phân đoạn (Val Seg Loss)**: Mean thay đổi từ **1.3045** xuống **1.2424** (-0.0622, -4.76%, p = 0.0908).
+4. **Phân biệt nền & giảm cảnh báo giả**: Trên 40 ảnh nền âm tính, TSVM có FP trung bình **14.6** so với **16.8** của Baseline; TN trung bình lần lượt **25.4** và **23.2**.

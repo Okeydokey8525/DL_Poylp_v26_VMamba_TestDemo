@@ -38,7 +38,7 @@ Số lần lặp ngẫu nhiên: 10 seeds độc lập (seed 0 đến 9), huấn 
 
 ## 3. So Sánh Seed-by-Seed (Tỷ lệ thắng/thua theo từng hạt ngẫu nhiên)
 
-- **Mask mAP@50-95**: TSVM cao hơn ở **6/10 seed** (s0, s1, s3, s4, s6, s8); Baseline cao hơn ở **4/10 seed** (s2, s5, s7, s9).
-- **Mask Precision**: TSVM cao hơn ở **7/10 seed**; Baseline cao hơn ở **3/10 seed**.
-- **Mask Recall**: TSVM cao hơn ở **5/10 seed**; Baseline cao hơn ở **4/10 seed**; Hòa **1 seed**.
+- **Mask mAP@50-95**: TSVM cao hơn ở **6/10 seed** (s1, s2, s3, s6, s8, s9); Baseline cao hơn ở **4/10 seed** (s0, s4, s5, s7).
+- **Mask Precision**: TSVM cao hơn ở **5/10 seed**; Baseline cao hơn ở **5/10 seed**.
+- **Mask Recall**: TSVM cao hơn ở **6/10 seed**; Baseline cao hơn ở **4/10 seed**.
 - **Validation Segmentation Loss**: TSVM có loss thấp hơn ở **8/10 seed**; Baseline thấp hơn ở **2/10 seed**.
