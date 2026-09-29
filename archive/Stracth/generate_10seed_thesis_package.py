@@ -95,35 +95,29 @@ print(f"Extracted {len(df_raw)} records (10 Baseline + 10 TSVM). Saved to 01_raw
 # -------------------------------------------------------------
 # 2. CONFUSION MATRIX DATA (EMPIRICALLY VERIFIED FOR ALL 10 SEEDS)
 # -------------------------------------------------------------
-# Baseline 10 seeds (TP, FN, FP, TN)
-# Ground-truth: Polyp instances = 127 (TP + FN = 127)
-# Background images = 40 (FP + TN = 40)
-cm_data = [
-    # Baseline
-    {'model': 'Baseline', 'seed': 0, 'TP': 111, 'FN': 16, 'FP': 18, 'TN': 22},
-    {'model': 'Baseline', 'seed': 1, 'TP': 107, 'FN': 20, 'FP': 20, 'TN': 20},
-    {'model': 'Baseline', 'seed': 2, 'TP': 110, 'FN': 17, 'FP': 17, 'TN': 23},
-    {'model': 'Baseline', 'seed': 3, 'TP': 111, 'FN': 16, 'FP': 16, 'TN': 24},
-    {'model': 'Baseline', 'seed': 4, 'TP': 112, 'FN': 15, 'FP': 15, 'TN': 25},
-    {'model': 'Baseline', 'seed': 5, 'TP': 112, 'FN': 15, 'FP': 14, 'TN': 26},
-    {'model': 'Baseline', 'seed': 6, 'TP': 114, 'FN': 13, 'FP': 17, 'TN': 23},
-    {'model': 'Baseline', 'seed': 7, 'TP': 107, 'FN': 20, 'FP': 16, 'TN': 24},
-    {'model': 'Baseline', 'seed': 8, 'TP': 115, 'FN': 12, 'FP': 21, 'TN': 19},
-    {'model': 'Baseline', 'seed': 9, 'TP': 104, 'FN': 23, 'FP': 14, 'TN': 26},
-    # TSVM
-    {'model': 'TSVM', 'seed': 0, 'TP': 108, 'FN': 19, 'FP': 8, 'TN': 32},
-    {'model': 'TSVM', 'seed': 1, 'TP': 114, 'FN': 13, 'FP': 16, 'TN': 24},
-    {'model': 'TSVM', 'seed': 2, 'TP': 110, 'FN': 17, 'FP': 13, 'TN': 27},
-    {'model': 'TSVM', 'seed': 3, 'TP': 114, 'FN': 13, 'FP': 15, 'TN': 25},
-    {'model': 'TSVM', 'seed': 4, 'TP': 113, 'FN': 14, 'FP': 18, 'TN': 22},
-    {'model': 'TSVM', 'seed': 5, 'TP': 112, 'FN': 15, 'FP': 7, 'TN': 33},
-    {'model': 'TSVM', 'seed': 6, 'TP': 112, 'FN': 15, 'FP': 17, 'TN': 23},
-    {'model': 'TSVM', 'seed': 7, 'TP': 108, 'FN': 19, 'FP': 21, 'TN': 19},
-    {'model': 'TSVM', 'seed': 8, 'TP': 111, 'FN': 16, 'FP': 14, 'TN': 26},
-    {'model': 'TSVM', 'seed': 9, 'TP': 110, 'FN': 17, 'FP': 17, 'TN': 23},
+# Load canonical confusion matrix CSV
+cm_canonical_candidates = [
+    Path(r"c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\Ket_Qua_V2\KQ_Nen_DX_10seed\01_raw_analysis\raw_10seeds_confusion_matrices.csv"),
+    ROOT_OUT / "01_raw_analysis" / "raw_10seeds_confusion_matrices.csv",
+    DIRS["raw"] / "raw_10seeds_confusion_matrices.csv"
 ]
+cm_canonical_file = None
+for p in cm_canonical_candidates:
+    if p.exists():
+        cm_canonical_file = p
+        break
 
-df_cm = pd.DataFrame(cm_data)
+if cm_canonical_file is None:
+    raise FileNotFoundError(f"Missing canonical confusion matrix CSV in candidates: {cm_canonical_candidates}")
+
+df_cm = pd.read_csv(cm_canonical_file)
+df_cm.columns = [c.strip() for c in df_cm.columns]
+
+# Ensure required columns exist
+required_cols = {'model', 'seed', 'TP', 'FN', 'FP', 'TN'}
+if not required_cols.issubset(set(df_cm.columns)):
+    raise ValueError(f"Canonical CM CSV missing required columns: {required_cols - set(df_cm.columns)}")
+
 # Add percentage metrics
 df_cm['TP_rate_%'] = (df_cm['TP'] / (df_cm['TP'] + df_cm['FN'])) * 100
 df_cm['FN_rate_%'] = (df_cm['FN'] / (df_cm['TP'] + df_cm['FN'])) * 100
@@ -131,7 +125,7 @@ df_cm['FP_rate_%'] = (df_cm['FP'] / (df_cm['FP'] + df_cm['TN'])) * 100
 df_cm['TN_rate_%'] = (df_cm['TN'] / (df_cm['FP'] + df_cm['TN'])) * 100
 
 df_cm.to_csv(DIRS["raw"] / "raw_10seeds_confusion_matrices.csv", index=False)
-print("Saved verified CM data to 01_raw_analysis.")
+print(f"Loaded verified CM data from canonical source: {cm_canonical_file}")
 
 # -------------------------------------------------------------
 # 3. STATISTICAL ANALYSIS & TABLES GENERATION
@@ -854,10 +848,10 @@ Số lần lặp ngẫu nhiên: 10 seeds độc lập (seed 0 đến 9), huấn 
 
 ## 3. So Sánh Seed-by-Seed (Tỷ lệ thắng/thua theo từng hạt ngẫu nhiên)
 
-- **Mask mAP@50-95**: TSVM cao hơn ở **6/10 seed** (s0, s1, s3, s4, s6, s8); Baseline cao hơn ở **4/10 seed** (s2, s5, s7, s9).
-- **Mask Precision**: Từ **{df_b['mask_precision'].mean():.4f} ± {df_b['mask_precision'].std(ddof=1):.4f}** lên **{df_t['mask_precision'].mean():.4f} ± {df_t['mask_precision'].std(ddof=1):.4f}** ({df_t['mask_precision'].mean()-df_b['mask_precision'].mean():+.4f}, {((df_t['mask_precision'].mean()-df_b['mask_precision'].mean())/df_b['mask_precision'].mean())*100:+.2f}%, p = {df_summary.loc[df_summary['metric_key']=='mask_precision', 'p_value_ttest'].values[0]:.4f}).
-- **Mask Recall**: Từ **{df_b['mask_recall'].mean():.4f} ± {df_b['mask_recall'].std(ddof=1):.4f}** lên **{df_t['mask_recall'].mean():.4f} ± {df_t['mask_recall'].std(ddof=1):.4f}** ({df_t['mask_recall'].mean()-df_b['mask_recall'].mean():+.4f}, {((df_t['mask_recall'].mean()-df_b['mask_recall'].mean())/df_b['mask_recall'].mean())*100:+.2f}%).
-- **Validation Segmentation Loss**: Từ **{df_b['val_seg_loss'].mean():.4f} ± {df_b['val_seg_loss'].std(ddof=1):.4f}** xuống **{df_t['val_seg_loss'].mean():.4f} ± {df_t['val_seg_loss'].std(ddof=1):.4f}**.
+- **Mask mAP@50-95**: TSVM cao hơn ở **{int(df_summary.loc[df_summary['metric_key']=='mask_map50_95', 'tsvm_wins_seeds'].values[0])}/10 seed** ({', '.join(f's{s}' for s in df_seed_cmp[df_seed_cmp['Delta_mask_map50_95'] > 0]['seed'])}); Baseline cao hơn ở **{int(df_summary.loc[df_summary['metric_key']=='mask_map50_95', 'baseline_wins_seeds'].values[0])}/10 seed** ({', '.join(f's{s}' for s in df_seed_cmp[df_seed_cmp['Delta_mask_map50_95'] < 0]['seed'])}).
+- **Mask Precision**: TSVM cao hơn ở **{int(df_summary.loc[df_summary['metric_key']=='mask_precision', 'tsvm_wins_seeds'].values[0])}/10 seed**; Baseline cao hơn ở **{int(df_summary.loc[df_summary['metric_key']=='mask_precision', 'baseline_wins_seeds'].values[0])}/10 seed**{f"; Hòa **{int(df_summary.loc[df_summary['metric_key']=='mask_precision', 'ties_seeds'].values[0])} seed**" if int(df_summary.loc[df_summary['metric_key']=='mask_precision', 'ties_seeds'].values[0]) > 0 else ""}.
+- **Mask Recall**: TSVM cao hơn ở **{int(df_summary.loc[df_summary['metric_key']=='mask_recall', 'tsvm_wins_seeds'].values[0])}/10 seed**; Baseline cao hơn ở **{int(df_summary.loc[df_summary['metric_key']=='mask_recall', 'baseline_wins_seeds'].values[0])}/10 seed**{f"; Hòa **{int(df_summary.loc[df_summary['metric_key']=='mask_recall', 'ties_seeds'].values[0])} seed**" if int(df_summary.loc[df_summary['metric_key']=='mask_recall', 'ties_seeds'].values[0]) > 0 else ""}.
+- **Validation Segmentation Loss**: TSVM có loss thấp hơn ở **{int(df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'tsvm_wins_seeds'].values[0])}/10 seed**; Baseline thấp hơn ở **{int(df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'baseline_wins_seeds'].values[0])}/10 seed**{f"; Hòa **{int(df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'ties_seeds'].values[0])} seed**" if int(df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'ties_seeds'].values[0]) > 0 else ""}.
 """
 
 with open(DIRS["reports"] / "summary.md", "w", encoding="utf-8") as f:
@@ -874,10 +868,10 @@ Tất cả các nhận xét dưới đây được xây dựng hoàn toàn dựa
 ### Nhóm 1 — Performance (Hiệu năng tổng thể)
 - **Mask mAP@50-95**: TSVM đạt trung bình **{df_t['mask_map50_95'].mean():.4f} ± {df_t['mask_map50_95'].std(ddof=1):.4f}**, so với Baseline là **{df_b['mask_map50_95'].mean():.4f} ± {df_b['mask_map50_95'].std(ddof=1):.4f}**. Chênh lệch thực nghiệm là **{df_t['mask_map50_95'].mean() - df_b['mask_map50_95'].mean():+.4f} ({((df_t['mask_map50_95'].mean() - df_b['mask_map50_95'].mean()) / df_b['mask_map50_95'].mean()) * 100:+.2f}%).**
 - **Mask mAP@50**: TSVM đạt **{df_t['mask_map50'].mean():.4f} ± {df_t['mask_map50'].std(ddof=1):.4f}**, Baseline đạt **{df_b['mask_map50'].mean():.4f} ± {df_b['mask_map50'].std(ddof=1):.4f}** (chênh lệch **{df_t['mask_map50'].mean() - df_b['mask_map50'].mean():+.4f}, {((df_t['mask_map50'].mean() - df_b['mask_map50'].mean()) / df_b['mask_map50'].mean()) * 100:+.2f}%**).
-- **Kiểm định thống kê**: Phép kiểm Paired t-test cho thấy p-value của Mask mAP@50-95 là **{df_summary.loc[df_summary['metric_key']=='mask_map50_95', 'p_value_ttest'].values[0]:.4f}** (p > 0.05). Do đó, mức tăng mAP trung bình (+0.0036) là một **chênh lệch thực nghiệm dương tính ở mức vừa phải**, chưa đạt ngưỡng ý nghĩa thống kê nghiêm ngặt α=0.05 để khẳng định có sự cách biệt mang tính xác định tuyệt đối về độ đo mAP đơn thuần.
+- **Kiểm định thống kê**: Phép kiểm Paired t-test cho thấy p-value của Mask mAP@50-95 là **{df_summary.loc[df_summary['metric_key']=='mask_map50_95', 'p_value_ttest'].values[0]:.4f}** (p > 0.05). Do đó, mức tăng mAP trung bình ({df_t['mask_map50_95'].mean() - df_b['mask_map50_95'].mean():+.4f}) là một **chênh lệch thực nghiệm dương tính ở mức vừa phải**, chưa đạt ngưỡng ý nghĩa thống kê nghiêm ngặt α=0.05 để khẳng định có sự cách biệt mang tính xác định tuyệt đối về độ đo mAP đơn thuần.
 
 ### Nhóm 2 — Stability (Độ ổn định giữa các seed)
-- **Độ co cụm phương sai (Variance Contraction)**: Độ lệch chuẩn của Mask mAP@50-95 giảm từ **0.0129** (Baseline) xuống **0.0078** (TSVM), tương ứng tỷ lệ phương sai giảm **{(df_b['mask_map50_95'].std(ddof=1)**2) / (df_t['mask_map50_95'].std(ddof=1)**2):.2f} lần**.
+- **Độ co cụm phương sai (Variance Contraction)**: Độ lệch chuẩn của Mask mAP@50-95 giảm từ **{df_b['mask_map50_95'].std(ddof=1):.4f}** (Baseline) xuống **{df_t['mask_map50_95'].std(ddof=1):.4f}** (TSVM), tương ứng tỷ lệ phương sai giảm **{(df_b['mask_map50_95'].std(ddof=1)**2) / (df_t['mask_map50_95'].std(ddof=1)**2):.2f} lần**.
 - **Biên độ dao động (Range = Max - Min)**: Baseline dao động từ {df_b['mask_map50_95'].min():.4f} đến {df_b['mask_map50_95'].max():.4f} (Range = **{df_b['mask_map50_95'].max()-df_b['mask_map50_95'].min():.4f}**), TSVM từ {df_t['mask_map50_95'].min():.4f} đến {df_t['mask_map50_95'].max():.4f} (Range = **{df_t['mask_map50_95'].max()-df_t['mask_map50_95'].min():.4f}**).
 - **Đáy hiệu năng (Worst-case floor)**: Seed thấp nhất của TSVM là {df_t['mask_map50_95'].min():.4f} (seed {int(df_t.loc[df_t['mask_map50_95'].idxmin(), 'seed'])}), so với seed thấp nhất của Baseline là {df_b['mask_map50_95'].min():.4f} (seed {int(df_b.loc[df_b['mask_map50_95'].idxmin(), 'seed'])}). Điều này mô tả phân bố thực nghiệm giữa các seed; không dùng riêng thống kê này để khẳng định cơ chế nguyên nhân.
 
@@ -888,12 +882,12 @@ Tất cả các nhận xét dưới đây được xây dựng hoàn toàn dựa
 
 ### Nhóm 4 — Validation Loss
 - **Validation Segmentation Loss**: Từ **{df_b['val_seg_loss'].mean():.4f} ± {df_b['val_seg_loss'].std(ddof=1):.4f}** xuống **{df_t['val_seg_loss'].mean():.4f} ± {df_t['val_seg_loss'].std(ddof=1):.4f}**. Mức thay đổi trung bình là **{df_t['val_seg_loss'].mean()-df_b['val_seg_loss'].mean():+.4f} ({((df_t['val_seg_loss'].mean()-df_b['val_seg_loss'].mean())/df_b['val_seg_loss'].mean())*100:+.2f}%)**.
-- **Ý nghĩa thống kê**: Phép kiểm định Paired t-test đạt **p = {df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'p_value_ttest'].values[0]:.4f}**. Diễn giải ý nghĩa thống kê cần dựa trực tiếp trên ngưỡng α=0.05., chứng minh hàm mục tiêu phân đoạn của TSVM hội tụ tốt hơn và nhất quán hơn trên tập validation.
+- **Ý nghĩa thống kê**: Phép kiểm định Paired t-test đạt **p = {df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'p_value_ttest'].values[0]:.4f}**. Diễn giải ý nghĩa thống kê cần dựa trực tiếp trên ngưỡng α=0.05 để đánh giá mức độ hội tụ của hàm mục tiêu phân đoạn trên tập validation.
 
 ### Nhóm 5 — Confusion Matrix & Background Discrimination
 Dựa trên ma trận nhầm lẫn trung bình 10 seed (127 polyp ground-truth, 40 ảnh nền âm tính):
-- **True Positive (TP)**: TSVM đạt trung bình **{df_cm_t['TP'].mean():.1f}** (87.6%), cao hơn Baseline **{df_cm_b['TP'].mean():.1f}** (86.9%).
-- **False Negative (FN)**: TSVM giảm bỏ sót polyp xuống còn **{df_cm_t['FN'].mean():.1f}** (12.4%) so với Baseline **{df_cm_b['FN'].mean():.1f}** (13.1%).
+- **True Positive (TP)**: TSVM đạt trung bình **{df_cm_t['TP'].mean():.1f}** ({df_cm_t['TP'].mean()/127*100:.1f}%), so với Baseline **{df_cm_b['TP'].mean():.1f}** ({df_cm_b['TP'].mean()/127*100:.1f}%).
+- **False Negative (FN)**: TSVM giảm bỏ sót polyp xuống còn **{df_cm_t['FN'].mean():.1f}** ({df_cm_t['FN'].mean()/127*100:.1f}%) so với Baseline **{df_cm_b['FN'].mean():.1f}** ({df_cm_b['FN'].mean()/127*100:.1f}%).
 - **False Positive (FP trên ảnh nền)**: TSVM có FP trung bình **{df_cm_t['FP'].mean():.1f}** ({df_cm_t['FP'].mean()/40*100:.1f}%) so với Baseline **{df_cm_b['FP'].mean():.1f}** ({df_cm_b['FP'].mean()/40*100:.1f}%). Chênh lệch trung bình là **{df_cm_t['FP'].mean()-df_cm_b['FP'].mean():+.1f}** ca/lần chạy.
 - **True Negative (TN trên ảnh nền)**: TSVM có TN trung bình **{df_cm_t['TN'].mean():.1f}** ({df_cm_t['TN'].mean()/40*100:.1f}%) so với Baseline **{df_cm_b['TN'].mean():.1f}** ({df_cm_b['TN'].mean()/40*100:.1f}%).
 - **Nhận định**: Trong bộ dữ liệu kiểm tra này, TSVM có số FP trung bình thấp hơn Baseline. Kết quả này mô tả hiện tượng quan sát được; không đủ để riêng ma trận nhầm lẫn xác định nguyên nhân cơ chế.
@@ -906,7 +900,7 @@ Dựa trên ma trận nhầm lẫn trung bình 10 seed (127 polyp ground-truth, 
 
 ### Giới Hạn Nghiên Cứu Cần Nêu Trong Luận Văn
 1. Tập kiểm tra gồm 160 ảnh từ một trung tâm nội soi (Kvasir-SEG). Cần kiểm thử thêm trên các tập đa trung tâm (CVC-ClinicDB, BKAI-IGH, ETIS-Larib) để đánh giá tính tổng quát hóa ngoại suy.
-2. Dù mAP@50-95 tăng ổn định (+0.50%) và Val Seg Loss giảm có ý nghĩa thống kê (p < 0.05), mức chênh lệch mAP tổng thể vẫn ở mức vừa phải, đóng góp chính của TSVM nằm ở **nâng cao độ ổn định khởi tạo** và **giảm báo động giả (FP) trên ảnh nền**.
+2. Dù Mask mAP@50-95 có mức chênh lệch ({((df_t['mask_map50_95'].mean() - df_b['mask_map50_95'].mean()) / df_b['mask_map50_95'].mean()) * 100:+.2f}%) và Val Seg Loss giảm ({((df_t['val_seg_loss'].mean() - df_b['val_seg_loss'].mean()) / df_b['val_seg_loss'].mean()) * 100:+.2f}%, p = {df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'p_value_ttest'].values[0]:.4f}), mức chênh lệch mAP tổng thể vẫn ở mức vừa phải, đóng góp chính của TSVM nằm ở **nâng cao độ ổn định khởi tạo** và **giảm báo động giả (FP) trên ảnh nền**.
 """
 
 with open(DIRS["reports"] / "conclusions.md", "w", encoding="utf-8") as f:
