@@ -16,11 +16,23 @@
 | **v2.6** | 24/03/2026 | Kiểm toán chất lượng kết quả huấn luyện BG20; phát hiện & giải quyết sự cố `model.fuse()` tự động của Ultralytics gây lỗi ảnh trên Kaggle; khôi phục thành công trọn bộ **24 ảnh kết quả chuẩn / seed** tại thư mục `archive/Khac_phuc/` | Đã hoàn thành |
 | **v2.7** | 27/03/2026 | Giải nén, phân loại và tích hợp 17 file kết quả huấn luyện mới từ Kaggle vào `archive/KetQua_Nen/`; mở rộng kiểm chứng Seed Robustness lên **10 seed** (tổng 47 runs/seeds); xây dựng công cụ kiểm toán và tổng hợp số liệu tự động | Đã hoàn thành |
 | **v2.8** | 27/03/2026 | Hoàn thành bộ phân tích chuyên sâu và trực quan hóa kết quả thực nghiệm 10 seed giữa **Baseline (YOLO26s-seg)** và **TSVM (Topology-Shape)** đạt chuẩn luận văn (39 files, 11 bảng CSV, 20 biểu đồ 300 DPI) tại `archive/KQ_Nen_DX_10seed/` | Đã hoàn thành |
-| **v2.9** | 28/03/2026 | Đồng bộ hóa toàn diện tập dữ liệu chính thức **`Kvasir_YOLO_SEG_BG20`** (1.200 ảnh, bổ sung 20% ảnh nền âm tính `normal-cecum`); xác nhận trạng thái đã hoàn tất huấn luyện 10 seed thực tế và cập nhật xuyên suốt hệ thống tài liệu `doc/` | **Hiện tại (Mới nhất)** |
+| **v2.9** | 28/03/2026 | Đồng bộ hóa toàn diện tập dữ liệu chính thức **`Kvasir_YOLO_SEG_BG20`** (1.200 ảnh, bổ sung 20% ảnh nền âm tính `normal-cecum`); xác nhận trạng thái đã hoàn tất huấn luyện 10 seed thực tế và cập nhật xuyên suốt hệ thống tài liệu `doc/` | Đã hoàn thành |
+| **v3.0** | 29/09/2026 | Khảo sát và lập tài liệu truy xuất nguồn gốc mã nguồn (Provenance Tracking) của thư mục `Ket_Qua_V2/KQ_Nen_DX_10seed/`, định danh các script Python sinh dữ liệu và hướng dẫn tái chạy cho GPT/AI tiếp quản ([`18_ANH_XA_SCRIPT_VA_NGUON_GOC_KET_QUA_10SEED.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/18_ANH_XA_SCRIPT_VA_NGUON_GOC_KET_QUA_10SEED.md)) | **Hiện tại (Mới nhất)** |
 
 ---
 
 ## 🕒 CHI TIẾT TỪNG MỐC CẬP NHẬT
+
+### 🌟 Phiên bản v3.0 (29/09/2026) – Thiết Lập Báo Cáo Ánh Xạ Script Và Nguồn Gốc Kết Quả 10-Seed Phục Vụ Bàn Giao GPT
+* **Người thực hiện:** Nhóm nghiên cứu & AI Pair Programming.
+* **Mục tiêu:** Định danh chính xác mối quan hệ giữa mã nguồn thực thi và các tệp dữ liệu, biểu đồ trong `archive/Ket_Qua_V2/KQ_Nen_DX_10seed/`, hỗ trợ bàn giao và trao đổi thông tin chuẩn xác cho các mô hình AI khác (GPT).
+* **Nội dung hoàn thành:**
+  1. Ban hành tài liệu [`18_ANH_XA_SCRIPT_VA_NGUON_GOC_KET_QUA_10SEED.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/18_ANH_XA_SCRIPT_VA_NGUON_GOC_KET_QUA_10SEED.md) phân tích rõ 3 phân hệ bên trong `Ket_Qua_V2/KQ_Nen_DX_10seed`:
+     - Phân hệ thống kê 10-seed & 20 chart khoa học (`01` -> `06`): Do script [`generate_10seed_thesis_package.py`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Stracth/generate_10seed_thesis_package.py) sinh ra.
+     - Phân hệ 12 biểu đồ đối sánh trực diện (`figures/`): Do script [`render_kq_doixung_templates_2models.py`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Stracth/render_kq_doixung_templates_2models.py) sinh ra.
+     - Phân hệ Benchmark hiệu năng phần cứng (`efficiency_benchmark/`): Do script [`benchmark_runner.py`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Stracth/benchmark_runner.py) và [`plot_efficiency_charts_2models.py`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Stracth/plot_efficiency_charts_2models.py) sinh ra.
+  2. Cung cấp bảng tra cứu nhanh (Quick lookup table) và quy trình 4 bước tái thực thi (Re-execution protocol) xử lý sự chuyển dịch đường dẫn từ `archive/KQ_Nen_DX_10seed/` sang `archive/Ket_Qua_V2/KQ_Nen_DX_10seed/`.
+  3. Cập nhật chỉ mục tại [`archive/doc/README.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/README.md).
 
 ### 🌟 Phiên bản v2.9 (28/03/2026) – Đồng Bộ Hóa Tập Dữ Liệu Chính Thức Kvasir_YOLO_SEG_BG20 Xuyên Suốt Tài Liệu
 * **Người thực hiện:** Nhóm nghiên cứu `CNTT_KLCN182` & AI Pair Programming.
