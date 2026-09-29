@@ -33,6 +33,7 @@ Các hồ sơ `00_...` đến `17_...` mô tả các giai đoạn nghiên cứu,
 - `15_CAM_NANG_PHONG_CACH_WORD_VA_NGON_NGU_HOC_THUAT.md` — phong cách báo cáo.
 - `16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md` — BG20 và các thực nghiệm mở rộng.
 - `17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md` — sự cố/fix artifact.
+- `18_ANH_XA_SCRIPT_VA_NGUON_GOC_KET_QUA_10SEED.md` — báo cáo ánh xạ script và nguồn gốc dữ liệu 10-seed trong `Ket_Qua_V2/KQ_Nen_DX_10seed` (AI handoff cho GPT).
 - `LICHSU_CAP_NHAT.md` — changelog.
 - `training_results_audit.md` — audit kết quả.
 - `kvasir_yolo_seg_output_spec.md` — đặc tả dữ liệu YOLO-seg.
