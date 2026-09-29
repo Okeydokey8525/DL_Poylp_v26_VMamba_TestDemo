@@ -80,8 +80,8 @@ Ket_Qua_V2/KQ_Nen_DX_10seed/
   5. `05_metric_curves_mAP.png`: Diễn biến Mask mAP@50-95 và mAP@50 qua 100 epochs.
   6. `07b_pie_head_to_head_winrate.png`: Donut chart tỷ lệ thắng đối đầu (TSVM thắng 6/10 seeds = 60%, Baseline thắng 4/10 seeds = 40%).
   7. `09_metric_stability_band_area.png`: Dải miền bao phủ cực trị $[\text{Min}, \text{Max}]$ kết hợp đường trung bình.
-  8. `10_radar_multiobjective_tradeoff.png`: Radar chart 6 trục đánh đổi đa mục tiêu.
-  9. `11_boxplot_variance_stability.png`: Biểu đồ hộp kết hợp jitter points chứng minh co hẹp phương sai.
+  8. `10_radar_multiobjective_tradeoff.png`: Radar chart đối xứng 8 trục so sánh toàn diện các chỉ số kết quả thực tế (Nửa bên trái: Box Detection, Nửa bên phải: Mask Segmentation).
+  9. `11_boxplot_variance_stability.png`: Biểu đồ hộp kết hợp jitter points của 10 seed chứng minh co hẹp phương sai chuyên biệt cho Mask mAP@50-95 (đã tinh gọn bỏ subplot Loss).
   10. `12_confusion_matrix_mean_comparison.png`: Ma trận nhầm lẫn chuẩn hóa trung bình 10 seeds.
   11. `13_confusion_matrix_diff_heatmap.png`: Heatmap chênh lệch hiệu số ($\text{TSVM} - \text{Baseline}$).
   12. `14_confusion_cells_grouped_barchart.png`: Cột nhóm so sánh trung bình số lượng các ô TP, FN, FP, TN.
