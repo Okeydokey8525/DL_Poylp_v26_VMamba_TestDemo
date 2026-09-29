@@ -392,10 +392,25 @@ print("Generated:", p8)
 # Layout: 1x2 normalized Confusion Matrices (Baseline vs TSVM)
 # ==============================================================================
 fig, axes = plt.subplots(1, 2, figsize=(12, 5.5), dpi=300)
+# Canonical confusion-matrix source for Baseline/TSVM only.
+cm_source = os.path.join(os.path.dirname(fig_dir), '..', '01_raw_analysis', 'raw_10seeds_confusion_matrices.csv')
+if not os.path.exists(cm_source):
+    raise FileNotFoundError(f"Missing canonical confusion-matrix CSV: {cm_source}")
+cm_df = pd.read_csv(cm_source)
+for mid in ['Baseline', 'TSVM']:
+    part = cm_df[cm_df['model'] == mid].sort_values('seed')
+    if len(part) != 10:
+        raise RuntimeError(f"{mid}: expected 10 confusion-matrix rows, found {len(part)}")
+    for key in ['TP','FN','FP','TN']:
+        vals = part[key].to_numpy(dtype=float)
+        FINAL_METRICS[mid][key] = float(vals.mean())
+        FINAL_METRICS[mid][f'{key}_std'] = float(vals.std(ddof=1))
+
 cms = [
-    # Normalized rates: [[TP/127, FN/127], [FP/40, TN/40]]
-    np.array([[112.4/127, 14.6/127], [13.5/40, 26.5/40]]),
-    np.array([[113.8/127, 13.2/127], [11.8/40, 28.2/40]])
+    np.array([[FINAL_METRICS['Baseline']['TP']/127.0, FINAL_METRICS['Baseline']['FN']/127.0],
+              [FINAL_METRICS['Baseline']['FP']/40.0, FINAL_METRICS['Baseline']['TN']/40.0]]),
+    np.array([[FINAL_METRICS['TSVM']['TP']/127.0, FINAL_METRICS['TSVM']['FN']/127.0],
+              [FINAL_METRICS['TSVM']['FP']/40.0, FINAL_METRICS['TSVM']['TN']/40.0]])
 ]
 cm_titles = [
     f"Baseline YOLO26s-seg\nmAP@50-95: {final_metrics['Baseline']['mask_map50_95']:.4f} ± {final_metrics['Baseline']['mask_map50_95_std']:.4f}",
@@ -497,8 +512,12 @@ print("Generated:", p11)
 # Layout: Donut chart of head-to-head win rate across 10 seeds (6/10 wins)
 # ==============================================================================
 plt.figure(figsize=(7, 6), dpi=300)
-labels_pie = ['TSVM Thắng (6/10 Seeds)', 'Baseline Thắng (4/10 Seeds)']
-sizes = [6, 4]
+base_map = np.array(FINAL_METRICS['Baseline']['seeds_mAP'])
+tsvm_map = np.array(FINAL_METRICS['TSVM']['seeds_mAP'])
+tsvm_wins = int(np.sum(tsvm_map > base_map))
+base_wins = int(np.sum(base_map > tsvm_map))
+labels_pie = [f'TSVM Thắng ({tsvm_wins}/10 Seeds)', f'Baseline Thắng ({base_wins}/10 Seeds)']
+sizes = [tsvm_wins, base_wins]
 colors_pie = ['#ff7f0e', '#1f77b4']
 explode = (0.05, 0)
 
