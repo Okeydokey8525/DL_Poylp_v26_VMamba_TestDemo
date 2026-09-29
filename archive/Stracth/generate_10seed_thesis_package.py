@@ -855,9 +855,9 @@ Số lần lặp ngẫu nhiên: 10 seeds độc lập (seed 0 đến 9), huấn 
 ## 3. So Sánh Seed-by-Seed (Tỷ lệ thắng/thua theo từng hạt ngẫu nhiên)
 
 - **Mask mAP@50-95**: TSVM cao hơn ở **6/10 seed** (s0, s1, s3, s4, s6, s8); Baseline cao hơn ở **4/10 seed** (s2, s5, s7, s9).
-- **Mask Precision**: TSVM cao hơn ở **7/10 seed**; Baseline cao hơn ở **3/10 seed**.
-- **Mask Recall**: TSVM cao hơn ở **5/10 seed**; Baseline cao hơn ở **4/10 seed**; Hòa **1 seed**.
-- **Validation Segmentation Loss**: TSVM có loss thấp hơn ở **8/10 seed**; Baseline thấp hơn ở **2/10 seed**.
+- **Mask Precision**: Từ **{df_b['mask_precision'].mean():.4f} ± {df_b['mask_precision'].std(ddof=1):.4f}** lên **{df_t['mask_precision'].mean():.4f} ± {df_t['mask_precision'].std(ddof=1):.4f}** ({df_t['mask_precision'].mean()-df_b['mask_precision'].mean():+.4f}, {((df_t['mask_precision'].mean()-df_b['mask_precision'].mean())/df_b['mask_precision'].mean())*100:+.2f}%, p = {df_summary.loc[df_summary['metric_key']=='mask_precision', 'p_value_ttest'].values[0]:.4f}).
+- **Mask Recall**: Từ **{df_b['mask_recall'].mean():.4f} ± {df_b['mask_recall'].std(ddof=1):.4f}** lên **{df_t['mask_recall'].mean():.4f} ± {df_t['mask_recall'].std(ddof=1):.4f}** ({df_t['mask_recall'].mean()-df_b['mask_recall'].mean():+.4f}, {((df_t['mask_recall'].mean()-df_b['mask_recall'].mean())/df_b['mask_recall'].mean())*100:+.2f}%).
+- **Validation Segmentation Loss**: Từ **{df_b['val_seg_loss'].mean():.4f} ± {df_b['val_seg_loss'].std(ddof=1):.4f}** xuống **{df_t['val_seg_loss'].mean():.4f} ± {df_t['val_seg_loss'].std(ddof=1):.4f}**.
 """
 
 with open(DIRS["reports"] / "summary.md", "w", encoding="utf-8") as f:
@@ -872,31 +872,31 @@ Tất cả các nhận xét dưới đây được xây dựng hoàn toàn dựa
 ---
 
 ### Nhóm 1 — Performance (Hiệu năng tổng thể)
-- **Mask mAP@50-95**: TSVM đạt trung bình **{df_t['mask_map50_95'].mean():.4f} ± {df_t['mask_map50_95'].std(ddof=1):.4f}**, so với Baseline là **{df_b['mask_map50_95'].mean():.4f} ± {df_b['mask_map50_95'].std(ddof=1):.4f}**. Chênh lệch thực nghiệm là **+0.0036 (+0.50%)**.
-- **Mask mAP@50**: TSVM đạt **{df_t['mask_map50'].mean():.4f} ± {df_t['mask_map50'].std(ddof=1):.4f}**, Baseline đạt **{df_b['mask_map50'].mean():.4f} ± {df_b['mask_map50'].std(ddof=1):.4f}** (chênh lệch **+0.0035, +0.39%**).
+- **Mask mAP@50-95**: TSVM đạt trung bình **{df_t['mask_map50_95'].mean():.4f} ± {df_t['mask_map50_95'].std(ddof=1):.4f}**, so với Baseline là **{df_b['mask_map50_95'].mean():.4f} ± {df_b['mask_map50_95'].std(ddof=1):.4f}**. Chênh lệch thực nghiệm là **{df_t['mask_map50_95'].mean() - df_b['mask_map50_95'].mean():+.4f} ({((df_t['mask_map50_95'].mean() - df_b['mask_map50_95'].mean()) / df_b['mask_map50_95'].mean()) * 100:+.2f}%).**
+- **Mask mAP@50**: TSVM đạt **{df_t['mask_map50'].mean():.4f} ± {df_t['mask_map50'].std(ddof=1):.4f}**, Baseline đạt **{df_b['mask_map50'].mean():.4f} ± {df_b['mask_map50'].std(ddof=1):.4f}** (chênh lệch **{df_t['mask_map50'].mean() - df_b['mask_map50'].mean():+.4f}, {((df_t['mask_map50'].mean() - df_b['mask_map50'].mean()) / df_b['mask_map50'].mean()) * 100:+.2f}%**).
 - **Kiểm định thống kê**: Phép kiểm Paired t-test cho thấy p-value của Mask mAP@50-95 là **{df_summary.loc[df_summary['metric_key']=='mask_map50_95', 'p_value_ttest'].values[0]:.4f}** (p > 0.05). Do đó, mức tăng mAP trung bình (+0.0036) là một **chênh lệch thực nghiệm dương tính ở mức vừa phải**, chưa đạt ngưỡng ý nghĩa thống kê nghiêm ngặt α=0.05 để khẳng định có sự cách biệt mang tính xác định tuyệt đối về độ đo mAP đơn thuần.
 
 ### Nhóm 2 — Stability (Độ ổn định giữa các seed)
 - **Độ co cụm phương sai (Variance Contraction)**: Độ lệch chuẩn của Mask mAP@50-95 giảm từ **0.0129** (Baseline) xuống **0.0078** (TSVM), tương ứng tỷ lệ phương sai giảm **{(df_b['mask_map50_95'].std(ddof=1)**2) / (df_t['mask_map50_95'].std(ddof=1)**2):.2f} lần**.
-- **Biên độ dao động (Range = Max - Min)**: Baseline dao động từ 0.6941 đến 0.7366 (Range = **0.0425**), trong khi TSVM chỉ dao động từ 0.7065 đến 0.7339 (Range = **0.0274**, giảm 35.5%).
-- **Đáy hiệu năng (Worst-case floor)**: Seed thấp nhất của TSVM là 0.7065 (seed 2), cao hơn đáng kể so với seed thấp nhất của Baseline là 0.6941 (seed 9). Điều này phản ánh cơ chế Topology-Shape aware giúp mô hình hạn chế hiện tượng sụt giảm hiệu năng nghiêm trọng khi gặp các cấu hình khởi tạo ngẫu nhiên bất lợi.
+- **Biên độ dao động (Range = Max - Min)**: Baseline dao động từ {df_b['mask_map50_95'].min():.4f} đến {df_b['mask_map50_95'].max():.4f} (Range = **{df_b['mask_map50_95'].max()-df_b['mask_map50_95'].min():.4f}**), TSVM từ {df_t['mask_map50_95'].min():.4f} đến {df_t['mask_map50_95'].max():.4f} (Range = **{df_t['mask_map50_95'].max()-df_t['mask_map50_95'].min():.4f}**).
+- **Đáy hiệu năng (Worst-case floor)**: Seed thấp nhất của TSVM là {df_t['mask_map50_95'].min():.4f} (seed {int(df_t.loc[df_t['mask_map50_95'].idxmin(), 'seed'])}), so với seed thấp nhất của Baseline là {df_b['mask_map50_95'].min():.4f} (seed {int(df_b.loc[df_b['mask_map50_95'].idxmin(), 'seed'])}). Điều này mô tả phân bố thực nghiệm giữa các seed; không dùng riêng thống kê này để khẳng định cơ chế nguyên nhân.
 
 ### Nhóm 3 — Precision/Recall Trade-off
-- **Mask Precision**: Tăng từ **0.9023 ± 0.0339** lên **0.9118 ± 0.0246** (+0.0095, +1.05%, p = {df_summary.loc[df_summary['metric_key']=='mask_precision', 'p_value_ttest'].values[0]:.4f}). TSVM duy trì độ chính xác phát hiện cao hơn và ổn định hơn.
-- **Mask Recall**: Tăng nhẹ từ **0.8584 ± 0.0252** lên **0.8625 ± 0.0173** (+0.0041, +0.48%).
-- **Tương quan P vs R**: Biểu đồ phân tán (Chart 11) cho thấy đám mây điểm của TSVM tập trung chặt chẽ hơn về góc trên bên phải (vùng trade-off tối ưu), trong khi Baseline có các điểm phân tán rộng ra ngoài biên.
+- **Mask Precision**: Từ **{df_b['mask_precision'].mean():.4f} ± {df_b['mask_precision'].std(ddof=1):.4f}** lên **{df_t['mask_precision'].mean():.4f} ± {df_t['mask_precision'].std(ddof=1):.4f}** ({df_t['mask_precision'].mean()-df_b['mask_precision'].mean():+.4f}, {((df_t['mask_precision'].mean()-df_b['mask_precision'].mean())/df_b['mask_precision'].mean())*100:+.2f}%, p = {df_summary.loc[df_summary['metric_key']=='mask_precision', 'p_value_ttest'].values[0]:.4f}).
+- **Mask Recall**: Từ **{df_b['mask_recall'].mean():.4f} ± {df_b['mask_recall'].std(ddof=1):.4f}** lên **{df_t['mask_recall'].mean():.4f} ± {df_t['mask_recall'].std(ddof=1):.4f}** ({df_t['mask_recall'].mean()-df_b['mask_recall'].mean():+.4f}, {((df_t['mask_recall'].mean()-df_b['mask_recall'].mean())/df_b['mask_recall'].mean())*100:+.2f}%).
+- **Tương quan P vs R**: Biểu đồ phân tán (Chart 11) cho thấy biểu đồ P–R được dùng để mô tả phân bố thực nghiệm giữa hai mô hình, không suy diễn thêm về cơ chế.
 
 ### Nhóm 4 — Validation Loss
-- **Validation Segmentation Loss**: Giảm từ **1.3045 ± 0.0867** (Baseline) xuống **1.2424 ± 0.0387** (TSVM). Mức giảm trung bình là **-0.0621 (-4.76%)**.
-- **Ý nghĩa thống kê**: Phép kiểm định Paired t-test đạt **p = {df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'p_value_ttest'].values[0]:.4f} < 0.05**. Đây là cải thiện **có ý nghĩa thống kê rõ rệt**, chứng minh hàm mục tiêu phân đoạn của TSVM hội tụ tốt hơn và nhất quán hơn trên tập validation.
+- **Validation Segmentation Loss**: Từ **{df_b['val_seg_loss'].mean():.4f} ± {df_b['val_seg_loss'].std(ddof=1):.4f}** xuống **{df_t['val_seg_loss'].mean():.4f} ± {df_t['val_seg_loss'].std(ddof=1):.4f}**. Mức thay đổi trung bình là **{df_t['val_seg_loss'].mean()-df_b['val_seg_loss'].mean():+.4f} ({((df_t['val_seg_loss'].mean()-df_b['val_seg_loss'].mean())/df_b['val_seg_loss'].mean())*100:+.2f}%)**.
+- **Ý nghĩa thống kê**: Phép kiểm định Paired t-test đạt **p = {df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'p_value_ttest'].values[0]:.4f}**. Diễn giải ý nghĩa thống kê cần dựa trực tiếp trên ngưỡng α=0.05., chứng minh hàm mục tiêu phân đoạn của TSVM hội tụ tốt hơn và nhất quán hơn trên tập validation.
 
 ### Nhóm 5 — Confusion Matrix & Background Discrimination
 Dựa trên ma trận nhầm lẫn trung bình 10 seed (127 polyp ground-truth, 40 ảnh nền âm tính):
 - **True Positive (TP)**: TSVM đạt trung bình **{df_cm_t['TP'].mean():.1f}** (87.6%), cao hơn Baseline **{df_cm_b['TP'].mean():.1f}** (86.9%).
 - **False Negative (FN)**: TSVM giảm bỏ sót polyp xuống còn **{df_cm_t['FN'].mean():.1f}** (12.4%) so với Baseline **{df_cm_b['FN'].mean():.1f}** (13.1%).
-- **False Positive (FP trên ảnh nền)**: TSVM giảm số dự đoán dương tính giả xuống **{df_cm_t['FP'].mean():.1f}** (36.5%) so với Baseline là **{df_cm_b['FP'].mean():.1f}** (43.5%). Số ca FP trung bình giảm **2.8 ca/lần chạy**.
-- **True Negative (TN trên ảnh nền)**: TSVM nhận diện đúng vùng nền đạt **{df_cm_t['TN'].mean():.1f}** (63.5%) so với Baseline **{df_cm_b['TN'].mean():.1f}** (56.5%).
-- **Nhận định**: Cải tiến cấu trúc không gian hình thái (Topology-Shape) giúp mạng phân biệt tốt hơn giữa nếp gấp niêm mạc đại tràng thông thường và tổn thương polyp thật, dẫn đến giảm đáng kể cảnh báo giả trên ảnh nền.
+- **False Positive (FP trên ảnh nền)**: TSVM có FP trung bình **{df_cm_t['FP'].mean():.1f}** ({df_cm_t['FP'].mean()/40*100:.1f}%) so với Baseline **{df_cm_b['FP'].mean():.1f}** ({df_cm_b['FP'].mean()/40*100:.1f}%). Chênh lệch trung bình là **{df_cm_t['FP'].mean()-df_cm_b['FP'].mean():+.1f}** ca/lần chạy.
+- **True Negative (TN trên ảnh nền)**: TSVM có TN trung bình **{df_cm_t['TN'].mean():.1f}** ({df_cm_t['TN'].mean()/40*100:.1f}%) so với Baseline **{df_cm_b['TN'].mean():.1f}** ({df_cm_b['TN'].mean()/40*100:.1f}%).
+- **Nhận định**: Trong bộ dữ liệu kiểm tra này, TSVM có số FP trung bình thấp hơn Baseline. Kết quả này mô tả hiện tượng quan sát được; không đủ để riêng ma trận nhầm lẫn xác định nguyên nhân cơ chế.
 
 ### Nhóm 6 — Seed Consistency
 - Cả hai mô hình đều có sự phụ thuộc nhất định vào random seed (đặc trưng cố hữu của huấn luyện Deep Learning trên tập dữ liệu y tế quy mô vừa).
@@ -1001,10 +1001,10 @@ KQ_Nen_DX_10seed/
 ---
 
 ## 3. Các Phát Hiện Thực Nghiệm Chính
-1. **Hiệu năng trung bình**: TSVM cải thiện Mask mAP@50-95 từ **0.7210 lên 0.7246** (+0.0036, +0.50%), Mask Precision từ **0.9023 lên 0.9118** (+0.0095, +1.05%).
-2. **Độ ổn định hạt ngẫu nhiên**: Độ biến thiên giữa các seed của TSVM thu hẹp đáng kể (Std giảm từ 0.0129 xuống 0.0078, tỷ lệ phương sai giảm 2.74 lần; Range co hẹp 35.5%). Đáy hiệu năng kém nhất được nâng từ 0.6941 lên 0.7065.
-3. **Mất mát phân đoạn (Val Seg Loss)**: Giảm có ý nghĩa thống kê rõ rệt từ **1.3045 xuống 1.2424** (-4.76%, p = {df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'p_value_ttest'].values[0]:.4f} < 0.05).
-4. **Phân biệt nền & giảm cảnh báo giả**: Trên 40 ảnh nền âm tính, TSVM giảm số dự đoán dương tính giả từ 17.4 ca xuống 14.6 ca/seed (giảm 16.1% FP), nâng độ chính xác nhận diện nền TN từ 56.5% lên 63.5%.
+1. **Hiệu năng trung bình**: Mask mAP@50-95 của TSVM là **{df_t['mask_map50_95'].mean():.4f}** so với **{df_b['mask_map50_95'].mean():.4f}** của Baseline ({df_t['mask_map50_95'].mean()-df_b['mask_map50_95'].mean():+.4f}, {((df_t['mask_map50_95'].mean()-df_b['mask_map50_95'].mean())/df_b['mask_map50_95'].mean())*100:+.2f}%); Mask Precision là **{df_t['mask_precision'].mean():.4f}** so với **{df_b['mask_precision'].mean():.4f}**.
+2. **Độ ổn định hạt ngẫu nhiên**: Std Mask mAP@50-95 là **{df_b['mask_map50_95'].std(ddof=1):.4f}** ở Baseline và **{df_t['mask_map50_95'].std(ddof=1):.4f}** ở TSVM; Range lần lượt là **{df_b['mask_map50_95'].max()-df_b['mask_map50_95'].min():.4f}** và **{df_t['mask_map50_95'].max()-df_t['mask_map50_95'].min():.4f}**.
+3. **Mất mát phân đoạn (Val Seg Loss)**: Mean thay đổi từ **{df_b['val_seg_loss'].mean():.4f}** xuống **{df_t['val_seg_loss'].mean():.4f}** ({df_t['val_seg_loss'].mean()-df_b['val_seg_loss'].mean():+.4f}, {((df_t['val_seg_loss'].mean()-df_b['val_seg_loss'].mean())/df_b['val_seg_loss'].mean())*100:+.2f}%, p = {df_summary.loc[df_summary['metric_key']=='val_seg_loss', 'p_value_ttest'].values[0]:.4f}).
+4. **Phân biệt nền & giảm cảnh báo giả**: Trên 40 ảnh nền âm tính, TSVM có FP trung bình **{df_cm_t['FP'].mean():.1f}** so với **{df_cm_b['FP'].mean():.1f}** của Baseline; TN trung bình lần lượt **{df_cm_t['TN'].mean():.1f}** và **{df_cm_b['TN'].mean():.1f}**.
 """
 
 with open(ROOT_OUT / "README.md", "w", encoding="utf-8") as f:
