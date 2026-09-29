@@ -9,7 +9,7 @@ plt.rcParams['font.sans-serif'] = 'DejaVu Sans'
 plt.rcParams['axes.edgecolor'] = '#333333'
 plt.rcParams['axes.linewidth'] = 1.0
 
-fig_dir = r'c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\KQ_Nen_DX_10seed\figures'
+fig_dir = r'c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\Ket_Qua_V2\KQ_Nen_DX_10seed\figures'
 os.makedirs(fig_dir, exist_ok=True)
 
 # EXACTLY 2 MODELS: Baseline and TSVM
@@ -297,15 +297,20 @@ fig, ax = plt.subplots(figsize=(7.5, 7.5), subplot_kw=dict(polar=True), dpi=300)
 for m in models_info:
     mid = m['id']
     fm = final_metrics[mid]
-    v_map = (fm['mask_map50_95'] - 0.70) / (0.74 - 0.70) * 50 + 50
-    v_map50 = (fm['mask_map50'] - 0.86) / (0.90 - 0.86) * 50 + 50
-    v_p = (fm['precision'] - 0.88) / (0.93 - 0.88) * 50 + 50
-    v_r = (fm['recall'] - 0.82) / (0.88 - 0.82) * 50 + 50
-    inv_var = 1.0 / (fm['mask_map50_95_std']**2)
-    v_stab = (inv_var - 5000) / (20000 - 5000) * 50 + 50
-    v_loss = ( (1.80 - fm['val_seg_loss']) / (1.80 - 1.72) ) * 50 + 50
+    # Normalize each metric scientifically into [50, 90] bounds for clean visualization
+    v_map = np.clip((fm['mask_map50_95'] - 0.70) / (0.74 - 0.70) * 40 + 50, 45, 95)
+    v_map50 = np.clip((fm['mask_map50'] - 0.88) / (0.94 - 0.88) * 40 + 50, 45, 95)
+    v_p = np.clip((fm['precision'] - 0.85) / (0.95 - 0.85) * 40 + 50, 45, 95)
+    v_r = np.clip((fm['recall'] - 0.80) / (0.90 - 0.80) * 40 + 50, 45, 95)
     
-    vals = [v_map, v_map50, v_p, v_r, v_stab, v_loss]
+    # Stability: inverse variance of 10 seeds (higher is more stable)
+    inv_var = 1.0 / (fm['mask_map50_95_std']**2)
+    v_stab = np.clip((inv_var - 4000) / (18000 - 4000) * 40 + 50, 45, 95)
+    
+    # Loss Optimization: lower loss is better (val_seg_loss range [1.15, 1.40])
+    v_loss = np.clip(((1.40 - fm['val_seg_loss']) / (1.40 - 1.15)) * 40 + 50, 45, 95)
+    
+    vals = [float(v_map), float(v_map50), float(v_p), float(v_r), float(v_stab), float(v_loss)]
     vals += vals[:1]
     
     ax.plot(angles, vals, linewidth=2.2, linestyle='solid', label=m['label'], color=m['color'])
@@ -315,56 +320,64 @@ ax.set_theta_offset(np.pi / 2)
 ax.set_theta_direction(-1)
 ax.set_xticks(angles[:-1])
 ax.set_xticklabels(categories, fontsize=10.5, fontweight='bold')
-ax.set_ylim(45, 105)
-plt.title("Đánh Đổi Đa Mục Tiêu (Multi-Objective Radar Profile)\nBaseline vs TSVM trên Bộ Dữ Liệu BG20 (10 Seeds)", fontsize=13, fontweight='bold', pad=25)
-plt.legend(loc='upper right', bbox_to_anchor=(1.25, 1.15), frameon=True, fontsize=10)
+ax.set_ylim(40, 100)
+ax.set_yticks([50, 60, 70, 80, 90, 100])
+ax.set_yticklabels(['50', '60', '70', '80', '90', '100'], fontsize=9, color='#555555')
+plt.title("Đánh Đổi Đa Mục Tiêu (Multi-Objective Radar Profile)\nBaseline vs TSVM trên Bộ Dữ Liệu BG20 (10 Seeds)", fontsize=13, fontweight='bold', pad=22)
+plt.legend(loc='upper right', bbox_to_anchor=(1.30, 1.12), frameon=True, fontsize=10)
 plt.tight_layout()
 p7 = os.path.join(fig_dir, '10_radar_multiobjective_tradeoff.png')
-plt.savefig(p7)
+plt.savefig(p7, bbox_inches='tight')
 plt.close()
 print("Generated:", p7)
 
 # ==============================================================================
-# CHART 8: 11_boxplot_variance_stability.png (2 Models)
+# CHART 8: 11_boxplot_variance_stability.png (2 Models - Only Mask mAP@50-95)
 # ==============================================================================
-fig, axes = plt.subplots(1, 2, figsize=(10.5, 5.5), dpi=300)
+fig, ax = plt.subplots(figsize=(7.5, 6.0), dpi=300)
 
 labels_box = [m['label'] for m in models_info]
 data_map = [final_metrics[m['id']]['seeds_mAP'] for m in models_info]
-data_loss = [final_metrics[m['id']]['seeds_loss'] for m in models_info]
 
-# Left: mAP
-bp1 = axes[0].boxplot(data_map, patch_artist=True, tick_labels=['Baseline', 'TSVM'], widths=0.45)
-for patch, m in zip(bp1['boxes'], models_info):
+bp = ax.boxplot(data_map, patch_artist=True, tick_labels=labels_box, widths=0.45)
+for patch, m in zip(bp['boxes'], models_info):
     patch.set_facecolor(m['color'])
     patch.set_alpha(0.75)
-for median in bp1['medians']:
-    median.set(color='black', linewidth=2.0)
+    patch.set_edgecolor('black')
+    patch.set_linewidth(1.2)
+for median in bp['medians']:
+    median.set(color='black', linewidth=2.2)
+for whisker in bp['whiskers']:
+    whisker.set(color='black', linewidth=1.2)
+for cap in bp['caps']:
+    cap.set(color='black', linewidth=1.2)
+
+# Add jitter points for actual 10 seeds
+np.random.seed(42)
 for i, vals in enumerate(data_map):
     x_jit = np.random.normal(i + 1, 0.04, size=len(vals))
-    axes[0].scatter(x_jit, vals, color='black', alpha=0.65, s=36, zorder=3)
-axes[0].set_title("Phân Bổ mAP@50-95 (10 Seeds)\nTSVM Co Hẹp Phương Sai Rõ Rệt", fontsize=11.5, fontweight='bold')
-axes[0].set_ylabel("Mask mAP@50-95", fontsize=11, fontweight='bold')
-axes[0].grid(axis='y', linestyle='--', alpha=0.4)
+    ax.scatter(x_jit, vals, color='#222222', alpha=0.75, s=42, zorder=4, edgecolor='white', linewidth=0.5)
 
-# Right: Loss
-bp2 = axes[1].boxplot(data_loss, patch_artist=True, tick_labels=['Baseline', 'TSVM'], widths=0.45)
-for patch, m in zip(bp2['boxes'], models_info):
-    patch.set_facecolor(m['color'])
-    patch.set_alpha(0.75)
-for median in bp2['medians']:
-    median.set(color='black', linewidth=2.0)
-for i, vals in enumerate(data_loss):
-    x_jit = np.random.normal(i + 1, 0.04, size=len(vals))
-    axes[1].scatter(x_jit, vals, color='black', alpha=0.65, s=36, zorder=3)
-axes[1].set_title("Phân Bổ Validation Loss (10 Seeds)\nTSVM Giảm Mất Mát Ranh Giới", fontsize=11.5, fontweight='bold')
-axes[1].set_ylabel("Validation Loss", fontsize=11, fontweight='bold')
-axes[1].grid(axis='y', linestyle='--', alpha=0.4)
+# Statistical text card annotations for each model
+for i, m in enumerate(models_info):
+    mid = m['id']
+    mean_v = final_metrics[mid]['mask_map50_95']
+    std_v = final_metrics[mid]['mask_map50_95_std']
+    med_v = float(np.median(data_map[i]))
+    min_v = float(np.min(data_map[i]))
+    max_v = float(np.max(data_map[i]))
+    text_str = f"Mean: {mean_v:.4f} ± {std_v:.4f}\nMedian: {med_v:.4f}\nMin–Max: [{min_v:.4f}, {max_v:.4f}]"
+    ax.text(i + 1, 0.690, text_str, ha='center', va='bottom', fontsize=9.5, fontweight='bold',
+            bbox=dict(boxstyle='round,pad=0.5', facecolor='#f8f9fa', edgecolor='#cccccc', alpha=0.9))
 
-plt.suptitle("Biểu Đồ Hộp (Boxplot & Data Points) Kiểm Chứng Phương Sai 10 Seeds (Baseline vs TSVM)", fontsize=13, fontweight='bold', y=0.99)
+ax.set_title("Phân Bổ Độ Chính Xác Mask mAP@50-95 Qua 10 Seeds Độc Lập\nKiểm Chứng Tính Ổn Định & Co Hẹp Phương Sai (Baseline vs TSVM)", fontsize=12.5, fontweight='bold', pad=15)
+ax.set_ylabel("Mask mAP@50-95", fontsize=11.5, fontweight='bold')
+ax.set_ylim(0.685, 0.745)
+ax.grid(axis='y', linestyle='--', alpha=0.4)
+ax.tick_params(axis='x', labelsize=11)
 plt.tight_layout()
 p8 = os.path.join(fig_dir, '11_boxplot_variance_stability.png')
-plt.savefig(p8)
+plt.savefig(p8, bbox_inches='tight')
 plt.close()
 print("Generated:", p8)
 
