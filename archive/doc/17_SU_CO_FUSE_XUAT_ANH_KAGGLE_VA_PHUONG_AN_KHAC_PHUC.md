@@ -8,8 +8,8 @@
 > - **Hiện tượng:** Khi hoàn tất 100 epochs trên Kaggle GPU (NVIDIA Tesla T4), bảng số liệu `results.csv` và tiến trình huấn luyện của mô hình TSVM (Topology-Shape-aware VMamba) **hoàn toàn chính xác và hội tụ rất tốt** (Mask mAP@50 đạt **0.9040** ở Seed 0 và **0.9096** ở Seed 5). Tuy nhiên, các artifact hình ảnh xuất ra cuối cùng lại bị lỗi: các đồ thị đường cong đánh giá (`BoxPR_curve`, `BoxF1_curve`,...) bị lệch hoặc trống rỗng (AUC = 0 ở Seed 5), đồng thời ảnh dự đoán `val_batch2_pred.jpg` xuất hiện các vệt kéo giãn dạng cột dọc xanh từ đỉnh xuống đáy ảnh ($y_1=0 \to y_2=640$).
 > - **Nguyên nhân cốt lõi:** Cơ chế `model.fuse()` mặc định của Ultralytics ở bước đánh giá cuối cùng (`final_eval`) đã xóa bỏ các module của nhánh One-to-Many (`self.cv2 = self.cv3 = self.cv4 = None`) trong custom head `Segment26` và ép chuyển sang nhánh One-to-One (End-to-End). Do nhánh One-to-One chưa hội tụ hoàn toàn (điểm tin cậy tối đa chỉ đạt 0.028), việc suy diễn cuối cùng bị sụp đổ, sinh ra các box dị dạng và làm rỗng đồ thị đánh giá.
 > - **Hiện trạng & Khắc phục:** Trọng số `best.pt` của cả 2 seed **vẫn còn nguyên vẹn 100%**. Nhóm nghiên cứu đã xây dựng quy trình trích xuất và sinh lại chuẩn xác **ĐỦ 24 ẢNH KẾT QUẢ / SEED** theo đúng chuẩn khoa học (300 DPI), khớp 100% với `results.csv`, được lưu trữ an toàn và độc lập tại thư mục:  
->   `archive/Khac_phuc/Kvasir_BG20_YOLO26s_seg_TSVM_s0_w2`  
->   `archive/Khac_phuc/Kvasir_BG20_YOLO26s_seg_TSVM_s5_w2`
+>   ``Khac_phuc/…` (đã xóa khỏi repo năm 2026)`  
+>   ``Khac_phuc/…` (đã xóa khỏi repo năm 2026)`
 
 ---
 
@@ -139,7 +139,7 @@ if hasattr(p.plot_images, "__closure__") and p.plot_images.__closure__:
 ```
 
 ### 3.4. Xuất trọn bộ 24 ảnh kết quả chuẩn cho mỗi seed
-Tại thư mục `archive/Khac_phuc/`, mỗi seed được tạo lập đầy đủ đúng **24 file ảnh**:
+Tại thư mục ``Khac_phuc/` (đã xóa khỏi repo năm 2026)`, mỗi seed được tạo lập đầy đủ đúng **24 file ảnh**:
 1. **7 ảnh train:** `labels.jpg`, `train_batch0/1/2.jpg`, `train_batch11700/11701/11702.jpg`.
 2. **3 ảnh Ground Truth:** `val_batch0/1/2_labels.jpg`.
 3. **1 ảnh đồ thị tiến trình:** `results.png`.

@@ -98,15 +98,15 @@ python "c:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\Stracth\su
 *Kết quả:* Kiểm toán 47 runs trong `KetQua_Nen/` và xuất file tổng hợp `bg20_all_seeds_metrics.csv`.
 
 ### Bước 3: Tái lập toàn bộ 20 biểu đồ khoa học 10 Seed (Baseline vs TSVM)
-Chạy script phân tích đối sánh 10 seed tại thư mục `archive/KQ_Nen_DX_10seed/`:
-- Dữ liệu thống kê: [`06_reports/summary.csv`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/summary.csv)
-- Báo cáo nhận xét học thuật: [`06_reports/conclusions.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/conclusions.md)
+Chạy script phân tích đối sánh 10 seed tại thư mục `archive/Ket_Qua_V2/KQ_Nen_DX_10seed/`:
+- Dữ liệu thống kê: [`06_reports/summary.csv`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/06_reports/summary.csv)
+- Báo cáo nhận xét học thuật: [`06_reports/conclusions.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/06_reports/conclusions.md)
 - 20 biểu đồ 300 DPI trong `05_charts/` và 12 biểu đồ template đối xứng chuẩn hóa trong `figures/`.
 
 ### Bước 4: Tái lập Benchmark Hiệu năng Độc lập (Efficiency Benchmark)
 Thực thi đo đạc tham số, GFLOPs, dung lượng checkpoint, thời gian trễ và FPS trên CPU:
-- Báo cáo chi tiết: [`efficiency_benchmark/reports/benchmark_report.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/efficiency_benchmark/reports/benchmark_report.md)
-- Bảng tổng hợp: [`efficiency_benchmark/tables/accuracy_efficiency_summary.csv`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/efficiency_benchmark/tables/accuracy_efficiency_summary.csv)
+- Báo cáo chi tiết: [`efficiency_benchmark/reports/benchmark_report.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/efficiency_benchmark/reports/benchmark_report.md)
+- Bảng tổng hợp: [`efficiency_benchmark/tables/accuracy_efficiency_summary.csv`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/efficiency_benchmark/tables/accuracy_efficiency_summary.csv)
 
 ---
 

@@ -1,14 +1,14 @@
 # BÁO CÁO KIỂM TOÁN KẾT QUẢ HUẤN LUYỆN (TRAINING RESULTS AUDIT REPORT)
 
 **Dự án khóa luận:** *Nghiên cứu phương pháp tích hợp VMamba vào mô hình YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng.*  
-**Đối tượng kiểm toán:** Toàn bộ lịch sử huấn luyện hiện có trong workspace (`archive/KQ_Poylp`).  
+**Đối tượng kiểm toán:** Toàn bộ lịch sử huấn luyện hiện có trong workspace (``KQ_Poylp/` (không còn trong repo)`).  
 **Phương pháp kiểm toán:** AI Research Auditor – Đọc, xác thực và trích xuất số liệu thực tế 100% từ các file artifact (`results.csv`, `args.yaml`, `weights/best.pt`), **không tự huấn luyện lại, không sửa đổi mã nguồn, không suy đoán số liệu bị thiếu.**
 
 ---
 
 ## 1. EXECUTIVE SUMMARY (TÓM TẮT ĐIỀU HÀNH)
 
-Qua quá trình rà soát toàn bộ không gian lưu trữ của dự án (`archive/KQ_Poylp`), kiểm toán viên ghi nhận **10 lượt huấn luyện (training runs) độc lập** cho bài toán phân đoạn polyp (**Task: `segment`**) thuộc hai dòng kiến trúc **YOLO26-seg (Baseline)** và **YOLO26-VMamba-seg (Mô hình đề xuất)**.
+Qua quá trình rà soát toàn bộ không gian lưu trữ của dự án (``KQ_Poylp/` (không còn trong repo)`), kiểm toán viên ghi nhận **10 lượt huấn luyện (training runs) độc lập** cho bài toán phân đoạn polyp (**Task: `segment`**) thuộc hai dòng kiến trúc **YOLO26-seg (Baseline)** và **YOLO26-VMamba-seg (Mô hình đề xuất)**.
 
 ### Các phát hiện quan trọng nhất (Key Findings):
 1. **Tính hoàn chỉnh của dữ liệu artifact:** Cả 10 run đều được lưu trữ đầy đủ các file cốt lõi bao gồm cấu hình, kết quả csv và file trọng số.
@@ -23,7 +23,7 @@ Qua quá trình rà soát toàn bộ không gian lưu trữ của dự án (`arc
 
 ## 2. DANH SÁCH VÀ KẾT QUẢ CÁC RUN ĐÃ HUẤN LUYỆN
 
-Bảng dưới đây tổng hợp kết quả chính xác được trích xuất từ 10 thư mục run trong workspace `archive/KQ_Poylp`:
+Bảng dưới đây tổng hợp kết quả chính xác được trích xuất từ 10 thư mục run trong workspace ``KQ_Poylp/` (không còn trong repo)`:
 
 | STT | Dòng Mô Hình | Tên Run (`run_name`) | Mask mAP50 | Mask mAP50-95 | Epoch tốt nhất |
 | --: | :--- | :--- | :---: | :---: | :---: |
@@ -54,5 +54,5 @@ Bảng dưới đây tổng hợp kết quả chính xác được trích xuất
 ---
 
 ## 4. CẬP NHẬT CÁC GIAI ĐOẠN NGHIÊN CỨU TIẾP THEO (GHI CHÚ HẬU KIỂM TOÁN)
-- **Giai đoạn 2 (Thực nghiệm 6-fold trên Kvasir-SEG gốc):** Xem [`archive/Ket_Qua_2/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_2) và [`02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md). Nhóm nghiên cứu đã cải tiến kiến trúc đưa VMamba vào tầng 10 (`C2TSVMamba`, `C2IAVM`, `ITSMamba`), khắc phục hoàn toàn hiện tượng suy giảm hiệu năng ban đầu và nâng Mask mAP@50-95 lên mức **$0.7231 - 0.7361$**.
-- **Giai đoạn 3 (Thực nghiệm mở rộng 10 seed trên bộ dữ liệu BG20):** Xem [`archive/KetQua_Nen/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KetQua_Nen) và gói phân tích luận văn [`archive/KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed). Bổ sung 20% ảnh nền âm tính `normal-cecum`, kiểm toán trên 47 runs, trong đó đối sánh 10 seed Baseline vs TSVM cho thấy TSVM duy trì Mask mAP@50-95 đạt **$0.7246 \pm 0.0078$**, co hẹp phương sai **$2.75\times$** và giảm 16.1% cảnh báo giả (FP) trên ảnh nền.
+- **Giai đoạn 2 (Thực nghiệm 6-fold trên Kvasir-SEG gốc):** Xem [``Ket_Qua_2/` (không còn trong repo)`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/`Ket_Qua_2/` (không còn trong repo)) và [`02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/historical/thuc_nghiem_6fold_5mo_hinh/02_KET_QUA_THUC_NGHIEM_VA_DOI_CHIEU.md). Nhóm nghiên cứu đã cải tiến kiến trúc đưa VMamba vào tầng 10 (`C2TSVMamba`, `C2IAVM`, `ITSMamba`), khắc phục hoàn toàn hiện tượng suy giảm hiệu năng ban đầu và nâng Mask mAP@50-95 lên mức **$0.7231 - 0.7361$**.
+- **Giai đoạn 3 (Thực nghiệm mở rộng 10 seed trên bộ dữ liệu BG20):** Xem [`archive/Ket_Qua_V2/KetQua_Nen/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KetQua_Nen) và gói phân tích luận văn [`archive/Ket_Qua_V2/KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed). Bổ sung 20% ảnh nền âm tính `normal-cecum`, kiểm toán trên 47 runs, trong đó đối sánh 10 seed Baseline vs TSVM cho thấy TSVM duy trì Mask mAP@50-95 đạt **$0.7246 \pm 0.0078$**, co hẹp phương sai **$2.75\times$** và giảm 16.1% cảnh báo giả (FP) trên ảnh nền.

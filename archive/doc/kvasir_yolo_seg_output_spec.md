@@ -2,14 +2,14 @@
 
 > **Dự án khóa luận:** *Nghiên cứu phương pháp tích hợp VMamba vào mô hình YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng.*
 > **Tập dữ liệu gốc:** Kvasir-SEG (1.000 ảnh nội soi đường tiêu hóa và mặt nạ nhị phân chuyên gia).
-> **Script xử lý:** [`convert_kvasir_to_yolo_seg.py`](<file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/convert_kvasir_to_yolo_seg.py>)
-> **Thư mục đầu ra:** [`Kvasir_YOLO_SEG/`](<file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Kvasir_YOLO_SEG>)
+> **Script xử lý:** [`convert_kvasir_to_yolo_seg.py`](<file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Stracth/convert_kvasir_to_yolo_seg.py>)
+> **Thư mục đầu ra:** [`Kvasir_YOLO_SEG/`](<file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20>)
 
 ---
 
 ## 1. TỔNG QUAN CẤU TRÚC ĐẦU RA (DATASET STRUCTURE)
 
-Khi thực thi script [`convert_kvasir_to_yolo_seg.py`](<file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/convert_kvasir_to_yolo_seg.py>), toàn bộ dữ liệu ảnh, nhãn phân đoạn, báo cáo thống kê và đồ thị trực quan được tổ chức chuẩn hóa theo định dạng của **Ultralytics YOLO Segmentation** (tương thích trực tiếp với YOLOv11-seg, YOLOv12-seg, YOLO26-seg và YOLO26-VMamba-seg):
+Khi thực thi script [`convert_kvasir_to_yolo_seg.py`](<file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Stracth/convert_kvasir_to_yolo_seg.py>), toàn bộ dữ liệu ảnh, nhãn phân đoạn, báo cáo thống kê và đồ thị trực quan được tổ chức chuẩn hóa theo định dạng của **Ultralytics YOLO Segmentation** (tương thích trực tiếp với YOLOv11-seg, YOLOv12-seg, YOLO26-seg và YOLO26-VMamba-seg):
 
 ```text
 Kvasir_YOLO_SEG/
@@ -52,7 +52,7 @@ Kvasir_YOLO_SEG/
   * **Validation Set:** **120 ảnh** ($12.0\%$).
   * Tổng cộng: **1.000 ảnh** (Kiểm toán xác nhận $0\%$ trùng lặp, $0\%$ thiếu nhãn).
 * **Đặc tính kỹ thuật của ảnh:**
-  * **Bảo toàn nguyên bản (Lossless 100%):** Quá trình xử lý sử dụng lệnh sao chép nhị phân [`shutil.copy2`](<file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/convert_kvasir_to_yolo_seg.py#L233>). Không thực hiện tái nén JPEG, không làm biến dạng pixel và không làm suy giảm chất lượng hiển thị y khoa.
+  * **Bảo toàn nguyên bản (Lossless 100%):** Quá trình xử lý sử dụng lệnh sao chép nhị phân [`shutil.copy2`](<file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Stracth/convert_kvasir_to_yolo_seg.py#L233>). Không thực hiện tái nén JPEG, không làm biến dạng pixel và không làm suy giảm chất lượng hiển thị y khoa.
   * **Không can thiệp kích thước (No Resize / No Crop / No Pad):** Toàn bộ ảnh giữ nguyên độ phân giải gốc của máy nội soi (ví dụ: $622 \times 529$, $1348 \times 1070$, $720 \times 576$, $332 \times 487$,...). Việc co giãn về kích thước chuẩn như $640 \times 640$ được giao cho bộ xử lý Data Loader của YOLO xử lý động trong lúc nạp batch (`imgsz=640`).
 * **Định dạng nhãn đi kèm (`labels/`):**
   * Tương ứng mỗi tệp `images/{split}/{id}.jpg` là tệp nhãn `labels/{split}/{id}.txt`.
@@ -101,7 +101,7 @@ Thư mục `dataset_plots/` chứa **5 ảnh đồ thị** được vẽ bằng 
 
 ## 3. THÔNG SỐ TỔNG KẾT ĐẶC TẢ TỪ BÁO CÁO (REPORT)
 
-Trích xuất trực tiếp từ kết quả chạy thực tế tại [`Kvasir_YOLO_SEG/report.txt`](<file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Kvasir_YOLO_SEG/report.txt>):
+Trích xuất trực tiếp từ kết quả chạy thực tế tại [`Kvasir_YOLO_SEG_BG20/dataset_bg20_summary.json`](<file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20/dataset_bg20_summary.json>):
 
 * **Tổng số ảnh:** 1.000 ảnh (880 Train / 120 Validation).
 * **Tổng số mặt nạ polyp được gán nhãn:** 1.063 tổn thương (trung bình 1.06 polyp/ảnh).
@@ -121,7 +121,7 @@ Trích xuất trực tiếp từ kết quả chạy thực tế tại [`Kvasir_Y
 Nhằm đo lường chính xác độ đặc hiệu (Specificity), kiểm soát hiện tượng báo động giả (False Positive) trên niêm mạc đại trực tràng bình thường và khắc phục nhược điểm thiếu vắng True Negative (TN) của tập dữ liệu thuần bệnh học, nhóm nghiên cứu đã mở rộng và chuẩn hóa bộ dữ liệu chính thức của đề tài thành **`Kvasir_YOLO_SEG_BG20`**.
 
 ### 4.1. Quy cách Cấu trúc Bộ Dữ liệu Chính thức
-* **Thư mục lưu trữ trong workspace:** [`Kvasir_YOLO_SEG_BG20/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Kvasir_YOLO_SEG_BG20)
+* **Thư mục lưu trữ trong workspace:** [`Kvasir_YOLO_SEG_BG20/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20)
 * **Tệp cấu hình YOLO chính thức:** [`data_bg20.yaml`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/data_bg20.yaml)
 * **Tổng số lượng ảnh:** **1.200 ảnh** (tăng thêm đúng 200 ảnh nền âm tính, tương đương 20% lượng ảnh polyp ban đầu).
 * **Nguồn ảnh âm tính:** Trích xuất ngẫu nhiên cố định (`seed=42`) đúng 200 ảnh niêm mạc manh tràng khỏe mạnh từ tập dữ liệu Kvasir v2 (`normal-cecum`).
@@ -135,8 +135,8 @@ Nhằm đo lường chính xác độ đặc hiệu (Specificity), kiểm soát 
 ### 4.2. Trạng thái Huấn luyện Thực tế (Đã Hoàn Tất)
 * **Không còn ở giai đoạn dự kiến:** Bộ dữ liệu `Kvasir_YOLO_SEG_BG20` đã được nạp trực tiếp vào pipeline huấn luyện thực tế trên Kaggle GPU Tesla T4.
 * **Quy mô thực nghiệm đã hoàn thành:** Huấn luyện thành công trọn vẹn **10 random seeds (s0 đến s9)** cho các dòng mô hình:
-  - Baseline: `YOLOv26s-seg` (Đủ 10 seeds tại `archive/KetQua_Nen/YOLOv26s-seg/`)
-  - Đề xuất: `C2TSVMamba` (Đủ 10 seeds tại `archive/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM/`)
+  - Baseline: `YOLOv26s-seg` (Đủ 10 seeds tại `archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/`)
+  - Đề xuất: `C2TSVMamba` (Đủ 10 seeds tại `archive/Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM/`)
   - Đối chứng: `P5_Attention_VMamba` (Đủ 10 seeds) và `ITSMamba` (Đủ 10 seeds)
 * **Hiệu quả lâm sàng trên 40 ảnh nền kiểm định:**
   - Nhờ 40 ảnh nền âm tính, ma trận nhầm lẫn đã định lượng được chính xác $TN + FP = 40$ mẫu nền.

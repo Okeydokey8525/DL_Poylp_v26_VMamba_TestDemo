@@ -39,7 +39,7 @@
 
 ## 3. KẾT QUẢ ĐỐI CHUẨN LOSS TRÊN TẬP DỮ LIỆU BG20 VỚI 10 RANDOM SEEDS (BASELINE VS TSVM)
 
-Kết quả đo đạc chính xác từ 10 lần chạy độc lập (seed 0 đến 9) trích xuất tại epoch tối ưu (lưu trữ chi tiết tại [`archive/KQ_Nen_DX_10seed/03_metrics/loss/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/03_metrics/loss)):
+Kết quả đo đạc chính xác từ 10 lần chạy độc lập (seed 0 đến 9) trích xuất tại epoch tối ưu (lưu trữ chi tiết tại [`archive/Ket_Qua_V2/KQ_Nen_DX_10seed/03_metrics/loss/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/03_metrics/loss)):
 
 | Thành phần Loss | Baseline (Mean ± Std) | TSVM (Mean ± Std) | Δ (TSVM - Baseline) | % Thay đổi | p-value (t-test) | Nhận xét xu hướng |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
@@ -47,6 +47,6 @@ Kết quả đo đạc chính xác từ 10 lần chạy độc lập (seed 0 đ�
 | **Validation Box Loss** | **$0.7239 \pm 0.0434$** | $0.7305 \pm 0.0399$ | $+0.0066$ | $+0.91\%$ | $0.7008$ | Tương đương giữa hai mô hình |
 | **Validation Cls Loss** | **$0.5591 \pm 0.0635$** | $0.6148 \pm 0.0884$ | $+0.0557$ | $+9.97\%$ | $0.0943$ | TSVM phạt chặt hơn để chống báo động giả |
 
-*Biểu đồ đối chứng tương ứng trong luận văn*: [`KQ_Nen_DX_10seed/05_charts/performance/05_val_seg_loss_comparison.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/05_charts/performance/05_val_seg_loss_comparison.png).
+*Biểu đồ đối chứng tương ứng trong luận văn*: [`KQ_Nen_DX_10seed/05_charts/performance/05_val_seg_loss_comparison.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/05_charts/performance/05_val_seg_loss_comparison.png).
 
 `[Đã xác nhận]`

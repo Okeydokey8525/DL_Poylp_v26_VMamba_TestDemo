@@ -31,18 +31,18 @@ Trong ứng dụng y tế, **Độ nhạy (Recall)** là yếu tố sống còn:
 1. **Hạn chế của C2TSVMamba (Hiện tượng Co hẹp biên - Boundary Overshrinking):**
    - Mô hình TSVM đưa toán tử đạo hàm Sobel cấp 1 trực tiếp vào hàm trích xuất hình thái học. Các polyp phẳng (Paris IIb) hoặc polyp có độ tương phản mờ nhạt với niêm mạc xung quanh bị toán tử Sobel gọt tỉa quá mức.
    - Kết quả: Tỷ lệ bỏ sót tăng vọt lên **$15.07\%$ ($19.1 / 127$ polyp bị sót)**.
-   - Xem biểu đồ Donut minh họa: `archive/KQ_DoiXung/Base vs Topolo/07a_pie_polyp_clinical_breakdown.png`.
+   - Biểu đồ Donut minh họa tỷ lệ bỏ sót theo phân loại Paris **chưa được tạo** trong bộ kết quả 10 seed hiện hành. Số liệu tương ứng truy được tại `archive/Ket_Qua_V2/KQ_Nen_DX_10seed/04_confusion_matrix/count/tsvm_cm_count_per_seed.csv`. Xem mục "Hình cần tạo" trong [`22_DANH_MUC_HINH_ANH_TOAN_BO.md`](22_DANH_MUC_HINH_ANH_TOAN_BO.md) §K.
 
 2. **Sự đột phá của C2IAVM (Cơ chế Chú ý Tương tác - Interactive Attention):**
    - Thay vì ép buộc gradient biên cưỡng bức, C2IAVM phân nhánh song song: Nhánh 1 quét toàn cục SS2D 4 hướng (Không gian), Nhánh 2 dùng Multi-Head Self-Attention chiếu quan hệ phụ thuộc kênh (Channel Context).
    - Cơ chế gating tương tác tự động tăng cường trọng số cho các vùng polyp mờ phẳng, giúp **khôi phục độ nhạy lên $88.75\%$**, giảm số ca bỏ sót xuống chỉ còn **$14.3$ polyp (tỷ lệ sót thấp kỷ lục $11.25\%$)**.
-   - Xem biểu đồ Donut minh họa: `archive/KQ_DoiXung/Base vs IAVM/07a_pie_polyp_clinical_breakdown.png` và biểu đồ cột từng seed `05b_fold_by_fold_recall.png`.
+   - Hai biểu đồ này (`07a_pie_polyp_clinical_breakdown.png`, `05b_fold_by_fold_recall.png`) **chưa được tạo** trong bộ kết quả 10 seed hiện hành — xem mục "Hình cần tạo" tại [`22_DANH_MUC_HINH_ANH_TOAN_BO.md`](22_DANH_MUC_HINH_ANH_TOAN_BO.md) §K. Số liệu tương ứng truy được tại `archive/Ket_Qua_V2/KQ_Nen_DX_10seed/04_confusion_matrix/count/tsvm_cm_count_per_seed.csv`.
 
 ---
 
 ## 3. ĐÁNH ĐỔI PRECISION - RECALL TRÊN TẬP BG20 VỚI 10 RANDOM SEEDS (BASELINE VS TSVM)
 
-Số liệu kiểm định trên 160 ảnh (127 polyp GT + 40 ảnh nền âm tính) qua trọn vẹn 10 seeds (lưu trữ tại [`archive/KQ_Nen_DX_10seed/03_metrics/segmentation/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/03_metrics/segmentation)):
+Số liệu kiểm định trên 160 ảnh (127 polyp GT + 40 ảnh nền âm tính) qua trọn vẹn 10 seeds (lưu trữ tại [`archive/Ket_Qua_V2/KQ_Nen_DX_10seed/03_metrics/segmentation/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/03_metrics/segmentation)):
 
 | Chỉ số phân đoạn | Baseline YOLO26s-seg | TSVM Đề xuất | Δ (TSVM - Baseline) | % Thay đổi | Ý nghĩa lâm sàng |
 | :--- | :---: | :---: | :---: | :---: | :--- |
@@ -53,7 +53,7 @@ Số liệu kiểm định trên 160 ảnh (127 polyp GT + 40 ảnh nền âm t�
 | **Số ca báo động giả (FP/40)** | $17.4$ ca | **$14.6$ ca** | **$-2.8$ ca** | **$-16.09\%$** | **Giảm 2.8 ca cảnh báo giả trên ảnh niêm mạc bình thường** |
 
 *Biểu đồ trực quan tương ứng trong luận văn (300 DPI)*:
-- Đồ thị phân tán Trade-off: [`11_scatter_precision_vs_recall.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/05_charts/correlation/11_scatter_precision_vs_recall.png) (minh họa các điểm TSVM co cụm vào góc trên bên phải tối ưu).
-- Cột kép so sánh P-R: [`03_precision_recall_comparison.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/05_charts/performance/03_precision_recall_comparison.png).
+- Đồ thị phân tán Trade-off: [`11_scatter_precision_vs_recall.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/05_charts/correlation/11_scatter_precision_vs_recall.png) (minh họa các điểm TSVM co cụm vào góc trên bên phải tối ưu).
+- Cột kép so sánh P-R: [`03_precision_recall_comparison.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/05_charts/performance/03_precision_recall_comparison.png).
 
 `[Đã xác nhận]`
