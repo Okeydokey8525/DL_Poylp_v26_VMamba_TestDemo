@@ -41,7 +41,7 @@ Quy mô được tài liệu và artifact hiện tại mô tả:
 
 ## 4. Bộ kết quả 10-seed hiện có
 
-`archive/KQ_Nen_DX_10seed/01_raw_analysis/raw_10seeds_extracted_metrics.csv` hiện chứa **4 mô hình × 10 seed**:
+`archive/Ket_Qua_V2/KQ_Nen_DX_10seed/01_raw_analysis/raw_10seeds_extracted_metrics.csv` hiện chứa **4 mô hình × 10 seed**:
 
 1. Baseline
 2. TSVM
@@ -122,7 +122,7 @@ Trong source này có các thành phần như `SS2D`, `ShapeAwareBranch`, `Direc
 - File này.
 - Raw CSV và các bảng thống kê được sinh từ raw CSV.
 - Config/source thực tế đang tồn tại trong repository.
-- `archive/KQ_Nen_DX_10seed/` cho kết quả 10-seed tương ứng.
+- `archive/Ket_Qua_V2/KQ_Nen_DX_10seed/` cho kết quả 10-seed tương ứng.
 
 ### Historical / cần đọc với ngữ cảnh
 Các hồ sơ nghiên cứu cũ trong `archive/doc/`, đặc biệt những tài liệu mô tả 6-seed, Kvasir-SEG thuần 1.000 ảnh, C2IAVM hoặc các hướng kiến trúc cũ.

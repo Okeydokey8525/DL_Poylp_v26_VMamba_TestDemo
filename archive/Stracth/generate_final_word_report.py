@@ -421,14 +421,14 @@ def build_full_report():
 
     sum_headers = ["Thước đo đánh giá", "Baseline YOLO26s-seg", "TSVM Đề xuất", "Chênh lệch (Δ)", "Khoảng [Min, Max] TSVM", "Ý nghĩa thống kê"]
     sum_rows = [
-        ["Mask mAP@50-95", "0.7210 ± 0.0129", "0.7246 ± 0.0078", "+0.0036 (+0.50%)", "[0.7065, 0.7338]", "p = 0.3839 (Thu hẹp Std -39.5%)"],
-        ["Mask mAP@50", "0.9119 ± 0.0107", "0.9062 ± 0.0082", "-0.0057 (-0.63%)", "[0.8903, 0.9166]", "p = 0.2319 (Tiệm cận tương đương)"],
-        ["Mask Precision", "0.9023 ± 0.0339", "0.9118 ± 0.0246", "+0.0095 (+1.05%)", "[0.8595, 0.9437]", "p = 0.4439 (Lọc biên chính xác hơn)"],
-        ["Mask Recall", "0.8584 ± 0.0252", "0.8625 ± 0.0173", "+0.0041 (+0.48%)", "[0.8377, 0.8909]", "p = 0.7027 (Tăng độ nhạy bắt polyp)"],
-        ["Box mAP@50-95", "0.7262 ± 0.0198", "0.7285 ± 0.0141", "+0.0023 (+0.32%)", "[0.6992, 0.7441]", "p = 0.7677 (Giảm độ phân tán -28.8%)"],
-        ["Box mAP@50", "0.9011 ± 0.0116", "0.9006 ± 0.0090", "-0.0005 (-0.06%)", "[0.8879, 0.9157]", "p = 0.9189 (Bảo toàn định vị khung bao)"],
-        ["Box Recall", "0.8434 ± 0.0337", "0.8567 ± 0.0152", "+0.0133 (+1.58%)", "[0.8354, 0.8873]", "p = 0.2887 (Tăng trưởng mạnh nhất)"],
-        ["Val Seg Loss", "1.3045 ± 0.0867", "1.2424 ± 0.0387", "-0.0621 (-4.76%)", "[1.1777, 1.3020]", "p = 0.0908 (Thu hẹp phương sai -55.4%)"]
+        ["Mask mAP@50-95", "0.7210 ± 0.0129", "0.7246 ± 0.0078", "+0.0036 (+0.49%)", "[0.7065, 0.7339]", "p = 0.3839 (Thu hẹp Std -39.7%)"],
+        ["Mask mAP@50", "0.9119 ± 0.0107", "0.9062 ± 0.0082", "-0.0056 (-0.62%)", "[0.8903, 0.9166]", "p = 0.2273 (Tiệm cận tương đương)"],
+        ["Mask Precision", "0.9023 ± 0.0339", "0.9118 ± 0.0246", "+0.0095 (+1.05%)", "[0.8595, 0.9437]", "p = 0.5428 (Lọc biên chính xác hơn)"],
+        ["Mask Recall", "0.8584 ± 0.0252", "0.8625 ± 0.0173", "+0.0041 (+0.48%)", "[0.8377, 0.8909]", "p = 0.5907 (Tăng độ nhạy bắt polyp)"],
+        ["Box mAP@50-95", "0.7262 ± 0.0198", "0.7285 ± 0.0141", "+0.0023 (+0.32%)", "[0.6992, 0.7441]", "p = 0.7152 (Giảm độ phân tán -28.6%)"],
+        ["Box mAP@50", "0.9011 ± 0.0116", "0.9006 ± 0.0090", "-0.0004 (-0.05%)", "[0.8846, 0.9113]", "p = 0.9334 (Bảo toàn định vị khung bao)"],
+        ["Box Recall", "0.8434 ± 0.0337", "0.8567 ± 0.0152", "+0.0133 (+1.58%)", "[0.8347, 0.8779]", "p = 0.2674 (Tăng trưởng mạnh nhất)"],
+        ["Val Seg Loss", "1.3045 ± 0.0867", "1.2424 ± 0.0387", "-0.0622 (-4.76%)", "[1.1777, 1.3020]", "p = 0.0908 (Thu hẹp phương sai -55.4%)"]
     ]
 
     hdr_s = tbl_sum.rows[0]
@@ -458,6 +458,15 @@ def build_full_report():
             if c_i == 2 and ("+" in val_txt or "-" in val_txt and "Loss" in r_data[0]):
                 run.font.bold = True
 
+    # --- Ghi chú BẮT BUỘC dưới Bảng 3 (đợt v3.1, 02/10/2026) ---
+    add_body_p(doc, "Ghi chú: Với cỡ mẫu N = 10 lần chạy độc lập, KHÔNG chỉ số nào đạt mức ý nghĩa "
+                    "thống kê ở ngưỡng α = 0.05. Chỉ Validation Segmentation Loss tiệm cận ngưỡng "
+                    "α = 0.10 (p = 0.0908). Các khác biệt về giá trị trung bình là xu hướng thực nghiệm, "
+                    "chưa đủ bằng chứng thống kê để bác bỏ giả thuyết không. Đóng góp quan sát được rõ "
+                    "nhất của TSVM nằm ở mức độ ổn định phương sai (Std giảm 39.7%, phương sai co 2.75 lần) "
+                    "và giảm hàm mất mát phân đoạn. Toàn bộ số liệu trong bảng đã được kiểm chứng lại 100% "
+                    "từ 20 tệp results.csv gốc của các lượt huấn luyện.")
+
     add_heading_2(doc, "3.2. Bảng đối chứng chi tiết từng lượt seed (Seed 0 đến Seed 9)")
     add_table_caption(doc, "Bảng 4: Chi tiết hiệu năng từng hạt giống (Seed 0 -> Seed 9) giữa Baseline và TSVM")
     tbl_seed = doc.add_table(rows=11, cols=9)
@@ -474,7 +483,7 @@ def build_full_report():
         ["Seed 5", "94", "0.7351", "1.2022", "90", "0.7285", "1.3020", "-0.0066", "Baseline"],
         ["Seed 6", "81", "0.7153", "1.2043", "95", "0.7254", "1.2472", "+0.0101", "TSVM"],
         ["Seed 7", "71", "0.7145", "1.2447", "88", "0.7065", "1.2371", "-0.0080", "Baseline"],
-        ["Seed 8", "96", "0.7318", "1.4501", "93", "0.7338", "1.2371", "+0.0020", "TSVM"],
+        ["Seed 8", "96", "0.7318", "1.4501", "93", "0.7339", "1.2371", "+0.0020", "TSVM"],
         ["Seed 9", "84", "0.7253", "1.2679", "96", "0.7328", "1.2586", "+0.0075", "TSVM"]
     ]
 
@@ -506,8 +515,8 @@ def build_full_report():
                 run.font.bold = True
 
     add_heading_2(doc, "3.3. Phân tích kiểm định thống kê Paired t-test và độ co hẹp phương sai")
-    add_body_p(doc, "Phân tích độ ổn định và loại bỏ rủi ro suy thoái hạt giống: Kết quả đối kháng trên 10 seed cho thấy TSVM giành chiến thắng đối đầu ở 6/10 seed (tỷ lệ thắng 60.0%). Đáng chú ý nhất, độ lệch chuẩn (Std) của Mask mAP@50-95 ở mô hình TSVM đã co hẹp từ ±0.0129 (Baseline) xuống còn ±0.0078 (giảm 39.5%). Ở mô hình Baseline, sự phụ thuộc vào trọng số ngẫu nhiên khiến hiệu năng bị trượt dốc nghiêm trọng ở Seed 3 (rơi xuống 0.6941). Trong khi đó, TSVM thiết lập một đường đáy cực tiểu an toàn ở mức 0.7065 (tăng +0.0124 so với đáy Baseline), hoàn toàn triệt tiêu các trường hợp khởi tạo hội tụ kém.")
-    add_body_p(doc, "Cải thiện chất lượng mặt nạ phân đoạn (Validation Segmentation Loss): Hàm mất mát phân đoạn mặt nạ trung bình của TSVM giảm từ 1.3045 xuống 1.2424 (giảm -0.0621, tương ứng giảm -4.76%, kiểm định Paired t-test đạt p = 0.0908, tiệm cận ngưỡng ý nghĩa thống kê α = 0.10). Đặc biệt, độ lệch chuẩn của Seg Loss giảm tới 55.4% (từ ±0.0867 xuống ±0.0387). Điều này minh chứng cơ chế quét 4 hướng SS2D giúp gradient của hàm mất mát mặt nạ hội tụ mượt mà, hạn chế tối đa xung đột tại các vùng chuyển tiếp giải phẫu phức tạp.")
+    add_body_p(doc, "Phân tích độ ổn định và loại bỏ rủi ro suy thoái hạt giống: Kết quả đối kháng trên 10 seed cho thấy TSVM giành chiến thắng đối đầu ở 6/10 seed (tỷ lệ thắng 60.0%). Đáng chú ý nhất, độ lệch chuẩn (Std) của Mask mAP@50-95 ở mô hình TSVM đã co hẹp từ ±0.0129 (Baseline) xuống còn ±0.0078 (giảm 39.7%). Ở mô hình Baseline, sự phụ thuộc vào trọng số ngẫu nhiên khiến hiệu năng bị trượt dốc nghiêm trọng ở Seed 3 (rơi xuống 0.6941). Trong khi đó, TSVM thiết lập một đường đáy cực tiểu an toàn ở mức 0.7065 (tăng +0.0124 so với đáy Baseline), gợi ý TSVM nhạy với điều kiện khởi tạo trọng số ít hơn; cần kiểm chứng trên quy mô seed lớn hơn trước khi kết luận về độ tin cậy triển khai.")
+    add_body_p(doc, "Cải thiện chất lượng mặt nạ phân đoạn (Validation Segmentation Loss): Hàm mất mát phân đoạn mặt nạ trung bình của TSVM giảm từ 1.3045 xuống 1.2424 (giảm -0.0622, tương ứng giảm -4.76%, kiểm định Paired t-test đạt p = 0.0908, tiệm cận ngưỡng ý nghĩa thống kê α = 0.10). Đặc biệt, độ lệch chuẩn của Seg Loss giảm tới 55.4% (từ ±0.0867 xuống ±0.0387). Diễn giải cơ chế cho nhánh quét 4 hướng SS2D cần được kiểm chứng thêm bằng phân tích ablation và trực quan hóa bản đồ đặc trưng; dữ liệu 10 seed hiện tại chỉ mô tả hiện tượng quan sát được.")
 
     # --- 4. MA TRẬN NHẦM LẪN VÀ ĐÁNH GIÁ CHỈ SỐ LÂM SÀNG NỘI SOI ---
     add_heading_1(doc, "4. MA TRẬN NHẦM LẪN VÀ ĐÁNH GIÁ CHỈ SỐ LÂM SÀNG NỘI SOI")
@@ -523,9 +532,9 @@ def build_full_report():
         ["True Positive (TP - Bắt đúng bệnh)", "110.3 ± 3.4 (86.85%)", "111.2 ± 2.2 (87.56%)", "+0.9 ca (+0.71%)", "Tăng số lượng polyp phát hiện được/ca nội soi"],
         ["False Negative (FN - Bỏ sót polyp)", "16.7 ± 3.4 (13.15%)", "15.8 ± 2.2 (12.44%)", "-0.9 ca (-0.71%)", "Cực kỳ quan trọng: Giảm nguy cơ bỏ sót ung thư"],
         ["False Positive (FP - Báo động giả)", "16.8 ± 2.3 (42.00%)", "14.6 ± 4.4 (36.50%)", "-2.2 ca (-5.50%)", "Giảm can thiệp cắt/sinh thiết nhầm mô lành"],
-        ["True Negative (TN - Đúng mô lành)", "23.2 ± 2.3 (58.00%)", "25.4 ± 4.4 (63.50%)", "+2.2 ca (+5.50%)", "Nâng cao độ tin cậy khi soi đại tràng sạch"],
+        ["True Negative (TN - Đúng mô lành) [TÁI DỰNG, xem ghi chú]", "23.2 ± 2.3 (58.00%)", "25.4 ± 4.4 (63.50%)", "+2.2 ca (+5.50%)", "KHÔNG phải số đo trực tiếp - xem ghi chú dưới bảng"],
         ["Độ nhạy phát hiện (Sensitivity/Recall)", "86.85% ± 2.68%", "87.56% ± 1.73%", "+0.71% (Std giảm 35%)", "Độ nhạy cao và ổn định hơn qua các ca bệnh"],
-        ["Độ đặc hiệu trên nền (Specificity)", "58.00% ± 5.87%", "63.50% ± 10.88%", "+5.50% (Đặc hiệu cao)", "Khả năng phân biệt niêm mạc manh tràng chuẩn"]
+        ["Độ đặc hiệu trên nền (Specificity) [TÁI DỰNG, xem ghi chú]", "58.00% ± 5.87%", "63.50% ± 10.88%", "+5.50% (Đặc hiệu cao)", "KHÔNG phải số đo độc lập - xem ghi chú dưới bảng"]
     ]
 
     hdr_cm = tbl_cm.rows[0]
@@ -554,8 +563,25 @@ def build_full_report():
             run.font.size = Pt(11.0)
             if c_i == 2:
                 run.font.bold = True
+            if c_i == 0 and "TÁI DỰNG" in val_txt:
+                run.font.italic = True
 
-    add_body_p(doc, "Phân tích ý nghĩa lâm sàng và khả năng kiểm soát báo động giả: Trong nội soi đại trực tràng can thiệp, bài toán bỏ sót polyp (False Negative) có mức độ nguy hiểm cao nhất vì polyp bị bỏ qua có khả năng tiến triển thành ung thư biểu mô tuyến đại tràng (Colorectal Adenocarcinoma). TSVM đã giảm số lượng polyp bị bỏ sót trung bình từ 16.7 ca xuống 15.8 ca, đồng thời độ lệch chuẩn co lại từ ±3.4 xuống ±2.2, mang lại sự đảm bảo an toàn cao hơn cho bệnh nhân. Mặt khác, việc bổ sung 20% ảnh nền âm tính đã phát huy tác dụng rõ rệt: số ca báo động giả (False Positive) trên niêm mạc bình thường giảm mạnh từ 16.8 ca xuống 14.6 ca (giảm 5.5% tỷ lệ FP), giúp bác sĩ nội soi không bị phân tâm bởi các khung cảnh báo rác, hạn chế tối đa các can thiệp sinh thiết nhầm trên mô lành.")
+    # --- Ghi chú GIỚI HẠN DỮ LIỆU BẮT BUỘC dưới Bảng 5 (đợt v3.1, 02/10/2026) ---
+    add_body_p(doc, "Giới hạn dữ liệu (bắt buộc nêu cùng Bảng 5): "
+                    "(1) Ô True Negative (TN) và độ đặc hiệu (Specificity) KHÔNG phải số đo trực tiếp. "
+                    "Mã nguồn Ultralytics (ultralytics/utils/metrics.py, hàm ConfusionMatrix.process_batch, "
+                    "dòng 427-434) không có nhánh cộng vào ô background-background; do đó ô này luôn bằng 0 và "
+                    "hiển thị trống trên toàn bộ 20 ảnh confusion_matrix.png gốc. Giá trị TN trong dữ liệu gốc "
+                    "đúng bằng N_TN = 40 - N_FP ở cả 20 dòng, tức là số tái dựng theo giả định mỗi ảnh nền sinh "
+                    "tối đa 1 báo động giả, không phải quan sát thực nghiệm. "
+                    "(2) Ba trong hai mươi lượt chạy (TSVM s0, s5, s8) không đối chiếu được với ảnh ma trận "
+                    "nhầm lẫn gốc: ảnh gốc cho thấy tỷ lệ phát hiện gần 0, mâu thuẫn với results.csv của chính các "
+                    "lượt chạy đó; 17/20 lượt chạy còn lại khớp chính xác. "
+                    "(3) Ngưỡng đánh giá conf = 0.25, IoU = 0.45 (mặc định Ultralytics). "
+                    "Do đó Bảng 5 nên được trình bày như quan sát mô tả trên tập kiểm định hiện tại, "
+                    "không phải bằng chứng định lượng chính cho kết luận về hiệu quả của TSVM.")
+
+    add_body_p(doc, "Phân tích ý nghĩa lâm sàng và khả năng kiểm soát báo động giả: Trong nội soi đại trực tràng can thiệp, bài toán bỏ sót polyp (False Negative) có mức độ nguy hiểm cao nhất vì polyp bị bỏ qua có khả năng tiến triển thành ung thư biểu mô tuyến đại tràng (Colorectal Adenocarcinoma). TSVM ghi nhận giảm số lượng polyp bị bỏ sót trung bình từ 16.7 ca xuống 15.8 ca, đồng thời độ lệch chuẩn co lại từ ±3.4 xuống ±2.2, góp phần giảm bỏ sót trung bình trên tập kiểm định hiện tại. Mặt khác, trên tập kiểm định có 20% ảnh nền âm tính, số ca báo động giả (False Positive) trên niêm mạc bình thường ghi nhận giảm từ 16.8 ca xuống 14.6 ca (giảm 5.50 điểm phần trăm), có thể hỗ trợ bác sĩ nội soi tránh can thiệp sinh thiết nhầm trên mô lành; mức giảm ý nghĩa lâm sàng cần được đánh giá qua nghiên cứu tiếp cận lâm sàng có đối chứng để xác nhận.")
 
     # --- 5. HỆ THỐNG TRỰC QUAN HÓA THỰC NGHIỆM ĐA CHIỀU (12 BIỂU ĐỒ CHUẨN) ---
     add_heading_1(doc, "5. HỆ THỐNG TRỰC QUAN HÓA THỰC NGHIỆM ĐA CHIỀU (12 BIỂU ĐỒ CHUẨN)")
@@ -569,7 +595,7 @@ def build_full_report():
         doc,
         f"{fig_base}/01_overall_benchmark_barchart.png",
         "Hình 1. Biểu đồ cột đôi so sánh tổng thể 4 chỉ số phân vùng chính kèm thanh sai số ±1σ qua 10 seed",
-        "Hình 1 biểu diễn biểu đồ cột đôi đối sánh trực diện 4 chỉ số phân vùng cốt lõi (Mask mAP@50-95, Mask mAP@50, Precision, Recall) kèm thanh sai số độ lệch chuẩn (±1SD). Kết quả chỉ ra mô hình TSVM đạt mAP@50-95 trung bình 0.7246, nhỉnh hơn Baseline (0.7210). Đặc biệt, thanh sai số của TSVM ngắn hơn rõ rệt trên tất cả các thước đo, minh chứng tính ổn định vượt trội khi đối mặt với sự thay đổi của hạt giống ngẫu nhiên trong điều kiện có 20% ảnh nền âm tính."
+        "Hình 1 biểu diễn biểu đồ cột đôi đối sánh trực diện 4 chỉ số phân vùng cốt lõi (Mask mAP@50-95, Mask mAP@50, Precision, Recall) kèm thanh sai số độ lệch chuẩn (±1SD). Kết quả chỉ ra mô hình TSVM đạt mAP@50-95 trung bình 0.7246, nhỉnh hơn Baseline (0.7210). Đặc biệt, thanh sai số của TSVM ngắn hơn trên phần lớn các thước đo (Mask mAP@50-95: Std giảm 39.7%, Range giảm 35.7%), cho thấy mức ổn định cao hơn khi đối mặt với sự thay đổi của hạt giống ngẫu nhiên trong điều kiện có 20% ảnh nền âm tính."
     )
 
     # Hình 2
@@ -641,7 +667,7 @@ def build_full_report():
         doc,
         f"{fig_base}/11_boxplot_variance_stability.png",
         "Hình 9. Biểu đồ hộp (Boxplot) tích hợp điểm phân tán (jitter points) thể hiện độ ổn định phương sai Mask mAP@50-95",
-        "Hình 9 thể hiện biểu đồ hộp (Boxplot) tích hợp các điểm dữ liệu phân tán (jitter points) của chỉ số Mask mAP@50-95 qua 10 seeds. Hộp phân vị của TSVM co cụm chặt chẽ với dải liên phân vị hẹp hơn Baseline đáng kể (độ lệch chuẩn giảm 39.5%), đồng thời trung vị (median) nằm ở mức cao hơn. Phân phối này minh chứng TSVM loại bỏ hoàn toàn các trường hợp hội tụ kém, mang lại sự bảo đảm an toàn cao cho chẩn đoán y khoa."
+        "Hình 9 thể hiện biểu đồ hộp (Boxplot) tích hợp các điểm dữ liệu phân tán (jitter points) của chỉ số Mask mAP@50-95 qua 10 seeds. Hộp phân vị của TSVM co cụm chặt chẽ với dải liên phân vị hẹp hơn Baseline đáng kể (độ lệch chuẩn giảm 39.7%), đồng thời trung vị (median) nằm ở mức cao hơn. Phân phối này mô tả mức giảm phân tán và nâng đáy hiệu năng của TSVM (từ 0.6941 lên 0.7065); chưa đủ cơ sở định lượng cho kết luận về an toàn chẩn đoán."
     )
 
     # Hình 10
@@ -649,7 +675,7 @@ def build_full_report():
     add_figure_block(
         doc,
         f"{fig_base}/12_confusion_matrix_mean_comparison.png",
-        "Hình 10. Ma trận nhầm lẫn chuẩn hóa trung bình 10 seed giữa Baseline và TSVM trên 167 đối tượng thẩm định",
+        "Hình 10. Ma trận nhầm lẫn chuẩn hóa trung bình 10 seed giữa Baseline và TSVM trên 160 ảnh thẩm định (127 thực thể polyp)",
         "Hình 10 trình bày ma trận nhầm lẫn chuẩn hóa trung bình qua 10 seeds trên tập kiểm thử gồm 127 tổn thương polyp thực tế và 40 ảnh niêm mạc bình thường. TSVM đạt tỷ lệ phát hiện polyp chính xác 87.6% (so với 86.9% của Baseline), đồng thời nâng tỷ lệ nhận diện đúng niêm mạc lành từ 58.0% lên 63.5%. Điều này chứng minh việc đưa 20% ảnh nền vào huấn luyện đã giúp mô hình học được đặc trưng âm tính thực sự thay vì phán đoán cảm tính."
     )
 

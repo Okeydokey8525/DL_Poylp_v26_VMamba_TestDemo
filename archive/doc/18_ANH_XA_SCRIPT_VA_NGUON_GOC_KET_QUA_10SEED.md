@@ -18,7 +18,7 @@
   2. **TSVM**: YOLO26s-seg tích hợp nhánh Topology-Shape VMamba tại Layer 10 (`KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM/`) qua 10 seeds (`s0`–`s9`).
 
 ### 1.2. Nhật ký biến thiên cấu trúc thư mục (Git Provenance)
-- **Giai đoạn tạo dựng (Commit `37968c4fcb`, 27/09/2026):** Toàn bộ bộ phân tích 10 seed ban đầu được khởi tạo tại thư mục `archive/KQ_Nen_DX_10seed/`.
+- **Giai đoạn tạo dựng (Commit `37968c4fcb`, 27/09/2026):** Toàn bộ bộ phân tích 10 seed ban đầu được khởi tạo tại thư mục `archive/Ket_Qua_V2/KQ_Nen_DX_10seed/`.
 - **Giai đoạn tái cấu trúc (Commit `92616d0949`, 28/09/2026):** Nhằm quy hoạch đồng nhất các kết quả phiên bản mới vào không gian làm việc `Ket_Qua_V2/`, thư mục trên đã được di chuyển sang `archive/Ket_Qua_V2/KQ_Nen_DX_10seed/`.
 - **Cảnh báo quan trọng cho AI/GPT:** Trong mã nguồn các file script tại `Stracth/`, các biến đường dẫn hardcoded (như `ROOT_OUT` hoặc `fig_dir`) ban đầu mang giá trị `archive\KQ_Nen_DX_10seed`. Khi thực thi lại, bắt buộc phải cập nhật sang đường dẫn hiện tại `archive\Ket_Qua_V2\KQ_Nen_DX_10seed` để ghi đúng vị trí mới.
 
@@ -124,7 +124,7 @@ Khi người dùng hoặc AI cần tái tạo, kiểm tra hoặc chỉnh sửa b
 
 Nếu một AI tiếp nhận yêu cầu chạy lại hoặc làm mới toàn bộ gói kết quả này, thực hiện tuần tự 4 bước sau:
 
-1. **Bước 1 - Kiểm tra tệp nguồn thô:** Xác nhận 20 thư mục seed tại `archive/KetQua_Nen/YOLOv26s-seg/` và `archive/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM/` còn nguyên vẹn tệp `results.csv`.
+1. **Bước 1 - Kiểm tra tệp nguồn thô:** Xác nhận 20 thư mục seed tại `archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/` và `archive/Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM/` còn nguyên vẹn tệp `results.csv`.
 2. **Bước 2 - Chạy gói phân tích hạt nhân:**
    - Cập nhật dòng 13 của [`Stracth/generate_10seed_thesis_package.py`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Stracth/generate_10seed_thesis_package.py) trỏ tới `Ket_Qua_V2/KQ_Nen_DX_10seed`.
    - Chạy lệnh: `python "Stracth/generate_10seed_thesis_package.py"`.
@@ -139,6 +139,6 @@ Nếu một AI tiếp nhận yêu cầu chạy lại hoặc làm mới toàn b�
 
 ## 5. CAM KẾT KIỂM TOÁN TÍNH TOÀN VẸN (AUDIT & INTEGRITY)
 
-* **Bảo toàn dữ liệu lịch sử:** Tuyệt đối không can thiệp, không chỉnh sửa và không retrain đè lên các tệp dữ liệu thô gốc trong `archive/KetQua_Nen/`.
+* **Bảo toàn dữ liệu lịch sử:** Tuyệt đối không can thiệp, không chỉnh sửa và không retrain đè lên các tệp dữ liệu thô gốc trong `archive/Ket_Qua_V2/KetQua_Nen/`.
 * **Chống bịa đặt số liệu (No Hallucination):** 100% các giá trị trong bảng và biểu đồ đều được tính toán theo công thức toán học từ dữ liệu thực tế, không có số liệu giả định hay làm tròn thiên vị.
 * **Chuẩn đồ họa xuất bản:** Mọi biểu đồ được xuất với chuẩn in ấn độ phân giải cao $\ge 300\text{ DPI}$, phông chữ khoa học không bị lỗi dấu tiếng Việt và có thanh sai số đo lường thực tế.

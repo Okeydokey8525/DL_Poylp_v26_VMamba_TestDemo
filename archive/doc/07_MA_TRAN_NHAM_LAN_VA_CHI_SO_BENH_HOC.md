@@ -3,6 +3,11 @@
 
 ---
 
+> 🔴 **GHI CHÚ PHẠM VI (cập nhật 02/10/2026):**
+> - **Mục 1, 2, 3, 4 và 5 của tài liệu này** mô tả thực nghiệm **6 seed với mô hình C2TSVMamba trên tập Kvasir-SEG thuần polyp** — đây là **bối cảnh lịch sử**, KHÔNG phải bộ kết quả 10 seed BG20 hiện hành. Không dùng làm nguồn số cho khóa luận cử nhận.
+> - **Chỉ mục 6.3** là phần áp dụng cho bộ kết quả hiện hành (Baseline + TSVM, 10 seed, BG20) và **đã được sửa lại** theo số liệu kiểm chứng từ `results.csv`. Lưu ý: ô **TN vẫn là số tái dựng, không phải số đo** — xem hộp cảnh báo đỏ tại mục 6.3.
+> - **Nguồn số liệu chuẩn cho báo cáo:** [`20_KET_QUA_CHUAN_BASELINE_VS_TSVM_BG20_10SEED.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/20_KET_QUA_CHUAN_BASELINE_VS_TSVM_BG20_10SEED.md)
+
 > **Phân loại độ tin cậy thông tin theo nguyên tắc dự án:**
 > - `[Đã xác nhận]`: Dữ liệu số ca tổn thương quy đổi từ Recall và Precision trên tập ground-truth 127 polyp của Kvasir-SEG qua 6 seed độc lập (`s0` đến `s5`).
 > - `[Có khả năng / suy luận]`: Phân tích nguyên nhân vi thể của các ca bỏ sót (False Negative) dựa trên phân loại hình thái học Paris và đặc điểm nội soi ánh sáng trắng (WLI).
@@ -114,20 +119,31 @@ Trong ảnh ma trận nhầm lẫn chuẩn hóa của Ultralytics YOLO (`confusi
 * Nhóm nghiên cứu đã xây dựng bộ dữ liệu độc lập **`Kvasir_YOLO_SEG_BG20`** (1.200 ảnh) bổ sung 200 ảnh niêm mạc lành tính từ kho `normal-cecum` (Kvasir v2), với cấu trúc 160 ảnh train và 40 ảnh val đi kèm file nhãn rỗng 0-byte.
 * Chi tiết triển khai và huấn luyện được tài liệu hóa tại [`16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/doc/16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md).
 
-### 6.3. Kết quả Ma Trận Nhầm Lẫn Trung Bình 10 Seed Trên Tập BG20 (Khắc Phục Hoàn Toàn Vấn Đề TN)
+### 6.3. Kết quả Ma Trận Nhầm Lẫn Trung Bình 10 Seed Trên Tập BG20 — **VÀ GIỚI HẠN CÒN LẠI CỦA Ô TN**
 
-Trên tập kiểm định 160 ảnh (127 polyp GT + 40 ảnh nền âm tính), nhóm nghiên cứu đã tổng hợp ma trận nhầm lẫn trung bình qua trọn vẹn 10 seeds (lưu trữ đầy đủ tại [`archive/KQ_Nen_DX_10seed/04_confusion_matrix/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/04_confusion_matrix)):
+Trên tập kiểm định 160 ảnh (120 ảnh chứa **127 thực thể polyp** + 40 ảnh nền âm tính), nhóm nghiên cứu đã tổng hợp ma trận nhầm lẫn trung bình qua trọn vẹn 10 seeds (lưu trữ đầy đủ tại [`archive/Ket_Qua_V2/KQ_Nen_DX_10seed/04_confusion_matrix/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/04_confusion_matrix)):
 
-| Ô ma trận nhầm lẫn | Baseline Mean (Số đếm) | TSVM Mean (Số đếm) | Baseline (%) | TSVM (%) | Đánh giá cải thiện |
+| Ô ma trận nhầm lẫn | Baseline Mean (Số đếm) | TSVM Mean (Số đếm) | Baseline (%) | TSVM (%) | Đánh giá quan sát |
 | :--- | :---: | :---: | :---: | :---: | :--- |
-| **True Positive (TP / 127)** | $110.3$ ca | **$111.2$ ca** | $86.85\%$ | **$87.56\%$** | Tăng bắt dính $+0.9$ tổn thương thật |
-| **False Negative (FN / 127)** | $16.7$ ca | **$15.8$ ca** | $13.15\%$ | **$12.44\%$** | Giảm bỏ sót tổn thương nguy hiểm |
-| **False Positive (FP / 40)** | $17.4$ ca | **$14.6$ ca** | $43.50\%$ | **$36.50\%$** | **Giảm 2.8 ca cảnh báo sai trên ảnh nền (-16.1% FP)** |
-| **True Negative (TN / 40)** | $22.6$ ca | **$25.4$ ca** | $56.50\%$ | **$63.50\%$** | **Xác nhận đúng niêm mạc lành tăng $+7.0\%$** |
+| **True Positive (TP / 127)** | $110.3 \pm 3.40$ ca | **$111.2 \pm 2.20$ ca** | $86.85\%$ | **$87.56\%$** | Tăng bắt dính $+0.9$ thực thể |
+| **False Negative (FN / 127)** | $16.7 \pm 3.40$ ca | **$15.8 \pm 2.20$ ca** | $13.15\%$ | **$12.44\%$** | Giảm bỏ sót $0.9$ thực thể |
+| **False Positive (FP / 40)** | $16.8 \pm 2.35$ ca | **$14.6 \pm 4.35$ ca** | $42.00\%$ | **$36.50\%$** | **Giảm $2.2$ ca cảnh báo sai trên ảnh nền (−5.50 điểm phần trăm)** |
+| **True Negative (TN / 40)** ⚠️ | $23.2 \pm 2.35$ ca *(tái dựng)* | **$25.4 \pm 4.35$ ca** *(tái dựng)* | $58.00\%$ *(tái dựng)* | **$63.50\%$** *(tái dựng)* | **Xem cảnh báo bên dưới — không phải số đo** |
+
+> 🔴 **GIỚI HẠN QUAN TRỌNG: ô TN VẪN CHƯA ĐƯỢC ĐO (đợt kiểm chứng 02/10/2026)**
+>
+> Mục 6.1 đã chỉ ra hiện tượng `1.00` trên cột background. Việc bổ sung 200 ảnh nền âm tính vào tập BG20 **giải quyết được vấn đề thiếu mẫu âm tính cho huấn luyện**, nhưng **chưa giải quyết được việc Ultralytics không ghi nhận ô background–background**:
+>
+> 1. Trong mã nguồn `ultralytics/utils/metrics.py`, hàm `ConfusionMatrix.process_batch` (dòng 427–434), khi một ảnh nền không có ground-truth, code **chỉ cộng FP** rồi `return` — **không có nhánh `matrix[self.nc, self.nc] += 1`**. Ô background↔background do đó **luôn bằng 0** ở mọi lượt chạy.
+> 2. Dòng 550 của cùng tệp thực hiện `array[array < 0.005] = np.nan`, nên ô này **hiển thị trống** trên toàn bộ **20 ảnh `confusion_matrix.png` gốc**. Điều này đã được xác nhận bằng OCR trên cả 20 ảnh.
+> 3. Giá trị `TN` trong `raw_10seeds_confusion_matrices.csv` **đúng bằng $40 - FP$** ở cả 20 dòng → là **số tái dựng theo giả định** (mỗi ảnh nền sinh tối đa 1 báo động giả), **không phải quan sát thực nghiệm**.
+> 4. **17/20** lượt chạy có TP/FP/FN khớp chính xác với ảnh gốc. **3/20 lượt chạy (TSVM s0, s5, s8) không khớp** — ảnh gốc cho thấy tỷ lệ phát hiện gần 0, mâu thuẫn với `results.csv` của chính các lượt chạy đó.
+>
+> → **Kết luận:** Bảng trên chỉ nên được trình bày như **quan sát mô tả** trên tập kiểm định hiện tại. **Độ đặc hiệu (Specificity) và ô TN không nên được trích dẫn như chỉ số đo độc lập.** Muốn có TN/Specificity đáng tin cậy phải tự tái tạo ma trận nhầm lẫn bằng bộ đếm riêng ngoài mã nguồn Ultralytics.
 
 *Heatmap 300 DPI tương ứng trong luận văn*:
-- Baseline: [`14_cm_count_baseline_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/04_confusion_matrix/count/14_cm_count_baseline_mean.png) & [`16_cm_percentage_baseline_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/04_confusion_matrix/percentage/16_cm_percentage_baseline_mean.png)
-- TSVM: [`15_cm_count_tsvm_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/04_confusion_matrix/count/15_cm_count_tsvm_mean.png) & [`17_cm_percentage_tsvm_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/04_confusion_matrix/percentage/17_cm_percentage_tsvm_mean.png)
+- Baseline: [`14_cm_count_baseline_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/04_confusion_matrix/count/14_cm_count_baseline_mean.png) & [`16_cm_percentage_baseline_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/04_confusion_matrix/percentage/16_cm_percentage_baseline_mean.png)
+- TSVM: [`15_cm_count_tsvm_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/04_confusion_matrix/count/15_cm_count_tsvm_mean.png) & [`17_cm_percentage_tsvm_mean.png`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/04_confusion_matrix/percentage/17_cm_percentage_tsvm_mean.png)
 
 `[Đã xác nhận]`
 

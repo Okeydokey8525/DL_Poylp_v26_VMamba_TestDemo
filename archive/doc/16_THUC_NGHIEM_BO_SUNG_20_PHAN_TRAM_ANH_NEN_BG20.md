@@ -5,8 +5,8 @@
 
 > **Phân loại độ tin cậy thông tin theo nguyên tắc dự án:**
 > - `[Đã xác nhận]`: Dữ liệu 1.000 ảnh polyp gốc (Kvasir-SEG) kết hợp bổ sung 20% ảnh nền âm tính manh tràng lành 200 ảnh (`normal-cecum`), tạo thành bộ dữ liệu chính thức `Kvasir_YOLO_SEG_BG20` (1.200 ảnh: 1.040 ảnh train, 160 ảnh val).
-> - `[Đã xác nhận]`: Toàn bộ quá trình huấn luyện đối chuẩn trên tập dữ liệu BG20 đã hoàn tất thực tế qua 10 random seeds (`s0` đến `s9`) trên GPU NVIDIA Tesla T4 (lưu tại `archive/KetQua_Nen/`).
-> - `[Đã xác nhận]`: Toàn bộ kết quả phân tích thống kê, kiểm định Paired t-test, ma trận nhầm lẫn 2x2 trên 40 ảnh nền âm tính và hệ thống 20 biểu đồ 300 DPI đã được hoàn tất và kiểm toán tại `archive/KQ_Nen_DX_10seed/`.
+> - `[Đã xác nhận]`: Toàn bộ quá trình huấn luyện đối chuẩn trên tập dữ liệu BG20 đã hoàn tất thực tế qua 10 random seeds (`s0` đến `s9`) trên GPU NVIDIA Tesla T4 (lưu tại `archive/Ket_Qua_V2/KetQua_Nen/`).
+> - `[Đã xác nhận]`: Toàn bộ kết quả phân tích thống kê, kiểm định Paired t-test, ma trận nhầm lẫn 2x2 trên 40 ảnh nền âm tính và hệ thống 20 biểu đồ 300 DPI đã được hoàn tất và kiểm toán tại `archive/Ket_Qua_V2/KQ_Nen_DX_10seed/`.
 
 ---
 
@@ -328,7 +328,7 @@ print("✅ Đã cấu hình môi trường post-eval One-to-Many chuẩn xác!")
 
 ## 5. TỔNG HỢP KẾT QUẢ THỰC NGHIỆM ĐA SEED TRÊN BỘ DỮ LIỆU KVASIR_YOLO_SEG_BG20
 
-Sau khi giải nén và cấu trúc hóa toàn bộ 17 tệp kết quả mới từ Kaggle vào `archive/KetQua_Nen/`, tổng số lượt chạy được kiểm toán đạt **47 runs/seeds** (đầy đủ `results.csv` và `weights/best.pt`).
+Sau khi giải nén và cấu trúc hóa toàn bộ 17 tệp kết quả mới từ Kaggle vào `archive/Ket_Qua_V2/KetQua_Nen/`, tổng số lượt chạy được kiểm toán đạt **47 runs/seeds** (đầy đủ `results.csv` và `weights/best.pt`).
 
 ### 5.1. Bảng Đối Chiếu Mask mAP@50-95 Từng Seed (100 Epochs/Seed)
 
@@ -420,11 +420,11 @@ Khi đưa thêm 20% ảnh nội soi âm tính (niêm mạc lành `normal-cecum`)
 
 ---
 
-### 5.6. Gói Tài Liệu Phân Tích & Bộ Trực Quan Hóa Đồ Án 10 Seed (`archive/KQ_Nen_DX_10seed/`)
+### 5.6. Gói Tài Liệu Phân Tích & Bộ Trực Quan Hóa Đồ Án 10 Seed (`archive/Ket_Qua_V2/KQ_Nen_DX_10seed/`)
 
 Để phục vụ trực tiếp việc viết chương thực nghiệm và đóng góp kết quả cho luận văn, nhóm nghiên cứu đã xây dựng hoàn chỉnh gói phân tích đối sánh 10 seed giữa **Baseline (YOLO26s-seg)** và **TSVM (Topology-Shape)** tại thư mục:
 
-📁 [`archive/KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed)
+📁 [`archive/Ket_Qua_V2/KQ_Nen_DX_10seed/`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed)
 
 **Nội dung cốt lõi của gói sản phẩm**:
 * **20 Biểu đồ nghiên cứu khoa học đạt chuẩn xuất bản (300 DPI)**:
@@ -436,8 +436,8 @@ Khi đưa thêm 20% ảnh nội soi âm tính (niêm mạc lành `normal-cecum`)
   - *Summary (18, 19, 20)*: Grouped bar chart tổng hợp, Radar chart đa chiều và đồ thị thanh ngang phân kỳ $\Delta = \text{TSVM} - \text{Baseline}$.
 * **11 Bảng thống kê chuẩn hóa (CSV)**: Phân bố trong các thư mục `02_statistics/`, `03_metrics/`, `04_confusion_matrix/`.
 * **2 Báo cáo học thuật chi tiết**:
-  - [`summary.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/summary.md): Báo cáo tóm tắt toàn bộ số liệu thống kê mô tả.
-  - [`conclusions.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/KQ_Nen_DX_10seed/06_reports/conclusions.md): Báo cáo nhận xét học thuật khách quan theo 6 nhóm tiêu chí (Performance, Stability, Precision/Recall, Loss, Confusion Matrix, Seed Consistency).
+  - [`summary.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/06_reports/summary.md): Báo cáo tóm tắt toàn bộ số liệu thống kê mô tả.
+  - [`conclusions.md`](file:///c:/LeDucLuong/HK%20VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Ket_Qua_V2/KQ_Nen_DX_10seed/06_reports/conclusions.md): Báo cáo nhận xét học thuật khách quan theo 6 nhóm tiêu chí (Performance, Stability, Precision/Recall, Loss, Confusion Matrix, Seed Consistency).
 
 `[Đã xác nhận]`
 
