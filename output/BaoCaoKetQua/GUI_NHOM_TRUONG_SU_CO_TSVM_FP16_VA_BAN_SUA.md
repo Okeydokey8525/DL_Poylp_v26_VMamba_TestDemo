@@ -8,7 +8,7 @@
 > - **[Suy luận]**: rút ra từ cơ chế, chưa đo riêng;
 > - **[Chưa xác minh]**: chưa kiểm tra.
 >
-> Tài liệu giải thích chi tiết hơn: `BaoCaoKetQua/BAO_CAO_SU_CO_PHINH_SO_TSVM_SEED_0_5_8.md`.
+> Tài liệu giải thích chi tiết hơn: `output/BaoCaoKetQua/BAO_CAO_SU_CO_PHINH_SO_TSVM_SEED_0_5_8.md`.
 
 ---
 

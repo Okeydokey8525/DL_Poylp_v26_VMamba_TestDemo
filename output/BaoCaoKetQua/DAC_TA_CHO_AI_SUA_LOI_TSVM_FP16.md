@@ -131,7 +131,7 @@ Mục đích là đo được, trên các lượt mới, seed nào sẽ hỏng n
   - câu "`best.pt` nguyên vẹn 100 %" là **sai**;
   - kèm link tới báo cáo mới.
 - Cập nhật `CURRENT_PROJECT_STATUS.md` ở mục "Artifact fuse TSVM".
-- Mục 4 của `BaoCaoKetQua/CNTT_KLCN182_LeDucLuong.docx`:
+- Mục 4 của `output/BaoCaoKetQua/CNTT_KLCN182_LeDucLuong.docx`:
   - không dùng ma trận nhầm lẫn của TSVM seed 0, 5, 8;
   - bỏ hai dòng TN và độ đặc hiệu tái dựng;
   - thêm kiểm định ghép cặp cho TP (p = 0,45) và FP (p = 0,20).
