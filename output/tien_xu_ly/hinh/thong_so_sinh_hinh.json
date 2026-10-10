@@ -1,0 +1,61 @@
+{
+ "h32": {
+  "id": "cju1ats0y372e08011yazcsxm",
+  "size": [
+   623,
+   528
+  ],
+  "otsu": 7.0,
+  "contours_all": 2,
+  "kept": 1,
+  "pts_before": 377,
+  "pts_after": 21,
+  "stored_pts": [
+   21
+  ],
+  "gray_unique": 15
+ },
+ "h33": {
+  "id": "cjyzul1qggwwj07216mhiv5sy",
+  "orig": [
+   1920,
+   1072
+  ],
+  "r": 0.3333333333333333,
+  "resized": [
+   640,
+   358
+  ],
+  "pad_top": 141,
+  "pad_bottom": 141,
+  "pad_left": 0,
+  "pad_right": 0,
+  "final": [
+   640,
+   640
+  ]
+ },
+ "h34": {
+  "base_id": "cju1ats0y372e08011yazcsxm",
+  "hsv_gain_example": [
+   0.012,
+   0.55,
+   -0.3
+  ],
+  "affine_example": {
+   "scale": 0.62,
+   "tx": 0.08,
+   "ty": -0.06
+  },
+  "mosaic_center": [
+   700,
+   610
+  ],
+  "mosaic_ids": [
+   "cju1ats0y372e08011yazcsxm",
+   "cju0qkwl35piu0993l0dewei2",
+   "bg_01af3454-037f-4708-b73c-6ec4423b6a61",
+   "cju1c3218411b08014g9f6gig"
+  ]
+ }
+}

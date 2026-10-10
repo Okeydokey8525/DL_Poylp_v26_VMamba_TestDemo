@@ -1,0 +1,5 @@
+names:
+  0: polyp
+path: D:\HocKi1Nam4\DoAnTotNghiepV3\DL_Poylp_v26_VMamba_TestDemo\DL_Poylp_v26_VMamba_TestDemo\archive\Ket_Qua_V2\Kvasir_YOLO_SEG_BG20
+train: images/train
+val: images/val

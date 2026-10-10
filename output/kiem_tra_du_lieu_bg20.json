@@ -1,0 +1,60 @@
+{
+  "checked_on": "2026-10-07",
+  "dataset_relative_path": "archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20",
+  "method": "Read-only file inventory, polygon validation, split-ID comparison, SHA-256 image comparison. No model training or converter execution.",
+  "splits": {
+    "train": {
+      "images": 1040,
+      "labels": 1040,
+      "polyp_images": 880,
+      "background_images": 160,
+      "zero_byte_labels": 160,
+      "empty_content_labels": 160,
+      "polygon_rows": 936,
+      "coordinate_min": 0.0,
+      "coordinate_max": 0.999258,
+      "missing_labels": [],
+      "orphan_labels": [],
+      "original_polyp_id_list_matches": true,
+      "background_selection_list_matches": true,
+      "example_polyp_image": "archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20/images/train/cju0qkwl35piu0993l0dewei2.jpg",
+      "example_polyp_label": "archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20/labels/train/cju0qkwl35piu0993l0dewei2.txt",
+      "example_background_image": "archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20/images/train/bg_01af3454-037f-4708-b73c-6ec4423b6a61.jpg",
+      "example_background_label": "archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20/labels/train/bg_01af3454-037f-4708-b73c-6ec4423b6a61.txt"
+    },
+    "val": {
+      "images": 160,
+      "labels": 160,
+      "polyp_images": 120,
+      "background_images": 40,
+      "zero_byte_labels": 40,
+      "empty_content_labels": 40,
+      "polygon_rows": 127,
+      "coordinate_min": 0.0,
+      "coordinate_max": 0.999012,
+      "missing_labels": [],
+      "orphan_labels": [],
+      "original_polyp_id_list_matches": true,
+      "background_selection_list_matches": true,
+      "example_polyp_image": "archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20/images/val/cju0s690hkp960855tjuaqvv0.jpg",
+      "example_polyp_label": "archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20/labels/val/cju0s690hkp960855tjuaqvv0.txt",
+      "example_background_image": "archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20/images/val/bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.jpg",
+      "example_background_label": "archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20/labels/val/bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.txt"
+    }
+  },
+  "invalid_labels": [],
+  "cross_split_same_bytes": [],
+  "cross_split_same_stem": [],
+  "raw_input_directories_present": {
+    "archive/Kvasir-SEG/Kvasir-SEG/images": false,
+    "archive/Kvasir-SEG/Kvasir-SEG/masks": false,
+    "archive/normal-cecum/normal-cecum": false,
+    "archive/normal-cecum": false
+  },
+  "limitations": [
+    "Does not establish patient-level independence.",
+    "Does not detect near-duplicate images or semantically equivalent labels.",
+    "Original raw images and masks are not available at the paths expected by the converter in this workspace; mask-to-polygon conversion was not rerun.",
+    "Does not verify package versions or transforms actually executed in historical Kaggle runs."
+  ]
+}

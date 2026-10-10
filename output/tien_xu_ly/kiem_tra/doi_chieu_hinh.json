@@ -1,0 +1,29 @@
+{
+  "hinh_3_1_vi_du_du_lieu.png": {
+    "bytes_equal": true,
+    "pixels_equal": true,
+    "embedded_as": "word/media/image1.png"
+  },
+  "hinh_3_2_mat_na_sang_da_giac.png": {
+    "bytes_equal": true,
+    "pixels_equal": true,
+    "embedded_as": "word/media/image2.png"
+  },
+  "hinh_3_3_letterbox.png": {
+    "bytes_equal": true,
+    "pixels_equal": true,
+    "embedded_as": "word/media/image3.png"
+  },
+  "hinh_3_4_tang_cuong.png": {
+    "bytes_equal": true,
+    "pixels_equal": true,
+    "embedded_as": "word/media/image4.png"
+  },
+  "hinh_3_5_quy_trinh.png": {
+    "bytes_equal": true,
+    "pixels_equal": true,
+    "embedded_as": "word/media/image5.png"
+  },
+  "drawio_equal": true,
+  "parameters_equal": true
+}
