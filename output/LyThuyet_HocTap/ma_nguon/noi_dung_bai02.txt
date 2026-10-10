@@ -1,0 +1,268 @@
+@so_bai 2
+@tieu_de TIỀN XỬ LÝ DỮ LIỆU
+@tieu_de CHO MÔ HÌNH YOLO26-SEG
+@phu_de Kiến thức nền về xử lý ảnh và quy trình xây dựng
+@phu_de bộ dữ liệu Kvasir BG20 trong đề tài phân đoạn polyp
+
+# Lời mở đầu
+
+Trong các dự án học sâu, người ta hay nói vui rằng "rác vào thì rác ra": một mô hình dù tinh vi đến đâu cũng không thể học tốt từ dữ liệu sai định dạng, sai nhãn hoặc bị rò rỉ giữa tập huấn luyện và tập kiểm định. Tiền xử lý dữ liệu là toàn bộ những việc biến dữ liệu thô thành dạng mà mô hình có thể học được một cách đúng đắn. Giáo trình này trình bày phần kiến thức nền về xử lý ảnh cần thiết, sau đó đi theo đúng dòng chảy của dữ liệu trong đề tài: từ ảnh nội soi và mặt nạ trắng đen ban đầu cho tới những batch tensor được đưa vào mô hình YOLO26-seg kết hợp TSVM.
+
+Với mỗi bước xử lý, giáo trình trình bày theo cùng một trình tự: dữ liệu đang gặp vấn đề gì, bước xử lý nhằm mục đích gì, thực hiện bằng phương pháp nào với tham số bao nhiêu, và cho ra kết quả ra sao. Đây cũng là trình tự nên dùng khi viết chương tiền xử lý trong khóa luận. Các tham số được nêu đều lấy từ mã nguồn chuyển đổi dữ liệu, tệp cấu hình huấn luyện args.yaml và kết quả kiểm tra bộ dữ liệu trong kho mã của nhóm.
+
+## Học theo nguyên lý Pareto
+
+Theo nguyên lý Pareto, một số ít ý tưởng cốt lõi sẽ giúp người học hiểu phần lớn vấn đề. Với chương tiền xử lý, có năm ý cần nắm chắc.
+
+Ý thứ nhất: tiền xử lý trong đề tài gồm hai giai đoạn tách biệt. Giai đoạn chuẩn bị bộ dữ liệu được chạy một lần trước khi huấn luyện, gồm chuyển mặt nạ thành đa giác, bổ sung ảnh nền và chia tập. Giai đoạn nạp dữ liệu diễn ra mỗi lần mô hình lấy ảnh trong lúc huấn luyện, gồm đổi kích thước, tăng cường dữ liệu và chuẩn hóa. Nhầm lẫn giữa hai giai đoạn này là lỗi phổ biến nhất khi viết chương tiền xử lý.
+
+Ý thứ hai: mặt nạ được chuyển thành nhãn đa giác qua chuỗi ngưỡng Otsu, phép đóng hình thái học, tìm đường bao, lọc vùng nhỏ, đơn giản hóa đường bao và chuẩn hóa tọa độ. Tất cả các phép này thực hiện trên mặt nạ, không thực hiện trên ảnh nội soi.
+
+Ý thứ ba: bộ BG20 được tạo bằng cách bổ sung 200 ảnh nền không có polyp, với tệp nhãn rỗng, để mô hình học cách không báo nhầm.
+
+Ý thứ tư: tập huấn luyện có 1.040 ảnh và tập kiểm định có 160 ảnh. Mọi chỉ số đánh giá của đề tài đều tính trên 160 ảnh kiểm định này, trong đó có 127 polyp.
+
+Ý thứ năm: khi huấn luyện, ảnh được đưa về kích thước 640, được tăng cường bằng Mosaic, lật ngang, dịch chuyển, co giãn và biến đổi màu HSV, rồi được chia cho 255. Khi kiểm định, ảnh không được tăng cường.
+
+Hình 2.1 tóm tắt toàn bộ quy trình. Người học nên quay lại hình này sau khi đọc xong mỗi chương để thấy chương đó nằm ở đâu trong bức tranh chung.
+
+!hinh output/tien_xu_ly/hinh/hinh_3_5_quy_trinh.png | Quy trình xây dựng dữ liệu và tiền xử lý cho YOLO26-seg + TSVM | 14.5
+
+# Chương 1. Kiến thức nền về xử lý ảnh
+
+## 1.1. Ảnh số, kênh màu và ảnh xám
+
+Một ảnh số là một lưới các điểm ảnh, mỗi điểm mang giá trị số mô tả màu sắc hay độ sáng tại đó. Ảnh màu thông dụng có ba kênh đỏ, xanh lá và xanh dương; mỗi kênh dùng 8 bit nên nhận giá trị từ 0 (tối nhất) đến 255 (sáng nhất). Có một chi tiết kỹ thuật cần nhớ: thư viện OpenCV, công cụ xử lý ảnh phổ biến trong Python, đọc ảnh theo thứ tự kênh xanh dương, xanh lá, đỏ (BGR) thay vì thứ tự RGB quen thuộc. Vì mô hình học sẵn được huấn luyện trên ảnh RGB, ảnh cần được đổi thứ tự kênh trước khi đưa vào mô hình.
+
+Ảnh xám chỉ có một kênh, biểu diễn độ sáng. Chuyển ảnh màu sang ảnh xám là lấy tổng có trọng số của ba kênh, trong đó kênh xanh lá có trọng số lớn nhất vì mắt người nhạy nhất với màu này. Ảnh nhị phân là trường hợp đặc biệt hơn nữa, chỉ có hai giá trị là đen và trắng, thường dùng để biểu diễn mặt nạ: trắng là vùng đối tượng, đen là vùng nền.
+
+## 1.2. Mặt nạ phân đoạn và nhãn đa giác
+
+Có hai cách phổ biến để mô tả "vùng nào là polyp". Cách thứ nhất là mặt nạ (mask): một ảnh nhị phân cùng kích thước với ảnh gốc, pixel nào thuộc polyp thì màu trắng, còn lại màu đen. Mặt nạ lưu thông tin cho từng pixel nên rất chi tiết nhưng khá cồng kềnh. Cách thứ hai là đa giác (polygon): chỉ lưu tọa độ của một dãy điểm nằm trên đường viền của polyp, nối các điểm lại sẽ được đường bao của vùng. Đa giác gọn hơn rất nhiều, nhưng chỉ xấp xỉ đường viền bằng các đoạn thẳng.
+
+Bộ dữ liệu Kvasir-SEG cung cấp nhãn ở dạng mặt nạ, trong khi YOLO-seg đọc nhãn ở dạng đa giác ghi trong tệp văn bản. Theo quy ước của YOLO, mỗi đối tượng là một dòng gồm số hiệu lớp, theo sau là các cặp tọa độ x, y của những đỉnh đa giác. Tọa độ được chuẩn hóa về khoảng từ 0 đến 1 bằng cách chia cho chiều rộng và chiều cao của ảnh. Dưới đây là phần đầu một dòng nhãn thật trong tập kiểm định của đề tài:
+
+$$ 0  0.465378 0.539623  0.450886 0.550943  0.434783 0.554717  …
+
+Số 0 đầu dòng là lớp polyp; các cặp số tiếp theo là tọa độ đỉnh. Nhờ tọa độ đã chuẩn hóa, nhãn vẫn đúng dù ảnh bị phóng to hay thu nhỏ. Khi huấn luyện, YOLO sẽ tự vẽ đa giác trở lại thành mặt nạ ở độ phân giải phù hợp.
+
+## 1.3. Ngưỡng hóa và phương pháp Otsu
+
+Ngưỡng hóa (thresholding) là cách đơn giản nhất để biến ảnh xám thành ảnh nhị phân: chọn một ngưỡng T, pixel sáng hơn T thành trắng, còn lại thành đen. Câu hỏi đặt ra là chọn T bằng bao nhiêu. Chọn tay một con số cố định như 127 không phải lúc nào cũng hợp lý, vì mỗi ảnh có phân bố độ sáng khác nhau.
+
+Phương pháp Otsu tự động chọn ngưỡng dựa trên biểu đồ tần suất độ sáng (histogram) của ảnh. Ý tưởng là thử mọi ngưỡng có thể, mỗi ngưỡng chia pixel thành hai nhóm tối và sáng, rồi chọn ngưỡng làm cho hai nhóm tách biệt nhau rõ nhất. Mức độ tách biệt được đo bằng phương sai giữa hai nhóm:
+
+$$ σ^{2}_{B}(T) = ω_{0}(T) · ω_{1}(T) · [ μ_{0}(T) − μ_{1}(T) ]^{2}
+
+~ trong đó ω_{0}, ω_{1} là tỉ lệ số pixel của nhóm tối và nhóm sáng, còn μ_{0}, μ_{1} là độ sáng trung bình của mỗi nhóm. Ngưỡng Otsu là giá trị T làm cho đại lượng này lớn nhất. Trực giác dễ hiểu: hai nhóm vừa phải có kích thước đáng kể, vừa phải có độ sáng trung bình cách xa nhau.
+
+Với mặt nạ, tưởng như chỉ có hai giá trị 0 và 255 thì không cần ngưỡng hóa. Thực tế không phải vậy. Mặt nạ của Kvasir-SEG được lưu ở định dạng JPEG, một định dạng nén có mất mát, nên dọc đường viền xuất hiện nhiều giá trị xám lưng chừng. Ở mẫu minh họa trong đề tài, mặt nạ có tới 15 mức xám khác nhau và ngưỡng Otsu tìm được bằng 7. Ngưỡng hóa Otsu đưa mặt nạ về đúng dạng nhị phân sạch sẽ.
+
+## 1.4. Phép toán hình thái học
+
+Phép toán hình thái học (morphological operations) là nhóm phép xử lý hình dạng trên ảnh nhị phân, sử dụng một "phần tử cấu trúc" nhỏ, thường là hình vuông 3 × 3, trượt qua ảnh. Có hai phép cơ bản. Phép giãn (dilation) làm vùng trắng nở ra: một pixel trở thành trắng nếu trong lân cận của nó có ít nhất một pixel trắng. Phép co (erosion) làm vùng trắng teo lại: một pixel chỉ giữ màu trắng nếu toàn bộ lân cận của nó đều trắng.
+
+Kết hợp hai phép này cho ra hai phép phức hợp. Phép mở (opening) là co rồi giãn, dùng để xóa những chấm trắng nhỏ lẻ. Phép đóng (closing) là giãn rồi co, dùng để lấp những lỗ và khe nhỏ bên trong vùng trắng. Có thể hình dung phép đóng như đổ nước vào một vũng có nhiều khe nứt: nước lan ra lấp hết các khe, rồi rút lại về đúng mép vũng, nhưng những khe đã lấp thì vẫn được lấp. Đề tài dùng phép đóng với phần tử cấu trúc hình chữ nhật 3 × 3, thực hiện một lần.
+
+## 1.5. Đường bao và thuật toán Douglas–Peucker
+
+Đường bao (contour) là dãy các điểm nằm trên ranh giới giữa vùng trắng và vùng đen. Hàm findContours của OpenCV dò theo ranh giới và trả về danh sách điểm cho từng vùng. Có thể chỉ lấy đường bao ngoài cùng hoặc lấy cả đường bao của các lỗ bên trong; đề tài chỉ lấy đường bao ngoài.
+
+Đường bao thu được thường có rất nhiều điểm, mỗi bước dịch chuyển một pixel lại sinh một điểm. Thuật toán Douglas–Peucker, được OpenCV cài đặt trong hàm approxPolyDP, giảm số điểm mà vẫn giữ được hình dạng. Thuật toán bắt đầu bằng đoạn thẳng nối hai điểm đầu và cuối, tìm điểm nằm xa đoạn thẳng đó nhất; nếu khoảng cách vượt một sai số cho phép ε thì giữ điểm đó và chia đôi bài toán ở hai bên, còn nếu không thì mọi điểm ở giữa đều bị bỏ. Kết quả là những đoạn gần như thẳng chỉ còn hai đầu mút, còn những chỗ cong được giữ nhiều điểm hơn.
+
+## 1.6. Nội suy, đổi kích thước và chuẩn hóa
+
+Khi phóng to hay thu nhỏ ảnh, giá trị của các pixel mới phải được ước lượng từ các pixel cũ; việc này gọi là nội suy. Đổi kích thước có hai cách. Cách thứ nhất kéo giãn ảnh về đúng kích thước đích, đơn giản nhưng làm méo vật thể nếu tỉ lệ khung hình thay đổi, chẳng hạn polyp tròn bị bóp thành bầu dục. Cách thứ hai giữ nguyên tỉ lệ khung hình rồi bù phần thiếu bằng dải đệm, gọi là LetterBox, giống cách xem phim màn ảnh rộng trên tivi có hai dải đen phía trên và dưới.
+
+Chuẩn hóa giá trị pixel là việc đưa các con số về một khoảng nhỏ, thường là từ 0 đến 1 bằng cách chia cho 255. Mạng nơ-ron học ổn định hơn khi đầu vào có độ lớn vừa phải. Cần phân biệt chuẩn hóa giá trị pixel với chuẩn hóa tọa độ nhãn đã nói ở mục 1.2; đó là hai phép xử lý hoàn toàn khác nhau.
+
+## 1.7. Không gian màu HSV
+
+Ngoài RGB, màu sắc còn có thể biểu diễn trong không gian HSV gồm sắc độ (Hue, màu gì: đỏ, cam, vàng…), độ bão hòa (Saturation, màu đậm hay nhạt) và độ sáng (Value, sáng hay tối). Không gian HSV gần với cách con người cảm nhận màu hơn, nên rất tiện để mô phỏng những thay đổi trong điều kiện chụp: đổi độ sáng giống như đèn nội soi mạnh hay yếu, đổi độ bão hòa và sắc độ giống như sự khác biệt giữa các dòng máy nội soi.
+
+## 1.8. Chia tập dữ liệu và rò rỉ dữ liệu
+
+Để đánh giá trung thực, dữ liệu phải được chia thành tập huấn luyện và tập kiểm định không giao nhau. Rò rỉ dữ liệu (data leakage) xảy ra khi thông tin của tập kiểm định lọt vào quá trình huấn luyện, chẳng hạn cùng một ảnh, hay hai khung hình gần như giống hệt nhau của cùng một polyp, nằm ở cả hai tập. Khi đó mô hình được "xem trước đề thi", và chỉ số đánh giá sẽ cao một cách giả tạo. Với dữ liệu y tế, mức kiểm soát chặt chẽ nhất là chia theo bệnh nhân, để mọi ảnh của một người chỉ nằm ở một tập.
+
+Một công cụ đơn giản để phát hiện ảnh trùng lặp hoàn toàn là hàm băm (hash) như SHA-256. Hàm băm biến nội dung một tệp thành một chuỗi ký tự ngắn; hai tệp giống nhau từng byte sẽ có cùng chuỗi băm, chỉ cần khác một byte là chuỗi băm khác hẳn. So sánh chuỗi băm giữa hai tập giúp phát hiện nhanh ảnh bị trùng, nhưng không phát hiện được ảnh gần giống.
+
+## 1.9. Tăng cường dữ liệu và mẫu âm
+
+Tăng cường dữ liệu (data augmentation) là việc tạo ra các biến thể mới của ảnh huấn luyện bằng những phép biến đổi ngẫu nhiên như lật, dịch chuyển, co giãn hay đổi màu. Với bộ dữ liệu nhỏ chỉ khoảng một nghìn ảnh, mô hình rất dễ học thuộc lòng. Tăng cường dữ liệu buộc mô hình học những đặc điểm bản chất của polyp, vốn không đổi khi ảnh bị lật hay tối đi, thay vì ghi nhớ từng bức ảnh cụ thể. Nguyên tắc quan trọng là phép biến đổi hình học phải tác động đồng thời lên cả ảnh và nhãn, còn phép biến đổi màu chỉ tác động lên ảnh.
+
+Mẫu âm (negative sample) là những ảnh không chứa đối tượng cần tìm. Nếu chỉ huấn luyện trên ảnh có polyp, mô hình sẽ ngầm cho rằng ảnh nào cũng có polyp và dễ "đoán bừa" ở những vùng đáng ngờ như nếp gấp, mạch máu hay vùng phản quang. Bổ sung mẫu âm dạy cho mô hình rằng có những ảnh hoàn toàn không có gì để báo.
+
+>> Các kỹ thuật nền cần nắm: ngưỡng Otsu tự chọn ngưỡng tách hai nhóm pixel; phép đóng lấp lỗ nhỏ; Douglas–Peucker giảm số điểm đường bao; LetterBox đổi kích thước không làm méo ảnh; tăng cường dữ liệu chống học thuộc; mẫu âm giảm báo nhầm.
+
+# Chương 2. Nguồn dữ liệu
+
+Đề tài sử dụng hai nguồn dữ liệu. Nguồn thứ nhất là Kvasir-SEG, bộ dữ liệu công khai gồm 1.000 ảnh nội soi đại tràng có polyp, mỗi ảnh đi kèm một mặt nạ phân đoạn do chuyên gia gán nhãn. Theo mô tả công bố của bộ dữ liệu, các ảnh có độ phân giải không đồng nhất, từ khoảng 332 × 487 đến 1920 × 1072 pixel. Nguồn thứ hai là lớp normal-cecum, ảnh manh tràng bình thường, thuộc bộ dữ liệu Kvasir; những ảnh này không có polyp và được dùng làm ảnh nền.
+
+Hình 2.2 cho thấy một ví dụ của mỗi loại: ảnh nội soi có polyp, mặt nạ gốc tương ứng và một ảnh nền. Có thể nhận thấy ảnh nền cũng có những đặc điểm dễ gây nhầm lẫn như nếp gấp niêm mạc, vùng phản quang và cả một ô hiển thị phụ ở góc ảnh.
+
+!hinh output/tien_xu_ly/hinh/hinh_3_1_vi_du_du_lieu.png | Ví dụ ảnh có polyp, mặt nạ gốc và ảnh nền normal-cecum | 15.5
+
+Cần nhấn mạnh rằng ảnh nền không phải một lớp đối tượng thứ hai. Tệp cấu hình dữ liệu của đề tài chỉ khai báo một lớp duy nhất là polyp. Ảnh nền đơn giản là ảnh không có đối tượng nào.
+
+# Chương 3. Chuyển mặt nạ thành nhãn đa giác
+
+## 3.1. Vấn đề và mục đích
+
+Đây là bước tiền xử lý quan trọng nhất và mang tính đặc thù của đề tài, vì nó nối dữ liệu Kvasir-SEG với định dạng mà YOLO-seg yêu cầu. Trong script chuyển đổi dữ liệu của đề tài, bước này do hàm có tên convert_mask_to_yolo_polygons đảm nhận. Đầu vào là một tệp mặt nạ; đầu ra là các dòng nhãn đa giác theo định dạng YOLO. Quá trình gồm sáu bước nối tiếp, được minh họa trên một mẫu thật ở Hình 2.3.
+
+!hinh output/tien_xu_ly/hinh/hinh_3_2_mat_na_sang_da_giac.png | Chuyển mặt nạ sang đa giác trên mẫu cju1ats0y372e08011yazcsxm: đường bao 377 điểm được đơn giản hóa còn 21 điểm | 14.5
+
+## 3.2. Bước 1 và 2: chuyển sang ảnh xám và ngưỡng hóa Otsu
+
+Mặt nạ được đọc vào và chuyển sang ảnh xám nếu đang có ba kênh. Sau đó, script áp dụng ngưỡng hóa nhị phân kết hợp phương pháp Otsu để tự động chọn ngưỡng, đưa mặt nạ về đúng hai giá trị 0 và 255. Như đã phân tích ở mục 1.3, bước này cần thiết vì mặt nạ lưu dạng JPEG có các giá trị xám lưng chừng dọc đường viền.
+
+## 3.3. Bước 3: phép đóng hình thái học
+
+Mặt nạ nhị phân được xử lý bằng phép đóng với phần tử cấu trúc hình chữ nhật 3 × 3, thực hiện một lần, để lấp những lỗ và khe rất nhỏ có thể còn sót lại bên trong vùng polyp. Với kích thước 3 × 3 và chỉ một lần thực hiện, phép đóng hầu như không làm thay đổi hình dạng tổng thể của vùng.
+
+## 3.4. Bước 4: tìm đường bao ngoài
+
+Script dùng hàm findContours với chế độ chỉ lấy đường bao ngoài cùng. Mỗi vùng trắng tách rời trong mặt nạ cho ra một đường bao riêng, nên nếu một ảnh có hai polyp, ta sẽ có hai đường bao và về sau là hai dòng nhãn. Hệ quả của việc chỉ lấy đường bao ngoài là nếu vùng polyp có lỗ bên trong, lỗ đó không được lưu riêng trong nhãn; vùng polyp được xem như đặc kín.
+
+## 3.5. Bước 5: lọc vùng nhỏ
+
+Những đường bao có diện tích nhỏ hơn 20 pixel vuông bị loại bỏ. Đó thường là những chấm nhiễu do nén ảnh hoặc do sai sót khi gán nhãn, không phải polyp thật. Ở mẫu trong Hình 2.3, script tìm được hai đường bao, trong đó một đường bao nhỏ bị loại và một đường bao chính được giữ lại.
+
+## 3.6. Bước 6: đơn giản hóa đường bao
+
+Đường bao được đơn giản hóa bằng thuật toán Douglas–Peucker với sai số cho phép tỉ lệ với chu vi:
+
+$$ ε = 0,002 × chu vi của đường bao
+
+Ví dụ, một đường bao dài 1.000 pixel được phép lệch tối đa 2 pixel. Mức sai số này đủ nhỏ để giữ đúng hình dạng polyp nhưng đủ lớn để bỏ những điểm thừa. Ở mẫu trong Hình 2.3, đường bao ban đầu có 377 điểm, sau khi đơn giản hóa chỉ còn 21 điểm mà vẫn bám sát đường viền. Script còn có một cơ chế an toàn: nếu sau khi đơn giản hóa chỉ còn dưới 3 điểm, không đủ tạo thành đa giác, thì dùng lại đường bao gốc.
+
+## 3.7. Chuẩn hóa tọa độ và ghi nhãn
+
+Cuối cùng, tọa độ mỗi đỉnh được chia cho chiều rộng và chiều cao của mặt nạ rồi kẹp vào khoảng từ 0 đến 1:
+
+$$ x_{chuẩn hóa} = x / W        y_{chuẩn hóa} = y / H
+
+Mỗi đường bao được ghi thành một dòng, bắt đầu bằng số 0 của lớp polyp, theo sau là các cặp tọa độ với sáu chữ số thập phân.
+
+## 3.8. Những điều không được viết sai
+
+Có hai điểm dễ viết sai trong khóa luận. Thứ nhất, các phép Otsu và phép đóng chỉ áp dụng trên mặt nạ; ảnh nội soi được sao chép nguyên vẹn sang bộ dữ liệu mới, không qua bất kỳ phép lọc hay tăng cường độ tương phản nào. Thứ hai, không nên khẳng định đa giác bảo toàn tuyệt đối mặt nạ gốc, vì phép đóng, việc loại vùng nhỏ, việc bỏ lỗ bên trong và việc đơn giản hóa đều có thể làm nhãn khác đi một chút; hiện chưa có phép đo định lượng nào về mức sai khác này.
+
+>> Mặt nạ → ảnh xám → Otsu → phép đóng 3 × 3 → đường bao ngoài → bỏ vùng dưới 20 pixel vuông → Douglas–Peucker với ε = 0,002 × chu vi → chuẩn hóa tọa độ → dòng nhãn "0 x1 y1 x2 y2 …". Ảnh nội soi không bị xử lý.
+
+# Chương 4. Xây dựng bộ dữ liệu BG20
+
+## 4.1. Bổ sung ảnh nền
+
+Bộ dữ liệu được đặt tên BG20 vì số ảnh nền bổ sung bằng 20% số ảnh polyp, tức 200 ảnh. Để việc chọn ảnh có thể lặp lại, script sắp xếp danh sách tệp ảnh normal-cecum rồi chọn ngẫu nhiên 200 ảnh với seed bằng 42. Trong đó, 160 ảnh được đưa vào tập huấn luyện và 40 ảnh vào tập kiểm định. Mỗi ảnh nền được thêm tiền tố bg_ vào tên tệp và đi kèm một tệp nhãn rỗng, dung lượng 0 byte. Với YOLO, tệp nhãn rỗng có nghĩa là "ảnh này không có đối tượng nào".
+
+Có hai cách nói cần chính xác. Thứ nhất, 200 ảnh nền chiếm 20% so với số ảnh polyp, nhưng trong tổng số 1.200 ảnh của bộ dữ liệu, ảnh nền chỉ chiếm khoảng 16,67%. Thứ hai, seed 42 là seed dùng để chọn ảnh nền, hoàn toàn khác với các seed từ 0 đến 9 dùng để huấn luyện mô hình.
+
+## 4.2. Chia tập huấn luyện và tập kiểm định
+
+Ảnh polyp được chia theo hai danh sách có sẵn là train.txt và val.txt, gồm 880 ảnh cho huấn luyện và 120 ảnh cho kiểm định. Cộng thêm ảnh nền, tập huấn luyện có 1.040 ảnh và tập kiểm định có 160 ảnh. Số lượng cụ thể được tổng hợp trong bảng dưới đây; mọi con số đã được kiểm tra trực tiếp trên bộ dữ liệu.
+
+| Thành phần | Huấn luyện | Kiểm định | Tổng |
+| Ảnh có polyp | 880 | 120 | 1.000 |
+| Ảnh nền (nhãn rỗng) | 160 | 40 | 200 |
+| Tổng số ảnh | 1.040 | 160 | 1.200 |
+| Số đa giác polyp | 936 | 127 | 1.063 |
+
+Số đa giác lớn hơn số ảnh polyp vì một ảnh có thể chứa nhiều polyp, hoặc một polyp bị tách thành nhiều vùng rời nhau trên mặt nạ. Đây là lý do tập kiểm định có 120 ảnh polyp nhưng 127 đối tượng, và con số 127 chính là mẫu số khi tính Recall. Cần lưu ý thêm rằng đề tài chỉ có tập huấn luyện và tập kiểm định, không có tập kiểm thử (test) độc lập; khi viết khóa luận không được nói rằng mô hình được đánh giá trên tập kiểm thử.
+
+## 4.3. Tổ chức thư mục theo định dạng YOLO
+
+Bộ dữ liệu được tổ chức thành hai thư mục images và labels đặt song song, mỗi thư mục chia thành hai thư mục con train và val. Quy tắc bắt buộc là ảnh và nhãn phải cùng tên tệp: ảnh abc.jpg trong images/train đi với nhãn abc.txt trong labels/train. Một tệp cấu hình data_bg20.yaml khai báo đường dẫn tới các thư mục ảnh, số lớp bằng 1 và tên lớp là polyp. Khi huấn luyện, YOLO tự suy ra đường dẫn nhãn từ đường dẫn ảnh dựa trên quy tắc này.
+
+## 4.4. Kiểm tra tính toàn vẹn
+
+Một lần kiểm tra bổ sung ngày 07/10/2026 đã rà soát toàn bộ bộ dữ liệu. Kết quả cho thấy mọi ảnh đều có tệp nhãn tương ứng và không có tệp nhãn nào thiếu ảnh. Mọi dòng đa giác đều có lớp 0, có ít nhất 3 cặp tọa độ và tất cả tọa độ đều nằm trong khoảng từ 0 đến 1. Không có tên ảnh nào trùng giữa tập huấn luyện và tập kiểm định, và theo so sánh chuỗi băm SHA-256, cũng không có tệp ảnh nào trùng nội dung giữa hai tập.
+
+Tuy nhiên, kiểm tra này có giới hạn. Nó chưa phát hiện được những ảnh gần giống nhau, chẳng hạn hai khung hình liền kề của cùng một polyp, và không thể kiểm tra theo bệnh nhân vì Kvasir-SEG không cung cấp mã bệnh nhân. Khi viết khóa luận, nên trình bày kết quả kiểm tra cùng với giới hạn này.
+
+# Chương 5. Nạp dữ liệu khi huấn luyện và kiểm định
+
+## 5.1. Vai trò của thư viện
+
+Giai đoạn nạp dữ liệu do thư viện Ultralytics thực hiện tự động mỗi khi mô hình cần một batch mới. Đề tài không viết mã riêng cho giai đoạn này mà điều khiển nó thông qua các tham số trong cấu hình huấn luyện. Vì vậy khi trình bày, nên mô tả "quy trình nạp dữ liệu của thư viện với cấu hình của đề tài", và dẫn các tham số từ tệp args.yaml.
+
+## 5.2. Đổi kích thước và LetterBox
+
+Mô hình được cấu hình với kích thước ảnh 640. Ảnh được thu nhỏ hoặc phóng to sao cho cạnh dài bằng 640 trong khi giữ nguyên tỉ lệ khung hình, sau đó LetterBox đệm thêm dải màu xám để đủ kích thước yêu cầu. Hình 2.4 minh họa với một ảnh gốc 1920 × 1072 pixel: hệ số thu nhỏ là 1/3, ảnh còn 640 × 358 pixel, rồi được đệm thêm 141 pixel ở phía trên và 141 pixel ở phía dưới để thành 640 × 640. Tọa độ đa giác được biến đổi cùng lúc với ảnh nên đường viền vẫn khớp với polyp.
+
+!hinh output/tien_xu_ly/hinh/hinh_3_3_letterbox.png | Đổi kích thước giữ tỉ lệ và LetterBox với ảnh gốc 1920 × 1072 pixel | 15.5
+
+Một chi tiết kỹ thuật cần biết: khi kiểm định, thư viện có thể gom các ảnh có tỉ lệ khung hình gần nhau thành batch hình chữ nhật để giảm phần đệm thừa. Vì vậy ảnh kiểm định không nhất thiết luôn có kích thước 640 × 640. Cách viết an toàn trong khóa luận là "kích thước ảnh cấu hình bằng 640".
+
+## 5.3. Chuyển đổi định dạng và chuẩn hóa
+
+Sau khi đổi kích thước và tăng cường, ảnh được chuyển từ thứ tự kênh BGR của OpenCV sang RGB, đổi thứ tự chiều từ cao × rộng × kênh sang kênh × cao × rộng theo quy ước của PyTorch, rồi được gom thành batch 8 ảnh. Trước khi đưa vào mô hình, giá trị pixel được chuyển sang số thực và chia cho 255 để nằm trong khoảng từ 0 đến 1. Đề tài không chuẩn hóa theo giá trị trung bình và độ lệch chuẩn của bộ ImageNet như một số mô hình khác; chỉ chia cho 255, đúng với quy ước của trọng số học sẵn YOLO.
+
+## 5.4. Từ đa giác trở lại mặt nạ huấn luyện
+
+Hàm mất mát phân đoạn cần so sánh từng pixel, nên đa giác được vẽ ngược trở lại thành mặt nạ. Với tham số mask_ratio bằng 4, mặt nạ có kích thước nhỏ hơn ảnh 4 lần, tức 160 × 160 với ảnh 640 × 640. Kích thước này khớp đúng với kích thước của các prototype mà mô hình sinh ra, như đã trình bày ở Bài 1. Với tham số overlap_mask bằng true, các polyp trong cùng một ảnh được vẽ chung vào một mặt nạ duy nhất, mỗi polyp mang một chỉ số riêng 1, 2, 3…, thay vì lưu thành nhiều mặt nạ rời.
+
+# Chương 6. Tăng cường dữ liệu
+
+## 6.1. Các phép tăng cường được sử dụng
+
+Mọi phép tăng cường chỉ áp dụng cho tập huấn luyện; tập kiểm định giữ nguyên để việc đánh giá công bằng và ổn định. Hình 2.5 minh họa các phép được bật trong cấu hình của đề tài trên cùng một ảnh, với đường viền đa giác được vẽ đè để thấy nhãn thay đổi theo ảnh. Đây là hình minh họa được tạo lại theo đúng tham số cấu hình, không phải ảnh lấy từ một batch huấn luyện cụ thể.
+
+!hinh output/tien_xu_ly/hinh/hinh_3_4_tang_cuong.png | Minh họa các phép tăng cường dữ liệu đang bật trong cấu hình huấn luyện | 15.5
+
+Phép Mosaic, với xác suất cấu hình bằng 1, ghép bốn ảnh huấn luyện thành một ảnh. Nhờ vậy, mỗi ảnh huấn luyện chứa nhiều ngữ cảnh khác nhau, polyp xuất hiện ở nhiều vị trí và kích thước, và mô hình học được cách nhận diện polyp khi chỉ thấy một phần. Tham số close_mosaic bằng 10 có nghĩa là Mosaic bị tắt trong 10 epoch cuối, từ epoch 91 đến 100. Lý do là ảnh ghép trông khác với ảnh nội soi thật; giai đoạn cuối cho mô hình làm quen lại với ảnh nguyên vẹn, giống như ảnh sẽ gặp khi đánh giá.
+
+Phép dịch chuyển với tham số translate bằng 0,1 di chuyển ngẫu nhiên tâm ảnh trong phạm vi khoảng 10% kích thước ảnh theo mỗi chiều. Phép co giãn với tham số scale bằng 0,5 nhân kích thước ảnh với một hệ số ngẫu nhiên trong khoảng từ 0,5 đến 1,5; người học cần lưu ý rằng con số 0,5 là biên độ dao động, không có nghĩa là ảnh luôn bị thu nhỏ còn một nửa. Phép lật ngang với tham số fliplr bằng 0,5 lật ảnh từ trái sang phải với xác suất 50%. Ba phép này đều là biến đổi hình học, nên tọa độ đa giác được biến đổi theo; chẳng hạn khi lật ngang, tọa độ x của mỗi đỉnh trở thành 1 − x.
+
+Phép biến đổi màu HSV dùng ba tham số hsv_h bằng 0,015, hsv_s bằng 0,7 và hsv_v bằng 0,4. Đây là các biên độ, không phải xác suất. Theo mã nguồn của thư viện, độ bão hòa được nhân với một hệ số ngẫu nhiên trong khoảng từ 0,3 đến 1,7, độ sáng được nhân với hệ số trong khoảng từ 0,6 đến 1,4, còn sắc độ được dịch đi tối đa khoảng 2,7 đơn vị trên thang từ 0 đến 179 của OpenCV, tức một thay đổi rất nhẹ về tông màu. Biến đổi màu chỉ tác động lên ảnh, nhãn giữ nguyên.
+
+## 6.2. Các phép không được sử dụng
+
+Cấu hình của đề tài tắt các phép xoay ảnh, xô lệch, biến đổi phối cảnh, lật dọc, MixUp, CutMix, Copy-Paste và huấn luyện đa tỉ lệ; tất cả đều có tham số bằng 0. Khi vẽ hình minh họa hoặc viết khóa luận, chỉ được trình bày những phép đang bật, không thêm phép xoay hay lật dọc chỉ vì thấy chúng trong tài liệu khác.
+
+Có hai trường hợp đặc biệt cần biết. Tham số erasing bằng 0,4 có xuất hiện trong tệp args.yaml, nhưng trong mã nguồn, tham số này chỉ được dùng cho tác vụ phân loại ảnh, nên không áp dụng cho bài toán phân đoạn của đề tài. Ngoài ra, thư viện có một nhánh tăng cường bổ sung dùng thư viện Albumentations, gồm làm mờ, lọc trung vị, chuyển ảnh xám và cân bằng histogram thích nghi CLAHE, mỗi phép với xác suất rất nhỏ là 0,01; nhánh này chỉ chạy nếu môi trường có cài thư viện Albumentations. Hiện chưa có nhật ký xác nhận các lần huấn luyện của đề tài đã dùng nhánh này, nên chỉ nên nhắc tới như một nhánh mặc định có điều kiện.
+
+>> Đang bật: Mosaic (tắt ở 10 epoch cuối), dịch chuyển 10%, co giãn trong khoảng 0,5–1,5, lật ngang 50%, biến đổi HSV. Đang tắt: xoay, xô lệch, phối cảnh, lật dọc, MixUp, CutMix, Copy-Paste. Biến đổi hình học tác động lên cả ảnh và nhãn; biến đổi màu chỉ tác động lên ảnh.
+
+# Chương 7. Liên hệ với đề tài và tổng kết
+
+## 7.1. Tiền xử lý ảnh hưởng đến kết quả như thế nào
+
+Mỗi bước tiền xử lý đều để lại dấu ấn trên kết quả đánh giá. Việc chuyển mặt nạ sang đa giác định nghĩa "đường viền thật" mà chỉ số Mask mAP@50-95 dùng để so sánh; nếu nhãn lệch so với đường viền thực tế, mô hình sẽ khó đạt điểm cao ở các ngưỡng IoU khắt khe 0,90 và 0,95. Việc bổ sung ảnh nền với nhãn rỗng tác động trực tiếp tới số lần báo nhầm trên 40 ảnh nền của tập kiểm định và qua đó tới Precision. Kích thước mặt nạ huấn luyện 160 × 160 giới hạn độ mịn của đường viền mà mô hình có thể học.
+
+Điểm quan trọng nhất về mặt phương pháp là mô hình gốc và mô hình TSVM dùng chung toàn bộ quy trình tiền xử lý: cùng bộ dữ liệu BG20, cùng cách chia tập, cùng kích thước ảnh, cùng các phép tăng cường với cùng tham số. So sánh hai tệp args.yaml của seed 0 xác nhận điều này. Nhờ vậy, mọi khác biệt về kết quả giữa hai mô hình chỉ có thể đến từ khác biệt về kiến trúc ở tầng 10 và từ yếu tố ngẫu nhiên của từng seed.
+
+Cũng cần hiểu rõ rằng TSVM không có bước tiền xử lý riêng nào. TSVM là một khối nằm bên trong mô hình, xử lý bản đồ đặc trưng, không xử lý ảnh hay nhãn. Toàn bộ quy trình dữ liệu của hai mô hình là một.
+
+## 7.2. Những hiểu lầm cần tránh
+
+- Ảnh nội soi không được xử lý bằng Otsu, phép đóng hay CLAHE trước khi lưu vào bộ dữ liệu; các phép Otsu và phép đóng chỉ áp dụng trên mặt nạ.
+- Ảnh nền không phải lớp đối tượng thứ hai, mà là ảnh không có đối tượng, đi kèm tệp nhãn rỗng.
+- BG20 không có nghĩa là 20% bộ dữ liệu là ảnh nền; ảnh nền bằng 20% số ảnh polyp và chiếm khoảng 16,67% tổng số ảnh.
+- Tỉ lệ chia ảnh polyp là 880 và 120, không phải 80 và 20 phần trăm cho toàn bộ dữ liệu.
+- Đề tài không có tập kiểm thử độc lập.
+- Seed 42 dùng để chọn ảnh nền, không phải seed huấn luyện.
+- Tham số scale bằng 0,5 và các tham số HSV là biên độ, không phải tỉ lệ cố định hay xác suất.
+- Ảnh kiểm định không nhất thiết luôn có kích thước 640 × 640.
+
+## 7.3. Câu hỏi ôn tập kèm gợi ý trả lời
+
+Câu 1. Hai giai đoạn của tiền xử lý trong đề tài là gì? Gợi ý: giai đoạn chuẩn bị bộ dữ liệu chạy một lần, gồm chuyển mặt nạ sang đa giác, bổ sung ảnh nền và chia tập; giai đoạn nạp dữ liệu diễn ra mỗi lần lấy ảnh, gồm đổi kích thước, tăng cường, đổi định dạng và chia 255.
+
+Câu 2. Vì sao dùng ngưỡng Otsu thay vì ngưỡng cố định 127, dù mặt nạ trông chỉ có hai màu? Gợi ý: mặt nạ lưu ở định dạng JPEG có nhiều mức xám lưng chừng dọc đường viền; Otsu tự chọn ngưỡng tách hai nhóm pixel tốt nhất cho từng mặt nạ.
+
+Câu 3. Đường bao dài 800 pixel thì sai số cho phép khi đơn giản hóa là bao nhiêu? Gợi ý: ε = 0,002 × 800 = 1,6 pixel.
+
+Câu 4. Tập kiểm định có bao nhiêu ảnh, bao nhiêu polyp và bao nhiêu ảnh nền? Gợi ý: 160 ảnh, gồm 120 ảnh polyp chứa 127 polyp và 40 ảnh nền.
+
+Câu 5. Một ảnh 1000 × 800 pixel được đưa về kích thước 640 bằng LetterBox. Sau khi đổi kích thước giữ tỉ lệ, ảnh có kích thước bao nhiêu và cần đệm bao nhiêu? Gợi ý: hệ số thu nhỏ 0,64, ảnh còn 640 × 512 pixel, cần đệm 128 pixel theo chiều cao, tức 64 pixel ở mỗi phía trên và dưới.
+
+Câu 6. Vì sao tắt Mosaic trong 10 epoch cuối? Gợi ý: ảnh ghép khác với ảnh nội soi thật; giai đoạn cuối giúp mô hình thích nghi với phân bố ảnh giống lúc đánh giá.
+
+Câu 7. Khi lật ngang ảnh, nhãn có phải thay đổi không? Còn khi đổi màu HSV thì sao? Gợi ý: lật ngang là phép hình học nên tọa độ x của mỗi đỉnh đổi thành 1 − x; đổi màu HSV không làm thay đổi nhãn.
+
+Câu 8. Vì sao bổ sung ảnh nền lại giúp giảm báo nhầm? Gợi ý: nếu chỉ thấy ảnh có polyp, mô hình ngầm cho rằng ảnh nào cũng có polyp; ảnh nền với nhãn rỗng dạy mô hình rằng có những ảnh không có gì để báo, kể cả khi có nếp gấp hay vùng phản quang.
+
+Câu 9. Kiểm tra SHA-256 giữa hai tập phát hiện được và không phát hiện được điều gì? Gợi ý: phát hiện được ảnh trùng nhau hoàn toàn từng byte; không phát hiện được ảnh gần giống nhau hay ảnh của cùng bệnh nhân.
+
+Câu 10. TSVM có cần cách chuẩn bị dữ liệu khác với mô hình gốc không? Gợi ý: không; TSVM là một khối bên trong mô hình xử lý đặc trưng, hai mô hình dùng chung toàn bộ quy trình dữ liệu và tham số.
