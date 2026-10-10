@@ -1,0 +1,6 @@
+path: /kaggle/input/datasets/okeydoke8525/kvasir-yolo-seg-bg20/Kvasir_YOLO_SEG_BG20
+train: images/train
+val: images/val
+nc: 1
+names:
+  0: polyp
