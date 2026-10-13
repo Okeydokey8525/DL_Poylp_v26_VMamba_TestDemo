@@ -1,0 +1,5 @@
+names:
+  0: polyp
+path: /kaggle/working/Kvasir_BG20_V2
+train: images/train
+val: images/val
