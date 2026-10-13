@@ -128,7 +128,7 @@ Hệ thống được lưu trữ hoàn chỉnh tại thư mục:
   .\mvnw.cmd spring-boot:run
   ```
 - **Kiểm tra hoạt động**: Mở trình duyệt Web tại địa chỉ: `http://localhost:8080`.  
-  *Tài khoản thử nghiệm*: `leducluong.0805205@gmail.com` / *Mật khẩu*: `0961464045Luo#`.
+  *Tài khoản thử nghiệm*: sử dụng tài khoản demo do nhóm chuẩn bị; không đưa thông tin đăng nhập vào báo cáo.
 
 ### 3. Hướng dẫn khởi chạy Tầng Ứng dụng Di động (Flutter Mobile App)
 - **Vị trí thư mục**: `polypweb/app_polyp`
