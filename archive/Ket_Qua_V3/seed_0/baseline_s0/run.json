@@ -1,0 +1,33 @@
+{
+ "model": "baseline",
+ "seed": 0,
+ "smoke": false,
+ "best_epoch": 89,
+ "epochs_logged": 100,
+ "train_minutes": 144.5,
+ "layer10": "C2PSA",
+ "dataset_id": "d2903acce9d802d5e4739150abb83ee997035dd9a5439385760f312cbcf918c1",
+ "data": "/kaggle/working/Kvasir_BG20_V2",
+ "pretrained_sha256": "3da1d83e31caec96f9300eb4064f4f62882c133c7c264d63dfe61a7c197837a4",
+ "best_sha256": "5169b1cc9c75c7270348c3146cb1707f030efe462f9a60549bc724eaf20e15d4",
+ "fp16_risk": {
+  "fp16_max": 65504.0,
+  "max_abs_value": 67.83617401123047,
+  "bn_layers_over_fp16": [],
+  "mean_would_be_clipped": false
+ },
+ "environment": {
+  "python": "3.13.15",
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "ultralytics_fork": "8.4.127",
+  "code_id": "92e55c79e2f20ee28a03816c5c81159ae719bbd7a643c254d124d5aa157bda5e",
+  "host": "0c07d291b1f4",
+  "gpu": "Tesla T4",
+  "numpy": "2.1.3",
+  "opencv-python": "4.14.0.94",
+  "opencv-python-headless": "4.14.0.94",
+  "torchvision": "0.26.0+cu128"
+ },
+ "finished_at": "2026-10-13T02:46:09"
+}

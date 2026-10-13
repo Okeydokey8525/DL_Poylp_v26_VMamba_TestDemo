@@ -1,0 +1,58 @@
+{
+ "n_seeds": 20,
+ "sign_test_p_mask_map50_95": 0.26317596435546875,
+ "tsvm_wins_mask_map50_95": 13,
+ "baseline_wins_mask_map50_95": 7,
+ "median_baseline": 0.717035,
+ "median_tsvm": 0.724125,
+ "min_baseline": 0.69411,
+ "min_baseline_seed": 3,
+ "max_baseline": 0.73663,
+ "max_baseline_seed": 0,
+ "min_tsvm": 0.7065,
+ "min_tsvm_seed": 7,
+ "max_tsvm": 0.73385,
+ "max_tsvm_seed": 8,
+ "band_narrower_epochs": 53,
+ "band_mean_width_change_pct": 0.7625619317723575,
+ "ocr_check_baseline_s0_9_matches_10seed_csv": true,
+ "cm_mean": {
+  "Baseline": {
+   "TP": [
+    110.55,
+    2.9464519251751624
+   ],
+   "FN": [
+    16.45,
+    2.9464519251751624
+   ],
+   "FP": [
+    16.45,
+    3.42552339450715
+   ],
+   "TN_reconstructed": [
+    23.55,
+    3.42552339450715
+   ]
+  },
+  "TSVM": {
+   "TP": [
+    110.65,
+    1.8715318802914818
+   ],
+   "FN": [
+    16.35,
+    1.8715318802914815
+   ],
+   "FP": [
+    15.75,
+    3.024026594146497
+   ],
+   "TN_reconstructed": [
+    24.25,
+    3.024026594146497
+   ]
+  }
+ },
+ "cm_missing_cells": 40
+}
