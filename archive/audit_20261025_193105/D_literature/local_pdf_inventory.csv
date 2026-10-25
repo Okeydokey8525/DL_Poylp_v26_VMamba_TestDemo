@@ -1,0 +1,1156 @@
+﻿local_id,filename,path,sha256,pages,pdf_title,pdf_author,first_page_text,extracted_file,characters
+TLTK-01,[1] Kvasir-SEG A Segmented Polyp Dataset.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[1] Kvasir-SEG A Segmented Polyp Dataset.pdf,d5a0744a0c4723897aa22d47559a4f7e2166a0245b96b70b7bcae1e1cff85176,12,,,"Kvasir-SEG: A Segmented Polyp Dataset
+Debesh Jha 1,2, Pia H. Smedsrud 1,3,4, Michael A. Riegler 1,7, P˚ al Halvorsen1,6,
+Thomas de Lange 4,5, Dag Johansen 2, and H˚ avard D. Johansen2
+1 SimulaMet, Norway
+2 UIT The Arctic University of Norway
+3 Augere Medical AS, Norway
+4 University of Oslo, Norway
+5 Oslo University Hospital, Norway
+6 Oslo Metropolitan University, Norway
+7 Kristiania University College, Norway
+debesh@simula.no
+Abstract. Pixel-wise image segmentation is a highly demanding task
+in medical-image analysis. In practice, it is diﬃcult to ﬁnd annotated
+medical images with corresponding segmentation masks. In this paper,
+we present Kvasir-SEG: an open-access dataset of gastrointestinal polyp
+images and corresponding segmentation masks, manually annotated by
+a medical doctor and then veriﬁed by an experienced gastroenterologist.
+Moreover, we also generated the bounding boxes of the polyp regions with
+the help of segmentation masks. We demonstrate the use of our dataset
+with a traditional segmentation approach and a modern deep-learning
+based Convolutional Neural Network (CNN) approach. The dataset will
+be of value for researchers to reproduce results and compare methods.
+By adding segmentation masks to the Kvasir dataset, which only provide
+frame-wise annotations, we enable multimedia and computer vision re-
+searchers to contribute in the ﬁeld of polyp segmentation and automatic
+analysis of colonoscopy images.
+Keywords: Medical images · Polyp segmentation · Semantic segmenta-
+tion · Kvasir-SEG dataset · Fuzzy c-mean clustering · ResUNet
+1 Introduction
+Colorectal cancer is the second most common cancer type among women and
+third most common among men [25]. Polyps are precursors to colorectal cancer
+and therefore important to detect and remove at an early stage. Polyps are found
+in nearly half of the individuals at age 50 that undergo a colonoscopy screening,
+and their frequency increase with age [21]. Polyps are abnormal tissue growth
+from the mucous membrane, which is lining the inside of the GI tract, and can
+sometimes be cancerous. Colonoscopy is the gold standard for detection and
+assessment of these polyps with subsequent biopsy and removal of the polyps.
+Early disease detection has a huge impact on survival from colorectal cancer [11].
+In addition, several studies show that polyps are often overlooked during colono-
+scopies, with polyp miss rates of 14 to 30% depending on type and size of the
+arXiv:1911.07069v1  [eess.IV]  16 Nov 2019",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-01.txt,29249
+TLTK-02,[2] A Benchmark for Endoluminal Scene Segmentation of Colonoscopy Images.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[2] A Benchmark for Endoluminal Scene Segmentation of Colonoscopy Images.pdf,6c23c5f3f3bac05521a8fe93da740dcf078338ad4dd3099847f840255a84efa3,13,,,"Noname manuscript No.
+(will be inserted by the editor)
+A Benchmark for Endoluminal Scene Segmentation
+of Colonoscopy Images
+David V´ azquez1,2 · Jorge Bernal 1 ·
+F. Javier S´ anchez1 · Gloria
+Fern´ andez-Esparrach4 · Antonio M.
+L´ opez1,2 · Adriana Romero 2 · Michal
+Drozdzal3,5 · Aaron Courville 2
+Received: 07 Nov 2016 / Accepted: date
+Abstract Colorectal cancer (CRC) is the third cause of cancer death world-
+wide. Currently, the standard approach to reduce CRC-related mortality is to
+perform regular screening in search for polyps and colonoscopy is the screening
+tool of choice. The main limitations of this screening procedure are polyp miss-
+rate and inability to perform visual assessment of polyp malignancy. These
+drawbacks can be reduced by designing Decision Support Systems (DSS) aim-
+ing to help clinicians in the diﬀerent stages of the procedure by providing en-
+doluminal scene segmentation. Thus, in this paper, we introduce an extended
+benchmark of colonoscopy image, with the hope of establishing a new strong
+benchmark for colonoscopy image analysis research. We provide new baselines
+on this dataset by training standard fully convolutional networks (FCN) for
+semantic segmentation and signiﬁcantly outperforming, without any further
+post-processing, prior results in endoluminal scene segmentation.
+Keywords Colonoscopy· Polyp· Semantic Segmentation· Deep Learning
+1 Introduction
+Colorectal cancer (CRC) is the third cause of cancer death worldwide [30].
+CRC arises from adenomatous polyps (adenomas) which are initially benign;
+David V´ azquez
+E-mail: dvazquez@cvc.uab.es
+1 Computer Vision Center, Computer Science Department, Universitat Autonoma de
+Barcelona, Spain
+2 Montreal Institute for Learning Algorithms, Universit´ e de Montr´ eal, Canada
+3 ´Ecole Polytechnique de Montr´ eal, Montr´ eal, Canada
+4 Endoscopy Unit, Gastroenterology Service, CIBERHED, IDIBAPS, Hospital Clinic, Uni-
+versidad de Barcelona, Spain
+5 Imagia Inc., Montr´ eal, Canada
+arXiv:1612.00799v1  [cs.CV]  2 Dec 2016",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-02.txt,30068
+TLTK-03,[3] A Multi-Centre Polyp Detection and Segmentation Dataset for Generalisability Assessment.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[3] A Multi-Centre Polyp Detection and Segmentation Dataset for Generalisability Assessment.pdf,85775f87e82791a742ca10e2f436b3c683c576c4f78e69bf292e00998e21eb0c,17,A multi-centre polyp detection and segmentation dataset for generalisability assessment,Sharib Ali,"1Scientific  Data  |           (2023) 10:75  | https://doi.org/10.1038/s41597-023-01981-y
+www.nature.com/scientificdata
+a multi-centre polyp detection 
+and segmentation dataset for 
+generalisability assessment
+Sharib ali 1,2,3 ✉, Debesh Jha  4,5,6, Noha Ghatwary7, Stefano Realdon8,19,  
+Renato Cannizzaro  8,9,19, Osama E. Salem10, Dominique Lamarque11, Christian Daul12, 
+Michael A. Riegler  4,5, Kim V. anonsen  13, Andreas Petlund14, Pål Halvorsen  4,15, 
+Jens Rittscher  2,3, Thomas de Lange  14,16,17,19 & James E. East  3,18,19
+Polyps in the colon are widely known cancer precursors identified by colonoscopy. Whilst most polyps 
+are benign, the polyp’s number, size and surface structure are linked to the risk of colon cancer. 
+Several methods have been developed to automate polyp detection and segmentation. However, 
+the main issue is that they are not tested rigorously on a large multicentre purpose-built dataset, one 
+reason being the lack of a comprehensive public dataset. As a result, the developed methods may not 
+generalise to different population datasets. To this extent, we have curated a dataset from six unique 
+centres incorporating more than 300 patients. The dataset includes both single frame and sequence 
+data with 3762 annotated polyp labels with precise delineation of polyp boundaries verified by six 
+senior gastroenterologists. To our knowledge, this is the most comprehensive detection and pixel-
+level segmentation dataset (referred to as PolypGen) curated by a team of computational scientists 
+and expert gastroenterologists. The paper provides insight into data construction and annotation 
+strategies, quality assurance, and technical validation.
+Background & Summary
+About 1.3 million new cases of colorectal cancer (CRC) are detected yearly in the world, with about 51% mortal-
+ity rate, and CRC is the third most common cause of cancer mortality1. Approximately, 90% of CRCs result from 
+slow transformation of the main benign precursors, adenomas or serrated polyps to CRC, but only a minority 
+of them progress to CRC 2,3. It is particularly challenging to assess the malignant potential for lesions smaller 
+than 10 mm. As a consequence most detected lesions are removed with subsequent CRC mortality reduction4. 
+The removal of the lesions depends also of an exact delineation of the boundaries to assure complete resec -
+tion. If the lesions are detected and completely removed at a precancerous stage, the mortality is nearly null 5. 
+1School of Computing, University of Leeds, LS2 9JT, Leeds, United Kingdom. 2institute of Biomedical engineering, 
+Department of Engineering Science, University of Oxford, OX3 7DQ, Oxford, United Kingdom. 3Oxford National 
+Institute for Health Research Biomedical Research centre, OX4 2PG, Oxford, United Kingdom. 4SimulaMet, 
+Pilestredet 52, 0167, Oslo, Norway. 5Department of Computer Science, UiT The Arctic University of Norway, Hansine 
+Hansens veg 18, 9019, Tromsø, Norway. 6Machine & Hybrid Intelligence La",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-03.txt,65026
+TLTK-04,"[4] A Survey on Deep Learning for Polyp Segmentation Techniques, Challenges and Future Trends.pdf","C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[4] A Survey on Deep Learning for Polyp Segmentation Techniques, Challenges and Future Trends.pdf",33906ef53950b4e32e75bcccfd8a7a7815933d9828726180ef18cc0e4bcc2dac,20,"A survey on deep learning for polyp segmentation: techniques, challenges and future trends",Jiaxin Mei,"Visual
+Intelligence
+Meietal. VisualIntelligence             (2025) 3:1 
+https://doi.org/10.1007/s44267-024-00071-w
+REVIEW OpenAccess
+Asurveyondeeplearningforpolyp
+segmentation:techniques,challengesand
+futuretrends
+JiaxinMei1,2,T aoZhou1,2*,KaiwenHuang 1,2,YizheZhang 1,2,YiZhou 3,Y eWu1,2 andHuazhuFu 4
+Abstract
+Earlydetectionandassessmentofpolypsplayacrucialroleinthepreventionandtreatmentofcolorectalcancer
+(CRC).Polypsegmentationprovidesaneﬀectivesolutiontoassistcliniciansinaccuratelylocatingandsegmenting
+polypregions.Inthepast,peopleoftenreliedonmanuallyextractedlower-levelfeaturessuchascolor,texture,and
+shape,whichoftenhadproblemscapturingglobalcontextandlackedrobustnesstocomplexscenarios.Withthe
+adventofdeeplearning,moreandmoremedicalimagesegmentationalgorithmsbasedondeeplearningnetworks
+haveemerged,makingsigniﬁcantprogressintheﬁeld.Thispaperprovidesacomprehensivereviewofpolyp
+segmentationalgorithms.Weﬁrstreviewsometraditionalalgorithmsbasedonmanuallyextractedfeaturesand
+deepsegmentationalgorithms,andthendescribebenchmarkdatasetsrelatedtothetopic.Speciﬁcally,wecarryout
+acomprehensiveevaluationofrecentdeeplearningmodelsandresultsbasedonpolypsize,takingintoaccountthe
+focusofresearchtopicsanddiﬀerencesinnetworkstructures.Finally,wediscussthechallengesofpolyp
+segmentationandfuturetrendsintheﬁeld.
+Keywords: Polypsegmentation,Deeplearning,Comprehensiveevaluation,Medicalimaging
+1 Introduction
+Polypsegmentationaimstoautomaticallyidentifyandseg-
+mentpolypregionswithinthecolon.Itsprimaryobjective
+is to assist clinical doctors in eﬃciently and accurately lo-
+cating and delineating these regions, providing vital sup-
+portforearlydiagnosisandtreatmentofcolorectalcancer
+(CRC) [1]. Polyps exhibit varying sizes and shapes at dif-
+ferent stages of development [2, 3], and their precise seg-
+mentation poses challenges due to their strong adherence
+toadjacentorgansormucosa[ 4].
+Intheearlystage,polypsegmentationprimarilyreliedon
+manuallyextractedfeatures[ 5,6].Forexample,Tajbakhsh
+et al. [5] proposed a method that utilized shape features
+*Correspondence:taozhou.ai@gmail.com
+1PCALab,KeyLaboratoryofIntelligentPerceptionandSystemsfor
+High-DimensionalInformationofMinistryofEducation,Nanjing,China
+2SchoolofComputerScienceandEngineering,NanjingUniversityofScience
+andTechnology,Nanjing,China
+Fulllistofauthorinformationisavailableattheendofthearticle
+and surrounding environmental information to automat-
+ically detect polyps in colonoscopy videos. Iwahori et al.
+[6] utilized edge and color information to generate a like-
+lihood map and extracted the directional gradient his-
+togram features. However, relying on manually extracted
+low-levelfeaturesforsegmentationtasksmakesitdiﬃcult
+to handle complex scenarios and does not eﬀectively uti-
+lizeglobalcontextualinformation[ 7].
+Inrecentyears,deeplearning-basedpolypsegmentation
+modelshavedemonstratedimpressivecapabilitiesinlocat-
+ing and segmenting polyp regions. Based on the encoder-
+decoderarchitecture,someworksfocusonenhancing",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-04.txt,95688
+TLTK-05,[5] U-Net Convolutional Networks for Biomedical Image Segmentation.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[5] U-Net Convolutional Networks for Biomedical Image Segmentation.pdf,a3172b2124f38e260dc2c7ed968d87c31bc94dbc19a42a7ab3dcbd7534319c44,8,U-Net: Convolutional Networks for Biomedical Image Segmentation,"Olaf Ronneberger (ronneber@informatik.uni-freiburg.de), Philipp Fischer, Thomas Brox","U-Net: Convolutional Networks for Biomedical
+Image Segmentation
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox
+Computer Science Department and BIOSS Centre for Biological Signalling Studies,
+University of Freiburg, Germany
+ronneber@informatik.uni-freiburg.de,
+WWW home page: http://lmb.informatik.uni-freiburg.de/
+Abstract. There is large consent that successful training of deep net-
+works requires many thousand annotated training samples. In this pa-
+per, we present a network and training strategy that relies on the strong
+use of data augmentation to use the available annotated samples more
+eﬃciently. The architecture consists of a contracting path to capture
+context and a symmetric expanding path that enables precise localiza-
+tion. We show that such a network can be trained end-to-end from very
+few images and outperforms the prior best method (a sliding-window
+convolutional network) on the ISBI challenge for segmentation of neu-
+ronal structures in electron microscopic stacks. Using the same net-
+work trained on transmitted light microscopy images (phase contrast
+and DIC) we won the ISBI cell tracking challenge 2015 in these cate-
+gories by a large margin. Moreover, the network is fast. Segmentation
+of a 512x512 image takes less than a second on a recent GPU. The full
+implementation (based on Caﬀe) and the trained networks are available
+at http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net.
+1 Introduction
+In the last two years, deep convolutional networks have outperformed the state of
+the art in many visual recognition tasks, e.g. [7,3]. While convolutional networks
+have already existed for a long time [8], their success was limited due to the
+size of the available training sets and the size of the considered networks. The
+breakthrough by Krizhevsky et al. [7] was due to supervised training of a large
+network with 8 layers and millions of parameters on the ImageNet dataset with
+1 million training images. Since then, even larger and deeper networks have been
+trained [12].
+The typical use of convolutional networks is on classiﬁcation tasks, where
+the output to an image is a single class label. However, in many visual tasks,
+especially in biomedical image processing, the desired output should include
+localization, i.e., a class label is supposed to be assigned to each pixel. More-
+over, thousands of training images are usually beyond reach in biomedical tasks.
+Hence, Ciresan et al. [1] trained a network in a sliding-window setup to predict
+the class label of each pixel by providing a local region (patch) around that pixel
+arXiv:1505.04597v1  [cs.CV]  18 May 2015",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-05.txt,19780
+TLTK-06,[6] UNet++ A Nested U-Net Architecture for Medical Image Segmentation.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[6] UNet++ A Nested U-Net Architecture for Medical Image Segmentation.pdf,fd3fdf5bf3841b1b4aa033c0b2ba222145f4c47b5f79a3f1cc5a977dea463fdb,8,,,"UNet++: A Nested U-Net Architecture
+for Medical Image Segmentation
+Zongwei Zhou, Md Mahfuzur Rahman Siddiquee,
+Nima Tajbakhsh, and Jianming Liang
+Arizona State University
+{zongweiz,mrahmans,ntajbakh,jianming.liang}@asu.edu
+Abstract. In this paper, we present UNet++, a new, more powerful ar-
+chitecture for medical image segmentation. Our architecture is essentially
+a deeply-supervised encoder-decoder network where the encoder and de-
+coder sub-networks are connected through a series of nested, dense skip
+pathways. The re-designed skip pathways aim at reducing the semantic
+gap between the feature maps of the encoder and decoder sub-networks.
+We argue that the optimizer would deal with an easier learning task when
+the feature maps from the decoder and encoder networks are semantically
+similar. We have evaluated UNet++ in comparison with U-Net and wide
+U-Net architectures across multiple medical image segmentation tasks:
+nodule segmentation in the low-dose CT scans of chest, nuclei segmen-
+tation in the microscopy images, liver segmentation in abdominal CT
+scans, and polyp segmentation in colonoscopy videos. Our experiments
+demonstrate that UNet++ with deep supervision achieves an average
+IoU gain of 3.9 and 3.4 points over U-Net and wide U-Net, respectively.
+1 Introduction
+The state-of-the-art models for image segmentation are variants of the encoder-
+decoder architecture like U-Net [9] and fully convolutional network (FCN) [8].
+These encoder-decoder networks used for segmentation share a key similarity:
+skip connections, which combine deep, semantic, coarse-grained feature maps
+from the decoder sub-network with shallow, low-level, ﬁne-grained feature maps
+from the encoder sub-network. The skip connections have proved eﬀective in
+recovering ﬁne-grained details of the target objects; generating segmentation
+masks with ﬁne details even on complex background. Skip connections is also
+fundamental to the success of instance-level segmentation models such as Mask-
+RCNN, which enables the segmentation of occluded objects. Arguably, image
+segmentation in natural images has reached a satisfactory level of performance,
+but do these models meet the strict segmentation requirements of medical im-
+ages?
+Segmenting lesions or abnormalities in medical images demands a higher level
+of accuracy than what is desired in natural images. While a precise segmentation
+mask may not be critical in natural images, even marginal segmentation errors in
+medical images can lead to poor user experience in clinical settings. For instance,
+arXiv:1807.10165v1  [cs.CV]  18 Jul 2018",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-06.txt,19614
+TLTK-07,[7] PraNet Parallel Reverse Attention Network for Polyp Segmentation.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[7] PraNet Parallel Reverse Attention Network for Polyp Segmentation.pdf,9892ac94c5319bbf3606582124cedc6946cce9afd4624b3d36f433569982c743,11,,,"PraNet: Parallel Reverse Attention Network
+for Polyp Segmentation
+Deng-Ping Fan1, Ge-Peng Ji 2, Tao Zhou1, Geng Chen 1,
+Huazhu Fu1  , Jianbing Shen 1  , and Ling Shao 3,1
+1 Inception Institute of Artiﬁcial Intelligence, Abu Dhabi, UAE.
+2 School of Computer Science, Wuhan University, Hubei, China.
+3 Mohamed bin Zayed University of Artiﬁcial Intelligence, Abu Dhabi, UAE.
+{huazhu.fu, jianbing.shen}@inceptioniai.org
+https://github.com/DengPingFan/PraNet
+Abstract. Colonoscopy is an eﬀective technique for detecting colorectal
+polyps, which are highly related to colorectal cancer. In clinical practice,
+segmenting polyps from colonoscopy images is of great importance since
+it provides valuable information for diagnosis and surgery. However, ac-
+curate polyp segmentation is a challenging task, for two major reasons:
+(i) the same type of polyps has a diversity of size, color and texture; and
+(ii) the boundary between a polyp and its surrounding mucosa is not
+sharp. To address these challenges, we propose a parallel reverse atten-
+tion network ( PraNet) for accurate polyp segmentation in colonoscopy
+images. Speciﬁcally, we ﬁrst aggregate the features in high-level layers
+using a parallel partial decoder (PPD). Based on the combined feature,
+we then generate a global map as the initial guidance area for the fol-
+lowing components. In addition, we mine the boundary cues using the
+reverse attention (RA) module, which is able to establish the relation-
+ship between areas and boundary cues. Thanks to the recurrent cooper-
+ation mechanism between areas and boundaries, our PraNet is capable
+of calibrating some misaligned predictions, improving the segmentation
+accuracy. Quantitative and qualitative evaluations on ﬁve challenging
+datasets across six metrics show that our PraNet improves the segmenta-
+tion accuracy signiﬁcantly, and presents a number of advantages in terms
+of generalizability, and real-time segmentation eﬃciency (∼50fps).
+Keywords: Colonoscopy· Polyp segmentation· Colorectal cancer
+1 Introduction
+Colorectal cancer (CRC) is the third most common type of cancer around the
+world [23]. Therefore, preventing CRC by screening tests and removal of preneo-
+plastic lesions (colorectal adenomas) is very critical and has become a worldwide
+public health priority. Colonoscopy is an eﬀective technique for CRC screening
+and prevention since it can provide the location and appearance information
+of colorectal polyps, enabling doctors to remove these before they develop into
+CRC. A number of studies have shown that early colonoscopy has contributed to
+arXiv:2006.11392v4  [eess.IV]  3 Jul 2020",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-07.txt,29859
+TLTK-08,[8] Polyp-PVT Polyp Segmentation with Pyramid Vision Transformers.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[8] Polyp-PVT Polyp Segmentation with Pyramid Vision Transformers.pdf,91d3e88023f30dd38eb4ac40dc0aff6eb1069f7f2683a815fcf73bd10d6eb01b,17,,,"1
+Polyp-PVT: Polyp Segmentation with Pyramid
+Vision Transformers
+Bo Dong, Wenhai Wang, Deng-Ping Fan, Jinpeng Li, Huazhu Fu, and Ling Shao
+Abstract—Most polyp segmentation methods use CNNs as their
+backbone, leading to two key issues when exchanging information
+between the encoder and decoder: 1) taking into account the
+differences in contribution between different-level features and
+2) designing an effective mechanism for fusing these features.
+Unlike existing CNN-based methods, we adopt a transformer
+encoder, which learns more powerful and robust representations.
+In addition, considering the image acquisition influence and
+elusive properties of polyps, we introduce three standard mod-
+ules, including a cascaded fusion module (CFM), a camouflage
+identification module (CIM), and a similarity aggregation module
+(SAM). Among these, the CFM is used to collect the semantic and
+location information of polyps from high-level features; the CIM
+is applied to capture polyp information disguised in low-level
+features, and the SAM extends the pixel features of the polyp area
+with high-level semantic position information to the entire polyp
+area, thereby effectively fusing cross-level features. The proposed
+model, named Polyp-PVT, effectively suppresses noises in the
+features and significantly improves their expressive capabilities.
+Extensive experiments on five widely adopted datasets show
+that the proposed model is more robust to various challenging
+situations (e.g., appearance changes, small objects, rotation) than
+existing representative methods. The proposed model is available
+at https://github.com/DengPingFan/Polyp-PVT.
+Index Terms —Polyp segmentation, pyramid vision trans-
+former, colonoscopy, computer vision
+I. I NTRODUCTION
+Colonoscopy is the gold standard for detecting colorectal
+lesions since it enables colorectal polyps to be identified and
+removed in time, thereby preventing further spread. As a
+fundamental task in medical image analysis, polyp segmen-
+tation (PS) aims to locate polyps accurately in the early stage,
+which is of great significance in the clinical prevention of
+rectal cancer. Traditional PS models mainly rely on low-level
+features, e.g., texture [1], geometric features [2], simple linear
+iterative clustering superpixels [3]. However, these methods
+yield low-quality results and suffer from poor generaliza-
+tion ability. With the development of deep learning, PS has
+achieved promising progress. In particular, the U-shaped [4]
+has attracted significant attention due to its ability to adopt
+multi-level features for reconstructing high-resolution results.
+B. Dong and D.-P. Fan are with the Nankai University, Tianjin, 300350,
+China. * Corresponding author (dengpfan@gmail.com).
+W. Wang is with Shanghai Artificial Intelligence Laboratory, Shanghai,
+200232, China
+J. Li is with Computer Vision Lab, Inception Institute of Artificial Intelli-
+gence, Abu Dhabi 00000, UAE
+H. Fu is with Institute of High Performance Computing, Agency for
+Science",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-08.txt,72503
+TLTK-09,[9] ColonFormer An Efficient Transformer Based Method for Colon Polyp Segmentation.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[9] ColonFormer An Efficient Transformer Based Method for Colon Polyp Segmentation.pdf,a8b64e6679d93ecf06e83b63e956c0717d66e3215b472124e31b22506903a38a,15,,,"COLON FORMER : A N EFFICIENT TRANSFORMER BASED
+METHOD FOR COLON POLYP SEGMENTATION
+A PREPRINT
+Nguyen Thanh Duc
+School of Information and Communication Technology
+Hanoi University of Science and Technology
+duc.nt170058@sis.hust.edu.vn
+Nguyen Thi Oanh
+School of Information and Communication Technology
+Hanoi University of Science and Technology
+oanhnt@soict.hust.edu.vn
+Nguyen Thi Thuy
+Faculty of Infomation Technology
+Vietnam National University of Agriculture
+ntthuy@vnua.edu.vn
+Tran Minh Triet
+University of Science
+Vietnam National University Ho Chi Minh City
+tmtriet@fit.hcmus.edu.vn
+Dinh Viet Sang∗
+School of Information and Communication Technology
+Hanoi University of Science and Technology
+sangdv@soict.hust.edu.vn
+June 8, 2022
+ABSTRACT
+Identifying polyps is challenging for automatic analysis of endoscopic images in computer-aided
+clinical support systems. Models based on convolutional networks (CNN), transformers, and their
+combinations have been proposed to segment polyps with promising results. However, those ap-
+proaches have limitations either in modeling the local appearance of the polyps only or lack of
+multi-level feature representation for spatial dependency in the decoding process. This paper pro-
+poses a novel network, namely ColonFormer, to address these limitations. ColonFormer is an
+encoder-decoder architecture capable of modeling long-range semantic information at both encoder
+and decoder branches. The encoder is a lightweight architecture based on transformers for modeling
+global semantic relations at multi scales. The decoder is a hierarchical network structure designed
+for learning multi-level features to enrich feature representation. Besides, a reﬁnement module is
+added with a new skip connection technique to reﬁne the boundary of polyp objects in the global
+map for accurate segmentation. Extensive experiments have been conducted on ﬁve popular bench-
+mark datasets for polyp segmentation, including Kvasir, CVC-Clinic DB, CVC-ColonDB, CVC-T,
+and ETIS-Larib. Experimental results show that our ColonFormer outperforms other state-of-the-art
+methods on all benchmark datasets.
+Keywords Semantic segmentation· Deep learning· Encoder-decoder network· Polyp segmentation· Colonoscopy
+1 Introduction
+Colorectal cancer (CRC) is among the most common types of cancer worldwide, causing over 694,000 fatalities
+each year [1]. The most common cause of CRC is colon polyps, particularly adenomas with high-grade dysplasia.
+According to a longitudinal study [2], every 1% increase in adenoma detection rate is linked to a 3 % reduction in the
+risk of colon cancer. As a result, detecting and removing polyps at an early stage is critical for cancer prevention and
+∗Corresponding author
+arXiv:2205.08473v3  [cs.CV]  7 Jun 2022",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-09.txt,55078
+TLTK-10,[10] TransFuse Fusing Transformers and CNNs for Medical Image Segmentation.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[10] TransFuse Fusing Transformers and CNNs for Medical Image Segmentation.pdf,f9119ef03ec0abea708922f4a1a709d843e4d199f4600470e399ca1b2be88b9b,11,,,"TransFuse: Fusing Transformers and CNNs for
+Medical Image Segmentation
+Yundong Zhang⋆1, Huiye Liu ⋆1,2 ( B), and Qiang Hu 1
+1 Rayicer, Suzhou, China
+huiyeliu@rayicer.com
+2 Georgia Institute of Technology, Atlanta, GA, USA
+Abstract. Medical image segmentation - the prerequisite of numerous
+clinical needs - has been signiﬁcantly prospered by recent advances in
+convolutional neural networks (CNNs). However, it exhibits general lim-
+itations on modeling explicit long-range relation, and existing cures, re-
+sorting to building deep encoders along with aggressive downsampling
+operations, leads to redundant deepened networks and loss of localized
+details. Hence, the segmentation task awaits a better solution to improve
+the eﬃciency of modeling global contexts while maintaining a strong
+grasp of low-level details. In this paper, we propose a novel parallel-
+in-branch architecture, TransFuse, to address this challenge. TransFuse
+combines Transformers and CNNs in a parallel style, where both global
+dependency and low-level spatial details can be eﬃciently captured in
+a much shallower manner. Besides, a novel fusion technique - BiFusion
+module is created to eﬃciently fuse the multi-level features from both
+branches. Extensive experiments demonstrate that TransFuse achieves
+the newest state-of-the-art results on both 2D and 3D medical image
+sets including polyp, skin lesion, hip, and prostate segmentation, with
+signiﬁcant parameter decrease and inference speed improvement.
+Keywords: Medical Image Segmentation· Transformers · Convolutional
+Neural Networks · Fusion
+1 Introduction
+Convolutional neural networks (CNNs) have attained unparalleled performance
+in numerous medical image segmentation tasks [9,12], such as multi-organ seg-
+mentation, liver lesion segmentation, brain 3D MRI, etc., as it is proved to be
+powerful at building hierarchical task-speciﬁc feature representation by training
+the networks end-to-end. Despite the immense success of CNN-based method-
+ologies, its lack of eﬃciency in capturing global context information remains a
+challenge. The chance of sensing global information is equaled by the risk of
+eﬃciency, because existing works obtain global information by generating very
+large receptive ﬁelds, which requires consecutively down-sampling and stacking
+⋆ These authors contributed equally to this work.
+arXiv:2102.08005v2  [cs.CV]  10 Jul 2021",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-10.txt,31370
+TLTK-11,"[11] You Only Look Once Unified, Real-Time Object Detection.pdf","C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[11] You Only Look Once Unified, Real-Time Object Detection.pdf",54bcd2dd05dc618849e8a94d8b88fe3eeb37f80e96e200600d38f1f733931678,10,,,"You Only Look Once:
+Uniﬁed, Real-Time Object Detection
+Joseph Redmon∗, Santosh Divvala∗†, Ross Girshick¶, Ali Farhadi∗†
+University of Washington∗, Allen Institute for AI†, Facebook AI Research¶
+http://pjreddie.com/yolo/
+Abstract
+We present YOLO, a new approach to object detection.
+Prior work on object detection repurposes classiﬁers to per-
+form detection. Instead, we frame object detection as a re-
+gression problem to spatially separated bounding boxes and
+associated class probabilities. A single neural network pre-
+dicts bounding boxes and class probabilities directly from
+full images in one evaluation. Since the whole detection
+pipeline is a single network, it can be optimized end-to-end
+directly on detection performance.
+Our uniﬁed architecture is extremely fast. Our base
+YOLO model processes images in real-time at 45 frames
+per second. A smaller version of the network, Fast YOLO,
+processes an astounding 155 frames per second while
+still achieving double the mAP of other real-time detec-
+tors. Compared to state-of-the-art detection systems, YOLO
+makes more localization errors but is less likely to predict
+false positives on background. Finally, YOLO learns very
+general representations of objects. It outperforms other de-
+tection methods, including DPM and R-CNN, when gener-
+alizing from natural images to other domains like artwork.
+1. Introduction
+Humans glance at an image and instantly know what ob-
+jects are in the image, where they are, and how they inter-
+act. The human visual system is fast and accurate, allow-
+ing us to perform complex tasks like driving with little con-
+scious thought. Fast, accurate algorithms for object detec-
+tion would allow computers to drive cars without special-
+ized sensors, enable assistive devices to convey real-time
+scene information to human users, and unlock the potential
+for general purpose, responsive robotic systems.
+Current detection systems repurpose classiﬁers to per-
+form detection. To detect an object, these systems take a
+classiﬁer for that object and evaluate it at various locations
+and scales in a test image. Systems like deformable parts
+models (DPM) use a sliding window approach where the
+classiﬁer is run at evenly spaced locations over the entire
+image [10].
+More recent approaches like R-CNN use region proposal
+1. Resize image.
+2. Run convolutional network.
+3. Non-max suppression.
+Dog: 0.30
+Person: 0.64
+Horse: 0.28
+Figure 1: The YOLO Detection System. Processing images
+with YOLO is simple and straightforward. Our system (1) resizes
+the input image to 448 × 448, (2) runs a single convolutional net-
+work on the image, and (3) thresholds the resulting detections by
+the model’s conﬁdence.
+methods to ﬁrst generate potential bounding boxes in an im-
+age and then run a classiﬁer on these proposed boxes. After
+classiﬁcation, post-processing is used to reﬁne the bound-
+ing boxes, eliminate duplicate detections, and rescore the
+boxes based on other objects in the scene [13]. These com-
+plex pipelines a",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-11.txt,42416
+TLTK-12,[12] Ultralytics YOLO26 Unified Real-Time End-to-End Vision Models.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[12] Ultralytics YOLO26 Unified Real-Time End-to-End Vision Models.pdf,8dec3ca2adbbc78cbd4f338eb33235e4b9c13704e355e19d029fd0a4bc67fcff,31,Ultralytics YOLO26: Unified Real-Time End-to-End Vision Models,Glenn Jocher; Jing Qiu; Mengyu Liu; Shuai Lyu; Fatih Cagatay Akyon; Muhammet Esat Kalfaoglu,"Ultralytics YOLO26: Unified Real-Time End-to-End Vision Models
+Glenn Jocher Jing Qiu Mengyu Liu Shuai Lyu
+Fatih Cagatay Akyon Muhammet Esat Kalfaoglu
+Ultralytics
+{glenn, jing, mengyu, louis, fatih, esat}@ultralytics.com
+0 2 4 6 8 10 12 14 16
+Latency T4 T ensorRT10 FP16 (ms/img)
+37.5
+40.0
+42.5
+45.0
+47.5
+50.0
+52.5
+55.0
+57.5COCO mAP50-95
+Val
+11n
+11s
+11m
+11l
+11x
+10n
+10s
+10m
+10b 10l
+10x
+9t
+9s
+9m
+9c
+8n
+8s
+8m
+8l
+8x
+7l
+7x
+6n
+6s
+6m
+6l
+5s
+5m
+5l
+5x
+Et
+Es
+Em
+El
+Ex
+t
+s
+m
+l
+t
+s
+m
+l
+26n
+26s
+26m
+26l
+26x
+YOLO26
+YOLO11
+YOLOv10
+YOLOv9
+YOLOv8
+YOLOv7
+YOLOv6-3.0
+YOLOv5
+PP-YOLOE+
+DAMO-YOLO
+RTMDet
+Figure 1. Accuracy–latency trade-off on COCOval2017. YOLO26 variants sit on or advance the Pareto front over prior YOLO versions
+and other real-time detectors, with the strongest AP–latency trade-off at the medium, large, and extra-large scales. Latency is measured on
+an NVIDIA T4 GPU with TensorRT FP16.
+Abstract
+Real-time vision demands models that are accurate, effi-
+cient, and simple to deploy across diverse hardware. The
+YOLO family has become widely deployed for this reason,
+yet most YOLO detectors still rely on non-maximum sup-
+pression at inference, carry heavy detection heads due to
+Distribution Focal Loss, require long training schedules,
+and can leave the smallest objects without positive label as-
+signments. We present Ultralytics YOLO26, a unified real-
+time vision model family that addresses these limitations
+through coordinated architecture and training advances.
+Architecturally, YOLO26 uses a dual-head design for na-
+tive NMS-free end-to-end inference and removes DFL en-
+tirely, yielding a lighter head with unconstrained regres-
+sion range. For training, three techniques jointly improve
+accuracy while reducing cost: MuSGD, a hybrid Muon–
+SGD optimizer adapted from large language model train-
+ing; Progressive Loss, which shifts supervision toward the
+inference-time head; and STAL, a label assignment strat-
+egy that guarantees positive coverage for small objects. Be-
+yond detection, YOLO26 introduces task-specific head and
+loss designs for instance segmentation, pose estimation,
+and oriented detection, producing consistent gains across
+tasks and scales. The family spans five scales (n/s/m/l/x)
+and supports detection, instance segmentation, pose es-
+timation, classification, and oriented detection in a sin-
+gle pipeline, with an open-vocabulary extension, YOLOE-
+26, for text-, visual-, and prompt-free inference. Across
+all scales, YOLO26 achieves 40.9–57.5 mAP on COCO at
+1.7–11.8,ms T4 TensorRT latency, advancing the accuracy–
+latency Pareto front over prior real-time detectors, while
+1
+arXiv:2606.03748v1  [cs.CV]  2 Jun 2026",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-12.txt,116091
+TLTK-13,[13] Efficiently Modeling Long Sequences with Structured State Spaces.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[13] Efficiently Modeling Long Sequences with Structured State Spaces.pdf,872b4ef302312d04ef4d55610613c0e59da32c443a2e38552d7cebb7dc3636fa,32,,,"Eﬃciently Modeling Long Sequences with Structured State Spaces
+Albert Gu, Karan Goel, and Christopher R´ e
+Department of Computer Science, Stanford University
+{albertgu,krng}@stanford.edu, chrismre@cs.stanford.edu
+Abstract
+A central goal of sequence modeling is designing a single principled model that can address sequence
+data across a range of modalities and tasks, particularly on long-range dependencies. Although conventional
+models including RNNs, CNNs, and Transformers have specialized variants for capturing long dependencies,
+they still struggle to scale to very long sequences of 10000 or more steps. A promising recent approach
+proposed modeling sequences by simulating the fundamental state space model (SSM) x′(t) = Ax(t) +
+Bu(t), y(t) = Cx(t) + Du(t), and showed that for appropriate choices of the state matrix A, this
+system could handle long-range dependencies mathematically and empirically. However, this method has
+prohibitive computation and memory requirements, rendering it infeasible as a general sequence modeling
+solution. We propose the Structured State Space sequence model (S4) based on a new parameterization for
+the SSM, and show that it can be computed much more eﬃciently than prior approaches while preserving
+their theoretical strengths. Our technique involves conditioning A with a low-rank correction, allowing
+it to be diagonalized stably and reducing the SSM to the well-studied computation of a Cauchy kernel.
+S4 achieves strong empirical results across a diverse range of established benchmarks, including (i) 91%
+accuracy on sequential CIFAR-10 with no data augmentation or auxiliary losses, on par with a larger
+2-D ResNet, (ii) substantially closing the gap to Transformers on image and language modeling tasks,
+while performing generation 60× faster (iii) SoTA on every task from the Long Range Arena benchmark,
+including solving the challenging Path-X task of length 16k that all prior work fails on, while being as
+eﬃcient as all competitors. 1
+1 Introduction
+A central problem in sequence modeling is eﬃciently handling data that contains long-range dependencies
+(LRDs). Real-world time-series data often requires reasoning over tens of thousands of time steps, while few
+sequence models address even thousands of time steps. For instance, results from the long-range arena (LRA)
+benchmark [40] highlight that sequence models today perform poorly on LRD tasks, including one (Path-X)
+where no model performs better than random guessing.
+Since LRDs are perhaps the foremost challenge for sequence models, all standard model families such as
+continuous-time models (CTMs), RNNs, CNNs, and Transformers include many specialized variants designed
+to address them. Modern examples include orthogonal and Lipschitz RNNs [ 1, 13] to combat vanishing
+gradients, dilated convolutions to increase context size [ 3, 28], and an increasingly vast family of eﬃcient
+Transformers that reduce the quadratic dependence on sequence length [ 8, 22]. Despite being desi",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-13.txt,94745
+TLTK-14,[14] Mamba Linear-Time Sequence Modeling with Selective State Spaces.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[14] Mamba Linear-Time Sequence Modeling with Selective State Spaces.pdf,adf70ed1803c85b1899dec3e21f3af0b124411439e8654b840ea65f7b9f52b2e,36,,,"Mamba: Linear-Time Sequence Modeling with Selective State Spaces
+Albert Gu∗1
+and Tri Dao∗2
+1
+Machine Learning Department, Carnegie Mellon University
+2
+Department of Computer Science, Princeton University
+agu@cs.cmu.edu, tri@tridao.me
+Abstract
+Foundation models, now powering most of the exciting applications in deep learning, are almost universally based on the
+Transformer architecture and its core attention module. Many subquadratic-time architectures such as linear attention,
+gated convolution and recurrent models, and structured state space models (SSMs) have been developed to address
+Transformers’ computational inefficiency on long sequences, but they have not performed as well as attention on important
+modalities such as language. We identify that a key weakness of such models is their inability to perform content-based
+reasoning, and make several improvements. First, simply letting the SSM parameters be functions of the input addresses
+their weakness with discrete modalities, allowing the model to selectively propagate or forget information along the
+sequence length dimension depending on the current token. Second, even though this change prevents the use of efficient
+convolutions, we design a hardware-aware parallel algorithm in recurrent mode. We integrate these selective SSMs into a
+simplified end-to-end neural network architecture without attention or even MLP blocks (Mamba). Mamba enjoys fast
+inference (5× higher throughput than Transformers) and linear scaling in sequence length, and its performance improves
+on real data up to million-length sequences. As a general sequence model backbone, Mamba achieves state-of-the-art
+performance across several modalities such as language, audio, and genomics. On language modeling, our Mamba-3B model
+outperforms Transformers of the same size and matches Transformers twice its size, both in pretraining and downstream
+evaluation.
+1 Introduction
+Foundation models (FMs), or large models pretrained on massive data then adapted for downstream tasks, have emerged
+as an effective paradigm in modern machine learning. The backbone of these FMs are often sequence models, operating on
+arbitrary sequences of inputs from a wide variety of domains such as language, images, speech, audio, time series, and
+genomics (Brown et al. 2020; Dosovitskiy et al. 2020; Ismail Fawaz et al. 2019; Oord et al. 2016; Poli et al. 2023; Sutskever,
+Vinyals, and Quoc V Le 2014). While this concept is agnostic to a particular choice of model architecture, modern FMs are
+predominantly based on a single type of sequence model: the Transformer (Vaswani et al. 2017) and its core attention
+layer (Bahdanau, Cho, and Bengio 2015) The efficacy of self-attention is attributed to its ability to route information densely
+within a context window, allowing it to model complex data. However, this property brings fundamental drawbacks:
+an inability to model anything outside of a finite window, and quadratic scaling with respect to the window length.
+",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-14.txt,157727
+TLTK-15,[15] VMamba Visual State Space Model.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[15] VMamba Visual State Space Model.pdf,c011843c4ef353078d752e2f9bc812bfd8d2029ff8ddb476afb77603794e33b3,33,,,"VMamba: Visual State Space Model
+Yue Liu 1 Yunjie Tian1 Yuzhong Zhao1 Hongtian Yu1
+Lingxi Xie2 Yaowei Wang3 Qixiang Ye1 Jianbin Jiao1 Yunfan Liu1‡
+1 UCAS 2 Huawei Inc. 3 Pengcheng Lab.
+{liuyue171,tianyunjie19,zhaoyuzhong20,yuhongtian17}@mails.ucas.ac.cn
+198808xc@gmail.com, wangyw@pcl.ac.cn , {qxye,jiaojb,liuyunfan}@ucas.ac.cn
+Abstract
+Designing computationally efficient network architectures remains an ongoing
+necessity in computer vision. In this paper, we adapt Mamba, a state-space language
+model, into VMamba, a vision backbone with linear time complexity. At the core of
+VMamba is a stack of Visual State-Space (VSS) blocks with the 2D Selective Scan
+(SS2D) module. By traversing along four scanning routes, SS2D bridges the gap
+between the ordered nature of 1D selective scan and the non-sequential structure
+of 2D vision data, which facilitates the collection of contextual information from
+various sources and perspectives. Based on the VSS blocks, we develop a family of
+VMamba architectures and accelerate them through a succession of architectural
+and implementation enhancements. Extensive experiments demonstrate VMamba’s
+promising performance across diverse visual perception tasks, highlighting its
+superior input scaling efficiency compared to existing benchmark models. Source
+code is available at https://github.com/MzeroMiko/VMamba
+1 Introduction
+Visual representation learning remains as a fundamental research area in computer vision that has
+witnessed remarkable progress in the era of deep learning. To represent complex patterns in vision
+data, two primary categories of backbone networks, i.e., Convolutional Neural Networks (CNNs) [49,
+27, 29, 53, 37] and Vision Transformers (ViTs) [13, 36, 57, 66], have been proposed and extensively
+utilized in a variety of visual tasks. Compared to CNNs, ViTs generally demonstrate superior learning
+capabilities on large-scale data due to their integration of the self-attention mechanism [ 58, 13].
+However, the quadratic complexity of self-attention w.r.t. the number of tokens imposes substantial
+computational overhead in downstream tasks involving large spatial resolutions.
+To address this challenge, significant efforts have been made to improve the efficiency of attention
+computation [54, 36, 12]. However, existing approaches either restrict the size of the effective
+receptive field [36] or suffer from notable performance degradation across various tasks [ 30, 60].
+This motivates us to develop a novel architecture for vision data, while maintaining the inherent
+advantages of the vanilla self-attention mechanism,i.e., global receptive fields and dynamic weighting
+parameters [23].
+Recently, Mamba [ 17], a innovative State Space Model (SSM) [ 17, 43, 59, 71, 48], in the field
+of natural language processing (NLP), has emerged as a promising approach for long-sequence
+modeling with linear complexity. Drawing inspiration from this advancement, we introduce VMamba,
+a vision backbone that integrates SSM-based blocks",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-15.txt,103395
+TLTK-16,[16] U-Mamba Enhancing Long-Range Dependency for Biomedical Image Segmentation.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[16] U-Mamba Enhancing Long-Range Dependency for Biomedical Image Segmentation.pdf,2ffc896ee1fdea0410d5e5608b56a6577f6d3cc30bede40daa7e4c181ecb7709,17,,,"U-Mamba: Enhancing Long-range
+Dependency for Biomedical Image Segmentation
+Jun Ma1,2,3, Feifei Li1, and Bo Wang1,2,3,4,5
+1 Peter Munk Cardiac Centre, University Health Network, Toronto, Canada
+2 Department of Laboratory Medicine and Pathobiology, University of Toronto,
+Toronto, Canada
+3 Vector Institute for Artificial Intelligence, Toronto, Canada
+4 Department of Computer Science, University of Toronto, Toronto, Canada
+5 AI Hub, University Health Network, Toronto, Canada
+bowang@vectorinstitute.ai
+Abstract. Convolutional Neural Networks (CNNs) and Transformers
+have been the most popular architectures for biomedical image segmen-
+tation, but both of them have limited ability to handle long-range de-
+pendencies because of inherent locality or computational complexity. To
+address this challenge, we introduce U-Mamba, a general-purpose net-
+work for biomedical image segmentation. Inspired by the State Space
+Sequence Models (SSMs), a new family of deep sequence models known
+for their strong capability in handling long sequences, we design a hy-
+brid CNN-SSM block that integrates the local feature extraction power
+of convolutional layers with the abilities of SSMs for capturing the long-
+range dependency. Moreover, U-Mamba enjoys a self-configuring mech-
+anism, allowing it to automatically adapt to various datasets without
+manual intervention. We conduct extensive experiments on four diverse
+tasks, including the 3D abdominal organ segmentation in CT and MR
+images, instrument segmentation in endoscopy images, and cell segmen-
+tation in microscopy images. The results reveal that U-Mamba outper-
+forms state-of-the-art CNN-based and Transformer-based segmentation
+networks across all tasks. This opens new avenues for efficient long-range
+dependency modeling in biomedical image analysis. The code, models,
+and data are publicly available athttps://wanglab.ai/u-mamba.html.
+Keywords: Image Segmentation · Backbone Network · State Space
+Models · Transformer.
+1 Introduction
+Segmentation serves as a foundational process in biomedical image analysis that
+divides images into meaningful anatomical structures or areas of interest for doc-
+tors and biologists. This task is crucial in various biomedical applications [38,33],
+such as diagnosing diseases, quantifying cancer microenvironments, planning
+arXiv:2401.04722v1  [eess.IV]  9 Jan 2024",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-16.txt,46130
+TLTK-17,[17] Mamba-UNet UNet-Like Pure Visual Mamba for Medical Image Segmentation.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[17] Mamba-UNet UNet-Like Pure Visual Mamba for Medical Image Segmentation.pdf,0873c3f11738a6fed58b1a66f0270462e6f9ea227f5bd2d0eedb2d21d02986f2,12,,,"Mamba-UNet: UNet-Like Pure Visual Mamba for
+Medical Image Segmentation
+Ziyang Wang1, Jian-Qing Zheng1, Yichi Zhang2, Ge Cui3, Lei Li4
+1 University of Oxford, UK
+2 Fudan University, China
+3 University of Pittsburgh, USA
+4 University of Copenhagen, DK
+ziyang.wang@cs.ox.ac.uk
+Abstract. In recent advancements in medical image analysis, Convolu-
+tional Neural Networks (CNN) and Vision Transformers (ViT) have set
+significant benchmarks. While the former excels in capturing local fea-
+tures through its convolution operations, the latter achieves remarkable
+global context understanding by leveraging self-attention mechanisms.
+However, both architectures exhibit limitations in efficiently modeling
+long-range dependencies within medical images, which is a critical aspect
+for precise segmentation. Inspired by the Mamba architecture, known for
+its proficiency in handling long sequences and global contextual infor-
+mation with enhanced computational efficiency as a State Space Model
+(SSM),weproposeMamba-UNet,anovelarchitecturethatsynergizesthe
+U-Net in medical image segmentation with Mamba’s capability. Mamba-
+UNet adopts a pure Visual Mamba (VMamba)-based encoder-decoder
+structure, infused with skip connections to preserve spatial information
+acrossdifferentscalesofthenetwork.Thisdesignfacilitatesacomprehen-
+sive feature learning process, capturing intricate details and broader se-
+mantic contexts within medical images. We introduce a novel integration
+mechanism within the VMamba blocks to ensure seamless connectivity
+and information flow between the encoder and decoder paths, enhancing
+the segmentation performance. We conducted experiments on publicly
+available ACDC MRI Cardiac segmentation dataset, and Synapse CT
+Abdomen segmentation dataset. The results show that Mamba-UNet
+outperforms several types of UNet in medical image segmentation under
+the same hyper-parameter setting1. The source code and baseline imple-
+mentations are available at https://github.com/ziyangwang007/Mamba-
+UNet.
+Keywords: Medical Image Segmentation· Convolution · Transformer ·
+Mamba · State Space Models.
+1 The hyper-parameter setting includes: loss function, optimizer, training iterations,
+batch size, learning rate, same data splitting, etc.
+arXiv:2402.05079v2  [eess.IV]  30 Mar 2024",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-17.txt,24810
+TLTK-18,[18] Swin-UMamba Mamba-Based UNet with ImageNet-Based Pretraining.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[18] Swin-UMamba Mamba-Based UNet with ImageNet-Based Pretraining.pdf,81c91c34e35c259a23b549c97b86fa2cce8598fd4c41933fa90588d395db3b07,11,,,"Swin-UMamba: Mamba-based UNet with
+ImageNet-based pretraining
+Jiarun Liu1,2,3∗, Hao Yang1,2,3∗, Hong-Yu Zhou4B, Yan Xi1,
+Lequan Yu5, Cheng Li1, Yong Liang2, Guangming Shi2, Yizhou Yu4,
+Shaoting Zhang6, Hairong Zheng1, and Shanshan Wang1B
+1 Paul C. Lauterbur Research Center for Biomedical Imaging,
+Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences
+2 Peng Cheng Laboratory
+3 University of Chinese Academy of Sciences
+4 Department of Computer Science, The University of Hong Kong
+5 Department of Statistics and Actuarial Science, The University of Hong Kong
+6 Shanghai Artificial Intelligence Laboratory
+Abstract. Accurate medical image segmentation demands the integra-
+tion of multi-scale information, spanning from local features to global
+dependencies. However, it is challenging for existing methods to model
+long-range global information, where convolutional neural networks are
+constrained by their local receptive fields, and vision transformers suf-
+fer from high quadratic complexity of their attention mechanism. Re-
+cently, Mamba-based models have gained great attention for their im-
+pressive ability in long sequence modeling. Several studies have demon-
+strated that these models can outperform popular vision models in var-
+ious tasks, offering higher accuracy, lower memory consumption, and
+less computational burden. However, existing Mamba-based models are
+mostly trained from scratch and do not explore the power of pretraining,
+which has been proven to be quite effective for data-efficient medical im-
+age analysis. This paper introduces a novel Mamba-based model, Swin-
+UMamba, designed specifically for medical image segmentation tasks,
+leveraging the advantages of ImageNet-based pretraining. Our experi-
+mental results reveal the vital role of ImageNet-based training in enhanc-
+ing the performance of Mamba-based models. Swin-UMamba demon-
+strates superior performance with a large margin compared to CNNs,
+ViTs, and latest Mamba-based models. Notably, on AbdomenMRI, En-
+coscopy, and Microscopy datasets, Swin-UMamba outperforms its closest
+counterpart U-Mamba by an average score of 2.72%. The code and mod-
+elsofSwin-UMambaarepubliclyavailableat:https://github.com/Jiarun-
+Liu/Swin-UMamba.
+Keywords: Medical image segmentation· ImageNet-based pretraining
+· Long-range dependency modeling.
+∗ The first two authors contributed equally. Corresponding authors: ss.wang@siat.ac.cn
+and whuzhouhongyu@gmail.com.",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-18.txt,28833
+TLTK-19,[19] Polyp-Mamba Polyp Segmentation with Visual Mamba.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[19] Polyp-Mamba Polyp Segmentation with Visual Mamba.pdf,a14e71b741f57049763e1793938be4058e2d2dee1213b649b75fa0edd15ef5da,11,,,"Polyp-Mamba: Polyp Segmentation
+with Visual Mamba
+Zhongxing Xu1*, Feilong Tang2*, Zhe Chen3, Zheng Zhou3, Weishan Wu3,
+Yuyao Yang3, Yu Liang3, Jiyu Jiang3, Xuyue Cai3, and Jionglong Su3
+1 Weill Cornell Medicine, Cornell University
+2 Monash University
+3 Xi’an Jiaotong-Liverpool University
+Abstract. Accurate segmentation of polyps is crucial for efficient col-
+orectal cancer detection during the colonoscopy screenings. State Space
+Models, exemplified by Mamba, have recently emerged as a promising
+approach, excelling in long-range interaction modeling with linear com-
+putational complexity. However, previous methods do not consider the
+cross-scale dependencies of different pixels and the consistency in feature
+representations and semantic embedding, which are crucial for polyp seg-
+mentation. Therefore, we introduce Polyp-Mamba, a novel unified frame-
+work aimed at overcoming the above limitations by integrating multi-
+scale feature learning with semantic structure analysis. Specifically, our
+framework includes aScale-A ware Semanticmodule that enables the
+embedding of multi-scale features from the encoder to achieve semantic
+information modeling across both intra- and inter-scales, rather than the
+single-scaleapproachemployedinpriorstudies.Furthermore,the Global
+Semantic Injection module is deployed to inject scale-aware semantics
+into the corresponding decoder features, aiming to fuse global and local
+information and enhance pyramid feature representation. Experimental
+results across five challenging datasets and six metrics demonstrate that
+our proposed method not only surpasses state-of-the-art methods but
+also sets a new benchmark in the field, underscoring the Polyp-Mamba
+framework’s exceptional proficiency in the polyp segmentation tasks.
+Keywords: Polyp Segmentation · Mamba · Scale-Aware Semantic.
+1 Introduction
+Colonic polyps, identified as protrusions within the colonic mucosa, display con-
+siderable variability in shape, texture, and color [1]. Colonic polyps are con-
+sidered precancerous lesions, closely associated with the development of colon
+cancer [2]. Multiple studies have shown that early colonoscopic examinations
+can reduce the incidence of colorectal cancer by 30% [3]. Therefore, accurate
+polyp segmentation is crucial in clinical practice. While traditional CNN mod-
+els, such as FCN [4], struggle with long-term dependencies, advanced methods
+∗ The first two authors contribute equally to this work.",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-19.txt,30606
+TLTK-20,[20] PolyMamba Spatial-Prior Guided Mamba for Polyp Segmentation with High-Frequency Enhancement.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[20] PolyMamba Spatial-Prior Guided Mamba for Polyp Segmentation with High-Frequency Enhancement.pdf,55d14aeed5d4d9a324e4f05c1a2f2b24de786f7d87c0eb425a68aab54a6b80d2,11,,,"PolyMamba: Spatial-prior Guided Mamba for
+Polyp Segmentation with High-Frequency
+Enhancement
+Renyu Fu1, Shurui Hu1, Xiao Zheng2, Chang Tang3⋆, and Xinwang Liu4
+1 School of Computer, China University of Geosciences, Wuhan 430074, China
+https://github.com/Parker-rfu/PolyMamba
+2 School of Computer Science, Hubei University of Technology, Wuhan 430068, China
+3 School of Software Engineering, Huazhong University of Science and Technology,
+Wuhan 430074, China
+tangchang@hust.edu.cn
+4 School of Computer, National University of Defense Technology, Changsha 410073,
+China.
+Abstract. Accurate polyp segmentation during colonoscopy is crucial
+for the early detection and timely intervention of colorectal cancer. Re-
+cently, Mamba, a State Space Model, has gained significant attention in
+polyp segmentation due to its remarkable ability to model long-range
+dependencies with linear computational complexity. However, Mamba-
+based methods face two key challenges: (1) their fixed scanning pattern
+limits the capture of dynamic spatial context, impairing the precise local-
+ization of irregular polyps; (2) during the calculation process, the high-
+frequency information that is crucial to local details is weakened, and the
+blurred mid-frequency information becomes dominant, thereby reducing
+the boundary accuracy. To overcome these limitations, we propose Poly-
+Mamba, a novel framework that integrates spatial priors while enhanc-
+ing high-frequency information for more accurate polyp segmentation.
+Specifically,ourframeworkintroducesa Spatial-Prior Guided module,
+which leverages explicit spatial priors extracted from Transformer-based
+methods to counteract the local perception bias caused by Mamba’s fixed
+scanningpattern.Additionally,wedesigna Dual-Gate F requency En-
+hancementmodule, which applies two Gaussian filters to generate spec-
+tra with different high-frequency thresholds, and uses the difference be-
+tween them as an attention map to selectively enhance high-frequency
+features, thereby refining the polyp boundaries. Comprehensive experi-
+ments on five widely used polyp segmentation datasets demonstrate that
+PolyMamba not only surpasses existing state-of-the-art techniques but
+also provides a novel frequency-domain perspective, offering new insights
+into improving segmentation performance.
+Keywords: Polyp Segmentation · Mamba · Spatial Prior · Frequency
+Domain.
+⋆ Corresponding author",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-20.txt,26490
+TLTK-21,[21] SAM-Mamba Mamba Guided SAM Architecture for Generalized Zero-Shot Polyp Segmentation.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[21] SAM-Mamba Mamba Guided SAM Architecture for Generalized Zero-Shot Polyp Segmentation.pdf,97cb4cd793b62d7e1524322d3debe9b8e60c3111bdca373dc831a103c8c81955,10,SAM-Mamba: Mamba Guided SAM Architecture for Generalized Zero-Shot Polyp Segmentation,Tapas Kumar Dutta; Snehashis Majhi; Deepak Ranjan Nayak; Debesh Jha,"SAM-Mamba: Mamba Guided SAM Architecture for Generalized Zero-Shot
+Polyp Segmentation
+Tapas Kumar Dutta1, Snehashis Majhi2, Deepak Ranjan Nayak3, and Debesh Jha4
+1 University of Surrey, United Kingdom 2 Cˆote d’Azur University, France
+3 Malaviya National Institute of Technology Jaipur, India 4 University of South Dakota, USA
+drnayak.cse@mnit.ac.in
+Abstract
+Polyp segmentation in colonoscopy is crucial for detect-
+ing colorectal cancer. However, it is challenging due to
+variations in the structure, color, and size of polyps, as well
+as the lack of clear boundaries with surrounding tissues.
+Traditional segmentation models based on Convolutional
+Neural Networks (CNNs) struggle to capture detailed pat-
+terns and global context, limiting their performance. Vision
+Transformer (ViT)-based models address some of these is-
+sues but have difficulties in capturing local context and lack
+strong zero-shot generalization. To this end, we propose the
+Mamba-guided Segment Anything Model (SAM-Mamba †)
+for efficient polyp segmentation. Our approach introduces
+a Mamba-Prior module in the encoder to bridge the gap
+between the general pre-trained representation of SAM and
+polyp-relevant trivial clues. It injects salient cues of polyp
+images into the SAM image encoder as a domain prior while
+capturing global dependencies at various scales, leading to
+more accurate segmentation results. Extensive experiments
+on five benchmark datasets show that SAM-Mamba outper-
+forms traditional CNN, ViT, and Adapter-based models in
+both quantitative and qualitative measures. Additionally,
+SAM-Mamba demonstrates excellent adaptability to unseen
+datasets, making it highly suitable for real-time clinical use.
+1. Introduction
+Colorectal Cancer (CRC) is considered the most preva-
+lent gastrointestinal cancer and ranks as the third most com-
+mon type of cancer across the globe. It often develops
+as a growth known as polyps in the colon’s inner wall,
+leading to CRC if left undetected and untreated. There-
+fore, early detection and timely treatment are indispens-
+able to preventing CRC, thereby reducing mortality rates.
+Colonoscopy is a widely adopted procedure for detecting
+and resecting polyps in the colon. However, the identifi-
+†Code, Models: https://github.com/TapasKumarDutta1/
+SAM_Mamba_2025
+cation and segmentation of polyps through manual inspec-
+tion of colonoscopy images is tedious and needs skilled and
+highly experienced clinicians. In addition, the tiny-sized
+polyps are likely to be overlooked during manual examina-
+tion. Therefore, there is a strong need for the development
+of automated polyp segmentation methods to improve de-
+tection performance and potentially assist clinicians during
+the colonoscopy examination.
+The last decade has witnessed a significant stride towards
+the development of medical image segmentation meth-
+ods [1, 4, 12, 17, 23] using deep learning architectures, par-
+ticularly encoder-decoder Convolutional Neural Networks
+(CNN) [22, 37]. Early polyp segmentatio",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-21.txt,45662
+TLTK-22,[22] Mamba YOLO A Simple Baseline for Object Detection with State Space Model.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[22] Mamba YOLO A Simple Baseline for Object Detection with State Space Model.pdf,9efe0e66a877806566a4107a7658edde1373aab395469b65759c27bd418fb7c4,9,,,"Mamba YOLO: A Simple Baseline for Object Detection with State Space Model
+Zeyu Wang1,2,*
+, Chen Li 1,2,∗
+, Huiying Xu 1,2,†
+, Xinzhong Zhu 1,2,3,†
+, Hongbo Li 3
+1College of Computer Science and Technology, Zhejiang Normal University, Zhejiang, 311231, China
+2Research Institute of Hangzhou Artificial Intelligence, Zhejiang Normal University, Hangzhou, Zhejiang, 311231, China
+3Beijing Geekplus Technology Co, Ltd, Beijing, 100101, China
+{14797857499,LilSodaChen,xhy,zxz}@zjnu.edu.cn, jason.li@geekplus.com
+Abstract
+Driven by the rapid development of deep learning technol-
+ogy, the YOLO series has set a new benchmark for real-
+time object detectors. Additionally, transformer-based struc-
+tures have emerged as the most powerful solution in the field,
+greatly extending the model’s receptive field and achiev-
+ing significant performance improvements. However, this im-
+provement comes at a cost as the quadratic complexity of the
+self-attentive mechanism increases the computational burden
+of the model. To address this problem, we introduce a sim-
+ple yet effective baseline approach called Mamba YOLO.
+Our contributions are as follows: 1) We propose that the
+ODMamba backbone introduce a State Space Model (SSM)
+with linear complexity to address the quadratic complexity of
+self-attention. Unlike the other Transformer-base and SSM-
+base method, ODMamba is simple to train without pretrain-
+ing. 2) For real-time requirement, we designed the macro
+structure of ODMamba, determined the optimal stage ratio
+and scaling size. 3) We design the RG Block that employs
+a multi-branch structure to model the channel dimensions,
+which addresses the possible limitations of SSM in sequence
+modeling, such as insufficient receptive fields and weak im-
+age localization. This design captures localized image depen-
+dencies more accurately and significantly. Extensive exper-
+iments on the publicly available COCO benchmark dataset
+show that Mamba YOLO achieves state-of-the-art perfor-
+mance compared to previous methods. Specifically, a tiny
+version of Mamba YOLO achieves a 7.5% improvement in
+mAP on a single 4090 GPU with an inference time of1.5 ms.
+The pytorch code is available at: https://github.com/HZAI-
+ZJNU/Mamba-YOLO
+Introduction
+In recent years, deep learning has rapidly advanced, par-
+ticularly in the field of computer vision, where a series
+of powerful architectures have achieved impressive per-
+formance. From Convolutional Neural Networks ( CNNs)
+(Huang et al. 2017; Tan and Le 2020; Liu et al. 2022) to
+Vision Transformers ( ViTs) (Liu et al. 2021; Shi 2023),
+the application of various structures has demonstrated their
+strong potential in computer vision. In the downstream task
+*Equal contribution.
+†Corresponding author.
+Copyright © 2025, Association for the Advancement of Artificial
+Intelligence (www.aaai.org). All rights reserved.
+Mamba YOLO-T
+Mamba YOLO-B
+Mamba YOLO-L
+Figure 1: Comparisons of the real-time object detecors on
+the MSCOCO dataset. The object detection method ba",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-22.txt,38695
+TLTK-23,[23] Feature Pyramid Networks for Object Detection.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[23] Feature Pyramid Networks for Object Detection.pdf,b949040f3839ce0035c367c5538b34c7bad72af952f2e603f30a7201acadbff9,9,Feature Pyramid Networks for Object Detection,"Tsung-Yi Lin, Piotr Dollar, Ross Girshick, Kaiming He, Bharath Hariharan, Serge Belongie","Feature Pyramid Networks for Object Detection
+Tsung-Yi Lin1,2, Piotr Doll ´ar1, Ross Girshick 1,
+Kaiming He1, Bharath Hariharan 1, and Serge Belongie 2
+1Facebook AI Research (FAIR)
+2Cornell University and Cornell Tech
+Abstract
+Feature pyramids are a basic component in recognition
+systems for detecting objects at different scales. But recent
+deep learning object detectors have avoided pyramid rep-
+resentations, in part because they are compute and memory
+intensive. In this paper , we exploit the inherent multi-scale,
+pyramidal hierarchy of deep convolutional networks to con-
+struct feature pyramids with marginal extra cost. A top-
+down architecture with lateral connections is developed for
+building high-level semantic feature maps at all scales. This
+architecture, called a Feature Pyramid Network (FPN),
+shows signiﬁcant improvement as a generic feature extrac-
+tor in several applications. Using FPN in a basic Faster
+R-CNN system, our method achieves state-of-the-art single-
+model results on the COCO detection benchmark without
+bells and whistles, surpassing all existing single-model en-
+tries including those from the COCO 2016 challenge win-
+ners. In addition, our method can run at 5 FPS on a GPU
+and thus is a practical and accurate solution to multi-scale
+object detection. Code will be made publicly available.
+1. Introduction
+Recognizing objects at vastly different scales is a fun-
+damental challenge in computer vision. Feature pyramids
+built upon image pyramids (for short we call these featur-
+ized image pyramids ) form the basis of a standard solution
+[
+1] (Fig. 1(a)). These pyramids are scale-invariant in the
+sense that an object’s scale change is offset by shifting its
+level in the pyramid. Intuitively, this property enables a
+model to detect objects across a large range of scales by
+scanning the model over both positions and pyramid levels.
+Featurized image pyramids were heavily used in the
+era of hand-engineered features [
+5, 25]. They were so
+critical that object detectors like DPM [ 7] required dense
+scale sampling to achieve good results ( e.g., 10 scales per
+octave). For recognition tasks, engineered features have
+(a) Featurized image pyramid
+predict
+predict
+predict
+predict
+(b) Single feature map
+predict
+(d) Feature Pyramid Network
+predict
+predict
+predict
+(c) Pyramidal feature hierarchy
+predict
+predict
+predict
+Figure 1. (a) Using an image pyramid to build a feature pyramid.
+Features are computed on each of the image scales independently,
+which is slow. (b) Recent detection systems have opted to use
+only single scale features for faster detection. (c) An alternative is
+to reuse the pyramidal feature hierarchy computed by a ConvNet
+as if it were a featurized image pyramid. (d) Our proposed Feature
+Pyramid Network (FPN) is fast like (b) and (c), but more accurate.
+In this ﬁgure, feature maps are indicate by blue outlines and thicker
+outlines denote semantically stronger features.
+largely been replaced with features computed by deep con-
+vo",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-23.txt,46531
+TLTK-24,[24] EfficientDet Scalable and Efficient Object Detection.pdf,C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\TLTK\[24] EfficientDet Scalable and Efficient Object Detection.pdf,08deba0f1bdb13b8d8ea69fb10df4f5960f101413f5d5e314ddc28b3dd2b9c7d,10,,,"EfﬁcientDet: Scalable and Efﬁcient Object Detection
+Mingxing Tan Ruoming Pang Quoc V . Le
+Google Research, Brain Team
+{tanmingxing, rpang, qvl }@google.com
+Abstract
+Model efﬁciency has become increasingly important in
+computer vision. In this paper, we systematically study neu-
+ral network architecture design choices for object detection
+and propose several key optimizations to improve efﬁciency.
+First, we propose a weighted bi-directional feature pyra-
+mid network (BiFPN), which allows easy and fast multi-
+scale feature fusion; Second, we propose a compound scal-
+ing method that uniformly scales the resolution, depth, and
+width for all backbone, feature network, and box/class pre-
+diction networks at the same time. Based on these optimiza-
+tions and better backbones, we have developed a new family
+of object detectors, called EfﬁcientDet, which consistently
+achieve much better efﬁciency than prior art across a wide
+spectrum of resource constraints. In particular, with single-
+model and single-scale, our EfﬁcientDet-D7 achieves state-
+of-the-art 55.1 AP on COCO test-dev with 77M param-
+eters and 410B FLOPs 1, being 4x – 9x smaller and using
+13x – 42x fewer FLOPs than previous detectors. Code is
+available at https://github.com/google/automl/tree/
+master/efficientdet.
+1. Introduction
+Tremendous progresses have been made in recent years
+towards more accurate object detection; meanwhile, state-
+of-the-art object detectors also become increasingly more
+expensive. For example, the latest AmoebaNet-based NAS-
+FPN detector [45] requires 167M parameters and 3045B
+FLOPs (30x more than RetinaNet [24]) to achieve state-of-
+the-art accuracy. The large model sizes and expensive com-
+putation costs deter their deployment in many real-world
+applications such as robotics and self-driving cars where
+model size and latency are highly constrained. Given these
+real-world resource constraints, model efﬁciency becomes
+increasingly important for object detection.
+There have been many previous works aiming to de-
+velop more efﬁcient detector architectures, such as one-
+1Similar to [14, 39], FLOPs denotes number of multiply-adds.
+0 200 400 600 800 1000 1200
+FLOPs (Billions)
+30
+35
+40
+45
+50COCO AP
+D1
+D5
+EfﬁcientDet-D7
+D6
+D2
+D4
+D3
+YOLOv3
+Mask R-CNN
+RetinaNet
+ResNet + NAS-FPN
+AmoebaNet + NAS-FPN + AA
+AP FLOPs (ratio)
+EfﬁcientDet-D0 33.8 2.5BYOLOv3 [34] 33.0 71B (28x)
+EfﬁcientDet-D1 39.6 6.1BRetinaNet [24] 39.2 97B (16x)
+EfﬁcientDet-D7x† 55.1 410B
+AmoebaNet+ NAS-FPN +AA [45]† 50.7 3045B (13x)†Not plotted.
+Figure 1: Model FLOPs vs. COCO accuracy – All num-
+bers are for single-model single-scale. Our EfﬁcientDet
+achieves new state-of-the-art 55.1% COCO AP with much
+fewer parameters and FLOPs than previous detectors. More
+studies on different backbones and FPN/NAS-FPN/BiFPN
+are in Table 4 and 5. Complete results are in Table 2.
+stage [27, 33, 34, 24] and anchor-free detectors [21, 44, 40],
+or compress existing models [28, 29]. Although these meth-
+ods tend to achieve better efﬁcie",C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Test_Mau\archive\audit_20261025_193105\D_literature\local_text\TLTK-24.txt,44192

@@ -1,0 +1,169 @@
+P0 [Normal] BÁO CÁO TIẾN ĐỘ VÀ KẾT QUẢ THỰC NGHIỆM
+P1 [Normal] Đề tài: Tích hợp Topology-Shape-aware VMamba vào YOLO26-seg để phân đoạn polyp từ ảnh nội soi đại trực tràng
+TABLE 2
+Mã đề tài & Phân loại: | CNTT_KLCN182 - Khóa luận Cử nhân ngành CNTT, năm học 2026-2027
+Giảng viên hướng dẫn: | TS. Phùng Thế Bảo; email: baopt@huit.edu.vn
+Nhóm sinh viên thực hiện: | Lê Đức Lương - MSSV 2001230490 - Lớp 14DHTH09
+Phùng Tuấn Huy - MSSV 2001230312 - Lớp 14DHTH13
+Trần Mạnh Toàn - MSSV 2001230830 - Lớp 14DHTH09
+Nội dung báo cáo trọng tâm: | So sánh Baseline và TSVM lưu checkpoint FP32 qua 20 seed; chất lượng phân đoạn, độ ổn định và chi phí suy luận CPU.
+P3 [Heading 1] 1. MỤC TIÊU VÀ KẾT QUẢ CHÍNH
+P4 [Normal] Báo cáo so sánh YOLO26s-seg, gọi tắt là Baseline, với mô hình tích hợp C2TSVMamba, gọi tắt là TSVM. Thực nghiệm sử dụng dữ liệu Kvasir_BG20 và 20 seed, từ 0 đến 19, cho mỗi mô hình. Checkpoint TSVM được lưu FP32 để tránh lỗi tràn số FP16 của báo cáo trước.
+P5 [Normal] Kết quả chính: điểm mạnh rõ nhất của TSVM là độ ổn định. Độ lệch chuẩn Mask mAP@50-95 thấp hơn 38.8% và khác biệt phương sai có ý nghĩa thống kê với Levene p = 0.026. 
+P6 [Normal] Mask mAP@50-95 trung bình đạt 0.7232, cao hơn Baseline 0.0043 nhưng chưa đạt ý nghĩa thống kê với p = 0.061. Đổi lại, độ trễ CPU cao hơn khoảng 4.10 lần.
+P7 [List Bullet] Chuẩn hóa Kvasir_BG20 với 1.000 ảnh polyp và 200 ảnh nền không chứa polyp.
+P8 [List Bullet] Hoàn thành 40 lượt huấn luyện: hai mô hình, mỗi mô hình 20 seed và 100 epoch.
+P9 [List Bullet] Tổng hợp chỉ số tại epoch tốt nhất; kiểm định t theo cặp, Wilcoxon và Levene giữa hai mô hình.
+P10 [List Bullet] Lưu checkpoint TSVM ở FP32 và kiểm tra lại ma trận nhầm lẫn của cả 40 lượt chạy.
+P11 [List Bullet] Trình bày mười biểu đồ để so sánh ma trận nhầm lẫn, chất lượng phân đoạn và độ ổn định.
+P12 [List Bullet] Đối chiếu số tham số, dung lượng trọng số và độ trễ suy luận trên CPU.
+P13 [Heading 1] 2. MÔ HÌNH VÀ THIẾT LẬP THỰC NGHIỆM
+P14 [Heading 2] 2.1. Dữ liệu Kvasir_BG20
+P15 [Normal] Ảnh nền được bổ sung để mô hình học phân biệt polyp với niêm mạc không có tổn thương. Tên BG20 thể hiện số ảnh nền bổ sung bằng 20% số ảnh polyp; tỷ lệ ảnh nền trong toàn bộ dữ liệu là 16.67%.
+P16 [Caption] Bảng 1. Phân bố dữ liệu huấn luyện và kiểm định
+TABLE 17
+Tập dữ liệu | Ảnh polyp | Ảnh nền | Tổng ảnh | Nền, % | Số nhãn
+Huấn luyện | 880 | 160 | 1.040 | 15.38 | 936
+Kiểm định | 120 | 40 | 160 | 25.00 | 127
+Toàn bộ | 1.000 | 200 | 1.200 | 16.67 | 1.063
+P18 [Heading 2] 2.2. Kiến trúc TSVM
+P19 [Normal] TSVM thay khối C2PSA tại tầng 10 của YOLO26s-seg bằng C2TSVMamba. Khối đề xuất kết hợp quét không gian bốn hướng SS2D với đặc trưng hình dạng, nhằm khai thác quan hệ giữa các vùng ảnh và hỗ trợ phân đoạn ranh giới polyp.
+P20 [Heading 2] 2.3. Tiền xử lý và tăng cường dữ liệu
+P21 [Normal] Ảnh đầu vào có kích thước 640 × 640 pixel. Mặt nạ được chuyển sang nhãn đa giác YOLO. Cấu hình tăng cường dữ liệu gồm lật ngang 0.5, co giãn 0.5 và Mosaic 1.0; Mosaic được tắt trong 10 epoch cuối.
+P22 [Heading 2] 2.4. Cấu hình huấn luyện
+P23 [Normal] Hai mô hình sử dụng cùng cấu hình huấn luyện và cùng các seed từ 0 đến 19. Một epoch là một lượt huấn luyện qua tập dữ liệu.
+P24 [Caption] Bảng 2. Cấu hình huấn luyện chung
+TABLE 25
+Tham số | Thiết lập
+Số seed | 20, từ 0 đến 19
+Kích thước ảnh | 640 × 640 pixel
+Batch | 8 ảnh
+Số epoch | 100
+Bộ tối ưu | AdamW; weight_decay = 0.0005
+Tốc độ học | lr0 = 0.001; lrf = 0.01; cos_lr = False
+Trọng số mất mát | box = 7.5; seg = 7.5; cls = 0.5
+Chế độ tính toán | deterministic = True; AMP = False; checkpoint TSVM lưu FP32
+P26 [Heading 1] 3. KẾT QUẢ SO SÁNH QUA 20 SEED
+P27 [Normal] Các chỉ số được lấy tại epoch tốt nhất, tức epoch có Mask mAP@50-95 cao nhất của từng lượt chạy. Trong các bảng, giá trị trước và sau dấu ± lần lượt là trung bình và độ lệch chuẩn; Δ là TSVM trừ Baseline.
+P28 [Heading 2] 3.1. Kết quả tổng hợp
+P29 [Normal] Mask là chỉ số phân đoạn mặt nạ; Box là chỉ số phát hiện hộp bao. Precision phản ánh độ chính xác của dự đoán, Recall phản ánh khả năng phát hiện tổn thương. Cột p là kết quả kiểm định t theo cặp; p < 0.05 được dùng làm ngưỡng ý nghĩa thống kê.
+P30 [Caption] Bảng 3. So sánh các chỉ số chính qua 20 seed
+TABLE 31
+Chỉ số | Baseline | TSVM | Δ | p
+Mask mAP@50-95 | 0.7189 ± 0.0118 | 0.7232 ± 0.0072 | +0.0043 | 0.0614
+Mask mAP@50 | 0.9069 ± 0.0125 | 0.9083 ± 0.0086 | +0.0014 | 0.6675
+Mask Precision | 0.9041 ± 0.0287 | 0.9145 ± 0.0233 | +0.0104 | 0.2662
+Mask Recall | 0.8594 ± 0.0241 | 0.8590 ± 0.0179 | -0.0004 | 0.9479
+Box mAP@50-95 | 0.7228 ± 0.0159 | 0.7273 ± 0.0134 | +0.0045 | 0.2275
+Box mAP@50 | 0.9006 ± 0.0116 | 0.9014 ± 0.0083 | +0.0008 | 0.7776
+Box Recall | 0.8501 ± 0.0293 | 0.8522 ± 0.0145 | +0.0021 | 0.7709
+Val Seg Loss | 1.2663 ± 0.0843 | 1.2329 ± 0.0410 | -0.0334 | 0.1552
+P32 [Heading 2] 3.2. Kết quả từng seed
+P33 [Normal] TSVM đạt Mask mAP@50-95 cao hơn ở 13/20 seed: 1, 2, 3, 6, 8, 9, 10, 12, 15, 16, 17, 18 và 19. Bảng dưới dùng cùng chỉ số để đối chiếu từng cặp seed.
+P36 [Caption] Bảng 4. Mask mAP@50-95 tại epoch tốt nhất của từng seed
+TABLE 37
+Seed | Epoch tốt nhất
+Baseline | mAP
+Baseline | Epoch tốt nhất
+TSVM | mAP
+TSVM | Δ mAP
+Seed 0 | 89 | 0.7366 | 88 | 0.7245 | -0.0121
+Seed 1 | 98 | 0.7165 | 98 | 0.7274 | +0.0109
+Seed 2 | 100 | 0.7138 | 83 | 0.7259 | +0.0121
+Seed 3 | 61 | 0.6941 | 89 | 0.7213 | +0.0272
+Seed 4 | 99 | 0.7274 | 97 | 0.7197 | -0.0077
+Seed 5 | 94 | 0.7350 | 90 | 0.7285 | -0.0066
+Seed 6 | 81 | 0.7153 | 95 | 0.7254 | +0.0101
+Seed 7 | 71 | 0.7145 | 88 | 0.7065 | -0.0080
+Seed 8 | 96 | 0.7318 | 93 | 0.7339 | +0.0021
+Seed 9 | 84 | 0.7253 | 96 | 0.7329 | +0.0076
+Seed 10 | 82 | 0.7045 | 100 | 0.7198 | +0.0153
+Seed 11 | 99 | 0.7299 | 87 | 0.7226 | -0.0072
+Seed 12 | 87 | 0.7056 | 89 | 0.7157 | +0.0101
+Seed 13 | 97 | 0.7315 | 99 | 0.7306 | -0.0009
+Seed 14 | 74 | 0.7223 | 96 | 0.7211 | -0.0012
+Seed 15 | 80 | 0.7176 | 84 | 0.7262 | +0.0086
+Seed 16 | 96 | 0.7125 | 93 | 0.7237 | +0.0113
+Seed 17 | 73 | 0.7274 | 100 | 0.7301 | +0.0027
+Seed 18 | 94 | 0.7022 | 47 | 0.7082 | +0.0060
+Seed 19 | 71 | 0.7136 | 91 | 0.7195 | +0.0059
+P38 [Heading 2] 3.3. Nhận xét và giới hạn thống kê
+P39 [Normal] Điểm chính: TSVM ổn định hơn rõ rệt, còn độ chính xác trung bình mới ở mức xu hướng. Độ lệch chuẩn Mask mAP@50-95 giảm từ 0.0118 xuống 0.0072, kiểm định Levene cho p = 0.026, nên mức giảm phân tán có ý nghĩa thống kê. Mask mAP@50-95 tăng 0.0043 với p = 0.061, kiểm định Wilcoxon cho p = 0.070: gần ngưỡng nhưng chưa đủ bằng chứng ở mức 0.05.
+P40 [Normal] Mất mát phân đoạn kiểm định giảm 2.64%, từ 1.2663 xuống 1.2329, với p = 0.155; độ lệch chuẩn giảm 51.3%, Levene p = 0.019. Các chỉ số còn lại có p > 0.2; Mask Recall gần như không đổi.
+P41 [Heading 1] 4. MA TRẬN NHẦM LẪN VÀ GIỚI HẠN DỮ LIỆU
+P42 [Normal] Số liệu được đọc từ ảnh ma trận nhầm lẫn của 40 lượt chạy và đã kiểm tra chéo. Bảng chỉ dùng để mô tả, chưa dùng làm kết luận lâm sàng.
+P43 [Normal] Tập kiểm định gồm 120 ảnh polyp với 127 nhãn tổn thương và 40 ảnh nền. Số phát hiện đúng và bỏ sót được đếm theo nhãn tổn thương; báo động giả FP được đếm theo dự đoán không khớp polyp nào. 
+P44 [Normal] Điểm chính: hai mô hình gần như ngang nhau; TSVM có ít hơn 0.7 FP trung bình nhưng chênh lệch không có ý nghĩa thống kê, p = 0.48.
+P45 [Caption] Bảng 5. Tổng hợp số phát hiện đúng, bỏ sót và báo động giả
+TABLE 46
+Chỉ số | Baseline | TSVM | Δ
+Phát hiện đúng TP | 110.5 ± 2.9 | 110.7 ± 1.9 | +0.1 ca
+Bỏ sót FN | 16.4 ± 2.9 | 16.4 ± 1.9 | -0.1 ca
+Báo động giả FP | 16.4 ± 3.4 | 15.8 ± 3.0 | -0.7 ca
+Độ nhạy | 87.05% ± 2.32% | 87.13% ± 1.47% | +0.08%
+Tỷ lệ FP trên tổng dự đoán | 12.90% ± 2.35% | 12.41% ± 2.05% | -0.48%
+P49 [Caption] Hình 1. Ma trận nhầm lẫn trung bình 20 seed của YOLO26-SEG (Baseline) và YOLO26-SEG - TSVM
+P50 [Normal] Điểm chính: hai mô hình gần như ngang nhau. Cả hai phát hiện đúng khoảng 87% trong 127 polyp TP 110.55 so với 110.65 và bỏ sót khoảng 16 polyp. TSVM ít hơn 0.70 báo động giả FP 15.75 so với 16.45, nhưng p = 0.48 nên chưa đủ để kết luận TSVM tốt hơn.
+P51 [Normal] Cách đọc hình: hàng là nhãn dự đoán, cột là nhãn thực tế; số lớn là trung bình 20 seed, số ± là độ lệch chuẩn giữa các seed. Ô nền–nền (TN) để trống vì Ultralytics không đếm, nên báo cáo không tính độ đặc hiệu.
+P52 [Heading 1] 5. BIỂU ĐỒ SO SÁNH THỰC NGHIỆM
+P53 [Normal] Chín biểu đồ dưới đây so sánh kết quả của hai mô hình. Mỗi hình tập trung vào một khía cạnh của kết quả; nhận xét chỉ giới hạn trong 20 seed đã khảo sát.
+P54 [Heading 2] 5.1. Các chỉ số phân đoạn chính
+P56 [Caption] Hình 2. So sánh bốn chỉ số phân đoạn và độ lệch chuẩn qua 20 seed
+P57 [Normal] TSVM nhỉnh hơn ở Mask mAP@50-95, tăng 0.0043, và Precision, tăng 0.0104; Mask mAP@50 và Recall gần như bằng nhau. Thanh sai số của TSVM ngắn hơn ở cả bốn chỉ số, tức kết quả ít phụ thuộc seed hơn.
+P58 [Heading 2] 5.2. Mất mát phân đoạn kiểm định
+P60 [Caption] Hình 3. Trung bình và độ lệch chuẩn của mất mát phân đoạn kiểm định
+P61 [Normal] Loss của TSVM thấp hơn 2.64% và độ lệch chuẩn chỉ bằng khoảng một nửa, 0.0410 so với 0.0843. Đây là tín hiệu tối ưu hóa ổn định hơn, dù chênh lệch trung bình chưa đạt ý nghĩa thống kê.
+P62 [Heading 2] 5.3. So sánh từng seed
+P64 [Caption] Hình 4. Mask mAP@50-95 của hai mô hình tại từng seed
+P65 [Normal] TSVM thắng 13/20 seed. Đáng chú ý hơn là mức đáy: seed thấp nhất của TSVM đạt 0.7065 ở seed 7, còn Baseline xuống 0.6941 ở seed 3.
+P66 [Heading 2] 5.4. Diễn biến hàm mất mát
+P68 [Caption] Hình 5. Diễn biến bốn hàm mất mát qua 100 epoch
+P69 [Normal] Hai mô hình hội tụ theo cùng một nhịp. Ở 10 epoch cuối, mất mát phân đoạn kiểm định của TSVM thấp hơn, 1.260 so với 1.300, nhưng mất mát phân loại kiểm định cao hơn, 0.624 so với 0.609; vì vậy không dùng riêng các đường cong này để kết luận.
+P70 [Heading 2] 5.5. Diễn biến chỉ số mAP
+P72 [Caption] Hình 6. Mask mAP@50-95 và Mask mAP@50 qua 100 epoch
+P73 [Normal] Hai đường trung bình gần như trùng nhau; trong 10 epoch cuối, Mask mAP@50-95 của TSVM cao hơn nhẹ, 0.710 so với 0.706. Khác biệt chính giữa hai mô hình nằm ở độ phân tán giữa các seed, không nằm ở tốc độ học.
+P74 [Heading 2] 5.6. Tỷ lệ đạt kết quả cao hơn
+P76 [Caption] Hình 7. Tỷ lệ thắng theo Mask mAP@50-95: TSVM 65%, Baseline 35%
+P77 [Normal] TSVM thắng 13/20 cặp seed, nhưng kiểm định dấu hai phía cho p = 0.2632: tỷ lệ thắng chưa đủ để kết luận ưu thế. Cần đọc cùng mức chênh trung bình ở Bảng 3.
+P78 [Heading 2] 5.7. Khoảng biến thiên qua các epoch
+P80 [Caption] Hình 8. Giá trị nhỏ nhất, lớn nhất và trung bình của Mask mAP@50-95
+P81 [Normal] Theo từng epoch, dải dao động của hai mô hình tương đương: TSVM hẹp hơn ở 53/100 epoch và độ rộng trung bình gần như bằng nhau, chỉ chênh 0.76%. Như vậy, ưu thế ổn định của TSVM thể hiện ở epoch tốt nhất, không phải suốt quá trình huấn luyện.
+P82 [Heading 2] 5.8. Cân bằng giữa phát hiện và phân đoạn
+P84 [Caption] Hình 9. Biểu đồ radar so sánh tám chỉ số Box và Mask
+P85 [Normal] TSVM cao hơn ở 7/8 trục nhưng mọi chênh lệch đều nhỏ, không vượt quá 0.010; chỉ Mask Recall thấp hơn không đáng kể, khoảng 0.0004. Cải thiện dàn đều, không có trục nào bứt phá.
+P86 [Heading 2] 5.9. Phân bố kết quả giữa các seed
+P88 [Caption] Hình 10. Phân bố Mask mAP@50-95 qua 20 seed
+P89 [Normal] Trung vị của TSVM là 0.7241, cao hơn mức 0.7170 của Baseline. Hộp của TSVM hẹp hơn rõ rệt; số seed dưới 0.71 là 2 so với 4 của Baseline.
+P91 [Heading 1] 6. CHI PHÍ TÍNH TOÁN VÀ KHẢ NĂNG TRIỂN KHAI
+P92 [Normal] Hai mô hình được so sánh về số tham số, dung lượng trọng số và tốc độ suy luận trên CPU. Phép đo sử dụng trọng số của seed 0, đầu vào 640 × 640 pixel, với 20 lượt khởi động và 100 lượt đo. Thời gian đo chưa bao gồm tiền xử lý và hậu xử lý. Kiến trúc không đổi so với báo cáo 10 seed nên số liệu đo được giữ nguyên.
+P93 [Caption] Bảng 6. Chi phí tài nguyên và tốc độ forward CPU
+TABLE 94
+Chỉ số | Baseline | TSVM | Chênh lệch
+Số tham số, triệu | 11.434 | 12.255 | +0.821
+THOP, GMACs | 18.54 | 18.86 | +0.32
+Trọng số FP16, MiB | 22.27 | 23.86 | +1.59
+Độ trễ, ms/ảnh | 200.12 | 821.27 | +621.15
+Tốc độ, FPS | 5.00 | 1.22 | −3.78
+GPU VRAM | Chưa xác minh | Chưa xác minh | Chưa xác định
+P95 [Normal] Chi phí là điểm yếu chính: số tham số chỉ tăng 7.18% nhưng độ trễ forward CPU cao hơn khoảng 4.10 lần; số MAC do THOP đếm chưa bao quát đầy đủ các phép scan. 
+P96 [Normal] Khi lưu FP32, tệp trọng số TSVM ước tính khoảng 47 MiB, tính theo 4 byte mỗi tham số. Chưa có phép đo trên GPU nên chưa thể kết luận về khả năng xử lý thời gian thực.
+P97 [Normal] Kết luận: Với 20 seed, đóng góp chắc chắn của TSVM là độ ổn định: phương sai thấp hơn có ý nghĩa thống kê với p = 0.026. Mức tăng Mask mAP@50-95 là 0.0043 với p = 0.061, mới ở mức xu hướng. 
+P98 [Normal] Bước tiếp theo là đo tốc độ toàn chuỗi trên GPU, kiểm thử trên dữ liệu độc lập và giảm độ trễ của khối SS2D.\
+P100 [Heading 1] 7. THAY ĐỔI SO VỚI BÁO CÁO 10 SEED VÀ ĐỐI CHIẾU KẾT QUẢ
+P101 [Normal] So với báo cáo 10 seed, nhóm mở rộng lên 20 seed cho mỗi mô hình và chuyển checkpoint TSVM sang lưu FP32. Bản lưu FP16 trước đây làm tràn thống kê BatchNorm tại tầng 10, khiến ma trận nhầm lẫn của TSVM ở seed 0, 5 và 8 bị sai.
+P102 [Caption] Bảng 7. Những điều chỉnh chính so với báo cáo 10 seed
+TABLE 103
+Nội dung | Báo cáo 10 seed | Báo cáo 20 seed
+Số lượt chạy | Hai mô hình, mỗi mô hình 10 seed; tổng 20 lượt | Hai mô hình, mỗi mô hình 20 seed; tổng 40 lượt
+Lưu checkpoint TSVM | FP16; thống kê BatchNorm tầng 10 bị tràn số | FP32; không còn tràn số
+Dữ liệu | Kvasir_BG20: 1.200 ảnh, 200 ảnh nền | Giữ nguyên
+Mask mAP@50-95 Baseline | 0.7210 ± 0.0129 | 0.7189 ± 0.0118
+Mask mAP@50-95 TSVM | 0.7246 ± 0.0078 | 0.7232 ± 0.0072
+p của Mask mAP@50-95 | 0.3839 | 0.0614
+Ma trận nhầm lẫn | Chưa dùng làm kết luận; TSVM seed 0, 5, 8 sai lệch | Nhất quán ở cả 40 lượt; dùng để mô tả
+P104 [Normal] Huấn luyện có tính tất định: chỉ số huấn luyện của TSVM FP32 tại seed 0–9 trùng với báo cáo 10 seed. Vì vậy, thay đổi về kết quả đến từ 10 seed bổ sung chứ không do cách lưu checkpoint.
+P105 [Normal] Khi thêm 10 seed, trung bình của cả hai mô hình giảm nhẹ nhưng chênh lệch vẫn nghiêng về TSVM, từ +0.0036 lên +0.0043, và p giảm từ 0.384 xuống 0.061.
+P106 [Normal] Ba điểm cần nhớ: thứ nhất, TSVM ổn định hơn có ý nghĩa thống kê; thứ hai, độ chính xác trung bình chỉ nhỉnh hơn, chưa có ý nghĩa ở ngưỡng 0.05; thứ ba, cái giá phải trả là độ trễ CPU cao hơn khoảng 4 lần.
+P107 [Normal] TP. Hồ Chí Minh, ngày 13 tháng 10 năm 2026
+P108 [Normal] ĐẠI DIỆN NHÓM SINH VIÊN THỰC HIỆN
+P109 [Normal] Lê Đức Lương — Phùng Tuấn Huy — Trần Mạnh Toàn

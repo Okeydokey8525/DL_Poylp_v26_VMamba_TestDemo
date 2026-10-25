@@ -1,0 +1,607 @@
+{
+  "headings": [
+    {
+      "text": "MỞ ĐẦU",
+      "bookmark": "sec_1",
+      "level": 1
+    },
+    {
+      "text": "1 LÝ DO CHỌN ĐỀ TÀI",
+      "bookmark": "sec_2",
+      "level": 2
+    },
+    {
+      "text": "2 MỤC TIÊU VÀ CÂU HỎI NGHIÊN CỨU",
+      "bookmark": "sec_3",
+      "level": 2
+    },
+    {
+      "text": "3 ĐỐI TƯỢNG VÀ PHẠM VI NGHIÊN CỨU",
+      "bookmark": "sec_4",
+      "level": 2
+    },
+    {
+      "text": "4 PHƯƠNG PHÁP THỰC HIỆN VÀ ĐÓNG GÓP",
+      "bookmark": "sec_5",
+      "level": 2
+    },
+    {
+      "text": "5 BỐ CỤC BÁO CÁO",
+      "bookmark": "sec_6",
+      "level": 2
+    },
+    {
+      "text": "CHƯƠNG 1 TỔNG QUAN VÀ CƠ SỞ NGHIÊN CỨU",
+      "bookmark": "sec_7",
+      "level": 1
+    },
+    {
+      "text": "1.1 BÀI TOÁN PHÂN ĐOẠN POLYP",
+      "bookmark": "sec_8",
+      "level": 2
+    },
+    {
+      "text": "1.1.1 Phân đoạn ngữ nghĩa và phân đoạn từng đối tượng",
+      "bookmark": "sec_9",
+      "level": 3
+    },
+    {
+      "text": "1.1.2 Các khó khăn về hình ảnh và dữ liệu",
+      "bookmark": "sec_10",
+      "level": 3
+    },
+    {
+      "text": "1.2 CÁC MÔ HÌNH NỀN TẢNG",
+      "bookmark": "sec_11",
+      "level": 2
+    },
+    {
+      "text": "1.2.1 Mạng tích chập và kiến trúc encoder decoder",
+      "bookmark": "sec_12",
+      "level": 3
+    },
+    {
+      "text": "1.2.2 YOLO26 và đầu phân đoạn",
+      "bookmark": "sec_13",
+      "level": 3
+    },
+    {
+      "text": "1.3 MAMBA VÀ MÔ HÌNH TRẠNG THÁI THỊ GIÁC",
+      "bookmark": "sec_14",
+      "level": 2
+    },
+    {
+      "text": "1.3.1 Biểu diễn trạng thái chọn lọc",
+      "bookmark": "sec_15",
+      "level": 3
+    },
+    {
+      "text": "1.3.2 Cơ chế SS2D bốn hướng",
+      "bookmark": "sec_16",
+      "level": 3
+    },
+    {
+      "text": "1.4 NGHIÊN CỨU LIÊN QUAN VÀ VỊ TRÍ CỦA ĐỀ TÀI",
+      "bookmark": "sec_17",
+      "level": 2
+    },
+    {
+      "text": "1.4.1 Mamba cho phân đoạn polyp",
+      "bookmark": "sec_18",
+      "level": 3
+    },
+    {
+      "text": "1.4.2 Mamba trong YOLO và các hướng về biên",
+      "bookmark": "sec_19",
+      "level": 3
+    },
+    {
+      "text": "1.4.3 Phạm vi tính mới",
+      "bookmark": "sec_20",
+      "level": 3
+    },
+    {
+      "text": "1.5 TÓM TẮT CHƯƠNG",
+      "bookmark": "sec_21",
+      "level": 2
+    },
+    {
+      "text": "CHƯƠNG 2 PHÂN TÍCH VÀ THIẾT KẾ MÔ HÌNH ĐỀ XUẤT",
+      "bookmark": "sec_22",
+      "level": 1
+    },
+    {
+      "text": "2.1 KIẾN TRÚC ĐỐI CHỨNG YOLO26S SEG",
+      "bookmark": "sec_23",
+      "level": 2
+    },
+    {
+      "text": "2.2 WRAPPER C2TSVMAMBA",
+      "bookmark": "sec_24",
+      "level": 2
+    },
+    {
+      "text": "2.3 CÁC NHÁNH CỦA TSVMAMBA",
+      "bookmark": "sec_25",
+      "level": 2
+    },
+    {
+      "text": "2.3.1 Nhánh SS2D toàn cục",
+      "bookmark": "sec_26",
+      "level": 3
+    },
+    {
+      "text": "2.3.2 Nhánh hình dạng đa tỉ lệ và có hướng",
+      "bookmark": "sec_27",
+      "level": 3
+    },
+    {
+      "text": "2.3.3 Guidance và hợp nhất",
+      "bookmark": "sec_28",
+      "level": 3
+    },
+    {
+      "text": "2.4 ĐỘ PHỨC TẠP VÀ ĐỘ CHÍNH XÁC SỐ",
+      "bookmark": "sec_29",
+      "level": 2
+    },
+    {
+      "text": "2.4.1 Chi phí của phép quét đang triển khai",
+      "bookmark": "sec_30",
+      "level": 3
+    },
+    {
+      "text": "2.4.2 Vì sao cần checkpoint FP32",
+      "bookmark": "sec_31",
+      "level": 3
+    },
+    {
+      "text": "2.5 HUẤN LUYỆN VÀ KHỞI TẠO TRỌNG SỐ",
+      "bookmark": "sec_32",
+      "level": 2
+    },
+    {
+      "text": "2.6 CÁC CHẾ ĐỘ ABLATION VÀ GIẢ THUYẾT KIỂM CHỨNG",
+      "bookmark": "sec_33",
+      "level": 2
+    },
+    {
+      "text": "2.7 TÓM TẮT CHƯƠNG",
+      "bookmark": "sec_34",
+      "level": 2
+    },
+    {
+      "text": "CHƯƠNG 3 XÂY DỰNG BỘ DỮ LIỆU VÀ TIỀN XỬ LÝ DỮ LIỆU",
+      "bookmark": "sec_35",
+      "level": 1
+    },
+    {
+      "text": "3.1. NGUỒN DỮ LIỆU",
+      "bookmark": "sec_36",
+      "level": 2
+    },
+    {
+      "text": "3.1.1. Bộ dữ liệu Kvasir-SEG",
+      "bookmark": "sec_37",
+      "level": 3
+    },
+    {
+      "text": "3.1.2. Ảnh nền normal-cecum",
+      "bookmark": "sec_38",
+      "level": 3
+    },
+    {
+      "text": "3.2. XÂY DỰNG VÀ PHÂN CHIA BỘ DỮ LIỆU BG20",
+      "bookmark": "sec_39",
+      "level": 2
+    },
+    {
+      "text": "3.3. CHUYỂN MẶT NẠ PHÂN ĐOẠN THÀNH NHÃN ĐA GIÁC",
+      "bookmark": "sec_40",
+      "level": 2
+    },
+    {
+      "text": "3.3.1. Nhị phân hóa mặt nạ bằng phương pháp Otsu",
+      "bookmark": "sec_41",
+      "level": 3
+    },
+    {
+      "text": "3.3.2. Làm liền vùng polyp bằng phép đóng hình thái học",
+      "bookmark": "sec_42",
+      "level": 3
+    },
+    {
+      "text": "3.3.3. Tìm đường bao và loại bỏ vùng nhiễu nhỏ",
+      "bookmark": "sec_43",
+      "level": 3
+    },
+    {
+      "text": "3.3.4. Đơn giản hóa đường bao",
+      "bookmark": "sec_44",
+      "level": 3
+    },
+    {
+      "text": "3.3.5. Chuẩn hóa tọa độ và ghi tệp nhãn",
+      "bookmark": "sec_45",
+      "level": 3
+    },
+    {
+      "text": "3.4. ĐỔI KÍCH THƯỚC ẢNH",
+      "bookmark": "sec_46",
+      "level": 2
+    },
+    {
+      "text": "3.5. TĂNG CƯỜNG DỮ LIỆU",
+      "bookmark": "sec_47",
+      "level": 2
+    },
+    {
+      "text": "3.5.1. Ghép bốn ảnh bằng Mosaic",
+      "bookmark": "sec_48",
+      "level": 3
+    },
+    {
+      "text": "3.5.2. Dịch chuyển và thu phóng ngẫu nhiên",
+      "bookmark": "sec_49",
+      "level": 3
+    },
+    {
+      "text": "3.5.3. Biến đổi màu trong không gian HSV",
+      "bookmark": "sec_50",
+      "level": 3
+    },
+    {
+      "text": "3.5.4. Lật ngang và các phép bổ sung",
+      "bookmark": "sec_51",
+      "level": 3
+    },
+    {
+      "text": "3.6. ĐỊNH DẠNG VÀ CHUẨN HÓA DỮ LIỆU ĐẦU VÀO",
+      "bookmark": "sec_52",
+      "level": 2
+    },
+    {
+      "text": "3.7. KIỂM TRA TÍNH TOÀN VẸN CỦA DỮ LIỆU",
+      "bookmark": "sec_53",
+      "level": 2
+    },
+    {
+      "text": "3.8. TỔNG HỢP QUY TRÌNH TIỀN XỬ LÝ",
+      "bookmark": "sec_54",
+      "level": 2
+    },
+    {
+      "text": "CHƯƠNG 4 CÀI ĐẶT THUẬT TOÁN VÀ ỨNG DỤNG MINH HỌA",
+      "bookmark": "sec_55",
+      "level": 1
+    },
+    {
+      "text": "4.1 TỔ CHỨC CÀI ĐẶT VÀ MÔI TRƯỜNG",
+      "bookmark": "sec_56",
+      "level": 2
+    },
+    {
+      "text": "4.2 QUY TRÌNH NOTEBOOK VÀ LƯU KẾT QUẢ",
+      "bookmark": "sec_57",
+      "level": 2
+    },
+    {
+      "text": "4.2.1 Notebook baseline",
+      "bookmark": "sec_58",
+      "level": 3
+    },
+    {
+      "text": "4.2.2 Notebook mô hình đề xuất và yêu cầu FP32",
+      "bookmark": "sec_59",
+      "level": 3
+    },
+    {
+      "text": "4.3 TỔNG QUAN ỨNG DỤNG POLYPVISION",
+      "bookmark": "sec_60",
+      "level": 2
+    },
+    {
+      "text": "4.4 DỊCH VỤ SUY LUẬN VÀ HỢP ĐỒNG API",
+      "bookmark": "sec_61",
+      "level": 2
+    },
+    {
+      "text": "4.4.1 Nạp và định danh mô hình",
+      "bookmark": "sec_62",
+      "level": 3
+    },
+    {
+      "text": "4.4.2 Tiếp nhận ảnh và suy luận",
+      "bookmark": "sec_63",
+      "level": 3
+    },
+    {
+      "text": "4.4.3 Điều phối yêu cầu và xử lý lỗi",
+      "bookmark": "sec_64",
+      "level": 3
+    },
+    {
+      "text": "4.5 CHỨC NĂNG WEB VÀ MOBILE",
+      "bookmark": "sec_65",
+      "level": 2
+    },
+    {
+      "text": "4.5.1 Ứng dụng Web",
+      "bookmark": "sec_66",
+      "level": 3
+    },
+    {
+      "text": "4.5.2 Ứng dụng Mobile Direct AI",
+      "bookmark": "sec_67",
+      "level": 3
+    },
+    {
+      "text": "4.6 KIỂM TRA TÍCH HỢP VỚI CHECKPOINT THỰC NGHIỆM",
+      "bookmark": "sec_68",
+      "level": 2
+    },
+    {
+      "text": "4.7 VẬN HÀNH VÀ GIỚI HẠN ỨNG DỤNG",
+      "bookmark": "sec_69",
+      "level": 2
+    },
+    {
+      "text": "4.8 TÓM TẮT CHƯƠNG",
+      "bookmark": "sec_70",
+      "level": 2
+    },
+    {
+      "text": "CHƯƠNG 5 THỬ NGHIỆM VÀ ĐÁNH GIÁ KẾT QUẢ",
+      "bookmark": "sec_71",
+      "level": 1
+    },
+    {
+      "text": "5.1 THIẾT KẾ SO SÁNH VÀ NGUỒN SỐ LIỆU",
+      "bookmark": "sec_72",
+      "level": 2
+    },
+    {
+      "text": "5.1.1 Đơn vị thực nghiệm",
+      "bookmark": "sec_73",
+      "level": 3
+    },
+    {
+      "text": "5.1.2 Quy tắc chọn epoch",
+      "bookmark": "sec_74",
+      "level": 3
+    },
+    {
+      "text": "5.1.3 Kiểm tra nhất quán",
+      "bookmark": "sec_75",
+      "level": 3
+    },
+    {
+      "text": "5.2 ĐỘ ĐO VÀ PHƯƠNG PHÁP THỐNG KÊ",
+      "bookmark": "sec_76",
+      "level": 2
+    },
+    {
+      "text": "5.2.1 Các độ đo phát hiện và mặt nạ",
+      "bookmark": "sec_77",
+      "level": 3
+    },
+    {
+      "text": "5.2.2 So sánh ghép cặp và khoảng tin cậy",
+      "bookmark": "sec_78",
+      "level": 3
+    },
+    {
+      "text": "5.3 KẾT QUẢ TỔNG HỢP QUA 20 SEED",
+      "bookmark": "sec_79",
+      "level": 2
+    },
+    {
+      "text": "5.4 BẰNG CHỨNG THỐNG KÊ VÀ ĐỘ ỔN ĐỊNH",
+      "bookmark": "sec_80",
+      "level": 2
+    },
+    {
+      "text": "5.5 KẾT QUẢ TỪNG SEED VÀ DIỄN BIẾN HUẤN LUYỆN",
+      "bookmark": "sec_81",
+      "level": 2
+    },
+    {
+      "text": "5.6 MA TRẬN NHẦM LẪN VÀ NHẬN XÉT ĐỊNH TÍNH",
+      "bookmark": "sec_82",
+      "level": 2
+    },
+    {
+      "text": "5.7 CHI PHÍ MÔ HÌNH VÀ KHẢ NĂNG TRIỂN KHAI",
+      "bookmark": "sec_83",
+      "level": 2
+    },
+    {
+      "text": "5.8 ĐỐI CHIẾU KẾT QUẢ CÔNG BỐ TRONG TÀI LIỆU",
+      "bookmark": "sec_84",
+      "level": 2
+    },
+    {
+      "text": "5.9 HẠN CHẾ VÀ NGUY CƠ ẢNH HƯỞNG ĐỘ TIN CẬY",
+      "bookmark": "sec_85",
+      "level": 2
+    },
+    {
+      "text": "5.10 TÓM TẮT CHƯƠNG",
+      "bookmark": "sec_86",
+      "level": 2
+    },
+    {
+      "text": "KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN",
+      "bookmark": "sec_87",
+      "level": 1
+    },
+    {
+      "text": "KẾT QUẢ ĐẠT ĐƯỢC",
+      "bookmark": "sec_88",
+      "level": 2
+    },
+    {
+      "text": "GIỚI HẠN CỦA KẾT LUẬN",
+      "bookmark": "sec_89",
+      "level": 2
+    },
+    {
+      "text": "HƯỚNG PHÁT TRIỂN",
+      "bookmark": "sec_90",
+      "level": 2
+    },
+    {
+      "text": "TÀI LIỆU THAM KHẢO",
+      "bookmark": "sec_91",
+      "level": 1
+    },
+    {
+      "text": "PHỤ LỤC A NGUỒN SỐ LIỆU VÀ QUY TẮC TÁI LẬP",
+      "bookmark": "sec_92",
+      "level": 1
+    },
+    {
+      "text": "PHỤ LỤC B ĐỐI CHIẾU EPOCH VÀ CHECKPOINT",
+      "bookmark": "sec_93",
+      "level": 1
+    },
+    {
+      "text": "PHỤ LỤC C CẤU HÌNH VÀ KIỂM TRA ỨNG DỤNG",
+      "bookmark": "sec_94",
+      "level": 1
+    },
+    {
+      "text": "PHỤ LỤC D KẾ HOẠCH THỰC NGHIỆM BỔ SUNG",
+      "bookmark": "sec_95",
+      "level": 1
+    }
+  ],
+  "figures": [
+    {
+      "text": "Hình 2.1 Kiến trúc YOLO26s seg và vị trí thay thế module ở tầng 10",
+      "bookmark": "figure_127"
+    },
+    {
+      "text": "Hình 2.2 Hai nhánh SS2D và hình dạng cùng cơ chế guidance trong TSVMamba",
+      "bookmark": "figure_134"
+    },
+    {
+      "text": "Hình 3.1. Ví dụ ảnh có polyp, mặt nạ phân đoạn gốc và ảnh nền trong bộ dữ liệu BG20",
+      "bookmark": "figure_3_2"
+    },
+    {
+      "text": "Hình 3.2. Trước và sau khi chuyển mặt nạ phân đoạn thành nhãn đa giác",
+      "bookmark": "figure_3_4"
+    },
+    {
+      "text": "Hình 3.3. Trước và sau khi đổi kích thước ảnh bằng thu phóng giữ tỷ lệ và LetterBox",
+      "bookmark": "figure_3_6"
+    },
+    {
+      "text": "Hình 3.4. Ảnh huấn luyện trước và sau các phép tăng cường dữ liệu",
+      "bookmark": "figure_3_8"
+    },
+    {
+      "text": "Hình 3.5. Quy trình xây dựng bộ dữ liệu BG20 và tiền xử lý dữ liệu",
+      "bookmark": "figure_3_10"
+    },
+    {
+      "text": "Hình 4.1 Kiến trúc Web và Mobile dùng chung dịch vụ suy luận FastAPI",
+      "bookmark": "figure_180"
+    },
+    {
+      "text": "Hình 4.2 Ví dụ suy luận thực tế của hai checkpoint seed 0 và đường bao nhãn đối chiếu",
+      "bookmark": "figure_191"
+    },
+    {
+      "text": "Hình 5.1 Kết quả ghép cặp của mask mAP50 95 và Precision trên 20 seed",
+      "bookmark": "figure_204"
+    },
+    {
+      "text": "Hình 5.2 Chênh lệch và khoảng tin cậy 95 phần trăm của các chỉ số",
+      "bookmark": "figure_207"
+    },
+    {
+      "text": "Hình 5.3 Phân bố mask mAP50 95 giữa các seed",
+      "bookmark": "figure_208"
+    },
+    {
+      "text": "Hình 5.4 Chênh lệch mask mAP50 95 của từng cặp seed",
+      "bookmark": "figure_210"
+    },
+    {
+      "text": "Hình 5.5 Trung bình và độ lệch chuẩn mask mAP50 95 theo epoch",
+      "bookmark": "figure_212"
+    },
+    {
+      "text": "Hình 5.6 Trung bình và độ lệch chuẩn mất mát phân đoạn kiểm định theo epoch",
+      "bookmark": "figure_213"
+    }
+  ],
+  "tables": [
+    {
+      "text": "Bảng 1.1 Đối chiếu các công trình gần với đề tài",
+      "bookmark": "table_122"
+    },
+    {
+      "text": "Bảng 2.1 Các mức đặc trưng của cấu hình small",
+      "bookmark": "table_128"
+    },
+    {
+      "text": "Bảng 2.2 Các chế độ hỗ trợ trong mã nguồn",
+      "bookmark": "table_140"
+    },
+    {
+      "text": "Bảng 3.1. Phân bố ảnh và nhãn trong bộ dữ liệu BG20",
+      "bookmark": "table_3_3"
+    },
+    {
+      "text": "Bảng 3.2. Thông số tăng cường dữ liệu trong cấu hình huấn luyện",
+      "bookmark": "table_3_4"
+    },
+    {
+      "text": "Bảng 4.1 Cấu hình thống nhất của 40 lượt huấn luyện",
+      "bookmark": "table_175"
+    },
+    {
+      "text": "Bảng 4.2 Các endpoint chính của dịch vụ AI",
+      "bookmark": "table_184"
+    },
+    {
+      "text": "Bảng 4.3 Phạm vi kiểm tra ứng dụng sau chuyển mô hình",
+      "bookmark": "table_190"
+    },
+    {
+      "text": "Bảng 5.1 Kết quả tại epoch tối đa mask mAP50 95 của mỗi lượt",
+      "bookmark": "table_203"
+    },
+    {
+      "text": "Bảng 5.2 Khoảng tin cậy và kiểm định ghép cặp hai phía",
+      "bookmark": "table_206"
+    },
+    {
+      "text": "Bảng 5.3 Kết quả mask mAP50 95 và epoch theo từng seed",
+      "bookmark": "table_211"
+    },
+    {
+      "text": "Bảng 5.4 Thống kê bổ sung từ ma trận phát hiện theo đối tượng",
+      "bookmark": "table_215"
+    },
+    {
+      "text": "Bảng 5.5 Quy mô hai checkpoint được tích hợp vào ứng dụng",
+      "bookmark": "table_217"
+    },
+    {
+      "text": "Bảng 5.6 Kết quả tham khảo do tác giả công bố trên Kvasir SEG",
+      "bookmark": "table_219"
+    },
+    {
+      "text": "Bảng B.1 Epoch chọn theo mask và theo fitness của 40 lượt",
+      "bookmark": "table_229"
+    },
+    {
+      "text": "Bảng D.1 Các phép kiểm cần bổ sung trước khi mở rộng kết luận",
+      "bookmark": "table_232"
+    }
+  ]
+}

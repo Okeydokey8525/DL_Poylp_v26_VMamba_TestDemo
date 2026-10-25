@@ -1,0 +1,689 @@
+===== PAGE 1 =====
+U-Mamba: Enhancing Long-range
+Dependency for Biomedical Image Segmentation
+Jun Ma1,2,3, Feifei Li1, and Bo Wang1,2,3,4,5
+1 Peter Munk Cardiac Centre, University Health Network, Toronto, Canada
+2 Department of Laboratory Medicine and Pathobiology, University of Toronto,
+Toronto, Canada
+3 Vector Institute for Artificial Intelligence, Toronto, Canada
+4 Department of Computer Science, University of Toronto, Toronto, Canada
+5 AI Hub, University Health Network, Toronto, Canada
+bowang@vectorinstitute.ai
+Abstract. Convolutional Neural Networks (CNNs) and Transformers
+have been the most popular architectures for biomedical image segmen-
+tation, but both of them have limited ability to handle long-range de-
+pendencies because of inherent locality or computational complexity. To
+address this challenge, we introduce U-Mamba, a general-purpose net-
+work for biomedical image segmentation. Inspired by the State Space
+Sequence Models (SSMs), a new family of deep sequence models known
+for their strong capability in handling long sequences, we design a hy-
+brid CNN-SSM block that integrates the local feature extraction power
+of convolutional layers with the abilities of SSMs for capturing the long-
+range dependency. Moreover, U-Mamba enjoys a self-configuring mech-
+anism, allowing it to automatically adapt to various datasets without
+manual intervention. We conduct extensive experiments on four diverse
+tasks, including the 3D abdominal organ segmentation in CT and MR
+images, instrument segmentation in endoscopy images, and cell segmen-
+tation in microscopy images. The results reveal that U-Mamba outper-
+forms state-of-the-art CNN-based and Transformer-based segmentation
+networks across all tasks. This opens new avenues for efficient long-range
+dependency modeling in biomedical image analysis. The code, models,
+and data are publicly available athttps://wanglab.ai/u-mamba.html.
+Keywords: Image Segmentation · Backbone Network · State Space
+Models · Transformer.
+1 Introduction
+Segmentation serves as a foundational process in biomedical image analysis that
+divides images into meaningful anatomical structures or areas of interest for doc-
+tors and biologists. This task is crucial in various biomedical applications [38,33],
+such as diagnosing diseases, quantifying cancer microenvironments, planning
+arXiv:2401.04722v1  [eess.IV]  9 Jan 2024
+
+===== PAGE 2 =====
+2 J. Ma, F. Li, and B. Wang
+treatment strategies, and tracking disease progression. Manual segmentation is
+a straightforward way for this task but it is extremely time-consuming and re-
+quires extensive domain knowledge, which is impractical in practice. Thus, there
+is a great demand for automatic segmentation methods. During the past ten
+years, segmentation methodology has undergone a paradigm shift from Mathe-
+matical model- or hand-crafted feature-based approaches to deep learning-based
+paradigm, which significantly improved the segmentation accuracy and efficiency
+for a broad range of biomedical tasks, such as tumor segmentation [3,19] and
+organ segmentation [35] in 3D Computed Tomograph (CT) scans, as well as cell
+segmentation in microscopy images [43,34].
+Two popular network architectures, CNNs [27] and Transformers [46], have
+gained prominence in medical image segmentation. CNNs, such as U-Net [41,22]
+and DeepLab [7], are efficient in extracting hierarchical image features and more
+parameter-efficient than naïve fully connected networks. Their shared weights
+architecture makes them excel at capturing translational invariances and recog-
+nizing local features. Transformers were originally designed for natural language
+processing, but have been successfully adapted for image processing, such as Vi-
+sion Transformer (ViT) [9] for image recognition and SwinTransformer [28] for a
+general backbone in various vision tasks. In contrast to CNNs, Transformers do
+not inherently process spatial image hierarchies but treat the image as a sequence
+of patches. which has better capabilities to capture global information. Due to
+this complementary feature, many studies have explored incorporating Trans-
+formers into CNNs via hybrid network architectures, such as TransUNet [5,6],
+UNETR [17], nnFormer [49], and SwinUNETR [16].
+While Transformers have improved the ability of long-range dependencies,
+they are generally very computationally expensive. This is because the self-
+attention mechanism scales quadratically with the input size, making them
+resource-intensive, especially for biomedical images that usually have high res-
+olutions. Thus, how to efficiently enhance the long-range dependency in CNNs
+remains an open question. Recently, state space sequence models (SSMs) [11,15],
+in particular structured state space sequence models (S4) [14], have emerged as
+an efficient and effective building block (or layer) for constructing deep net-
+works, which obtained cutting-edge performance in continuous long-sequence
+data analysis [10,14]. Mamba [12] further improved S4 with a selective mecha-
+nism, allowing the model to select relevant information in an input-dependent
+manner. By combining with hardware-aware implementation, Mamba surpassed
+Transformers on dense modalities such as language and genomics. On the other
+hand, state space models also have shown promising results on vision tasks,
+such as images [40] and videos [24] classification. Since image patches and im-
+age features can be cast as sequences [9,28], these appealing features of SSMs
+motivated us to explore the potential of using Mamba blocks to enhance the
+long-range modeling ability in CNNs.
+In this paper, we propose U-Mamba, a general-purpose network, for both 3D
+and 2D biomedical image segmentation. Based on the innovative hybrid CNN-
+SSM architecture, U-Mamba can capture both localized fine-grained features
+
+===== PAGE 3 =====
+U-Mamba 3
+and long-range dependencies in images. This network stands out from preva-
+lent Transformer-based architectures by offering linear scaling in feature size, as
+opposed to the quadratic complexity often associated with Transformers. Addi-
+tionally, U-Mamba’s self-configuring capability enables seamless adaptation to
+various datasets, enhancing its scalability and flexibility across a spectrum of
+biomedical segmentation tasks. Quantitative and qualitative results on four dis-
+tinct datasets demonstrate that U-Mamba achieves superior performance, sur-
+passing Transformer-based networks by a large margin. This paves the way for
+future advancements in network designs that efficiently and effectively model
+long-range dependencies in biomedical imaging.
+2 Method
+U-Mamba follows the encoder-decoder network structure that captures both lo-
+cal features and long-range contexts in an efficient way. Fig. 1 shows an overview
+of the U-Mamba block and the complete network structure. Next, we first intro-
+duce the Mamba block followed by illustrating the details of U-Mamba.
+Fig. 1. Overview of the U-Mamba (Enc) architecture. a, U-Mamba building block
+contains two successive Residual blocks followed by the SSM-based Mamba block for
+enhanced long-range dependency modeling.b, U-Mamba employs the encoder-decoder
+framework with U-Mamba blocks in the endocer, Residual blocks in the decoder, to-
+gether with skip connections. Note: This illustration serves as a conceptual represen-
+tation. U-Mamba inherits the self-configuring feature from nnU-Net and the number
+of network blocks is automatically determined across datasets. The detailed network
+configurations are presented in Table 2.
+
+===== PAGE 4 =====
+4 J. Ma, F. Li, and B. Wang
+2.1 Mamba: Selective Structured State Space Sequence Models
+with a Scan (S6)
+State Space Sequence Models (SSMs) [11] are a type of systems that map a
+1-dimensional function or sequenceu(t) 7→ y(t) ∈ R and can be represented as
+the following linear Ordinary Differential Equation (ODE):
+x′(t) = Ax(t) + Bu(t),
+y(t) = Cx(t), (1)
+where state matrixA ∈ RN ×N and B, C ∈ RN are its parameters andx(t) ∈ RN
+denotes the implicit latent state. SSMs offer several desired properties, such as
+linear computational complexity per time step and parallelized computation for
+efficient training. However, naïve SSMs typically demand more memory than
+equivalent CNNs and often encounter vanishing gradients during training, hin-
+dering their broader application in general sequence modeling.
+Structured State Space Sequence Models (S4) [14] significantly improve the
+naïve SSMs by imposing structured forms on the state matrixA and introducing
+aneffectivealgorithm.Specifically,thestatematrixiscraftedandinitializedwith
+High-Order Polynomial Projection Operator (HIPPO) [13], allowing to building
+deep sequence models with rich capability and efficient long-range reasoning
+ability.S4,asanewtypeofnetworkarchitecture,hassurpassedTransformers[46]
+on the challenging Long Range Arena Benchmark [44] by a significant margin.
+Recently, Mamba [12] further advances SSMs in discrete data modeling (e.g.,
+text and genome) through two key improvements. First, Mamba employs an
+input-dependent selection mechanism, distinct from the traditional time- and
+input-invariant SSMs, which allows for efficient information filtering from inputs.
+This is implemented by parameterizing the SSM parameters based on the input
+data. Second, a hardware-aware algorithm, scaling linearly in sequence length,
+is developed to compute the model recurrently with a scan, making Mamba
+faster than previous methods on modern hardware. In addition, The Mamba
+architecture, merging SSM blocks with linear layers, is notably simpler and has
+demonstrated state-of-the-art performance in various long-sequence domains in-
+cluding language and genomics, showcasing significant computational efficiency
+during both training and inference.
+2.2 U-Mamba: Marry Mamba with U-Net
+Mamba has demonstrated impressive results on various discrete data, yet its
+potential for modeling image data, particularly in biomedical imaging, remains
+underexplored. Given that images are essentially discrete data sampled from
+continuous signals and can be treated as long sequences when flattened, we pro-
+pose leveraging Mamba’s linear scaling advantage to enhance CNNs’ long-range
+dependency modeling. Transformers have been successfully applied to handle im-
+ages, such as ViT [9] and SwinTransformer [28], but they often suffer from high
+computational burden for large images because self-attention [46] has quadratic
+
+===== PAGE 5 =====
+U-Mamba 5
+complexity. These factors motivate us to leverage the linear scaling property in
+Mamba to enhance the long-range dependency of CNNs.
+U-Net [41] and its variants [22] have been the widely used network archi-
+tecture in medical image segmentation. They usually have symmetric encoder-
+decoder architecture to extract multi-scale image features with convolutional
+operations. However, this architectural design has limited ability to model long-
+range dependencies in images because convolutional kernels are inherently local.
+Each convolutional layer captures features from a limited receptive field. While
+skip connections in U-Net help in combining low-level details with high-level fea-
+tures, they primarily reinforce local feature integration rather than expanding
+the network’s ability to model long-range dependencies.
+U-Mamba is designed to acquire the best of U-Net and Mamba for global con-
+text understanding in medical image segmentation. As shown in Fig. 1a, each
+building block contains two successive Residual blocks [18] followed by a Mamba
+block [12]. The Residual block contains the plain convolutional layer followed by
+Instance Normalization (IN) [45] and Leaky ReLU [36]. Image features with a
+shape of (B, C, H, W, D) are then flattened and transposed to(B, L, C) where
+L = H × W × D. After passing the Layer Normalization [2], the features enter
+the Mamba block that contains two parallel branches. In the first branch, the
+features are expanded to (B, 2L, C) by a linear layer followed by a 1D convo-
+lutional layer, SiLU activation function [20], and together with the SSM layer.
+In the second branch, the features are also expanded to(B, 2L, C) with a linear
+layer followed by the SiLU activation function. After that, the features from the
+two branches are merged with the Hadamard product. Finally, the features are
+projected back to the original shape(B, L, C) and then reshaped and transposed
+to (B, C, H, W, D).
+Fig. 1b shows the complete U-Mamba network architecture where the en-
+coder is built with the above blocks to capture both local features and long-range
+dependencies. The decoder, composed of Residual blocks and transposed convo-
+lutions, focuses on detailed local information and resolution recovery. Moreover,
+we inherit the skip connection in U-Net to connect the hierarchical features from
+the encoder to the decoder. The final decoder feature is passed to a1 × 1 × 1
+convolutional layer together with a Softmax layer to produce the final segmenta-
+tion probability map. In addition, we also implement a U-Mamba variant where
+only the bottleneck uses the U-Mamba block and the others are plain Residual
+blocks. We use “U-Mamba_Bot” and “U-Mamba_Enc” to differentiate the two
+network variants, which employ the U-Mamba block in the bottleneck and all
+encoder blocks, respectively.
+3 Experiments and results
+3.1 Datasets
+We used four medical image datasets to evaluate the performance and scalability
+of U-Mamba across different image sizes, segmentation targets, and modalities.
+
+===== PAGE 6 =====
+6 J. Ma, F. Li, and B. Wang
+Table 1 presents an overview of the datasets. All the datasets are publicly avail-
+able and allowed for research purposes.
+T able 1.Dataset information.
+Dataset Dimension #Training Image #Testing Image #Targets
+Abdomen CT 3D 50 (4794 slices) 50 (10894 slices) 13
+Abdomen MRI 3D 60 (5615 slices) 50 (3357 slices) 13
+Endoscopy Images 2D 1800 1200 7
+Microscopy Images 2D 1000 101 2
+Abdomen CT: This dataset was from the MICCAI 2022 FLARE Chal-
+lenge [35] that focused on the segmentation of 13 abdominal organs, including
+the liver, spleen, pancreas, right kidney, left kidney, stomach, gallbladder, esoph-
+agus,aorta,inferiorvenacava,rightadrenalgland,leftadrenalgland,andduode-
+num. The training set contained 50 CT scans that were from the MSD Pancreas
+dataset [42] and the annotations were from AbdomenCT-1K. Another 50 cases
+from different medical centers [8] were used for evaluation and the annotations
+were provided by the challenge organizers.
+Abdomen MRI: This dataset was from the MICCAI 2022 AMOS Chal-
+lenge [25] that also focused on abdominal organ segmentation. The original
+dataset contains 40 and 20 MRI scans for training and validation, respectively.
+Since 20 cases are not enough to draw statistically meaningful results, in our
+experiments, we used the original 60 labeled MRI scans for model training and
+annotated another 50 MRI scans as the testing set. In order to enable modality-
+wise comparison of abdominal organs, we also focused on the same 13 organs as
+the Abdomen CT dataset. The annotations were generated by radiologists with
+the assistance of MedSAM [32] and ITK-SNAP [48]. We have released this new
+annotated dataset to the community to promote the development of abdominal
+organ segmentation in MRI.
+Endoscopy images: This dataset was from the MICCAI 2017 EndoVis
+Challenge [1] that focused on segmenting seven instruments from endoscopy
+images, including the large needle driver, prograsp forceps, monopolar curved
+scissors, cadiere forceps, bipolar forceps, vessel sealer, and additionally a drop-in
+ultrasound probe. We followed the official dataset splitting where the training set
+contained 1800 and 1200 image frames, respectively. The training images were
+from eight videos while the testing set had unseen images from another two new
+videos.
+Microscopy images: This dataset was from the NeurIPS 2022 Cell Segmen-
+tation Challenge [34] that focused on cell segmentation in various microscopy
+images. We used 1000 and 101 images for training and evaluation, respectively.
+Different from the above three tasks, this is an instance segmentation task where
+algorithms are expected to assign a unique label for each cell instance. In our
+experiments, we converted the instance segmentation into a semantic segmenta-
+tion task by predicting the cell boundaries and interior regions because they can
+
+===== PAGE 7 =====
+U-Mamba 7
+be easily transformed to instance masks via the “skimage.measure.label” func-
+tion. It should be noted that our purpose was to benchmark the performance of
+network architectures, rather than pursue state-of-the-art performance on this
+task. U-Mamba can also serve as a backbone network in state-of-the-art instance
+segmentation framework [34]. We leave this extension as future work.
+3.2 Implementation and training protocols
+We implemented U-Mamba within the popular nnU-Net [22] framework driven
+by two desired features. First, the modular design of nnU-Net aligns perfectly
+with our focus on introducing a new network architecture. This design allows us
+toconcentrateonthenetwork’simplementationwhilecontrollingothervariables,
+such as image preprocessing and data augmentation. Such a setup enables a
+fair comparison of U-Mamba against various methods under uniform conditions,
+with the network architecture being the only differing factor. Second, nnU-Net’s
+notable self-configuring framework, capable of automatically configuing hyper-
+parameters for diverse segmentation datasets, is another compelling reason for
+our choice. We also preserve this feature, allowing U-Mamba to be easily adapted
+to a broad range of segmentation tasks. During training, the patch size, batch
+size, and network configurations (e.g., the number of resolution states and the
+number of downsampling operations along different axes) remained consistent
+with nnU-Net (Table 2). U-Mamba was also optimized with stochastic gradient
+descent and the loss function was the unweighted sum of Dice loss and cross-
+entropy because the compound loss has proven to be robust across different
+tasks [31]. During inference, the testing time augmentation (TTA) was disabled
+in all the experiments for a more streamlined and efficient evaluation process
+because TTA would increase the computational burden by4× and 8× times for
+2D and 3D datasets, respectively.
+T able 2.U-Mamba configurations for each dataset.
+Configurations Patch size Batch size # Stages # Pooling per axis
+Abdomen CT (40, 224, 192) 2 6 (3, 3, 5)
+3D Abdomen MR (48, 160, 224) 2 6 (3, 5, 5)
+2D Abdomen MR (320, 320) 30 7 (6, 6)
+Endoscopy (384, 640) 13 7 (6, 6)
+Microscopy (512, 512) 12 8 (7, 7)
+3.3 Benchmarking
+We compared U-Mamba with two CNN-based segmentation networks (nnU-
+Net [22] and SegResNet [39]) and two Transformer-based networks (UNETR [17]
+and SwinUNETR [16]), which are widely used in medical image segmentation
+competitions. For a fair comparison, we also implemented SegResNet, UNETR,
+
+===== PAGE 8 =====
+8 J. Ma, F. Li, and B. Wang
+and SwinUNETR into the nnU-Net framework and used their suggested optimiz-
+ers (e.g., Adam [26] and AdamW [29]) for model training. We used the default
+image preprocessing in nnU-Net [22]. All the networks were trained from scratch
+for 1000 epochs on one NVIDIA A100 GPU in the same batch size (Table 2).
+Following the recommendations in Metrics Reloaded [37], we used Dice Sim-
+ilarity Coefficient (DSC) and Normalized Surface Distance (NSD) for three se-
+mantic segmentation tasks, including organ segmentation in CT and MRI scans,
+and instrument segmentation in Endoscopy images. F1 score was used to evalu-
+ate the cell segmentation quality because it is an instance segmentation task.
+T able 3. Results summary of 3D organ segmentation on abdomen CT and MRI
+datasets. U-Mamba_Bot: only use the U-Mmaba block in the bottleneck. U-
+Mamba_Enc: all encoder blocks are U-Mmaba blocks.
+Methods Organs in Abdomen CT Organs in Abdomen MRI
+DSC NSD DSC NSD
+nnU-Net 0.8615 ±0.0790 0.8972 ±0.0824 0.8309±0.0769 0.8996 ±0.0729
+SegResNet 0.7927 ±0.1162 0.8257 ±0.1194 0.8146±0.0959 0.8841 ±0.0917
+UNETR 0.6824 ±0.1506 0.7004 ±0.1577 0.6867±0.1488 0.7440 ±0.1627
+SwinUNETR 0.7594 ±0.1095 0.7663 ±0.1190 0.7565±0.1394 0.8218 ±0.1409
+U-Mamba_Bot 0.8683±0.0808 0.9049 ±0.0821 0.8453±0.0673 0.9121 ±0.0634
+U-Mamba_Enc 0.8638±0.0908 0.8980 ±0.0921 0.8501±0.0732 0.9171 ±0.0689
+Fig. 2. Visualized segmentation examples of abdominal organ segmentation in CT (1st
+and 2nd rows) and MRI scans (3rd and 4th rows). U-Mamba has better capabilities to
+distinguish complex soft tissues in the abdomen.
+
+===== PAGE 9 =====
+U-Mamba 9
+3.4 Quantitative and qualitative segmentation results
+Table 3 shows quantitative 3D segmentation results of abdominal organs in CT
+and MRI scans. U-Mamba surpasses both CNN and Transformer-based seg-
+mentation networks, achieving average DSC scores of 0.8683 (U-Mamba_Bot)
+and 0.8501 (U-Mamba_Enc) on the abdomen CT and MR datasets, respec-
+tively. nnU-Net performs competitively, which is much better than SegResNet,
+UNETR, and SwinUNETR, but U-Mamba still shows advantages as shown in
+Fig. 2. Based on the visualized segmentation results of the six networks, U-
+Mamba has fewer outliers in the segmentation results. For instance, U-Mama
+can generate more accurate liver and stomach segmentation masks while the
+others have over-segmentation errors for liver masks and missing regions for
+stomach masks in abdomen CT scans. Similarly, for gallbladder segmentation in
+MRI scans, U-Mamba successfully delineates its boundary while other methods
+generate various segmentation errors. These observations are also reflected in
+the organ-wise DSC and NSD scores (Appendix Table 5 and Table 6).
+T able 4.Results summary of 2D segmentation tasks: organ segmentation in abdomen
+MRI scans, instruments segmentation in endoscopy images, and cell segmentation in
+microscopy images.
+Methods Organs in Abdomem MRIInstruments in EndoscopyCells in Microscopy
+DSC NSD DSC NSD F1
+nnU-Net 0.7450 ±0.1117 0.8153±0.11450.6264±0.3024 0.6412±0.3074 0.5383±0.2657
+SegResNet 0.7317 ±0.1379 0.8034±0.13860.5820±0.3268 0.5968±0.3303 0.5411±0.2633
+UNETR 0.5747 ±0.1672 0.6309±0.18580.5017±0.3201 0.5168±0.3235 0.4357±0.2572
+SwinUNETR 0.7028±0.1348 0.7669±0.14420.5528±0.3089 0.5683±0.3123 0.3967±0.2621
+U-Mamba_Bot0.7588±0.1051 0.8285±0.10740.6540±0.3008 0.6692±0.3050 0.5389±0.2817
+U-Mamba_Enc0.7625±0.1082 0.8327±0.10870.6303±0.3067 0.6451±0.3104 0.5607±0.2784
+Table 4 presents quantitative 2D segmentation results. MRI scans usually
+have more heterogeneous spacing than CT scans and 2D segmentation networks
+are also a common choice in practice [4]. Thus, we also compared all the networks
+under the 2D setting for abdominal organ segmentation where each 3D MRI
+scan was converted into multiple 2D slices. U-Mamba again demonstrates its
+advantages over existing methods on the three 2D segmentation tasks, achieving
+the best average DSC of 0.7625, 0.6504, and F1 score of 0.5607 for organs,
+instruments, and cell segmentation, respectively. Qualitative results in Fig. 2
+show that nnU-Net, UNETR, and SwinUNETR confuse the spleen because of
+heterogeneous appearances. UNETR and SwinUNETR also generate many cell
+outliers in the microscopy image and nnU-Net failed to successfully recognize the
+large needle driver in the endoscopy image. In contrast, U-Mamba shows clear
+advantages across these scenarios, indicating better abilities to capture global
+context.
+
+===== PAGE 10 =====
+10 J. Ma, F. Li, and B. Wang
+Fig. 3. Visualized segmentation examples of abdominal organ segmentation MRI scans
+(1st row), cell segmentation in microscopy images (2nd row), and instruments segmen-
+tation in endoscopy images (3rd row). U-Mamba is more robust to heterogeneous ap-
+pearances and has fewer segmentation outliers.
+4 Discussion and conclusion
+In this paper, we introduce U-Mamba to address the challenges in modeling
+long-range dependencies due to the inherent locality of CNNs and the compu-
+tational complexity of Transformers. Comprehensive experimental results reveal
+that U-Mamaba outperforms existing CNN- and Transformer-based segmenta-
+tion networks across diverse modalities and segmentation targets. In particular,
+U-Mamba has demonstrated superior capabilities in handling objects with het-
+erogeneous appearances, resulting in fewer segmentation outliers. The perfor-
+mance gain is largely attributed to U-Mamba’s architecture design, which can
+simultaneously extract multi-scale local features and capture long-range depen-
+dencies.
+Transformers have demonstrated stronger performance on many natural im-
+age segmentation tasks [28]. However, they have not transformed medical image
+segmentation. This is evident as winning solutions in medical image segmen-
+tation competitions still predominantly rely on CNNs6, such as nnU-Net [22]
+and SegResNet [39]. Interestingly, we also observed that Transformer-based net-
+works underperform relative to CNN-based networks in all our tested scenarios,
+despite utilizing their original network implementations and training them with
+the recommended optimizers. This could be the requirement of training these
+networks with multiple GPUs rather than one GPU. However, this would lead
+to unfair comparisons because all the other networks were trained with only one
+GPU. Another reason could be that Transformers should be used in a large-scale
+pre-training and fine-tuning paradigm. To maintain consistency and fairness in
+our evaluation, we trained all networks from scratch and employed identical pre-
+6 https://github.com/JunMa11/SOTA-MedSeg
+
+===== PAGE 11 =====
+U-Mamba 11
+processing and data augmentation techniques across all experiments. We believe
+in the value of community collaboration and transparency, and therefore, we
+have made our implementations of the compared methods publicly available for
+further examination and use by the research community.
+In addition, nnU-Net shows very competitive results on most tasks, but U-
+Mamba achieves overall better scores. We noticed that nnU-Net and U-Mamba
+have complementary segmentation performance for certain organs in CT and
+MRI scans, such as the aorta, kidneys, and inferior vena cava as shown in Ap-
+pendix Table 5-7. This suggests the potential for further integrating them via the
+model ensemble, a strategy often employed to enhance performance in medical
+image segmentation competitions [30].
+While the primary focus of this work is the new segmentation architecture,
+therearenumerousavenuesforfurtherenhancementandexpansionofU-Mamba.
+One immediate direction is to leverage large-scale datasets for train U-Mamba,
+aiming to create readily deployable segmentation tools or provide pre-trained
+model weights for fine-tuning on data-limited tasks, as exemplified by similar ini-
+tiatives like TotalSegmentator [47] and STU-Net [21]. Furthermore, U-Mamba’s
+design inherently supports integration with advanced techniques, such as strong
+data augmentations for small datasets, loss functions for highly imbalanced tar-
+gets, and region-based training for nested objects [23]. In addition, U-Mamba
+block presents a new opportunity for application in classification and detection
+networks for better long-range dependency modeling. We leave these directions
+as near future work.
+In conclusion, this paper presents a new architecture, U-Mamba, for general-
+purpose biomedical image segmentation, which integrates the advantages of local
+pattern recognition from CNNs and global context understanding from Mamba.
+U-Mamba can configure itself in an automatic way for different datasets, mak-
+ing it a versatile and flexible tool for diverse segmentation tasks in biomedical
+imaging. The results suggest that U-Mamba is a promising candidate to serve
+as the backbone of next-generation biomedical image segmentation networks.
+Acknowledgements We acknowledge all the authors of the employed public
+datasets[42,8,35,25,1,34],allowingthecommunitytousethesevaluableresources
+forresearchpurposes.WealsothanktheauthorsofnnU-Net[22]andMamba[12]
+for making their valuable code publicly available.
+References
+1. Allan, M., Shvets, A., Kurmann, T., Zhang, Z., Duggal, R., Su, Y.H., Rieke, N.,
+Laina, I., Kalavakonda, N., Bodenstedt, S., Herrera, L., Li, W., Iglovikov, V., Luo,
+H., Yang, J., Stoyanov, D., Maier-Hein, L., Speidel, S., Azizian, M.: 2017 robotic
+instrument segmentation challenge. arXiv preprint arXiv:1902.06426 (2019) 6, 11
+2. Ba, J.L., Kiros, J.R., Hinton, G.E.: Layer normalization. arXiv preprint
+arXiv:1607.06450 (2016) 5
+
+===== PAGE 12 =====
+12 J. Ma, F. Li, and B. Wang
+3. Bilic,P.,Christ,P.,Li,H.B.,Vorontsov,E.,Ben-Cohen,A.,Kaissis,G.,Szeskin,A.,
+Jacobs,C.,Mamani,G.E.H.,Chartrand,G.,Lohöfer,F.,Holch,J.W.,Sommer,W.,
+Hofmann, F., Hostettler, A., Lev-Cohain, N., Drozdzal, M., Amitai, M.M., Vivanti,
+R., Sosna, J., Ezhov, I., Sekuboyina, A., Navarro, F., Kofler, F., Paetzold, J.C.,
+Shit, S., Hu, X., Lipková, J., Rempfler, M., Piraud, M., Kirschke, J., Wiestler, B.,
+Zhang,Z.,Hülsemeyer,C.,Beetz,M.,Ettlinger,F.,Antonelli,M.,Bae,W.,Bellver,
+M., Bi, L., Chen, H., Chlebus, G., Dam, E.B., Dou, Q., Fu, C.W., Georgescu, B.,
+i Nieto, X.G., Gruen, F., Han, X., Heng, P.A., Hesser, J., Moltz, J.H., Igel, C.,
+Isensee, F., Jäger, P., Jia, F., Kaluva, K.C., Khened, M., Kim, I., Kim, J.H., Kim,
+S., Kohl, S., Konopczynski, T., Kori, A., Krishnamurthi, G., Li, F., Li, H., Li, J.,
+Li, X., Lowengrub, J., Ma, J., Maier-Hein, K., Maninis, K.K., Meine, H., Merhof,
+D., Pai, A., Perslev, M., Petersen, J., Pont-Tuset, J., Qi, J., Qi, X., Rippel, O.,
+Roth, K., Sarasua, I., Schenk, A., Shen, Z., Torres, J., Wachinger, C., Wang, C.,
+Weninger, L., Wu, J., Xu, D., Yang, X., Yu, S.C.H., Yuan, Y., Yue, M., Zhang,
+L., Cardoso, J., Bakas, S., Braren, R., Heinemann, V., Pal, C., Tang, A., Kadoury,
+S., Soler, L., van Ginneken, B., Greenspan, H., Joskowicz, L., Menze, B.: The liver
+tumor segmentation benchmark (lits). Medical Image Analysis84, 102680 (2023)
+2
+4. Campello, V.M., Gkontra, P., Izquierdo, C., Martín-Isla, C., Sojoudi, A., Full,
+P.M., Maier-Hein, K., Zhang, Y., He, Z., Ma, J., Parreño, M., Albiol, A., Kong,
+F., Shadden, S.C., Acero, J.C., Sundaresan, V., Saber, M., Elattar, M., Li, H.,
+Menze, B., Khader, F., Haarburger, C., Scannell, C.M., Veta, M., Carscadden, A.,
+Punithakumar, K., Liu, X., Tsaftaris, S.A., Huang, X., Yang, X., Li, L., Zhuang,
+X., Viladés, D., Descalzo, M.L., Guala, A., Mura, L.L., Friedrich, M.G., Garg,
+R., Lebel, J., Henriques, F., Karakas, M., Çavuş, E., Petersen, S.E., Escalera, S.,
+Seguí, S., Rodríguez-Palomares, J.F., Lekadir, K.: Multi-centre, multi-vendor and
+multi-disease cardiac segmentation: The m&ms challenge. IEEE Transactions on
+Medical Imaging 40(12), 3543–3554 (2021) 9
+5. Chen, J., Lu, Y., Yu, Q., Luo, X., Adeli, E., Wang, Y., Lu, L., Yuille, A.L., Zhou,
+Y.:Transunet:Transformersmakestrongencodersformedicalimagesegmentation.
+arXiv preprint arXiv:2102.04306 (2021) 2
+6. Chen, J., Mei, J., Li, X., Lu, Y., Yu, Q., Wei, Q., Luo, X., Xie, Y., Adeli, E.,
+Wang, Y., et al.: 3d transunet: Advancing medical image segmentation through
+vision transformers. arXiv preprint arXiv:2310.07781 (2023) 2
+7. Chen, L.C., Zhu, Y., Papandreou, G., Schroff, F., Adam, H.: Encoder-decoder with
+atrous separable convolution for semantic image segmentation. In: Proceedings of
+the European Conference on Computer Vision. pp. 801–818 (2018) 2
+8. Clark, K., Vendt, B., Smith, K., Freymann, J., Kirby, J., Koppel, P., Moore, S.,
+Phillips, S., Maffitt, D., Pringle, M., Tarbox, L., Prior, F.: The cancer imaging
+archive (tcia): maintaining and operating a public information repository. Journal
+of Digital Imaging26(6), 1045–1057 (2013) 6, 11
+9. Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner,
+T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., et al.: An image is worth
+16x16 words: Transformers for image recognition at scale. In: International Con-
+ference on Learning Representations (2020) 2, 4
+10. Goel, K., Gu, A., Donahue, C., Ré, C.: It’s raw! audio generation with state-space
+models. In: International Conference on Machine Learning. pp. 7616–7633 (2022)
+2
+11. Gu, A.: Modeling Sequences with Structured State Spaces. Phd thesis, Stanford
+University (2023), proQuest Document ID: 2880853867 2, 4
+
+===== PAGE 13 =====
+U-Mamba 13
+12. Gu, A., Dao, T.: Mamba: Linear-time sequence modeling with selective state
+spaces. arXiv preprint arXiv:2312.00752 (2023) 2, 4, 5, 11
+13. Gu, A., Dao, T., Ermon, S., Rudra, A., Ré, C.: Hippo: Recurrent memory with
+optimal polynomial projections. In: Advances in Neural Information Processing
+Systems. vol. 33, pp. 1474–1487 (2020) 4
+14. Gu, A., Goel, K., Re, C.: Efficiently modeling long sequences with structured state
+spaces. In: International Conference on Learning Representations (2021) 2, 4
+15. Gu, A., Johnson, I., Goel, K., Saab, K., Dao, T., Rudra, A., Ré, C.: Combining
+recurrent, convolutional, and continuous-time models with linear state space layers.
+Advances in Neural Information Processing Systems34, 572–585 (2021) 2
+16. Hatamizadeh, A., Nath, V., Tang, Y., Yang, D., Roth, H.R., Xu, D.: Swin UNETR:
+swin transformers for semantic segmentation of brain tumors in MRI images. In:
+International MICCAI Brainlesion Workshop. Lecture Notes in Computer Science,
+vol. 12962, pp. 272–284 (2021) 2, 7
+17. Hatamizadeh, A., Tang, Y., Nath, V., Yang, D., Myronenko, A., Landman, B.A.,
+Roth, H.R., Xu, D.: UNETR: transformers for 3d medical image segmentation. In:
+IEEE/CVF Winter Conference on Applications of Computer Vision. pp. 1748–1758
+(2022) 2, 7
+18. He,K.,Zhang,X.,Ren,S.,Sun,J.:Deepresiduallearningforimagerecognition.In:
+Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.
+pp. 770–778 (2016) 5
+19. Heller, N., Isensee, F., Maier-Hein, K.H., Hou, X., Xie, C., Li, F., Nan, Y., Mu,
+G., Lin, Z., Han, M., Yao, G., Gao, Y., Zhang, Y., Wang, Y., Hou, F., Yang, J.,
+Xiong, G., Tian, J., Zhong, C., Ma, J., Rickman, J., Dean, J., Stai, B., Tejpaul,
+R., Oestreich, M., Blake, P., Kaluzniak, H., Raza, S., Rosenberg, J., Moore, K.,
+Walczak, E., Rengel, Z., Edgerton, Z., Vasdev, R., Peterson, M., McSweeney, S.,
+Peterson, S., Kalapara, A., Sathianathen, N., Papanikolopoulos, N., Weight, C.:
+The state of the art in kidney and kidney tumor segmentation in contrast-enhanced
+ct imaging: Results of the kits19 challenge. Medical Image Analysis67, 101821
+(2021) 2
+20. Hendrycks, D., Gimpel, K.: Gaussian error linear units (gelus). arXiv preprint
+arXiv:1606.08415 (2016) 5
+21. Huang, Z., Wang, H., Deng, Z., Ye, J., Su, Y., Sun, H., He, J., Gu, Y., Gu, L.,
+Zhang, S., Qiao, Y.: Stu-net: Scalable and transferable medical image segmen-
+tation models empowered by large-scale supervised pre-training. arXiv preprint
+arXiv:2304.06716 (2023) 11
+22. Isensee, F., Jaeger, P.F., Kohl, S.A., Petersen, J., Maier-Hein, K.H.: nnu-net: a
+self-configuring method for deep learning-based biomedical image segmentation.
+Nature Methods 18(2), 203–211 (2021) 2, 5, 7, 8, 10, 11
+23. Isensee, F., Jäger, P.F., Full, P.M., Vollmuth, P., Maier-Hein, K.H.: nnu-net for
+brain tumor segmentation. In: International MICCAI Brainlesion Workshop. pp.
+118–132 (2021) 11
+24. Islam, M.M., Bertasius, G.: Long movie clip classification with state-space video
+models. In: European Conference on Computer Vision. pp. 87–104 (2022) 2
+25. Ji, Y., Bai, H., GE, C., Yang, J., Zhu, Y., Zhang, R., Li, Z., Zhanng, L., Ma,
+W., Wan, X., Luo, P.: AMOS: A large-scale abdominal multi-organ benchmark for
+versatile medical image segmentation. In: Neural Information Processing Systems:
+Datasets and Benchmarks Track (2022) 6, 11
+26. Kingma, D.P., Ba, J.: Adam: A method for stochastic optimization. In: Interna-
+tional Conference on Learning Representations (2015) 8
+
+===== PAGE 14 =====
+14 J. Ma, F. Li, and B. Wang
+27. LeCun, Y., Bengio, Y.: Convolutional Networks for Images, Speech, and Time
+Series, p. 255–258. MIT Press, Cambridge, MA, USA (1998) 2
+28. Liu, Z., Lin, Y., Cao, Y., Hu, H., Wei, Y., Zhang, Z., Lin, S., Guo, B.: Swin
+transformer:Hierarchicalvisiontransformerusingshiftedwindows.In:Proceedings
+of the IEEE/CVF International Conference on Computer Vision. pp. 10012–10022
+(2021) 2, 4, 10
+29. Loshchilov, I., Hutter, F.: Decoupled weight decay regularization. In: International
+Conference on Learning Representations (2019) 8
+30. Ma, J.: Cutting-edge 3d medical image segmentation methods in 2020: Are happy
+families all alike? arXiv preprint arXiv:2101.00232 (2021) 11
+31. Ma, J., Chen, J., Ng, M., Huang, R., Li, Y., Li, C., Yang, X., Martel, A.L.: Loss
+odyssey in medical image segmentation. Medical Image Analysis71, 102035 (2021)
+7
+32. Ma, J., He, Y., Li, F., Han, L., You, C., Wang, B.: Segment anything in medical
+images. arXiv preprint arXiv:2304.12306 (2023) 6
+33. Ma, J., Wang, B.: Towards foundation models of biological image segmentation.
+Nature Methods 20(7), 953–955 (2023) 1
+34. Ma, J., Xie, R., Ayyadhury, S., Ge, C., Gupta, A., Gupta, R., Gu, S., Zhang, Y.,
+Lee, G., Kim, J., Lou, W., Li, H., Upschulte, E., Dickscheid, T., de Almeida, J.G.,
+Wang, Y., Han, L., Yang, X., Labagnara, M., Rahi, S.J., Kempster, C., Pollitt, A.,
+Espinosa, L., Mignot, T., Middeke, J.M., Eckardt, J.N., Li, W., Li, Z., Cai, X.,
+Bai, B., Greenwald, N.F., Valen, D.V., Weisbart, E., Cimini, B.A., Li, Z., Zuo, C.,
+Brück, O., Bader, G.D., Wang, B.: The multi-modality cell segmentation challenge:
+Towards universal solutions. arXiv:2308.05864 (2023) 2, 6, 7, 11
+35. Ma, J., Zhang, Y., Gu, S., Ge, C., Ma, S., Young, A., Zhu, C., Meng, K., Yang, X.,
+Huang, Z., Zhang, F., Liu, W., Pan, Y., Huang, S., Wang, J., Sun, M., Xu, W., Jia,
+D., Choi, J.W., Alves, N., de Wilde, B., Koehler, G., Wu, Y., Wiesenfarth, M., Zhu,
+Q., Dong, G., He, J., the FLARE Challenge Consortium, Wang, B.: Unleashing
+the strengths of unlabeled data in pan-cancer abdominal organ quantification: the
+flare22 challenge. arXiv preprint arXiv:2308.05862 (2023) 2, 6, 11
+36. Maas, A.L., Hannun, A.Y., Ng, A.Y., et al.: Rectifier nonlinearities improve neural
+networkacousticmodels.In:InternationalConferenceonMachineLearning.vol.28
+(2013) 5
+37. Maier-Hein, L., Reinke, A., Godau, P., Tizabi, M.D., Büttner, F., et al.: Met-
+rics reloaded: Pitfalls and recommendations for image analysis validation. arXiv
+preprint arXiv:2206.01653 (2022) 8
+38. Minaee, S., Boykov, Y., Porikli, F., Plaza, A., Kehtarnavaz, N., Terzopoulos, D.:
+Image segmentation using deep learning: A survey. IEEE Transactions on Pattern
+Analysis and Machine Intelligence44(7), 3523–3542 (2021) 1
+39. Myronenko, A.: 3d MRI brain tumor segmentation using autoencoder regulariza-
+tion. In: International MICCAI Brainlesion Workshop. Lecture Notes in Computer
+Science, vol. 11384, pp. 311–320 (2018) 7, 10
+40. Nguyen, E., Goel, K., Gu, A., Downs, G., Shah, P., Dao, T., Baccus, S., Ré, C.:
+S4nd: Modeling images and videos as multidimensional signals with state spaces.
+In: Advances in Neural Information Processing Systems. vol. 35, pp. 2846–2861
+(2022) 2
+41. Ronneberger, O., Fischer, P., Brox, T.: U-net: Convolutional networks for biomedi-
+cal image segmentation. In: International Conference on Medical image computing
+and computer-assisted intervention. pp. 234–241 (2015) 2, 5
+
+===== PAGE 15 =====
+U-Mamba 15
+42. Simpson, A.L., Antonelli, M., Bakas, S., Bilello, M., Farahani, K., van Ginneken,
+B., Kopp-Schneider, A., Landman, B.A., Litjens, G., Menze, B., Ronneberger, O.,
+Summers, R.M., Bilic, P., Christ, P.F., Do, R.K.G., Gollub, M., Golia-Pernicka,
+J., Heckers, S.H., Jarnagin, W.R., McHugo, M.K., Napel, S., Vorontsov, E., Maier-
+Hein, L., Cardoso, M.J.: A large annotated medical image dataset for the develop-
+ment and evaluation of segmentation algorithms. arXiv preprint arXiv:1902.09063
+(2019) 6, 11
+43. Stringer, C., Wang, T., Michaelos, M., Pachitariu, M.: Cellpose: a generalist algo-
+rithm for cellular segmentation. Nature Methods18(1), 100–106 (2021) 2
+44. Tay, Y., Dehghani, M., Abnar, S., Shen, Y., Bahri, D., Pham, P., Rao, J., Yang, L.,
+Ruder, S., Metzler, D.: Long range arena: A benchmark for efficient transformers.
+In: International Conference on Learning Representations (2020) 4
+45. Ulyanov, D., Vedaldi, A., Lempitsky, V.: Instance normalization: The missing in-
+gredient for fast stylization. arXiv preprint arXiv:1607.08022 (2016) 5
+46. Vaswani,A.,Shazeer,N.,Parmar,N.,Uszkoreit,J.,Jones,L.,Gomez,A.N.,Kaiser,
+Ł., Polosukhin, I.: Attention is all you need. Advances in neural Information Pro-
+cessing Systems 30 (2017) 2, 4
+47. Wasserthal, J., Breit, H.C., Meyer, M.T., Pradella, M., Hinck, D., Sauter, A.W.,
+Heye, T., Boll, D.T., Cyriac, J., Yang, S., Bach, M., Segeroth, M.: Totalsegmen-
+tator: Robust segmentation of 104 anatomic structures in ct images. Radiology:
+Artificial Intelligence 5(5) (2023) 11
+48. Yushkevich, P.A., Gao, Y., Gerig, G.: Itk-snap: An interactive tool for semi-
+automatic segmentation of multi-modality biomedical images. In: Annual Inter-
+national Conference of the IEEE Engineering in Medicine and Biology Society. pp.
+3342–3345 (2016) 6
+49. Zhou, H.Y., Guo, J., Zhang, Y., Han, X., Yu, L., Wang, L., Yu, Y.: nnformer:
+volumetric medical image segmentation via a 3d transformer. IEEE Transactions
+on Image Processing32, 4036–4045 (2023) 2
+Appendix
+
+===== PAGE 16 =====
+16 J. Ma, F. Li, and B. Wang
+T able 5.Organ-wise segmentation results of 3D models in abdomen CT dataset. The
+best and the second-best scores for each organ and each metric are highlighted in red
+and blue, respectively. (IVC: Inferior vena cava, RAG: Right adrenal gland, LAG: Left
+adrenal gland)
+Organs nnU-Net SegResNet UNETR SwinUNETRU-Mamba BotU-Mamba Enc
+DSC NSD DSC NSD DSC NSD DSC NSD DSC NSD DSC NSD
+Liver 0.9706 0.9582 0.9521 0.91570.9047 0.81250.9302 0.82970.9713 0.95920.9714 0.9578
+Right kidney 0.8738 0.86210.8295 0.80270.7105 0.66090.7540 0.70530.8653 0.86400.8864 0.8733
+Spleen 0.9162 0.9038 0.8646 0.84210.7869 0.73470.8402 0.8020.9357 0.93610.9241 0.9241
+Pancreas 0.8362 0.91390.7440 0.83530.6010 0.68590.6973 0.71910.8651 0.94020.8407 0.9157
+Aorta 0.9618 0.9745 0.9491 0.95580.8916 0.87010.9383 0.93400.9570 0.97270.9445 0.9567
+IVC 0.8839 0.8776 0.8374 0.82420.7592 0.71990.8250 0.78340.8822 0.87840.8748 0.8697
+RAG 0.8231 0.9318 0.7277 0.85790.6373 0.76150.7466 0.87030.8140 0.92360.7827 0.8886
+LAG 0.7921 0.8884 0.6851 0.79450.4750 0.58660.6767 0.78880.8323 0.92580.8206 0.9159
+Gallbladder 0.7293 0.73310.6678 0.64110.5321 0.47470.5725 0.53200.7436 0.74670.7767 0.7786
+Esophagus 0.8606 0.93080.7927 0.87060.6929 0.78260.7853 0.86630.8523 0.91490.8689 0.9323
+Stomach 0.8902 0.90330.8207 0.83020.7128 0.69030.7656 0.69810.8931 0.90760.8856 0.9034
+Duodenum 0.7561 0.88300.6388 0.79610.4951 0.69320.6042 0.75310.7794 0.89300.7534 0.8692
+Left kidney 0.9050 0.90350.7949 0.76860.6724 0.63240.7367 0.67990.8963 0.90190.8991 0.8889
+Average 0.8615 0.89720.7926 0.82580.6824 0.70040.7594 0.76630.8683 0.90490.8638 0.8980
+T able 6.Organ-wise segmentation results of 3D models in abdomen MRI dataset. The
+best and the second-best scores for each organ and each metric are highlighted in red
+and blue, respectively. (IVC: Inferior vena cava, RAG: Right adrenal gland, LAG: Left
+adrenal gland)
+Organs nnU-Net SegResNet UNETR SwinUNETRU-Mamba BotU-Mamba Enc
+DSC NSD DSC NSD DSC NSD DSC NSD DSC NSD DSC NSD
+Liver 0.9735 0.9747 0.9654 0.95900.9344 0.89050.9627 0.94790.9732 0.97530.9717 0.9704
+Right kidney 0.9625 0.97470.9390 0.95880.8266 0.82280.9355 0.93900.9594 0.97660.9621 0.9800
+Spleen 0.9131 0.9201 0.9023 0.90690.8617 0.82800.9134 0.90190.9383 0.94170.9442 0.9468
+Pancreas 0.8639 0.95530.8249 0.92280.7271 0.82680.7750 0.87420.8650 0.95650.8623 0.9560
+Aorta 0.9327 0.9572 0.9331 0.95560.8524 0.86520.8907 0.90550.9243 0.94790.9467 0.9711
+IVC 0.8192 0.8698 0.8279 0.87620.7286 0.76050.7844 0.82710.8322 0.88120.8230 0.8740
+RAG 0.6238 0.8047 0.6066 0.77780.4539 0.62570.5540 0.73160.6287 0.80100.6438 0.8197
+LAG 0.7021 0.8474 0.6779 0.83010.4735 0.61430.4786 0.62550.7225 0.85880.7419 0.8713
+Gallbladder 0.7720 0.75510.7872 0.75810.4833 0.40950.6537 0.61850.8284 0.82790.8503 0.8449
+Esophagus 0.7489 0.90710.7408 0.89760.5655 0.73950.6477 0.80380.7955 0.93870.7890 0.9369
+Stomach 0.8260 0.85950.7609 0.79890.6697 0.69190.7198 0.75530.8257 0.85970.8283 0.8679
+Duodenum 0.7008 0.88920.6634 0.87200.4878 0.74950.5921 0.81480.7309 0.90780.7232 0.8991
+Left kidney 0.9637 0.98050.9609 0.97980.8622 0.84790.9266 0.93770.9649 0.98420.9647 0.9842
+Average 0.8309 0.89960.8146 0.88410.6867 0.74400.7565 0.82180.8453 0.91210.8501 0.9171
+
+===== PAGE 17 =====
+U-Mamba 17
+T able 7.Organ-wise segmentation results of 2D models in abdomen MRI dataset. The
+best and the second-best scores for each organ and each metric are highlighted in red
+and blue, respectively. (IVC: Inferior vena cava, RAG: Right adrenal gland, LAG: Left
+adrenal gland)
+Organs nnU-Net SegResNet UNETR SwinUNETRU-Mamba BotU-Mamba Enc
+DSC NSD DSC NSD DSC NSD DSC NSD DSC NSD DSC NSD
+Liver 0.9478 0.9286 0.9321 0.90510.8988 0.81730.9484 0.91080.9534 0.93190.9579 0.9390
+Right kidney 0.8782 0.87490.8957 0.88020.6974 0.66060.8598 0.83910.9039 0.89220.9070 0.9043
+Spleen 0.9043 0.8956 0.8793 0.85730.7182 0.66120.8922 0.86490.9065 0.89920.9137 0.9065
+Pancreas 0.7148 0.83980.6998 0.82570.5679 0.69900.7049 0.82600.7376 0.85770.7500 0.8715
+Aorta 0.9214 0.9465 0.9333 0.95820.8294 0.84010.8750 0.89290.9257 0.95710.9122 0.9409
+IVC 0.7567 0.8045 0.7527 0.80030.6310 0.67030.7105 0.75360.7653 0.81360.7631 0.8147
+RAG 0.4960 0.6743 0.4746 0.67550.3478 0.52430.4552 0.61620.5513 0.73380.5371 0.7293
+LAG 0.5419 0.7023 0.5542 0.70890.3471 0.47640.4758 0.62210.5682 0.72830.5642 0.7163
+Gallbladder 0.6807 0.63710.6256 0.59590.3103 0.25570.6034 0.55810.6664 0.63550.6762 0.6413
+Esophagus 0.6964 0.86050.6756 0.85420.5648 0.76020.6347 0.82160.7042 0.86330.7025 0.8669
+Stomach 0.7351 0.76220.7134 0.74370.5583 0.57560.6739 0.69450.7420 0.76360.7680 0.7888
+Duodenum 0.5204 0.78420.4784 0.74500.3054 0.61560.4448 0.73350.5295 0.78900.5516 0.7952
+Left kidney 0.8911 0.88810.898 0.89430.6944 0.64590.8580 0.83610.9100 0.90580.9084 0.9106
+Average 0.7450 0.81530.7317 0.80340.5747 0.63090.7028 0.76690.7588 0.82850.7625 0.8327

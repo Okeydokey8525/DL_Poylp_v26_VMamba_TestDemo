@@ -1,0 +1,1849 @@
+===== PAGE 1 =====
+Visual
+Intelligence
+Meietal. VisualIntelligence             (2025) 3:1 
+https://doi.org/10.1007/s44267-024-00071-w
+REVIEW OpenAccess
+Asurveyondeeplearningforpolyp
+segmentation:techniques,challengesand
+futuretrends
+JiaxinMei1,2,T aoZhou1,2*,KaiwenHuang 1,2,YizheZhang 1,2,YiZhou 3,Y eWu1,2 andHuazhuFu 4
+Abstract
+Earlydetectionandassessmentofpolypsplayacrucialroleinthepreventionandtreatmentofcolorectalcancer
+(CRC).Polypsegmentationprovidesaneﬀectivesolutiontoassistcliniciansinaccuratelylocatingandsegmenting
+polypregions.Inthepast,peopleoftenreliedonmanuallyextractedlower-levelfeaturessuchascolor,texture,and
+shape,whichoftenhadproblemscapturingglobalcontextandlackedrobustnesstocomplexscenarios.Withthe
+adventofdeeplearning,moreandmoremedicalimagesegmentationalgorithmsbasedondeeplearningnetworks
+haveemerged,makingsigniﬁcantprogressintheﬁeld.Thispaperprovidesacomprehensivereviewofpolyp
+segmentationalgorithms.Weﬁrstreviewsometraditionalalgorithmsbasedonmanuallyextractedfeaturesand
+deepsegmentationalgorithms,andthendescribebenchmarkdatasetsrelatedtothetopic.Speciﬁcally,wecarryout
+acomprehensiveevaluationofrecentdeeplearningmodelsandresultsbasedonpolypsize,takingintoaccountthe
+focusofresearchtopicsanddiﬀerencesinnetworkstructures.Finally,wediscussthechallengesofpolyp
+segmentationandfuturetrendsintheﬁeld.
+Keywords: Polypsegmentation,Deeplearning,Comprehensiveevaluation,Medicalimaging
+1 Introduction
+Polypsegmentationaimstoautomaticallyidentifyandseg-
+mentpolypregionswithinthecolon.Itsprimaryobjective
+is to assist clinical doctors in eﬃciently and accurately lo-
+cating and delineating these regions, providing vital sup-
+portforearlydiagnosisandtreatmentofcolorectalcancer
+(CRC) [1]. Polyps exhibit varying sizes and shapes at dif-
+ferent stages of development [2, 3], and their precise seg-
+mentation poses challenges due to their strong adherence
+toadjacentorgansormucosa[ 4].
+Intheearlystage,polypsegmentationprimarilyreliedon
+manuallyextractedfeatures[ 5,6].Forexample,Tajbakhsh
+et al. [5] proposed a method that utilized shape features
+*Correspondence:taozhou.ai@gmail.com
+1PCALab,KeyLaboratoryofIntelligentPerceptionandSystemsfor
+High-DimensionalInformationofMinistryofEducation,Nanjing,China
+2SchoolofComputerScienceandEngineering,NanjingUniversityofScience
+andTechnology,Nanjing,China
+Fulllistofauthorinformationisavailableattheendofthearticle
+and surrounding environmental information to automat-
+ically detect polyps in colonoscopy videos. Iwahori et al.
+[6] utilized edge and color information to generate a like-
+lihood map and extracted the directional gradient his-
+togram features. However, relying on manually extracted
+low-levelfeaturesforsegmentationtasksmakesitdiﬃcult
+to handle complex scenarios and does not eﬀectively uti-
+lizeglobalcontextualinformation[ 7].
+Inrecentyears,deeplearning-basedpolypsegmentation
+modelshavedemonstratedimpressivecapabilitiesinlocat-
+ing and segmenting polyp regions. Based on the encoder-
+decoderarchitecture,someworksfocusonenhancingthe
+outputfeaturesoftheencoder[ 8,9].Inaddition,thevari-
+ation between datasets collected from diﬀerent devices is
+also an issue [10]. After the emergence of the segment
+anything model (SAM) [11], ﬁne-grained models based
+on universal segmentation networks have shown promis-
+ing momentum in polyp segmentation [12]. To provide a
+©TheAuthor(s)2025. OpenAccess ThisarticleislicensedunderaCreativeCommonsAttribution4.0InternationalLicense,which
+permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit
+to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The
+imagesorotherthirdpartymaterialinthisarticleareincludedinthearticle’sCreativeCommonslicence,unlessindicatedotherwise
+in a credit line to the material. If material is not included in the article’s Creative Commons licence and your intended use is not
+permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright
+holder.Toviewacopyofthislicence,visit http://creativecommons.org/licenses/by/4.0/.
+
+===== PAGE 2 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page 2 of 20
+Figure1 Abriefchronologyofpolypsegmentation.Before2015,methodsreliedonhand-craftedfeaturescombinedwithmachinelearning
+algorithms.Since2015,U-Net[ 20]andFCN[ 21]havesigniﬁcantlyadvancedthedevelopmentofdeeplearningtechniquesinpolypsegmentation.
+MoredetailscanbefoundinSect. 2
+clearer depiction of the progress in polyp segmentation
+tasks, we show a concise timeline in Fig.1.
+Existing surveys typically provide systematic statistics
+on polyp segmentation, localization, and detection meth-
+ods [13], or review medical image segmentation across
+diﬀerent anatomical regions, such as the abdomen, heart,
+brain, and lungs [14–19]. In contrast to previous reviews
+on polyp segmentation or medical image segmentation,
+this paper aims to provide a comprehensive review of
+polypsegmentationmethods.Itcoversbothtraditionalal-
+gorithms and deep learning model-based approaches for
+polypsegmentation.
+Wediscusstraditionalmethodsanddeeplearning-based
+methods separately. Based on the unique design of model
+structures, we categorize deep models into boundary-
+awaremodels,attention-awaremodels,andfeaturefusion
+models. We discuss the advantages associated with each
+methodandprovidevaluableinsightsintotheirrespective
+applicability and performance characteristics. In Sect.2,
+we review the existing polyp segmentation models from
+diﬀerentaspects.InSect. 3,wesummarizeandprovidede-
+tailed information and usage of the current publicly avail-
+able datasets used for polyp segmentation. Then, we con-
+ductacomprehensiveassessmentofthesegmentationper-
+formanceforpolypsizesandananalysisoftheadvantages
+anddisadvantagesofseveralrepresentativepolypsegmen-
+tation models in Sect.4.A f t e rt h a t ,i nS e c t .5,w ed i s c u s s
+the challenges and future trends for development in the
+ﬁeld.Finally,weconcludethepaperinSect. 6.
+2 Polypsegmentationmodels
+Recentresearchinpolypsegmentationhasleveragedpop-
+ulardeep-learningmethodstoachieveremarkableresults.
+In contrast, earlier approaches relied primarily on manu-
+ally engineered features for polyp segmentation. A sum-
+mary of these models can be found in Tables1 and 2.T o
+provideacomprehensivereviewofthesepolypsegmenta-
+tionalgorithms,wewillintroducethemfromthefollowing
+aspects.
+1) Traditionalmodels.Theyrelyprimarily on manually
+designedfeaturessuchascolor, texture, andshape
+information to formulate algorithms.
+2) Deepmodels . Deep learning models automatically
+learn deepfeatures,whichenablesthemto handle
+unstructuredandcomplexdata andprovides them
+withmore powerfulexpressivecapabilities.
+3) Boundary-awaremodels . Edge information is crucial
+inproviding boundarycuesto boostthe
+segmentationperformance. Therefore,we will
+discusstheapplication ofedgeinformation in some
+existingmodels.
+4) Attention-awaremodels .The analysisof thediﬀerent
+attention strategies used in polyp segmentation
+researchhasprovided insightsforthepotential
+design ofattentionmodules infuturework.
+5) Feature fusion models.The integration and
+enhancementofmulti-level featurescansigniﬁcantly
+enhancemodelperformance. Therefore,we
+investigate theeﬀectivenessoffeaturefusion
+strategies in polypsegmentation models.
+2.1 Traditionalmodels
+Early works primarily relied on manually designed fea-
+tures, such as color, texture, and shape, and then em-
+ployedtraditionalmachinelearningtechniquesforheuris-
+tic modeling. For instance, Yao et al. [76]p r o p o s e da n
+automatic polyp segmentation method that combines
+knowledge-guided intensity adjustment, fuzzy c-means
+clustering,anddeformablemodels.Luetal.[ 77]proposed
+a three-stage probabilistic binary classiﬁcation method
+thatintegrateslow-levelandmid-levelinformationtoseg-
+ment polyps in 3D CT colonography. Gross et al. [78]
+studied a segmentation algorithm that enhances primary
+edgesthroughmultiscaleﬁltering.Ganzetal.[ 79]utilized
+
+===== PAGE 3 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page 3 of 20
+Table 1Summaryofpolypsegmentationmethods(publishedfrom2019to2021)
+# Year Method Pub. Backbone Description Code
+1 2019 SFA[ 22] MICCAI lightUNet Boundary-sensitiveloss;selectivefeature
+aggregation
+N/A
+2 2019 ResUNet++
+[23]
+ISM ResUNet Squeezeandexcitationblocks;atrous
+spatialpyramidpooling(ASPP);attention
+blocks
+https://github.com/DebeshJha/
+ResUNetPlusPlus
+3 2020 PolypSeg[ 24] MICCAI U-Net Improvedattentionmechanism;
+separableconvolution
+N/A
+4 2020 ACSNet[ 25] MICCAI ResNet34 Adaptivelyselect;aggregatecontext
+featuresthroughchannelattention
+https://github.com/ReaFly/ACSNet
+5 2020 PraNet[ 26] MICCAI Res2Net Parallelpartialdecoders;reverseattention https://github.com/DengPingFan/PraNet
+6 2021 ThresholdNet
+[1]
+TMI DeepLabv3+ Conﬁdence-guidedmanifoldmixup;
+thresholdloss
+https://github.com/Guo-Xiaoqing/
+ThresholdNet
+7 2021 DDANet[ 28] PR ResUNet Dual-decoderattention;
+out-of-training-settesting
+https://github.com/nikhilroxtomar/DDANet
+8 2021 MSRF-Net[ 29] JBHI N/A Multi-scaleresidualfusion;dual-scale
+densefusion
+https://github.com/NoviceMAn-prog/
+MSRF-Net
+9 2021 HarDNet-MSEG
+[30]
+arxiv HarDNet68 Cascadedpartialdecoder;dense
+aggregation
+https://github.com/james128333/HarDNet-
+MSEG
+10 2021 EU-Net[ 31] CRV ResNet34 Semanticfeature;adaptiveglobalcontext
+module
+https://github.com/rucv/Enhanced-U-Net
+11 2021 FANet[ 32] arxiv N/A Feedbackattentionlearning;iterative
+reﬁning;embeddedrun-lengthencoding
+strategy
+https://github.com/nikhilroxtomar/fanet
+12 2021 Polyp-PVT[ 33] arxiv PVT Cascadedfusion;camouﬂage
+identiﬁcation;similarityaggregation
+https://github.com/DengPingFan/Polyp-
+PVT
+13 2021 UACANet[ 34] ACMMM Res2Net Parallelaxialattention;uncertainty
+augmentedcontextattention
+https://github.com/plemeri/UACANet
+14 2021 C2FNet[ 35] IJCAI Res2Net-50 Context-awarecross-levelfusion;
+dual-branchglobalcontext
+https://github.com/thograce/C2FNet
+15 2021 ResUNet++
+TTA+CRF[ 36]
+JBHI ResUNet conditionalrandomﬁelds;test-time
+augmentation
+https://github.com/DebeshJha/ResUNet-
+with-CRF-and-TTA
+16 2021 MPA-DA[ 10] JBHI ResNet-101 Inter-prototypeadaptationnetwork;
+progressiveself-training;disentangled
+reconstruction
+https://github.com/CityU-AIM-Group/
+MPA-DA
+17 2021 TransFuse[ 37]M I C C A IR e s N e t - 3 4 +
+DeiT-S
+self-attention;bilinearHadamardproduct;
+gatedskip-connection
+https://github.com/Rayicer/TransFuse
+18 2021 SANet[ 8] MICCAI Res2Net Colorexchange;shallowattention https://github.com/weijun88/sanet
+19 2021 STFT[ 38] MICCAI ResNet-50 Spatial-temporalfeaturetransformation;
+deformableconvolutionsand
+channel-awareattention
+https://github.com/lingyunwu14/STFT
+20 2021 LOD-Net[ 39]M I C C A I R e s N e t +
+FPN
+Modeltheprobabilityofeachpixelbeing
+intheboundaryregion;adaptive
+thresholdingpolicy
+https://github.com/midsdsy/LOD-Net
+21 2021 MSNet[ 9] MICCAI Res2Net-50 Multi-scalesubtraction;training-free
+network
+https://github.com/Xiaoqi-Zhao-DLUT/
+MSNet
+22 2021 CCBANet[ 40] MICCAI ResNet34 Cascadingcontext;balancingattention https://github.com/ntcongvn/CCBANet
+23 2021 HRENet[ 41] MICCAI ResNet34 Hardregionenhancement;adaptive
+featureaggregation;edgeandstructure
+consistencyawareloss
+https://github.com/CathySH/HRENet
+24 2022 GMSRF-Net
+[42]
+ICPR ResNet50 Cross-multi-scaleattention;multi-scale
+featureselection
+https://github.com/NoviceMAn-prog/
+GMSRFNet
+
+===== PAGE 4 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page 4 of 20
+Table 2Summaryofpolypsegmentationmethods(publishedfrom2022to2023)
+# Year Method Pub. Backbone Description Code
+25 2022 TGANet[ 43] MICCAI ResNet50 Text-guidedattention;weightsthetext-based
+embeddings
+https://github.com/nikhilroxtomar/
+tganet
+26 2022 CaraNet[ 44] SPIEMI Res2Net Contextaxialreverseattention https://github.com/AngeLouCN/
+CaraNet
+27 2022 MSRAformer
+[45]
+CBM Swin
+Transformer
+multi-scalespatialreverseattention https://github.com/ChengLong1222/
+MSRAformer-main
+28 2022 HSNet[ 46] CBM PVTv2 Cross-semanticattention;hybridsemantic
+complementary;multi-scaleprediction
+https://github.com/baiboat/HSNet
+29 2022 FuzzyNet[ 47]N e u r I P S R e s 2 N e t /
+ConvNext/PVT
+fuzzyattention;focusontheblurrypixels https://github.com/krushi1992/
+FuzzyNet
+30 2022 LDNet[ 48] MICCAI Res2Net Lesion-awaredynamickernel;self-attention https://github.com/ReaFly/LDNet
+31 2022 HarDNet-DFUS
+[49]
+arxiv HarDNetV2 Real-timemodel;enhancedbackbone https://github.com/YuWenLo/HarDNet-
+DFUS
+32 2022 BDG-Net[ 50] SPIEMI EﬃcientNet-B5 Boundarydistributionguided;boundary
+distributiongeneration
+https://github.com/zihuanqiu/BDG-Net
+33 2022 ColonFormer
+[51]
+Access MiT IntegrateahierarchicalTransformeranda
+hierarchicalpyramidCNN;residualaxial
+attention
+https://github.com/ducnt9907/
+ColonFormer
+34 2022 FCBFormer[ 52] MIUA PVTv2 Improvedprogressivelocalitydecoder;fully
+convolutionalbranch+Transformerbranch
+https://github.com/ESandML/
+FCBFormer
+35 2022 DCRNet[ 53] ISBI ResNet-34 Duplexcontextualrelationnetwork;
+cross-imagecontextualrelations
+https://github.com/PRIS-CV/DCRNet
+36 2022 SSFormer[ 54] MICCAI PVTv2 Aggregatelocalandglobalfeaturesstepwise https://github.com/Qiming-Huang/
+ssformer
+37 2022 LAPFormer[ 55] arxiv MiT-B1 HierarchicalTransformerencoderandCNN
+decoder;progressivefeaturefusion
+N/A
+38 2022 PPFormer[ 56] MICCAI CvT ShallowCNNencoder;deep
+Transformer-basedencoder
+N/A
+39 2022 BSCA-Net[ 57] PR Res2Net Bit-planeslicinginformation;segmentation
+squeezebottleneckunionmodule;multi-path
+connectionattention
+N/A
+40 2022 BoxPolyp[ 58] MICCAI Res2Net/PVT Boxannotations;fusionﬁltersamplingmodule N/A
+41 2022 ICBNet[ 59] BIBM PVT Iterativefeedbacklearningstrategy;context
+andboundary-awareinformation
+N/A
+42 2022 CLD-Net[ 60] BIBM MiT Smallpolypsegmentation;localedgefeature
+extraction
+N/A
+43 2022 BANet[ 61] PRCV Res2Net-50 Attention-awarelocalization;residualpyramid
+convolution
+N/A
+44 2023 DuAT[ 62] PRCV PVT Dual-aggregationTransformer;global-to-local
+spatialaggregation;selectiveboundary
+aggregation
+https://github.com/Barrett-python/
+DuAT
+45 2023 PolypSeg+[ 63] TCYB ResNet50 Adaptivescalecontextmodule;lightweight
+attentionmechanism
+https://github.com/szuzzb/
+polypsegplus
+46 2023 APCNet[ 64] TIM ResNet50 Attention-guidedmulti-levelaggregation
+strategy;complementaryinformationfrom
+diﬀerentlayers
+N/A
+47 2023 RA-DENet[ 65] CBM Res2Net Improvedreverseattention;distraction
+elimination
+N/A
+48 2023 EFB-Seg[ 66]N e u r o c o m -
+puting
+ConvNet BoundaryEmbedding;semanticoﬀsetﬁeld
+learned
+N/A
+49 2023 PPNet[ 67] CBM P2T Channelattention;pyramidfeaturefusion N/A
+50 2023 Fu-TransHNet
+[68]
+arxiv HardNet68 CNNandTransformer;multi-viewlearning N/A
+
+===== PAGE 5 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page 5 of 20
+Table 2(Continued)
+# Year Method Pub. Backbone Description Code
+51 2023 DilatedSegNet
+[69]
+MMM ResNet50 Dilatedconvolutionpoolingblock;
+convolutionalattention
+https://github.com/nikhilroxtomar/
+DilatedSegNet
+52 2023 FeDNet[ 70] BSPC PVT Decoupleedgefeaturesandmainbody
+features
+https://github.com/suyanzhou626/
+FeDNet-BSPC
+53 2023 PEFNet[ 71] MMM EﬃcientNet
+V2-L
+Positionalencodingandinformationfusion https://github.com/huyquoctrinh/
+PEFNet
+54 2023 Polyp-SAM[ 12] arxiv ViT Fine-tunedSAMmodelforpolyp
+segmentation[11].
+https://github.com/ricklisz/Polyp-SAM
+55 2023 ESFPNet[ 72] SPIEMI MiT Eﬃcientstage-wisefeaturepyramiddecoder N/A
+56 2023 TransNetR[ 73] MIDL ResNet50 Transformer-basedresidualnetwork;
+multi-centerout-of-distributiontesting
+https://github.com/DebeshJha/
+TransNetR
+57 2023 CASCADE[ 74]W A C V P V T v 2 /
+TransUNet
+Cascadedattention-baseddecoder;
+multi-stagelossoptimization;feature
+aggregation
+https://github.com/SLDGroup/
+CASCADE
+58 2023 CFA-Net[ 75] PR Res2Net-50 Cross-levelfeatureaggregated;boundary
+aggregated
+https://github.com/taozh2017/CFANet
+priorknowledgeofpolypshapesusingnarrowbandimag-
+ing (NBI) to optimize the inherent scale selection of gPb-
+OWT-UCM.Thisoptimizationaimstoachievebetterseg-
+mentation results by incorporating the shape information
+ofpolyps.
+2.2 Deepmodels
+H o w e v e r ,t h ea f o r e m e n t i o n e dm e t h o d sa r ec o n s t r a i n e d
+by the limited information representation capabilities of
+manualfeatures.Theylackgeneralizationcapabilitiesand
+arenotsuitableforlarge-scaledeployment.Wewillreview
+some representative deep learning-based methods in the
+ﬁeldofpolypsegmentation.
+CNN-based methods. Thanks to the development of
+c o n v o l u t i o n a ln e u r a ln e t w o r k( C N N ) ,e s p e c i a l l yw i t ht h e
+introduction of U-Net [20], many models inspired by this
+architecture have demonstrated promising results. AC-
+SNet[25]modiﬁestheskipconnectionsinU-Netintolocal
+contextextractionmodulesandaddsaglobalinformation
+extraction module. The features are integrated and then
+adaptively selected based on a channel attention strategy.
+EU-Net [31] is an enhanced U-Net framework that en-
+hances semantic information and introduces an adaptive
+global context module to extract key features. MSNet [9]
+designs a subtraction unit to generate diﬀerence features
+between adjacent layers and pyramidically equips it with
+diﬀerent receptive ﬁelds to capture multi-scale informa-
+tion. In addition, it introduces LossNet to supervise the
+perceptual features at each layer. PEFNet [71]u t i l i z e sa n
+improvedU-Netinthemergingphaseandembedsnewlo-
+cation feature information. Thanks to the rich knowledge
+of positional information and concatenated features, this
+model achieves higher accuracy and universality in polyp
+segmentation.
+Transformer-based methods. CNNs have limitations in
+capturing long-range dependencies. However, the Trans-
+former model, which ﬁrst gained popularity in natural
+language processing, has been introduced to computer
+vision. Its advantage in capturing long-range dependen-
+cies has sparked a research trend in Vision Transformers.
+MSRAformer [45] adopts a Swin Transformer as the en-
+coder with a pyramid structure to extract features at dif-
+ferent stages and utilizes a multi-scale channel attention
+module to extract multi-scale feature information. DuAT
+[62] is a dual-aggregation Transformer network for polyp
+segmentation, which aggregates global and local spatial
+featuresandlocatesmulti-scaleobjects.SSFormer[ 54]in-
+corporatesPVTv2[ 80]andSegformerastheencoderwhile
+introducing a novel progressive local decoder. This de-
+coder is speciﬁcally designed to complement the pyramid
+Transformer backbone by emphasizing local features and
+mitigating attention dispersion. ColonFormer [51]a d o p t s
+a lightweight architecture based on the Transformer as
+the encoder and uses a hierarchical network structure for
+learning multi-level features in the decoder. TransNetR
+[73] is a Transformer-based residual network, compris-
+ing a pre-trained encoder, three decoder blocks, and an
+upsampling layer, demonstrating excellent real-time pro-
+cessing speed and multi-center generalization capability.
+Polyp-PVT [33] cascades to aggregate advanced semantic
+and positional information, employing a similarity aggre-
+gation module to extend high-level features to the entire
+region.
+Hybrid methods. Furthermore, numerous models have
+combined the strengths of both CNN and Transformer,
+capturing both local context information and long-range
+dependencies to signiﬁcantly enhance segmentation per-
+formance. TransFuse [37] combines the Transformer and
+
+===== PAGE 6 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page 6 of 20
+CNN branches in parallel. It employs a self-attention
+mechanism and a multi-modal fusion mechanism to in-
+tegrate features from diﬀerent branches, and uses spatial
+attention to enhance local details. LAPFormer [55]e m -
+ploysahierarchicalTransformerencoderwithaCNNde-
+coder. Additionally, it introduces a progressive feature fu-
+sion module to integrate multi-scale features and incor-
+porates a feature reﬁnement module and a feature selec-
+tion module for feature handling. PPFormer [56]a d o p t s
+a shallow CNN encoder and deep Transformer-based en-
+codertoextractfeatures.HSNet[ 46]utilizesadual-branch
+structurecomposedofTransformerandCNNnetworksto
+capture both long-range dependencies and local appear-
+ance details. Fu-TransHNet [68]d e s i g n san o v e lf e a t u r e
+fusion module to fully make use of the local and global
+featuresobtainedfromCNNandTransformernetworks.
+2.3 Boundary-awaremodels
+The utilization of edge information as a guiding strategy
+was initially prevalent in object detection and has been
+increasingly applied to polyp segmentation tasks. Precise
+edge-aware representation aids in improving segmenta-
+tion accuracy. In the following sections, we will review
+several models that exhibit exceptional capability in per-
+ceiving and incorporating edge information. FeDNet [70]
+simultaneouslyoptimizesthemainbodyandedgestoim-
+prove polyp segmentation performance. BSCA-Net [57]
+utilizes bit-plane slicing information to eﬀectively extract
+boundary information. BoxPolyp [58] mitigates overﬁt-
+ting issues by using box annotations, iteratively enhanc-
+ingthesegmentationmodeltogenerateﬁne-grainedpolyp
+regions. BDG-Net [50] utilizes a boundary distribution
+generationmoduletoaggregatehigh-levelfeatures,which
+are taken as supplementary spatial information and fed
+to the boundary distribution guided decoder for guiding
+polyp segmentation. ICBNet [59] enhances encoder fea-
+tures from preliminary segmentation and boundary pre-
+diction by incorporating context and boundary-aware in-
+formation. CLD-Net [60] employs a progressive strategy
+to extract edge features and addresses the issue of fea-
+ture loss during downsampling by combining a local edge
+feature extraction module with a local-global feature fu-
+sion module. BANet [61] identiﬁes the main location of
+polyps through an attention-aware localization module.
+SFA [22] improves segmentation performance by con-
+structing a selective feature aggregation network with re-
+gional and boundary constraints. FCBFormer [52] fully
+leverages the strengths of fully convolutional networks
+(FCNs)andTransformersforpolypsegmentation.
+2.4 Attention-awaremodels
+Achieving superior performance in polyp segmentation
+requires the ability to prioritize relevant information. By
+incorporating an attention mechanism, this problem can
+be eﬀectively addressed. This allows the model to fo-
+cus on the most important features, ultimately improving
+segmentation performance. CASCADE [74] takes advan-
+tage of the multi-scale features using a hierarchical vision
+Transformer architecture. APCNet [64]e x t r a c t sm u l t i -
+level features from a pyramid structure and leverages an
+attention-guided multi-level aggregation strategy to en-
+hance each layer’s context features. RA-DENet [65]e n -
+hances the representation of diﬀerent regions through in-
+verseattention,andtheneliminatesnoisethroughdistrac-
+tor removal. TGANet [43] incorporates a text attention
+mechanism, which utilizes features related to the size and
+numberofpolypstoadapttovaryingpolypsizesandeﬀec-
+tively handle scenarios with multiple polyps. LDNet [48]
+extracts global context features from the input image and
+then updates them iteratively based on the lesion features
+predicted by the segmentation. SANet [8]e l i m i n a t e st h e
+impactofcolorsthroughacolorswapoperation,andthen
+ﬁlters out background noise from shallow features based
+onashallowattentionmodule.
+2.5 Featurefusionmodels
+It is crucial to incorporate multi-scale features to eﬀec-
+tively handle variations in object size [81]. Moreover, in-
+tegrating multi-level features through feature fusion and
+leveraging both high-level and low-level features can sig-
+niﬁcantly enhance segmentation performance [82, 83]. In
+the context of polyp segmentation tasks, various feature
+fusion strategies have been utilized to achieve this goal.
+CFA-Net [75] is a novel cross-level feature aggregation
+network that adopts a hierarchical strategy to incorpo-
+rate edge features into the dual-stream segmentation net-
+work. EFB-Seg [66] enhances multi-level feature fusion
+by introducing a feature fusion module that utilizes the
+learned semantic oﬀset ﬁeld to align multi-level feature
+maps, thereby addressing the issue of feature misalign-
+ment.MSRF-Net[ 29]innovativelyusesadual-scaledense
+fusion block to exchange multi-scale features with dif-
+ferent receptive ﬁelds. DCRNet [53]c a p t u r e sb o t hi n t r a -
+image and inter-image context relationships. Within the
+image, a positional attention module is presented to cap-
+ture pixel-level context information. PPNet [67]u s e sa
+channel attention scheme in the pyramid feature fusion
+module to learn global context features, thereby guiding
+the information transformation of the decoder branches.
+PraNet [26] aggregates high-level features using parallel
+partial decoders, uses a reverse attention module to mine
+boundary clues, and establishes the relationship between
+regionandboundarycues.PolypSeg[ 24]aggregatesmulti-
+scale context information and focuses on the target area
+usinganimprovedattentionmechanism.
+2.6 Videopolypsegmentation
+To facilitate the deployment of automated segmentation
+methods in clinical settings, a shift in focus has been ob-
+
+===== PAGE 7 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page 7 of 20
+served in some studies toward video-based polyp seg-
+mentation methods. By considering temporal informa-
+tion, these approaches aim to overcome the limitations of
+single-image segmentation and enable more precise and
+eﬃcient segmentation in real-time scenarios within clin-
+ical requirements. ESFPNet [72] constructs a pre-trained
+mixed Transformer (MiT) encoder and an eﬃcient stage-
+wisefeaturepyramiddecoder,inwhichtheMiTusesover-
+lapping path merging modules and self-attention predic-
+tion. PNS+ [84] extracts long-term spatiotemporal rep-
+resentations using global encoders and local encoders
+and reﬁnes them graduallywith normalized self-attention
+blocks. SSTAN [85] presents a semi-supervised video
+polyp segmentation task that only requires sparsely an-
+notated frames for training. PNS-Net [86] leverages stan-
+dard self-attention modules and CNN to eﬃciently learn
+representationsfrompolypvideosinrealtimewithoutthe
+needforpost-processing.NanoNet[ 87]hasfewerparam-
+eters and can be integrated with mobile and embedded
+devices. It utilizes a pre-trained MobileNetV2 [88]a st h e
+encoder. In the architecture between the encoder and de-
+coder,amodiﬁedresidualblockisincorporatedtoenhance
+thegeneralization capabilityofthedecoder.
+3 Polypsegmentationdatasets
+The rapid progress in the ﬁeld of medical image segmen-
+tationhasledtotheconstructionofvariouspublicbench-
+mark datasets speciﬁcally designed for polyp segmen-
+tation tasks. By utilizing these benchmark datasets, re-
+searchers can compare their methods against established
+baselines, facilitate reproducible research, and encourage
+further advances in the ﬁeld of polyp segmentation. Ta-
+ble3summarizeseightpopularimage-levelpolypsegmen-
+tation datasets, and Fig.2 shows examples of images (in-
+cluding edge maps, and annotations) from these datasets.
+Moreover,weprovidesomedetailsabouteachdatasetbe-
+low. Please note that some video-level polyp segmenta-
+tion datasets are summarized in Table3,a n ds o m ew o r k s
+[5,7,84,89,90]ar ebasedont hem.
+1) ETIS-LaribPolypDB[ 91] is acollection ofearly
+colorectalpolypimages consisting of196polyp
+instances,eachcapturedataresolution of
+966 ×1225pixels.
+2) CVC-ClinicDB[ 7] is adatasetcollectedfromclinical
+casesatahospitalin Barcelona,Spain,and is
+developedfrom23colonoscopyvideostudies
+acquiredwith whitelight. Thisdataset contains612
+high-resolution colorimages witha resolution of
+576 ×768,all derived fromclinical colonoscopy
+examinations.Eachimage comes witha
+correspondingmanualannotationﬁle thatclearly
+delineates the location of the polyp.
+3) CVC-ColonDB[ 5]ismaintained bytheComputer
+Vision Center(CVC)in Barcelona. Itincludes380
+colonoscopyimages with aresolution of500 ×574
+Figure2 Examplesofimages,groundtruthmaps,andedgesinﬁve
+polypsegmentationdatasets,including(a)ETIS-LaribPolypDB[ 91],(b)
+CVC-ColonDB[5],(c)CVC-ClinicDB[ 7],(d)CVC-300[ 92],and(e)
+Kvasir-SEG[93].Ineachdataset,theimage,groundtruthmaps,and
+edgesareshownfromtoptobottom
+Table 3Statisticsonthedatasetsaremadeaccordingtotheyear(Year),journalorconferencepublication(Pub.),thedatasetsize(Size),
+thenumberofobjectsintheimages(Obj.),andtheresolution(Resolution).Moredetailedinformationabouteachdatasetcanbefound
+inSect. 3
+# Dataset Year Pub. Size Obj. Resolution
+Image-level 1 ETIS-LaribPolypDB[ 91] 2014 IJCARS 196 Multiple 966 ×1225
+2 CVC-ClinicDB[ 7] 2015 CMIG 612 Multiple 576 ×768
+3 CVC-ColonDB[ 5] 2016 TMI 380 One 500 ×574
+4 CVC-300[ 92] 2017 JHE 60 One 500 ×574
+5 CVC-EndoSceneStill[ 92] 2017 JHE 912 Multiple [500 ∼ 576] ×[574 ∼ 768]
+6K v a s i r - S E G [93] 2020 MMM 1000 Multiple [332 ∼ 1920] ×[487 ∼ 1072]
+7 PICCOLO [ 94] 2020 AS 3433 Multiple [480 ∼ 1080] ×[854 ∼ 1920]
+8P o l y p G e n [95] 2023 SD 8037 Multiple [288 ∼ 1080] ×[384 ∼ 1920]
+Video-level 9 ASU-MayoClinic[ 5] 2016 TMI 36,458 One 550 ×688
+10 CVC-ClinicVideoDB[ 96] 2017 GIANA 11,954 Multiple N/A
+11 LDPolypVideo[ 89] 2021 MICCAI 40,266 Multiple 480 ×560
+12 SUN-SEG[ 84] 2022 MIR 158,690 One [1008 ∼ 1080] ×[1158 ∼ 1240]
+
+===== PAGE 8 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page 8 of 20
+andsegmentation masksmanuallyannotatedto
+preciselymark thelocation ofpolyps.
+4) CVC-300[ 92]inc ludes60colonoscopy images with a
+resolution of500 ×574.
+5) CVC-EndoSceneStill [92]includes CVC-ClinicDB
+andCVC-300,therebycontaining 912colonoscopy
+examinationimages along withcorresponding
+annotations.
+6) Kvasir-SEG[93]contains 1000images of
+gastrointestinal polypsalong withcorresponding
+segmentation masksandboundingboxes.These
+weremanuallyannotatedbya doctorandvalidated
+by a gastroenterologyexpert.
+7) PICCOLO[ 94]consistsof 3433clinical colonoscopy
+images from48 patients,including white lightand
+narrow-band images.Italso providesannotations
+including thenumberandsize ofpolypsdetected
+during colonoscopy.Thedata aredivided into a
+training set (2203),avalidation set( 897),andat est
+set( 333).
+8) PolypGen[95]originatesfromcolonoscopydetection
+imagesofover 300patientsfromsixdiﬀerentcenters.
+Itincludes bothsingle-frame data andsequencedata,
+containing3762annotatedpolyplabels.The
+delineation ofpolypboundaries wasvalidatedby six
+seniorexpertsingastroenterology.Speciﬁcally,the
+datasetalsocontains 4275negative samples.
+4 Modelevaluationandanalysis
+4.1 Evaluationmetrics
+We brieﬂy review several popular metrics for polyp seg-
+mentation task, i.e., intersection over union (IoU),
+precision-recall(PR),speciﬁcity,dicecoeﬃcient(Dice), F-
+measure(F
+β)[97],meanabsoluteerror(MAE)[ 98],struc-
+turalmeasure( Sα)[99],andenhanced-alignmentmeasure
+(Eφ)[100].
+In this survey, we focus on pixel-level performance
+within a single image (or video frame), with performance
+calculated at the frame level. TP denotes true positives,
+indicating the number of pixels accurately identiﬁed as
+foreground(orobjectsofinterest)inthesegmentationre-
+sult,correspondingtoactualforegroundpixelsinthetrue
+annotation. FP signiﬁes false positives, representing the
+number of pixels incorrectly identiﬁed as foreground in
+the segmentation result, despite being background pixels
+in the true annotation. FN refers to false negatives, de-
+noting the number of pixels inaccurately labeled as back-
+ground in the segmentation result, while these pixels are
+foregroundinthetrueannotation.TNstandsfortrueneg-
+atives,signifyingthenumberofpixelscorrectlyrecognized
+as background in the segmentation result, consistent with
+backgroundpixelsinthetrueannotation.
+PR.Precisionrepresentstheproportionofcorrectlypre-
+dicted positive samples by the model. Recall (also known
+as sensitivity) represents the proportion of true positive
+samples successfully detected by the model out of all ac-
+tual positive samples. PR curve can be plotted by taking
+recall as thex-axisandpr ecisionast hey-axis.
+Precision= TP
+TP+FP ,R e c a l l=TP
+TP+FN .( 1 )
+IoU.I n t e r s e c t i o no v e ru n i o n ,a l s ok n o w na st h eJ a c c a r d
+coeﬃcient,isusedtomeasuretheoverlapbetweenthepre-
+dicted result and the ground truth target. It is commonly
+usedinhandlingimbalanceddatasets.
+IoU= TP
+TP+FP+FN .( 2 )
+F-measure(Fβ). TheF-measure, also known as theF1-
+score, combines precision and recall by considering their
+harmonic mean. It allows adjusting the weights of preci-
+sionandrecalltoaddressspeciﬁcproblemsandiseﬀective
+inhandlingimbalanceddatasets.
+F
+β = (1+ β2) Precision ·Recall
+β2 ·Precision+Recall .( 3 )
+Dice. Dice coeﬃcient is a commonly used evaluation
+metricformeasuringthesimilaritybetweenpredictedseg-
+mentation results and the ground truth segmentation tar-
+gets. Itprovides ascorerangingfrom0to1,where1indi-
+catesa perfectmatchand0indicates nomatchatall.
+Dice= 2 ×TP
+2 ×TP+FP+FN .( 4 )
+S-measure (Sα). Structure measure [99]e v a l u a t e st h e
+structuralsimilarityofsegmentation results.
+Sα = α·SO + (1– α) ·SR,( 5 )
+where SO represents the object similarity, which mea-
+surestheoverlapbetweenthesegmentationresultandthe
+ground truth target.SR represents the region similarity,
+which assesses the structural similarity between the seg-
+mentationresultandthegroundtruthtarget.Theparam-
+eter α is used to balance the weights between these two
+measures.
+E-measure (Eφ). Enhanced-measure [100]i su s e dt o
+evaluateregioncoverage.
+Eφ = (1+ φ2) ·SO ·SR
+φ2 ·SO +SR
+,( 6 )
+where the parameterφ is a balancing parameter that ad-
+justs the weight ratio between accuracy and region cover-
+age.
+
+===== PAGE 9 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page 9 of 20
+Table 4Benchmarkresultsof24representativepolypsegmentationmodels(18CNN-basedand6Transformer-basedmodels)onﬁve
+commonlyuseddatasetsintermsofSPEandSEN.Thetopthreeresultsaredisplayedinbold,italic,andunderlinedfonts
+Method Pub. ETIS-Larib CVC-ColonDB CVC-ClinicDB CVC-300 Kvasir
+SPE SEN SPE SEN SPE SEN SPE SEN SPE SEN
+U-Net[20] MICCAI2015 0.703 0.484 0.798 0.525 0.947 0.835 0.965 0.768 0.949 0.857
+UNet++[101] MICCAI2018 0.727 0.415 0.828 0.497 0.927 0.795 0.957 0.738 0.986 0.807
+SFA[22] MICCAI2018 0.781 0.633 0.861 0.703 0.919 0.802 0.934 0.889 0.965 0.799
+PraNet [26] MICCAI2020 0.805 0.688 0.874 0.740 0.990 0.911 0.988 0.941 0.978 0.912
+ACSNet[25] MICCAI2020 0.775 0.738 0.873 0.760 0.956 0.909 0.984 0.959 0.973 0.907
+MSEG[30] arxiv2021 0.844 0.740 0.912 0.753 0.992 0.924 0.989 0.934 0.985 0.900
+EU-Net[31] CRV2021 0.871 0.872 0.939 0.851 0.986 0.960 0.982 0.969 0.974 0.934
+SANet[8] MICCAI2021 0.943 0.904 0.952 0.811 0.989 0.952 0.989 0.971 0.986 0.915
+MSNet[9] MICCAI2021 0.893 0.796 0.931 0.775 0.975 0.933 0.988 0.931 0.981 0.911
+UACANet-S [34] ACMMM2021 0.887 0.833 0.958 0.801 0.991 0.942 0.992 0.959 0.976 0.911
+UACANet-L [34] ACMMM2021 0.932 0.813 0.953 0.754 0.992 0.943 0.993 0.940 0.983 0.923
+C2FNet[35] IJCAI2021 0.902 0.745 0.894 0.752 0.973 0.941 0.988 0.952 0.974 0.904
+DCRNet[53] ISBI2022 0.756 0.747 0.884 0.777 0.959 0.913 0.972 0.945 0.973 0.903
+BDG-Net[50] SPIEMI2022 0.879 0.820 0.949 0.827 0.990 0.942 0.992 0.957 0.984 0.918
+CaraNet[44] SPIEMI2022 0.910 0.812 0.947 0.858 0.991 0.955 0.976 0.927 0.982 0.912
+EFA-Net[102] arxiv2023 0.918 0.866 0.940 0.820 0.975 0.934 0.988 0.950 0.987 0.914
+CFANet[75] PR2023 0.910 0.804 0.953 0.761 0.991 0.960 0.990 0.952 0.985 0.926
+M2SNet[103] arxiv2023 0.893 0.796 0.931 0.775 0.975 0.933 0.988 0.931 0.981 0.911
+Polyp-PVT [33] arxiv2021 0.962 0.902 0.965 0.829 0.992 0.959 0.993 0.943 0.987 0.928
+HSNet[46] CBM2022 0.955 0.868 0.965 0.821 0.992 0.949 0.991 0.947 0.986 0.913
+DuAT[62] PRCV2023 0.941 0.891 0.962 0.841 0.992 0.956 0.991 0.956 0.984 0.933
+ESFPNet[72] MI2023 0.961 0.917 0.961 0.837 0.992 0.940 0.991 0.967 0.985 0.910
+FeDNet[70] BSPC2023 0.945 0.893 0.966 0.845 0.991 0.954 0.992 0.950 0.987 0.924
+SAM-B[104] arxiv2023 0.717 0.415 0.621 0.246 0.681 0.309 0.730 0.412 0.904 0.510
+SAM-H[104] arxiv2023 0.768 0.525 0.811 0.480 0.877 0.547 0.873 0.685 0.934 0.769
+SAM-L[104] arxiv2023 0.810 0.567 0.813 0.500 0.834 0.623 0.904 0.756 0.935 0.774
+MAE.Meanabsoluteerror(MAE)iscommonlyusedfor
+evaluatingregressiontasks.
+MAE= 1
+W ×H
+W∑
+i=1
+H∑
+j=1
+|Si,j – Gi,j|,( 7 )
+where W and H denote the width and height of the map,
+S represents the predicted segmentation map, andG rep-
+resentsthegroundtruthsegmentation map.
+Speciﬁcity.S p e c i ﬁ c i t ym e a s u r e st h em o d e l ’ sa b i l i t yt o
+recognizenegativesamples.Speciﬁcally,speciﬁcitycanbe
+calculatedusingEq.( 8):
+Speciﬁcity= TN
+TN+FP .( 8 )
+The value of speciﬁcity ranges between 0 and 1, with a
+higher value indicating a stronger ability of the model to
+recognize negative samples.
+4.2 Performancecomparisonandanalysis
+4.2.1 Overallevaluation
+To quantify the performance of diﬀerent models, we con-
+ducted a comprehensive evaluation of 24 representative
+polyp segmentation models, including 1) 18 CNN-based
+models: U-Net [20], UNet++ [101], SFA [22], PraNet
+[26], ACSNet [25], MSEG [30], EU-Net [31], SANet [8],
+MSNet [9], UACANet-S [34], UACANet-L [34], C2FNet
+[35], DCRNet [53], BDG-Net [50], CaraNet [44], EFA-
+Net [102], CFA-Net [75], and M2SNet [103], and 2) six
+Transformer-basedmethods:Polyp-PVT[ 33],HSNet[ 46],
+DuAT [62], ESFPNet [72], FeDNet [70], and SAM-based
+polysegmentationmodel(withthreediﬀerentbackbones,
+i.e.,SAM-B,SAM-H,andSAM-L[ 104]).First,weindivid-
+uallyevaluatedtheperformanceoftheaforementioned24
+modelsonSPE,SEN,Dice,IoU, S
+α,Fβ,Eφ,andMAEmet -
+rics across ﬁve public datasets (ETIS-LaribPolypDB [91],
+CVC-ColonDB[5],CVC-ClinicDB[ 7],CVC-300[ 92],and
+Kvasir-SEG [93]). The evaluation results are presented in
+Table4,T a b l e5 and Table6. Note that the results of all
+evaluated methods have been sourced from their respec-
+tive code repositories or original papers. Second, we also
+r e p o r tt h em e a nv a l u e so fD i c ea n dM A Ea c r o s st h eﬁ v e
+datasets for each model in Fig.3. It is worth noting that
+bettermodelsareshownintheupperleftcorner(i.e.,with
+a larger Dice and smaller MAE). From the results shown
+inFig. 3,weha vet hef ollowingobserva tions.
+CNNvs.Transformer .ComparedwithCNN-basedmod-
+els,Transformer-basedmethodsachievesigniﬁcantlybet-
+ter performance. Due to its feature extraction network
+
+===== PAGE 10 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page10of20
+Table 5Benchmarkresultsof24representativepolypsegmentationmodels(18CNN-basedand6Transformer-basedmodels)onﬁve
+commonlyuseddatasetsintermsofDice,IoU,and Sα
+Method Pub. ETIS-Larib CVC-ColonDB CVC-ClinicDB CVC-300 Kvasir
+Dice IoU Sα Dice IoU Sα Dice IoU Sα Dice IoU Sα Dice IoU Sα
+U-Net[20] MICCAI2015 0.398 0.335 0.684 0.504 0.436 0.710 0.823 0.755 0.889 0.710 0.627 0.843 0.818 0.746 0.858
+UNet++[101] MICCAI2018 0.401 0.344 0.683 0.482 0.408 0.692 0.794 0.729 0.873 0.707 0.624 0.839 0.821 0.743 0.862
+SFA[22] MICCAI2018 0.297 0.217 0.557 0.456 0.337 0.628 0.700 0.607 0.793 0.467 0.329 0.640 0.723 0.611 0.782
+PraNet [26] MICCAI2020 0.628 0.567 0.794 0.712 0.640 0.820 0.899 0.849 0.936 0.871 0.797 0.925 0.898 0.840 0.915
+ACSNet[25] MICCAI2020 0.578 0.509 0.754 0.716 0.649 0.829 0.882 0.826 0.927 0.863 0.787 0.923 0.898 0.838 0.920
+MSEG[30] arxiv2021 0.700 0.630 0.828 0.735 0.666 0.834 0.909 0.864 0.938 0.874 0.804 0.924 0.897 0.839 0.912
+EU-Net[31] CRV2021 0.687 0.609 0.793 0.756 0.681 0.831 0.902 0.846 0.936 0.837 0.765 0.904 0.908 0.854 0.917
+SANet[8] MICCAI2021 0.750 0.654 0.849 0.753 0.670 0.837 0.916 0.859 0.939 0.888 0.815 0.928 0.904 0.847 0.915
+MSNet[9] MICCAI2021 0.723 0.652 0.845 0.751 0.671 0.838 0.918 0.869 0.946 0.865 0.799 0.926 0.905 0.849 0.923
+UACANet-S [34] ACMMM2021 0.694 0.615 0.815 0.783 0.704 0.847 0.916 0.870 0.939 0.902 0.837 0.934 0.905 0.852 0.914
+UACANet-L [34] ACMMM2021 0.766 0.689 0.859 0.751 0.678 0.835 0.926 0.880 0.942 0.910 0.849 0.938 0.912 0.859 0.917
+C2FNet[35] IJCAI2021 0.699 0.624 0.827 0.724 0.650 0.826 0.919 0.872 0.941 0.874 0.801 0.927 0.886 0.831 0.905
+DCRNet[53] ISBI2022 0.556 0.496 0.736 0.704 0.631 0.821 0.896 0.844 0.933 0.856 0.788 0.921 0.886 0.825 0.911
+BDG-Net[50] SPIEMI2022 0.752 0.681 0.860 0.797 0.723 0.870 0.905 0.857 0.936 0.902 0.837 0.940 0.915 0.863 0.920
+CaraNet[44] SPIEMI2022 0.747 0.672 0.868 0.773 0.689 0.853 0.936 0.887 0.954 0.900 0.838 0.940 0.916 0.865 0.929
+EFA-Net[102] arxiv2023 0.749 0.670 0.858 0.774 0.696 0.855 0.919 0.871 0.943 0.894 0.830 0.941 0.914 0.861 0.929
+CFANet[75] PR2023 0.732 0.655 0.845 0.743 0.665 0.835 0.932 0.883 0.950 0.893 0.827 0.938 0.915 0.861 0.924
+M2SNet[103] arxiv2023 0.723 0.652 0.845 0.751 0.671 0.838 0.918 0.869 0.946 0.865 0.799 0.926 0.905 0.849 0.923
+Polyp-PVT [33] arXiv2021 0.787 0.706 0.871 0.808 0.727 0.865 0.937 0.889 0.949 0.900 0.833 0.935 0.917 0.864 0.925
+HSNet[46] CBM2022 0.808 0.734 0.882 0.810 0.735 0.868 0.948 0.905 0.953 0.903 0.839 0.937 0.926 0.877 0.927
+DuAT[62] PRCV2023 0.822 0.746 0.889 0.819 0.737 0.873 0.948 0.906 0.956 0.901 0.840 0.940 0.924 0.876 0.929
+ESFPNet[72] MI2023 0.823 0.748 0.891 0.811 0.730 0.864 0.928 0.883 0.943 0.902 0.836 0.934 0.917 0.866 0.923
+FeDNet[70] BSPC2023 0.810 0.733 0.892 0.823 0.744 0.878 0.930 0.885 0.949 0.911 0.848 0.946 0.924 0.876 0.933
+SAM-B[104] arxiv2023 0.406 0.370 0.672 0.215 0.188 0.553 0.268 0.231 0.572 0.371 0.339 0.650 0.515 0.459 0.682
+SAM-H[104] arxiv2023 0.517 0.477 0.730 0.441 0.396 0.676 0.547 0.500 0.738 0.651 0.606 0.812 0.778 0.707 0.829
+SAM-L[104] arxiv2023 0.551 0.507 0.751 0.468 0.422 0.690 0.578 0.526 0.744 0.726 0.676 0.849 0.782 0.710 0.832
+structure based on the self-attention mechanism, the
+Transformer can eﬀectively capture global context infor-
+mation.
+Comparison of deep models. Among the deep learning-
+based models, DuAT [62], FeDNet [70], ESFPNet [72],
+Polyp-PVT [33], HSNet [46], and BDG-Net [50]a c h i e v e
+muchbetter performance.
+Moreover, Fig.4 shows the PR andF-measure curves
+for the 23 representative polyp segmentation models on
+ﬁvedatasets(ETIS-LaribPolypDB[ 91],CVC-ColonDB[ 5],
+CVC-ClinicDB[ 7],CVC-300[ 92],andKvasir-SEG[ 93]).
+To provide a deeper understanding of the better-
+performing models, we will discuss the main character-
+isticsofthefollowingsixmodelsinthesectionsbelow.
+• DuAT [62]. Dual-aggregation Transformer network
+usesaTransformerarchitecturebasedonapyramidstruc-
+ture as an encoder, and the decoder adopts a dual-stream
+design,buildinglocalspatialattentionmodulesandglobal
+spatial attention modules to enhance the segmentation
+performanceofpolypsofdiﬀerent sizes.
+•FeDNet [70] decouples the input features into high-
+frequencyedgefeaturesandlow-frequencymainbodyfea-
+turesthroughafeaturedecouplingoperator,andthenpre-
+dictsbyfusingtheoptimizedfeaturesthroughafeaturefu-
+sionoperator.
+•ESFPNet[72]utilizesapre-trainedmixedTransformer
+encoder and an eﬃcient stage-wise feature pyramid de-
+coder structure, which fuses features from deep to shal-
+lowlayersandalsoperformslinearfusionoffeaturesfrom
+global to local, and connects them with intermediate ag-
+gregated features to obtain the ﬁnal segmentation result.
+•Polyp-PVT [33] introduces a pyramid vision Trans-
+former encoder to extract multi-scale features with long-
+range dependencies, utilizes high-level features for side
+outputsupervision,incorporatesattentionmechanismsto
+enhancelow-levelfeaturesandeliminatenoise,andﬁnally
+fusesmulti-levelfeatures.
+•HSNet [46]i sa l s ob a s e do naP V Te n c o d e ra n ds u p -
+presses noise information in low-level features by model-
+ing the semantic spatial relationships and channel depen-
+dencies of lower-layer features. It bridges feature dispari-
+ties through a semantic interaction mechanism and cap-
+tures long-range dependencies and local appearance de-
+tailsviaadual-branchstructure.
+•BDG-Net[ 50]aggregateshigh-level featurestogener-
+ateaboundarydistributionmap,whichisfedintoabound-
+arydistribution-guideddecoderandemploysamulti-scale
+feature interaction strategy to enhance segmentation pre-
+cision.
+
+===== PAGE 11 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page11of20
+Table 6Benchmarkresultsof24representativepolypsegmentationmodels(18CNN-basedand6Transformer-basedmodels)onﬁve
+commonlyuseddatasetsintermsof Fβ,Eφ,andMAE
+Method Pub. ETIS-Larib CVC-ColonDB CVC-ClinicDB CVC-300 Kvasir
+Fβ Eφ MAE Fβ Eφ MAE Fβ Eφ MAE Fβ Eφ MAE Fβ Eφ MAE
+U-Net[20] MICCAI2015 0.366 0.643 0.036 0.491 0.692 0.059 0.811 0.913 0.019 0.684 0.848 0.022 0.794 0.881 0.055
+UNet++[101] MICCAI2018 0.390 0.629 0.035 0.467 0.680 0.061 0.785 0.891 0.022 0.687 0.834 0.018 0.808 0.886 0.048
+SFA[22] MICCAI2018 0.231 0.531 0.109 0.366 0.661 0.094 0.647 0.840 0.042 0.341 0.644 0.065 0.670 0.834 0.075
+PraNet [26] MICCAI2020 0.600 0.808 0.031 0.699 0.847 0.043 0.896 0.963 0.009 0.843 0.950 0.010 0.885 0.944 0.030
+ACSNet[25] MICCAI2020 0.530 0.737 0.059 0.697 0.839 0.039 0.873 0.947 0.011 0.825 0.939 0.013 0.882 0.941 0.032
+MSEG[30] arxiv2021 0.671 0.855 0.015 0.724 0.859 0.038 0.907 0.961 0.007 0.852 0.948 0.009 0.885 0.942 0.028
+EU-Net[31] CRV2021 0.636 0.807 0.067 0.730 0.863 0.045 0.891 0.959 0.011 0.805 0.918 0.015 0.893 0.951 0.028
+SANet[8] MICCAI2021 0.685 0.881 0.015 0.726 0.869 0.043 0.909 0.971 0.012 0.859 0.962 0.008 0.892 0.949 0.028
+MSNet[9] MICCAI2021 0.677 0.875 0.020 0.736 0.872 0.041 0.913 0.973 0.008 0.848 0.945 0.010 0.892 0.947 0.028
+UACANet-S [34] ACMMM2021 0.650 0.848 0.023 0.772 0.894 0.034 0.917 0.965 0.008 0.886 0.974 0.006 0.897 0.948 0.026
+UACANet-L [34] ACMMM2021 0.740 0.903 0.012 0.746 0.875 0.039 0.928 0.974 0.006 0.901 0.977 0.005 0.902 0.955 0.025
+C2FNet[35] IJCAI2021 0.668 0.860 0.022 0.705 0.854 0.044 0.906 0.969 0.009 0.844 0.949 0.009 0.869 0.929 0.036
+DCRNet[53] ISBI2022 0.506 0.742 0.096 0.684 0.840 0.052 0.890 0.964 0.010 0.830 0.943 0.010 0.868 0.933 0.035
+BDG-Net[50] SPIEMI2022 0.719 0.901 0.014 0.781 0.901 0.028 0.898 0.959 0.008 0.883 0.969 0.005 0.906 0.959 0.025
+CaraNet[44] SPIEMI2022 0.709 0.875 0.017 0.729 0.880 0.042 0.931 0.985 0.007 0.887 0.977 0.007 0.909 0.962 0.023
+EFA-Net[102] arxiv2023 0.698 0.872 0.018 0.753 0.884 0.036 0.916 0.972 0.009 0.878 0.961 0.009 0.906 0.955 0.024
+CFANet[75] PR2023 0.693 0.881 0.014 0.728 0.869 0.039 0.924 0.981 0.007 0.875 0.962 0.008 0.903 0.956 0.023
+M2SNet[103] arxiv2023 0.677 0.875 0.020 0.736 0.872 0.041 0.913 0.973 0.008 0.848 0.945 0.010 0.892 0.947 0.028
+Polyp-PVT [33] arxiv2021 0.750 0.906 0.013 0.795 0.913 0.031 0.936 0.985 0.006 0.884 0.973 0.007 0.911 0.956 0.023
+HSNet[46] CBM2022 0.777 0.904 0.021 0.796 0.912 0.032 0.951 0.990 0.006 0.887 0.970 0.007 0.918 0.961 0.023
+DuAT[62] PRCV2023 0.789 0.917 0.013 0.805 0.922 0.026 0.950 0.990 0.006 0.890 0.965 0.005 0.916 0.960 0.023
+ESFPNet[72] MI2023 0.786 0.930 0.012 0.798 0.908 0.030 0.930 0.976 0.007 0.882 0.970 0.006 0.913 0.957 0.024
+FeDNet[70] BSPC2023 0.773 0.931 0.016 0.809 0.918 0.029 0.928 0.978 0.007 0.897 0.976 0.006 0.918 0.963 0.021
+SAM-B[104] arxiv2023 0.404 0.574 0.035 0.210 0.412 0.077 0.259 0.431 0.092 0.374 0.563 0.058 0.509 0.624 0.104
+SAM-H[104] arxiv2023 0.513 0.658 0.029 0.434 0.585 0.056 0.546 0.676 0.040 0.653 0.765 0.020 0.769 0.828 0.062
+SAM-L[104] arxiv2023 0.544 0.686 0.030 0.463 0.607 0.054 0.563 0.683 0.057 0.729 0.824 0.020 0.773 0.834 0.061
+4.2.2 Scale-basedevaluation
+To investigate the inﬂuence of scale variations, we carry
+outevaluationsonseveralrepresentativepolypsegmenta-
+tion models. We compute the ratio (r)o ft h es i z eo ft h e
+p o l y pb o d ya r e ai nag i v e ng r o u n dt r u t hi m a g e ,w h i c hi s
+used to characterize the size of the polyp. For this pur-
+pose, three types of polyp scales are deﬁned: 1) whenr is
+lessthan2.5 %,thepolypisconsidered“small”;2)when ris
+morethan20 %,itisconsidered“large”;3)whentheratiois
+withintherange [2.5%,20 %],wecallit“medium”.Inaddi-
+tion,wemixandclassifytheﬁvecolonoscopydatasetsand
+derive a newly constructed dataset containing 212, 334,
+and 77 images of “small”, “medium”, and “large” types, re-
+spectively.Figure 5presentsthecomparisonresultsinrela-
+tiontoscalevariations.Segmentationperformanceisrep-
+resented by three metrics (i.e., IoU,F
+β,and Eφ).
+Some sample images with diﬀerent scales of polyps are
+showninFig. 6.Visualcomparisonresultsofthescalevari-
+ationevaluationareshowninTable 7.Accordingtothere-
+sults, we can draw the following conclusions: (1) In terms
+of overall performance, DuAT [62]a n dF e D N e t[70]p e r -
+formbetteracrossalltypes,and(2)verticalanalysisreveals
+thatmostmodelsachievebetterperformanceinsegment-
+ing “medium” polyps while they exhibit relatively lower
+performanceinsegmenting othertypes.
+5 Challengesandfuturetrends
+5.1 Effectivenetworkstructure
+Edge feature extraction. The diverse shapes of polyps and
+thecomplexbackgroundofendoscopicimages,combined
+with blurred edges and adherences of polyps often pose
+challenges for accurate segmentation. To further improve
+accuracy and robustness, and to leverage richer and more
+compleximagefeatures,somemodelsintroduceedgefea-
+ture extraction modules ([22, 52, 59, 61]) to utilize low-
+level features to assist in polyp segmentation. Most polyp
+segmentationmodelscapturetheedgeinformationbyuti-
+lizing low-level features extracted by backbone networks,
+which are then aggregated with high-level features to ac-
+complish segmentation. However, after operations like
+convolution, the extracted image features, including edge
+and body features, become intertwined, making decou-
+pling extremely challenging. Additionally, as the tasks of
+feature extraction and segmentation are not orthogonal,
+incorrect edge estimation can lead to error propagation.
+Therefore, an optional choice is to decouple the original
+imagesusingtraditionalimageprocessingmethods.There
+has already been some work in the ﬁelds of object detec-
+tionandothersemanticsegmentationdomains.Shanetal.
+[105] utilized Fourier Transform to derive high and low-
+frequency components from images. These components
+
+===== PAGE 12 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page12of20
+Figure3 Acomprehensiveevaluationisconductedon23representativedeep-learningmodels,includingU-Net[ 20],UNet++[ 101],SFA[ 22],PraNet
+[26],ACSNet[ 25],MSEG[ 30],EU-Net[ 31],SANet[ 8],MSNet[ 9],UACANet-S[ 34],UACANet-L[ 34],C2FNet[ 35],DCRNet[ 53],BDG-Net[ 50],CaraNet
+[44],EFA-Net[ 102],CFA-Net[ 75],M2SNet[ 103],Polyp-PVT[ 33],HSNet[ 46],DuAT[ 62],ESFPNet[ 72],andFeDNet[ 70],withSAM[ 104]excluded.We
+reporttheaverageDiceandMAEvaluesforeachmodelacrossﬁvedatasets(i.e.,ETIS-LaribPolypDB[ 91],CVC-ColonDB[ 5],CVC-ClinicDB[ 7],CVC-300
+[92],andKvasir-SEG[ 93]).Pleasenotethatthemodelsrepresentedinthetopleftcornerarebetter,i.e.,theyhavelargerDicescoresandsmallerMAE
+values.Inthiscontext,thegreentrianglesrepresentTransformer-basedmodels,whilethereddiamondssignifyCNN-basedmodels
+Figure4 ThePRcurvesand F-measuresatdiﬀerentthresholdsfor23deeppolypsegmentationmodelsonﬁvedatasetsfromETIS-LaribPolypDB
+[91],CVC-ColonDB[ 5],CVC-ClinicDB[ 7],CVC-300[ 92],andKvasir-SEG[ 93]
+are then input into two parallel branches to obtain edge
+andbodyfeatures,whicharesubsequentlymergedtoper-
+form semantic segmentation. Cong et al. [106]d e s i g n eda
+full-frequency perception module based on Octave con-
+volution. This module can automatically learn low and
+high-frequency features for coarse positioning, provid-
+ing auxiliary information for segmentation. FeDNet [70]
+employs Laplacian pyramid decomposition to decouple
+the input features into high-frequency edge features and
+low-frequency body features. Following this, these two
+types of features undergo deep supervised optimization.
+The accuracy of polyp boundary annotations is contin-
+gent upon the quality of the image. In instances of sub-
+standardimagequality,likeblurrinessorinadequatelight-
+
+===== PAGE 13 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page13of20
+Figure5 Comparisonresultsfor23representativepolypsegmentationmodelsareshownintermsof Fβ (top)and Eφ (bottom)
+Figure6 Someimagesofpolypsinlarge,medium,andsmallsizes,
+alongwiththesegmentationmapsofsixtypicalmodels,including
+threeCNN-basedmodels:PraNet[ 26],SANet[ 8],andCFA-Net[ 75],
+andthreeTransformer-basedmodels:Polyp-PVT[ 33],HSNet[ 46],and
+DuAT[62].ThenumbersontheGTmaprepresenttheproportionof
+polyppixelstothetotalnumberofpixelsintheimage.Theimages
+aresourcedfromtheKvasir-SEG[ 93]dataset
+ing,theboundaryannotationsmaylackprecision.Insuch
+scenarios, models dependent on clear boundary informa-
+tioncouldyieldexcessiveorinsuﬃcientsegmentation,re-
+sulting in reduced diagnostic accuracy. Furthermore, in-
+accurate boundary annotations may elevate the boundary
+lossfunction,potentiallysteeringthemodeltowardserro-
+neousoptimizationpaths,thusdiminishingitsgeneraliza-
+tioncapacityandeﬀectiveness.
+Dual-stream structure. CNNs exhibit a powerful ca-
+pability to extract local features, such as texture and
+shape. However, CNNs are relatively weaker in captur-
+ing long-distance global dependencies. In this context,
+the Transformer can serve as a supplement. Due to its
+self-attention mechanism, it possesses an excellent abil-
+ity to capture global information. Therefore, introducing
+a dual-stream structure in existing polyp segmentation
+modelscanintegratelocalinformationcapturedbyCNNs
+and global information captured by the Transformer, en-
+hancing the performance of polyp segmentation. In addi-
+tion, this structure may improve the model’s capabilities
+to handle complex, uneven backgrounds and noise inter-
+ference, thereby increasing the robustness of the model
+[37, 46, 55, 56, 68]. It is important to note that how to ef-
+fectively merge the outputs from the two networks and
+balance their weights remains a problem. However, the
+tremendouspotentialandpossibilitiesundoubtedlyjustify
+furtherexplorationandresearch.
+5.2 Differentsupervisionstrategies
+Existing polyp segmentation models typically use fully-
+supervised strategies to learn features and produce seg-
+mentation results. However, annotating colonoscopy data
+istime-consumingandlabor-intensive,especiallyforvideo
+data.Toalleviatethisproblem,attentionhasbeenfocused
+on weakly-supervised and semi-supervised learning and
+
+===== PAGE 14 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page14of20
+Table 7Performancestudiesbasedonpolypsize.Comparisonresultsfor24representativepolypsegmentationmodels(18
+CNN-basedmodelsand6Transformer-basedmodels,inthiscontext,SAM[ 104]referstoSAM-L)areprovidedintermsofMAE,
+speciﬁcity(SPE),sensitivity(SEN)and Sα
+Scale CNN-basedmodels
+U-Net
+[20]
+UNet++
+[101]
+SFA
+[22]
+PraNet
+[26]
+ACSNet
+[25]
+MSEG
+[30]
+EU-Net
+[31]
+SANet
+[8]
+MSNet
+[9]
+UACANet
+-S[34]
+UACANet
+-L[34]
+C2FNet
+[35]
+MAE Small 0.026 0.015 0.109 0.037 0.034 0.014 0.041 0.014 0.019 0.020 0.012 0.026
+Medium 0.040 0.038 0.062 0.021 0.030 0.016 0.035 0.018 0.019 0.016 0.017 0.019
+Large 0.173 0.215 0.201 0.120 0.135 0.138 0.140 0.164 0.139 0.120 0.142 0.150
+Overall 0.051 0.052 0.095 0.039 0.044 0.031 0.050 0.035 0.034 0.030 0.031 0.038
+SPE Small 0.618 0.667 0.662 0.699 0.746 0.785 0.875 0.912 0.847 0.873 0.912 0.793
+Medium 0.888 0.911 0.940 0.955 0.915 0.964 0.954 0.980 0.975 0.975 0.974 0.974
+Large 0.856 0.869 0.966 0.937 0.942 0.946 0.919 0.941 0.918 0.971 0.953 0.899
+Overall 0.792 0.823 0.848 0.865 0.861 0.901 0.923 0.952 0.924 0.940 0.950 0.903
+SEN Small 0.377 0.402 0.575 0.569 0.680 0.660 0.806 0.850 0.720 0.743 0.743 0.642
+Medium 0.701 0.649 0.799 0.857 0.850 0.865 0.937 0.906 0.880 0.901 0.856 0.874
+Large 0.567 0.409 0.487 0.739 0.699 0.653 0.718 0.577 0.662 0.698 0.651 0.676
+Overall 0.574 0.535 0.684 0.744 0.773 0.769 0.866 0.846 0.799 0.822 0.792 0.770
+Sα Small 0.641 0.679 0.493 0.732 0.756 0.786 0.778 0.826 0.804 0.780 0.824 0.769
+Medium 0.800 0.784 0.736 0.893 0.876 0.904 0.885 0.902 0.907 0.907 0.897 0.903
+Large 0.684 0.590 0.639 0.791 0.772 0.743 0.745 0.698 0.751 0.768 0.735 0.741
+Overall 0.731 0.724 0.642 0.826 0.822 0.844 0.831 0.851 0.853 0.846 0.852 0.837
+Scale CNN-basedmodels Transformer-basedmodels
+DCRNet
+[53]
+BDG-Net
+[50]
+CaraNet
+[44]
+EFA-Net
+[102]
+CFA-Net
+[75]
+M2SNet
+[103]
+Polyp-PVT
+[33]
+HSNet
+[46]
+DuAT
+[62]
+ESFPNet
+[72]
+FeDNet
+[70]
+SAM
+[104]
+MAE Small 0.068 0.011 0.022 0.017 0.011 0.021 0.017 0.023 0.012 0.014 0.012 0.020
+Medium 0.035 0.013 0.021 0.019 0.017 0.016 0.014 0.013 0.013 0.012 0.016 0.038
+Large 0.152 0.114 0.106 0.112 0.138 0.122 0.101 0.112 0.094 0.107 0.099 0.199
+Overall 0.061 0.025 0.032 0.030 0.030 0.031 0.026 0.029 0.023 0.025 0.025 0.051
+SPE Small 0.783 0.846 0.889 0.875 0.884 0.876 0.929 0.915 0.940 0.924 0.944 0.732
+Medium 0.921 0.986 0.973 0.971 0.979 0.984 0.983 0.983 0.984 0.985 0.976 0.905
+Large 0.840 0.925 0.937 0.955 0.963 0.975 0.966 0.959 0.966 0.971 0.968 0.745
+Overall 0.864 0.931 0.940 0.937 0.945 0.946 0.963 0.957 0.967 0.963 0.964 0.827
+SEN Small 0.735 0.758 0.772 0.791 0.706 0.720 0.794 0.840 0.832 0.844 0.862 0.547
+Medium 0.853 0.899 0.909 0.894 0.879 0.889 0.894 0.908 0.902 0.903 0.896 0.563
+Large 0.654 0.735 0.805 0.736 0.663 0.702 0.776 0.742 0.786 0.758 0.776 0.836
+Overall 0.788 0.831 0.849 0.840 0.793 0.808 0.845 0.864 0.864 0.865 0.870 0.591
+Sα Small 0.747 0.824 0.827 0.825 0.809 0.807 0.833 0.849 0.854 0.842 0.871 0.737
+Medium 0.878 0.922 0.912 0.905 0.902 0.909 0.916 0.922 0.921 0.922 0.918 0.747
+Large 0.731 0.790 0.824 0.801 0.745 0.768 0.806 0.782 0.823 0.796 0.813 0.696
+Overall 0.815 0.873 0.872 0.865 0.851 0.857 0.874 0.880 0.886 0.879 0.889 0.737
+applyingthemtopolypsegmentationtasks[ 62,107].Actu-
+ally, semi-supervised or weakly supervised methods have
+beenwidelyappliedintheﬁeldofmedicalimagesegmen-
+tation.Forexample,Choetal.[ 108]proposedanoveldata
+augmentation approach for medical image segmentation
+that does not lose essential semantic information of the
+keyobjects.Judgeetal.[ 109]redeﬁnedthetraditionalper-
+pixel segmentation task as a contour regression problem
+and modeled the position uncertainty. Wei et al. [110]i n -
+troduced a semi-supervised medical image segmentation
+t e c h n i q u et h a tﬁ r s tt r a i n st h es e g m e n t a t i o nm o d e lo na
+small number of unlabeled images, generates initial la-
+bels for them, and then introduces a consistency-based
+pseudo-label enhancement scheme to improve the qual-
+ity of the model’s predictions. Therefore, in the future,
+semi/weakly supervised methods can be used for image-
+levellabelingandpseudo-annotationtoimprovetheaccu-
+racyofpolypsegmentation.
+5.3 Clinicalrequirements
+Clinical application prospects. Advanced computer-aided
+diagnosticsystemscangreatlyenhancetheinterpretability
+
+===== PAGE 15 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page15of20
+ofmedicalimages,assistingcliniciansinmakingmorepre-
+cisediagnosesandtreatmentdecisions.Theintegrationof
+artiﬁcial intelligence (AI) into neoadjuvant chemoradio-
+therapyalsoimprovesthetreatmentoutcomesandeﬃcacy
+assessmentincolorectalcancer.AIoﬀerstremendousop-
+portunities in the era of precision medicine [111]. How-
+ever, the utilization of AI in healthcare is subject to strin-
+gent regulations [112], with only a few AI-based medical
+deviceshavingreceivedregulatoryapproval[ 113].Incom-
+parisontotraditionalsystems,theﬁnalstageofinnovation
+in medical AI confronts numerous challenges, with deep
+learning models often criticized for their “black box” is-
+sues. User skepticism also poses a barrier to the clinical
+implementation of AI models. Deep learning models rely
+heavilyonamplelabeledtrainingdata,highlightingtheim-
+portance of engaging users consistently in algorithm en-
+hancement and enhancing data quality as a potential new
+communicationparadigm.
+Dataset collection. The shape, texture, and color of
+polyps can vary depending on the time and stage of the
+disease.Colonoscopydatafrommultiplecentersoftenex-
+hibitdiﬀerentmorphologies.Existingpolypsegmentation
+datasetsmostlyconsistofimagescontainingasinglepolyp,
+and there are not many specialized datasets with a large
+number of images. Only 23 out of the 623 images in the
+aforementioned ﬁve datasets (ETIS-LaribPolypDB [91],
+CVC-ColonDB[5],CVC-ClinicDB[ 7],CVC-300[ 92],and
+Kvasir-SEG[93])containmultiplepolyps.Therefore,mod-
+els trained on these datasets often perform poorly on
+tasksinvolvingmultiplepolyps.Althoughtherearemulti-
+ple public datasets available for polyp segmentation, their
+scale is quite limited. For instance, the largest dataset we
+present is PolypGen [95], which contains 3762 images.
+Therefore, it is necessary to develop a new large-scale
+polyp segmentation dataset to serve as a baseline for fu-
+ture research. In addition, collecting datasets for com-
+plex specialized scenarios is also a potential direction.
+For example, constructing multi-center datasets, multi-
+target datasets, and specialized datasets for small or large
+polypscouldenhancethemodel’sperformanceindiﬀerent
+scenarios. In medical diagnostics, various imaging tech-
+niques such as computed tomography, ultrasound, and
+endoscopy are commonly used. However, data utilized
+in polyp segmentation methods often stem from a sin-
+glemodality[ 114].Aggregationofmulti-modalandmulti-
+centerdatasetsplaysacriticalroleinovercomingthechal-
+lenges associated with polyp detection and segmentation
+during colonoscopy examinations, making this a key area
+forfutureresearch.
+Cross-domainsegmentation .Deeplearning-basedpolyp
+segmentation methods have achieved promising perfor-
+mance, but they often suﬀer from performance degrada-
+tion when applied to unseen target domain datasets col-
+lected from diﬀerent imaging devices. Therefore, it re-
+mains a challenge to apply existing polyp segmentation
+methods to unseen datasets. More importantly, manual
+annotation of new target datasets is tedious and labor-
+intensive, and leveraging the knowledge learned from
+the labeled source domains to boost the performance in
+the unlabeled target domain is highly demanded in clin-
+ical practice. To achieve this, Yang et al. [10]p r o p o s e da
+mutual-prototype adaptation network for cross-domain
+polyp segmentation, which signiﬁcantly reduces the gap
+between the two domains to improve the segmentation
+performance on the target domain datasets. Thus, this
+direction deserves further exploration to develop more
+cross-domainsegmentation models.
+Real-time polyp segmentation. Real-time segmentation
+isimportantforthepolypsegmentationtask,asitisantic-
+ipatedthatthesegmentedresultscanbeimmediatelypre-
+sentedtothephysicianduringthecolonoscopyprocedure
+forfurtherdecisions and treatment. However, the current
+deep learning-based models often require huge compu-
+tation complexity, making them challenging to apply for
+real-time segmentation. Several real-time polyp segmen-
+tation models have been developed [24, 63, 87, 115–119].
+Indeed,thedevelopmentofeﬃcientlightweightnetworks
+for polyp segmentation without sacriﬁcing performance
+is of utmost importance. However, it poses a signiﬁcant
+challenge due to the inherent trade-oﬀ between model
+complexity and eﬃciency. Eﬃcient lightweight networks
+can enable real-timesegmentation, reducecomputational
+costs, and facilitate deployment in resource-constrained
+clinicalsettings.Thus,overcomingthischallengeinvolves
+ﬁnding innovative solutions that strike a balance between
+model complexity and performance, ultimately enhanc-
+ing the practical applicability of polyp segmentation algo-
+rithmsinclinicalpractice.
+5.4 Ethicalissues
+The speciﬁcity of medical issues often raises concerns
+about privacy. Moreover, there are inherent diﬀerences
+between data obtained from diﬀerent centers. Models
+trainedondatafromasinglecentertendtoperformpoorly
+whenappliedtounseendataacquiredfromdiﬀerentscan-
+nersorothercenters.Thus,itbecomescrucialtoleverage
+theknowledgegainedfromlabeledsourcedomainstoen-
+hance the performance in unlabeled target domains. The
+aimistoreducethedomainshiftobservedincolonoscopy
+images obtained from multiple centers and devices. Fed-
+erated learning emerges as a promising approach in this
+context, enabling multiple centers to collaboratively learn
+a shared prediction model while ensuring privacy protec-
+tion.Forinstance,Liuetal.[ 120]presentedanovelmethod
+of incidental learning in continuous frequency space, en-
+abling diverse endpoints to utilize multi-source data dis-
+tributions while addressing challenging constraints asso-
+ciatedwith data dispersion.
+The widespread application of computer-assisted diag-
+nosticsystemshasraisedconcernsregardingthepotential
+
+===== PAGE 16 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page16of20
+for unintended bias in AI systems [121]. Speciﬁcally, AI-
+based segmentation methods heavily depend on training
+d a t a ,r e s u l t i n gi nv a r i o u se r r o r sw i t h i nA Im o d e l s[122].
+The utilization of AI technologies in healthcare is sub-
+ject to stringent regulations in the United States and the
+European Union [113, 123], with accountability emerging
+as a signiﬁcant issue warranting further exploration. Five
+primary themes inﬂuencing the credibility of medical AI
+include data quality, algorithmic biases, opacity, security
+considerations, and accountability [124]. Therefore, it is
+crucial not only to develop highly accurate and powerful
+segmentationmodels,butalsotodevelopstrategiestopro-
+mote public acceptance of AI-assisted healthcare and to
+eﬀectivelymanageandallocateresponsibilitiesintheﬁeld
+ofmedicalAI.
+6C o n c l u s i o n
+Inthispaper,tothebestofourknowledge,weprovidethe
+ﬁrstcomprehensivereviewofthedevelopmentandevalu-
+ationintheﬁeldofpolypsegmentation.Weﬁrstcategorize
+models into traditional and deep, and then focus on re-
+viewing existing deep models from various perspectives,
+followed by a summary of popular polyp segmentation
+datasets and detailed information for each dataset. Fol-
+lowingthat,weperformacomprehensivepolypsize-based
+evaluationof26representativedeeplearning-basedpolyp
+segmentation models. To this end, we constructed a new
+dataset for 26 representative polyp segmentation models.
+Furthermore, we discuss some challenges and highlight
+open directions for future research. We hope this survey
+willsparkmoreinterest andunderstanding inthisﬁeld.
+Abbreviations
+CNN,convolutionalneuralnetwork;CRC,colorectalcancer;CVC,computer
+visioncenter;DGH,directionalgradienthistogram;FCN,fullyconvolutional
+network;MAE,meanabsoluteerror;NBI,narrowbandimaging;PR,
+precision-recall;SAM,segmentanythingmodel;ViTs,visionTransformers.
+Authorcontributions
+Allauthorscontributedtotheliteraturesearchanddataanalysis.JMandTZ
+draftedtheoriginalmanuscript,afterwhichallauthorsparticipatedin
+reviewingandrevisingthepaper.Theﬁnalmanuscriptwasreadandapproved
+byallauthors.
+Funding
+ThisworkwassupportedinpartbytheNationalNaturalScienceFoundationof
+China(Nos.62172228,62201263,62106043,and62201265).
+Dataavailability
+Themodels,benchmarkdatasets,andsourcecodelinkswecollectedareall
+publishedat https://github.com/taozh2017/Awesome-Polyp-Segmentation.
+Thedatasetsusedinthisstudyarepubliclyavailableat:ETIS-LaribPolypDB:
+https://www.kaggle.com/datasets/nguyenvoquocduong/etis-laribpolypdb;
+CVC-ColonDB:http://vi.cvc.uab.es/colon-qa/cvccolondb/;CVC-ClinicDB:
+https://polyp.grand-challenge.org/CVCClinicDB/;CVC-300: https://pages.cvc.
+uab.es/CVC-Colon/index.php/databases/cvc-endoscenestill/;Kvasir-SEG:
+https://datasets.simula.no/kvasir-seg/.
+Declarations
+Competinginterests
+HuazhuFuisanAssociateEditoratVisualIntelligenceandwasnotinvolvedin
+theeditorialreviewofthisarticleorthedecisiontopublishit.Theauthors
+declarethattheyhavenoothercompetinginterests.
+Authordetails
+1PCALab,KeyLaboratoryofIntelligentPerceptionandSystemsfor
+High-DimensionalInformationofMinistryofEducation,Nanjing,China.
+2SchoolofComputerScienceandEngineering,NanjingUniversityofScience
+andTechnology,Nanjing,China. 3SchoolofComputerScienceand
+Engineering,SoutheastUniversity,Nanjing,China. 4InstituteofHigh
+PerformanceComputing,A*STAR,Singapore,Singapore.
+Received:7June2024 Revised:19December2024
+Accepted:19December2024
+References
+1. Guo,X.,Yang,C.,Liu,Y.,&Yuan,Y.(2021).Learntothreshold:ThresholdNet
+withconﬁdence-guidedmanifoldmixupforpolypsegmentation. IEEE
+TransactionsonMedicalImaging ,40(4),1134–1146.
+2. Yang,X.,Wei,Q.,Zhang,C.,Zhou,K.,Kong,L.,&Jiang,W.(2021).Colon
+polypdetectionandsegmentationbasedonimprovedMRCNN. IEEE
+TransactionsonInstrumentationandMeasurement ,70,1–10.
+3. Zhou,T.,Zhou,Y.,Li,G.,Chen,G.,&Shen,J.(2024).Uncertainty-aware
+hierarchicalaggregationnetworkformedicalimagesegmentation. IEEE
+TransactionsonCircuitsandSystemsforVideoTechnology ,34(8),
+7440–7453.
+4. Fan,D.,Ji,G.,Cheng,M.,&Shao,L.(2022).Concealedobjectdetection.
+IEEETransactionsonPatternAnalysisandMachineIntelligence ,44(10),
+6024–6042.
+5. Tajbakhsh,N.,Gurudu,S.,&Liang,J.(2016).Automatedpolypdetectionin
+colonoscopyvideosusingshapeandcontextinformation. IEEE
+TransactionsonMedicalImaging ,35(2),630–644.
+6. Iwahori,Y.,Hagi,H.,Usami,H.,Woodham,R.,Wang,A.,Bhuyan,M.,etal.
+(2017).Automaticpolypdetectionfromendoscopeimageusing
+likelihoodmapbasedonedgeinformation.In Proceedingsofthe
+internationalconferenceonpatternrecognitionapplicationsandmethods
+(pp.402–409).Setúbal:SciTePress.
+7. Bernal,J.,Sánchez,F.J.,Fernández-Esparrach,G.,Gil,D.,Rodríguez,C.,&
+Vilariño,F.(2015).WM-DOVAmapsforaccuratepolyphighlightingin
+colonoscopy:validationvs.saliencymapsfromphysicians. Computerized
+MedicalImagingandGraphics ,43,99–111.
+8. Wei,J.,Hu,Y.,Zhang,R.,Li,Z.,Zhou,S.K.,&Cui,S.(2021).Shallow
+attentionnetworkforpolypsegmentation.InM.deBruijne,P.C.Cattin,S.
+Cotin,etal.(Eds.), Proceedingsofthe24thinternationalconferenceon
+medicalimagecomputingandcomputer-assistedintervention (pp.
+699–708).Cham:Springer.
+9. Zhao,X.,Zhang,L.,&Lu,H.(2021).Automaticpolypsegmentationvia
+multi-scalesubtractionnetwork.InL.Wang,Q.Dou,P.T.Fletcher,etal.
+(Eds.),Proceedingsofthe25thinternationalconferenceonmedicalimage
+computingandcomputer-assistedintervention (pp.120–130).Cham:
+Springer.
+10. Yang,C.,Guo,X.,Zhu,M.,Ibragimov,B.,&Yuan,Y.(2021).
+Mutual-prototypeadaptationforcross-domainpolypsegmentation. IEEE
+JournalofBiomedicalandHealthInformatics ,25(10),3886–3897.
+11. Kirillov,A.,Mintun,E.,Ravi,N.,Mao,H.,Rolland,C.,Gustafson,L.,etal.
+(2023).Segmentanything.In ProceedingsoftheIEEE/CVFinternational
+conferenceoncomputervision (pp.3992–4003).Piscataway:IEEE.
+12. Li,Y.,Hu,M.,&Yang,X.(2023).Polyp-SAM:TransferSAMforpolyp
+segmentation.arXivpreprint. arXiv:2305.00293.
+13. Sanchez-Peralta,L.,Bote-Curiel,L.,Picon,A.,Sanchez-Margallo,F.,&
+Pagador,J.(2020).Deeplearningtoﬁndcolorectalpolypsin
+colonoscopy:asystematicliteraturereview. ArtiﬁcialIntelligencein
+Medicine,108,101923.
+14. Xiao,H.,Li,L.,Liu,Q.,Zhu,X.,&Zhang,Q.(2023).Transformersinmedical
+imagesegmentation:areview. BiomedicalSignalProcessingandControl ,
+84,104791.
+15. Gupta,S.,Sikka,G.,&Malik,A.(2023).Areviewondeeplearning-based
+polypsegmentationforeﬃcientcolorectalcancerscreening.In
+Proceedingsofthe3rdinternationalconferenceonsecurecybercomputing
+andcommunication (pp.501–506).Piscataway:IEEE.
+
+===== PAGE 17 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page17of20
+16. Qureshi,I.,Yan,J.,Abbas,Q.,Shaheed,K.,Riaz,A.,Wahid,A.,etal.(2023).
+Medicalimagesegmentationusingdeepsemantic-basedmethods:a
+reviewoftechniques,applicationsandemergingtrends. Information
+Fusion,90,316–352.
+17. Chowdhary,C.,&Acharjya,D.(2020).Segmentationandfeature
+extractioninmedicalimaging:asystematicreview. ProcediaComputer
+Science,167,26–36.
+18. Thisanke,H.,Deshan,C.,Chamith,K.,Seneviratne,S.,Vidanaarachchi,R.,&
+Herath,D.(2023).Semanticsegmentationusingvisiontransformers:a
+survey.EngineeringApplicationsofArtiﬁcialIntelligence ,126,106669.
+19. Bennai,M.,Guessoum,Z.,Mazouzi,S.,Cormier,S.,&Mezghiche,M.(2023).
+Multi-agentmedicalimagesegmentation:asurvey. ComputerMethods
+andProgramsinBiomedicine ,232,107444.
+20. Ronneberger,O.,Fischer,P.,&Brox,T.(2015).U-Net:convolutional
+networksforbiomedicalimagesegmentation.InD.Shen,T.Liu,T.M.
+Peters,etal.(Eds.), Proceedingsofthe22ndinternationalconferenceon
+medicalimagecomputingandcomputer-assistedintervention (pp.
+234–241).Cham:Springer.
+21. Long,J.,Shelhamer,E.,&Darrell,T.(2015).Fullyconvolutionalnetworks
+forsemanticsegmentation.In ProceedingsoftheIEEEconferenceon
+computervisionandpatternrecognition (pp.3431–3440).Piscataway:IEEE.
+22. Fang,Y.,Chen,C.,Yuan,Y.,&Tong,K.(2019).Selectivefeatureaggregation
+networkwitharea-boundaryconstraintsforpolypsegmentation.InD.
+Shen,T.Liu,T.M.Peters,etal.(Eds.), Proceedingsofthe22ndinternational
+conferenceonmedicalimagecomputingandcomputer-assisted
+intervention(pp.302–310).Cham:Springer.
+23. Jha,D.,Smedsrud,P.,Riegler,M.,Johansen,D.,DeLange,T.,Halvorsen,P.,
+etal.(2019).ResUNet++:anadvancedarchitectureformedicalimage
+segmentation.In ProceedingsoftheIEEEinternationalsymposiumon
+multimedia(pp.225–2255).Piscataway:IEEE.
+24. Zhong,J.,Wang,W.,Wu,H.,Wen,Z.,&Qin,J.(2020).PolypSeg:aneﬃcient
+context-awarenetworkforpolypsegmentationfromcolonoscopy
+videos.InA.L.Martel,P.Abolmaesumi,D.Stoyanov,etal.(Eds.),
+Proceedingsofthe23rdinternationalconferenceonmedicalimage
+computingandcomputer-assistedintervention (pp.285–294).Cham:
+Springer.
+25. Zhang,R.,Li,G.,Li,Z.,Cui,S.,Qian,D.,&Yu,Y.(2020).Adaptivecontext
+selectionforpolypsegmentation.InA.L.Martel,P.Abolmaesumi,D.
+Stoyanov,etal.(Eds.), Proceedingsofthe23rdinternationalconferenceon
+medicalimagecomputingandcomputer-assistedintervention (pp.
+253–262).Cham:Springer.
+26. Fan,D.,Ji,G.,Zhou,T.,Chen,G.,Fu,H.,Shen,J.,etal.(2020).PraNet:parallel
+reverseattentionnetworkforpolypsegmentation.InA.L.Martel,P.
+Abolmaesumi,D.Stoyanov,etal.(Eds.), Proceedingsofthe23rd
+internationalconferenceonmedicalimagecomputingand
+computer-assistedintervention (pp.263–273).Cham:Springer.
+27. Akbari,M.,Mohrekesh,M.,Nasr-Esfahani,E.,Soroushmehr,S.,Karimi,N.,
+Samavi,S.,etal.(2018).Polypsegmentationincolonoscopyimagesusing
+fullyconvolutionalnetwork.In Proceedingsofthe40thannual
+internationalconferenceoftheIEEEEngineeringinmedicineandbiology
+society(pp.69–72).Piscataway:IEEEengineering.
+28. Tomar,N.,Jha,D.,Ali,S.,Johansen,H.,Johansen,D.,Riegler,M.,etal.
+(2021).DDANet:dualdecoderattentionnetworkforautomaticpolyp
+segmentation.InA.delBimbo,R.Cucchiara,S.Sclaroﬀ,etal.(Eds.),
+Proceedingsoftheinternationalworkshopsandchallengesonpattern
+recognition(pp.307–314).Cham:Springer.
+29. Srivastava,A.,Jha,D.,Chanda,S.,Pal,U.,Johansen,H.,Johansen,D.,etal.
+(2021).MSRF-Net:amulti-scaleresidualfusionnetworkforbiomedical
+imagesegmentation. IEEEJournalofBiomedicalandHealthInformatics ,
+26(5),2252–2263.
+30. Huang,C.,Wu,H.,&Lin,Y.(2021).HarDNet-MSEG:asimple
+encoder-decoderpolypsegmentationneuralnetworkthatachievesover
+0.9meandiceand86fps.arXivpreprint. arXiv:2101.07172.
+31. Patel,K.,Bur,A.,&Wang,G.(2021).EnhancedU-Net:afeature
+enhancementnetworkforpolypsegmentation.In Proceedingsofthe18th
+conferenceonrobotsandvision
+(pp.181–188).Piscataway:IEEE.
+32. Tomar,N.,Jha,D.,Riegler,M.,Johansen,H.,Johansen,D.,Rittscher,J.,etal.
+(2021).FANet:afeedbackattentionnetworkforimprovedbiomedical
+imagesegmentation.arXivpreprint. arXiv:2103.17235.
+33. Dong,B.,Wang,W.,Fan,D.,Li,J.,Fu,H.,&Shao,L.(2021).Polyp-PVT:polyp
+segmentationwithpyramidvisiontransformers.arXivpreprint. arXiv:
+2108.06932.
+34. Kim,T.,Lee,H.,&Kim,D.(2021).UACANet:uncertaintyaugmented
+contextattentionforpolypsegmentation.In Proceedingsofthe29thACM
+internationalconferenceonmultimedia (pp.2167–2175).NewYork:ACM.
+35. Sun,Y.,Chen,G.,Zhou,T.,Zhang,Y.,&Liu,N.(2021).Context-aware
+cross-levelfusionnetworkforcamouﬂagedobjectdetection.InZ.-H.
+Zhou(Ed.), Proceedingsofthe30thinternationaljointconferenceon
+artiﬁcialintelligence (pp.1025–1031).Cham:Springer.
+36. Jha,D.,Smedsrud,P.,Johansen,D.,deLange,T.,Johansen,H.,Halvorsen,
+P.,etal.(2021).Acomprehensivestudyoncolorectalpolypsegmentation
+withResUNet++,conditionalrandomﬁeldandtest-timeaugmentation.
+IEEEJournalofBiomedicalandHealthInformatics ,25(6),2029–2040.
+37. Zhang,Y.,Liu,H.,&Hu,Q.(2021).Transfuse:fusingtransformersandCNNs
+formedicalimagesegmentation.InM.deBruijne,P.C.Cattin,S.Cotin,et
+al.(Eds.), Proceedingsofthe24thinternationalconferenceonmedicalimage
+computingandcomputer-assistedintervention (pp.14–24).Cham:
+Springer.
+38. Wu,L.,Hu,Z.,Ji,Y.,Luo,P.,&Zhang,S.(2021).Multi-framecollaborationfor
+eﬀectiveendoscopicvideopolypdetectionviaspatial-temporalfeature
+transformation.InM.deBruijne,P.C.Cattin,S.Cotin,etal.(Eds.),
+Proceedingsofthe24thinternationalconferenceonmedicalimage
+computingandcomputer-assistedintervention (pp.302–312).Cham:
+Springer.
+39. Cheng,M.,Kong,Z.,Song,G.,Tian,Y.,Liang,Y.,&Chen,J.(2021).Learnable
+oriented-derivativenetworkforpolypsegmentation.InM.deBruijne,P.
+C.Cattin,S.Cotin,etal.(Eds.), Proceedingsofthe24thinternational
+conferenceonmedicalimagecomputingandcomputer-assisted
+intervention(pp.720–730).Cham:Springer.
+40. Nguyen,T.,Nguyen,T.,Diep,G.,Tran-Dinh,A.,Nguyen,T.,&Tran,M.
+(2021).CCBANet:cascadingcontextandbalancingattentionforpolyp
+segmentation.InM.deBruijne,P.C.Cattin,S.Cotin,etal.(Eds.),
+Proceedingsofthe24thinternationalconferenceonmedicalimage
+computingandcomputer-assistedintervention (pp.633–643).Cham:
+Springer.
+41. Shen,Y.,Jia,X.,&Meng,M.(2021).HRENet:ahardregionenhancement
+networkforpolypsegmentation.InM.deBruijne,P.C.Cattin,S.Cotin,et
+al.(Eds.), Proceedingsofthe24thinternationalconferenceonmedicalimage
+computingandcomputer-assistedintervention (pp.559–568).Cham:
+Springer.
+42. Srivastava,A.,Chanda,S.,Jha,D.,Pal,U.,&Ali,S.(2022).GMSRF-Net:an
+improvedgeneralizabilitywithglobalmulti-scaleresidualfusionnetwork
+forpolypsegmentation.In Proceedingsofthe26thinternationalconference
+onpatternrecognition (pp.4321–4327).Piscataway:IEEE.
+43. Tomar,N.,Jha,D.,Bagci,U.,&Ali,S.(2022).TGANet:text-guidedattention
+forimprovedpolypsegmentation.InL.Wang,Q.Dou,P.T.Fletcher,etal.
+(Eds.),Proceedingsofthe25thinternationalconferenceonmedicalimage
+computingandcomputer-assistedintervention (pp.151–160).Cham:
+Springer.
+44. Lou,A.,Guan,S.,Ko,H.,&Loew,M.(2022).CaraNet:contextaxialreverse
+attentionnetworkforsegmentationofsmallmedicalobjects.InO.
+Colliot,I.Isgum,B.A.Landman,etal.(Eds.), Medicalimaging:image
+processing(pp.81–92).Bellingham:SPIE.
+45. Wu,C.,Long,C.,Li,S.,Yang,J.,Jiang,F.,&Zhou,R.(2022).MSRAformer:
+multiscalespatialreverseattentionnetworkforpolypsegmentation.
+ComputersinBiologyandMedicine ,151,106274.
+46. Zhang,W.,Fu,C.,Zheng,Y.,Zhang,F.,Zhao,Y.,&Sham,C.(2022).HSNet:a
+hybridsemanticnetworkforpolypsegmentation. ComputersinBiology
+andMedicine,150,106173.
+47. Patel,K.,Li,F.,&Wang,G.(2022).FuzzyNet:afuzzyattentionmodulefor
+polypsegmentation.In Proceedingsofthe36thinternationalconferenceon
+neuralinformationprocessingsystemsworkshops (pp.1–11).RedHook:
+CurranAssociates.
+48. Zhang,R.,Lai,P.,Wan,X.,Fan,D.,Gao,F.,Wu,X.,etal.(2022).Lesion-aware
+dynamickernelforpolypsegmentation.InL.Wang,Q.Dou,P.T.Fletcher,
+etal.(Eds.), Proceedingsofthe25thinternationalconferenceonmedical
+imagecomputingandcomputer-assistedintervention (pp.99–109).Cham:
+Springer.
+49. Liao,T.,Yang,C.,Lo,Y.,Lai,K.,Shen,P.,&Lin,Y.(2022).HarDNet-DFUS:an
+enhancedharmonically-connectednetworkfordiabeticfootulcerimage
+segmentationandcolonoscopypolypsegmentation.arXivpreprint.
+arXiv:2209.07313.
+50. Qiu,Z.,Wang,Z.,Zhang,M.,Xu,Z.,Fan,J.,&Xu,L.(2022).BDG-Net:
+boundarydistributionguidednetworkforaccuratepolypsegmentation.
+
+===== PAGE 18 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page18of20
+InO.Colliot,I.Isgum,B.A.Landman,etal.(Eds.), Medicalimaging:image
+processing(pp.792–799).Bellingham:SPIE.
+51. Duc,N.,Oanh,N.,Thuy,N.,Triet,T.,&Dinh,V.(2022).ColonFormer:an
+eﬃcienttransformerbasedmethodforcolonpolypsegmentation. IEEE
+Access,10,80575–80586.
+52. Sanderson,E.,&Matuszewski,B.(2022).FCN-transformerfeaturefusion
+forpolypsegmentation.In Proceedingsofthe26thannualconferenceon
+medicalimageunderstandingandanalysis (pp.892–907).Cham:Springer.
+53. Yin,Z.,Liang,K.,Ma,Z.,&Guo,J.(2022).Duplexcontextualrelation
+networkforpolypsegmentation.In ProceedingsoftheIEEE19th
+internationalsymposiumonbiomedicalimaging (pp.1–5).Piscataway:
+IEEE.
+54. Wang,J.,Huang,Q.,Tang,F.,Meng,J.,Su,J.,&Song,S.(2022).Stepwise
+featurefusion:localguidesglobal.InL.Wang,Q.Dou,P.T.Fletcher,etal.
+(Eds.),Proceedingsofthe25thinternationalconferenceonmedicalimage
+computingandcomputer-assistedintervention (pp.110–120).Cham:
+Springer.
+55. Nguyen,M.,Bui,T.,vanNguyen,Q.,Nguyen,T.,&vanPham,T.(2022).
+LAPFormer:alightandaccuratepolypsegmentationtransformer.arXiv
+preprint.arXiv:2210.04393.
+56. Cai,L.,Wu,M.,Chen,L.,Bai,W.,Yang,M.,Lyu,S.,etal.(2022).Usingguided
+self-attentionwithlocalinformationforpolypsegmentation.InL.Wang,
+Q.Dou,P.T.Fletcher,etal.(Eds.), Proceedingsofthe25thinternational
+conferenceonmedicalimagecomputingandcomputer-assisted
+intervention(pp.629–638).Cham:Springer.
+57. Lin,Y.,Wu,J.,Xiao,G.,Guo,J.,Chen,G.,&Ma,J.(2022).BSCA-Net:bit
+slicingcontextattentionnetworkforpolypsegmentation. Pattern
+Recognition,132,108917.
+58. Wei,J.,Hu,Y.,Li,G.,Cui,S.,Zhou,K.S.,&Li,Z.(2022).BoxPolyp:boost
+generalizedpolypsegmentationusingextracoarseboundingbox
+annotations.InL.Wang,Q.Dou,P.T.Fletcher,etal.(Eds.), Proceedingsof
+the25thinternationalconferenceonmedicalimagecomputingand
+computer-assistedintervention (pp.67–77).Cham:Springer.
+59. Xiao,Y.,Chen,Z.,Wan,L.,Yu,L.,&Zhu,L.(2022).ICBNet:iterative
+context-boundaryfeedbacknetworkforpolypsegmentation.In
+ProceedingsoftheIEEEinternationalconferenceonbioinformaticsand
+biomedicine(pp.1297–1304).Piscataway:IEEE.
+60. Chen,R.,Wang,X.,Jin,B.,Tu,J.,Zhu,F.,&Li,Y.(2022).CLD-Net:
+complementlocaldetailformedicalsmall-objectsegmentation.In
+ProceedingsoftheIEEEinternationalconferenceonbioinformaticsand
+biomedicine(pp.942–947).Piscataway:IEEE.
+61. Lu,L.,Zhou,X.,Chen,S.,Chen,Z.,Yu,J.,Tang,H.,etal.(2022).
+Boundary-awarepolypsegmentationnetwork.InS.Yu,Z.Zhang,P.C.
+Yuen,etal.(Eds.), Proceedingsofthe5thChineseconferenceonpattern
+recognitionandcomputervision (pp.66–77).Cham:Springer.
+62. Tang,F.,Xu,Z.,Huang,Q.,Wang,J.,Hou,X.,Su,J.,etal.(2023).DuAT:
+dual-aggregationtransformernetworkformedicalimagesegmentation.
+InQ.Liu,H.Wang,Z.Ma,etal.(Eds.), Proceedingsofthe6thChinese
+conferenceonpatternrecognitionandcomputervision (pp.343–356).
+Cham:Springer.
+63. Wu,H.,Zhao,Z.,Zhong,J.,Wang,W.,Wen,Z.,&Qin,J.(2023).PolypSeg+:a
+lightweightcontext-awarenetworkforreal-timepolypsegmentation.
+IEEETransactionsonCybernetics ,53(4),2610–2621.
+64. Yue,G.,Li,S.,Cong,R.,Zhou,T.,Lei,B.,&Wang,T.(2023).Attention-guided
+pyramidcontextnetworkforpolypsegmentationincolonoscopy
+images.IEEETransactionsonInstrumentationandMeasurement ,72,1–13.
+65. Wang,K.,Liu,L.,Fu,X.,Liu,L.,&Peng,W.(2023).RA-DENet:reverse
+attentionanddistractionseliminationnetworkforpolypsegmentation.
+ComputersinBiologyandMedicine ,155,106704.
+66. Su,Y.,Cheng,J.,Zhong,C.,Jiang,C.,Ye,J.,&He,J.(2023).Accuratepolyp
+segmentationthroughenhancingfeaturefusionandboostingboundary
+performance.Neurocomputing,
+545,126233.
+67. Hu,K.,Chen,W.,Sun,Y.,Hu,X.,Zhou,Q.,&Zheng,Z.(2023).PPNet:
+pyramidpoolingbasednetworkforpolypsegmentation. Computersin
+BiologyandMedicine ,160,107028.
+68. Wang,Y.,Deng,Z.,Lou,Q.,Hu,S.,Choi,K.,&Wang,S.(2023).Cooperation
+learningenhancedcolonicpolypsegmentationbasedon
+Transformer-CNNfusion.arXivpreprint. arXiv:2301.06892.
+69. Tomar,N.,Jha,D.,&Bagci,U.(2023).DilatedSegNet:adeepdilated
+segmentationnetworkforpolypsegmentation.InD.-T.Dang-Nguyen,C.
+Gurrin,M.A.Larson,etal.(Eds.), Proceedingsofthe29thinternational
+conferenceonmultimediamodeling (pp.334–344).Cham:Springer.
+70. Su,Y.,Cheng,J.,Zhong,C.,Zhang,Y.,Ye,J.,He,J.,etal.(2023).FeDNet:
+featuredecouplednetworkforpolypsegmentationfromendoscopy
+images.BiomedicalSignalProcessingandControl ,83,104699.
+71. Nguyen-Mau,T.,Trinh,Q.,Bui,N.,Thi,P.,Nguyen,M.,Cao,X.,etal.(2023).
+PEFNet:positionalembeddingfeatureforpolypsegmentation.InD.-T.
+Dang-Nguyen,C.Gurrin,M.A.Larson,etal.(Eds.), Proceedingsofthe29th
+internationalconferenceonmultimediamodeling (pp.240–251).Cham:
+Springer.
+72. Chang,Q.,Ahmad,D.,Toth,J.,Bascom,R.,&Higgins,W.(2023).ESFPNet:
+eﬃcientdeeplearningarchitectureforreal-timelesionsegmentationin
+autoﬂuorescencebronchoscopicvideo.InB.S.Gimi&A.Krol(Eds.),
+Medicalimaging:biomedicalapplicationsinmolecular,structural,and
+functionalimaging (pp.1–7).Bellingham:SPIE.
+73. Jha,D.,Tomar,N.,Sharma,V.,&Bagci,U.(2023).TransNetR:
+transformer-basedresidualnetworkforpolypsegmentationwith
+multi-centerout-of-distributiontesting.InI.Oguz,J.H.Noble,X.Li,etal.
+(Eds.),Medicalimagingwithdeeplearningmedicalimagingwithdeep
+learning(pp.1372–1384).RetrievedDecember1,2024,from https://
+proceedings.mlr.press/v227/jha24a.html.
+74. Rahman,M.,&Marculescu,R.(2023).Medicalimagesegmentationvia
+cascadedattentiondecoding.In ProceedingsoftheIEEE/CVFwinter
+conferenceonapplicationsofcomputervision (pp.6222–6231).Piscataway:
+IEEE.
+75. Zhou,T.,Zhou,Y.,He,K.,Gong,C.,Yang,J.,Fu,H.,etal.(2023).Cross-level
+featureaggregationnetworkforpolypsegmentation. PatternRecognition,
+140,109555.
+76. Yao,J.,Miller,M.,Franaszek,M.,&Summers,R.(2004).Colonicpolyp
+segmentationinCTcolonography-basedonfuzzyclusteringand
+deformablemodels. IEEETransactionsonMedicalImaging ,23(11),
+1344–1352.
+77. Lu,L.,Barbu,A.,Wolf,M.,Liang,J.,Salganicoﬀ,M.,&Comaniciu,D.(2008).
+Accuratepolypsegmentationfor3DCTcolongraphyusingmulti-staged
+probabilisticbinarylearningandcompositionalmodel.In Proceedingsof
+theIEEEconferenceoncomputervisionandpatternrecognition (pp.1–8).
+Piscataway:IEEE.
+78. Gross,S.,Kennel,M.,Stehle,T.,Wulﬀ,J.,Tischendorf,J.,Trautwein,C.,etal.
+(2009).PolypsegmentationinNBIcolonoscopy.InH.-P.Meinzer,T.M.
+Deserno,H.Handels,etal.(Eds.), BildverarbeitungfürdieMedizin2009:
+Algorithmen—Systeme—AnwendungenProceedingsdesWorkshops (pp.
+252–256).Cham:Springer.
+79. Ganz,M.,Yang,X.,&Slabaugh,G.(2012).Automaticsegmentationof
+polypsincolonoscopicnarrow-bandimagingdata. IEEETransactionson
+BiomedicalEngineering,59(8),2144–2151.
+80. Wang,W.,Xie,E.,Li,X.,Fan,D.,Song,K.,Liang,D.,etal.(2022).PVTv2:
+improvedbaselineswithpyramidvisiontransformer. Computational
+VisualMedia,8(3),415–424.
+81. Wang,X.,Ding,H.,&Jiang,X.(2019).Dermoscopicimagesegmentation
+throughtheenhancedhigh-levelparsingandclassweightedloss.In
+ProceedingsoftheIEEEinternationalconferenceonimageprocessing (pp.
+245–249).Piscataway:IEEE.
+82. Wang,X.,Jiang,X.,Ding,H.,&Liu,J.(2019).Bi-directionaldermoscopic
+featurelearningandmulti-scaleconsistentdecisionfusionforskinlesion
+segmentation.IEEETransactionsonImageProcessing ,29,3039–3051.
+83. Wang,X.,Jiang,X.,Ding,H.,Zhao,Y.,&Liu,J.(2021).Knowledge-aware
+deepframeworkforcollaborativeskinlesionsegmentationand
+melanomarecognition. PatternRecognition,120,108075.
+84. Ji,G.,Xiao,G.,Chou,Y.,Fan,D.,Zhao,K.,Chen,G.,etal.(2022).Videopolyp
+segmentation:adeeplearningperspective. MachineIntelligenceResearch ,
+19(6),531–549.
+85. Zhao,X.,Wu,Z.,Tan,S.,Fan,D.,Li,Z.,Wan,X.,etal.(2022).Semi-supervised
+spatialtemporalattentionnetworkforvideopolypsegmentation.InL.
+W ang,Q .Dou,P .T .Fletcher ,etal.(Eds.),Proceedingsofthe25th
+internationalconferenceonmedicalimagecomputingand
+computer-assistedintervention (pp.456–466).Cham:Springer.
+86. Ji,G.,Chou,Y.,Fan,D.,Chen,G.,Fu,H.,Jha,D.,etal.(2021).Progressively
+normalizedself-attentionnetworkforvideopolypsegmentation.InM.
+deBruijne,P.C.Cattin,S.Cotin,etal.(Eds.), Proceedingsofthe24th
+internationalconferenceonmedicalimagecomputingand
+computer-assistedintervention (pp.142–152).Cham:Springer.
+87. Jha,D.,Tomar,N.,Ali,S.,Riegler,M.,Johansen,H.,Johansen,D.,etal.
+(2021).NanoNet:real-timepolypsegmentationinvideocapsule
+endoscopyandcolonoscopy.In ProceedingsoftheIEEE34thinternational
+
+===== PAGE 19 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page19of20
+symposiumoncomputer-basedmedicalsystems (pp.37–43).Piscataway:
+IEEE.
+88. Sandler,M.,Howard,A.,Zhu,M.,Zhmoginov,A.,&Chen,L.(2018).
+Mobilenetv2:invertedresidualsandlinearbottlenecks.In Proceedingsof
+theIEEE/CVFconferenceoncomputervisionandpatternrecognition (pp.
+4510–4520).Piscataway:IEEE.
+89. Ma,Y.,Chen,X.,Cheng,K.,Li,Y.,&Sun,B.(2021).LDPolypVideo
+benchmark:alarge-scalecolonoscopyvideodatasetofdiversepolyps.In
+M.deBruijne,P.C.Cattin,S.Cotin,etal.(Eds.), Proceedingsofthe24th
+internationalconferenceonmedicalimagecomputingand
+computer-assistedintervention (pp.387–396).Cham:Springer.
+90. Wang,A.,Xu,M.,Zhang,Y.,Islam,M.,&Ren,H.(2023).S 2ME:
+spatial-spectralmutualteachingandensemblelearningfor
+scribble-supervisedpolypsegmentation.InH.Greenspan,A.
+Madabhushi,P.Mousavi,etal.(Eds.), Proceedingsofthe26thinternational
+conferenceonmedicalimagecomputingandcomputer-assisted
+intervention(pp.35–45).Cham:Springer.
+91. Silva,J.,Histace,A.,Romain,O.,Dray,X.,&Granado,B.(2014).Toward
+embeddeddetectionofpolypsinWCEimagesforearlydiagnosisof
+colorectalcancer. InternationalJournalofComputerAssistedRadiologyand
+Surgery,9,283–293.
+92. Vázquez,D.,Bernal,J.,Sánchez,F.,Fernández-Esparrach,G.,López,A.,
+Romero,A.,etal.(2017).Abenchmarkforendoluminalscene
+segmentationofcolonoscopyimages. JournalofHealthcareEngineering ,
+2017(1),4037190.
+93. Jha,D.,Smedsrud,P.,Riegler,M.,Halvorsen,P.,deLange,T.,Johansen,D.,
+etal.(2020).Kvasir-SEG:asegmentedpolypdataset.InY.M.Ro,W.-H.
+Cheng,J.Kim,etal.(Eds.), Proceedingsofthe26thinternationalconference
+onmultimediamodeling (pp.451–462).Cham:Springer.
+94. Sánchez-Peralta,L.,Pagador,J.,Picón,A.,Calderón,Á.,Polo,F.,Andraka,N.,
+etal.(2020).PICCOLOwhite-lightandnarrow-bandimaging
+colonoscopicdataset:aperformancecomparativeofmodelsand
+datasets.AppliedSciences,10(23),8501.
+95. Ali,S.,Jha,D.,Ghatwary,N.,Realdon,S.,Cannizzaro,R.,Salem,O.,etal.
+(2023).Amulti-centrepolypdetectionandsegmentationdatasetfor
+generalisabilityassessment. ScientiﬁcData,10,75.
+96. Center,R.U.M.(2017).Gastrointestinalimageanalysis(GIANA)challenge.
+RetrievedNovember10,2024from https://endovissub2017-giana.grand-
+challenge.org/.
+97. Borji,A.,Cheng,M.,Jiang,H.,&Li,J.(2015).Salientobjectdetection:a
+benchmark.IEEETransactionsonImageProcessing ,24,5706–5722.
+98. Perazzi,F.,Krähenbühl,P.,Pritch,Y.,&Hornung,A.(2012).Saliencyﬁlters:
+contrastbasedﬁlteringforsalientregiondetection.In Proceedingsofthe
+IEEEconferenceoncomputervisionandpatternrecognition (pp.733–740).
+Piscataway:IEEE.
+99. Fan,D.,Cheng,M.,Liu,Y.,Li,T.,&Borji,A.(2017).Structure-measure:anew
+waytoevaluateforegroundmaps.In ProceedingsoftheIEEEinternational
+conferenceoncomputervision (pp.4548–4557).Piscataway:IEEE.
+100. Fan,D.,Gong,C.,Cao,Y.,Ren,B.,Cheng,M.,&Borji,A.(2018).
+Enhanced-alignmentmeasureforbinaryforegroundmapevaluation.In
+Proceedingsofthe27thinternationaljointconferenceonartiﬁcial
+intelligence(pp.698–704).Cham:Springer.
+101. Zhou,Z.,RahmanSiddiquee,M.,Tajbakhsh,N.,&Liang,J.(2018).UNet++:
+anestedUNetarchitectureformedicalimagesegmentation.InD.
+Stoyanov,Z.Taylor,G.Carneiro,etal.(Eds.), Proceedingsofthe4th
+internationalworkshopondeeplearninginmedicalimageanalysisand
+multimodallearningforclinicaldecisionsupport (pp.3–11).Cham:
+Springer.
+102. Zhou,T.,Zhang,Y.,Chen,G.,Zhou,Y.,Wu,Y.,&Fan,D.(2023).Edge-aware
+featureaggregationnetworkforpolypsegmentation.arXivpreprint.
+arXiv:2309.10523.
+103. Zhao,X.,Jia,H.,Pang,Y.,Lv,L.,Tian,F.,Zhang,L.,etal.(2023).M 2SNet:
+Multi-scaleinmulti-scalesubtractionnetworkformedicalimage
+segmentation.arXivpreprint. arXiv:2303.10894.
+104. Zhou,T.,Zhang,Y.,Zhou,Y.,Wu,Y.,&Gong,C.(2023).CanSAMsegment
+polyps?arXivpreprint. arXiv:2304.07583.
+105. Shan,L.,Li,X.,&Wang,W.(2021).Decouplethehigh-frequencyand
+low-frequencyinformationofimagesforsemanticsegmentation.In
+ProceedingsoftheIEEEinternationalconferenceonacoustics,speechand
+signalprocessing (pp.1805–1809).Piscataway:IEEE.
+106. Cong,R.,Sun,M.,Zhang,S.,Zhou,X.,Zhang,W.,&Zhao,Y.(2023).
+Frequencyperceptionnetworkforcamouﬂagedobjectdetection.InA.
+El-Saddik,T.Mei,R.Cucchiara,etal.(Eds.), Proceedingsofthe31stACM
+internationalconferenceonmultimedia (pp.1179–1189).NewYork:ACM.
+107. Wu,H.,Chen,G.,Wen,Z.,&Qin,J.(2021).Collaborativeandadversarial
+learningoffocusedanddispersiverepresentationsforsemi-supervised
+polypsegmentation.In ProceedingsoftheIEEEinternationalconferenceon
+computervision (pp.3489–3498).Piscataway:IEEE.
+108. Cho,H.,Han,Y.,&Kim,W.(2023).Anti-adversarialconsistency
+regularizationfordataaugmentation:applicationstorobustmedical
+imagesegmentation.InH.Greenspan,A.Madabhushi,P.Mousavi,etal.
+(Eds.),Proceedingsofthe26thinternationalconferenceonmedicalimage
+computingandcomputer-assistedintervention (pp.555–566).Cham:
+Springer.
+109. Judge,T.,Bernard,O.,ChoKim,W.,Gomez,A.,Chartsias,A.,&Jodoin,P.
+(2023).Asymmetriccontouruncertaintyestimationformedicalimage
+segmentation.InH.Greenspan,A.Madabhushi,P.Mousavi,etal.(Eds.),
+Proceedingsofthe26thinternationalconferenceonmedicalimage
+computingandcomputer-assistedintervention (pp.210–220).Cham:
+Springer.
+110. Wei,Q.,Yu,L.,Li,X.,Shao,W.,Xie,C.,Xing,L.,etal.(2023).
+Consistency-guidedmeta-learningforbootstrappingsemi-supervised
+medicalimagesegmentation.InH.Greenspan,A.Madabhushi,P.
+Mousavi,etal.(Eds.), Proceedingsofthe26thinternationalconferenceon
+medicalimagecomputingandcomputer-assistedintervention (pp.
+183–193).Cham:Springer.
+111. Yin,Z.,Yao,C.,Zhang,L.,&Qi,S.(2023).Applicationofartiﬁcial
+intelligenceindiagnosisandtreatmentofcolorectalcancer:anovel
+prospect.FrontiersinMedicine ,10,1128084.
+112. Palaniappan,K.,Lin,E.W.T.,Vogel,S.,&Lim,J.C.W.(2024).Gapsinthe
+globalregulatoryframeworksfortheuseofartiﬁcialintelligence(AI)in
+thehealthcareservicessectorandkeyrecommendations. Healthcare,
+12(17),1730.
+113. Muehlematter,U.,Daniore,P.,&Vokinger,K.(2021).Approvalofartiﬁcial
+intelligenceandmachinelearning-basedmedicaldevicesintheUSAand
+Europe(2015–20):acomparativeanalysis. TheLancetDigitalHealth ,3(3),
+e195–e203.
+114. Ali,S.,Ghatwary,N.,Jha,D.,Isik-Polat,E.,Polat,G.,Yang,C.,etal.(2024).
+Assessinggeneralisabilityofdeeplearning-basedpolypdetectionand
+segmentationmethodsthroughacomputervisionchallenge. Scientiﬁc
+Reports,14(1),2032.
+115. Feng,R.,Lei,B.,Wang,W.,Chen,T.,Chen,J.,Chen,D.,etal.(2020).SSN:a
+stair-shapenetworkforreal-timepolypsegmentationincolonoscopy
+images.In ProceedingsoftheIEEE17thinternationalsymposiumon
+biomedicalimaging (pp.225–229).Piscataway:IEEE.
+116. Wichakam,I.,Panboonyuen,T.,Udomcharoenchaikit,C.,&Vateekul,P.
+(2018).Real-timepolypssegmentationforcolonoscopyvideoframes
+usingcompressedfullyconvolutionalnetwork.InK.Schoeﬀmann,T.H.
+Chalidabhongse,C.-W.Ngo,etal.(Eds.), Proceedingsofthe24th
+internationalconferenceonmultimediamodeling (pp.393–404).Cham:
+Springer.
+117. Tomar,N.,Shergill,A.,Rieders,B.,Bagci,U.,&Jha,D.(2022).TransResU-Net:
+TransformerbasedResU-Netforreal-timecolonoscopypolyp
+segmentation.arXivpreprint. arXiv:2206.08985.
+118. Wu,H.,Zhong,J.,Wang,W.,Wen,Z.,&Qin,J.(2021).Preciseyeteﬃcient
+semanticcalibrationandreﬁnementinConvNetsforreal-timepolyp
+segmentationfromcolonoscopyvideos.In ProceedingsoftheAAAI
+ConferenceonArtiﬁcialIntelligence ,(pp.2916–2924).PaloAlto:AAAIPress.
+119. Jha,D.,Ali,S.,Tomar,N.,Johansen,H.,Johansen,D.,Rittscher,J.,etal.
+(2021).Real-timepolypdetection,localizationandsegmentationin
+colonoscopyusingdeeplearning. IEEEAccess,9,40496–40510.
+120. Liu,Q.,Chen,C.,Qin,J.,Dou,Q.,&Heng,P.(2021).FedDG:federated
+domaingeneralizationonmedicalimagesegmentationviaepisodic
+learningincontinuousfrequencyspace.In ProceedingsoftheIEEE
+conferenceoncomputervisionandpatternrecognition (pp.1013–1023).
+Piscataway:IEEE.
+121. Panigutti,C.,Perotti,A.,Panisson,A.,Bajardi,P.,&Pedreschi,D.(2021).
+Fairlens:auditingblack-boxclinicaldecisionsupportsystems. Information
+Processing&Management ,58(5),102657.
+122. Thambawita,V.,Salehi,P.,Sheshkal,S.,Hicks,S.,Hammer,H.,Parasa,S.,et
+al.(2022).Singan-seg:synthetictrainingdatagenerationformedical
+imagesegmentation. PLoSONE,17(5),e0267976.
+123. Pesapane,F.,Volonté,C.,Codari,M.,&Sardanelli,F.(2018).Artiﬁcial
+intelligenceasamedicaldeviceinradiology:ethicalandregulatory
+issuesinEuropeandtheUnitedStates. InsightsIntoImaging ,9,745–753.
+
+===== PAGE 20 =====
+Meietal. VisualIntelligence             (2025) 3:1 Page20of20
+124. Zhang,J.,&Zhang,Z.(2023).Ethicsandgovernanceoftrustworthy
+medicalartiﬁcialintelligence. BMCMedicalInformaticsandDecision
+Making,23(1),7.
+Publisher’sNote
+SpringerNatureremainsneutralwithregardtojurisdictionalclaimsin
+publishedmapsandinstitutionalaﬃliations.

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.polyp.polypweb.ApiUserFeaturesIntegrationTests
+-------------------------------------------------------------------------------
+Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.033 s -- in com.polyp.polypweb.ApiUserFeaturesIntegrationTests

@@ -1,0 +1,5 @@
+{
+  "requested_before_validator": 4,
+  "observed_after_cpu_select_device": 8,
+  "note": "Original validation JSON threads=4 records requested setting, CPU selector overrides to 8; timings are not a new benchmark."
+}

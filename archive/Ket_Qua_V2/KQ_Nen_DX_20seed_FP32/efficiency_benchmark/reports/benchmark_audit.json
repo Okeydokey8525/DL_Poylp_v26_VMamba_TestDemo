@@ -1,0 +1,21 @@
+{
+  "raw_rows": 400,
+  "groups": 4,
+  "rows_per_group": 100,
+  "checkpoints_sha256_verified": true,
+  "matching_inputs": true,
+  "matching_protocol": true,
+  "real_pipeline_detections": [
+    40,
+    50
+  ],
+  "all_timings_finite_positive": true,
+  "GFLOPs": "unavailable, unsupported custom scan counting",
+  "VRAM": "not applicable, CPU runtime",
+  "script_sha256": {
+    "measure.py": "9ca9b1e95320ecd06fb4b898994f1e4614359b11d14905bdaaa215eec2bf067d",
+    "run_both.py": "de67776b874cfd1d0eceb7d7bcfaa069f428146405b747f922f57ed32c881bf1",
+    "summarize.py": "477a6515c522d57c9fe85e134694d819330ddd178b8433e5f67acc8114908c78",
+    "verify_checkpoints.py": "6f9c699e3b3808171b4f807efb62c04b4dd7046780099aa4509500dcb4d7d70f"
+  }
+}

@@ -1,0 +1,707 @@
+{
+  "status": "ok",
+  "message-type": "work",
+  "message-version": "1.0.0",
+  "message": {
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          10,
+          24
+        ]
+      ],
+      "date-time": "2026-10-24T21:04:56Z",
+      "timestamp": 1792875896102,
+      "version": "4.5.0"
+    },
+    "publisher-location": "Cham",
+    "reference-count": 28,
+    "publisher": "Springer International Publishing",
+    "isbn-type": [
+      {
+        "value": "9783030377335",
+        "type": "print"
+      },
+      {
+        "value": "9783030377342",
+        "type": "electronic"
+      }
+    ],
+    "license": [
+      {
+        "start": {
+          "date-parts": [
+            [
+              2019,
+              12,
+              24
+            ]
+          ],
+          "date-time": "2019-12-24T00:00:00Z",
+          "timestamp": 1577145600000
+        },
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "URL": "http://www.springer.com/tdm"
+      }
+    ],
+    "content-domain": {
+      "domain": [
+        "link.springer.com"
+      ],
+      "crossmark-restriction": false
+    },
+    "short-container-title": [],
+    "published-print": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "DOI": "10.1007/978-3-030-37734-2_37",
+    "type": "book-chapter",
+    "created": {
+      "date-parts": [
+        [
+          2019,
+          12,
+          26
+        ]
+      ],
+      "date-time": "2019-12-26T19:03:00Z",
+      "timestamp": 1577386980000
+    },
+    "page": "451-462",
+    "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+    "source": "Crossref",
+    "is-referenced-by-count": 1606,
+    "title": [
+      "Kvasir-SEG: A Segmented Polyp Dataset"
+    ],
+    "prefix": "10.1007",
+    "author": [
+      {
+        "given": "Debesh",
+        "family": "Jha",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Pia H.",
+        "family": "Smedsrud",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Michael A.",
+        "family": "Riegler",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Pål",
+        "family": "Halvorsen",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Thomas",
+        "family": "de Lange",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Dag",
+        "family": "Johansen",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Håvard D.",
+        "family": "Johansen",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "member": "297",
+    "published-online": {
+      "date-parts": [
+        [
+          2019,
+          12,
+          24
+        ]
+      ]
+    },
+    "reference": [
+      {
+        "key": "37_CR1",
+        "unstructured": "Abadi, M., et al.: Tensorflow: a system for large-scale machine learning. In: Proceeding of the ACM Symposium on Operating Systems Design and Implementation (SOSP), pp. 265–283 (2016)"
+      },
+      {
+        "key": "37_CR2",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Bernal, J., Sánchez, F.J., Fernández-Esparrach, G., Gil, D., Rodríguez, C., Vilariño, F.: WM-DOVA maps for accurate polyp highlighting in colonoscopy: validation vs. saliency maps from physicians. Comput. Med. Imag. Graph. 43, 99–111 (2015)",
+        "DOI": "10.1016/j.compmedimag.2015.02.007"
+      },
+      {
+        "issue": "9",
+        "key": "37_CR3",
+        "doi-asserted-by": "publisher",
+        "first-page": "3166",
+        "DOI": "10.1016/j.patcog.2012.03.002",
+        "volume": "45",
+        "author": "J Bernal",
+        "year": "2012",
+        "unstructured": "Bernal, J., Sánchez, J., Vilarino, F.: Towards automatic polyp detection with a polyp appearance model. Pattern Recogn. 45(9), 3166–3182 (2012)",
+        "journal-title": "Pattern Recogn."
+      },
+      {
+        "issue": "6",
+        "key": "37_CR4",
+        "doi-asserted-by": "publisher",
+        "first-page": "1231",
+        "DOI": "10.1109/TMI.2017.2664042",
+        "volume": "36",
+        "author": "J Bernal",
+        "year": "2017",
+        "unstructured": "Bernal, J., et al.: Comparative validation of polyp detection methods in video colonoscopy: results from the MICCAI 2015 endoscopic vision challenge. IEEE Trans. Med. Imag. 36(6), 1231–1249 (2017)",
+        "journal-title": "IEEE Trans. Med. Imag."
+      },
+      {
+        "issue": "s3",
+        "key": "37_CR5",
+        "doi-asserted-by": "publisher",
+        "first-page": "61",
+        "DOI": "10.3233/JAD-2011-0004",
+        "volume": "26",
+        "author": "M Boccardi",
+        "year": "2011",
+        "unstructured": "Boccardi, M., et al.: Survey of protocols for the manual segmentation of the hippocampus: preparatory steps towards a joint EADC-ADNI harmonized protocol. J. Alzheimer’s Dis. 26(s3), 61–75 (2011)",
+        "journal-title": "J. Alzheimer’s Dis."
+      },
+      {
+        "issue": "3",
+        "key": "37_CR6",
+        "doi-asserted-by": "publisher",
+        "first-page": "825",
+        "DOI": "10.1016/j.patcog.2006.07.011",
+        "volume": "40",
+        "author": "W Cai",
+        "year": "2007",
+        "unstructured": "Cai, W., Chen, S., Zhang, D.: Fast and robust fuzzy c-means clustering algorithms incorporating local information for image segmentation. Pattern Recogn. 40(3), 825–838 (2007)",
+        "journal-title": "Pattern Recogn."
+      },
+      {
+        "key": "37_CR7",
+        "unstructured": "Chollet, F.: Building powerful image classification models using very little data. Keras Blog (2016)"
+      },
+      {
+        "key": "37_CR8",
+        "unstructured": "Chollet, F.: Keras: The Python Deep Learning Library. Astrophysics Source Code Library (2018)"
+      },
+      {
+        "issue": "1",
+        "key": "37_CR9",
+        "doi-asserted-by": "publisher",
+        "first-page": "18",
+        "DOI": "10.1017/S1551929518001311",
+        "volume": "27",
+        "author": "A Dravid",
+        "year": "2019",
+        "unstructured": "Dravid, A.: Employing deep networks for image processing on small research datasets. Microsc. Today 27(1), 18–23 (2019)",
+        "journal-title": "Microsc. Today"
+      },
+      {
+        "key": "37_CR10",
+        "unstructured": "Goldbloom, A., Hamner, B., et al.: Kaggle: your home for data science. Competition, Kaggle Inc. (2019). \nhttps://www.kaggle.com\n\n. Accessed 12 July 2019"
+      },
+      {
+        "issue": "04",
+        "key": "37_CR11",
+        "doi-asserted-by": "publisher",
+        "first-page": "191",
+        "DOI": "10.1055/s-0029-1242458",
+        "volume": "22",
+        "author": "FA Haggar",
+        "year": "2009",
+        "unstructured": "Haggar, F.A., Boushey, R.P.: Colorectal cancer epidemiology: incidence, mortality, survival, and risk factors. Clin. Colon Rectal Surg. 22(04), 191–197 (2009)",
+        "journal-title": "Clin. Colon Rectal Surg."
+      },
+      {
+        "issue": "1",
+        "key": "37_CR12",
+        "doi-asserted-by": "publisher",
+        "first-page": "98",
+        "DOI": "10.1053/j.gastro.2017.04.006",
+        "volume": "153",
+        "author": "MF Kaminski",
+        "year": "2017",
+        "unstructured": "Kaminski, M.F., et al.: Increased rate of adenoma detection associates with reduced risk of colorectal cancer and death. Gastroenterology 153(1), 98–105 (2017)",
+        "journal-title": "Gastroenterology"
+      },
+      {
+        "key": "37_CR13",
+        "doi-asserted-by": "publisher",
+        "first-page": "26440",
+        "DOI": "10.1109/ACCESS.2019.2900672",
+        "volume": "7",
+        "author": "J Kang",
+        "year": "2019",
+        "unstructured": "Kang, J., Gwak, J.: Ensemble of instance segmentation models for polyp segmentation in colonoscopy images. IEEE Access 7, 26440–26447 (2019)",
+        "journal-title": "IEEE Access"
+      },
+      {
+        "issue": "1",
+        "key": "37_CR14",
+        "doi-asserted-by": "publisher",
+        "first-page": "62",
+        "DOI": "10.1109/TSMC.1979.4310076",
+        "volume": "9",
+        "author": "N Otsu",
+        "year": "1979",
+        "unstructured": "Otsu, N.: A threshold selection method from gray-level histograms. IEEE Trans. Syst. Man Cybern. 9(1), 62–66 (1979)",
+        "journal-title": "IEEE Trans. Syst. Man Cybern."
+      },
+      {
+        "issue": "1",
+        "key": "37_CR15",
+        "doi-asserted-by": "publisher",
+        "first-page": "315",
+        "DOI": "10.1146/annurev.bioeng.2.1.315",
+        "volume": "2",
+        "author": "DL Pham",
+        "year": "2000",
+        "unstructured": "Pham, D.L., Xu, C., Prince, J.L.: Current methods in medical image segmentation. Ann. Rev. Biomed. Eng. 2(1), 315–337 (2000)",
+        "journal-title": "Ann. Rev. Biomed. Eng."
+      },
+      {
+        "key": "37_CR16",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Pogorelov, K., et al.: Kvasir: a multi-class image dataset for computer aided gastrointestinal disease detection. In: Proceedings of Multimedia Systems Conference (MMSYS), pp. 164–169. ACM (2017)",
+        "DOI": "10.1145/3083187.3083212"
+      },
+      {
+        "key": "37_CR17",
+        "unstructured": "Pogorelov, K., et al.: Medico multimedia task at MediaEval 2018. In: CEUR Workshop Proceedings - Multimedia Benchmark Workshop (MediaEval) (2018)"
+      },
+      {
+        "key": "37_CR18",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Pozdeev, A.A., Obukhova, N.A., Motyko, A.A.: Automatic analysis of endoscopic images for polyps detection and segmentation. In: IEEE Conference of Russian Young Researchers in Electrical and Electronic Engineering (EIConRus), pp. 1216–1220. IEEE (2019)",
+        "DOI": "10.1109/EIConRus.2019.8657018"
+      },
+      {
+        "key": "37_CR19",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Riegler, M., et al.: Multimedia and medicine: teammates for better disease detection and survival. In: Proceedings of ACM Multimedia (ACM MM), pp. 968–977. ACM (2016)",
+        "DOI": "10.1145/2964284.2976760"
+      },
+      {
+        "key": "37_CR20",
+        "unstructured": "Riegler, M., et al.: Multimedia for medicine: the medico task at Mediaeval 2017. In: CEUR Workshop Proceedings - Multimedia Benchmark Workshop (MediaEval) (2017)"
+      },
+      {
+        "issue": "5",
+        "key": "37_CR21",
+        "doi-asserted-by": "publisher",
+        "first-page": "1311",
+        "DOI": "10.1053/j.gastro.2008.02.032",
+        "volume": "134",
+        "author": "AG Rundle",
+        "year": "2008",
+        "unstructured": "Rundle, A.G., Lebwohl, B., Vogel, R., Levine, S., Neugut, A.I.: Colonoscopic screening in average-risk individuals ages 40 to 49 vs 50 to 59 years. Gastroenterology 134(5), 1311–1315 (2008)",
+        "journal-title": "Gastroenterology"
+      },
+      {
+        "key": "37_CR22",
+        "unstructured": "Sharma, M., Rasmuson, D., Rieger, B., Kjelkerud, D., et al.: Labelbox: the best way to create and manage training data. Software, LabelBox Inc. (2019). \nhttps://www.labelbox.com/\n\n. Accessed 21 May 2019"
+      },
+      {
+        "issue": "2",
+        "key": "37_CR23",
+        "doi-asserted-by": "publisher",
+        "first-page": "283",
+        "DOI": "10.1007/s11548-013-0926-3",
+        "volume": "9",
+        "author": "J Silva",
+        "year": "2014",
+        "unstructured": "Silva, J., Histace, A., Romain, O., Dray, X., Granado, B.: Toward embedded detection of polyps in wce images for early diagnosis of colorectal cancer. Int. J. Comput. Assist. Radiol. Surg. 9(2), 283–293 (2014)",
+        "journal-title": "Int. J. Comput. Assist. Radiol. Surg."
+      },
+      {
+        "issue": "2",
+        "key": "37_CR24",
+        "doi-asserted-by": "publisher",
+        "first-page": "630",
+        "DOI": "10.1109/TMI.2015.2487997",
+        "volume": "35",
+        "author": "N Tajbakhsh",
+        "year": "2015",
+        "unstructured": "Tajbakhsh, N., Gurudu, S.R., Liang, J.: Automated polyp detection in colonoscopy videos using shape and context information. IEEE Trans. Med. Imag. 35(2), 630–644 (2015)",
+        "journal-title": "IEEE Trans. Med. Imag."
+      },
+      {
+        "key": "37_CR25",
+        "unstructured": "Torre, L.A., Bray, F., Siegel, R.L., Ferlay, J., Lortet-Tieulent, J., Jemal, A.: Global cancer statistics, 2012. CA: Cancer J. Clin. 65(2), 87–108 (2015)"
+      },
+      {
+        "issue": "2",
+        "key": "37_CR26",
+        "doi-asserted-by": "publisher",
+        "first-page": "343",
+        "DOI": "10.1111/j.1572-0241.2006.00390.x",
+        "volume": "101",
+        "author": "JC Rijn Van",
+        "year": "2006",
+        "unstructured": "Van Rijn, J.C., Reitsma, J.B., Stoker, J., Bossuyt, P.M., Van Deventer, S.J., Dekker, E.: Polyp miss rate determined by tandem colonoscopy: a systematic review. Am. J. Gastroenterol. 101(2), 343 (2006)",
+        "journal-title": "Am. J. Gastroenterol."
+      },
+      {
+        "key": "37_CR27",
+        "unstructured": "Visser, M., et al.: Inter-rater agreement in glioma segmentations on longitudinal MRI. NeuroImage: Clin. 22, 101727 (2019)"
+      },
+      {
+        "issue": "5",
+        "key": "37_CR28",
+        "doi-asserted-by": "publisher",
+        "first-page": "749",
+        "DOI": "10.1109/LGRS.2018.2802944",
+        "volume": "15",
+        "author": "Z Zhang",
+        "year": "2018",
+        "unstructured": "Zhang, Z., Liu, Q., Wang, Y.: Road extraction by deep residual U-net. IEEE Geosci. Rem. Sens. Lett. 15(5), 749–753 (2018)",
+        "journal-title": "IEEE Geosci. Rem. Sens. Lett."
+      }
+    ],
+    "container-title": [
+      "Lecture Notes in Computer Science",
+      "MultiMedia Modeling"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "http://link.springer.com/content/pdf/10.1007/978-3-030-37734-2_37",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2020,
+          2,
+          6
+        ]
+      ],
+      "date-time": "2020-02-06T19:04:18Z",
+      "timestamp": 1581015858000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "http://link.springer.com/10.1007/978-3-030-37734-2_37"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          12,
+          24
+        ]
+      ]
+    },
+    "ISBN": [
+      "9783030377335",
+      "9783030377342"
+    ],
+    "references-count": 28,
+    "URL": "https://doi.org/10.1007/978-3-030-37734-2_37",
+    "relation": {},
+    "ISSN": [
+      "0302-9743",
+      "1611-3349"
+    ],
+    "issn-type": [
+      {
+        "value": "0302-9743",
+        "type": "print"
+      },
+      {
+        "value": "1611-3349",
+        "type": "electronic"
+      }
+    ],
+    "subject": [],
+    "published": {
+      "date-parts": [
+        [
+          2019,
+          12,
+          24
+        ]
+      ]
+    },
+    "assertion": [
+      {
+        "value": "24 December 2019",
+        "order": 1,
+        "name": "first_online",
+        "label": "First Online",
+        "group": {
+          "name": "ChapterHistory",
+          "label": "Chapter History"
+        }
+      },
+      {
+        "value": "MMM",
+        "order": 1,
+        "name": "conference_acronym",
+        "label": "Conference Acronym",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "International Conference on Multimedia Modeling",
+        "order": 2,
+        "name": "conference_name",
+        "label": "Conference Name",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "Daejeon",
+        "order": 3,
+        "name": "conference_city",
+        "label": "Conference City",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "Korea (Republic of)",
+        "order": 4,
+        "name": "conference_country",
+        "label": "Conference Country",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "2020",
+        "order": 5,
+        "name": "conference_year",
+        "label": "Conference Year",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "5 January 2020",
+        "order": 7,
+        "name": "conference_start_date",
+        "label": "Conference Start Date",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "8 January 2020",
+        "order": 8,
+        "name": "conference_end_date",
+        "label": "Conference End Date",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "26",
+        "order": 9,
+        "name": "conference_number",
+        "label": "Conference Number",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "mmm2020",
+        "order": 10,
+        "name": "conference_id",
+        "label": "Conference ID",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "http://www.mmm2020.kr/",
+        "order": 11,
+        "name": "conference_url",
+        "label": "Conference URL",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "Double-blind",
+        "order": 1,
+        "name": "type",
+        "label": "Type",
+        "group": {
+          "name": "ConfEventPeerReviewInformation",
+          "label": "Peer Review Information (provided by the conference organizers)"
+        }
+      },
+      {
+        "value": "EasyChair",
+        "order": 2,
+        "name": "conference_management_system",
+        "label": "Conference Management System",
+        "group": {
+          "name": "ConfEventPeerReviewInformation",
+          "label": "Peer Review Information (provided by the conference organizers)"
+        }
+      },
+      {
+        "value": "171",
+        "order": 3,
+        "name": "number_of_submissions_sent_for_review",
+        "label": "Number of Submissions Sent for Review",
+        "group": {
+          "name": "ConfEventPeerReviewInformation",
+          "label": "Peer Review Information (provided by the conference organizers)"
+        }
+      },
+      {
+        "value": "40",
+        "order": 4,
+        "name": "number_of_full_papers_accepted",
+        "label": "Number of Full Papers Accepted",
+        "group": {
+          "name": "ConfEventPeerReviewInformation",
+          "label": "Peer Review Information (provided by the conference organizers)"
+        }
+      },
+      {
+        "value": "0",
+        "order": 5,
+        "name": "number_of_short_papers_accepted",
+        "label": "Number of Short Papers Accepted",
+        "group": {
+          "name": "ConfEventPeerReviewInformation",
+          "label": "Peer Review Information (provided by the conference organizers)"
+        }
+      },
+      {
+        "value": "23% - The value is computed by the equation \"Number of Full Papers Accepted / Number of Submissions Sent for Review * 100\" and then rounded to a whole number.",
+        "order": 6,
+        "name": "acceptance_rate_of_full_papers",
+        "label": "Acceptance Rate of Full Papers",
+        "group": {
+          "name": "ConfEventPeerReviewInformation",
+          "label": "Peer Review Information (provided by the conference organizers)"
+        }
+      },
+      {
+        "value": "3",
+        "order": 7,
+        "name": "average_number_of_reviews_per_paper",
+        "label": "Average Number of Reviews per Paper",
+        "group": {
+          "name": "ConfEventPeerReviewInformation",
+          "label": "Peer Review Information (provided by the conference organizers)"
+        }
+      },
+      {
+        "value": "5",
+        "order": 8,
+        "name": "average_number_of_papers_per_reviewer",
+        "label": "Average Number of Papers per Reviewer",
+        "group": {
+          "name": "ConfEventPeerReviewInformation",
+          "label": "Peer Review Information (provided by the conference organizers)"
+        }
+      },
+      {
+        "value": "Yes",
+        "order": 9,
+        "name": "external_reviewers_involved",
+        "label": "External Reviewers Involved",
+        "group": {
+          "name": "ConfEventPeerReviewInformation",
+          "label": "Peer Review Information (provided by the conference organizers)"
+        }
+      },
+      {
+        "value": "Of the 171 submissions, 46 were accepted as poster papers; of the 49 special session paper submissions, 28 were accepted for oral presentation and 8 for poster presentation; 9 demo papers and 10 VBS papers were also accepted.",
+        "order": 10,
+        "name": "additional_info_on_review_process",
+        "label": "Additional Info on Review Process",
+        "group": {
+          "name": "ConfEventPeerReviewInformation",
+          "label": "Peer Review Information (provided by the conference organizers)"
+        }
+      }
+    ]
+  }
+}

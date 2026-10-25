@@ -1,0 +1,134 @@
+[
+  {
+    "stage": "before",
+    "case": "login",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "requestId": "1130519d-2c8d-43da-9bb2-2c8dcba82b45",
+    "json": {
+      "user": {
+        "id": "6ade2c9cd5a922967e96598d",
+        "fullName": "Audit Primary",
+        "email": "audit_primary_20261025@example.invalid",
+        "role": "USER",
+        "createdAt": "2026-10-25T23:21:48.684",
+        "updatedAt": "2026-10-25T23:21:48.684"
+      }
+    }
+  },
+  {
+    "stage": "before",
+    "case": "comparison_history_html",
+    "status": 503,
+    "expected_status": [
+      200
+    ],
+    "pass": false,
+    "requestId": "da1eaa02-3c30-4c87-804b-3fd2a740dd80"
+  },
+  {
+    "stage": "before",
+    "case": "comparison_history_api",
+    "status": 500,
+    "expected_status": [
+      200
+    ],
+    "pass": false,
+    "requestId": "ccee3c97-eb42-45b7-a3d8-346b4bafc0f2",
+    "json": {
+      "timestamp": "2026-10-25T16:27:50.985473100Z",
+      "status": 500,
+      "code": "INTERNAL_ERROR",
+      "message": "Đã xảy ra lỗi, vui lòng thử lại.",
+      "fieldErrors": {},
+      "requestId": "ccee3c97-eb42-45b7-a3d8-346b4bafc0f2"
+    }
+  },
+  {
+    "stage": "before",
+    "case": "single_history_html",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "requestId": "64d5ea9c-9193-4a56-b78f-3f238cce7f7e"
+  },
+  {
+    "stage": "before",
+    "case": "dashboard",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "requestId": "2ea158d4-39bb-4aef-b607-8ab3c6f1dd96"
+  },
+  {
+    "stage": "before",
+    "case": "correct_multipart_empty",
+    "status": 400,
+    "expected_status": [
+      400
+    ],
+    "pass": true,
+    "requestId": "4882018c-7749-458a-9dd9-8d9669dc97fd",
+    "json": {
+      "timestamp": "2026-10-25T16:27:51.251626100Z",
+      "status": 400,
+      "code": "EMPTY_FILE",
+      "message": "Vui lòng chọn một ảnh không rỗng.",
+      "fieldErrors": {},
+      "requestId": "4882018c-7749-458a-9dd9-8d9669dc97fd"
+    }
+  },
+  {
+    "stage": "before",
+    "case": "unknown_web_model",
+    "status": 400,
+    "expected_status": [
+      400
+    ],
+    "pass": true,
+    "requestId": "6f72248d-2069-4234-98c5-59759be00852",
+    "json": {
+      "timestamp": "2026-10-25T16:27:51.280784200Z",
+      "status": 400,
+      "code": "INVALID_MODEL",
+      "message": "Mô hình được chọn không được hỗ trợ.",
+      "fieldErrors": {},
+      "requestId": "6f72248d-2069-4234-98c5-59759be00852"
+    }
+  },
+  {
+    "stage": "before",
+    "case": "delete_without_csrf",
+    "status": 403,
+    "expected_status": [
+      403
+    ],
+    "pass": true,
+    "requestId": "3da1c824-9b99-44bd-bebc-86b45568383f",
+    "json": {
+      "timestamp": "2026-10-25T16:27:51.292951200Z",
+      "status": 403,
+      "code": "CSRF_INVALID",
+      "message": "CSRF token không hợp lệ hoặc đã hết hạn.",
+      "fieldErrors": {},
+      "requestId": "3da1c824-9b99-44bd-bebc-86b45568383f"
+    }
+  },
+  {
+    "stage": "before",
+    "case": "original_before_restart",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "requestId": "323520e5-e510-45e9-bdfb-0911270c4db1"
+  }
+]

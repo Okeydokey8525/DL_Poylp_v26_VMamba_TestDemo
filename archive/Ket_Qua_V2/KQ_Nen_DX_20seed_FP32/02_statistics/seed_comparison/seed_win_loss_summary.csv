@@ -1,0 +1,14 @@
+﻿metric,tsvm_wins,baseline_wins,ties,lower_is_better
+mask_map50_95,13,7,0,False
+mask_map50,10,10,0,False
+mask_precision,11,9,0,False
+mask_recall,9,11,0,False
+box_map50_95,13,7,0,False
+box_map50,11,9,0,False
+box_precision,11,9,0,False
+box_recall,10,10,0,False
+val_seg_loss,14,6,0,True
+val_box_loss,14,6,0,True
+val_cls_loss,7,13,0,True
+val_l1_loss,12,8,0,True
+val_sem_loss,0,0,20,True

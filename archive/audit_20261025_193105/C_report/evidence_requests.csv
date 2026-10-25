@@ -1,0 +1,5 @@
+﻿owner,word_ids,request,status
+D_literature,P0363;T02;T17;P0733-P0756,"Verify24references,880/120split provenance andpaper table numbers; compare close textual overlap where sourceavailable",PENDING
+E_application,P0476-P0528;T09;P0772-P0779,Confirm runtime vsmock history;51/261/498testcounts;TSVMsmoke2masks vsWord1;endpoint/precision,PENDING
+B_visual,P0517;P0519;P0393-P0436;P0562-P0699,"Map31figures,check Hình4.2 extraTSVMmask;inspect equations/diagrams,all numerics/caption context",IN_PROGRESS
+root,P0353;P0377;P0384;P0388;P0447,"If feasible reprocess1000masks:Otsu5-8,1206contours/143removed,333.2->24.6vertices,polygon reproduction;Cverified image dimensions only",PENDING

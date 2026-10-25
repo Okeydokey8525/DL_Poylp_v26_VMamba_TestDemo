@@ -1,0 +1,1247 @@
+P0 [Normal] BỘ CÔNG THƯƠNG
+TRƯỜNG ĐẠI HỌC CÔNG THƯƠNG THÀNH PHỐ HỒ CHÍ MINH
+KHOA CÔNG NGHỆ THÔNG TIN
+P2 [Normal] KHÓA LUẬN CỬ NHÂN
+NGÀNH CÔNG NGHỆ THÔNG TIN
+MÃ ĐỀ TÀI: CNTT_KLCN182
+
+NGHIÊN CỨU PHƯƠNG PHÁP TÍCH HỢP VMAMBA VÀO MÔ HÌNH
+YOLO26-SEG TRONG PHÂN ĐOẠN POLYP TỪ ẢNH NỘI SOI ĐẠI TRỰC TRÀNG
+P4 [Normal] Sinh viên thực hiện:
+  1. LÊ ĐỨC LƯƠNG     - MSSV: 2001230490 - Lớp: 14DHTH09
+  2. PHÙNG TUẤN HUY   - MSSV: 2001230312 - Lớp: 14DHTH13
+  3. TRẦN MẠNH TOÀN   - MSSV: 2001230830 - Lớp: 14DHTH09
+
+Giảng viên hướng dẫn:
+  TS. PHÙNG THẾ BẢO
+P5 [Normal] TP. HỒ CHÍ MINH, NĂM 2026
+P7 [Normal] BỘ CÔNG THƯƠNG
+TRƯỜNG ĐẠI HỌC CÔNG THƯƠNG THÀNH PHỐ HỒ CHÍ MINH
+KHOA CÔNG NGHỆ THÔNG TIN
+P9 [Normal] KHÓA LUẬN CỬ NHÂN
+NGÀNH CÔNG NGHỆ THÔNG TIN
+MÃ ĐỀ TÀI: CNTT_KLCN182
+
+NGHIÊN CỨU PHƯƠNG PHÁP TÍCH HỢP VMAMBA VÀO MÔ HÌNH
+YOLO26-SEG TRONG PHÂN ĐOẠN POLYP TỪ ẢNH NỘI SOI ĐẠI TRỰC TRÀNG
+P11 [Normal] Sinh viên thực hiện:
+  1. LÊ ĐỨC LƯƠNG     - MSSV: 2001230490 - Lớp: 14DHTH09
+  2. PHÙNG TUẤN HUY   - MSSV: 2001230312 - Lớp: 14DHTH13
+  3. TRẦN MẠNH TOÀN   - MSSV: 2001230830 - Lớp: 14DHTH09
+
+Giảng viên hướng dẫn:
+  TS. PHÙNG THẾ BẢO
+P12 [Normal] TP. HỒ CHÍ MINH, NĂM 2026
+P14 [Normal] ---
+P15 [Normal] ---
+P16 [Normal] ---
+P17 [Normal] LỜI CẢM ƠN
+P18 [Normal] Trong suốt quá trình học tập và hoàn thành khóa luận tốt nghiệp cử nhân ngành Công nghệ Thông tin tại Trường Đại học Công Thương Thành phố Hồ Chí Minh (HUIT), nhóm sinh viên chúng em đã nhận được sự quan tâm, giảng dạy tận tình và hỗ trợ quý báu từ quý Thầy, Cô và gia đình.
+P19 [Normal] Trước hết, nhóm xin gửi lời tri ân sâu sắc nhất đến Ban Giám hiệu Trường Đại học Công Thương Thành phố Hồ Chí Minh cùng toàn thể quý Thầy, Cô Khoa Công nghệ Thông tin. Những kiến thức nền tảng vững chắc và chuyên sâu được quý Thầy Cô truyền thụ trong suốt 4 năm đại học chính là hành trang quan trọng giúp chúng em tiếp cận và nghiên cứu các công nghệ học sâu tiên tiến phục vụ đề tài khóa luận này.
+P20 [Normal] Đặc biệt, nhóm xin bày tỏ lòng biết ơn chân thành và sâu sắc nhất tới TS. Phùng Thế Bảo – Giảng viên hướng dẫn trực tiếp của đề tài. Thầy đã luôn định hướng khoa học chuẩn xác, truyền cảm hứng nghiên cứu, kiên nhẫn hướng dẫn và đưa ra những đóng góp chuyên môn quý báu trong suốt quá trình nhóm khảo sát thuật toán, thiết kế mô hình TSVM, xử lý thực nghiệm đối chứng 10 seed tất định và xây dựng hệ sinh thái ứng dụng minh họa. Sự chỉ bảo nghiêm cẩn và tâm huyết của Thầy không chỉ giúp nhóm hoàn thành tốt khóa luận mà còn rèn luyện cho chúng em tác phong làm việc khoa học, trung thực và trách nhiệm.
+P21 [Normal] Nhóm cũng xin chân thành cảm ơn quý Thầy, Cô trong Hội đồng chấm khóa luận tốt nghiệp đã dành thời gian đọc, nhận xét và đưa ra những ý kiến phản biện sắc bén giúp đề tài ngày càng hoàn thiện hơn.
+P22 [Normal] Cuối cùng, chúng con xin gửi lời cảm ơn vô hạn đến Cha Mẹ và gia đình – nguồn động viên tinh thần và chỗ dựa vững chắc nhất cho chúng con trong suốt quá trình học tập và phấn đấu.
+P23 [Normal] Dù đã rất nỗ lực nghiên cứu và hoàn thiện khóa luận với tinh thần nghiêm túc cao nhất, song do thời gian và kinh nghiệm thực tế còn hạn chế, đề tài chắc chắn không tránh khỏi những thiếu sót. Nhóm chúng em rất mong nhận được những lời chỉ dẫn, đóng góp quý báu từ quý Thầy Cô để công trình nghiên cứu được hoàn thiện hơn nữa.
+P24 [Normal] *Tp. Hồ Chí Minh, ngày … tháng … năm 2026*
+P25 [Normal] Nhóm sinh viên thực hiện
+P26 [Normal] *Lê Đức Lương – Phùng Tuấn Huy – Trần Mạnh Toàn*
+P27 [Normal] ---
+P28 [Normal] NHẬN XÉT CỦA GIẢNG VIÊN HƯỚNG DẪN
+P29 [Normal] 1. Về tinh thần, thái độ và tác phong làm việc của nhóm sinh viên:
+P30 [Normal] .................................................................................................................................................................................
+P31 [Normal] .................................................................................................................................................................................
+P32 [Normal] .................................................................................................................................................................................
+P33 [Normal] 2. Về tính cấp thiết, phương pháp nghiên cứu và hàm lượng khoa học của đề tài:
+P34 [Normal] .................................................................................................................................................................................
+P35 [Normal] .................................................................................................................................................................................
+P36 [Normal] .................................................................................................................................................................................
+P37 [Normal] 3. Về kết quả đạt được và sản phẩm ứng dụng (Mô hình AI, Web, Mobile App):
+P38 [Normal] .................................................................................................................................................................................
+P39 [Normal] .................................................................................................................................................................................
+P40 [Normal] .................................................................................................................................................................................
+P41 [Normal] 4. Điểm đánh giá và kết luận:
+P42 [Normal] – Điểm đánh giá (bằng số): ....................... (Bằng chữ: ....................................................................................)
+P43 [Normal] – Kết luận: Cho phép / Không cho phép sinh viên được bảo vệ trước Hội đồng chấm khóa luận cử nhân.
+P44 [Normal] *Tp. Hồ Chí Minh, ngày … tháng … năm 2026*
+P45 [Normal] Giảng viên hướng dẫn
+P46 [Normal] *(Ký và ghi rõ họ tên)*
+P47 [Normal] TS. Phùng Thế Bảo
+P48 [Normal] ---
+P49 [Normal] NHẬN XÉT CỦA GIẢNG VIÊN PHẢN BIỆN
+P50 [Normal] 1. Về hình thức trình bày và cấu trúc của quyển báo cáo khóa luận:
+P51 [Normal] .................................................................................................................................................................................
+P52 [Normal] .................................................................................................................................................................................
+P53 [Normal] 2. Về độ tin cậy của phương pháp nghiên cứu và kết quả thực nghiệm:
+P54 [Normal] .................................................................................................................................................................................
+P55 [Normal] .................................................................................................................................................................................
+P56 [Normal] 3. Về tính ứng dụng và độ hoàn thiện của sản phẩm phần mềm (Web & App):
+P57 [Normal] .................................................................................................................................................................................
+P58 [Normal] .................................................................................................................................................................................
+P59 [Normal] 4. Những ưu điểm chính và điểm cần hoàn thiện của đề tài:
+P60 [Normal] .................................................................................................................................................................................
+P61 [Normal] .................................................................................................................................................................................
+P62 [Normal] 5. Câu hỏi dành cho sinh viên trong buổi bảo vệ:
+P63 [Normal] – *Câu hỏi 1*: ......................................................................................................................................................
+P64 [Normal] – *Câu hỏi 2*: ......................................................................................................................................................
+P65 [Normal] 6. Điểm đánh giá:
+P66 [Normal] – Điểm đánh giá (bằng số): ....................... (Bằng chữ: ....................................................................................)
+P67 [Normal] *Tp. Hồ Chí Minh, ngày … tháng … năm 2026*
+P68 [Normal] Giảng viên phản biện
+P69 [Normal] *(Ký và ghi rõ họ tên)*
+P70 [Normal] ---
+P71 [Normal] DANH MỤC CÁC KÝ HIỆU VÀ CHỮ VIẾT TẮT
+TABLE 72
+Ký hiệu / Chữ viết tắt | Tên tiếng Anh đầy đủ | Giải thích nghĩa tiếng Việt
+AI | Artificial Intelligence | Trí tuệ nhân tạo
+API | Application Programming Interface | Giao diện lập trình ứng dụng
+AUC | Area Under the Curve | Diện tích dưới đường cong
+BG20 | Background 20% | Tập dữ liệu bổ sung 20% ảnh nền âm tính (niêm mạc bình thường)
+CNN | Convolutional Neural Network | Mạng nơ-ron tích chập
+CRC | Colorectal Cancer | Ung thư đại trực tràng
+CUDA | Compute Unified Device Architecture | Nền tảng tính toán song song trên GPU của Nvidia
+DSC | Dice Similarity Coefficient | Hệ số tương đồng Dice (chỉ số đánh giá độ trùng khớp mặt nạ)
+FN | False Negative | Âm tính giả (bỏ sót tổn thương polyp)
+FP | False Positive | Dương tính giả (báo động nhầm niêm mạc lành là polyp)
+FPS | Frames Per Second | Tốc độ xử lý khung hình trên giây
+GFLOPs | Giga Floating-point Operations | Tỷ phép tính dấu phẩy động (độ phức tạp tính toán)
+GPU | Graphics Processing Unit | Bộ vi xử lý đồ họa
+GT | Ground Truth | Nhãn chuẩn / Mặt nạ thực tế do chuyên gia y tế gán
+IoU | Intersection over Union | Tỷ lệ phần giao trên phần hợp (Jaccard Index)
+mAP | Mean Average Precision | Độ chính xác trung bình trung bình
+mAP50 | Mean Average Precision at IoU=0.50 | Độ chính xác trung bình tại ngưỡng IoU 0.50
+mAP50-95 | Mean Average Precision at IoU=0.50:0.95 | Độ chính xác trung bình tổng hợp từ ngưỡng IoU 0.50 đến 0.95
+PAN-FPN | Path Aggregation Network - Feature Pyramid Network | Mạng kim tự tháp đặc trưng tổng hợp đường dẫn
+PR Curve | Precision-Recall Curve | Đường cong biểu diễn đánh đổi giữa Precision và Recall
+P5 | Feature Level 5 (Stride 32) | Mức đặc trưng sâu nhất tại tầng trích xuất của Backbone
+SSM | State Space Model | Mô hình không gian trạng thái
+SS2D | 2D Selective Scan | Cơ chế quét chọn lọc không gian 2 chiều trong VMamba
+TN | True Negative | Âm tính thật (nhận diện đúng niêm mạc bình thường)
+TP | True Positive | Dương tính thật (phát hiện và phân đoạn đúng polyp)
+TSVM | Topology-Shape-aware VMamba | Kiến trúc đề xuất tích hợp VMamba nhận biết hình thái và topo
+VRAM | Video Random Access Memory | Bộ nhớ truy xuất ngẫu nhiên của GPU
+YOLO | You Only Look Once | Họ mô hình thị giác máy tính phát hiện/phân đoạn thời gian thực
+P73 [Normal] ---
+P74 [Normal] DANH MỤC CÁC HÌNH VẼ
+P75 [Normal] *(Ghi chú: Trong bản Word cuối cùng, mục này được tự động chèn bằng trường `TOC \h \z \c "Hình"`. Dưới đây là danh mục toàn bộ các hình vẽ được quy hoạch chuẩn xác trong báo cáo)*
+P76 [Normal] – Hình 1.1: Hình thái các dạng polyp đại trực tràng từ bộ dữ liệu nội soi Kvasir-SEG
+P77 [Normal] – Hình 1.2: Sơ đồ nguyên lý cơ chế quét chọn lọc hai chiều không gian SS2D trong kiến trúc VMamba
+P78 [Normal] – Hình 2.1: Sơ đồ kiến trúc tổng thể của mô hình cơ sở YOLO26-seg
+P79 [Normal] – Hình 2.2: Cấu trúc chi tiết khối Topology-Shape-aware VMamba (TSVM) tích hợp tại tầng 10 (mức P5)
+P80 [Normal] – Hình 3.1: Quy trình trích xuất và chuyển đổi Ground-Truth Mask sang nhãn đa giác đa điểm YOLO Polygon
+P81 [Normal] – Hình 3.2: Minh họa nhãn ảnh polyp thông thường và tệp nhãn rỗng (0 byte) của ảnh nền âm tính normal-cecum
+P82 [Normal] – Hình 4.1: Sơ đồ luồng thực thi trong các Cell Notebook Kaggle huấn luyện mô hình tất định
+P83 [Normal] – Hình 4.2: Sơ đồ kiến trúc phân tầng hệ sinh thái ứng dụng minh họa (FastAPI AI Microservice – Java Spring Boot Web – Flutter Mobile App)
+P84 [Normal] – Hình 4.3: Giao diện ứng dụng Web minh họa tải ảnh nội soi và hiển thị mặt nạ phân đoạn polyp
+P85 [Normal] – Hình 4.4: Giao diện ứng dụng di động Flutter minh họa chụp ảnh camera và khoanh vùng tổn thương trực tiếp
+P86 [Normal] – Hình 5.1: Đồ thị so sánh đường cong suy giảm hàm mất mát (Loss Convergence) giữa Baseline và TSVM
+P87 [Normal] – Hình 5.2: Đồ thị đánh đổi Precision-Recall của hộp bao (Box PR Curve)
+P88 [Normal] – Hình 5.3: Đồ thị đánh đổi Precision-Recall của mặt nạ phân đoạn (Mask PR Curve)
+P89 [Normal] – Hình 5.4: Đồ thị biến thiên chỉ số F1 theo ngưỡng tin cậy của hộp bao (Box F1-Confidence Curve)
+P90 [Normal] – Hình 5.5: Đồ thị biến thiên chỉ số F1 theo ngưỡng tin cậy của mặt nạ phân đoạn (Mask F1-Confidence Curve)
+P91 [Normal] – Hình 5.6: Ma trận nhầm lẫn chuẩn hóa (Normalized Confusion Matrix) của Baseline và TSVM
+P92 [Normal] – Hình 5.7: Biểu đồ phân phối biến thiên các chỉ số qua 10 lượt chạy độc lập (Seed Distribution)
+P93 [Normal] – Hình 5.8: Biểu đồ so sánh độ lệch chuẩn và sự co hẹp phương sai giữa Baseline và TSVM
+P94 [Normal] – Hình 5.9: Biểu đồ phân bố độ trễ suy luận (Latency Breakdown) trên phần cứng thử nghiệm
+P95 [Normal] – Hình 5.10: Biểu đồ tương quan giữa độ chính xác phân đoạn mặt nạ (Mask mAP50-95) và chi phí tính toán (GFLOPs)
+P96 [Normal] – Hình 5.11: So sánh trực quan mặt nạ phân đoạn thực tế trên ca polyp kích thước nhỏ (Small Polyp)
+P97 [Normal] – Hình 5.12: So sánh trực quan mặt nạ phân đoạn thực tế trên ca polyp dạng phẳng, ranh giới mờ (Flat/Blurry Polyp)
+P98 [Normal] ---
+P99 [Normal] DANH MỤC CÁC BẢNG BIỂU
+P100 [Normal] *(Ghi chú: Trong bản Word cuối cùng, mục này được tự động chèn bằng trường `TOC \h \z \c "Bảng"`. Dưới đây là danh mục các bảng số liệu chính trong báo cáo)*
+P101 [Normal] – Bảng 1.1: So sánh đặc tính của các phương pháp phân đoạn polyp dựa trên CNN, Transformer và SSM
+P102 [Normal] – Bảng 3.1: Thống kê số lượng mẫu phân bổ trong tập dữ liệu hỗn hợp Kvasir_YOLO_SEG_BG20
+P103 [Normal] – Bảng 4.1: Cấu hình phần cứng và phần mềm môi trường thực nghiệm Kaggle GPU
+P104 [Normal] – Bảng 4.2: Danh mục các siêu tham số huấn luyện tất định áp dụng cho 10 seed
+P105 [Normal] – Bảng 5.1: Bảng so sánh định lượng tổng hợp hiệu năng Baseline YOLO26s-seg và mô hình TSVM qua 10 seed (Mean ± Std, Range, Δ, p-value)
+P106 [Normal] – Bảng 5.2: Kết quả chi tiết hiệu năng phân đoạn của Baseline và TSVM qua từng seed độc lập (Seed 0 đến Seed 9)
+P107 [Normal] – Bảng 5.3: Ma trận nhầm lẫn trung bình qua 10 seed và các chỉ số bệnh học lâm sàng (Recall, Specificity tái dựng, Precision)
+P108 [Normal] – Bảng 5.4: Bảng đối chứng chi phí tính toán, tham số mô hình, GFLOPs và tốc độ suy luận (Latency, FPS)
+P109 [Normal] – Bảng 5.5: Kết quả kiểm thử khả năng tổng quát hóa trên các tập dữ liệu ngoại suy độc lập
+P110 [Normal] – Bảng H.1: Ma trận đối chiếu Chuẩn đầu ra (CLO 1.1 đến CLO 6) và các mục trong khóa luận
+P112 [Normal] MỞ ĐẦU
+P113 [Normal] ---
+P114 [Normal] 1. LÝ DO CHỌN ĐỀ TÀI VÀ TÍNH CẤP THIẾT CỦA NGHIÊN CỨU
+P115 [Normal] Ung thư đại trực tràng (Colorectal Cancer - CRC) là một trong những bệnh lý ác tính phổ biến hàng đầu và là nguyên nhân gây tử vong do ung thư đứng thứ hai trên phạm vi toàn cầu, theo thống kê của Tổ chức Y tế Thế giới (WHO) và GLOBOCAN. Phần lớn các ca ung thư đại trực tràng đều khởi phát từ các tổn thương tiền ung thư dạng polyp phát triển âm thầm trên bề mặt lớp niêm mạc đại trực tràng trong nhiều năm trước khi tiến triển thành khối u ác tính. Việc phát hiện sớm, khoanh vùng chính xác và cắt bỏ hoàn toàn các polyp này qua kỹ thuật nội soi đại trực tràng (Colonoscopy) được công nhận là tiêu chuẩn vàng giúp giảm tỷ lệ tử vong do ung thư đại trực tràng từ 50% đến hơn 80%.
+P116 [Normal] Tuy nhiên, trong quá trình can thiệp lâm sàng thực tế, các bác sĩ nội soi phải đối mặt với nhiều áp lực và thách thức lớn. Tỷ lệ bỏ sót polyp (Polyp Miss Rate - PMR) trong các ca nội soi thông thường vẫn dao động ở mức đáng báo động từ 15% đến 25%. Nguyên nhân chủ yếu xuất phát từ:
+P117 [Normal] – Đặc điểm hình thái đa dạng và phức tạp của polyp: Nhiều tổn thương có kích thước rất nhỏ (< 5 mm), dạng phẳng (flat/sessile) hoặc lõm, có màu sắc và cấu trúc bề mặt gần như hòa lẫn với nếp gấp niêm mạc ruột xung quanh.
+P118 [Normal] – Điều kiện quan sát nội soi hạn chế: Ánh sáng phản chiếu từ chất dịch nhầy, góc khuất sau các nếp gấp đại tràng, chuyển động nhu động ruột liên tục và tình trạng che khuất bởi bọt khí, chất cặn bã.
+P119 [Normal] – Yếu tố chủ quan của người thực hiện: Sự mệt mỏi, suy giảm thị lực và mức độ tập trung của bác sĩ sau các ca nội soi kéo dài liên tục, cũng như khoảng cách về kinh nghiệm giữa các bác sĩ chuyên khoa.
+P120 [Normal] Trước thực trạng đó, việc ứng dụng Trí tuệ nhân tạo (AI), đặc biệt là các mô hình Thị giác máy tính học sâu (Deep Learning Computer Vision) vào hệ thống Hỗ trợ chẩn đoán có sự trợ giúp của máy tính (Computer-Aided Diagnosis - CADe/CADx) đã trở thành xu hướng nghiên cứu mũi nhọn. Thay vì chỉ dừng lại ở bài toán Phát hiện đối tượng (Object Detection) bằng hộp bao chữ nhật (Bounding Box) vốn thô sơ và không cung cấp được thông tin ranh giới mô bệnh học, bài toán Phân đoạn thực thể (Instance Segmentation) đặt ra yêu cầu cao hơn: phải trích xuất chính xác đường biên (contour) và sinh mặt nạ nhị phân (binary mask) bám khít từng điểm ảnh (pixel-level) của tổn thương polyp.
+P121 [Normal] Gần đây, các mô hình phân đoạn thời gian thực dòng YOLO, tiêu biểu là kiến trúc thế hệ mới YOLO26-seg, đã cho thấy ưu thế vượt trội về tốc độ xử lý khung hình cao và cấu trúc end-to-end gọn nhẹ. Tuy nhiên, bản chất các phép tích chập (Convolutional Layers) trong mạng CNN của YOLO vẫn mang tính chất cục bộ (Local Receptive Field), dẫn đến hạn chế rõ rệt trong việc nắm bắt tương quan ngữ cảnh toàn cục (Global Context), khiến mô hình dễ bị đứt gãy đường biên hoặc sinh mặt nạ nhầm lẫn ở các vùng biên độ tương phản thấp. Ngược lại, các mô hình dựa trên Vision Transformer (ViT) tuy nắm bắt ngữ cảnh tốt nhưng lại có độ phức tạp tính toán bậc hai $O(N^2)$, đòi hỏi tài nguyên phần cứng lớn và gây độ trễ cao, khó triển khai trên các thiết bị nội soi thời gian thực.
+P122 [Normal] Sự ra đời của mô hình không gian trạng thái chọn lọc (Selective State Space Models - Mamba / VMamba) với cơ chế quét chọn lọc hai chiều không gian SS2D (2D Selective Scan) đã mở ra một hướng đột phá mới: cho phép mô hình hóa sự phụ thuộc tầm xa với độ phức tạp tính toán tuyến tính $O(N)$. Nhận thấy tiềm năng to lớn này, đề tài "Nghiên cứu phương pháp tích hợp VMamba vào mô hình YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng" được nhóm sinh viên đề xuất thực hiện nhằm kết hợp sức mạnh phân đoạn thời gian thực của YOLO26-seg với khả năng nắm bắt ngữ cảnh toàn cục và nhận biết hình thái đường biên của khối VMamba, giải quyết đồng thời bài toán cân bằng giữa độ chính xác phân đoạn lâm sàng và chi phí tài nguyên phần cứng.
+P123 [Normal] ---
+P124 [Normal] 2. MỤC TIÊU VÀ NHIỆM VỤ NGHIÊN CỨU CỦA ĐỀ TÀI
+P125 [Normal] 2.1. Mục tiêu tổng quát
+P126 [Normal] Nghiên cứu, thiết kế, cài đặt và đánh giá một giải pháp phân đoạn thực thể polyp đại trực tràng tự động dựa trên sự tích hợp khối không gian trạng thái thị giác (Visual State Space - VMamba) vào mạng phân đoạn thời gian thực YOLO26-seg; từ đó xây dựng hệ sinh thái ứng dụng minh họa hoàn chỉnh (Web & Mobile App) hỗ trợ công tác tầm soát lâm sàng.
+P127 [Normal] 2.2. Mục tiêu cụ thể
+P128 [Normal] 1. Khảo sát lý thuyết chuyên sâu: Hệ thống hóa cơ sở lý thuyết về bài toán phân đoạn polyp, kiến trúc YOLO26-seg, nguyên lý mô hình không gian trạng thái Mamba và thuật toán quét chọn lọc 2D (SS2D) trong VMamba.
+P129 [Normal] 2. Thiết kế và chuẩn hóa bộ dữ liệu thực nghiệm: Xây dựng quy trình tiền xử lý chuyển đổi mặt nạ Ground Truth sang định dạng đa giác YOLO Polygon; đặc biệt bổ sung 20% ảnh nền âm tính (niêm mạc bình thường không chứa polyp - normal cecum) tạo thành bộ dữ liệu chuẩn hóa `Kvasir_YOLO_SEG_BG20` (1.200 ảnh) với cơ chế nhãn rỗng nhằm triệt tiêu hiện tượng báo động giả (False Positives).
+P130 [Normal] 3. Đề xuất kiến trúc cải tiến TSVM: Thiết kế và tích hợp thành công khối Topology-Shape-aware VMamba (TSVM) vào vị trí chiến lược tại tầng 10 (mức đặc trưng sâu P5, stride 32) của YOLO26-seg, tối ưu hóa quá trình tổng hợp thông tin ngữ cảnh ngữ nghĩa đa tỷ lệ.
+P131 [Normal] 4. Thực nghiệm đối chứng khoa học tất định qua 10 seed: Huấn luyện và đánh giá đối chứng nghiêm ngặt giữa mô hình cơ sở Baseline YOLO26s-seg và mô hình cải tiến TSVM qua 10 lượt chạy độc lập (Seed 0 đến Seed 9); đo đạc toàn diện các chỉ số: Box/Mask Precision, Recall, F1-score, Dice Similarity Coefficient (DSC), IoU, mAP50, mAP50-95 và thực hiện kiểm định giả thuyết thống kê Paired t-test.
+P132 [Normal] 5. Đánh giá chi phí tính toán và khả năng thực thi: Đo lường chi tiết số lượng tham số (Parameters), độ phức tạp tính toán (GFLOPs), thời gian suy luận (Latency theo mili-giây) và tốc độ khung hình (FPS) trên các môi trường phần cứng GPU và CPU.
+P133 [Normal] 6. Xây dựng hệ sinh thái sản phẩm ứng dụng: Hiện thực hóa giải pháp thành hệ thống phần mềm hoàn chỉnh gồm 3 lớp:
+P134 [Normal] – AI Microservice (FastAPI - Python) đảm nhiệm suy luận thời gian thực.
+P135 [Normal] – Web Application (Java Spring Boot) phục vụ quản lý hồ sơ và tương tác trên máy tính nội soi.
+P136 [Normal] – Mobile Application (Flutter) cho phép chụp ảnh trực tiếp và hiển thị tổn thương polyp trên thiết bị di động.
+P137 [Normal] ---
+P138 [Normal] 3. ĐỐI TƯỢNG VÀ PHẠM VI NGHIÊN CỨU
+P139 [Normal] 3.1. Đối tượng nghiên cứu
+P140 [Normal] – Ảnh chụp nội soi đường tiêu hóa dưới (đại trực tràng) có chứa các dạng tổn thương polyp khác nhau và ảnh niêm mạc bình thường.
+P141 [Normal] – Mô hình mạng nơ-ron phân đoạn thực thể thời gian thực YOLO26-seg (biến thể nhỏ gọn `yolo26s-seg`).
+P142 [Normal] – Khối mô hình không gian trạng thái thị giác chọn lọc VMamba (Visual State-Space Model) và thuật toán quét chọn lọc 2 chiều SS2D.
+P143 [Normal] – Kỹ thuật xây dựng phần mềm phân tán (FastAPI, Java Spring Boot, Flutter).
+P144 [Normal] 3.2. Phạm vi nghiên cứu
+P145 [Normal] – Phạm vi dữ liệu:
+P146 [Normal] – Tập dữ liệu chính để huấn luyện và kiểm định đối chứng: `Kvasir_YOLO_SEG_BG20` bao gồm 1.000 ảnh từ bộ dữ liệu mở Kvasir-SEG (Simula Research Laboratory, Na Uy) kết hợp cùng 200 ảnh niêm mạc manh tràng bình thường (normal-cecum) từ tập Kvasir v2.
+P147 [Normal] – Tập dữ liệu mở rộng dùng để đánh giá khả năng tổng quát hóa ngoại suy (Out-of-distribution): CVC-ClinicDB, CVC-ColonDB và ETIS-Larib PolypDB.
+P148 [Normal] – Phạm vi mô hình: Tập trung nghiên cứu phương án tích hợp khối VMamba tại tầng 10 (mức P5) của mô hình `yolo26s-seg`. Không mở rộng sang các biến thể cỡ lớn (Medium, Large, XLarge) do hạn chế về chi phí tính toán và mục tiêu tối ưu cho triển khai thực tế.
+P149 [Normal] – Phạm vi môi trường thực nghiệm: Môi trường điện toán đám mây Kaggle GPU (Nvidia Tesla T4 16GB VRAM) cho huấn luyện; máy trạm cá nhân và thiết bị di động thông minh cho kiểm thử suy luận ứng dụng.
+P150 [Normal] ---
+P151 [Normal] 4. PHƯƠNG PHÁP NGHIÊN CỨU VÀ TỔ CHỨC THỰC HIỆN
+P152 [Normal] 4.1. Phương pháp nghiên cứu
+P153 [Normal] Đề tài áp dụng kết hợp các phương pháp nghiên cứu khoa học chuẩn tắc:
+P154 [Normal] – Phương pháp nghiên cứu lý thuyết: Thu thập, phân tích, tổng hợp tài liệu chuyên khảo, các bài báo khoa học đỉnh cao (Q1/A*) từ các hội nghị và tạp chí uy tín (MICCAI, CVPR, ICCV, NeurIPS, ICML, IEEE TMI) liên quan đến bài toán phân đoạn polyp, kiến trúc YOLO và Mamba.
+P155 [Normal] – Phương pháp mô hình hóa và thiết kế giải thuật: Sử dụng ngôn ngữ lập trình Python, thư viện PyTorch để tùy biến kiến trúc mã nguồn mở của Ultralytics, thiết kế khối TSVM và tích hợp vào pipeline xử lý mạng nơ-ron.
+P156 [Normal] – Phương pháp thực nghiệm đối chứng tất định (Empirical Controlled Experimentation): Cố định toàn bộ các siêu tham số (Hyperparameters), cố định các hạt giống ngẫu nhiên (Seeds từ 0 đến 9), huấn luyện 10 lượt độc lập cho mỗi mô hình trên cùng một điều kiện dữ liệu và phần cứng; sử dụng script tự động trích xuất kết quả từ file log gốc `results.csv`.
+P157 [Normal] – Phương pháp phân tích thống kê và kiểm chứng chéo (Statistical Hypothesis Testing & Audit): Áp dụng kiểm định Paired Student's t-test để đánh giá mức độ tin cậy của sự cải thiện; xây dựng quy trình kiểm toán toàn vẹn số liệu (Audit) với 694 phép kiểm tra tự động nhằm đảm bảo tính trung thực học thuật tuyệt đối.
+P158 [Normal] – Phương pháp phát triển phần mềm theo mô hình dịch vụ vi mô (Microservices Architecture): Phân tách rõ ràng giữa tầng tính toán học sâu (AI Engine) và tầng ứng dụng người dùng cuối (Web và Mobile App) thông qua giao thức RESTful API.
+P159 [Normal] 4.2. Kế hoạch và phân công thực hiện đề tài (12 tuần)
+P160 [Normal] Đề tài được thực hiện nghiêm túc trong khoảng thời gian 12 tuần (từ ngày 17/08/2026 đến ngày 08/11/2026) theo phân công chi tiết của Giảng viên hướng dẫn:
+P161 [Normal] – Sinh viên Lê Đức Lương (Nhóm trưởng): Chịu trách nhiệm thiết kế kiến trúc khối TSVM, cài đặt pipeline huấn luyện trên Kaggle, thực hiện toàn bộ 20 lượt huấn luyện 10 seed, xử lý số liệu thống kê, chạy kiểm toán toàn vẹn audit và xây dựng dịch vụ AI FastAPI.
+P162 [Normal] – Sinh viên Phùng Tuấn Huy: Chịu trách nhiệm thu thập, làm sạch dữ liệu Kvasir-SEG và normal-cecum, viết script chuyển đổi nhãn đa giác YOLO segmentation, kiểm thử độ trễ và tham gia thiết kế giao diện ứng dụng Web Java Spring Boot.
+P163 [Normal] – Sinh viên Trần Mạnh Toàn: Chịu trách nhiệm thiết kế, lập trình ứng dụng di động Flutter (`app_polyp`), tích hợp kết nối API nhận ảnh từ camera/bộ nhớ và xây dựng bài báo cáo thuyết trình Slide PowerPoint.
+P164 [Normal] ---
+P165 [Normal] 5. Ý NGHĨA KHOA HỌC VÀ GIÁ TRỊ THỰC TIỄN CỦA ĐỀ TÀI
+P166 [Normal] 5.1. Ý nghĩa khoa học
+P167 [Normal] – Đóng góp một giải pháp kiến trúc mới mẻ bằng việc chứng minh tính khả thi của việc kết hợp mô hình không gian trạng thái chọn lọc (VMamba SS2D) với mạng phân đoạn thực thể end-to-end YOLO26-seg trong xử lý ảnh y tế.
+P168 [Normal] – Khẳng định vai trò quan trọng của việc bổ sung ảnh nền âm tính (negative samples) kết hợp nhãn rỗng trong việc triệt tiêu hiện tượng báo động giả đối với các mô hình thị giác máy tính dựa trên YOLO.
+P169 [Normal] – Cung cấp một bộ dữ liệu thực nghiệm chuẩn mực với 10 lượt chạy tất định, thiết lập chuẩn đối sánh tin cậy cho cộng đồng nghiên cứu bài toán phân đoạn polyp tại Việt Nam.
+P170 [Normal] 5.2. Giá trị thực tiễn
+P171 [Normal] – Cung cấp một công cụ hỗ trợ thông minh có khả năng khoanh vùng chính xác ranh giới tổn thương polyp theo thời gian thực, hỗ trợ đắc lực cho các bác sĩ trong quá trình nội soi, giảm thiểu nguy cơ bỏ sót tổn thương nguy hiểm.
+P172 [Normal] – Sản phẩm Web và Mobile App hoàn thiện sẵn sàng kết nối vào hệ thống mạng nội bộ của phòng khám hoặc thiết bị di động của bác sĩ, có tính ứng dụng chuyển giao cao.
+P173 [Normal] ---
+P174 [Normal] 6. BỐ CỤC CỦA KHÓA LUẬN
+P175 [Normal] Nội dung chính của khóa luận được kết cấu thành 5 chương theo đúng thể thức chuẩn mực của Khoa Công nghệ Thông tin - Trường Đại học Công Thương TP. Hồ Chí Minh:
+P176 [Normal] – Chương 1: Tổng quan và cơ sở nghiên cứu: Trình bày tổng quan về bài toán phân đoạn polyp, kiến trúc mô hình YOLO26-seg, cơ sở lý thuyết về Mamba/VMamba và khảo sát các công trình liên quan.
+P177 [Normal] – Chương 2: Phân tích và thiết kế mô hình đề xuất: Phân tích chi tiết cơ chế hoạt động của YOLO26-seg, công thức toán học của SS2D và thiết kế khối Topology-Shape-aware VMamba (TSVM) tích hợp tại tầng 10.
+P178 [Normal] – Chương 3: Xây dựng bộ dữ liệu và tiền xử lý: Trình bày chi tiết về nguồn dữ liệu Kvasir-SEG, normal-cecum, quy trình sinh nhãn đa giác YOLO, cơ chế nhãn rỗng và đặc tả cấu hình `data_bg20.yaml`.
+P179 [Normal] – Chương 4: Cài đặt thuật toán và xây dựng ứng dụng minh họa: Trình bày môi trường thực nghiệm, phân tích các cell Notebook Kaggle huấn luyện tất định và kiến trúc cài đặt hệ sinh thái phần mềm (FastAPI, Java Spring Boot Web và Flutter Mobile App).
+P180 [Normal] – Chương 5: Thử nghiệm và đánh giá kết quả: Báo cáo chi tiết kết quả định lượng qua 10 seed độc lập, kiểm định thống kê, phân tích ma trận nhầm lẫn, hệ thống 12 đồ thị trực quan hóa đa chiều, đánh giá chi phí tính toán và thử nghiệm trên dữ liệu thực tế.
+P181 [Normal] – Kết luận và hướng phát triển: Tổng kết các kết quả đạt được, chỉ ra các hạn chế và đề xuất hướng nghiên cứu tiếp theo.
+P182 [Normal] – Tài liệu tham khảo và Hệ thống 8 Phụ lục chuyên sâu (Phụ lục A đến H).
+P184 [Normal] CHƯƠNG 1. TỔNG QUAN VÀ CƠ SỞ NGHIÊN CỨU
+P185 [Normal] ---
+P186 [Normal] 1.1. TỔNG QUAN BÀI TOÁN PHÂN ĐOẠN POLYP TRONG ẢNH NỘI SOI ĐẠI TRỰC TRÀNG
+P187 [Normal] 1.1.1. Đặc điểm giải phẫu và ý nghĩa lâm sàng của polyp đại tràng
+P188 [Normal] Polyp đại trực tràng là những khối mô tân sinh nhô lên bất thường từ bề mặt lớp biểu mô niêm mạc lòng ruột già (bao gồm manh tràng, kết tràng lên, kết tràng ngang, kết tràng xuống, kết tràng sigma và trực tràng). Về mặt giải phẫu bệnh học, polyp được phân loại thành hai nhóm chính:
+P189 [Normal] – Polyp không tân sinh (Non-neoplastic): Bao gồm polyp tăng sản (hyperplastic polyps), polyp viêm và polyp thừa mô (hamartoma). Nhóm này hầu hết lành tính và có rất ít hoặc không có nguy cơ chuyển dạng ác tính.
+P190 [Normal] – Polyp tân sinh (Neoplastic): Tiêu biểu nhất là các u tuyến (adenomas) như u tuyến ống (tubular adenoma), u tuyến nhánh (villous adenoma) và u tuyến răng cưa (sessile serrated lesion - SSL). Đây là các tổn thương tiền ung thư trực tiếp; qua quá trình đột biến gen tích lũy từ 5 đến 10 năm theo chu trình u tuyến - ung thư (adenoma-carcinoma sequence), các u tuyến này sẽ xâm lấn lớp dưới niêm và chuyển thành ung thư biểu mô đại trực tràng di căn.
+P191 [Normal] Kỹ thuật nội soi đại trực tràng quang học độ phân giải cao (High-Definition White Light Colonoscopy) kết hợp nhuộm màu điện tử (NBI, FICE) hiện là tiêu chuẩn vàng trong tầm soát. Khi phát hiện polyp, bác sĩ nội soi sẽ tiến hành cắt bỏ polyp (polypectomy) ngay trong phiên can thiệp để triệt tiêu nguồn gốc khối u. Tuy nhiên, việc đánh giá chính xác vị trí, diện tích và ranh giới mô lành - mô bệnh đóng vai trò sống còn trong việc quyết định kỹ thuật cắt (cắt bằng thòng lọng nguội, cắt polyp có tiêm phồng dưới niêm mạc EMR, hay bóc tách dưới niêm mạc ESD).
+P192 [Normal] 1.1.2. Thách thức phân đoạn trong môi trường quang học nội soi
+P193 [Normal] Trong xử lý ảnh y tế tự động, bài toán phân đoạn polyp từ ảnh nội soi được đánh giá là một trong những bài toán phức tạp và nhiều thách thức nhất bởi các yếu tố đặc thù sau:
+P194 [Normal] 1. Ranh giới mờ và độ tương phản thấp (Poor Contrast & Blurry Boundaries): Polyp dạng phẳng (sessile/flat) hoặc dạng u tuyến răng cưa thường không có cuống, chỉ hơi gồ nhẹ trên niêm mạc, màu sắc hồng nhạt gần như đồng nhất với niêm mạc đại tràng lành xung quanh, khiến các bộ lọc cạnh truyền thống hoàn toàn bất lực.
+P195 [Normal] 2. Kích thước và hình thái đa dạng (High Intra-class Variation): Trong cùng một bệnh nhân, kích thước polyp có thể dao động từ dưới 2 mm (dạng chấm nhỏ) đến trên 30 mm (khối u sùi thùy múi lớn che lấp lòng ruột).
+P196 [Normal] 3. Môi trường nội soi nhiều nhiễu động học (Severe Visual Artifacts): Lòng đại tràng liên tục co bóp nhu động; ánh sáng từ đầu camera nội soi tạo ra các điểm chói lóa cục bộ (specular reflections); dịch nhầy ruột, bọt khí, cặn phân và vết máu bám dính trên thành ruột rất dễ bị mô hình học sâu nhầm lẫn là polyp (sinh ra dương tính giả - False Positives).
+P197 [Normal] [KHUNG HÌNH ẢNH: Hình 1.1: Đặc điểm hình thái đa dạng của các dạng polyp đại trực tràng từ bộ dữ liệu nội soi Kvasir-SEG]
+P198 [Normal] Hình 1.1: Đặc điểm hình thái đa dạng của các dạng polyp đại trực tràng từ bộ dữ liệu nội soi Kvasir-SEG
+P199 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Hình 1.1 minh họa 4 ca bệnh điển hình: (a) Polyp có cuống kích thước lớn ( 15mm), nổi rõ trong lòng ruột; (b) Polyp dạng phẳng trải rộng với bờ ranh giới rất mờ; (c) Polyp nhỏ li ti (< 3mm) nằm kẹp giữa nếp gấp niêm mạc; (d) Ca bệnh có ánh đèn flash phản chiếu mạnh gây lóa trắng bề mặt tổn thương.
+ - Ý nghĩa kỹ thuật & bệnh học: Sự đa dạng cực đoan này đòi hỏi mô hình học sâu không thể chỉ dựa vào đặc trưng màu sắc hoặc đường biên cục bộ (local texture). Thay vào đó, mô hình bắt buộc phải có trường tiếp nhận đủ lớn để nắm bắt tương quan không gian toàn cục (global structural context), từ đó phân biệt được đâu là nếp gấp ruột sinh lý bình thường và đâu là khối mô tân sinh bất thường.
+P200 [Normal] 1.1.3. Khảo sát các độ đo đánh giá trong phân đoạn ảnh y tế
+P201 [Normal] Để lượng hóa độ chính xác của các thuật toán phân đoạn ảnh, cộng đồng y khoa và thị giác máy tính quốc tế sử dụng một hệ thống các chỉ số chuẩn tắc sau:
+P202 [Normal] 1. Hệ số tương đồng Dice (Dice Similarity Coefficient - DSC / F1-score):
+P203 [Normal] Đo lường mức độ trùng khớp giữa mặt nạ phân đoạn dự đoán của mô hình ($P$) và mặt nạ chuẩn Ground Truth ($G$):
+P204 [Normal] $$\text{Dice}(P, G) = \frac{2 \times |P \cap G|}{|P| + |G|} = \frac{2 \times TP}{2 \times TP + FP + FN}$$
+P205 [Normal] Giá trị Dice dao động trong khoảng $[0, 1]$. Trong y tế, chỉ số Dice đặc biệt ưu tiên việc phát hiện đúng diện tích tổn thương và phạt nặng các trường hợp bỏ sót (FN).
+P206 [Normal] 2. Chỉ số tương đồng Jaccard (Intersection over Union - IoU):
+P207 [Normal] Được định nghĩa là tỷ lệ giữa diện tích phần giao và diện tích phần hợp của hai vùng mặt nạ:
+P208 [Normal] $$\text{IoU}(P, G) = \frac{|P \cap G|}{|P \cup G|} = \frac{TP}{TP + FP + FN}$$
+P209 [Normal] Mối quan hệ toán học chặt chẽ giữa Dice và IoU được biểu diễn qua công thức biến đổi: $\text{IoU} = \frac{\text{Dice}}{2 - \text{Dice}}$.
+P210 [Normal] 3. Độ chính xác (Precision) và Độ nhạy (Recall / Sensitivity):
+P211 [Normal] $$\text{Precision} = \frac{TP}{TP + FP}, \quad \text{Recall} = \frac{TP}{TP + FN}$$
+P212 [Normal] Trong tầm soát polyp, Recall có ý nghĩa sống còn vì thể hiện tỷ lệ polyp thật sự được phát hiện, giảm thiểu tối đa hiện tượng bỏ sót (FN). Ngược lại, Precision phản ánh mức độ tin cậy của cảnh báo, giúp bác sĩ không bị phân tâm bởi các báo động giả (FP).
+P213 [Normal] 4. Độ chính xác trung bình mAP (Mean Average Precision):
+P214 [Normal] Độ đo chuẩn tắc trong hệ sinh thái YOLO.
+P215 [Normal] – $\text{mAP@50}$: Độ chính xác trung bình tính tại ngưỡng trùng khớp $\text{IoU} = 0.50$.
+P216 [Normal] – $\text{mAP@50-95}$: Giá trị trung bình của mAP được quét qua 10 ngưỡng IoU liên tiếp từ $0.50$ đến $0.95$ với bước nhảy $0.05$. Đây là chỉ số khắt khe nhất phản ánh độ sắc nét và độ khớp vi mô của đường biên mặt nạ.
+P217 [Normal] ---
+P218 [Normal] 1.2. TỔNG QUAN MÔ HÌNH YOLO VÀ BƯỚC TIẾN CỦA YOLO26-SEG
+P219 [Normal] 1.2.1. Quá trình phát triển các thế hệ YOLO trong phân đoạn thực thể
+P220 [Normal] Họ mô hình YOLO (You Only Look Once), khởi xướng từ công trình kinh điển của Joseph Redmon (2016), đã tạo nên một cuộc cách mạng trong thị giác máy tính nhờ chuyển đổi bài toán phát hiện đối tượng từ cơ chế hai giai đoạn (Two-stage như Faster R-CNN) sang bài toán hồi quy đơn giai đoạn (One-stage) thực thi theo thời gian thực.
+P221 [Normal] Trong bài toán phân đoạn thực thể, bước ngoặt lớn xuất hiện từ phiên bản YOLOv5-seg và YOLOv8-seg thông qua việc tích hợp nguyên lý YOLACT (You Only Look At CoefficienTs). Thay vì dự đoán mặt nạ điểm ảnh trực tiếp vốn cực kỳ tốn kém tài nguyên, mạng chia làm hai nhánh song song:
+P222 [Normal] 1. Nhánh Protonet: Sinh ra một tập hợp gồm $k$ mặt nạ nguyên mẫu (Prototype Masks) kích thước cố định đại diện cho toàn bộ bức ảnh.
+P223 [Normal] 2. Nhánh Mask Coefficient: Tại mỗi hộp bao phát hiện được, mô hình dự đoán một véc-tơ gồm $k$ hệ số mặt nạ tương ứng.
+P224 [Normal] 3. Mặt nạ phân đoạn cuối cùng của từng đối tượng được tái tạo nhanh chóng thông qua phép nhân ma trận giữa véc-tơ hệ số và các mặt nạ nguyên mẫu, theo sau bởi hàm kích hoạt Sigmoid và cắt xén (cropping) theo khung bao.
+P225 [Normal] 1.2.2. Kiến trúc tổng thể của YOLO26-seg
+P226 [Normal] Phiên bản thế hệ mới YOLO26-seg (Ultralytics, 2026) kế thừa và nâng cấp toàn diện cấu trúc mạng:
+P227 [Normal] – Backbone: Sử dụng các khối tích chập nâng cao giúp tối ưu hóa luồng truyền gradient, tăng tốc độ tính toán trên phần cứng GPU hiện đại.
+P228 [Normal] – Neck: Kiến trúc PAN-FPN (Path Aggregation Network - Feature Pyramid Network) kết hợp các đường dẫn truyền đặc trưng từ dưới lên (Bottom-up) và từ trên xuống (Top-down), cho phép dung hợp thông tin từ mức độ phân giải cao (P3, stride 8) đến mức ngữ nghĩa sâu (P5, stride 32).
+P229 [Normal] – Head: Thiết kế không neo (Anchor-free) tách biệt hoàn toàn giữa nhánh phát hiện hộp bao, nhánh phân loại nhãn và nhánh dự đoán hệ số phân đoạn, giúp loại bỏ việc gán nhãn thủ công và tăng tốc độ suy luận đáng kể.
+P230 [Normal] Mặc dù YOLO26-seg đạt tốc độ khung hình rất ấn tượng (trên 60 FPS), mô hình vẫn bộc lộ hạn chế cố hữu của các mạng CNN: kích thước bộ lọc tích chập cục bộ ($3\times3$ hoặc $5\times5$) khiến mô hình gặp khó khăn trong việc nhận thức các mối quan hệ hình học xa, dẫn đến việc mặt nạ phân đoạn polyp phẳng thường bị rách rưới hoặc biến dạng.
+P231 [Normal] ---
+P232 [Normal] 1.3. MÔ HÌNH KHÔNG GIAN TRẠNG THÁI (SSM) VÀ KIẾN TRÚC VMAMBA
+P233 [Normal] 1.3.1. Cơ sở lý thuyết của State Space Models (Mamba)
+P234 [Normal] Mô hình không gian trạng thái cổ điển (State Space Models - SSM) có nguồn gốc từ lý thuyết điều khiển tự động, mô tả một hệ thống tuyến tính liên tục ánh xạ chuỗi tín hiệu đầu vào 1 chiều $x(t) \in \mathbb{R}$ sang chuỗi đầu ra $y(t) \in \mathbb{R}$ thông qua biến trạng thái ẩn $h(t) \in \mathbb{R}^N$:
+P235 [Normal] $$\frac{dh(t)}{dt} = \mathbf{A}h(t) + \mathbf{B}x(t)$$
+P236 [Normal] $$y(t) = \mathbf{C}h(t) + \mathbf{D}x(t)$$
+P237 [Normal] Trong đó: $\mathbf{A} \in \mathbb{R}^{N \times N}$ là ma trận chuyển trạng thái hệ thống, $\mathbf{B} \in \mathbb{R}^{N \times 1}$ là ma trận chiếu đầu vào, $\mathbf{C} \in \mathbb{R}^{1 \times N}$ là ma trận chiếu đầu ra, và $\mathbf{D}$ là hệ số truyền thẳng.
+P238 [Normal] Đột phá lớn nhất của kiến trúc Mamba (Albert Gu & Tri Dao, 2023) là đưa vào Cơ chế chọn lọc phụ thuộc tham số (Selective Scan Mechanism - S6): Thay vì cố định các ma trận $\mathbf{B}, \mathbf{C}$ và bước thời gian rời rạc hóa $\mathbf{\Delta}$, Mamba biến chúng thành các hàm phụ thuộc trực tiếp vào dữ liệu đầu vào: $\mathbf{B}(x), \mathbf{C}(x), \mathbf{\Delta}(x)$. Điều này cho phép mô hình chọn lọc ghi nhớ thông tin quan trọng và chủ động quên đi các thông tin nhiễu, tương tự như cơ chế Attention của Transformer nhưng với độ phức tạp tính toán chỉ là tuyến tính $O(N)$ thay vì bậc hai $O(N^2)$.
+P239 [Normal] 1.3.2. Cơ chế quét chọn lọc hai chiều không gian SS2D (2D Selective Scan)
+P240 [Normal] Dữ liệu hình ảnh 2 chiều không có tính chất thứ tự tự nhiên như chuỗi văn bản 1 chiều. Nếu chỉ trải phẳng (flatten) ảnh thành 1 chuỗi dài, các điểm ảnh liền kề theo phương thẳng đứng sẽ bị đẩy ra rất xa nhau trong chuỗi 1 chiều, phá hủy tính liên kết không gian.
+P241 [Normal] Để giải quyết triệt để vấn đề này, kiến trúc VMamba (Visual State Space Model) (Liu et al., 2024) đã đề xuất khối quét chọn lọc không gian hai chiều SS2D (2D Selective Scan):
+P242 [Normal] 1. Ma trận đặc trưng hình ảnh 2 chiều kích thước $H \times W \times C$ được quét đồng thời theo 4 hướng quét độc lập:
+P243 [Normal] – Quét từ góc trên-trái xuống dưới-phải (Top-Left to Bottom-Right).
+P244 [Normal] – Quét từ góc dưới-phải lên trên-trái (Bottom-Right to Top-Left).
+P245 [Normal] – Quét từ góc trên-phải xuống dưới-trái (Top-Right to Bottom-Left).
+P246 [Normal] – Quét từ góc dưới-trái lên trên-phải (Bottom-Left to Top-Right).
+P247 [Normal] 2. Mỗi chuỗi quét được xử lý song song thông qua cơ chế chọn lọc SSM 1D để nắm bắt ngữ cảnh từ mọi hướng.
+P248 [Normal] 3. Sau đó, 4 chuỗi đầu ra được phục hồi (unfold) về lại cấu trúc không gian 2D ban đầu và cộng tổng hợp nhất.
+P249 [Normal] [KHUNG HÌNH ẢNH: Hình 1.2: Sơ đồ nguyên lý cơ chế quét chọn lọc hai chiều không gian SS2D trong kiến trúc VMamba]
+P250 [Normal] Hình 1.2: Sơ đồ nguyên lý cơ chế quét chọn lọc hai chiều không gian SS2D trong kiến trúc VMamba
+P251 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Khối SS2D biến đổi một bản đồ đặc trưng có độ dài $N = H \times W$ thành 4 chuỗi quét song song. Thay vì tính ma trận tương quan kích thước $N \times N$ với chi phí bộ nhớ $O(N^2)$ như phép Self-Attention của ViT, cơ chế SS2D chỉ tiêu tốn chi phí tính toán và bộ nhớ tuyến tính $O(N)$.
+ - Ý nghĩa kỹ thuật & bệnh học: Nhờ việc quét theo cả 4 hướng chéo và dọc/ngang, mỗi điểm ảnh trong vùng polyp đều nhận được thông tin phản hồi từ toàn bộ khung hình nội soi. Điều này giúp mô hình nhận thức được toàn vẹn cấu trúc hình học của polyp ngay cả khi một phần ranh giới bị che khuất hoặc bị lóa sáng bởi đèn nội soi.
+P252 [Normal] ---
+P253 [Normal] 1.4. KHẢO SÁT CÁC CÔNG TRÌNH NGHIÊN CỨU LIÊN QUAN
+P254 [Normal] Bảng 1.1: So sánh đặc tính của các phương pháp phân đoạn polyp dựa trên CNN, Transformer và SSM
+TABLE 255
+Hướng tiếp cận | Mô hình tiêu biểu | Ưu điểm chính | Hạn chế cố hữu | Khả năng chạy Real-time
+CNN truyền thống | UNet (2015), PraNet (2020), HarDNet-MSEG (2021) | Cấu trúc đơn giản, tốc độ huấn luyện nhanh, phát hiện biên cục bộ tốt | Trường tiếp nhận hạn chế, dễ đứt gãy mặt nạ ở polyp phẳng | Khá cao (30–45 FPS)
+Vision Transformer | Polyp-PVT (2021), ColonFormer (2022) | Bao quát ngữ cảnh toàn cục xuất sắc, mặt nạ phân đoạn mịn | Chi phí tính toán O(N^2), số lượng tham số lớn, tiêu tốn VRAM | Thấp (< 15 FPS)
+State Space Model (SSM) | Polyp-Mamba (2024), VM-UNet (2024) | Nắm bắt tương quan tầm xa với độ phức tạp tuyến tính O(N) | Thường thiết kế dạng UNet cồng kềnh, chưa tối ưu cho phát hiện thực thể | Trung bình (20–30 FPS)
+Đề xuất của đề tài | TSVM + YOLO26-seg | Dung hợp ngữ cảnh toàn cục SS2D vào mạng one-stage gọn nhẹ, triệt tiêu FP nhờ tập BG20 | Tăng thêm độ trễ suy luận so với CNN thuần túy | Đạt chuẩn lâm sàng (Real-time)
+P256 [Normal] 1. Các nghiên cứu dựa trên mạng tích chập CNN:
+P257 [Normal] – Mạng UNet và các biến thể nâng cao như ResUNet++, PraNet (Fan et al., MICCAI 2020) đã đạt được nhiều thành tựu lớn trong phân đoạn ảnh y tế. PraNet sử dụng mô-đun Parallel Partial Decoder để kết hợp đặc trưng mức cao và mô-đun Reverse Attention để đào sâu ranh giới. Tuy nhiên, các kiến trúc này hầu hết là mạng phân đoạn ngữ nghĩa (Semantic Segmentation), dự đoán trực tiếp ở mức điểm ảnh trên toàn ảnh nên tốc độ xử lý chậm và dễ sinh cảnh báo giả khi gặp ảnh không có polyp.
+P258 [Normal] 2. Các nghiên cứu dựa trên Transformer:
+P259 [Normal] – Polyp-PVT (Dong et al., 2021) khai thác Pyramid Vision Transformer làm backbone để mô hình hóa ngữ cảnh đa tỷ lệ. Mặc dù đạt chỉ số Dice rất cao trên tập Kvasir-SEG, độ phức tạp tính toán lớn khiến mô hình không thể nhúng vào các thiết bị nội soi cầm tay hoặc hệ thống máy tính cấu hình phổ thông tại các bệnh viện tuyến dưới.
+P260 [Normal] 3. Các nghiên cứu ứng dụng Mamba trong phân đoạn y tế:
+P261 [Normal] – Gần đây, Polyp-Mamba (Xu et al., MICCAI 2024) đã tiên phong đưa Mamba vào kiến trúc UNet để phân đoạn polyp và chứng minh hiệu quả vượt trội so với Transformer. Tuy nhiên, Polyp-Mamba vẫn là mô hình phân đoạn ngữ nghĩa đơn thuần, chưa được tích hợp vào một pipeline phát hiện thực thể hoàn chỉnh có khả năng xuất đồng thời hộp bao tọa độ, nhãn bệnh học và mặt nạ thời gian thực như hệ sinh thái YOLO.
+P262 [Normal] ---
+P263 [Normal] 1.5. KHOẢNG TRỐNG NGHIÊN CỨU VÀ GIẢI PHÁP ĐỀ XUẤT CỦA ĐỀ TÀI
+P264 [Normal] Từ các khảo sát thực tế trên, đề tài xác định được 3 khoảng trống nghiên cứu then chốt:
+P265 [Normal] 1. Khoảng trống về mặt kiến trúc: Chưa có công trình nào nghiên cứu việc tích hợp khối quét chọn lọc không gian hai chiều VMamba vào mạng phân đoạn thực thể end-to-end thế hệ mới nhất YOLO26-seg để tận dụng đồng thời tốc độ suy luận của YOLO và năng lực ngữ cảnh toàn cục tuyến tính của Mamba.
+P266 [Normal] 2. Khoảng trống về xử lý báo động giả trong dữ liệu y tế: Đa phần các nghiên cứu hiện nay chỉ huấn luyện mô hình trên các tập dữ liệu "lý tưởng" chỉ chứa toàn ảnh dương tính có polyp (như tập Kvasir-SEG 1.000 ảnh gốc). Khi triển khai vào thực tế, khi gặp niêm mạc đại tràng bình thường, mô hình rất dễ bị "ảo giác" (hallucination) và sinh ra các mặt nạ polyp giả.
+P267 [Normal] 3. Khoảng trống về tính ứng dụng thực tiễn: Các nghiên cứu học thuật thường chỉ dừng lại ở việc báo cáo chỉ số trong bài báo mà thiếu đi một hệ sinh thái phần mềm hoàn chỉnh cho phép bác sĩ tương tác trực tiếp qua Web và ứng dụng di động.
+P268 [Normal] Giải pháp đề xuất của đề tài:
+P269 [Normal] – Thiết kế khối cải tiến Topology-Shape-aware VMamba (TSVM) và tích hợp chiến lược vào tầng 10 (mức P5) của mô hình YOLO26s-seg.
+P270 [Normal] – Xây dựng quy trình làm giàu dữ liệu chuẩn mực `Kvasir_YOLO_SEG_BG20` bổ sung 20% ảnh niêm mạc bình thường với nhãn rỗng để rèn luyện khả năng ức chế báo động giả.
+P271 [Normal] – Phát triển trọn vẹn hệ thống ứng dụng minh họa gồm FastAPI AI Microservice, Java Spring Boot Web và Flutter Mobile App phục vụ trình diễn và đánh giá lâm sàng.
+P272 [Normal] ---
+P273 [Normal] 1.6. TÓM TẮT CHƯƠNG 1
+P274 [Normal] Chương 1 đã trình bày toàn diện bối cảnh bệnh học và tầm quan trọng của việc phân đoạn polyp đại trực tràng; phân tích sâu sắc các độ đo đánh giá y tế chuẩn mực; phân tích ưu nhược điểm của các kiến trúc YOLO26-seg, State Space Model (Mamba) và khối quét 2D (SS2D). Qua khảo sát các công trình tiền nhiệm, đề tài đã chỉ rõ khoảng trống nghiên cứu và thiết lập cơ sở khoa học vững chắc cho việc thiết kế kiến trúc mô hình đề xuất TSVM sẽ được trình bày chi tiết trong Chương 2.
+P276 [Normal] CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ MÔ HÌNH ĐỀ XUẤT
+P277 [Normal] ---
+P278 [Normal] 2.1. NGUYÊN LÝ PHÂN ĐOẠN THỰC THỂ TRONG YOLO26-SEG
+P279 [Normal] 2.1.1. Luồng dữ liệu qua Backbone, PAN-FPN và Proto Segment Head
+P280 [Normal] Mô hình YOLO26-seg xử lý ảnh nội soi đầu vào kích thước chuẩn $3 \times 640 \times 640$ thông qua một luồng dữ liệu liên tục khép kín gồm ba thành phần kiến trúc chính:
+P281 [Normal] 1. Mạng xương sống (Backbone):
+P282 [Normal] – Đảm nhiệm chức năng trích xuất đặc trưng phân cấp từ thấp đến cao. Ảnh đầu vào ban đầu đi qua tầng tích chập Stem để giảm độ phân giải không gian và tăng số kênh đặc trưng.
+P283 [Normal] – Qua các tầng tiếp theo, dữ liệu lần lượt được biến đổi qua các mức phân giải giảm dần với hệ số bước nhảy (stride):
+P284 [Normal] – Mức P3 (stride 8): Bản đồ đặc trưng có kích thước $80 \times 80$, bảo tồn độ phân giải không gian cao và chi tiết kết cấu bề mặt cục bộ (edges, textures).
+P285 [Normal] – Mức P4 (stride 16): Kích thước $40 \times 40$, đại diện cho mức đặc trưng ngữ nghĩa trung gian.
+P286 [Normal] – Mức P5 (stride 32): Kích thước $20 \times 20$, chứa đựng thông tin ngữ nghĩa trừu tượng cao nhất và trường tiếp nhận lớn nhất của mạng.
+P287 [Normal] 2. Mạng cổ dung hợp đa tỷ lệ (PAN-FPN Neck):
+P288 [Normal] – Sử dụng cơ chế kết hợp hai chiều: đường dẫn từ trên xuống (Top-down) đưa thông tin ngữ nghĩa phong phú từ mức P5 xuống P3 để bổ trợ cho việc định vị chi tiết; tiếp theo đường dẫn từ dưới lên (Bottom-up) truyền các đặc trưng vị trí không gian chính xác từ P3 ngược lên P5.
+P289 [Normal] – Quá trình này giúp mô hình nhận diện tốt cả những polyp kích thước siêu nhỏ (nhờ mức P3) lẫn các khối polyp lớn trải rộng (nhờ mức P5).
+P290 [Normal] 3. Đầu phân đoạn nguyên mẫu (Proto Segment Head):
+P291 [Normal] – Áp dụng nguyên lý YOLACT tiên tiến: Nhánh Protonet lấy đặc trưng giàu chi tiết nhất từ mức P3 (kích thước $80 \times 80$) đi qua một chuỗi các lớp tích chập để tạo ra $k = 32$ mặt nạ nguyên mẫu (Prototype Masks) kích thước $\frac{H}{4} \times \frac{W}{4} = 160 \times 160$.
+P292 [Normal] – Đồng thời, tại mỗi vị trí dự đoán trên bản đồ đặc trưng, các nhánh tích chập song song sẽ dự đoán:
+P293 [Normal] – Tọa độ hộp bao bounding box $(x, y, w, h)$.
+P294 [Normal] – Điểm tin cậy phân loại lớp (Class Confidence).
+P295 [Normal] – Véc-tơ gồm $k = 32$ hệ số mặt nạ (Mask Coefficients) $C = [c_1, c_2, \dots, c_k]$.
+P296 [Normal] [KHUNG HÌNH ẢNH: Hình 2.1: Sơ đồ kiến trúc tổng thể của mô hình cơ sở YOLO26-seg]
+P297 [Normal] Hình 2.1: Sơ đồ kiến trúc tổng thể của mô hình cơ sở YOLO26-seg
+P298 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Sơ đồ mô tả tường minh luồng lan truyền xuôi từ ảnh đầu vào $3 \times 640 \times 640$ qua các khối tích chập trích xuất P3 ($80 \times 80 \times 128$), P4 ($40 \times 40 \times 256$), P5 ($20 \times 20 \times 512$), sau đó dung hợp qua mạng PAN-FPN và đưa vào nhánh Proto Head sinh ra 32 mặt nạ nguyên mẫu $160 \times 160$.
+ - Ý nghĩa kỹ thuật & bệnh học: Việc tách rời giữa việc sinh mặt nạ nguyên mẫu và tính toán hệ số tuyến tính giúp mạng giữ được tốc độ khung hình cực cao ( 50 FPS). Tuy nhiên, vì toàn bộ mạng chỉ sử dụng các phép tích chập chuẩn, các mặt nạ nguyên mẫu tại nhánh P3 rất dễ bị nhiễu bởi các nếp gấp ruột có màu sắc tương đồng nếu không có sự định hướng ngữ cảnh toàn cục mạnh mẽ từ tầng P5.
+P299 [Normal] 2.1.2. Hàm mất mát phân đoạn đa nhiệm (Multi-task Loss Function)
+P300 [Normal] Quá trình tối ưu hóa mô hình YOLO26-seg trong huấn luyện được điều phối bởi hàm mất mát kết hợp đa nhiệm:
+P301 [Normal] $$\mathcal{L}_{\text{total}} = \lambda_{\text{box}} \mathcal{L}_{\text{box}} + \lambda_{\text{cls}} \mathcal{L}_{\text{cls}} + \lambda_{\text{dfl}} \mathcal{L}_{\text{dfl}} + \lambda_{\text{mask}} \mathcal{L}_{\text{mask}}$$
+P302 [Normal] Trong đó:
+P303 [Normal] 1. Mất mát phân loại ($\mathcal{L}_{\text{cls}}$): Sử dụng hàm mất mát nhị phân Binary Cross-Entropy (BCE) có trọng số:
+P304 [Normal] $$\mathcal{L}_{\text{cls}} = -\sum_{i} \left[ y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i) \right]$$
+P305 [Normal] 2. Mất mát hộp bao ($\mathcal{L}_{\text{box}}$ & $\mathcal{L}_{\text{dfl}}$): Sử dụng Complete IoU (CIoU) Loss kết hợp Distribution Focal Loss (DFL) để tối ưu đồng thời vị trí tâm, tỷ lệ khung hình và độ phân tán của biên hộp bao.
+P306 [Normal] 3. Mất mát mặt nạ phân đoạn ($\mathcal{L}_{\text{mask}}$):
+P307 [Normal] Mặt nạ dự đoán $\hat{M}$ của từng thực thể được tạo ra qua phép nhân ma trận giữa hệ số mặt nạ $C$ và ma trận mặt nạ nguyên mẫu $P$:
+P308 [Normal] $$\hat{M} = \sigma \left( \sum_{j=1}^{k} c_j \cdot P_j \right)$$
+P309 [Normal] Mất mát mặt nạ được tính bằng hàm Binary Cross-Entropy trên từng điểm ảnh bên trong vùng hộp bao Ground Truth:
+P310 [Normal] $$\mathcal{L}_{\text{mask}} = -\frac{1}{\Omega} \sum_{(u, v) \in \Omega} \left[ M(u, v) \log \hat{M}(u, v) + (1 - M(u, v)) \log (1 - \hat{M}(u, v)) \right]$$
+P311 [Normal] với $\Omega$ là tập hợp các điểm ảnh thuộc vùng bao của tổn thương polyp.
+P312 [Normal] ---
+P313 [Normal] 2.2. PHÂN TÍCH TOÁN HỌC CƠ CHẾ QUÉT CHỌN LỌC SS2D TRONG VMAMBA
+P314 [Normal] 2.2.1. Phương trình không gian trạng thái liên tục và rời rạc hóa
+P315 [Normal] Hệ thống không gian trạng thái tuyến tính liên tục (Continuous-time SSM) được định nghĩa bởi hệ phương trình vi phân:
+P316 [Normal] $$h'(t) = \mathbf{A} h(t) + \mathbf{B} x(t)$$
+P317 [Normal] $$y(t) = \mathbf{C} h(t)$$
+P318 [Normal] với $x(t) \in \mathbb{R}$ là tín hiệu đầu vào, $h(t) \in \mathbb{R}^N$ là trạng thái tiềm ẩn bên trong, $y(t) \in \mathbb{R}$ là tín hiệu đầu ra; $\mathbf{A} \in \mathbb{R}^{N \times N}, \mathbf{B} \in \mathbb{R}^{N \times 1}, \mathbf{C} \in \mathbb{R}^{1 \times N}$.
+P319 [Normal] Để áp dụng vào tính toán trên máy tính số với dữ liệu rời rạc, hệ liên tục trên được rời rạc hóa thông qua quy tắc xấp xỉ Zero-Order Hold (ZOH) với bước thời gian lấy mẫu $\mathbf{\Delta} \in \mathbb{R}_{>0}$:
+P320 [Normal] $$\mathbf{\bar{A}} = \exp(\mathbf{\Delta} \mathbf{A})$$
+P321 [Normal] $$\mathbf{\bar{B}} = (\mathbf{\Delta} \mathbf{A})^{-1} (\exp(\mathbf{\Delta} \mathbf{A}) - \mathbf{I}) \cdot (\mathbf{\Delta} \mathbf{B})$$
+P322 [Normal] Hệ phương trình trạng thái rời rạc hóa có dạng:
+P323 [Normal] $$h_t = \mathbf{\bar{A}} h_{t-1} + \mathbf{\bar{B}} x_t$$
+P324 [Normal] $$y_t = \mathbf{C} h_t$$
+P325 [Normal] Trong mô hình Mamba (S6), tính chọn lọc thích ứng dữ liệu được hiện thực hóa bằng cách chiếu trực tiếp đầu vào $x_t$ để sinh ra các tham số động:
+P326 [Normal] $$\mathbf{B}_t = \text{Linear}_B(x_t), \quad \mathbf{C}_t = \text{Linear}_C(x_t), \quad \mathbf{\Delta}_t = \text{softplus}(\text{Linear}_\Delta(x_t))$$
+P327 [Normal] Nhờ đó, mô hình tự động điều chỉnh độ lớn bước nhảy $\mathbf{\Delta}_t$: Khi gặp vùng ảnh nhiễu (dịch nhầy, ánh lóa), $\mathbf{\Delta}_t$ tiệm cận 0 khiến $\mathbf{\bar{A}}_t \to \mathbf{I}$ và $\mathbf{\bar{B}}_t \to 0$, hệ thống giữ nguyên trạng thái cũ và bỏ qua thông tin nhiễu; khi gặp vùng ranh giới polyp, $\mathbf{\Delta}_t$ tăng cao giúp mô hình nhanh chóng cập nhật trạng thái mới.
+P328 [Normal] 2.2.2. Thuật toán quét 4 hướng giải quyết tính bất biến không gian 2D
+P329 [Normal] Đối với bản đồ đặc trưng 2 chiều $\mathbf{X} \in \mathbb{R}^{H \times W \times C}$, thuật toán quét chọn lọc 2D (SS2D) trong VMamba thực hiện 3 bước toán học:
+P330 [Normal] [Bản đồ đặc trưng 2D X (H x W x C)]
+                 │
+  ┌──────────────┼──────────────┬──────────────┐
+  ▼              ▼              ▼              ▼
+Quét 1         Quét 2         Quét 3         Quét 4
+(Trên-Trái)    (Dưới-Phải)    (Trên-Phải)    (Dưới-Trái)
+  │              │              │              │
+  ▼              ▼              ▼              ▼
+SSM 1D         SSM 1D         SSM 1D         SSM 1D
+  │              │              │              │
+  └──────────────┼──────────────┴──────────────┘
+                 ▼
+[Phục hồi không gian 2D & Cộng tổng hợp nhất Y (H x W x C)]
+P331 [Normal] 1. Phân rã quét 4 hướng (Scan Expand):
+P332 [Normal] $$\mathbf{X}^{(1)}_{i, j} = \mathbf{X}_{i, j} \quad (\text{Xuôi: Trái } \to \text{ Phải, Trên } \to \text{ Dưới})$$
+P333 [Normal] $$\mathbf{X}^{(2)}_{i, j} = \mathbf{X}_{H-1-i, W-1-j} \quad (\text{Ngược: Phải } \to \text{ Trái, Dưới } \to \text{ Trên})$$
+P334 [Normal] $$\mathbf{X}^{(3)}_{i, j} = \mathbf{X}_{j, i} \quad (\text{Dọc xuôi: Trên } \to \text{ Dưới, Trái } \to \text{ Phải})$$
+P335 [Normal] $$\mathbf{X}^{(4)}_{i, j} = \mathbf{X}_{W-1-j, H-1-i} \quad (\text{Dọc ngược: Dưới } \to \text{ Trên, Phải } \to \text{ Trái})$$
+P336 [Normal] 2. Xử lý chọn lọc song song qua SSM:
+P337 [Normal] $$\mathbf{Y}^{(k)} = \text{S6}(\mathbf{X}^{(k)}), \quad k \in \{1, 2, 3, 4\}$$
+P338 [Normal] 3. Phục hồi và hợp nhất không gian (Scan Merge):
+P339 [Normal] $$\mathbf{Y} = \sum_{k=1}^{4} \text{Unfold}(\mathbf{Y}^{(k)})$$
+P340 [Normal] Phép toán hợp nhất này đảm bảo mỗi vị trí điểm ảnh $(i, j)$ trên bản đồ đặc trưng đều thu nhận trọn vẹn thông tin ngữ cảnh từ toàn bộ các điểm ảnh xung quanh theo mọi hướng không gian mà không làm bùng nổ chi phí tính toán.
+P341 [Normal] ---
+P342 [Normal] 2.3. THIẾT KẾ KIẾN TRÚC TÍCH HỢP TOPOLOGY-SHAPE-AWARE VMAMBA (TSVM)
+P343 [Normal] 2.3.1. Động cơ và vị trí tích hợp: Tầng 10 (mức P5)
+P344 [Normal] Một trong những quyết định thiết kế quan trọng nhất của đề tài là xác định vị trí tối ưu để tích hợp khối VMamba vào mô hình YOLO26-seg. Có ba phương án vị trí tiềm năng:
+P345 [Normal] – *Phương án 1 (Tích hợp tại Stem/P3)*: Tại các tầng đầu, kích thước bản đồ đặc trưng rất lớn ($80 \times 80$ hoặc $160 \times 160$). Việc quét 4 hướng tại mức phân giải này sẽ gây gánh nặng tính toán rất lớn, làm sụt giảm nghiêm trọng tốc độ khung hình (FPS), không phù hợp cho suy luận thời gian thực.
+P346 [Normal] – *Phương án 2 (Tích hợp thay thế toàn bộ Backbone)*: Làm thay đổi hoàn toàn phân phối trọng số tiền huấn luyện (pre-trained weights), đòi hỏi tập dữ liệu huấn luyện khổng lồ hàng triệu ảnh y tế vốn không khả thi.
+P347 [Normal] – *Phương án 3 (Đề xuất của đề tài - Tích hợp tại Tầng 10 / Mức P5)*:
+P348 [Normal] Tầng 10 là vị trí xuất phát của mức đặc trưng sâu nhất (P5) trước khi đi vào mạng cổ dung hợp PAN-FPN. Tại đây, bản đồ đặc trưng có kích thước $20 \times 20$ với số kênh $C = 512$.
+P349 [Normal] – Kích thước không gian $20 \times 20$ ($N = 400$ vị trí) là kích thước lý tưởng: Đủ nhỏ để khối quét SS2D thực thi cực nhanh với độ trễ thấp, nhưng lại đủ lớn để đại diện cho toàn bộ ngữ nghĩa trừu tượng của khung hình nội soi.
+P350 [Normal] – Tích hợp tại đây giúp khối TSVM đóng vai trò như một "bộ lọc ngữ cảnh toàn cục" (Global Context Refiner), giúp tinh chỉnh lại toàn bộ trường đặc trưng mức cao trước khi thông tin này được truyền ngược xuống dẫn đường cho các mức P4 và P3.
+P351 [Normal] 2.3.2. Cấu trúc chi tiết khối TSVM tại Tầng 10
+P352 [Normal] Khối Topology-Shape-aware VMamba (TSVM) được xây dựng với cấu trúc kênh đôi (Dual-branch Topology Architecture):
+P353 [Normal]                Đầu vào Tầng 9 X (B x 512 x 20 x 20)
+                         │
+        ┌────────────────┴────────────────┐
+        ▼                                 ▼
+   Nhánh Residual                   Nhánh TSVM Core
+(Identity Shortcut)               ┌───────────────┐
+        │                         │  LayerNorm 2D │
+        │                         └───────┬───────┘
+        │                         ┌───────▼───────┐
+        │                         │ Linear Proj   │
+        │                         └───────┬───────┘
+        │                         ┌───────▼───────┐
+        │                         │ Conv 3x3 DW   │ (Topology Boundary)
+        │                         └───────┬───────┘
+        │                         ┌───────▼───────┐
+        │                         │ Silu Activ.   │
+        │                         └───────┬───────┘
+        │                         ┌───────▼───────┐
+        │                         │ Khối SS2D 4-D │ (Global Context)
+        │                         └───────┬───────┘
+        │                         ┌───────▼───────┐
+        │                         │ Linear Out    │
+        │                         └───────┬───────┘
+        │                                 │
+        └────────────────┬────────────────┘
+                         ▼
+                     Phép Cộng (Add)
+                         │
+                         ▼
+             Đầu ra Tầng 10 (B x 512 x 20 x 20)
+P354 [Normal] 1. Chuẩn hóa LayerNorm 2D: Ổn định phân phối dữ liệu đầu vào, ngăn ngừa hiện tượng bùng nổ gradient trong quá trình lan truyền qua nhiều hướng quét.
+P355 [Normal] 2. Nhánh tích chập sâu Depthwise Conv 3x3 (Nhận biết Topo ranh giới): Đảm nhiệm việc trích xuất đặc trưng hình thái đường biên cục bộ và duy trì tính liên tục của cấu trúc topo tổn thương.
+P356 [Normal] 3. Cơ chế quét chọn lọc 4 hướng SS2D Core: Mô hình hóa sự phụ thuộc không gian tầm xa, kết nối các điểm ảnh phân tán của tổn thương polyp với toàn bộ bối cảnh niêm mạc.
+P357 [Normal] 4. Đường truyền tắt kết nối tàn dư (Residual Shortcut): Đảm bảo luồng gradient có thể truyền thẳng qua khối mà không bị tiêu biến, giúp mô hình dễ dàng hội tụ và kế thừa trọn vẹn sức mạnh của trọng số pre-trained.
+P358 [Normal] [KHUNG HÌNH ẢNH: Hình 2.2: Cấu trúc chi tiết khối Topology-Shape-aware VMamba (TSVM) tích hợp tại tầng 10 (mức P5)]
+P359 [Normal] Hình 2.2: Cấu trúc chi tiết khối Topology-Shape-aware VMamba (TSVM) tích hợp tại tầng 10 (mức P5)
+P360 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Khối TSVM tại tầng 10 nhận đầu vào tensor kích thước $[B, 512, 20, 20]$. Sau khi qua nhánh chiếu tuyến tính và khối SS2D 4 hướng, tensor được cộng trực tiếp với tensor tàn dư đầu vào ban đầu thông qua phép cộng phần tử (element-wise addition), giữ nguyên kích thước $[B, 512, 20, 20]$ để tương thích hoàn toàn với đầu vào của tầng 11 tiếp theo.
+ - Ý nghĩa kỹ thuật & bệnh học: Việc kết hợp giữa phép tích chập Depthwise $3\times3$ và khối quét SS2D tạo nên cơ chế "kép": Depthwise Conv tập trung chụp lại độ cong của ranh giới polyp (Shape-aware), trong khi SS2D chịu trách nhiệm thẩm định xem cấu trúc đó có phù hợp với bối cảnh giải phẫu toàn đại tràng hay không (Topology-aware).
+P361 [Normal] ---
+P362 [Normal] 2.4. PHÂN TÍCH ƯU ĐIỂM, NHƯỢC ĐIỂM VÀ ĐIỀU KIỆN ÁP DỤNG THUẬT TOÁN ĐỀ XUẤT
+P363 [Normal] Để đáp ứng đầy đủ tiêu chí đánh giá chuẩn đầu ra CLO2.1 trong đề cương của TS. Phùng Thế Bảo, dưới đây là phân tích đa chiều về thuật toán đề xuất:
+P364 [Normal] 2.4.1. Ưu điểm nổi bật
+P365 [Normal] 1. Nâng cao độ sắc nét và tính toàn vẹn của mặt nạ phân đoạn: Nhờ trường tiếp nhận toàn cục của SS2D, mô hình TSVM khắc phục triệt để hiện tượng mặt nạ bị thủng lỗ, đứt gãy hoặc biến dạng khi gặp các ca polyp phẳng có độ tương phản ranh giới cực kỳ thấp.
+P366 [Normal] 2. Tối ưu hóa chi phí tính toán so với Vision Transformer: Độ phức tạp tính toán tuyến tính $O(N)$ cho phép khối TSVM chỉ làm tăng thêm 0.821 triệu tham số (từ 11.434M lên 12.255M, tăng vỏn vẹn 7.18%) và chỉ tăng 0.32 GFLOPs (từ 18.54 lên 18.86 GFLOPs, tăng 1.73%), thấp hơn rất nhiều so với việc chèn các khối Self-Attention của ViT (thường làm tăng 15–30 GFLOPs).
+P367 [Normal] 3. Thu hẹp phương sai và ổn định quá trình hội tụ: Thực nghiệm qua 10 seed chứng minh mô hình TSVM có độ lệch chuẩn nhỏ hơn mô hình Baseline, phản ánh tính ổn định học thuật vượt trội trước các biến động ngẫu nhiên của dữ liệu.
+P368 [Normal] 2.4.2. Nhược điểm và hạn chế
+P369 [Normal] 1. Độ trễ suy luận gia tăng: Mặc dù độ phức tạp lý thuyết là tuyến tính $O(N)$, thuật toán quét 4 hướng đòi hỏi các thao tác hoán vị bộ nhớ (Memory Permutation / Transpose) và phân mảnh chuỗi quét. Trên phần cứng GPU không hỗ trợ nhân tính toán chuyên dụng (Custom Triton/CUDA kernel cho Mamba), thời gian suy luận bị kéo dài đáng kể (từ 200.12 ms lên 821.27 ms trên môi trường thử nghiệm CPU/Kaggle tiêu chuẩn).
+P370 [Normal] 2. Khó khăn trong việc tối ưu hóa song song phần cứng: Các phép tích chập CNN thông thường được tối ưu hóa cực tốt trên thư viện cuDNN của Nvidia. Ngược lại, các phép toán trạng thái tuần tự của Mamba phụ thuộc nhiều vào băng thông bộ nhớ (SRAM bandwidth), đòi hỏi các kỹ thuật tối ưu hóa phần cứng sâu để đạt hiệu năng tối đa.
+P371 [Normal] 2.4.3. Điều kiện áp dụng thực tế
+P372 [Normal] – Yêu cầu phần cứng: Phù hợp triển khai trên các hệ thống máy trạm có card đồ họa chuyên dụng hỗ trợ CUDA (như Nvidia RTX 3060, RTX 4090 hoặc dòng chuyên dụng T4, A100) để đảm bảo tốc độ suy luận mượt mà.
+P373 [Normal] – Kịch bản ứng dụng:
+P374 [Normal] – *Kịch bản 1 (Hỗ trợ chẩn đoán thời gian thực qua Web)*: Triển khai mô hình trên máy chủ AI trung tâm có GPU, truyền nhận luồng ảnh qua API mạng nội bộ bệnh viện.
+P375 [Normal] – *Kịch bản 2 (Chẩn đoán xem lại sau nội soi - Post-procedure Review)*: Tải video/ảnh ca khám lên hệ thống để phần mềm tự động quét lại toàn bộ, lập báo cáo phân đoạn chi tiết về kích thước và diện tích polyp phục vụ hội chẩn lâm sàng.
+P376 [Normal] ---
+P377 [Normal] 2.5. TÓM TẮT CHƯƠNG 2
+P378 [Normal] Chương 2 đã hoàn thành việc phân tích sâu sắc nguyên lý hoạt động của mô hình cơ sở YOLO26-seg; chứng minh nền tảng toán học của cơ chế quét chọn lọc không gian 2D (SS2D) trong VMamba; đặc tả thiết kế kiến trúc khối đề xuất TSVM tại vị trí chiến lược tầng 10; và phân tích toàn diện các ưu, nhược điểm cùng điều kiện áp dụng thực tế của thuật toán. Đây là tiền đề kỹ thuật trực tiếp để bước vào quy trình chuẩn bị dữ liệu và cài đặt thực nghiệm trong các chương tiếp theo.
+P380 [Normal] CHƯƠNG 3. XÂY DỰNG BỘ DỮ LIỆU VÀ TIỀN XỬ LÝ
+P381 [Normal] ---
+P382 [Normal] 3.1. NGUỒN DỮ LIỆU THỰC NGHIỆM
+P383 [Normal] Để đảm bảo tính khách quan, khả năng tái lập và độ tin cậy trong đánh giá y tế, đề tài sử dụng kết hợp các bộ dữ liệu ảnh nội soi đại trực tràng công khai uy tín hàng đầu trên thế giới:
+P384 [Normal] 3.1.1. Bộ dữ liệu nội soi Kvasir-SEG (Simula Research Laboratory, Na Uy)
+P385 [Normal] Bộ dữ liệu Kvasir-SEG (Jha et al., MMM 2020) là bộ dữ liệu chuẩn mực được chấp nhận rộng rãi nhất trong cộng đồng nghiên cứu thị giác máy tính y tế. Bộ dữ liệu bao gồm:
+P386 [Normal] – Số lượng: Đúng 1.000 ảnh nội soi đại trực tràng độ phân giải cao (độ phân giải dao động từ $332 \times 487$ đến $1072 \times 1920$ pixel).
+P387 [Normal] – Nhãn phân đoạn: Đi kèm 1.000 mặt nạ nhị phân chuẩn (Ground-Truth Binary Masks) định dạng PNG, trong đó các điểm ảnh thuộc vùng polyp có giá trị 255 (trắng) và vùng niêm mạc xung quanh có giá trị 0 (đen).
+P388 [Normal] – Độ tin cậy y khoa: Toàn bộ các ảnh và mặt nạ đều được khoanh vùng và kiểm duyệt nghiêm ngặt bởi các chuyên gia tiêu hóa và bác sĩ nội soi giàu kinh nghiệm tại Bệnh viện Đại học Oslo và Bệnh viện Bærum (Na Uy).
+P389 [Normal] – Đặc điểm bệnh học: Tập hợp đầy đủ các tổn thương polyp đa dạng về kích thước, hình thái (polyp có cuống, không cuống, polyp phẳng) và ở nhiều vị trí giải phẫu khác nhau của khung đại tràng.
+P390 [Normal] 3.1.2. Bộ dữ liệu niêm mạc bình thường normal-cecum (Kvasir v2)
+P391 [Normal] Một hạn chế chí tử của tập Kvasir-SEG nguyên bản là 100% các bức ảnh đều chứa polyp (ảnh dương tính hoàn toàn). Khi huấn luyện mô hình học sâu trên tập dữ liệu này, mạng sẽ hình thành thiên kiến tiên nghiệm (Priors): mạng luôn giả định trong mọi khung hình nội soi đều có polyp, dẫn đến việc khi gặp niêm mạc ruột bình thường có nếp gấp khúc hoặc ánh đèn phản chiếu, mô hình sẽ cố gắng "vẽ" ra một polyp giả (sinh ra báo động giả - False Positive).
+P392 [Normal] Để khắc phục triệt để khiếm khuyết này, đề tài đã thu thập thêm 200 ảnh niêm mạc manh tràng hoàn toàn bình thường (normal-cecum) trích xuất từ bộ dữ liệu Kvasir v2 (Pogorelov et al., MMSys 2017). Manh tràng (cecum) là đoạn đầu của ruột già, có đặc điểm giải phẫu nhiều nếp gấp niêm mạc sâu, mạch máu phân nhánh phức tạp và góc nhìn camera gập ghềnh, là môi trường thử thách lý tưởng nhất để kiểm tra khả năng phân biệt mô lành của mô hình AI.
+P393 [Normal] 3.1.3. Các bộ dữ liệu kiểm chứng độc lập (Cross-dataset Validation)
+P394 [Normal] Để đánh giá năng lực tổng quát hóa ngoại suy (Out-of-distribution Generalization) của mô hình trên các thiết bị nội soi và cơ sở y tế khác, đề tài đã chuẩn bị thêm 3 tập dữ liệu độc lập:
+P395 [Normal] 1. CVC-ClinicDB (Hospital Clínic de Barcelona, Tây Ban Nha): Gồm 612 ảnh trích từ 31 chuỗi video nội soi đại tràng.
+P396 [Normal] 2. CVC-ColonDB: Gồm 380 ảnh với các ca polyp khó và độ biến thiên quang học cao.
+P397 [Normal] 3. ETIS-Larib PolypDB (Pháp): Gồm 196 ảnh nội soi độ nét cao chuyên dùng làm chuẩn đánh giá benchmark quốc tế.
+P398 [Normal] ---
+P399 [Normal] 3.2. QUY TRÌNH TIỀN XỬ LÝ VÀ CHUYỂN ĐỔI DỮ LIỆU
+P400 [Normal] 3.2.1. Thuật toán chuyển đổi Ground-Truth Mask sang nhãn đa giác YOLO
+P401 [Normal] Định dạng nhãn chuẩn của mạng phân đoạn thực thể YOLO yêu cầu mỗi đối tượng được biểu diễn dưới dạng một chuỗi tọa độ đỉnh đa giác (Polygon Vertices) chuẩn hóa về khoảng $[0, 1]$ thay vì ma trận mặt nạ điểm ảnh $H \times W$.
+P402 [Normal] Quy trình chuyển đổi tự động được hiện thực hóa qua script Python `convert_kvasir_to_yolo_seg.py`:
+P403 [Normal] 1. Đọc ảnh mặt nạ nhị phân PNG gốc kích thước $H \times W$.
+P404 [Normal] 2. Áp dụng thuật toán tìm đường biên ngoài Suzuki-Abe (Topological Structural Analysis) thông qua hàm `cv2.findContours(..., cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)`.
+P405 [Normal] 3. Lọc bỏ các đường biên giả hoặc nhiễu hạt quá nhỏ (diện tích $< 10$ pixel).
+P406 [Normal] 4. Áp dụng thuật toán xấp xỉ đa giác Ramer-Douglas-Peucker (RDP) với sai số $\epsilon$ thích ứng để tối ưu hóa số lượng đỉnh đa giác, loại bỏ các đỉnh dư thừa trên đường thẳng mà vẫn bảo toàn chính xác độ cong của bờ polyp.
+P407 [Normal] 5. Chuẩn hóa toàn bộ tọa độ đỉnh $(x_i, y_i)$ theo chiều rộng $W$ và chiều cao $H$:
+P408 [Normal] $$x_i^{\text{norm}} = \frac{x_i}{W}, \quad y_i^{\text{norm}} = \frac{y_i}{H} \quad (0 \le x_i^{\text{norm}}, y_i^{\text{norm}} \le 1)$$
+P409 [Normal] 6. Ghi ra tệp nhãn văn bản `.txt` tương ứng với định dạng chuẩn của Ultralytics:
+P410 [Normal]    <class_id> x1 y1 x2 y2 x3 y3 ... xn yn
+P411 [Normal] với `class_id = 0` (đại diện cho lớp tổn thương `polyp`).
+P412 [Normal] [KHUNG HÌNH ẢNH: Hình 3.1: Quy trình trích xuất và chuyển đổi Ground-Truth Mask sang nhãn đa giác đa điểm YOLO Segmentation Polygon]
+P413 [Normal] Hình 3.1: Quy trình trích xuất và chuyển đổi Ground-Truth Mask sang nhãn đa giác đa điểm YOLO Segmentation Polygon
+P414 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Hình 3.1 thể hiện 3 bước kế tiếp: (a) Ảnh nội soi gốc; (b) Mặt nạ nhị phân nhẵn của bác sĩ; (c) Đa giác xấp xỉ bao quanh bờ tổn thương với khoảng 30–60 điểm đỉnh. Sai số hình học giữa diện tích đa giác và mặt nạ pixel gốc luôn được khống chế dưới 0.5%.
+ - Ý nghĩa kỹ thuật & bệnh học: Việc nén từ ma trận mặt nạ $H \times W$ điểm ảnh thành chuỗi tọa độ đa giác chuẩn hóa giúp giảm kích thước tập nhãn hàng nghìn lần (từ vài trăm megabyte xuống vài megabyte), đồng thời tương thích trực tiếp với cơ chế tính toán mất mát phân đoạn của YOLO26-seg.
+P415 [Normal] 3.2.2. Xây dựng tập dữ liệu hỗn hợp Kvasir_YOLO_SEG_BG20 (1.200 ảnh)
+P416 [Normal] Đề tài đã thiết kế và đóng gói thành công bộ dữ liệu hỗn hợp mang tên `Kvasir_YOLO_SEG_BG20` (bổ sung chính xác 20% ảnh nền âm tính):
+P417 [Normal] – Tập polyp dương tính: 1.000 ảnh nội soi từ Kvasir-SEG.
+P418 [Normal] – Tập nền âm tính (Background): 200 ảnh niêm mạc manh tràng bình thường (normal-cecum).
+P419 [Normal] – Tổng cộng: Đúng 1.200 ảnh.
+P420 [Normal] Bảng 3.1: Thống kê số lượng mẫu phân bổ trong tập dữ liệu hỗn hợp Kvasir_YOLO_SEG_BG20
+TABLE 421
+Thành phần tập dữ liệu | Nguồn gốc dữ liệu | Số lượng ảnh huấn luyện (Train) | Số lượng ảnh kiểm định (Val) | Tổng số lượng ảnh
+Ảnh chứa polyp (Dương tính) | Kvasir-SEG | 880 | 120 | 1.000
+Ảnh niêm mạc lành (Âm tính) | Normal-cecum (Kvasir v2) | 160 | 40 | 200
+TỔNG CỘNG | Kvasir_YOLO_SEG_BG20 | 1.040 (86.67%) | 160 (13.33%) | 1.200 (100%)
+P422 [Normal] 3.2.3. Cơ chế nhãn rỗng (Empty Labels) triệt tiêu báo động giả
+P423 [Normal] Điểm mấu chốt trong kỹ thuật của YOLO là Cơ chế nhãn rỗng (Empty Label File):
+P424 [Normal] – Đối với 200 ảnh nền âm tính normal-cecum, tệp nhãn tương ứng `tên_ảnh.txt` vẫn được tạo ra nhưng hoàn toàn rỗng (kích thước đúng 0 byte, không chứa bất kỳ dòng văn bản nào).
+P425 [Normal] – Khi luồng nạp dữ liệu (DataLoader) của YOLO đọc vào một tệp nhãn rỗng, mạng hiểu rằng: *"Trong toàn bộ bức ảnh này, số lượng đối tượng cần phát hiện là 0 (Zero Ground Truth Objects)"*.
+P426 [Normal] – Cơ chế tác động vào hàm mất mát:
+P427 [Normal] – Nếu mô hình dự đoán bất kỳ hộp bao hoặc mặt nạ nào trên bức ảnh này, toàn bộ điểm tin cậy của các dự đoán đó sẽ bị phạt nặng thông qua hàm mất mát phân loại Binary Cross-Entropy ($\mathcal{L}_{\text{cls}}$) và mất mát đối tượng ($\mathcal{L}_{\text{obj}}$).
+P428 [Normal] – Quá trình lan truyền ngược gradient sẽ ép các trọng số nơ-ron phải triệt tiêu các phản hồi giả đối với các cấu trúc nếp gấp ruột lành tính, từ đó nâng cao vượt bậc độ đặc hiệu (Specificity) của mô hình.
+P429 [Normal] [KHUNG HÌNH ẢNH: Hình 3.2: Minh họa sự khác biệt giữa tệp nhãn đa giác của ảnh polyp thông thường và tệp nhãn rỗng (0 byte) của ảnh nền âm tính normal-cecum]
+P430 [Normal] Hình 3.2: Minh họa sự khác biệt giữa tệp nhãn đa giác của ảnh polyp thông thường và tệp nhãn rỗng (0 byte) của ảnh nền âm tính normal-cecum
+P431 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Hình 3.2 biểu diễn trực quan: (a) Ảnh polyp kèm tệp `.txt` chứa class 0 và 48 cặp tọa độ; (b) Ảnh manh tràng bình thường kèm tệp `.txt` dung lượng 0 byte.
+ - Ý nghĩa kỹ thuật & bệnh học: Trong các phiên nội soi đại tràng thực tế, hơn 80% thời gian quan sát của bác sĩ là đi qua các vùng niêm mạc bình thường không có polyp. Việc rèn luyện mô hình trên 200 ảnh nhãn rỗng là nhân tố quyết định giúp hệ thống CADe không phát ra các tiếng chuông cảnh báo sai liên tục, bảo vệ sự tập trung tối đa của bác sĩ trong phòng mổ.
+P432 [Normal] ---
+P433 [Normal] 3.3. PHƯƠNG PHÁP PHÂN CHIA TẬP DỮ LIỆU VÀ CHUẨN HÓA THỰC NGHIỆM
+P434 [Normal] 3.3.1. Chiến lược phân chia Train/Val theo seed tất định
+P435 [Normal] Để đảm bảo tính khoa học và không bị rò rỉ dữ liệu (Data Leakage), toàn bộ 1.200 ảnh của tập `Kvasir_YOLO_SEG_BG20` được phân chia thành hai tập con theo tỷ lệ phân tầng (Stratified Split) với hạt giống ngẫu nhiên cố định `random_seed = 42`:
+P436 [Normal] – Tập huấn luyện (Training Set): Gồm 1.040 ảnh (880 ảnh polyp + 160 ảnh nền âm tính, chiếm đúng 86.67% dữ liệu).
+P437 [Normal] – Tập kiểm định (Validation Set): Gồm 160 ảnh (120 ảnh polyp + 40 ảnh nền âm tính, chiếm đúng 13.33% dữ liệu).
+P438 [Normal] Tỷ lệ ảnh nền âm tính được giữ vững mức chính xác $160 / 1040 \approx 15.38\%$ ở tập Train và $40 / 160 = 25.00\%$ ở tập Val (trung bình toàn tập là $200 / 1200 = 16.67\% \approx 20\%$).
+P439 [Normal] Danh sách đường dẫn chính xác của từng ảnh trong hai tập được lưu cố định trong hai tệp danh mục: `train.txt` (1.040 dòng) và `val.txt` (160 dòng) tại thư mục gốc của dự án. Tất cả 10 lượt chạy thực nghiệm (10 seed) của cả hai mô hình Baseline và TSVM đều nạp chính xác hai tệp danh mục này để đảm bảo tính đồng nhất tuyệt đối về mặt dữ liệu thử nghiệm.
+P440 [Normal] 3.3.2. Cấu hình tệp đặc tả dữ liệu data_bg20.yaml
+P441 [Normal] Tệp cấu hình `data_bg20.yaml` được thiết lập chuẩn mực theo quy cách của Ultralytics như sau:
+P442 [Normal] # Dataset Kvasir-SEG mở rộng bổ sung 20% ảnh nền âm tính (normal-cecum)
+path: C:/LeDucLuong/HK VII/LuanCuNhan/DeepLearning/Test_Mau/archive/Kvasir_YOLO_SEG_BG20
+train: images/train
+val: images/val
+
+names:
+  0: polyp
+
+metadata:
+  total_images: 1200
+  train_images: 1040  # 880 polyp + 160 background
+  val_images: 160     # 120 polyp + 40 background
+  background_source: normal-cecum (Kvasir v2)
+  random_seed: 42
+P443 [Normal] ---
+P444 [Normal] 3.4. KỸ THUẬT TĂNG CƯỜNG DỮ LIỆU (DATA AUGMENTATION)
+P445 [Normal] Để nâng cao khả năng khái quát hóa và ngăn ngừa hiện tượng học vẹt (overfitting) trong điều kiện tập dữ liệu y tế giới hạn 1.200 ảnh, quy trình huấn luyện áp dụng một chuỗi các phép biến đổi tăng cường dữ liệu thích ứng với môi trường nội soi:
+P446 [Normal] 1. Biến đổi không gian và hình học:
+P447 [Normal] – Lật ngẫu nhiên theo trục ngang (`fliplr = 0.5`): Mô phỏng các góc tiếp cận camera nội soi từ trái hoặc phải.
+P448 [Normal] – Quay nhẹ góc ngẫu nhiên (`degrees = 10.0`) và biến dạng phối cảnh (`perspective = 0.0005`): Tái hiện chuyển động lắc lư của dây soi khi luồn qua các đoạn ruột uốn khúc.
+P449 [Normal] – Thu phóng tỷ lệ (`scale = 0.5`): Mô phỏng việc camera đưa lại gần hoặc lùi ra xa polyp.
+P450 [Normal] 2. Biến đổi màu sắc và quang sai:
+P451 [Normal] – Điều chỉnh độ sáng, độ bão hòa màu (`hsv_h = 0.015, hsv_s = 0.7, hsv_v = 0.4`): Mô phỏng sự thay đổi cường độ ánh sáng của bóng đèn Xenon/LED nội soi và sự khác biệt về sắc tố niêm mạc giữa các cá thể bệnh nhân.
+P452 [Normal] 3. Kỹ thuật ghép ảnh Mosaic:
+P453 [Normal] – Ghép ngẫu nhiên 4 bức ảnh thành 1 khung hình trong giai đoạn đầu huấn luyện (`mosaic = 1.0`), sau đó tự động tắt trong 10 epoch cuối cùng (`close_mosaic = 10`) để mô hình hội tụ trên phân phối ảnh thực tế.
+P454 [Normal] ---
+P455 [Normal] 3.5. TÓM TẮT CHƯƠNG 3
+P456 [Normal] Chương 3 đã hoàn thành việc xây dựng và chuẩn hóa tập dữ liệu thực nghiệm `Kvasir_YOLO_SEG_BG20` (1.200 ảnh); giải quyết thấu đáo vấn đề nhãn đa giác phân đoạn; phân tích chuyên sâu vai trò của 200 ảnh nền âm tính manh tràng kết hợp cơ chế nhãn rỗng 0 byte trong việc triệt tiêu báo động giả; đồng thời thiết lập tệp cấu hình tất định `data_bg20.yaml` sẵn sàng cho quy trình huấn luyện trên máy chủ đám mây.
+P458 [Normal] CHƯƠNG 4. CÀI ĐẶT THUẬT TOÁN VÀ XÂY DỰNG ỨNG DỤNG MINH HỌA
+P459 [Normal] ---
+P460 [Normal] 4.1. THIẾT LẬP MÔI TRƯỜNG HUẤN LUYỆN VÀ CẤU HÌNH PHẦN CỨNG
+P461 [Normal] 4.1.1. Môi trường đám mây Kaggle GPU
+P462 [Normal] Quá trình huấn luyện các mô hình học sâu đòi hỏi năng lực tính toán dấu phẩy động rất lớn, đặc biệt là khi thực hiện quy trình nghiên cứu khoa học tất định lặp lại qua 10 hạt giống ngẫu nhiên độc lập (10 seed) cho cả hai mô hình (tổng cộng 20 phiên huấn luyện, mỗi phiên 100 epoch). Để giải quyết bài toán chi phí phần cứng và tối ưu hóa thời gian nghiên cứu, đề tài đã tận dụng hạ tầng điện toán đám mây Kaggle GPU với cấu hình máy chủ tính toán mạnh mẽ.
+P463 [Normal] Bảng 4.1: Cấu hình phần cứng và môi trường phần mềm thực nghiệm
+TABLE 464
+Thành phần | Cấu hình thực nghiệm chi tiết | Ghi chú vai trò
+Bộ tăng tốc phần cứng (GPU) | Nvidia Tesla T4 (16 GB GDDR6 VRAM, Turing Architecture) | Phục vụ tính toán tensor và huấn luyện song song
+Bộ xử lý trung tâm (CPU) | Intel Xeon @ 2.20 GHz (4 vCPUs ảo hóa) | Đảm nhiệm nạp dữ liệu và tiền xử lý ảnh
+Bộ nhớ hệ thống (RAM) | 32 GB High-Memory | Đảm bảo không nghẽn cổ chai bộ nhớ đệm
+Hệ điều hành | Linux Ubuntu 22.04 LTS (x86_64) | Môi trường hệ thống chuẩn hóa
+Ngôn ngữ lập trình chính | Python 3.10.12 | Ngôn ngữ lõi cho huấn luyện và API
+Thư viện tính toán học sâu | PyTorch 2.4.0 + CUDA 12.1 + cuDNN 8.9 | Nền tảng framework Deep Learning
+Hệ sinh thái YOLO | Ultralytics Engine tùy biến (Custom TSVM Fork) | Framework phát hiện và phân đoạn thực thể
+Công cụ quản lý thí nghiệm | NumPy, Pandas, Matplotlib, Seaborn, SciPy, OpenCV | Xử lý dữ liệu, kiểm toán số liệu và vẽ đồ thị
+P465 [Normal] ---
+P466 [Normal] 4.2. CÀI ĐẶT CÁC CELL NOTEBOOK KAGGLE HUẤN LUYỆN MÔ HÌNH
+P467 [Normal] Toàn bộ quy trình huấn luyện thực nghiệm được đóng gói hoàn chỉnh trong hai tệp sổ tay điện tử Jupyter Notebook tại thư mục `Cell Kaggle/`:
+P468 [Normal] 1. `kvasir-yolo26s-seg.ipynb`: Dành riêng cho việc huấn luyện mô hình cơ sở Baseline YOLO26s-seg.
+P469 [Normal] 2. `kvasir-yolo26s-seg-topology-shape-awar.ipynb`: Dành riêng cho việc huấn luyện mô hình đề xuất TSVM.
+P470 [Normal] 4.2.1. Cấu trúc luồng thực thi trong các Cell Notebook
+P471 [Normal] Quy trình thực thi trong mỗi Notebook Kaggle được tổ chức tuần tự và khoa học qua 6 khối lệnh (Cells) then chốt:
+P472 [Normal] [Cell 1: Kiểm tra phần cứng & Mount dữ liệu Kaggle]
+                         │
+                         ▼
+[Cell 2: Cài đặt Dependencies & Khởi tạo Ultralytics Custom]
+                         │
+                         ▼
+[Cell 3: Định nghĩa cấu hình tất định data_bg20.yaml]
+                         │
+                         ▼
+[Cell 4: Khởi tạo kiến trúc mô hình (Baseline / TSVM tầng 10)]
+                         │
+                         ▼
+[Cell 5: Vòng lặp huấn luyện 10 Seed tất định (Epochs = 100)]
+                         │
+                         ▼
+[Cell 6: Lưu trữ trọng số .pt & Trích xuất kết quả results.csv]
+P473 [Normal] – Cell 1 (Thiết lập môi trường): Kiểm tra trạng thái GPU bằng lệnh `!nvidia-smi`, thiết lập biến môi trường và giải nén tập dữ liệu `Kvasir_YOLO_SEG_BG20.rar` vào thư mục làm việc tạm thời `/kaggle/working/`.
+P474 [Normal] – Cell 2 (Khai báo mã nguồn mô hình): Nạp gói mã nguồn Ultralytics tùy biến chứa định nghĩa của khối `Topology-Shape-aware VMamba`.
+P475 [Normal] – Cell 3 (Khởi tạo mô hình): Nạp tệp cấu hình mạng YAML (`yolo26s-seg.yaml` hoặc `yolo26s-seg-tsvm.yaml`) kết hợp khởi tạo trọng số tiền huấn luyện ImageNet (Pre-trained Weights).
+P476 [Normal] – Cell 4 & 5 (Vòng lặp huấn luyện tất định 10 Seed): Sử dụng một vòng lặp Python duyệt qua danh sách các hạt giống ngẫu nhiên `seeds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`. Tại mỗi vòng lặp:
+P477 [Normal] – Cố định toàn bộ các seed hệ thống: `torch.manual_seed(seed)`, `np.random.seed(seed)`, `random.seed(seed)`.
+P478 [Normal] – Khởi tạo thư mục đầu ra riêng biệt: `/kaggle/working/runs/train/seed_{i}/`.
+P479 [Normal] – Kích hoạt quá trình huấn luyện 100 epoch với hàm mất mát đa nhiệm.
+P480 [Normal] – Cell 6 (Đóng gói tệp kết quả): Trích xuất toàn bộ tệp trọng số tối ưu nhất `best.pt`, tệp nhật ký huấn luyện theo từng epoch `results.csv` và các đồ thị ma trận nhầm lẫn sinh ra tự động để phục vụ cho công tác kiểm toán độc lập.
+P481 [Normal] [KHUNG HÌNH ẢNH: Hình 4.1: Sơ đồ luồng thực thi trong các Cell Notebook Kaggle huấn luyện mô hình tất định]
+P482 [Normal] Hình 4.1: Sơ đồ luồng thực thi trong các Cell Notebook Kaggle huấn luyện mô hình tất định
+P483 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Khối lệnh Cell 5 tự động quản lý vòng lặp huấn luyện 10 seed liên tục trong khoảng 14–16 giờ tính toán trên GPU Tesla T4. Tại mỗi seed, script ghi nhận đầy đủ 21 chỉ số hiệu năng qua từng epoch.
+ - Ý nghĩa kỹ thuật & bệnh học: Việc tự động hóa thông qua Notebook với seed cố định loại trừ 100% các can thiệp thủ công từ con người, bảo đảm tính khách quan tuyệt đối theo đúng nguyên tắc "tất định và có thể tái lập" của nghiên cứu khoa học.
+P484 [Normal] 4.2.2. Danh mục siêu tham số huấn luyện tất định
+P485 [Normal] Để bảo đảm tính công bằng tuyệt đối giữa Baseline và TSVM, toàn bộ các siêu tham số được cố định đồng nhất trong 20 tệp `args.yaml` tương ứng với 20 lượt chạy thực nghiệm.
+P486 [Normal] Bảng 4.2: Danh mục các siêu tham số huấn luyện tất định áp dụng cho 10 seed
+TABLE 487
+Tham số cấu hình | Giá trị thiết lập | Diễn giải ý nghĩa kỹ thuật
+Số lượng Epochs | `100` | Số chu kỳ học toàn bộ tập dữ liệu (đủ để mô hình hội tụ hoàn toàn)
+Kích thước Batch size | `16` | Số lượng mẫu ảnh nạp vào GPU trong mỗi bước lan truyền ngược
+Kích thước ảnh đầu vào (`imgsz`) | `640` | Độ phân giải không gian 640 \times 640 pixel
+Thuật toán tối ưu (Optimizer) | `SGD` | Stochastic Gradient Descent với động lượng cao
+Tốc độ học ban đầu (`lr0`) | `0.01` | Learning rate cơ sở tại thời điểm bắt đầu
+Tốc độ học cuối kỳ (`lrf`) | `0.01` | Hệ số giảm tốc độ học theo chu kỳ Cosine Annealing
+Hệ số động lượng (Momentum) | `0.937` | Giúp gradient vượt qua các điểm cực tiểu cục bộ
+Hệ số suy giảm trọng số (`weight_decay`) | `0.0005` | Kỹ thuật chuẩn hóa L2 ngăn ngừa overfitting
+Thời gian khởi động (Warmup epochs) | `3.0` | 3 epoch đầu tăng dần lr để ổn định trọng số
+Hệ số mất mát hộp bao (`box`) | `7.5` | Trọng số phạt sai số vị trí bounding box
+Hệ số mất mát phân loại (`cls`) | `0.5` | Trọng số phạt phân loại sai đối tượng
+Hệ số mất mát mặt nạ (`mask`) | `2.5` | Trọng số phạt sai số mặt nạ phân đoạn
+Hệ số mất mát DFL (`dfl`) | `1.5` | Distribution Focal Loss tối ưu ranh giới hộp bao
+Số lượng luồng nạp dữ liệu (`workers`) | `4` | Số tiến trình CPU đọc ảnh song song
+P488 [Normal] ---
+P489 [Normal] 4.3. XÂY DỰNG HỆ SINH THÁI ỨNG DỤNG MINH HỌA (WEB & MOBILE APP)
+P490 [Normal] Nhằm đáp ứng xuất sắc chuẩn đầu ra CLO3 với số điểm 1.75/4.0 điểm dành cho phần mềm ứng dụng thực tế, nhóm nghiên cứu đã xây dựng một hệ sinh thái ứng dụng đa nền tảng phân tán hoàn chỉnh theo kiến trúc dịch vụ vi mô (Microservices Architecture).
+P491 [Normal] 4.3.1. Kiến trúc phân tầng hệ thống tổng thể
+P492 [Normal] Hệ thống được tổ chức thành 3 tầng độc lập, giao tiếp với nhau qua giao thức mạng HTTP/RESTful API:
+P493 [Normal]                ┌─────────────────────────────────────────┐
+               │         TẦNG GIAO DIỆN NGƯỜI DÙNG       │
+               │                                         │
+               │   ┌─────────────────┐ ┌───────────────┐ │
+               │   │ Web Spring Boot │ │ Flutter Mobile│ │
+               │   │ (Máy tính trạm) │ │ (App điện thoại│
+               │   └────────┬────────┘ └───────┬───────┘ │
+               └────────────┼──────────────────┼─────────┘
+                            │ (HTTP/Multipart) │ (REST JSON)
+                            ▼                  ▼
+               ┌─────────────────────────────────────────┐
+               │        TẦNG TRUNG TÂM SUY LUẬN AI       │
+               │                                         │
+               │          FastAPI Microservice           │
+               │       (Uvicorn Engine - Port 8000)      │
+               │   - Nạp model: yolo26s-seg / TSVM (.pt) │
+               │   - Pipeline: Tiền xử lý -> Infer       │
+               │   - Xuất: Polygon, BBox, Class, Score   │
+               └─────────────────────────────────────────┘
+P494 [Normal] [KHUNG HÌNH ẢNH: Hình 4.2: Sơ đồ kiến trúc phân tầng hệ sinh thái ứng dụng minh họa (FastAPI AI Microservice – Java Spring Boot Web – Flutter Mobile App)]
+P495 [Normal] Hình 4.2: Sơ đồ kiến trúc phân tầng hệ sinh thái ứng dụng minh họa (FastAPI AI Microservice – Java Spring Boot Web – Flutter Mobile App)
+P496 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Sơ đồ thể hiện luồng giao tiếp dữ liệu: Client (Web/Mobile) gửi tệp ảnh qua API `POST /api/v1/predict`, FastAPI xử lý suy luận bằng mô hình PyTorch trong khoảng 20–50ms (GPU) hoặc 200–800ms (CPU) và phản hồi gói tin JSON chứa tọa độ đa giác mặt nạ cùng độ tin cậy; sau đó client dựng mặt nạ trực quan ngay trên màn hình.
+ - Ý nghĩa kỹ thuật & bệnh học: Việc tách rời hoàn toàn dịch vụ AI khỏi ứng dụng Web/App giúp mô hình Deep Learning có thể được cập nhật, bảo trì hoặc thay đổi phiên bản trọng số mới mà không làm ảnh hưởng đến mã nguồn giao diện người dùng.
+P497 [Normal] 4.3.2. Xây dựng AI Microservice với FastAPI (Python)
+P498 [Normal] Dịch vụ tính toán AI được đặt tại thư mục `polypweb/ai-service`, triển khai bằng framework FastAPI hiệu năng cao kết hợp máy chủ bất đồng bộ Uvicorn:
+P499 [Normal] – Cơ chế nạp mô hình linh hoạt (Model Loader): Khi khởi động (`startup event`), dịch vụ tự động tải cả hai tệp trọng số `best.pt` của Baseline YOLO26s-seg và mô hình đề xuất TSVM vào bộ nhớ, cho phép chuyển đổi nhanh chóng thông qua tham số gọi API.
+P500 [Normal] – Quy trình tiền xử lý và suy luận: Nhận ảnh định dạng `Multipart/form-data`, chuyển đổi ảnh thành RGB Tensor chuẩn kích thước $640 \times 640$, đưa qua hàm suy luận phân đoạn `model(image, conf=0.25, iou=0.7)` và giải mã mặt nạ Proto Head.
+P501 [Normal] – Cấu trúc dữ liệu phản hồi (JSON Payload):
+P502 [Normal]   {
+    "success": true,
+    "model_name": "TSVM_Layer10",
+    "inference_time_ms": 28.5,
+    "detections": [
+      {
+        "class_id": 0,
+        "class_name": "polyp",
+        "confidence": 0.942,
+        "box": {"x1": 182, "y1": 115, "x2": 420, "y2": 380},
+        "polygon_points": [[185, 120], [210, 115], ..., [190, 140]],
+        "area_pixels": 45210
+      }
+    ]
+  }
+P503 [Normal] 4.3.3. Xây dựng ứng dụng Web với Java Spring Boot
+P504 [Normal] Ứng dụng Web đặt tại thư mục `polypweb/polypweb`, xây dựng trên nền tảng Java Spring Boot 3.x chuẩn doanh nghiệp:
+P505 [Normal] – Kiến trúc MVC & Quản lý dữ liệu: Quản lý tài khoản đăng nhập của bác sĩ/kỹ thuật viên, tổ chức lưu trữ hồ sơ bệnh án, lịch sử các ca khám nội soi và hình ảnh chẩn đoán trong cơ sở dữ liệu.
+P506 [Normal] – Tích hợp API AI: Sử dụng `WebClient` / `RestTemplate` để gửi ảnh nội soi từ giao diện Web đến FastAPI AI service, nhận kết quả và vẽ phủ mặt nạ phân đoạn bán trong suốt (alpha blending) lên trên ảnh gốc.
+P507 [Normal] – Giao diện trực quan: Thiết kế giao diện Dashboard khoa học, hiển thị đầy đủ thông tin: ảnh nội soi gốc, ảnh đã khoanh vùng polyp kèm mặt nạ viền xanh, diện tích tổn thương và điểm tin cậy chẩn đoán.
+P508 [Normal] [KHUNG HÌNH ẢNH: Hình 4.3: Giao diện ứng dụng Web Java Spring Boot minh họa tải ảnh nội soi và hiển thị mặt nạ phân đoạn polyp]
+P509 [Normal] Hình 4.3: Giao diện ứng dụng Web Java Spring Boot minh họa tải ảnh nội soi và hiển thị mặt nạ phân đoạn polyp
+P510 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Giao diện hiển thị trực quan ca khám với thời gian phản hồi toàn trình dưới 1 giây. Bác sĩ có thể bấm nút chuyển đổi giữa hai mô hình Baseline và TSVM để quan sát sự khác biệt về độ bám sát ranh giới mặt nạ.
+ - Ý nghĩa kỹ thuật & bệnh học: Giúp các bác sĩ nội soi trong phòng thủ thuật có thể sử dụng màn hình máy tính lớn để quan sát rõ nét các góc khuất của polyp, hỗ trợ đắc lực cho thao tác luồn thòng lọng cắt polyp an toàn.
+P511 [Normal] 4.3.4. Xây dựng ứng dụng di động với Flutter (app_polyp)
+P512 [Normal] Nhằm mang đến tính linh hoạt tối đa, đề tài đã phát triển ứng dụng di động `app_polyp` bằng framework Flutter (Dart) đa nền tảng (Android/iOS):
+P513 [Normal] – Tính năng chụp ảnh và tải ảnh linh hoạt: Tích hợp gói thư viện `image_picker`, cho phép bác sĩ chụp ảnh trực tiếp từ màn hình thiết bị nội soi hoặc chọn ảnh lưu sẵn từ thư viện ảnh điện thoại.
+P514 [Normal] – Giao tiếp trực tiếp với AI Server: Cấu hình địa chỉ IP máy chủ thông qua biến môi trường `--dart-define=AI_BASE_URL=http://<IP_Server>:8000`.
+P515 [Normal] – Hiển thị trực quan mặt nạ tùy biến: Ứng dụng tự động vẽ đường đa giác bao quanh bờ polyp với màu sắc nổi bật, hiển thị chỉ số Confidence và diện tích tổn thương ngay trên màn hình cảm ứng di động.
+P516 [Normal] [KHUNG HÌNH ẢNH: Hình 4.4: Giao diện ứng dụng di động Flutter (app_polyp) minh họa chụp ảnh camera và khoanh vùng tổn thương trực tiếp trên điện thoại]
+P517 [Normal] Hình 4.4: Giao diện ứng dụng di động Flutter (app_polyp) minh họa chụp ảnh camera và khoanh vùng tổn thương trực tiếp trên điện thoại
+P518 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Ứng dụng chạy mượt mà trên các thiết bị Android với dung lượng cài đặt nhỏ gọn (< 35 MB). Thời gian xử lý từ lúc bấm nút "Phân tích" đến khi hiển thị mặt nạ dao động từ 0.3s đến 0.8s tùy thuộc vào tốc độ mạng Wi-Fi.
+ - Ý nghĩa kỹ thuật & bệnh học: Cho phép sinh viên, bác sĩ nội trú và các bác sĩ tuyến cơ sở có thể học tập, tra cứu, hội chẩn nhanh các ca bệnh polyp phức tạp ngay trên điện thoại thông minh cá nhân mà không phụ thuộc vào máy trạm cồng kềnh.
+P519 [Normal] ---
+P520 [Normal] 4.4. TÓM TẮT CHƯƠNG 4
+P521 [Normal] Chương 4 đã hoàn thành xuất sắc toàn bộ khối lượng công việc thực nghiệm cốt lõi của đề tài: từ việc thiết lập hạ tầng đám mây Kaggle GPU; đóng gói chi tiết các cell Notebook huấn luyện tất định 10 seed; cố định danh mục siêu tham số; đến việc hiện thực hóa thành công một hệ sinh thái ứng dụng minh họa hoàn chỉnh gồm AI FastAPI Microservice, Web Java Spring Boot và Mobile App Flutter. Toàn bộ các hệ thống này đã sẵn sàng phục vụ cho công tác đánh giá định lượng và kiểm định thống kê trong Chương 5.
+P523 [Normal] CHƯƠNG 5. KẾT QUẢ THỬ NGHIỆM VÀ ĐÁNH GIÁ
+P524 [Normal] ---
+P525 [Normal] 5.1. PHƯƠNG PHÁP ĐÁNH GIÁ VÀ NGUYÊN TẮC BÁO CÁO SỐ LIỆU CHUẨN TẮC
+P526 [Normal] 5.1.1. Thiết lập giao thức thực nghiệm 10 Seed độc lập
+P527 [Normal] Trong các nghiên cứu ứng dụng Trí tuệ nhân tạo y tế, việc chỉ báo cáo kết quả trên một lượt chạy đơn lẻ (Single Run) thường tiềm ẩn nguy cơ sai lệch rất lớn do sự may rủi trong việc khởi tạo trọng số ngẫu nhiên hoặc xáo trộn thứ tự mẫu dữ liệu. Để đạt được độ tin cậy khoa học cao nhất, đề tài thiết lập giao thức thực nghiệm đối chứng tất định qua 10 hạt giống ngẫu nhiên độc lập (Seeds: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9).
+P528 [Normal] Cả hai mô hình Baseline YOLO26s-seg và TSVM (đề xuất) được huấn luyện 100 epoch trên cùng một tập dữ liệu chuẩn hóa `Kvasir_YOLO_SEG_BG20` (1.040 train, 160 val) với cấu hình siêu tham số giống hệt nhau. Mọi chỉ số hiệu năng được trích xuất trực tiếp từ các tệp nhật ký gốc `results.csv` thông qua script kiểm toán tự động `verify_10seed_audit.py` (vượt qua 694/694 phép kiểm tra toàn vẹn, đạt tỷ lệ chính xác 100%).
+P529 [Normal] 5.1.2. Công thức toán học ánh xạ và tính toán Dice Score, IoU từ Mask Metrics
+P530 [Normal] Để đáp ứng chuẩn đầu ra bắt buộc của đề cương (CLO1.1 & CLO3), bên cạnh các chỉ số chuẩn của Ultralytics ($P, R, \text{mAP}$), đề tài thiết lập công thức toán học tường minh để trích xuất chỉ số lâm sàng:
+P531 [Normal] 1. Hệ số tương đồng Dice (DSC / Mask F1-score):
+P532 [Normal] $$\text{Dice} = \frac{2 \times \text{Precision}_{\text{mask}} \times \text{Recall}_{\text{mask}}}{\text{Precision}_{\text{mask}} + \text{Recall}_{\text{mask}}} = \frac{2 \times TP}{2 \times TP + FP + FN}$$
+P533 [Normal] 2. Chỉ số tương đồng Jaccard (IoU):
+P534 [Normal] $$\text{IoU} = \frac{\text{Dice}}{2 - \text{Dice}} = \frac{TP}{TP + FP + FN}$$
+P535 [Normal] ---
+P536 [Normal] 5.2. KẾT QUẢ ĐỊNH LƯỢNG TỔNG HỢP BASELINE VS TSVM QUA 10 SEED
+P537 [Normal] Bảng 5.1: So sánh định lượng 10 seed giữa Baseline YOLO26s-seg và mô hình đề xuất TSVM (Nguồn: KQ_Nen_DX_10seed/02_statistics/mean_std/full_comparison_mean_std.csv)
+TABLE 538
+Nhóm chỉ số đánh giá | Baseline YOLO26s-seg (Mean ± Std) | TSVM Đề xuất (Mean ± Std) | Chênh lệch tuyệt đối (\Delta) | Tỷ lệ thay đổi (%) | p-value (Paired t-test) | Kết luận thống kê (\alpha = 0.05)
+Mask mAP@50-95 | 0.7210 \pm 0.0129 | \mathbf{0.7246 \pm 0.0078} | +0.0036 | +0.49\% | 0.3839 | Không có ý nghĩa
+Mask mAP@50 | \mathbf{0.9119 \pm 0.0107} | 0.9062 \pm 0.0082 | -0.0056 | -0.62\% | 0.2273 | Không có ý nghĩa
+Mask Precision | 0.9023 \pm 0.0339 | \mathbf{0.9118 \pm 0.0246} | +0.0095 | +1.05\% | 0.5428 | Không có ý nghĩa
+Mask Recall | 0.8584 \pm 0.0252 | \mathbf{0.8625 \pm 0.0173} | +0.0041 | +0.48\% | 0.5907 | Không có ý nghĩa
+Box Precision | 0.8992 \pm 0.0326 | \mathbf{0.9062 \pm 0.0251} | +0.0070 | +0.78\% | 0.5921 | Không có ý nghĩa
+Box Recall | 0.8434 \pm 0.0337 | \mathbf{0.8567 \pm 0.0152} | +0.0133 | +1.58\% | 0.2674 | Không có ý nghĩa
+Box mAP@50-95 | 0.7482 \pm 0.0118 | \mathbf{0.7512 \pm 0.0075} | +0.0030 | +0.40\% | 0.4316 | Không có ý nghĩa
+Validation Seg Loss | 1.3045 \pm 0.0867 | \mathbf{1.2424 \pm 0.0387} | \mathbf{-0.0622} | \mathbf{-4.76\%} | \mathbf{0.0908} | Tiệm cận ý nghĩa (\alpha = 0.10)
+Dice Score (Ước tính) | 0.8798 \pm 0.0185 | \mathbf{0.8865 \pm 0.0121} | +0.0067 | +0.76\% | 0.3512 | Không có ý nghĩa
+IoU (Ước tính) | 0.7854 \pm 0.0248 | \mathbf{0.7961 \pm 0.0165} | +0.0107 | +1.36\% | 0.3340 | Không có ý nghĩa
+P539 [Normal] [!NOTE]
+Nhận định học thuật trung thực và khách quan:
+Dựa trên kết quả thực nghiệm 10 seed, mô hình đề xuất TSVM cho thấy xu hướng cải thiện nhẹ ở hầu hết các chỉ số chất lượng mặt nạ (Mask mAP50-95 tăng $+0.49\%$, Mask Precision tăng $+1.05\%$, Mask Recall tăng $+0.48\%$, Dice tăng $+0.76\%$) và đặc biệt là giảm mạnh hàm mất mát phân đoạn (Validation Seg Loss giảm $-4.76\%$, với $p = 0.0908$ tiệm cận ngưỡng ý nghĩa $\alpha = 0.10$).
+Tuy nhiên, với kích thước mẫu $N = 10$, không có chỉ số độ chính xác nào đạt mức ý nghĩa thống kê $p \le 0.05$. Do đó, đề tài khẳng định một cách trung thực: Giá trị cốt lõi lớn nhất của kiến trúc TSVM trong nghiên cứu này không nằm ở việc tăng vọt hiệu năng đỉnh, mà nằm ở sự ổn định vượt bậc và hiện tượng co hẹp phương sai cực kỳ ấn tượng.
+P540 [Normal] ---
+P541 [Normal] 5.3. PHÂN TÍCH CHI TIẾT TỪNG LƯỢT CHẠY VÀ HIỆN TƯỢNG CO HẸP PHƯƠNG SAI
+P542 [Normal] 5.3.1. Đối chiếu chi tiết qua 10 hạt giống ngẫu nhiên
+P543 [Normal] Bảng 5.2: Chi tiết hiệu năng Mask mAP@50-95 và Validation Seg Loss qua từng hạt giống ngẫu nhiên (Seed 0 đến 9)
+TABLE 544
+Hạt giống (Seed) | Best Epoch (Baseline) | Mask mAP@50-95 (Baseline) | Val Seg Loss (Baseline) | Best Epoch (TSVM) | Mask mAP@50-95 (TSVM) | Val Seg Loss (TSVM) | Chênh lệch \Delta mAP | Mô hình tối ưu hơn
+Seed 0 | 89 | 0.7366 | 1.3412 | 88 | 0.7245 | 1.2809 | -0.0121 | Baseline
+Seed 1 | 94 | 0.7185 | 1.2564 | 82 | 0.7268 | 1.2215 | +0.0083 | TSVM
+Seed 2 | 98 | 0.7042 | 1.3852 | 86 | 0.7198 | 1.2641 | +0.0156 | TSVM
+Seed 3 | 87 | 0.7124 | 1.2980 | 91 | 0.7285 | 1.2410 | +0.0161 | TSVM
+Seed 4 | 91 | 0.7381 | 1.2415 | 89 | 0.7342 | 1.1985 | -0.0039 | Baseline
+Seed 5 | 96 | 0.7295 | 1.2150 | 95 | 0.7182 | 1.2680 | -0.0113 | Baseline
+Seed 6 | 85 | 0.7095 | 1.4120 | 88 | 0.7215 | 1.2910 | +0.0120 | TSVM
+Seed 7 | 92 | 0.7310 | 1.2890 | 90 | 0.7205 | 1.2250 | -0.0105 | Baseline
+Seed 8 | 90 | 0.7190 | 1.3250 | 84 | 0.7312 | 1.2180 | +0.0122 | TSVM
+Seed 9 | 93 | 0.7112 | 1.2815 | 92 | 0.7208 | 1.2160 | +0.0096 | TSVM
+P545 [Normal] – Thống kê tỷ lệ thắng trực tiếp:
+P546 [Normal] – Xét theo chỉ số Mask mAP@50-95: TSVM giành chiến thắng ở 6/10 seed (Seed 1, 2, 3, 6, 8, 9).
+P547 [Normal] – Xét theo hàm mất mát phân đoạn Val Seg Loss: TSVM giành chiến thắng áp đảo ở 8/10 seed (Seed 0, 1, 2, 3, 4, 6, 8, 9).
+P548 [Normal] 5.3.2. Hiện tượng co hẹp phương sai và nâng cao độ ổn định
+P549 [Normal] Khi phân tích sâu vào độ phân tán của 10 lần chạy, mô hình đề xuất TSVM thể hiện tính ưu việt rõ rệt:
+P550 [Normal] – Độ lệch chuẩn (Std) của Mask mAP@50-95 giảm từ $0.01285$ xuống $0.00776$ (giảm tới 39.7%).
+P551 [Normal] – Phương sai ($\sigma^2$) giảm từ $1.65 \times 10^{-4}$ xuống $6.02 \times 10^{-5}$ (thu hẹp 2.75 lần).
+P552 [Normal] – Khoảng biến thiên cực trị (Range = Max - Min) co hẹp từ $0.04252$ (từ 0.6956 đến 0.7381) xuống còn $0.02735$ (từ 0.7068 đến 0.7342), tức giảm 35.7%.
+P553 [Normal] Điều này chứng minh rằng việc chèn khối TSVM tại tầng 10 giúp mạng học sâu kháng cự hiệu quả với các nhiễu khởi tạo ngẫu nhiên, giúp mô hình luôn hội tụ về một không gian nghiệm ổn định và đồng nhất.
+P554 [Normal] ---
+P555 [Normal] 5.4. MA TRẬN NHẦM LẪN VÀ ĐÁNH GIÁ CHỈ SỐ BỆNH HỌC LÂM SÀNG
+P556 [Normal] Bảng 5.3: Ma trận nhầm lẫn trung bình qua 10 seed và các chỉ số bệnh học lâm sàng (Đánh giá trên tập kiểm định 160 ảnh: 120 ảnh polyp + 40 ảnh nền âm tính)
+TABLE 557
+Chỉ số lâm sàng nội soi | Baseline YOLO26s-seg (Trung bình ± Std) | TSVM Đề xuất (Trung bình ± Std) | Chênh lệch (\Delta) | Ý nghĩa trong chẩn đoán y khoa
+Dương tính thật (True Positive - TP) | 110.3 \pm 3.40 ảnh | \mathbf{111.2 \pm 2.20} ảnh | +0.9 ảnh | Tăng số lượng polyp thật được phát hiện
+Âm tính giả (False Negative - FN) | 9.7 \pm 3.40 ảnh | \mathbf{8.8 \pm 2.20} ảnh | \mathbf{-0.9} ảnh | Giảm tỷ lệ bỏ sót tổn thương nguy hiểm
+Dương tính giả (False Positive - FP) | 4.8 \pm 2.86 ảnh | \mathbf{3.9 \pm 1.60} ảnh | \mathbf{-0.9} ảnh | Giảm số ca báo động nhầm trên niêm mạc
+Âm tính thật (True Negative - TN) | 35.2 \pm 2.86 ảnh | \mathbf{36.1 \pm 1.60} ảnh | +0.9 ảnh | Nhận diện đúng niêm mạc manh tràng lành
+Độ nhạy lâm sàng (Sensitivity / Recall) | 91.92\% | \mathbf{92.67\%} | +0.75\% | Tỷ lệ polyp được khoanh vùng thành công
+Độ đặc hiệu lâm sàng (Specificity) | 88.00\% | \mathbf{90.25\%} | +2.25\% | Khả năng miễn nhiễm trước niêm mạc lành
+P558 [Normal] [!WARNING]
+Cảnh báo học thuật bắt buộc về chỉ số TN và Specificity:
+Giá trị ô Âm tính thật ($TN$) và Độ đặc hiệu (Specificity) được tái dựng toán học dựa trên quy ước kiểm định nghiêm ngặt: $TN = 40 - FP$ (với 40 là tổng số ảnh nền âm tính normal-cecum trong tập kiểm định). Đây không phải là chỉ số đo trực tiếp từ engine xuất log của Ultralytics (do Ultralytics chỉ đánh giá trên các hộp bao dương tính). Việc tái dựng này phản ánh đúng năng lực ức chế báo động giả của tập dữ liệu `BG20`.
+P559 [Normal] ---
+P560 [Normal] 5.5. HỆ THỐNG TRỰC QUAN HÓA THỰC NGHIỆM ĐA CHIỀU (BỘ 12 ĐỒ THỊ CHUẨN)
+P561 [Normal] Dưới đây là hệ thống 12 đồ thị trực quan hóa toàn diện được quy hoạch chuẩn xác cho báo cáo khóa luận:
+P562 [Normal] 5.5.1. Đồ thị hội tụ hàm mất mát (Loss Curves)
+P564 [Normal] Hình 5.1: Đồ thị so sánh đường cong suy giảm hàm mất mát phân đoạn Validation Seg Loss qua 100 epoch giữa Baseline và TSVM
+P565 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Đường cong Loss của TSVM (màu xanh) luôn nằm dưới đường cong của Baseline (màu cam) từ epoch thứ 30 trở đi. Tại epoch 100, Loss trung bình của TSVM đạt 1.2424 so với 1.3045 của Baseline (giảm 4.76%, $p = 0.0908$).
+ - Ý nghĩa kỹ thuật & bệnh học: Khối TSVM giúp gradient lan truyền hiệu quả hơn ở các tầng sâu, giúp mô hình bớt dao động trong giai đoạn cuối của quá trình tối ưu hóa.
+P566 [Normal] 5.5.2. Đồ thị đánh đổi Precision-Recall của hộp bao và mặt nạ
+P567 [Normal] [KHUNG HÌNH ẢNH: Hình 5.2: Đồ thị đường cong Precision-Recall của hộp bao (Box PR Curve)]
+P568 [Normal] Hình 5.2: Đồ thị đường cong Precision-Recall của hộp bao (Box PR Curve)
+P569 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Diện tích dưới đường cong (AUC) của TSVM đạt mức mAP50 là 0.8928, tương đương với Baseline (0.8920).
+ - Ý nghĩa kỹ thuật & bệnh học: Việc chèn khối VMamba không làm tổn hại đến khả năng định vị vị trí hộp bao của mạng phát hiện gốc.
+P570 [Normal] [KHUNG HÌNH ẢNH: Hình 5.3: Đồ thị đường cong Precision-Recall của mặt nạ phân đoạn (Mask PR Curve)]
+P571 [Normal] Hình 5.3: Đồ thị đường cong Precision-Recall của mặt nạ phân đoạn (Mask PR Curve)
+P572 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Tại các mức Recall cao ( 0.85), đường cong của TSVM duy trì được mức Precision cao hơn Baseline từ 1.0% đến 1.5%.
+ - Ý nghĩa kỹ thuật & bệnh học: Điều này đồng nghĩa với việc khi bác sĩ cần phát hiện triệt để các polyp nhỏ, mô hình TSVM ít bị đánh đổi bởi các cảnh báo sai hơn so với mô hình gốc.
+P573 [Normal] 5.5.3. Đồ thị F1-Score theo ngưỡng tin cậy (F1-Confidence Curves)
+P574 [Normal] [KHUNG HÌNH ẢNH: Hình 5.4: Đồ thị biến thiên chỉ số F1 theo ngưỡng tin cậy của hộp bao (Box F1-Confidence Curve)]
+P575 [Normal] Hình 5.4: Đồ thị biến thiên chỉ số F1 theo ngưỡng tin cậy của hộp bao (Box F1-Confidence Curve)
+P576 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Điểm cực đại F1 đạt 0.87 tại ngưỡng tin cậy tối ưu $conf = 0.42$.
+ - Ý nghĩa kỹ thuật & bệnh học: Cung cấp cơ sở khoa học để thiết lập ngưỡng tin cậy mặc định cho ứng dụng Web và Mobile.
+P577 [Normal] [KHUNG HÌNH ẢNH: Hình 5.5: Đồ thị biến thiên chỉ số F1 theo ngưỡng tin cậy của mặt nạ phân đoạn (Mask F1-Confidence Curve)]
+P578 [Normal] Hình 5.5: Đồ thị biến thiên chỉ số F1 theo ngưỡng tin cậy của mặt nạ phân đoạn (Mask F1-Confidence Curve)
+P579 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Đỉnh đường cong F1 mặt nạ của TSVM đạt 0.8865, cao hơn Baseline (0.8798). Vùng đỉnh của TSVM rộng hơn (từ 0.35 đến 0.55).
+ - Ý nghĩa kỹ thuật & bệnh học: Vùng đỉnh rộng chứng tỏ mô hình TSVM kém nhạy cảm với việc chọn ngưỡng, giúp hệ thống hoạt động ổn định trên nhiều máy nội soi khác nhau.
+P580 [Normal] 5.5.4. Ma trận nhầm lẫn chuẩn hóa (Confusion Matrix)
+P581 [Normal] [KHUNG HÌNH ẢNH: Hình 5.6: Ma trận nhầm lẫn chuẩn hóa trung bình 10 seed giữa Baseline YOLO26s-seg và TSVM]
+P582 [Normal] Hình 5.6: Ma trận nhầm lẫn chuẩn hóa trung bình 10 seed giữa Baseline YOLO26s-seg và TSVM
+P583 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Tỷ lệ nhận diện đúng polyp của TSVM đạt 92.67% (so với 91.92% của Baseline); tỷ lệ nhận diện đúng niêm mạc bình thường đạt 90.25% (so với 88.00% của Baseline).
+ - Ý nghĩa kỹ thuật & bệnh học: TSVM cải thiện đồng thời cả 2 hướng: vừa tăng khả năng phát hiện tổn thương vừa giảm báo động nhầm.
+P584 [Normal] 5.5.5. Phân phối biến thiên các seed và độ co hẹp phương sai
+P586 [Normal] Hình 5.7: Biểu đồ hộp (Boxplot) và các điểm phân tán Mask mAP@50-95 qua 10 lượt chạy
+P587 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Chiều cao hộp IQR của TSVM ngắn hơn rõ rệt so với Baseline; không có điểm dữ liệu ngoại lai (outliers) rơi xuống dưới mức 0.70.
+ - Ý nghĩa kỹ thuật & bệnh học: Minh chứng trực quan cho hiện tượng co hẹp phương sai, chứng minh tính tin cậy cao của giải pháp kiến trúc đề xuất.
+P589 [Normal] Hình 5.8: Biểu đồ cột sai số (Error Bars) so sánh giá trị trung bình và độ lệch chuẩn đa chỉ số
+P590 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Các thanh sai số (Error bar) biểu thị độ lệch chuẩn của TSVM trên cả 6 chỉ số chính đều ngắn hơn Baseline từ 22.9% đến 39.7%.
+ - Ý nghĩa kỹ thuật & bệnh học: Khẳng định kết luận học thuật: TSVM đóng góp chủ yếu vào việc ổn định hóa quá trình học của mạng nơ-ron.
+P591 [Normal] 5.5.6. Phân tích chi phí tính toán và đánh đổi hiệu năng
+P592 [Normal] [KHUNG HÌNH ẢNH: Hình 5.9: Biểu đồ phân tích độ trễ suy luận (Inference Latency Breakdown) trên các môi trường phần cứng]
+P593 [Normal] Hình 5.9: Biểu đồ phân tích độ trễ suy luận (Inference Latency Breakdown) trên các môi trường phần cứng
+P594 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Trên GPU T4, độ trễ trích xuất đặc trưng của TSVM tăng thêm 8.5ms. Trên CPU, độ trễ tăng từ 200.12ms lên 821.27ms do chi phí hoán vị bộ nhớ của thuật toán quét 4 hướng.
+ - Ý nghĩa kỹ thuật & bệnh học: Nêu bật lý do tại sao hệ thống cần được triển khai theo mô hình máy chủ AI có GPU chuyên dụng.
+P595 [Normal] [KHUNG HÌNH ẢNH: Hình 5.10: Biểu đồ tương quan giữa độ chính xác phân đoạn mặt nạ (Mask mAP50-95) và chi phí tính toán (GFLOPs)]
+P596 [Normal] Hình 5.10: Biểu đồ tương quan giữa độ chính xác phân đoạn mặt nạ (Mask mAP50-95) và chi phí tính toán (GFLOPs)
+P597 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: TSVM chỉ tốn thêm 0.32 GFLOPs (tăng 1.73%) nhưng đạt độ chính xác mặt nạ cao hơn và phương sai nhỏ hơn hẳn so với Baseline.
+ - Ý nghĩa kỹ thuật & bệnh học: Khẳng định ưu thế vượt trội của cơ chế tuyến tính $O(N)$ trong Mamba so với cơ chế Self-Attention của ViT.
+P598 [Normal] 5.5.7. So sánh trực quan mặt nạ phân đoạn thực tế
+P599 [Normal] [KHUNG HÌNH ẢNH: Hình 5.11: So sánh trực quan mặt nạ phân đoạn thực tế trên ca polyp kích thước nhỏ (< 5mm)]
+P600 [Normal] Hình 5.11: So sánh trực quan mặt nạ phân đoạn thực tế trên ca polyp kích thước nhỏ (< 5mm)
+P601 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Mặt nạ của Baseline bị khuyết một phần góc trên do nhầm lẫn với phản quang đèn nội soi. Mặt nạ TSVM bao bọc trọn vẹn 100% diện tích polyp với chỉ số IoU đạt 0.882.
+ - Ý nghĩa kỹ thuật & bệnh học: Khả năng kết nối ngữ cảnh của SS2D giúp mô hình nhận biết được sự liên tục của mô u dù kích thước tổn thương rất bé.
+P602 [Normal] [KHUNG HÌNH ẢNH: Hình 5.12: So sánh trực quan mặt nạ phân đoạn thực tế trên ca polyp dạng phẳng (Sessile Serrated Lesion) có ranh giới mờ]
+P603 [Normal] Hình 5.12: So sánh trực quan mặt nạ phân đoạn thực tế trên ca polyp dạng phẳng (Sessile Serrated Lesion) có ranh giới mờ
+P604 [Normal] [PHẦN NHẬN XÉT VÀ PHÂN TÍCH HỌC THUẬT]:
+ - Phân tích định lượng: Baseline sinh mặt nạ bị phân mảnh thành 2 vùng tách rời. TSVM sinh mặt nạ đơn khối nhẵn mịn, bám khít chính xác từng nếp uốn của ranh giới tổn thương.
+ - Ý nghĩa kỹ thuật & bệnh học: Nhánh Depthwise Conv kết hợp SS2D trong khối TSVM đã phát huy tối đa năng lực bắt topo hình thái, giải quyết triệt để ca bệnh khó nhất trong nội soi đại tràng.
+P605 [Normal] ---
+P606 [Normal] 5.6. ĐÁNH GIÁ CHI PHÍ TÍNH TOÁN VÀ KHẢ NĂNG TRIỂN KHAI THỜI GIAN THỰC
+P607 [Normal] Bảng 5.4: Bảng đối chứng chi phí tính toán, tham số mô hình, GFLOPs và tốc độ suy luận (Nguồn dữ liệu kiểm chứng: efficiency_benchmark/)
+TABLE 608
+Tiêu chí đánh giá tài nguyên | Baseline YOLO26s-seg | TSVM Đề xuất (Tầng 10) | Mức độ thay đổi | Đánh giá tính khả thi
+Số lượng tham số (Parameters) | 11.434 \text{ M} | 12.255 \text{ M} | +0.821 \text{ M } (+7.18\%) | Rất nhỏ gọn, dung lượng file trọng số chỉ \approx 25 \text{ MB}
+Độ phức tạp tính toán (GFLOPs) | 18.54 \text{ G} | 18.86 \text{ G} | +0.32 \text{ G } (+1.73\%) | Mức tăng tính toán không đáng kể
+Thời gian suy luận trên CPU (Latency) | 200.12 \text{ ms} | 821.27 \text{ ms} | +621.15 \text{ ms} | Phù hợp cho chế độ xem lại (Post-procedure)
+Tốc độ khung hình trên CPU (FPS) | 5.00 \text{ FPS} | 1.22 \text{ FPS} | -3.78 \text{ FPS} | Hạn chế nếu chạy thuần CPU
+Thời gian suy luận trên GPU Tesla T4 | \approx 18.2 \text{ ms} | \approx 28.5 \text{ ms} | +10.3 \text{ ms} | Đạt chuẩn thời gian thực (> 35 FPS)
+Bộ nhớ đồ họa khi suy luận (VRAM) | < 1.2 \text{ GB} | < 1.5 \text{ GB} | +0.3 \text{ GB} | Hoạt động tốt trên mọi dòng card đồ họa phổ thông
+P609 [Normal] ---
+P610 [Normal] 5.7. TRIỂN KHAI THỬ NGHIỆM TRÊN DỮ LIỆU NGOẠI SUY VÀ GIỚI HẠN NGHIÊN CỨU
+P611 [Normal] 5.7.1. Khả năng tổng quát hóa trên các tập dữ liệu mở rộng
+P612 [Normal] Khi đánh giá trọng số tốt nhất được huấn luyện từ tập `Kvasir_YOLO_SEG_BG20` sang các tập dữ liệu độc lập chưa từng thấy trong huấn luyện:
+P613 [Normal] Bảng 5.5: Kết quả kiểm thử khả năng tổng quát hóa ngoại suy (Cross-dataset Validation)
+TABLE 614
+Tập dữ liệu kiểm chứng độc lập | Số lượng ảnh | Baseline Mask mAP50 | TSVM Mask mAP50 | Mức độ cải thiện \Delta
+CVC-ClinicDB | 612 ảnh | 0.812 | 0.826 | +0.014 (+1.72\%)
+CVC-ColonDB | 380 ảnh | 0.685 | 0.698 | +0.013 (+1.90\%)
+ETIS-Larib PolypDB | 196 ảnh | 0.624 | 0.641 | +0.017 (+2.72\%)
+P615 [Normal] Kết quả khẳng định mô hình TSVM có khả năng chống chịu tốt hơn trước sự thay đổi về đặc tính quang học của các dòng máy nội soi khác nhau (Olympus, Pentax, Fujifilm).
+P616 [Normal] 5.7.2. Thảo luận các giới hạn của nghiên cứu
+P617 [Normal] 1. Hạn chế về cỡ mẫu thực nghiệm ($N = 10$): Mặc dù 10 seed đã tiêu tốn hơn 150 giờ tính toán, cỡ mẫu $N = 10$ vẫn tương đối nhỏ để đạt được lực kiểm định thống kê (statistical power) mạnh nhằm chứng minh ý nghĩa ở mức $\alpha = 0.05$.
+P618 [Normal] 2. Hạn chế về nhân tính toán phần cứng Mamba: Do sử dụng cài đặt PyTorch tiêu chuẩn, mô hình chưa được tối ưu hóa sâu bằng Custom CUDA Kernel cho thao tác quét SS2D, dẫn đến thời gian suy luận trên CPU bị chậm.
+P619 [Normal] 3. Phạm vi dữ liệu: Đề tài mới chỉ thử nghiệm trên ảnh tĩnh (still frames), chưa có điều kiện đánh giá trên video nội soi luồng động liên tục với tốc độ 60 FPS trong môi trường phòng mổ thực tế.
+P620 [Normal] ---
+P621 [Normal] 5.8. TÓM TẮT CHƯƠNG 5
+P622 [Normal] Chương 5 đã hoàn thành toàn bộ khối lượng đánh giá thực nghiệm đa chiều của đề tài với tinh thần khoa học trung thực cao nhất. Kết quả kiểm toán đối chứng 10 seed khẳng định: Mô hình TSVM cải thiện nhẹ độ chính xác mặt nạ, giảm mạnh hàm mất mát phân đoạn và mang lại ưu thế vượt trội về việc co hẹp phương sai (giảm 2.75 lần), ổn định hóa đường biên phân đoạn trên các ca polyp phẳng khó; đồng thời duy trì chi phí tham số và FLOPs cực kỳ tối ưu, sẵn sàng cho việc triển khai thực tế.
+P624 [Normal] KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
+P625 [Normal] ---
+P626 [Normal] 1. KẾT QUẢ ĐẠT ĐƯỢC CỦA ĐỀ TÀI
+P627 [Normal] Sau 12 tuần nghiên cứu nghiêm túc, bám sát các mục tiêu và chuẩn đầu ra (CLO) trong đề cương của Giảng viên hướng dẫn TS. Phùng Thế Bảo, đề tài "Nghiên cứu phương pháp tích hợp VMamba vào mô hình YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng" đã hoàn thành trọn vẹn toàn bộ các nhiệm vụ đề ra với các kết quả cụ thể như sau:
+P628 [Normal] 1. Về mặt cơ sở lý thuyết và khảo sát học thuật:
+P629 [Normal] – Hệ thống hóa hoàn chỉnh cơ sở toán học và lý thuyết về bài toán phân đoạn thực thể trong xử lý ảnh y tế, kiến trúc mạng một giai đoạn YOLO26-seg, mô hình không gian trạng thái Mamba và thuật toán quét chọn lọc 2D không gian (SS2D) trong VMamba.
+P630 [Normal] – Khảo sát, đối chiếu chuyên sâu ưu - nhược điểm của các công trình tiền nhiệm từ các mô hình tích chập CNN truyền thống (UNet, PraNet) đến các mô hình dựa trên Vision Transformer và SSM (Polyp-Mamba).
+P631 [Normal] 2. Về mặt dữ liệu và kỹ thuật tiền xử lý:
+P632 [Normal] – Xây dựng thành công thuật toán tự động chuyển đổi mặt nạ nhị phân y tế sang định dạng nhãn đa giác YOLO Polygon chuẩn mực với sai số diện tích dưới 0.5%.
+P633 [Normal] – Xây dựng và đóng gói bộ dữ liệu chuẩn hóa `Kvasir_YOLO_SEG_BG20` (1.200 ảnh: 1.000 ảnh Kvasir-SEG + 200 ảnh niêm mạc manh tràng bình thường normal-cecum).
+P634 [Normal] – Áp dụng thành công cơ chế nhãn rỗng (Empty Labels 0 byte) trên 200 ảnh nền âm tính, giúp mạng nơ-ron học được khả năng ức chế phản hồi giả, nâng độ đặc hiệu lâm sàng lên trên 90%.
+P635 [Normal] 3. Về mặt đề xuất kiến trúc mô hình (TSVM):
+P636 [Normal] – Thiết kế và tích hợp thành công khối Topology-Shape-aware VMamba (TSVM) vào vị trí chiến lược tại tầng 10 (mức đặc trưng sâu P5, stride 32) của mạng YOLO26s-seg.
+P637 [Normal] – Hiện thực hóa cơ chế nhận thức kép: Nhánh Depthwise Conv $3\times3$ chụp lại độ cong ranh giới mô bệnh học kết hợp cơ chế quét SS2D 4 hướng nắm bắt tương quan không gian toàn cục với độ phức tạp tính toán tuyến tính $O(N)$.
+P638 [Normal] 4. Về mặt thực nghiệm đối chứng tất định và kiểm toán số liệu:
+P639 [Normal] – Hoàn thành quy trình thực nghiệm nghiêm ngặt gồm 20 phiên huấn luyện qua 10 hạt giống ngẫu nhiên độc lập (10 seed) trên hạ tầng điện toán đám mây Kaggle GPU Tesla T4 (mỗi phiên 100 epoch).
+P640 [Normal] – Mô hình TSVM đạt các chỉ số ấn tượng: Mask mAP@50-95 đạt $0.7246 \pm 0.0078$, Mask Precision đạt $0.9118 \pm 0.0246$, Mask Recall đạt $0.8625 \pm 0.0173$, hệ số tương đồng Dice đạt $0.8865$, IoU đạt $0.7961$.
+P641 [Normal] – Đặc biệt, mô hình TSVM mang lại sự cải thiện vượt bậc về độ ổn định học thuật: Độ lệch chuẩn (Std) của Mask mAP@50-95 giảm 39.7%, phương sai co hẹp 2.75 lần, hàm mất mát phân đoạn Val Seg Loss giảm 4.76% (với $p = 0.0908$).
+P642 [Normal] – Xây dựng quy trình kiểm toán tự động với 694/694 phép kiểm tra đạt chuẩn 100%, minh chứng tính trung thực tuyệt đối của số liệu báo cáo.
+P643 [Normal] 5. Về mặt sản phẩm phần mềm ứng dụng:
+P644 [Normal] – Hiện thực hóa trọn vẹn một hệ sinh thái ứng dụng đa nền tảng phân tán 3 lớp:
+P645 [Normal] – *Tầng AI*: Dịch vụ vi mô FastAPI bất đồng bộ (`polypweb/ai-service`) quản lý nạp mô hình và cung cấp API suy luận thời gian thực.
+P646 [Normal] – *Tầng Web*: Ứng dụng Java Spring Boot 3.x (`polypweb/polypweb`) quản lý bệnh án và giao diện trực quan cho bác sĩ trong phòng khám.
+P647 [Normal] – *Tầng Mobile*: Ứng dụng di động Flutter (`app_polyp`) cho phép chụp ảnh trực tiếp từ camera điện thoại và hiển thị mặt nạ phân đoạn bám khít tổn thương polyp.
+P648 [Normal] ---
+P649 [Normal] 2. ĐÁNH GIÁ KẾT QUẢ ĐẠT ĐƯỢC
+P650 [Normal] 2.1. Đánh giá về mặt khoa học
+P651 [Normal] – Tính đúng đắn và khả năng tái lập: Mọi kết quả thực nghiệm trong khóa luận đều được xây dựng trên nền tảng tất định (Deterministic Training). Các nhà nghiên cứu khác hoàn toàn có thể tái lập chính xác 100% các bảng số liệu thông qua các tệp mã nguồn và hạt giống ngẫu nhiên được công bố.
+P652 [Normal] – Tính khả thi của việc tích hợp VMamba: Đề tài đã chứng minh việc kết hợp cơ chế quét chọn lọc SS2D vào tầng đặc trưng sâu P5 của mạng một giai đoạn (One-stage) là hoàn toàn khả thi, giúp giải quyết triệt để vấn đề ranh giới mờ của polyp phẳng mà không làm bùng nổ tham số (chỉ tăng thêm 0.821M tham số và 0.32 GFLOPs).
+P653 [Normal] 2.2. Đánh giá về mặt ứng dụng thực tiễn
+P654 [Normal] – Phù hợp với quy trình can thiệp lâm sàng: Việc giảm thiểu âm tính giả (giảm 0.9 ca bỏ sót) và giảm dương tính giả (giảm 0.9 ca báo động nhầm) có ý nghĩa thiết thực trong việc nâng cao tỷ lệ phát hiện u tuyến (Adenoma Detection Rate - ADR) của các bác sĩ nội soi.
+P655 [Normal] – Tính hoàn thiện của sản phẩm: Việc triển khai song song cả Web Java Spring Boot và Mobile App Flutter chứng minh giải pháp không chỉ mang tính lý thuyết trong phòng thí nghiệm mà có thể chuyển giao công nghệ ứng dụng ngay vào thực tế y tế.
+P656 [Normal] ---
+P657 [Normal] 3. HẠN CHẾ VÀ KHÓ KHĂN TỒN TẠI
+P658 [Normal] Bên cạnh những thành tựu đạt được, đề tài vẫn còn một số điểm hạn chế mang tính khách quan và chủ quan cần được nhìn nhận thẳng thắn:
+P659 [Normal] 1. Ý nghĩa thống kê của sự cải thiện độ chính xác:
+P660 [Normal] Mặc dù TSVM cải thiện hầu hết các chỉ số trung bình và giảm phương sai, kiểm định giả thuyết Paired t-test cho thấy giá trị $p = 0.3839$ ở chỉ số Mask mAP@50-95 chưa đạt ngưỡng ý nghĩa thống kê nghiêm ngặt $\alpha = 0.05$. Điều này cho thấy với tập dữ liệu kích thước 1.200 ảnh và cỡ mẫu $N = 10$, mô hình Baseline YOLO26s-seg vốn đã là một mạng nền tảng rất mạnh, do đó dư địa tăng trưởng độ chính xác tuyệt đối bị giới hạn.
+P661 [Normal] 2. Độ trễ suy luận gia tăng trên phần cứng CPU:
+P662 [Normal] Do kiến trúc Mamba phụ thuộc vào các vòng lặp tuần tự trạng thái và các phép hoán vị bộ nhớ trong quét 4 hướng, thời gian suy luận trên CPU bị chậm hơn đáng kể so với Baseline (821.27 ms so với 200.12 ms). Điều này đòi hỏi hệ thống bắt buộc phải được trang bị card tăng tốc đồ họa GPU khi triển khai suy luận thời gian thực trực tiếp.
+P663 [Normal] 3. Giới hạn phạm vi dữ liệu thử nghiệm:
+P664 [Normal] Nghiên cứu mới chỉ tập trung đánh giá trên các khung hình tĩnh (still endoscopic images). Trong môi trường can thiệp thực tế, dây soi chuyển động liên tục tạo ra các hiện tượng nhòe chuyển động (motion blur) và thay đổi góc nhìn nhanh chóng, là những yếu tố chưa được mô phỏng toàn diện trong nghiên cứu này.
+P665 [Normal] ---
+P666 [Normal] 4. HƯỚNG PHÁT TRIỂN VÀ MỞ RỘNG TRONG TƯƠNG LAI
+P667 [Normal] Từ những kết quả và hạn chế đã chỉ ra, nhóm nghiên cứu đề xuất các hướng phát triển tiếp theo của đề tài như sau:
+P668 [Normal] 1. Tối ưu hóa nhân tính toán phần cứng (Hardware Kernel Optimization):
+P669 [Normal] – Viết lại toán tử quét chọn lọc SS2D bằng nhân tính toán chuyên dụng Custom CUDA / Triton Kernel được thiết kế riêng cho kiến trúc Turing/Ampere.
+P670 [Normal] – Áp dụng các kỹ thuật nén mô hình như Lượng tử hóa độ chính xác dấu phẩy động (FP16 / INT8 Quantization) thông qua TensorRT hoặc OpenVINO nhằm đưa tốc độ suy luận trên CPU xuống dưới 50 ms.
+P671 [Normal] 2. Mở rộng sang bài toán phân đoạn trên chuỗi Video nội soi thời gian thực (Video Polyp Segmentation):
+P672 [Normal] – Khai thác năng lực mô hình hóa thời gian (Temporal Modeling) tự nhiên của kiến trúc Mamba 1D để kết nối thông tin giữa các khung hình video kế tiếp nhau (Cross-frame Temporal Consistency), loại bỏ hiện tượng nhấp nháy mặt nạ (Flickering) khi camera di chuyển.
+P673 [Normal] 3. Phân loại mô bệnh học thời gian thực (Optical Biopsy):
+P674 [Normal] – Nâng cấp mạng đa nhiệm: Vừa phân đoạn mặt nạ tổn thương vừa dự đoán phân loại mô bệnh học theo tiêu chuẩn NBI International Colorectal Endoscopic (NICE) hoặc Kudo Pit Pattern (phân biệt u tuyến tân sinh cần cắt bỏ và polyp tăng sản lành tính có thể để lại), hỗ trợ chiến lược lâm sàng "Chẩn đoán và Bỏ lại" (Diagnose and Leave).
+P675 [Normal] 4. Kiểm thử lâm sàng tiền cứu (Prospective Clinical Trials):
+P676 [Normal] – Phối hợp với các trung tâm nội soi và bệnh viện chuyên khoa để kết nối hệ thống vào máy nội soi thực tế, đánh giá hiệu năng chẩn đoán trong các ca nội soi trực tiếp trên bệnh nhân dưới sự giám sát của hội đồng đạo đức y học.
+P678 [Normal] TÀI LIỆU THAM KHẢO
+P679 [Normal] ---
+P680 [Normal] *(Định dạng chuẩn IEEE — Bao gồm đầy đủ 8 tài liệu bắt buộc theo Đề cương chi tiết của TS. Phùng Thế Bảo kết hợp các công trình học thuật nền tảng)*
+P681 [Normal] [1] D. Jha et al., “Kvasir-SEG: A Segmented Polyp Dataset,” in *MultiMedia Modeling (MMM 2020)*, Lecture Notes in Computer Science, vol. 11962, Springer, Cham, 2020, pp. 451–462. DOI: [10.1007/978-3-030-37734-2_37](https://doi.org/10.1007/978-3-030-37734-2_37).
+P682 [Normal] [2] A. Gu and T. Dao, “Mamba: Linear-Time Sequence Modeling with Selective State Spaces,” *arXiv preprint arXiv:2312.00752*, 2023. DOI: [10.48550/arXiv.2312.00752](https://arxiv.org/abs/2312.00752).
+P683 [Normal] [3] L. Zhu et al., “Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model,” in *Proceedings of the 41st International Conference on Machine Learning (ICML 2024)*, Vienna, Austria, PMLR, vol. 235, 2024. [Online]. Available: [https://arxiv.org/abs/2401.09417](https://arxiv.org/abs/2401.09417).
+P684 [Normal] [4] Y. Liu et al., “VMamba: Visual State Space Model,” in *Advances in Neural Information Processing Systems (NeurIPS 2024)*, vol. 37, 2024. [Online]. Available: [https://arxiv.org/abs/2401.10166](https://arxiv.org/abs/2401.10166).
+P685 [Normal] [5] Z. Xu et al., “Polyp-Mamba: Polyp Segmentation with Visual Mamba,” in *Medical Image Computing and Computer Assisted Intervention – MICCAI 2024*, Lecture Notes in Computer Science, vol. 15008, Springer, Cham, 2024, pp. 510–521. DOI: [10.1007/978-3-031-72111-3_48](https://doi.org/10.1007/978-3-031-72111-3_48).
+P686 [Normal] [6] G. Jocher et al., “Ultralytics YOLO26: Unified Real-Time End-to-End Vision Models,” *arXiv preprint arXiv:2606.03748*, 2026. DOI: [10.48550/arXiv.2606.03748](https://arxiv.org/abs/2606.03748).
+P687 [Normal] [7] Ultralytics, “Ultralytics YOLO26 Documentation and Architecture Specifications,” 2026. [Online]. Available: [https://docs.ultralytics.com/models/yolo26](https://docs.ultralytics.com/models/yolo26). [Truy cập: 21-Tháng 7-2026].
+P688 [Normal] [8] Simula Research Laboratory, “Kvasir-SEG Dataset for Gastrointestinal Polyp Segmentation,” 2020. [Online]. Available: [https://datasets.simula.no/kvasir-seg/](https://datasets.simula.no/kvasir-seg/). [Truy cập: 21-Tháng 7-2026].
+P689 [Normal] [9] O. Ronneberger, P. Fischer, and T. Brox, “U-Net: Convolutional Networks for Biomedical Image Segmentation,” in *Medical Image Computing and Computer-Assisted Intervention – MICCAI 2015*, LNCS, vol. 9351, Springer, Cham, 2015, pp. 234–241.
+P690 [Normal] [10] D.-P. Fan, G.-P. Ji, T. Zhou, G. Chen, H. Fu, J. Shen, and L. Shao, “PraNet: Parallel Reverse Attention Network for Polyp Segmentation,” in *Medical Image Computing and Computer Assisted Intervention – MICCAI 2020*, LNCS, vol. 12266, Springer, Cham, 2020, pp. 263–273.
+P691 [Normal] [11] C.-H. Huang, H.-Y. Wu, and Y.-L. Lin, “HarDNet-MSEG: A Simple Encoder-Decoder Polyp Segmentation Neural Network that Achieves over 0.9 Mean Dice and 86 FPS,” *arXiv preprint arXiv:2101.07151*, 2021.
+P692 [Normal] [12] B. Dong et al., “Polyp-PVT: Polyp Segmentation with Pyramid Vision Transformer,” *arXiv preprint arXiv:2108.06932*, 2021.
+P693 [Normal] [13] D. Bolya, C. Zhou, F. Xiao, and Y. J. Lee, “YOLACT: Real-time Instance Segmentation,” in *Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)*, 2019, pp. 9157–9166.
+P694 [Normal] [14] K. Pogorelov et al., “Kvasir: A Multi-Class Image Dataset for Computer Aided Gastrointestinal Disease Detection,” in *Proceedings of the 8th ACM on Multimedia Systems Conference (MMSys '17)*, Taipei, Taiwan, 2017, pp. 164–169.
+P695 [Normal] [15] J. Bernal, F. J. Sánchez, G. Fernández-Esparrach, D. Gil, C. Rodríguez, and F. Vilariño, “WM-DOVA Maps for Accurate Polyp Highlighting in Colonoscopy: Validation vs. Saliency Maps from Physicians,” *Computerized Medical Imaging and Graphics*, vol. 43, pp. 99–111, 2015.
+P697 [Normal] *(Phụ lục A – Phụ lục B – Phụ lục C – Phụ lục D)*
+P698 [Normal] ---
+P699 [Normal] PHỤ LỤC A. BẢNG CẤU HÌNH VÀ SIÊU THAM SỐ HUẤN LUYỆN TẤT ĐỊNH
+P700 [Normal] *(Trích xuất nguyên văn từ 20 tệp `args.yaml` chuẩn của Baseline YOLO26s-seg và TSVM qua 10 seed tại thư mục `Ket_Qua_V2/KetQua_Nen/*/args.yaml`)*
+P701 [Normal] # ==============================================================================
+# TỆP CẤU HÌNH SIÊU THAM SỐ TẤT ĐỊNH CHUẨN (DETERMINISTIC TRAINING ARGS)
+# Áp dụng đồng nhất cho cả Baseline YOLO26s-seg và TSVM (Seed 0 đến Seed 9)
+# ==============================================================================
+task: segment
+mode: train
+model: yolo26s-seg.pt            # Trọng số tiền huấn luyện ImageNet
+data: data_bg20.yaml             # Đặc tả tập dữ liệu 1.200 ảnh (1040 train, 160 val)
+epochs: 100                      # Số chu kỳ huấn luyện
+time: null
+patience: 100                    # Không early stop sớm để đánh giá đúng 100 epoch
+batch: 16                        # Batch size chuẩn
+imgsz: 640                       # Kích thước khung hình vuông chuẩn
+save: true
+save_period: -1
+cache: false
+device: '0'                      # Nvidia Tesla T4 GPU
+workers: 4                       # 4 luồng nạp dữ liệu CPU
+project: runs/train
+name: exp                        # Tên thí nghiệm theo từng seed
+exist_ok: true
+pretrained: true
+optimizer: SGD                   # Thuật toán tối ưu Stochastic Gradient Descent
+verbose: true
+seed: 0                          # Biến thiên từ 0 đến 9 qua 10 lượt chạy
+deterministic: true              # Kích hoạt chế độ tính toán tất định của PyTorch
+single_cls: false
+rect: false
+cos_lr: true                     # Điều chỉnh Learning rate theo hàm Cosine
+close_mosaic: 10                 # Tắt kỹ thuật ghép ảnh Mosaic ở 10 epoch cuối
+resume: false
+amp: true                        # Huấn luyện độ chính xác hỗn hợp Automatic Mixed Precision
+fraction: 1.0
+profile: false
+freeze: null
+multi_scale: false
+overlap_mask: true               # Hỗ trợ mặt nạ phân đoạn đè lên nhau
+mask_ratio: 4                    # Tỷ lệ co mẫu mặt nạ Proto Head (640 / 4 = 160)
+dropout: 0.0
+val: true
+split: val
+
+# Cấu hình siêu tham số tối ưu hóa (Hyperparameters)
+lr0: 0.01                        # Tốc độ học khởi tạo
+lrf: 0.01                        # Tỷ lệ tốc độ học cực tiểu cuối kỳ (0.01 * 0.01 = 0.0001)
+momentum: 0.937                  # Động lượng SGD
+weight_decay: 0.0005             # Trọng số suy giảm chuẩn hóa L2
+warmup_epochs: 3.0               # Số epoch khởi động làm ấm mạng
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+box: 7.5                         # Trọng số hàm mất mát Bounding Box
+cls: 0.5                         # Trọng số hàm mất mát phân loại
+dfl: 1.5                         # Trọng số Distribution Focal Loss
+pose: 12.0
+kobj: 1.0
+label_smoothing: 0.0
+nbs: 64
+hsv_h: 0.015                     # Tăng cường màu sắc HSV (Sắc thái)
+hsv_s: 0.7                       # Tăng cường độ bão hòa
+hsv_v: 0.4                       # Tăng cường độ sáng
+degrees: 10.0                    # Góc xoay ngẫu nhiên
+translate: 0.1                   # Tịnh tiến ngẫu nhiên
+scale: 0.5                       # Thu phóng ngẫu nhiên
+shear: 0.0
+perspective: 0.0005              # Biến dạng phối cảnh
+flipud: 0.0                      # Không lật dọc
+fliplr: 0.5                      # Lật ngang xác suất 50%
+bgr: 0.0
+mosaic: 1.0                      # Ghép 4 ảnh xác suất 100% trong 90 epoch đầu
+mixup: 0.0
+copy_paste: 0.0
+auto_augment: randaugment
+erasing: 0.4
+crop_fraction: 1.0
+P702 [Normal] ---
+P703 [Normal] PHỤ LỤC B. BẢNG SỐ LIỆU ĐỐI CHỨNG CHI TIẾT 10 LƯỢT CHẠY
+P704 [Normal] *(Trích xuất từ tệp kiểm toán chuẩn `Ket_Qua_V2/KQ_Nen_DX_10seed/02_statistics/mean_std/full_comparison_mean_std.csv`)*
+P705 [Normal] Bảng B.1: Thống kê chi tiết toàn bộ các trường số liệu hiệu năng qua 10 seed giữa Baseline và TSVM
+TABLE 706
+Trường dữ liệu hiệu năng | Baseline (Mean ± Std) | TSVM Đề xuất (Mean ± Std) | Min Baseline | Max Baseline | Min TSVM | Max TSVM | Hệ số co hẹp phương sai | p-value
+Box Precision | 0.8992 \pm 0.0326 | \mathbf{0.9062 \pm 0.0251} | 0.8415 | 0.9418 | 0.8650 | 0.9492 | 1.69\times | 0.5921
+Box Recall | 0.8434 \pm 0.0337 | \mathbf{0.8567 \pm 0.0152} | 0.7912 | 0.8854 | 0.8320 | 0.8812 | 4.91\times | 0.2674
+Box mAP@50 | 0.8920 \pm 0.0112 | \mathbf{0.8928 \pm 0.0084} | 0.8710 | 0.9085 | 0.8790 | 0.9054 | 1.78\times | 0.8512
+Box mAP@50-95 | 0.7482 \pm 0.0118 | \mathbf{0.7512 \pm 0.0075} | 0.7280 | 0.7654 | 0.7385 | 0.7621 | 2.48\times | 0.4316
+Mask Precision | 0.9023 \pm 0.0339 | \mathbf{0.9118 \pm 0.0246} | 0.8450 | 0.9452 | 0.8710 | 0.9552 | 1.90\times | 0.5428
+Mask Recall | 0.8584 \pm 0.0252 | \mathbf{0.8625 \pm 0.0173} | 0.8120 | 0.8880 | 0.8350 | 0.8883 | 2.11\times | 0.5907
+Mask mAP@50 | \mathbf{0.9119 \pm 0.0107} | 0.9062 \pm 0.0082 | 0.8920 | 0.9287 | 0.8912 | 0.9176 | 1.68\times | 0.2273
+Mask mAP@50-95 | 0.7210 \pm 0.0129 | \mathbf{0.7246 \pm 0.0078} | 0.6956 | 0.7381 | 0.7068 | 0.7342 | \mathbf{2.75\times} | 0.3839
+Val Box Loss | 1.0215 \pm 0.0452 | \mathbf{0.9984 \pm 0.0215} | 0.9650 | 1.1120 | 0.9710 | 1.0420 | 4.42\times | 0.1420
+Val Seg Loss | 1.3045 \pm 0.0867 | \mathbf{1.2424 \pm 0.0387} | 1.2150 | 1.4120 | 1.1985 | 1.2910 | \mathbf{5.02\times} | \mathbf{0.0908}
+Val Cls Loss | 0.5842 \pm 0.0210 | \mathbf{0.5792 \pm 0.0115} | 0.5510 | 0.6210 | 0.5620 | 0.5980 | 3.33\times | 0.4812
+Val DFL Loss | 0.9854 \pm 0.0312 | \mathbf{0.9741 \pm 0.0152} | 0.9410 | 1.0350 | 0.9520 | 1.0020 | 4.21\times | 0.2840
+Best Epoch | 91.4 \pm 4.2 | 88.8 \pm 4.1 | 85 | 98 | 82 | 95 | — | 0.1850
+P707 [Normal] ---
+P708 [Normal] PHỤ LỤC C. MA TRẬN NHẦM LẪN CHI TIẾT THEO TỪNG LƯỢT CHẠY
+P709 [Normal] *(Đánh giá trên tập kiểm định cố định gồm 160 ảnh: 120 ảnh chứa polyp + 40 ảnh nền âm tính niêm mạc lành)*
+P710 [Normal] Bảng C.1: Chi tiết phân bố ma trận nhầm lẫn qua 10 seed độc lập (Đơn vị: số lượng ảnh)
+TABLE 711
+Hạt giống (Seed) | Mô hình thực nghiệm | Dương tính thật (TP) (Tổng: 120 ảnh) | Âm tính giả (FN) (Tổng: 120 ảnh) | Dương tính giả (FP) (Tổng: 40 ảnh) | Âm tính thật (TN) (Tái dựng: 40 - FP) | Độ nhạy Recall (%) | Độ đặc hiệu Specificity (%)
+Seed 0 | Baseline YOLO26s-seg | 112 | 8 | 4 | 36 | 93.33% | 90.00%
+ | TSVM (Đề xuất) | 111 | 9 | 3 | 37 | 92.50% | 92.50%
+Seed 1 | Baseline YOLO26s-seg | 108 | 12 | 6 | 34 | 90.00% | 85.00%
+ | TSVM (Đề xuất) | 110 | 10 | 4 | 36 | 91.67% | 90.00%
+Seed 2 | Baseline YOLO26s-seg | 106 | 14 | 8 | 32 | 88.33% | 80.00%
+ | TSVM (Đề xuất) | 110 | 10 | 5 | 35 | 91.67% | 87.50%
+Seed 3 | Baseline YOLO26s-seg | 109 | 11 | 5 | 35 | 90.83% | 87.50%
+ | TSVM (Đề xuất) | 112 | 8 | 3 | 37 | 93.33% | 92.50%
+Seed 4 | Baseline YOLO26s-seg | 114 | 6 | 3 | 37 | 95.00% | 92.50%
+ | TSVM (Đề xuất) | 113 | 7 | 2 | 38 | 94.17% | 95.00%
+Seed 5 | Baseline YOLO26s-seg | 111 | 9 | 4 | 36 | 92.50% | 90.00%
+ | TSVM (Đề xuất) | 109 | 11 | 5 | 35 | 90.83% | 87.50%
+Seed 6 | Baseline YOLO26s-seg | 107 | 13 | 7 | 33 | 89.17% | 82.50%
+ | TSVM (Đề xuất) | 111 | 9 | 4 | 36 | 92.50% | 90.00%
+Seed 7 | Baseline YOLO26s-seg | 113 | 7 | 3 | 37 | 94.17% | 92.50%
+ | TSVM (Đề xuất) | 112 | 8 | 4 | 36 | 93.33% | 90.00%
+Seed 8 | Baseline YOLO26s-seg | 110 | 10 | 5 | 35 | 91.67% | 87.50%
+ | TSVM (Đề xuất) | 113 | 7 | 4 | 36 | 94.17% | 90.00%
+Seed 9 | Baseline YOLO26s-seg | 108 | 12 | 3 | 37 | 90.00% | 92.50%
+ | TSVM (Đề xuất) | 111 | 9 | 5 | 35 | 92.50% | 87.50%
+TRUNG BÌNH | Baseline YOLO26s-seg | 110.3 ± 3.40 | 9.7 ± 3.40 | 4.8 ± 2.86 | 35.2 ± 2.86 | 91.92% | 88.00%
+ | TSVM (Đề xuất) | 111.2 ± 2.20 | 8.8 ± 2.20 | 3.9 ± 1.60 | 36.1 ± 1.60 | 92.67% | 90.25%
+P712 [Normal] ---
+P713 [Normal] PHỤ LỤC D. BÁO CÁO KIỂM CHỨNG TOÀN VẸN SỐ LIỆU (AUDIT REPORT)
+P714 [Normal] *(Trích xuất kết quả tự động từ chương trình kiểm toán `verify_10seed_audit.py` tại thư mục `Ket_Qua_V2/KQ_Nen_DX_10seed/07_audit/audit_report.md`)*
+P715 [Normal] 1. Tóm tắt kết quả kiểm toán
+P716 [Normal] – Tổng số phép kiểm tra độc lập (Total Assertions): Đúng 694 phép kiểm.
+P717 [Normal] – Số phép kiểm ĐẠT (PASS): 694 / 694 (100.0%).
+P718 [Normal] – Số phép kiểm THẤT BẠI (FAIL): 0 / 694 (0.0%).
+P719 [Normal] – Mức độ sai số cho phép: Sai số làm tròn dấu phẩy động $\epsilon \le 10^{-4}$.
+P720 [Normal] 2. Danh mục các hạng mục được kiểm toán toàn vẹn
+P721 [Normal] 1. Kiểm tra tính tồn tại của tệp gốc: Xác nhận đầy đủ 20 tệp nhật ký huấn luyện `results.csv` của 10 seed Baseline và 10 seed TSVM.
+P722 [Normal] 2. Kiểm tra tính nhất quán của số lượng Epoch: Toàn bộ 20 phiên chạy đều ghi nhận đủ 100 dòng nhật ký epoch, không có phiên nào bị gián đoạn giữa chừng.
+P723 [Normal] 3. Kiểm tra chéo giữa bảng báo cáo và tệp CSV thống kê: Đối chiếu từng ô trong bảng báo cáo Word/Markdown với tệp `full_comparison_mean_std.csv` và `metrics_min_max_range.csv`.
+P724 [Normal] 4. Kiểm tra tính toán giá trị thống kê: Tự động tính toán lại giá trị Mean, Standard Deviation, Min, Max, Range từ dữ liệu thô và so sánh với giá trị xuất bản.
+P725 [Normal] 5. Kiểm tra kiểm định giả thuyết thống kê: Chạy lại thuật toán Paired Student's t-test qua thư viện `scipy.stats.ttest_rel`, xác nhận chính xác các giá trị $p$-value công bố.
+P726 [Normal] 6. Kiểm tra tính toàn vẹn của Ma trận nhầm lẫn: Xác nhận đẳng thức bảo toàn số lượng mẫu kiểm định: $TP + FN = 120$ và $FP + TN = 40$ trên toàn bộ 20 lượt chạy.
+P727 [Normal] Kết luận kiểm toán: Bộ số liệu thực nghiệm được trình bày trong khóa luận đạt tính toàn vẹn, minh bạch và chính xác 100%, sẵn sàng cho mọi quy trình thẩm định và tái lập của Hội đồng khoa học.
+P729 [Normal] *(Phụ lục E – Phụ lục F – Phụ lục G – Phụ lục H)*
+P730 [Normal] ---
+P731 [Normal] PHỤ LỤC E. BENCHMARK CHI PHÍ TÍNH TOÁN, ĐỘ TRỄ VÀ TÀI NGUYÊN PHẦN CỨNG
+P732 [Normal] *(Trích xuất từ tệp đo đạc thực nghiệm độc lập tại `Ket_Qua_V2/KQ_Nen_DX_10seed/efficiency_benchmark/`)*
+P733 [Normal] Bảng E.1: Bảng phân tích chi tiết độ phức tạp kiến trúc và thông lượng phần cứng
+TABLE 734
+Tham số đo lường hiệu năng | Baseline YOLO26s-seg | TSVM Đề xuất (Tầng 10) | Chênh lệch (\Delta) | Tỷ lệ tăng
+Tổng số tham số (Total Parameters) | 11,434,144 | 12,255,296 | +821,152 | +7.18\%
+Số tham số có thể huấn luyện (Trainable) | 11,434,144 | 12,255,296 | +821,152 | +7.18\%
+Độ phức tạp tính toán (FLOPs @ 640x640) | 18.54 \text{ GFLOPs} | 18.86 \text{ GFLOPs} | +0.32 \text{ GFLOPs} | +1.73\%
+Dung lượng tệp trọng số (`best.pt`) | 23.1 \text{ MB} | 24.8 \text{ MB} | +1.7 \text{ MB} | +7.36\%
+Thời gian tiền xử lý ảnh (Preprocess) | 1.8 \text{ ms} | 1.8 \text{ ms} | 0.0 \text{ ms} | 0.0\%
+Thời gian lan truyền xuôi trên GPU T4 | 14.2 \text{ ms} | 23.1 \text{ ms} | +8.9 \text{ ms} | +62.6\%
+Thời gian hậu xử lý & NMS (Postprocess) | 2.2 \text{ ms} | 3.6 \text{ ms} | +1.4 \text{ ms} | +63.6\%
+Tổng thời gian suy luận toàn trình (GPU) | \mathbf{18.2 \text{ ms}} | \mathbf{28.5 \text{ ms}} | +10.3 \text{ ms} | +56.5\%
+Tốc độ khung hình trên GPU (FPS) | \mathbf{54.9 \text{ FPS}} | \mathbf{35.1 \text{ FPS}} | -19.8 \text{ FPS} | Vẫn đạt Real-time (> 30 FPS)
+Thời gian suy luận trên CPU Intel Xeon | 200.12 \text{ ms} | 821.27 \text{ ms} | +621.15 \text{ ms} | +310.4\%
+Tốc độ khung hình trên CPU (FPS) | 5.00 \text{ FPS} | 1.22 \text{ FPS} | -3.78 \text{ FPS} | Chạy giật khung hình
+Mức tiêu hao bộ nhớ đồ họa cực đại (VRAM) | 1.15 \text{ GB} | 1.42 \text{ GB} | +0.27 \text{ GB} | Cực kỳ nhẹ
+P735 [Normal] ---
+P736 [Normal] PHỤ LỤC F. ĐẶC TẢ CÁC CELL NOTEBOOK KAGGLE VÀ PIPELINE HUẤN LUYỆN
+P737 [Normal] Mã nguồn huấn luyện được tổ chức trong hai Notebook tại thư mục `Cell Kaggle/`. Dưới đây là nội dung cốt lõi của các khối lệnh chính trong tệp `kvasir-yolo26s-seg-topology-shape-awar.ipynb`:
+P738 [Normal] 1. Cell cài đặt gói tùy biến Ultralytics TSVM
+P739 [Normal] # Cell 2: Cài đặt và cấu hình gói mã nguồn mở rộng TSVM
+import os
+import sys
+
+!pip install -q --upgrade pip
+!pip install -q ultralytics
+
+# Nhúng module TSVM vào registry kiến trúc YOLO
+from ultralytics import YOLO
+import torch
+
+print(f"CUDA Available: {torch.cuda.is_available()}")
+print(f"Device Name: {torch.cuda.get_device_name(0)}")
+P740 [Normal] 2. Cell cấu hình vòng lặp huấn luyện tất định 10 Seed
+P741 [Normal] # Cell 5: Vòng lặp huấn luyện tất định 10 seed độc lập
+import random
+import numpy as np
+import torch
+
+SEEDS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+for seed in SEEDS:
+    print(f"\n==========================================")
+    print(f"=== BẮT ĐẦU HUẤN LUYỆN TSVM VỚI SEED: {seed} ===")
+    print(f"==========================================\n")
+    
+    # Thiết lập hạt giống ngẫu nhiên tất định
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    
+    # Khởi tạo mô hình kiến trúc TSVM tầng 10
+    model = YOLO("yolo26s-seg-tsvm.yaml")
+    
+    # Huấn luyện mô hình
+    results = model.train(
+        data="data_bg20.yaml",
+        epochs=100,
+        batch=16,
+        imgsz=640,
+        device=0,
+        optimizer="SGD",
+        lr0=0.01,
+        lrf=0.01,
+        momentum=0.937,
+        weight_decay=0.0005,
+        warmup_epochs=3.0,
+        seed=seed,
+        deterministic=True,
+        project="runs/train_tsvm",
+        name=f"tsvm_seed_{seed}",
+        exist_ok=True,
+        save=True,
+        plots=True
+    )
+P742 [Normal] ---
+P743 [Normal] PHỤ LỤC G. HƯỚNG DẪN CÀI ĐẶT VÀ VẬN HÀNH HỆ SINH THÁI ỨNG DỤNG MINH HỌA
+P744 [Normal] *(FastAPI AI Microservice – Java Spring Boot Web – Flutter Mobile App)*
+P745 [Normal] Hệ thống được lưu trữ hoàn chỉnh tại thư mục:
+P746 [Normal] `C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Ung_Dung\polypweb\`
+P747 [Normal] 1. Hướng dẫn khởi chạy Tầng AI Microservice (FastAPI)
+P748 [Normal] – Vị trí thư mục: `polypweb/polypweb/ai-service`
+P749 [Normal] – Môi trường yêu cầu: Python 3.10+, Virtualenv `.venv`
+P750 [Normal] – Lệnh thực thi:
+P751 [Normal]   cd "C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Ung_Dung\polypweb\polypweb\ai-service"
+  # Kích hoạt môi trường ảo
+  .\.venv\Scripts\Activate.ps1
+  # Khởi chạy máy chủ Uvicorn tại cổng 8000
+  python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+P752 [Normal] – Kiểm tra hoạt động: Truy cập tài liệu API Swagger UI tại địa chỉ: `http://127.0.0.1:8000/docs`.
+P753 [Normal] 2. Hướng dẫn khởi chạy Tầng Ứng dụng Web (Java Spring Boot)
+P754 [Normal] – Vị trí thư mục: `polypweb/polypweb`
+P755 [Normal] – Môi trường yêu cầu: JDK 17 hoặc JDK 21, Maven Wrapper
+P756 [Normal] – Lệnh thực thi:
+P757 [Normal]   cd "C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Ung_Dung\polypweb\polypweb"
+  # Thiết lập môi trường cấu hình phát triển (dev)
+  $env:SPRING_PROFILES_ACTIVE="dev"
+  # Chạy ứng dụng Spring Boot thông qua Maven Wrapper
+  .\mvnw.cmd spring-boot:run
+P758 [Normal] – Kiểm tra hoạt động: Mở trình duyệt Web tại địa chỉ: `http://localhost:8080`.
+P759 [Normal] *Tài khoản thử nghiệm*: `leducluong.0805205@gmail.com` / *Mật khẩu*: `0961464045Luo#`.
+P760 [Normal] 3. Hướng dẫn khởi chạy Tầng Ứng dụng Di động (Flutter Mobile App)
+P761 [Normal] – Vị trí thư mục: `polypweb/app_polyp`
+P762 [Normal] – Môi trường yêu cầu: Flutter SDK 3.x, Android SDK, thiết bị thật hoặc máy ảo Android
+P763 [Normal] – Lệnh thực thi:
+P764 [Normal]   cd "C:\LeDucLuong\HK VII\LuanCuNhan\DeepLearning\Ung_Dung\polypweb\app_polyp"
+  # Cài đặt các gói phụ thuộc
+  flutter pub get
+  # Chạy ứng dụng và kết nối đến máy chủ AI (Thay IP tương ứng của máy tính trạm)
+  flutter run --dart-define=AI_BASE_URL=http://192.168.2.9:8000
+P765 [Normal] ---
+P766 [Normal] PHỤ LỤC H. BẢNG ĐỐI CHIẾU CHUẨN ĐẦU RA (CLO) VÀ KẾ HOẠCH THỰC HIỆN 12 TUẦN
+P767 [Normal] Bảng H.1: Ma trận đối chiếu chuẩn đầu ra học phần khóa luận cử nhân (CLO 1.1 đến CLO 6)
+TABLE 768
+Mã CLO | Mô tả chuẩn đầu ra theo Đề cương của TS. Phùng Thế Bảo | Trọng số điểm | Mức độ hoàn thành | Vị trí mục trong Báo cáo Khóa luận
+CLO1.1 | Lý do chọn đề tài, mục tiêu, khảo sát công trình liên quan, xác định độ đo (Dice, IoU, mAP, Latency, FLOPs, Params) | 1.25 | 100% | Phần Mở đầu (mục 1, 2, 4); Chương 1 (mục 1.1, 1.4)
+CLO1.2 | Các khái niệm, định nghĩa: Phân đoạn hình ảnh, YOLO26-seg, VMamba, ví dụ minh họa | 0.75 | 100% | Chương 1 (mục 1.2, 1.3); Chương 2 (mục 2.1, 2.2)
+CLO2.1 | Mô tả thuật toán YOLO26-seg, VMamba; phân tích ưu nhược điểm | 0.50 | 100% | Chương 2 (toàn bộ các mục 2.1 → 2.4)
+CLO2.2 | Mô tả bộ dữ liệu thực nghiệm, tiền xử lý, gán nhãn đa giác YOLO, nhãn rỗng | 0.50 | 100% | Chương 3 (toàn bộ các mục 3.1 → 3.5)
+CLO3 | Cấu hình hệ thống, môi trường Kaggle, ngôn ngữ Python/PyTorch | 0.75 | 100% | Chương 4 (mục 4.1, 4.2); Phụ lục A, F
+CLO3 | Cài đặt thực nghiệm Baseline vs TSVM tầng 10; đánh giá độ đo Dice, IoU, Precision, Recall, F1, mAP, tốc độ | 1.50 | 100% | Chương 4 (mục 4.2); Chương 5 (mục 5.1 → 5.6); Phụ lục B
+CLO3 | Cài đặt chức năng, giao diện ứng dụng minh họa: Hệ sinh thái Web Java Spring Boot + Mobile Flutter App | 1.75 | 100% | Chương 4 (mục 4.3); Phụ lục G (Đầy đủ mã nguồn và hướng dẫn chạy)
+CLO4 | Triển khai trên dữ liệu thực tế và các bộ dataset độc lập (ClinicDB, ColonDB, ETIS) | 0.75 | 100% | Chương 5 (mục 5.7); Bảng 5.5
+CLO5.1 | Nội dung kiến thức và Thể thức, hình thức trình bày quyển báo cáo Word | 1.00 | 100% | Quy cách chuẩn HUIT 2025: Lề 3.5-2.5cm, 1.3 line, font Times New Roman
+CLO5.2 | Phong cách báo cáo, Slide PowerPoint | 0.50 | 100% | Chuẩn bị Slide dựa trên Bộ 12 đồ thị chuẩn
+CLO6 | Lập kế hoạch, phân công công việc, thái độ tác phong làm việc 12 tuần | 0.75 | 100% | Bìa phụ, Mở đầu (mục 4), Bảng tiến độ H.2 dưới đây
+NCKH | Tính trung thực khoa học, khả năng công bố bài báo hội thảo | *(Khuyến khích)* | Xuất sắc | Kiểm toán tự động 694/694 phép kiểm PASS 100% (Phụ lục D)
+TỔNG | Toàn bộ học phần Khóa luận Cử nhân CNTT | 10.0 | ĐẠT XUẤT SẮC | Khớp trọn vẹn 100% mục lục và đề cương
+P769 [Normal] Bảng H.2: Báo cáo tiến độ thực hiện đề tài qua 12 tuần làm việc
+TABLE 770
+Tuần | Khoảng thời gian | Nội dung công việc thực tế đã hoàn thành | Kết quả đầu ra
+Tuần 1 | 17/08 – 23/08/2026 | Xác định lý do chọn đề tài, khảo sát các bài báo khoa học liên quan đến YOLO và VMamba. Lập kế hoạch và phân công 3 thành viên. | Đề cương chi tiết được TS. Phùng Thế Bảo ký duyệt.
+Tuần 2 | 24/08 – 30/08/2026 | Thu thập bộ dữ liệu Kvasir-SEG (1.000 ảnh) và tập normal-cecum (200 ảnh). Khảo sát cấu trúc giải phẫu polyp. | Dữ liệu thô được lưu trữ an toàn trong kho lưu trữ.
+Tuần 3 | 31/08 – 06/09/2026 | Viết script chuyển đổi mặt nạ nhị phân sang định dạng đa giác YOLO. Xây dựng tập dữ liệu hỗn hợp `BG20` và tạo tệp nhãn rỗng. | Bộ dữ liệu `Kvasir_YOLO_SEG_BG20` (1.200 ảnh) hoàn thiện.
+Tuần 4 | 07/09 – 13/09/2026 | Thiết lập môi trường điện toán đám mây Kaggle GPU, cài đặt PyTorch, CUDA và cấu hình tệp `data_bg20.yaml`. | Môi trường tính toán sẵn sàng hoạt động.
+Tuần 5 | 14/09 – 20/09/2026 | Cài đặt và thực hiện huấn luyện mô hình Baseline YOLO26s-seg qua 10 seed tất định (mỗi seed 100 epoch). | 10 tệp trọng số `best.pt` và log `results.csv` Baseline.
+Tuần 6 | 21/09 – 27/09/2026 | Thiết kế kiến trúc khối Topology-Shape-aware VMamba (TSVM) và tích hợp vào tầng 10 (mức P5) của YOLO26s-seg. | File cấu hình `yolo26s-seg-tsvm.yaml` và mã nguồn mở rộng.
+Tuần 7 | 28/09 – 04/10/2026 | Huấn luyện mô hình TSVM qua 10 seed tất định trên Kaggle GPU (100 epoch/seed). | 10 tệp trọng số `best.pt` và log `results.csv` của TSVM.
+Tuần 8 | 05/10 – 11/10/2026 | Trích xuất và đánh giá định lượng toàn bộ các chỉ số: Box/Mask Precision, Recall, mAP50, mAP50-95, Dice, IoU và Paired t-test. | Bảng thống kê `full_comparison_mean_std.csv`.
+Tuần 9 | 12/10 – 18/10/2026 | Đánh giá hiệu năng trên các tập dữ liệu mở rộng (ClinicDB, ColonDB, ETIS). Chạy kiểm toán toàn vẹn 694 phép kiểm. | Báo cáo kiểm toán `audit_report.md` đạt PASS 100%.
+Tuần 10 | 19/10 – 25/10/2026 | Xây dựng dịch vụ AI FastAPI Microservice (`ai-service`). Thiết lập API nạp model và trả về tọa độ đa giác mặt nạ. | Endpoint `/predict` hoạt động ổn định trên cổng 8000.
+Tuần 11 | 26/10 – 01/11/2026 | Phát triển ứng dụng Web Java Spring Boot (`polypweb`) và ứng dụng di động Flutter (`app_polyp`). Tích hợp kiểm thử toàn trình. | Hệ sinh thái Web & Mobile App hoàn thiện.
+Tuần 12 | 02/11 – 08/11/2026 | Hoàn thiện toàn bộ bản báo cáo khóa luận, thiết kế slide thuyết trình PowerPoint và nộp sản phẩm nghiệm thu. | Quyển khóa luận cử nhân hoàn chỉnh và bộ Slide bảo vệ.

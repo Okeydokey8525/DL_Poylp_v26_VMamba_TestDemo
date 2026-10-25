@@ -1,0 +1,122 @@
+[
+  {
+    "stage": "ai_off",
+    "case": "login",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "requestId": "16319ccc-8e25-4173-b720-626e74a937c5",
+    "json": {
+      "user": {
+        "id": "6ade2c9cd5a922967e96598d",
+        "fullName": "Audit Primary",
+        "email": "audit_primary_20261025@example.invalid",
+        "role": "USER",
+        "createdAt": "2026-10-25T23:21:48.684",
+        "updatedAt": "2026-10-25T23:21:48.684"
+      }
+    }
+  },
+  {
+    "stage": "ai_off",
+    "case": "ai_off_no_false_success",
+    "status": 503,
+    "expected_status": [
+      503,
+      504
+    ],
+    "pass": true,
+    "requestId": "50d138d7-7926-45dd-94d8-1aa48e8d80db",
+    "json": {
+      "timestamp": "2026-10-25T16:29:35.409775800Z",
+      "status": 503,
+      "code": "AI_SERVICE_UNAVAILABLE",
+      "message": "Dịch vụ AI hiện không khả dụng. Vui lòng thử lại sau.",
+      "fieldErrors": {},
+      "requestId": "50d138d7-7926-45dd-94d8-1aa48e8d80db"
+    }
+  },
+  {
+    "stage": "ai_off",
+    "case": "failed_inference_does_not_create_history",
+    "pass": true,
+    "before": {
+      "items": [
+        {
+          "id": "6ade2cd6d5a922967e965993",
+          "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+          "modelType": "YOLO26s-TSVM-FP32-seg",
+          "modelCategory": "VMAMBA",
+          "detected": true,
+          "label": "polyp",
+          "confidence": 0.5838399529457092,
+          "maskCount": 2,
+          "processingTimeMs": 2637.1,
+          "createdAt": "2026-10-25T23:22:46.537",
+          "originalImageUrl": "/api/v1/diagnoses/6ade2cd6d5a922967e965993/images/original",
+          "resultImageUrl": "/api/v1/diagnoses/6ade2cd6d5a922967e965993/images/result"
+        },
+        {
+          "id": "6ade2ca0d5a922967e96598f",
+          "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+          "modelType": "YOLO26s-seg",
+          "modelCategory": "BASELINE",
+          "detected": true,
+          "label": "polyp",
+          "confidence": 0.883303165435791,
+          "maskCount": 1,
+          "processingTimeMs": 2205.425,
+          "createdAt": "2026-10-25T23:21:52.484",
+          "originalImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/original",
+          "resultImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/result"
+        }
+      ],
+      "page": 0,
+      "size": 10,
+      "totalItems": 2,
+      "totalPages": 1,
+      "hasNext": false,
+      "hasPrevious": false
+    },
+    "after": {
+      "items": [
+        {
+          "id": "6ade2cd6d5a922967e965993",
+          "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+          "modelType": "YOLO26s-TSVM-FP32-seg",
+          "modelCategory": "VMAMBA",
+          "detected": true,
+          "label": "polyp",
+          "confidence": 0.5838399529457092,
+          "maskCount": 2,
+          "processingTimeMs": 2637.1,
+          "createdAt": "2026-10-25T23:22:46.537",
+          "originalImageUrl": "/api/v1/diagnoses/6ade2cd6d5a922967e965993/images/original",
+          "resultImageUrl": "/api/v1/diagnoses/6ade2cd6d5a922967e965993/images/result"
+        },
+        {
+          "id": "6ade2ca0d5a922967e96598f",
+          "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+          "modelType": "YOLO26s-seg",
+          "modelCategory": "BASELINE",
+          "detected": true,
+          "label": "polyp",
+          "confidence": 0.883303165435791,
+          "maskCount": 1,
+          "processingTimeMs": 2205.425,
+          "createdAt": "2026-10-25T23:21:52.484",
+          "originalImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/original",
+          "resultImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/result"
+        }
+      ],
+      "page": 0,
+      "size": 10,
+      "totalItems": 2,
+      "totalPages": 1,
+      "hasNext": false,
+      "hasPrevious": false
+    }
+  }
+]

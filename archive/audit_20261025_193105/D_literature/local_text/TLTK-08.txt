@@ -1,0 +1,1558 @@
+===== PAGE 1 =====
+1
+Polyp-PVT: Polyp Segmentation with Pyramid
+Vision Transformers
+Bo Dong, Wenhai Wang, Deng-Ping Fan, Jinpeng Li, Huazhu Fu, and Ling Shao
+Abstract—Most polyp segmentation methods use CNNs as their
+backbone, leading to two key issues when exchanging information
+between the encoder and decoder: 1) taking into account the
+differences in contribution between different-level features and
+2) designing an effective mechanism for fusing these features.
+Unlike existing CNN-based methods, we adopt a transformer
+encoder, which learns more powerful and robust representations.
+In addition, considering the image acquisition influence and
+elusive properties of polyps, we introduce three standard mod-
+ules, including a cascaded fusion module (CFM), a camouflage
+identification module (CIM), and a similarity aggregation module
+(SAM). Among these, the CFM is used to collect the semantic and
+location information of polyps from high-level features; the CIM
+is applied to capture polyp information disguised in low-level
+features, and the SAM extends the pixel features of the polyp area
+with high-level semantic position information to the entire polyp
+area, thereby effectively fusing cross-level features. The proposed
+model, named Polyp-PVT, effectively suppresses noises in the
+features and significantly improves their expressive capabilities.
+Extensive experiments on five widely adopted datasets show
+that the proposed model is more robust to various challenging
+situations (e.g., appearance changes, small objects, rotation) than
+existing representative methods. The proposed model is available
+at https://github.com/DengPingFan/Polyp-PVT.
+Index Terms —Polyp segmentation, pyramid vision trans-
+former, colonoscopy, computer vision
+I. I NTRODUCTION
+Colonoscopy is the gold standard for detecting colorectal
+lesions since it enables colorectal polyps to be identified and
+removed in time, thereby preventing further spread. As a
+fundamental task in medical image analysis, polyp segmen-
+tation (PS) aims to locate polyps accurately in the early stage,
+which is of great significance in the clinical prevention of
+rectal cancer. Traditional PS models mainly rely on low-level
+features, e.g., texture [1], geometric features [2], simple linear
+iterative clustering superpixels [3]. However, these methods
+yield low-quality results and suffer from poor generaliza-
+tion ability. With the development of deep learning, PS has
+achieved promising progress. In particular, the U-shaped [4]
+has attracted significant attention due to its ability to adopt
+multi-level features for reconstructing high-resolution results.
+B. Dong and D.-P. Fan are with the Nankai University, Tianjin, 300350,
+China. * Corresponding author (dengpfan@gmail.com).
+W. Wang is with Shanghai Artificial Intelligence Laboratory, Shanghai,
+200232, China
+J. Li is with Computer Vision Lab, Inception Institute of Artificial Intelli-
+gence, Abu Dhabi 00000, UAE
+H. Fu is with Institute of High Performance Computing, Agency for
+Science, Technology and Research, Singapore 138632, Singapore
+L. Shao is with UCAS-Terminus AI Lab, Terminus Group, Chongqing
+400042, China
+Image GT Ours SANet
+Fig. 1. The segmentation examples of our model and SANet [7] with
+different challenge cases, e.g., camouflage ( 1st and 2nd rows) and image
+acquisition influence ( 3rd row). The images from top to bottom are from
+ClinicDB [8], ETIS [9], and ColonDB [10], which show that our model has
+better generalization ability.
+PraNet [5] employs a two-stage segmentation approach, adopt-
+ing a parallel decoder to predict rough regions and an attention
+mechanism to restore a polyp’s edges and internal structure for
+fine-grained segmentation. ThresholdNet [6] is a confidence-
+guided data enhancement method based on a hybrid manifold
+for solving the problems caused by limited annotated data and
+imbalanced data distributions.
+Although these methods have greatly improved accuracy
+and generalization ability compared to traditional methods,
+it is still challenging for them to locate the boundaries of
+polyps, as shown in Fig. 1, for several reasons: (1) Image
+noise. During the data collection process, the lens rotates in the
+intestine to obtain polyp images from different angles, which
+also causes motion blur and reflector problems. As a result,
+this greatly increases the difficulty of polyp detection; (2)
+Camouflage. The color and texture of polyps are very similar
+to surrounding tissues, with low contrast, providing them
+with powerful camouflage properties [11], [12], and making
+them difficult to identify; (3) Polycentric data. Current models
+struggle to generalize to multicenter (or unseen) data with
+different domains/distributions. To address the above issues,
+our contributions in this paper are as follows:
+•We present a novel polyp segmentation framework,
+termed Polyp-PVT. Unlike existing CNN-based methods,
+we adopt the pyramid vision transformer as an encoder
+to extract more robust features.
+•To support our framework, we introduce three simple
+modules. Specifically, the cascaded fusion module (CFM)
+arXiv:2108.06932v8  [eess.IV]  19 Feb 2024
+
+===== PAGE 2 =====
+2
+collects polyps’ semantic and location information from
+the high-level features through progressive integration.
+Meanwhile, the camouflage identification module (CIM)
+is applied to capture polyp cues disguised in low-level
+features, using an attention mechanism to pay more at-
+tention to potential polyps, reducing incorrect information
+in the lower features. We further introduce the similarity
+aggregation module (SAM) equipped with a non-local
+and convolutional graph layer to mine local pixels and
+global semantic cues from the polyp area.
+•Finally, we conduct extensive experiments on five chal-
+lenging benchmark datasets, including Kvasir-SEG [13],
+ClinicDB [8], ColonDB [10], Endoscene [14], and
+ETIS [9], to evaluate the performance of the proposed
+Polyp-PVT. On ColonDB, our method achieves a mean
+Dice (mDic) of 0.808, which is 5.5% higher than the
+existing cutting-edge method SANet [7]. On the ETIS
+dataset, our model achieves a mean Dice (mDic) of 0.787,
+which is 3.7% higher than SANet [7].
+II. R ELATED WORKS
+A. Polyp Segmentation
+Traditional Methods. Computer-aided detection is an effec-
+tive alternative to manual detection, and a detailed survey has
+been conducted on detecting ulcers, polyps, and tumors in
+wireless capsule endoscopy imaging [15]. Early solutions for
+polyp segmentation were mainly based on low-level features,
+such as texture [2], geometric features [2], or simple linear
+iterative clustering superpixels [3]. However, these methods
+have a high risk of missed or false detection due to the high
+similarity between polyps and surrounding tissues.
+Deep Learning-Based Methods. Deep learning tech-
+niques [16]–[25] have greatly promoted the development of
+polyp segmentation tasks. Akbari et al. [26] proposed a polyp
+segmentation model using a fully convolutional neural net-
+work, whose segmentation results are significantly better than
+traditional solutions. Brandao et al. [27] used the shape from
+the shading strategy to restore depth, merging the result into
+an RGB model to provide richer feature representations. More
+recently, encoder-decoder-based models, such as U-Net [4],
+UNet++ [28], and ResUNet++ [29], have gradually come to
+dominate the field with excellent performance. Sun et al. [30]
+introduced a dilated convolution to extract and aggregate high-
+level semantic features with resolution retention to improve
+the encoder network. Psi-Net [31] introduced a multi-task
+segmentation model that combines contour and distance map
+estimation to assist segmentation mask prediction. Hemin et
+al. [32] first attempted to use a deeper feature extractor to
+perform polyp segmentation based on Mask R-CNN [33].
+Different from the methods based on U-Net [4], [28], [34],
+PraNet [5] uses reverse attention modules to mine boundary
+information with a global feature map, which is generated
+by a parallel partial decoder from high-level features. Polyp-
+Net [35] proposed a dual-tree wavelet pooling CNN with
+a local gradient-weighted embedding level set, effectively
+avoiding erroneous information in high signal areas, thereby
+significantly reducing the false positive rate. Rahim et al. [36]
+proposed to use different convolution kernels for the same hid-
+den layer for deeper feature extraction with MISH and rectified
+linear unit activation functions for deep feature propagation
+and smooth non-monotonicity. In addition, they adopted joint
+generalized intersections, which overcome scale invariance,
+rotation, and shape differences. Jha et al. [37] designed a
+real-time polyp segmentation method called ColonSNet. For
+the first time, Ahmed et al. [38] applied the generative
+adversarial network to the field of polyp segmentation. An-
+other interesting idea proposed by Thambawita et al. [39]
+is introducing pyramid-based augmentation into the polyp
+segmentation task. Further, Tomar et al. [40] designed a
+dual decoder attention network based on ResUNet++ for
+polyp segmentation. More recently, MSEG [41] improved
+the PraNet and proposed a simple encoder-decoder structure.
+Specifically, they used Hardnet [42] to replace the original
+backbone network Res2Net50 backbone network and removed
+the attention mechanism to achieve faster and more accurate
+polyp segmentation. As an early attempt, Transfuse [43] was
+the first to employ a two-branch architecture combining CNNs
+and transformers in a parallel style. DCRNet [44] uses external
+and internal context relations modules to separately estimate
+the similarity between each location and all other locations
+in the same and different images. MSNet [45] introduced a
+multi-scale subtraction network to eliminate redundancy and
+complementary information between the multi-scale features.
+Providing a comprehensive review of polyp segmentation is
+beyond the scope of this paper. In Tab. I, however, we briefly
+survey representative works related to ours.
+B. Vision Transformer
+Transformers use multi-head self-attention (MHSA) layers
+to model long-term dependencies. Unlike the convolutional
+layer, the MHSA layer has dynamic weights and a global
+receptive field, making it more flexible and effective. The
+transformer [65] was first proposed by Vaswani et al. for the
+machine translation task and has since extensively influenced
+the natural language processing field. To apply transformers
+to computer vision tasks, Dosovitskiy et al. [66] proposed a
+vision transformer (ViT), which was the first pure transformer
+for image classification. ViT divides an image into multiple
+patches, which are sequentially sent to a transformer encoder
+after being encoded, and then an MLP is used to perform
+image classification. HVT [67] is based on a hierarchical pro-
+gressive pooling method to compress the sequence length of a
+token and reduce the redundancy and number of calculations in
+ViT. The pooling-based vision transformer [68] draws on the
+principle of CNNs whereby, as the depth increases, the number
+of feature map channels increases, and the spatial dimension
+decreases. Yuan et al. [69] pointed out that the simple token
+structure in ViT cannot capture important local features, such
+as edges and lines, which reduces the training efficiency and
+leads to redundant attention mechanisms. T2T ViT was thus
+proposed to use layer-by-layer tokens-to-token transformation
+to gradually merge neighboring tokens and model local fea-
+tures while reducing the token’s length. TNT [70] employs
+a transformer suitable for fine-grained image tasks, which
+
+===== PAGE 3 =====
+3
+TABLE I
+A SURVEY ON POLYP SEGMENTATION . CL = CVC-CLINIC, EL = ETIS-L ARIB , C6 = CVC-612, AM = ASU-M AYO [46], [47], ES = E NDO SCENE , DB
+= C OLON DB, CV = CVC-V IDEO CLINIC DB, C = C OLON , ED = E NDOTECT 2020, KS = K VASIR -SEG, KCS = K VASIR CAPSULE -SEG, P RANET =
+SAME TO DATASETS USED IN PRANET [5], IS = IMAGE SEGMENTATION , VS = VIDEO SEGMENTATION , CF = CLASSFICATION , OD = OBJECT DETECTION ,
+OWN = PRIVATE DATA . CSCPD [1], APD [2], SBCP [3], FCN [26], D-FCN [27], UN ET++ [28], P SI-NET [31], M ASK R-CNN [32], UDC [30],
+THRESHOLD NET [6], MI2GAN [48], ACSN ET [49], P RANET [5], GAN [38], APS [50], PFA [39], MMT [51], U-N ET-RESNET50 [34], S URVEY [15],
+POLYP-N ET [35], D EEP CNN [36], EU-N ET [52], DSAS [53], U-N ET-MOBILE NETV2 [54], DCRN ET [44], MSEG [41], FSSN ET [55],
+AG-CUR ESNEST [56], MPAPS [57], R ESUN ET++ [58], N ANO NET [59], C OLON SEGNET [37], S EGTRAN [60], DDAN ET [40], UACAN ET [61],
+DIVERGENT NET [62], DWH IERA SEG [63], T RANSFUSE [43], SAN ET [7], PNS-N ET [64].
+No. Model Publication Code Type Dataset Core Components
+1 CSCPD IJPRAI N/A IS Own Adaptive-scale candidate
+2 APD TMI N/A IS Own Geometrical analysis, binary classifier
+3 SBCP SPMB N/A IS Own Superpixel
+4 FCN EMBC N/A IS DB FCN and patch selection
+5 D-FCN JMRR N/A IS CL, EL, AM, and DB FCN and Shape-from-Shading (SfS)
+6 UNet++ DLMIA PyTorch IS AM Skip pathways and deep supervision
+7 Psi-Net EMBC PyTorch IS Endovis Shape and boundary aware
+8 Mask R-CNN ISMICT N/A IS C6, EL, and DB Deep feature extractors
+9 UDC ICMLA N/A IS C6 and EL Dilation convolution
+10 ThresholdNet TMI PyTorch IS ES and WCE Learn to threshold
+Confidence-guided manifold mixup
+11 MI2GAN MICCAI N/A IS C6 and EL GAN based model
+12 ACSNet MICCAI PyTorch IS ES and KS Adaptive context selection
+13 PraNet MICCAI PyTorch IS PraNet Parallel partial decoder attention
+14 GAN MediaEval N/A IS KS Image-to-image translation
+15 APS MediaEval N/A IS KS Variants of U-shaped structure
+16 PFA MediaEval PyTorch IS KS Pyramid focus augmentation
+17 MMT MediaEval N/A IS KS Competition introduction
+18 U-Net-ResNet50 MediaEval N/A IS KS Variants of U-shaped structure
+19 Survey CMIG N/A CF Own Classification
+20 Polyp-Net TIM N/A IS DB and CV Multimodel fusion network
+21 Deep CNN BSPC N/A OD EL Convolutional neural network
+22 EU-Net CRV PyTorch IS PraNet Semantic information enhancement
+23 DSAS MIDL Matlab IS KS Stochastic activation selection
+24 U-Net-MobileNetV2 arXiv N/A IS KS Variants of U-shaped structure
+25 DCRNet ISBI PyTorch IS ES, KS, and
+PICCOLO
+Within-image
+and cross-image contextual relations
+26 MSEG arXiv PyTorch IS PraNet Hardnet and partial decoder
+27 FSSNet arXiv N/A IS C6 and KS Meta-learning
+28 AG-CUResNeSt RIVF N/A IS PraNet ResNeSt, attention gates
+29 MPAPS JBHI PyTorch IS DB, KS, and EL Mutual-prototype adaptation network
+30 ResUNet++ JBHI PyTorch IS, VS PraNet and AM ResUNet++, CRF and TTA
+31 NanoNet CBMS PyTorch IS, VS ED, KS, and KCS Real-Time polyp segmentation
+32 ColonSegNet Access PyTorch IS KS Residual block and SENet
+33 Segtran IJCAI PyTorch IS C6 and KS Transformer
+34 DDANet ICPR PyTorch IS KS Dual decoder attention network
+35 UACANet ACM MM PyTorch IS PraNet Uncertainty augmented
+Context attention network
+36 DivergentNet ISBI PyTorch IS EndoCV 2021 Combine multiple models
+37 DWHieraSeg MIA PyTorch IS ES Dynamic-weighting
+38 Transfuse MICCAI PyTorch IS PraNet Transformer and CNN
+39 SANet MICCAI PyTorch IS PraNet Shallow attention network
+40 PNS-Net MICCAI PyTorch VS C6, KS, ES, and AM Progressively normalized
+self-attention network
+divides the original image patch and conducts self-attention
+mechanism calculations in smaller units. Meanwhile, external
+and internal transformers are used to extract global and local
+features.
+To adapt to dense prediction tasks such as semantic seg-
+mentation, several methods [71]–[77] have also introduced
+the pyramid structure of CNNs to the design of transformer
+backbones. For instance, PVT-based models [71], [72] use
+a hierarchical transformer with four stages, showing that a
+pure transformer backbone can be as versatile as its CNN
+counterparts, and performs better in detection and segmenta-
+tion tasks. In this work, we design a new transformer-based
+polyp segmentation framework, which can accurately locate
+the boundaries of polyps even in extreme scenarios.
+
+===== PAGE 4 =====
+4
+Conv
+Conv
+Conv
+Conv
+C
+Conv
+(d) SAM
+C
+Conv
+Out Out
+𝑢𝑝 × 2
+𝑢𝑝 × 2
+𝑢𝑝 × 2
+𝑢𝑝 × 4 𝑢𝑝 × 2
+Conv
+Out Conv 1×1
+Conv 3×3+BN+ReLu
+Hadamard Product
+C Concatenation
+(b) CFM
+(c) CIM
+CIM
+𝐻
+4 × 𝑊
+4 × 64
+𝐻
+8 × 𝑊
+8 × 128
+𝐻
+16 × 𝑊
+16 × 320
+𝐻
+32 × 𝑊
+32 × 512
+𝐻 × 𝑊 × 3
+(a) PVT Encoder
+Channel Spatial
+1 × 1 × 𝐶′ 𝐻′ × 𝑊′ × 1
+ℒ𝑚𝑎𝑖𝑛/ℒ𝑎𝑢𝑥
+𝐻′ × 𝑊′ × 𝐶′𝐻′ × 𝑊′ × 𝐶′
+𝑇1
+𝑇2
+𝑋1
+𝑋2
+′
+𝑋3
+′
+𝑋4
+′
+𝑋34
+𝑃1 𝑃2
+F
+Conv
+Conv
+Fig. 2. Framework of our Polyp-PVT, which consists of a pyramid vision transformer (PVT) (a) as the encoder network, (b) cascaded fusion module (CFM)
+for fusing the high-level feature, (c) camouflage identification module (CIM) to filter out the low-level information, and (d) similarity aggregation module
+(SAM) for integrating the high- and low-level features for the final output.
+III. P ROPOSED POLYP-PVT
+A. Overall Architecture
+As shown in Fig. 2, our Polyp-PVT consists of 4 key mod-
+ules: namely, a pyramid vision transformer (PVT) encoder,
+cascaded fusion module (CFM), camouflage identification
+module (CIM), and similarity aggregation module (SAM).
+Specifically, the PVT extracts multi-scale long-range depen-
+dencies features from the input image. The CFM is employed
+to collect semantic cues and locate polyps by aggregating high-
+level features progressively. The CIM is designed to remove
+noise and enhance low-level representation information of
+polyps, including texture, color, and edges. The SAM is
+adopted to fuse the low- and high-level features provided by
+the CIM and CFM, effectively transmitting the information
+from the pixel-level polyp to the entire polyp.
+Given an input image I ∈RH×W×3, we use the
+transformer-based backbone [71] to extract four pyramid fea-
+tures Xi∈R
+H
+2i+1×W
+2i+1×Ci, where Ci∈{64, 128, 320, 512}
+andi∈{1, 2, 3, 4}. Then, we adjust the channel of three high-
+level features X2, X3 and X4 to 32 through three convolu-
+tional units and feed them ( i.e., X
+′
+2, X
+′
+3, and X
+′
+4) to CFM
+to fuse, leading a feature map T1∈R
+H
+8×W
+8×32. Meanwhile,
+low-level features X1 are converted to T2∈R
+H
+4×W
+4×64 by
+the CIM. After that, the T1 and T2 are aligned and fused by
+SAM, yielding the final feature map F∈R
+H
+8×W
+8×32. Finally,
+F is fed into a 1×1 convolutional layer to predict the polyp
+segmentation result P2. We use the sum of P1 and P2 as the
+final prediction. During training, we optimize the model with
+a main loss Lmain and an auxiliary loss Laux. The main loss
+is calculated between the final segmentation result P2 and the
+ground truth (GT), which is used to optimize the final polyp
+segmentation result. Similarly, the auxiliary loss is used to
+supervise the intermediate result P1 generated by the CFM.
+B. Transformer Encoder
+Due to uncontrolled factors in their acquisition, polyp
+images tend to contain significant noise, such as motion blur,
+rotation, and reflection. Some recent works [78], [79] have
+found that the vision transformer [66], [71], [72] demonstrates
+stronger performance and better robustness to input distur-
+bances than CNNs [16], [17]. Inspired by this, we use a
+vision transformer as our backbone network to extract more
+robust and powerful features for polyp segmentation. Different
+from [66], [73] that uses a fixed “columnar” structure or
+shifted windowing manner, the PVT [71] is a pyramid architec-
+ture whose representation is calculated with spatial-reduction
+attention operations; thus it enables to reduce the resource
+consumption. Note that the proposed model is backbone-
+independent; other famous transformer backbones are feasible
+in our framework. Specifically, we adopt the PVTv2 [72],
+which is the improved version of PVT with a more power-
+ful feature extraction ability. To adapt PVTv2 to the polyp
+segmentation task, we remove the last classification layer
+and design a polyp segmentation head on top of four multi-
+scale feature maps ( i.e., X1, X2, X3, and X4) generated
+by different stages. Among these feature maps, X1 gives
+detailed appearance information of polyps, and X2, X3, and
+X4 provide high-level features.
+C. Cascaded Fusion Module
+To balance the accuracy and computational resources, we
+follow recent popular practices [5], [80] to implement the
+cascaded fuse module (CFM). Specifically, we defineF(·) as a
+convolutional unit composed of a 3×3 convolutional layer with
+padding set to 1, batch normalization [81] and ReLU [82]. As
+shown in Fig. 2 (b), the CFM mainly consists of two cascaded
+parts, as follows:
+
+===== PAGE 5 =====
+5
+(1) In part one, we up-sample the highest-level feature map
+X
+′
+4 to the same size as X
+′
+3 and then pass the result through
+two convolutional units F1(·) andF2(·), yieldings: X 1
+4 and
+X 2
+4 . Then, we multiply X 1
+4 andX
+′
+3 and concatenate the result
+with X 2
+4 . Finally, we use a convolution unit F3(·) to smooth
+the concatenated feature, yielding fused feature map X34∈
+R
+H
+16×W
+16×32. The process can be summarized as Eqn. 1.
+X34 =F3(Concat(F1(X
+′
+4)⊙X
+′
+3,F2(X
+′
+4))), (1)
+where “⊙” denotes the Hadamard product, and Concat (·) is
+the concatenation operation along the channel dimension.
+(2) As shown Eqn. 2, the second part follows a similar
+process to part one. Firstly, we up-sample X
+′
+4,X
+′
+3,X34 to the
+same size as X
+′
+2, and smooth them using convolutional units
+F4(·),F5(·), and F6(·), respectively. Then, we multiply the
+smoothed X
+′
+4 and X
+′
+3 with X
+′
+2, and concatenate the resulting
+map with up-sampled and smoothed X34. Finally, we feed the
+concatenated feature map into two convolutional units ( i.e.,
+F7(·) andF8(·)) to reduce the dimension, and obtain T1∈
+R
+H
+8×W
+8×32, which is also the output of the CFM.
+T1 =F8(F7(Concat(F4(X
+′
+4)⊙F5(X
+′
+3)⊙X
+′
+2,F6(X34)))),
+(2)
+D. Camouflage Identification Module
+Low-level features often contain rich detail information,
+such as texture, color, and edges. However, polyps tend to
+be very similar in appearance to the background. Therefore,
+we need a powerful extractor to identify the polyp details.
+As shown in Fig. 2 (c), we introduce a camouflage identi-
+fication module (CIM) to capture the details of polyps from
+different dimensions of the low-level feature map X1. Specif-
+ically, the CIM consists of a channel attention operation [83]
+Attc(·) and a spatial attention operation [84] Att s(·), which
+can be formulated as:
+T2 = Atts (Attc (X1)), (3)
+The channel attention operation Att c(·) can be written as
+follow:
+Attc(x) = σ(H1 (Pmax (x)) +H2 (Pavg (x)))⊙x, (4)
+where x is the input tensor and σ(·) is the Softmax function.
+Pmax(·) and Pavg(·) denote adaptive maximum pooling and
+adaptive average pooling functions, respectively. Hi(·),i ∈
+{1, 2}shares parameters and consists of a convolutional layer
+with 1×1 kernel size to reduce the channel dimension
+16 times, followed by a ReLU layer and another 1×1
+convolutional layer to recover the original channel dimension.
+The spatial attention operation Att s(·) can be formulated as:
+Atts(x) = σ(G(Concat(Rmax(x),R avg(x))))⊙x, (5)
+whereRmax(·) andRavg(·) represent the maximum and aver-
+age values obtained along the channel dimension, respectively.
+G(·) is a 7×7 convolutional layer with padding set to 3.
+  
+      
+       
+     
+  
+Z
+Q K V
+            
+      
+      
+f
+f
+  
+    
+          
+           
+      
+Element-wise Addition
+Matrix Multiplication
+          
+          
+                              
+         
+          
+       
+       
+          
+          
+  
+ 
+Fig. 3. Details of the introduced SAM. It is composed of GCN and non-local,
+which extend the pixel features of polyp regions with high-level semantic
+location cues to the entire region.
+E. Similarity Aggregation Module
+To explore high-order relations between the lower-level
+local features from CIM and higher-level cues from CFM.
+We introduce the non-local [85], [86] operation under graph
+convolution domain [87] to implement our similarity aggre-
+gation module (SAM). As a result, SAM can inject detailed
+appearance features into high-level semantic features using
+global attention.
+Given the feature map T1, which contains high-level se-
+mantic information, and T2 with rich appearance details, we
+fuse them through self-attention. First, two linear mapping
+functions Wθ(·) and Wϕ(·) are applied on T1 to reduce the
+dimension and obtain feature maps Q ∈R
+H
+8×W
+8×16 and
+K∈R
+H
+8×W
+8×16. Here, we take a convolution operation with
+a kernel size of 1×1 as the linear mapping process. This
+process can be expressed as follows:
+Q =Wθ(T1),K =Wϕ(T1). (6)
+For T2, we use a convolutional unit Wg(·) to reduce the
+channel dimension to 32 and interpolate it to the same size
+as T1. Then, we apply a Softmax function on the channel
+dimension and choose the second channel as the attention map,
+leading to T
+′
+2∈R
+H
+8×W
+8×1. These operations are represented
+as F (·) in Fig. 3. Next, we calculate the Hadamard product
+between K and T
+′
+2. This operation assigns different weights
+to different pixels, increasing the weight of edge pixels. After
+that, we use an adaptive pooling operation to reduce the
+displacement of features and apply a center crop on it to obtain
+the feature map V ∈R4×4×16. In summary, the process can
+
+===== PAGE 6 =====
+6
+0 200 400 600 800 1000 1200 1400
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0loss value
+Iters
+ auxiliary loss, lr=1e-3, decay_rate=0.5
+ main loss, lr=1e-3, decay_rate=0.5
+ total loss, lr=1e-3, decay_rate=0.5
+ auxiliary loss, lr=1e-4, decay_rate=0.1
+ main loss, lr=1e-4, decay_rate=0.1
+ total loss, lr=1e-4, decay_rate=0.1
+Fig. 4. Loss curves under different training parameter settings.
+be formulated as follows:
+V = AP(K⊙F(Wg(T2))), (7)
+where AP (·) denotes the pooling and crop operations.
+Then, we establish the correlation between each pixel in V
+and K through an inner product, which is written as follows:
+f =σ(V T⊗K), (8)
+where ”⊗” denotes the inner product operation. V T is the
+transpose of V and f is the correlation attention map.
+After obtaining the correlation attention map f, we multiply
+it with the feature map Q, and the result features are fed
+to the graph convolutional layer [86] GCN (·), leading to
+G∈R4×4×16. Same to [86], we calculate the inner product
+between f and G as Eqn. 9, reconstructing the graph domain
+features into the original structural features:
+Y′=f T⊗GCN(f T⊗Q). (9)
+The reconstructed feature map Y′is adjusted to the same
+channel sizes with Y by a convolutional layer Wz(·) with
+1×1 kernel size, and then combined with the feature T1 to
+obtain the final output Z∈R
+H
+8×W
+8×32 of the SAM. Eqn. 10
+summarizes the details of this process:
+Z =T1 +Wz(Y′). (10)
+F . Loss Function
+Our loss function can be formulated as Eqn. 11:
+L =Lmain +Laux, (11)
+whereLmain andLaux are the main loss and auxiliary loss,
+respectively. The main loss Lmain is calculated between the
+final segmentation result P2 and ground truth G, which can
+be written as:
+Lmain =Lw
+IoU(P2,G ) +Lw
+BCE(P2,G ). (12)
+TABLE II
+PARAMETER SETTING DURING THE TRAINING STAGE .
+Optimizer Learning Rate (lr) Multi-scale Clip
+AdamW 1e-4 [0.75,1,1.25] 0.5
+Decay rate Weight decay Epochs Input Size
+0.1 1e-4 100 352 × 352
+The auxiliary loss Laux is calculated between the interme-
+diate result P1 from the CFM and ground truth G, which can
+be formulated as:
+Laux =Lw
+IoU(P1,G ) +Lw
+BCE(P1,G ). (13)
+Lw
+IoU(·) andLw
+BCE(·) are the weighted intersection over union
+(IoU) loss [88] and weighted binary cross entropy (BCE)
+loss [88], which restrict the prediction map in terms of the
+global structure (object-level) and local details (pixel-level)
+perspectives. Unlike the standard BCE loss function, which
+treats all pixels equally, Lw
+BCE(·) considers the importance
+of each pixel and assigns higher weights to hard pixels.
+Furthermore, compared to the standard IoU loss, Lw
+IoU(·) pays
+more attention to the hard pixels.
+G. Implementation Details
+We implement our Polyp-PVT with the PyTorch framework
+and use a Tesla P100 to accelerate the calculations. Consid-
+ering the differences in the sizes of each polyp image, we
+adopt a multi-scale strategy [5], [41] in the training stage.
+The hyperparameter details are as follows. To update the
+network parameters, we use the AdamW [89] optimizer, which
+is widely used in transformer networks [71]–[73]. The learning
+rate is set to 1e-4 and the weight decay is adjusted to 1e-4
+too. Further, we resize the input images to 352×352 with a
+mini-batch size of 16 for 100 epochs. More details about the
+training loss cures, parameter setting, and network parameters
+are shown in Fig. 4, Tab. II, and Tab. III, respectively. The
+total training time is nearly 3 hours to achieve the best (e.g., 30
+epochs) performance. For testing, we only resize the images to
+352×352 without any post-processing optimization strategies.
+IV. E XPERIMENTS
+A. Evaluation Metrics
+We employ six widely-used evaluation metrics, including
+Dice [90], IoU, mean absolute error (MAE), weighted F-
+measure ( Fw
+β) [91], S-measure ( Sα) [92], and E-measure
+(Eξ) [93], [94] to evaluate the model performances. Among
+these metrics, Dice and IoU are similarity measures at the re-
+gional level, which mainly focus on the internal consistency of
+segmented objects. Here, we report the mean value of Dice and
+IoU, denoted as mDic and mIoU, respectively. MAE is a pixel-
+by-pixel comparison indicator that represents the average value
+of the absolute error between the predicted value and the true
+value. Weighted F-measure ( Fw
+β) comprehensively considers
+the recall and precision and eliminates the effect of considering
+each pixel equally in conventional indicators. S-measure ( Sα)
+focuses on the structural similarity of target prospects at the
+
+===== PAGE 7 =====
+7
+TABLE III
+NETWORK PARAMETERS OF EACH MODULE . NOTE THAT THE ENCODER
+PARAMETERS ARE THE SAME AS PVT WITHOUT ANY CHANGES .
+BASIC CONV 2D AND CONV 2D WITH THE PARAMETERS [IN CHANNEL ,
+OUT CHANNEL , KERNEL SIZE , PADDING ] AND GCN [ NUM STATE,
+NUM NODE ].
+Encoder SAM
+patch size [4] AvgPool2d [6]
+embed dims [64, 128, 320, 512] Conv2d [32,16,1,1]
+num heads [1, 2, 5, 8] Conv2d [32,16,1,1]
+mlp ratios [8, 8, 4, 4] Conv2d [16,32,1,1]
+depths [3, 4, 18, 3] GCN [16,16]
+sr ratios [8, 4, 2, 1] BasicConv2d [64,32,1,0]
+drop rate [0]
+drop path rate [0.1]
+CFM CIM
+BasicConv2d [32,32,3,1] AvgPool2d [1]
+BasicConv2d [32,32,3,1] AvgPool2d [1]
+BasicConv2d [32,32,3,1] Conv2d [64,4,1,0]
+BasicConv2d [32,32,3,1] ReLU
+BasicConv2d [64,64,3,1] Conv2d [4,64,1,0]
+BasicConv2d [64,64,3,1] Sigmoid
+BasicConv2d [96,96,3,1] Conv2d [2,1,7,3]
+BasicConv2d [96,32,3,1] Sigmoid
+region and object level. E-measure (Eξ) is used to evaluate the
+segmentation results at the pixel and image level. We report
+the mean and max value of E-measure, denoted as mEξand
+maxEξ, respectively. The evaluation toolbox is derived from
+https://github.com/DengPingFan/PraNet.
+B. Datasets and Compared Models
+Datasets. Following the experimental setups in PraNet [5],
+we adopt five challenging public datasets, including Kvasir-
+SEG [13], ClinicDB [8], ColonDB [10], Endoscene [14] and
+ETIS [9] to verify the effectiveness of our framework.
+Models. We collect several open source models from the
+field of polyp segmentation, for a total of nine compara-
+tive models, including U-Net [4], UNet++ [28], PraNet [5],
+SFA [95], MSEG [41], ACSNet [49], DCRNet [44], EU-
+Net [52] and SANet [7]. For a fair comparison, we use their
+open-source codes to evaluate the same training and testing
+sets. Note that the SFA results are generated using the released
+test model.
+C. Analysis of Learning Ability
+Settings. We use the ClinicDB and Kvasir-SEG datasets to
+evaluate the learning ability of the proposed model. ClinicDB
+contains 612 images, which are extracted from 31 colonoscopy
+videos. Kvasir-SEG is collected from the polyp class in the
+Kvasir dataset and includes 1,000 polyp images. Following
+PraNet, we adopt the same 900 and 548 images from ClinicDB
+and Kvasir-SEG datasets as the training set, and the remaining
+64 and 100 images are employed as the respective test sets.
+Results. As can be seen in Tab. IV, our model is superior to
+the current methods, demonstrating that it has a better learning
+ability. On the Kvasir-SEG dataset, the mDic score of our
+model is 1.3% higher than that of the second-best model,
+SANet, and 1.9% higher than that of PraNet. On the ClinicDB
+0.521
+0.566 0.549
+0.728
+0.756
+0.728 0.713
+0.763 0.759
+0.814
+0.343
+0.444
+0.509
+0.639
+0.711
+0.603 0.584
+0.715
+0.765
+0.791
+0.33
+0.38
+0.43
+0.48
+0.53
+0.58
+0.63
+0.68
+0.73
+0.78
+0.83max Dice
+ColonDB ETIS
+Fig. 5. Evaluation of model generalization ability. We provide the max Dice
+results on ColonDB and ETIS.
+dataset, the mDic score of our model is 2.1% higher than that
+of SANet and 3.8% higher than that of PraNet.
+D. Analysis of Generalization Ability
+Settings. To verify the generalization performance of the
+model, we test it on three unseen ( i.e., Polycentric) datasets,
+namely ETIS, ColonDB, and EndoScene. There are 196 im-
+ages in ETIS, 380 images in ColonDB, and 60 images in
+EndoScene. It is worth noting that the images in these datasets
+belong to different medical centers. In other words, the model
+has not seen their training data, which is different from the
+verification methods of ClinicDB and Kvasir-SEG.
+Results. The results are shown in Tab. VI and Tab. V. As
+can be seen, our Polyp-PVT achieves a good generalization
+performance compared with the existing models. And our
+model generalizes easily to multicentric (or unseen) data with
+different domains/distributions. On ColonDB, it is ahead of the
+second-best SANet and classical PraNet by 5.5% and 9.6%,
+respectively. On ETIS, we exceed the SANet and PraNet by
+3.7% and 15.9%, respectively. In addition, on EndoScene, our
+model is better than SANet and PraNet by 1.2% and 2.9%,
+respectively. Moreover, to prove the generalization ability of
+Polyp-PVT, we present the max Dice results in Fig. 5, where
+our model shows a steady improvement on both ColonDB
+and ETIS. In addition, we show the standard deviation (SD)
+of the mean dice (mDic) between our model and others in
+Tab. VII. As seen, there is not much difference in SD between
+our model and the comparison model, and they are both stable
+and balanced.
+E. Qualitative Analysis
+Fig. 6 and Fig. 7 show the visualization results of our model
+and the compared models. We find that our results have two
+advantages.
+•Our model is able to adapt to data under different
+conditions. That is, it maintains a stable recognition and
+segmentation ability under different acquisition environ-
+ments (different lighting, contrast, reflection, motion blur,
+small objects, and rotation).
+•The model segmentation results have internal consistency
+and predicted edges are closer to the ground-truth labels.
+
+===== PAGE 8 =====
+8
+TABLE IV
+QUANTITATIVE RESULTS OF THE TEST DATASETS , i.e., K VASIR -SEG AND CLINIC DB.
+Kvasir-SEG [13] ClinicDB [8]
+Model mDic mIoU Fw
+β Sα mEξ maxEξ MAE mDic mIoU Fw
+β Sα mEξ maxEξ MAE
+MICCAI’15 U-Net 0.818 0.746 0.794 0.858 0.881 0.893 0.055 0.823 0.755 0.811 0.889 0.913 0.954 0.019
+DLMIA’18 UNet++ 0.821 0.743 0.808 0.862 0.886 0.909 0.048 0.794 0.729 0.785 0.873 0.891 0.931 0.022
+MICCAI’19 SFA 0.723 0.611 0.670 0.782 0.834 0.849 0.075 0.700 0.607 0.647 0.793 0.840 0.885 0.042
+arXiv’21 MSEG 0.897 0.839 0.885 0.912 0.942 0.948 0.028 0.909 0.864 0.907 0.938 0.961 0.969 0.007
+arXiv’21 DCRNet 0.886 0.825 0.868 0.911 0.933 0.941 0.035 0.896 0.844 0.890 0.933 0.964 0.978 0.010
+MICCAI’20 ACSNet 0.898 0.838 0.882 0.920 0.941 0.952 0.032 0.882 0.826 0.873 0.927 0.947 0.959 0.011
+MICCAI’20 PraNet 0.898 0.840 0.885 0.915 0.944 0.948 0.030 0.899 0.849 0.896 0.936 0.963 0.979 0.009
+CRV’21 EU-Net 0.908 0.854 0.893 0.917 0.951 0.954 0.028 0.902 0.846 0.891 0.936 0.959 0.965 0.011
+MICCAI’21 SANet 0.904 0.847 0.892 0.915 0.949 0.953 0.028 0.916 0.859 0.909 0.939 0.971 0.976 0.012
+Polyp-PVT (Ours) 0.917 0.864 0.911 0.925 0.956 0.962 0.023 0.937 0.889 0.936 0.949 0.985 0.989 0.006
+TABLE V
+QUANTITATIVE RESULTS OF THE TEST DATASETS COLON DB AND ETIS. T HE SFA RESULT IS GENERATED USING THE PUBLISHED CODE .
+ColonDB [10] ETIS [9]
+Model mDic mIoU Fw
+β Sα mEξ maxEξ MAE mDic mIoU Fw
+β Sα mEξ maxEξ MAE
+MICCAI’15 U-Net 0.512 0.444 0.498 0.712 0.696 0.776 0.061 0.398 0.335 0.366 0.684 0.643 0.740 0.036
+DLMIA’18 UNet++ 0.483 0.410 0.467 0.691 0.680 0.760 0.064 0.401 0.344 0.390 0.683 0.629 0.776 0.035
+MICCAI’19 SFA 0.469 0.347 0.379 0.634 0.675 0.764 0.094 0.297 0.217 0.231 0.557 0.531 0.632 0.109
+MICCAI’20 ACSNet 0.716 0.649 0.697 0.829 0.839 0.851 0.039 0.578 0.509 0.530 0.754 0.737 0.764 0.059
+arXiv’21 MSEG 0.735 0.666 0.724 0.834 0.859 0.875 0.038 0.700 0.630 0.671 0.828 0.854 0.890 0.015
+arXiv’21 DCRNet 0.704 0.631 0.684 0.821 0.840 0.848 0.052 0.556 0.496 0.506 0.736 0.742 0.773 0.096
+MICCAI’20 PraNet 0.712 0.640 0.699 0.820 0.847 0.872 0.043 0.628 0.567 0.600 0.794 0.808 0.841 0.031
+CRV’21 EU-Net 0.756 0.681 0.730 0.831 0.863 0.872 0.045 0.687 0.609 0.636 0.793 0.807 0.841 0.067
+MICCAI’21 SANet 0.753 0.670 0.726 0.837 0.869 0.878 0.043 0.750 0.654 0.685 0.849 0.881 0.897 0.015
+Polyp-PVT (Ours) 0.808 0.727 0.795 0.865 0.913 0.919 0.031 0.787 0.706 0.750 0.871 0.906 0.910 0.013
+Image GT Ours SANet PraNet ACSNet DCRNet
+Fig. 6. Visualization results with the current models. Green indicates a correct polyp. Yellow is the missed polyp. Red is the wrong prediction. As we can
+see, the proposed model can accurately locate and segment polyps, regardless of size.
+
+===== PAGE 9 =====
+9
+Image GT Ours EU-Net HarDNet SFA U-Net UNet++
+Fig. 7. Visualization results with the current models.
+TABLE VI
+QUANTITATIVE RESULTS OF THE TEST DATASET ENDOSCENE . T HE SFA
+RESULT IS GENERATED USING THE PUBLISHED CODE .
+Endoscene [14]
+Model mDic mIoU Fw
+β Sα mEξmaxEξMAE
+U-Net 0.710 0.627 0.684 0.843 0.847 0.875 0.022
+UNet++ 0.707 0.624 0.687 0.839 0.834 0.898 0.018
+SFA 0.467 0.329 0.341 0.640 0.644 0.817 0.065
+MSEG 0.874 0.804 0.852 0.924 0.948 0.957 0.009
+ACSNet 0.863 0.787 0.825 0.923 0.939 0.968 0.013
+DCRNet 0.856 0.788 0.830 0.921 0.943 0.960 0.010
+PraNet 0.871 0.797 0.843 0.925 0.950 0.972 0.010
+EU-Net 0.837 0.765 0.805 0.904 0.919 0.933 0.015
+SANet 0.888 0.815 0.859 0.928 0.962 0.972 0.008
+Polyp-PVT 0.900 0.833 0.884 0.935 0.973 0.981 0.007
+We also provide FROC curves on ColonDB in Fig. 8, and
+our result is at the top, indicating that our effect achieves
+the best.
+F . Ablation Study
+We describe in detail the effectiveness of each component
+on the overall model. The training, testing, and hyperparameter
+settings are the same as mentioned in Sec. III-G. The results
+are shown in Tab. VIII.
+Components. We use PVTv2 [72] as our baseline (Bas.)
+and evaluate module effectiveness by removing or replacing
+components from the complete Polyp-PVT and comparing
+the variants with the standard version. The standard version
+is denoted as “Polyp-PVT (PVT+CFM+CIM+SAM)”, where
+“CFM”, “CIM” and “SAM” indicate the usage of the CFM,
+CIM, and SAM, respectively.
+Effectiveness of CFM. To analyze the effectiveness of
+the CFM, a version of “Polyp-PVT (w/o CFM)” is trained.
+2500 5000 7500 10000 12500 15000 17500 20000
+Average number of false positives per image
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0True Positive Rate
+FROC performence on the test set of ColonDB
+ACSNet
+DCRNet
+EU-Net
+MSEG
+PraNet
+SANet
+SFA
+UNet
+UNet++
+PolypPVT
+Fig. 8. FROC curves of different methods on ColonDB.
+Image GT Input Feature Channel Attention Spatial Attention
+Fig. 9. Visualization of the feature map in the CIM module.
+
+===== PAGE 10 =====
+10
+TABLE VII
+THE STANDARD DEVIATION (SD) OF THE MEAN DICE (MDIC) OF OUR MODEL AND THE COMPARISON MODELS .
+Datasets Kvasir-SEG ClinicDB ColonDB ETIS Endoscene
+Metrics mDic ± SD mDic ± SD mDic ± SD mDic ± SD mDic ± SD
+MICCAI’15 U-Net .818 ± .039 .823 ± .047 .483 ± .034 .398 ± .033 .710 ± .049
+DLMIA’18 UNet++ .821 ± .040 .794 ± .044 .456 ± .037 .401 ± .057 .707 ± .053
+MICCAI’19 SFA .723 ± .052 .701 ± .054 .444 ± .037 .297 ± .025 .468 ± .050
+arXiv’21 MSEG .897 ± .041 .910 ± .048 .735 ± .039 .700 ± .039 .874 ± .051
+MICCAI’20 ACSNet .898 ± .045 .882 ± .048 .716 ± .040 .578 ± .035 .863 ± .055
+arXiv’21 DCRNet .886 ± .043 .896 ± .049 .704 ± .039 .556 ± .039 .857 ± .052
+MICCAI’20 PraNet .898 ± .041 .899 ± .048 .712 ± .038 .628 ± .036 .871 ± .051
+CRV’21 EU-Net .908 ± .042 .902 ± .048 .756 ± .040 .687 ± .039 .837 ± .049
+MICCAI’21 SANet .904 ± .042 .916 ± .049 .752 ± .040 .750 ± .047 .888 ± .054
+Polyp-PVT (Ours) .917 ± .042 .937 ± .050 .808 ± .043 .787 ± .044 .900 ± .052
+TABLE VIII
+QUANTITATIVE RESULTS FOR ABLATION STUDIES .
+Dataset Metric Bas. w/o CFM w/o CIM w/o SAM Final
+Endoscene mDic 0.869 0.892 0.882 0.874 0.900
+mIoU 0.792 0.826 0.808 0.801 0.833
+ClinicDB mDic 0.903 0.915 0.930 0.930 0.937
+mIoU 0.847 0.865 0.881 0.877 0.889
+ColonDB mDic 0.796 0.802 0.805 0.779 0.808
+mIoU 0.707 0.721 0.724 0.696 0.727
+ETIS mDic 0.759 0.771 0.785 0.778 0.787
+mIoU 0.668 0.690 0.711 0.693 0.706
+Kvasir-SEG mDic 0.910 0.922 0.910 0.910 0.917
+mIoU 0.856 0.872 0.858 0.853 0.864
+TABLE IX
+ABLATION STUDY OF GCN IN THE SAM MODULE .
+Setting Endoscene ClinicDB ColonDB ETIS Kvasir-SEG
+w/o GCN 0.876 0.928 0.784 0.725 0.894
+w/ Conv 0.894 0.919 0.787 0.742 0.909
+w/ GCN 0.900 0.937 0.808 0.787 0.917
+Tab. VIII shows that the model without the CFM drops sharply
+on all five datasets compared to the standard Polyp-PVT.
+In particular, the mDic is reduced from 0.937 to 0.915 on
+ClinicDB.
+Effectiveness of CIM. To demonstrate the ability of the
+CIM, we also remove it from Polyp-PVT, denoting this as
+“Polyp-PVT (w/o CIM)”. As shown in Tab. VIII, this vari-
+ant performs worse than the overall Polyp-PVT. Specifically,
+removing the CIM causes the mDic to decrease by 1.8% on
+Endoscene. Meanwhile, it is obvious that the lack of the CIM
+introduces significant noise (please refer to Fig. 10). In order to
+further explore the internal of CIM, the feature visualizations
+of the two main configurations inside the CIM are shown in
+Fig 9. It can be seen that the low-level features have a large
+amount of detailed information. Still, the differences between
+polyps and other normal tissues cannot be mined directly from
+this information. Thanks to the channel attention and spatial
+attention mechanism, information such as details and edges
+of polyps can be discerned from a large amount of redundant
+information.
+Effectiveness of SAM. Similarly, we test the effectiveness
+of the SAM module by removing it from the overall Polyp-
+PVT and replacing it with an element-wise addition operation,
+TABLE X
+ABOUT THE ABLATION EXPERIMENTS OF THE POWERFUL ROTATION
+ADAPTABILITY . ALL EXPERIMENTS ARE UNDER THE CONDITION OF
+LARGE ROTATION (15 DEGREES ).
+Setting Endoscene ClinicDB ColonDB ETIS Kvasir-SEG
+w/o GCN 0.857 0.909 0.756 0.667 0.894
+w/ Conv 0.865 0.898 0.789 0.719 0.893
+w/ GCN 0.874 0.929 0.806 0.744 0.915
+which is denoted as “Polyp-PVT (w/o SAM)”. The perfor-
+mance of the complete Polyp-PVT shows an improvement of
+2.9% and 3.1% in terms of mDic and mIoU, respectively, on
+ColonDB. Fig. 10 shows the benefits of SAM more intuitively.
+It is found that the lack of the SAM leads to more detailed
+errors or even missed inspections. As reported in Tab IX,
+we add more results on the GCN in the SAM module. The
+experimental results further illustrate that GCN plays a key
+role. The effect of the lack of GCN is significantly reduced,
+and the effect is improved after replacing it with convolution.
+Still, GCN can significantly exceed the capabilities of the
+convolution module. The experimental results also verified
+the importance of GCN’s large receptive field and rotation
+insensitivity to polyp segmentation. The rotational robustness
+of GCN is stronger than convolutions. As shown in Tab X,
+under the condition of large rotation (15 degrees), GCN has
+better adaptability to image rotation than convolutions. To
+further explore the role of SAM, we visualized P1 and P2,
+and the results of P1 and P2 are shown in Fig 11. Compared
+with P1, P2 has higher reliability in error recognition and
+identification of uncertain regions. This is mainly due to the
+large number of low-level details collected by CIM and mining
+local pixels and global semantic cues from the polyp area of
+SAM.
+G. Video Polyp Segmentation
+To validate the superiority of the proposed model, we
+conduct experiments on the video polyp segmentation datasets.
+For a fair comparison, we re-train our model with the same
+training datasets and use the same testing set as PNS-Net [64],
+[97]. We compare our model on three standard benchmarks
+(i.e., CVC-300-TV [96], CVC-612-T [8], and CVC-612-V [8])
+against six cutting-edge approaches, including U-Net [4],
+
+===== PAGE 11 =====
+11
+Image GT Bas. w/o CFM w/o CIM w/o SAM Ours
+Fig. 10. Visualization of the ablation study results, which are converted from the output into heat maps. As can be seen, removing any module leads to
+missed or incorrectly detected results.
+TABLE XI
+THE RESULT OF VIDEO POLYP SEGMENTATION ON THE i.e., CVC-612-T AND CVC-612-V.
+CVC-612-T [8] CVC-612-V [8]
+Model mDic mIoU Fw
+β Sα mEξ maxEξ MAE mDic mIoU Fw
+β Sα mEξ maxEξ MAE
+MICCAI’15 U-Net 0.711 0.618 0.694 0.810 0.836 0.853 0.058 0.709 0.597 0.680 0.826 0.855 0.872 0.023
+TMI’19 UNet++ 0.697 0.603 0.688 0.800 0.817 0.865 0.059 0.668 0.557 0.642 0.805 0.830 0.846 0.025
+ISM’19 ResUNet++ 0.616 0.512 0.604 0.727 0.758 0.760 0.084 0.750 0.646 0.717 0.829 0.877 0.879 0.023
+MICCAI’20 ACSNet 0.780 0.697 0.772 0.838 0.864 0.866 0.053 0.801 0.710 0.765 0.847 0.887 0.890 0.054
+MICCAI’20 PraNet 0.833 0.767 0.834 0.886 0.904 0.926 0.038 0.857 0.793 0.855 0.915 0.936 0.965 0.013
+MICCAI’21 PNS-Net 0.837 0.765 0.838 0.903 0.903 0.923 0.038 0.851 0.769 0.836 0.923 0.944 0.962 0.012
+Polyp-PVT (Ours) 0.846 0.776 0.850 0.895 0.908 0.926 0.037 0.882 0.810 0.874 0.924 0.963 0.967 0.012
+Image GT P1
+ P2
+Fig. 11. visualization of the P1 and P2 predictions.
+UNet++ [28], ResUNet++ [29], ACSNet [49], PraNet [5],
+PNS-Net [64], in Tab. XI and Tab. XII. Note that PNS-Net
+provides all the prediction maps of the compared methods. As
+seen, our method is very competitive and far ahead of the best
+TABLE XII
+VIDEO POLYP SEGMENTATION RESULTS ON THE CVC-300-TV.
+CVC-300-TV [96]
+Model mDic mIoU Fw
+β Sα mEξmaxEξMAE
+U-Net 0.631 0.516 0.567 0.793 0.826 0.849 0.027
+UNet++ 0.638 0.527 0.581 0.796 0.831 0.847 0.024
+ResUNet++ 0.533 0.410 0.469 0.703 0.718 0.720 0.052
+ACSNet 0.732 0.627 0.703 0.837 0.871 0.875 0.016
+PraNet 0.716 0.624 0.700 0.833 0.852 0.904 0.016
+PNS-Net 0.813 0.710 0.778 0.909 0.921 0.942 0.013
+Ours 0.880 0.802 0.869 0.915 0.961 0.965 0.011
+existing model, PNS-Net, by 3.1% and 6.7% on CVC-612-V
+and CVC-300-TV , respectively, in terms of mDice.
+H. Limitations
+Although the proposed Polyp-PVT model surpasses existing
+algorithms, it still performs poorly in certain cases. We present
+some failure cases in Fig. 12. As can be seen, one major
+
+===== PAGE 12 =====
+12
+Image GT Ours SANet PraNet
+Fig. 12. Visualization of some failure cases. Green indicates a correct polyp. Yellow is the missed polyp. Red is the wrong prediction.
+limitation is the inability to detect accurate polyp boundaries
+with overlapping light and shadow ( 1st row). Our model can
+identify the location information of polyps (green mask in
+1st row), but it regards the light and shadow part of the
+edge as the polyp (red mask in 1st row). More deadly, our
+model incorrectly predicts the reflective point as a polyp (red
+mask in 2nd and 3rd rows). We notice that the reflective
+points are very salient in the image. Therefore, we speculate
+that the prediction may be based on only these points. More
+importantly, we believe that a simple way is to convert the
+input image into a gray image, which can eliminate the
+reflection and overlap of light and shadow to assist the model
+in judgment.
+V. C ONCLUSION
+In this paper, we propose a new image polyp segmentation
+framework, named Polyp-PVT, which utilizes a pyramid vision
+transformer backbone as the encoder to explicitly extract more
+powerful and robust features. Extensive experiments show that
+Polyp-PVT consistently outperforms all current cutting-edge
+models on five challenging datasets without any pre-/post-
+processing. In particular, for the unseen ColonDB dataset, the
+proposed model reaches a mean Dice score of above 0.8 for
+the first time. Interestingly, we also surpass the current cutting-
+edge PNS-Net in terms of the video polyp segmentation
+task, demonstrating excellent learning ability. Specifically, we
+obtain the above-mention achievements by introducing three
+simple components, i.e., a cascaded fusion module (CFM),
+a camouflage identification module (CIM), and a similarity
+aggregation module (SAM), which effectively extract high and
+low-level cues separately, and effectively fuse them for the
+final output. We hope this research will stimulate more novel
+ideas for solving the polyp segmentation task.
+REFERENCES
+[1] M. Fiori, P. Mus ´e, and G. Sapiro, “A complete system for candidate
+polyps detection in virtual colonoscopy,” IJPRAI, vol. 28, no. 07, p.
+1460014, 2014.
+[2] A. V . Mamonov, I. N. Figueiredo, P. N. Figueiredo, and Y .-H. R. Tsai,
+“Automated polyp detection in colon capsule endoscopy,” IEEE TMI ,
+vol. 33, no. 7, pp. 1488–1502, 2014.
+[3] O. H. Maghsoudi, “Superpixel based segmentation and classification of
+polyps in wireless capsule endoscopy,” in IEEE SPMB, 2017.
+[4] O. Ronneberger, P. Fischer, and T. Brox, “U-net: Convolutional networks
+for biomedical image segmentation,” in MICCAI, 2015.
+[5] D.-P. Fan, G.-P. Ji, T. Zhou, G. Chen, H. Fu, J. Shen, and L. Shao,
+“Pranet: Parallel reverse attention network for polyp segmentation,” in
+MICCAI, 2020.
+[6] X. Guo, C. Yang, Y . Liu, and Y . Yuan, “Learn to threshold: Thresholdnet
+with confidence-guided manifold mixup for polyp segmentation,” IEEE
+TMI, vol. 40, no. 4, pp. 1134–1146, 2020.
+[7] J. Wei, Y . Hu, R. Zhang, Z. Li, S. K. Zhou, and S. Cui, “Shallow
+attention network for polyp segmentation,” in MICCAI, 2021.
+[8] J. Bernal, F. J. S ´anchez, G. Fern ´andez-Esparrach, D. Gil, C. Rodr ´ıguez,
+and F. Vilari ˜no, “Wm-dova maps for accurate polyp highlighting in
+colonoscopy: Validation vs. saliency maps from physicians,” CMIG,
+vol. 43, pp. 99–111, 2015.
+[9] J. Silva, A. Histace, O. Romain, X. Dray, and B. Granado, “Toward
+embedded detection of polyps in wce images for early diagnosis of
+colorectal cancer,” IJCARS, vol. 9, no. 2, pp. 283–293, 2014.
+[10] N. Tajbakhsh, S. R. Gurudu, and J. Liang, “Automated polyp detection
+in colonoscopy videos using shape and context information,” IEEE TMI,
+vol. 35, no. 2, pp. 630–644, 2015.
+[11] D.-P. Fan, G.-P. Ji, M.-M. Cheng, and L. Shao, “Concealed object
+detection,” IEEE TPAMI, 2021.
+[12] D.-P. Fan, G.-P. Ji, G. Sun, M.-M. Cheng, J. Shen, and L. Shao,
+“Camouflaged object detection,” in CVPR, 2020.
+
+===== PAGE 13 =====
+13
+[13] D. Jha, P. H. Smedsrud, M. A. Riegler, P. Halvorsen, T. de Lange,
+D. Johansen, and H. D. Johansen, “Kvasir-seg: A segmented polyp
+dataset,” in MMM, 2020.
+[14] D. V ´azquez, J. Bernal, F. J. S ´anchez, G. Fern ´andez-Esparrach, A. M.
+L´opez, A. Romero, M. Drozdzal, and A. Courville, “A benchmark for
+endoluminal scene segmentation of colonoscopy images,” JHE, vol.
+2017, 2017.
+[15] T. Rahim, M. A. Usman, and S. Y . Shin, “A survey on contemporary
+computer-aided tumor, polyp, and ulcer detection methods in wireless
+capsule endoscopy imaging,” CMIG, p. 101767, 2020.
+[16] K. He, X. Zhang, S. Ren, and J. Sun, “Deep residual learning for image
+recognition,” in CVPR, 2016.
+[17] K. Simonyan and A. Zisserman, “Very deep convolutional networks for
+large-scale image recognition,” in ICLR, 2015.
+[18] X. Li, W. Wang, X. Hu, and J. Yang, “Selective kernel networks,” in
+CVPR, 2019.
+[19] W. Wang, X. Li, T. Lu, and J. Yang, “Mixed link networks,” in IJCAI,
+2018.
+[20] J. Long, E. Shelhamer, and T. Darrell, “Fully convolutional networks
+for semantic segmentation,” in CVPR, 2015.
+[21] L. Cai, M. Wu, L. Chen, W. Bai, M. Yang, S. Lyu, and Q. Zhao, “Using
+guided self-attention with local information for polyp segmentation,” in
+MICCAI. Springer, 2022.
+[22] N. K. Tomar, D. Jha, U. Bagci, and S. Ali, “Tganet: Text-guided attention
+for improved polyp segmentation,” in MICCAI. Springer, 2022.
+[23] R. Zhang, P. Lai, X. Wan, D.-J. Fan, F. Gao, X.-J. Wu, and G. Li,
+“Lesion-aware dynamic kernel for polyp segmentation,” in MICCAI.
+Springer, 2022.
+[24] J.-H. Shi, Q. Zhang, Y .-H. Tang, and Z.-Q. Zhang, “Polyp-mixer: An
+efficient context-aware mlp-based paradigm for polyp segmentation,”
+IEEE TCSVT, 2022.
+[25] X. Zhao, Z. Wu, S. Tan, D.-J. Fan, Z. Li, X. Wan, and G. Li,
+“Semi-supervised spatial temporal attention network for video polyp
+segmentation,” in MICCAI. Springer, 2022.
+[26] M. Akbari, M. Mohrekesh, E. Nasr-Esfahani, S. R. Soroushmehr,
+N. Karimi, S. Samavi, and K. Najarian, “Polyp segmentation in
+colonoscopy images using fully convolutional network,” inIEEE EMBC,
+2018.
+[27] P. Brandao, O. Zisimopoulos, E. Mazomenos, G. Ciuti, J. Bernal,
+M. Visentini-Scarzanella, A. Menciassi, P. Dario, A. Koulaouzidis,
+A. Arezzo et al. , “Towards a computed-aided diagnosis system in
+colonoscopy: automatic polyp segmentation using convolution neural
+networks,” JMRR, vol. 3, no. 02, p. 1840002, 2018.
+[28] Z. Zhou, M. M. R. Siddiquee, N. Tajbakhsh, and J. Liang, “Unet++: A
+nested u-net architecture for medical image segmentation,” in DLMIA,
+2018.
+[29] D. Jha, P. H. Smedsrud, M. A. Riegler, D. Johansen, T. de Lange,
+P. Halvorsen, and H. D. Johansen, “Resunet++: An advanced architecture
+for medical image segmentation,” in IEEE ISM, 2019.
+[30] X. Sun, P. Zhang, D. Wang, Y . Cao, and B. Liu, “Colorectal polyp
+segmentation by u-net with dilation convolution,” inIEEE ICMLA, 2019.
+[31] B. Murugesan, K. Sarveswaran, S. M. Shankaranarayana, K. Ram,
+J. Joseph, and M. Sivaprakasam, “Psi-net: Shape and boundary aware
+joint multi-task deep network for medical image segmentation,” in IEEE
+EMBC, 2019.
+[32] H. A. Qadir, Y . Shin, J. Solhusvik, J. Bergsland, L. Aabakken, and
+I. Balasingham, “Polyp detection and segmentation using mask r-cnn:
+Does a deeper feature extractor cnn always perform better?” in ISMICT,
+2019.
+[33] K. He, G. Gkioxari, P. Doll ´ar, and R. Girshick, “Mask r-cnn,” in ICCV,
+2017.
+[34] S. Alam, N. K. Tomar, A. Thakur, D. Jha, and A. Rauniyar, “Automatic
+polyp segmentation using u-net-resnet50,” in MediaEvalW, 2020.
+[35] D. Banik, K. Roy, D. Bhattacharjee, M. Nasipuri, and O. Krejcar,
+“Polyp-net: A multimodel fusion network for polyp segmentation,”IEEE
+TIM, vol. 70, pp. 1–12, 2020.
+[36] T. Rahim, S. A. Hassan, and S. Y . Shin, “A deep convolutional neural
+network for the detection of polyps in colonoscopy images,” BSPC,
+vol. 68, p. 102654, 2021.
+[37] D. Jha, S. Ali, N. K. Tomar, H. D. Johansen, D. Johansen, J. Rittscher,
+M. A. Riegler, and P. Halvorsen, “Real-time polyp detection, localization
+and segmentation in colonoscopy using deep learning,” IEEE Access ,
+vol. 9, pp. 40 496–40 510, 2021.
+[38] A. M. A. Ahmed, “Generative adversarial networks for automatic polyp
+segmentation,” in MediaEvalW, 2020.
+[39] V . Thambawita, S. Hicks, P. Halvorsen, and M. A. Riegler, “Pyramid-
+focus-augmentation: Medical image segmentation with step-wise focus,”
+in MediaEvalW, 2020.
+[40] N. K. Tomar, D. Jha, S. Ali, H. D. Johansen, D. Johansen, M. A. Riegler,
+and P. Halvorsen, “Ddanet: Dual decoder attention network for automatic
+polyp segmentation,” in ICPRW, 2021.
+[41] C.-H. Huang, H.-Y . Wu, and Y .-L. Lin, “Hardnet-mseg: A simple
+encoder-decoder polyp segmentation neural network that achieves over
+0.9 mean dice and 86 fps,” arXiv preprint arXiv:2101.07172 , 2021.
+[42] P. Chao, C.-Y . Kao, Y .-S. Ruan, C.-H. Huang, and Y .-L. Lin, “Hardnet:
+A low memory traffic network,” in CVPR, 2019.
+[43] Y . Zhang, H. Liu, and Q. Hu, “Transfuse: Fusing transformers and cnns
+for medical image segmentation,” in MICCAI, 2021.
+[44] Z. Yin, K. Liang, Z. Ma, and J. Guo, “Duplex contextual relation
+network for polyp segmentation,” in IEEE ISBI, 2022.
+[45] Z. Xiaoqi, Z. Lihe, and L. Huchuan, “Automatic polyp segmentation via
+multi-scale subtraction network,” in MICCAI, 2021.
+[46] Z. Zhou, J. Shin, L. Zhang, S. Gurudu, M. Gotway, and J. Liang, “Fine-
+tuning convolutional neural networks for biomedical image analysis:
+actively and incrementally,” in CVPR, 2017.
+[47] N. Tajbakhsh, J. Y . Shin, S. R. Gurudu, R. T. Hurst, C. B. Kendall, M. B.
+Gotway, and J. Liang, “Convolutional neural networks for medical image
+analysis: Full training or fine tuning?” IEEE TMI , vol. 35, no. 5, pp.
+1299–1312, 2016.
+[48] X. Xie, J. Chen, Y . Li, L. Shen, K. Ma, and Y . Zheng, “Mi 2gan:
+Generative adversarial network for medical image domain adaptation
+using mutual information constraint,” in MICCAI, 2020.
+[49] R. Zhang, G. Li, Z. Li, S. Cui, D. Qian, and Y . Yu, “Adaptive context
+selection for polyp segmentation,” in MICCAI, 2020.
+[50] N. K. Tomar, “Automatic polyp segmentation using fully convolutional
+neural network,” in MediaEvalW, 2020.
+[51] D. Jha, S. Hicks, K. Emanuelsen, H. D. Johansen, D. Johansen,
+T. de Lange, M. A. Riegler, and P. Halvorsen, “Medico multimedia task
+at mediaeval 2020: Automatic polyp segmentation,” in MediaEvalW,
+2020.
+[52] K. Patel, A. M. Bur, and G. Wang, “Enhanced u-net: A feature
+enhancement network for polyp segmentation,” in CRV, 2021.
+[53] A. Lumini, L. Nanni, and G. Maguolo, “Deep ensembles based on
+stochastic activation selection for polyp segmentation,” in MIDL, 2021.
+[54] M. V . Branch and A. S. Carvalho, “Polyp segmentation in colonoscopy
+images using u-net-mobilenetv2,” arXiv preprint arXiv:2103.15715 ,
+2021.
+[55] R. Khadga, D. Jha, S. Ali, S. Hicks, V . Thambawita, M. A. Riegler,
+and P. Halvorsen, “Few-shot segmentation of medical images based on
+meta-learning with implicit gradients,”arXiv preprint arXiv:2106.03223,
+2021.
+[56] D. V . Sang, T. Q. Chung, P. N. Lan, D. V . Hang, D. Van Long, and N. T.
+Thuy, “Ag-curesnest: A novel method for colon polyp segmentation,” in
+IEEE RIVF, 2021.
+[57] C. Yang, X. Guo, M. Zhu, B. Ibragimov, and Y . Yuan, “Mutual-prototype
+adaptation for cross-domain polyp segmentation,” IEEE JBHI, 2021.
+[58] D. Jha, P. H. Smedsrud, D. Johansen, T. de Lange, H. D. Johansen,
+P. Halvorsen, and M. A. Riegler, “A comprehensive study on colorectal
+polyp segmentation with resunet++, conditional random field and test-
+time augmentation,” IEEE JBHI, vol. 25, no. 6, pp. 2029–2040, 2021.
+[59] D. Jha, N. K. Tomar, S. Ali, M. A. Riegler, H. D. Johansen, D. Johansen,
+T. de Lange, and P. Halvorsen, “Nanonet: Real-time polyp segmentation
+in video capsule endoscopy and colonoscopy,” in IEEE CBMS, 2021.
+[60] S. Li, X. Sui, X. Luo, X. Xu, L. Yong, and R. S. M. Goh, “Medical im-
+age segmentation using squeeze-and-expansion transformers,” in IJCAI,
+2021.
+[61] T. Kim, H. Lee, and D. Kim, “Uacanet: Uncertainty augmented context
+attention for polyp semgnetaion,” in ACM MM, 2021.
+[62] V . Thambawita, S. A. Hicks, P. Halvorsen, and M. A. Riegler, “Diver-
+gentnets: Medical image segmentation by network ensemble,” in ISBI
+& EndoCV, 2021.
+[63] G. Xiaoqing, Y . Chen, and Y . Yixuan, “Dynamic-weighting hierarchical
+segmentation network for medical images,” MIA, p. 102196, 2021.
+[64] G.-P. Ji, Y .-C. Chou, D.-P. Fan, G. Chen, D. Jha, H. Fu, and L. Shao,
+“Pns-net: Progressively normalized self-attention network for video
+polyp segmentation,” in MICCAI, 2021.
+[65] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez,
+Ł. Kaiser, and I. Polosukhin, “Attention is all you need,” in NeurIPS,
+2017.
+[66] A. Dosovitskiy, L. Beyer, A. Kolesnikov, D. Weissenborn, X. Zhai,
+T. Unterthiner, M. Dehghani, M. Minderer, G. Heigold, S. Gelly et al.,
+
+===== PAGE 14 =====
+14
+“An image is worth 16x16 words: Transformers for image recognition
+at scale,” in ICLR, 2021.
+[67] Z. Pan, B. Zhuang, J. Liu, H. He, and J. Cai, “Scalable visual trans-
+formers with hierarchical pooling,” in ICCV, 2021.
+[68] B. Heo, S. Yun, D. Han, S. Chun, J. Choe, and S. J. Oh, “Rethinking
+spatial dimensions of vision transformers,” in ICCV, 2021.
+[69] L. Yuan, Y . Chen, T. Wang, W. Yu, Y . Shi, Z. Jiang, F. E. Tay, J. Feng,
+and S. Yan, “Tokens-to-token vit: Training vision transformers from
+scratch on imagenet,” in ICCV, 2021.
+[70] K. Han, A. Xiao, E. Wu, J. Guo, C. Xu, and Y . Wang, “Transformer
+in transformer,” Advances in Neural Information Processing Systems ,
+vol. 34, pp. 15 908–15 919, 2021.
+[71] W. Wang, E. Xie, X. Li, D.-P. Fan, K. Song, D. Liang, T. Lu, P. Luo, and
+L. Shao, “Pyramid vision transformer: A versatile backbone for dense
+prediction without convolutions,” in ICCV, 2021.
+[72] W. Wang, E. Xie, X. Li, D.-P. Fan, K. Song, D. Liang, T. Lu, P. Luo, and
+L. Shao, “Pvt v2: Improved baselines with pyramid vision transformer,”
+CVMJ, vol. 8, no. 3, pp. 415–424, 2022.
+[73] Z. Liu, Y . Lin, Y . Cao, H. Hu, Y . Wei, Z. Zhang, S. Lin, and
+B. Guo, “Swin transformer: Hierarchical vision transformer using shifted
+windows,” in ICCV, 2021.
+[74] H. Wu, B. Xiao, N. Codella, M. Liu, X. Dai, L. Yuan, and L. Zhang,
+“Cvt: Introducing convolutions to vision transformers,” in ICCV, 2021.
+[75] W. Xu, Y . Xu, T. Chang, and Z. Tu, “Co-scale conv-attentional image
+transformers,” in ICCV, 2021.
+[76] X. Chu, Z. Tian, Y . Wang, B. Zhang, H. Ren, X. Wei, H. Xia, and
+C. Shen, “Twins: Revisiting the design of spatial attention in vision
+transformers,” Advances in Neural Information Processing Systems ,
+vol. 34, pp. 9355–9366, 2021.
+[77] B. Graham, A. El-Nouby, H. Touvron, P. Stock, A. Joulin, H. J ´egou,
+and M. Douze, “Levit: a vision transformer in convnet’s clothing for
+faster inference,” in ICCV, 2021.
+[78] S. Bhojanapalli, A. Chakrabarti, D. Glasner, D. Li, T. Unterthiner,
+and A. Veit, “Understanding robustness of transformers for image
+classification,” in ICCV, 2021.
+[79] E. Xie, W. Wang, Z. Yu, A. Anandkumar, J. M. Alvarez, and P. Luo,
+“Segformer: Simple and efficient design for semantic segmentation
+with transformers,” Advances in Neural Information Processing Systems,
+vol. 34, pp. 12 077–12 090, 2021.
+[80] Z. Wu, L. Su, and Q. Huang, “Cascaded partial decoder for fast and
+accurate salient object detection,” in CVPR, 2019.
+[81] S. Ioffe and C. Szegedy, “Batch normalization: Accelerating deep
+network training by reducing internal covariate shift,” in ICML, 2015.
+[82] X. Glorot, A. Bordes, and Y . Bengio, “Deep sparse rectifier neural
+networks,” in AISTATS, 2011.
+[83] S. Woo, J. Park, J.-Y . Lee, and I. So Kweon, “Cbam: Convolutional
+block attention module,” in ECCV, 2018.
+[84] J. Hu, L. Shen, and G. Sun, “Squeeze-and-excitation networks,” in
+CVPR, 2018.
+[85] X. Wang, R. Girshick, A. Gupta, and K. He, “Non-local neural net-
+works,” in CVPR, 2018.
+[86] G. Te, Y . Liu, W. Hu, H. Shi, and T. Mei, “Edge-aware graph represen-
+tation learning and reasoning for face parsing,” in ECCV, 2020.
+[87] Y . Lu, Y . Chen, D. Zhao, and J. Chen, “Graph-fcn for image semantic
+segmentation,” in ISNN, 2019.
+[88] J. Wei, S. Wang, and Q. Huang, “F 3net: Fusion, feedback and focus for
+salient object detection,” in AAAI, 2020.
+[89] I. Loshchilov and F. Hutter, “Decoupled weight decay regularization,”
+in ICLR, 2019.
+[90] F. Milletari, N. Navab, and S.-A. Ahmadi, “V-net: Fully convolutional
+neural networks for volumetric medical image segmentation,” in 3DV,
+2016.
+[91] R. Margolin, L. Zelnik-Manor, and A. Tal, “How to evaluate foreground
+maps?” in CVPR, 2014.
+[92] M.-M. Chen and D.-P. Fan, “Structure-measure: A new way to evaluate
+foreground maps,” IJCV, vol. 129, pp. 2622–2638, 2021.
+[93] D.-P. Fan, G.-P. Ji, X. Qin, and M.-M. Cheng, “Cognitive vision inspired
+object segmentation metric and loss function,” SSI, 2021.
+[94] D.-P. Fan, C. Gong, Y . Cao, B. Ren, M.-M. Cheng, and A. Borji,
+“Enhanced-alignment measure for binary foreground map evaluation,”
+in IJCAI, 2018.
+[95] Y . Fang, C. Chen, Y . Yuan, and K.-y. Tong, “Selective feature aggre-
+gation network with area-boundary constraints for polyp segmentation,”
+in MICCAI, 2019.
+[96] J. Bernal, J. S ´anchez, and F. Vilarino, “Towards automatic polyp
+detection with a polyp appearance model,” PR, vol. 45, no. 9, pp. 3166–
+3182, 2012.
+[97] G.-P. Ji, G. Xiao, Y .-C. Chou, D.-P. Fan, K. Zhao, G. Chen, and
+L. Van Gool, “Video polyp segmentation: A deep learning perspective,”
+MIR, vol. 19, no. 06, pp. 531–549, 2022.
+
+===== PAGE 15 =====
+Nordic Machine Intelligence, vol. 10, pp. 11–13, 2021
+Received 1 Jan 2021 / published 21 Jul 2021
+https://doi.org/10.2478/nmi-some-doi
+This is your template for Nordic
+Machine Intelligence
+Bo Dong1, Wenhai Wang2 and Jinpeng Li3
+1. College of Biomedical Engineering & Instrument Science, Zhejiang University, Zhejiang, China.E
+2. Inception Institute of Artificial Intelligence, Abu Dhabi, UAE
+3. E-mail any correspondence to: myname@domain.com
+Abstract
+We present our solutions to the MedAI: Transparency in Medi-
+calImageSegmentation, forallthethreetasks: polypsegmen-
+tation task, instrument segmentation task, transparency task.
+We use the same pipeline to process the two segmentation
+tasks of polyps and surgery, and use the same pre-processing
+and post-processing operations. The key improvement over
+last year is newer state-of-the-art vision architectures, espe-
+ciallytransformerswhichsignificantlyoutperformConvNetsfor
+the medical image segmentation task. Our solution consists of
+multi-model fusion, and each model uses a transformer as the
+backbone network. We finished the all the tasks and get the
+best score of 0.91 in instrument segmentation task and 0.83
+in polyp segmentation task. Meanwhile, we provide complete
+solutions in https://github.com/dongbo811/MedAI-2021.
+Keywords: artificial intelligence; machine learning; deep
+learning; robotics
+Introduction
+Colorectal cancer is one of the deadly cancers in the
+world. Colonoscopy is the standard treatment to check,
+locateandremovecolorectalpolyps. However, ithasbeen
+shown that the missed diagnosis rate of colorectal polyps
+during colonoscopy is between 6% and 27%. The use
+of automatic, accurate and real-time polyp segmentation
+during colonoscopy can help clinicians eliminate missing
+lesions and prevent the further development of colorectal
+cancer.
+In recent years, significant progress has been seen
+in robot-assisted surgery and computer-assisted surgery.
+The segmentation of surgical instruments can accurately
+locate robotic instruments and estimate their posture,
+which is essential for the navigation of surgical robots.
+In addition, the segmentation results can be used to
+predict dangerous operations and reduce surgical risks.
+At the same time, it can provide a variety of automated
+solutions for postoperative work, such as objective
+skill evaluation, surgical report generation, and surgical
+process optimization, which are of great significance to
+clinical work.
+Model
+The method in this paper integrates three models for
+fusion, namely Polyp-PVT, Sinv2-PVT, and Transfuse-
+PVT. The official Polyp-PVT [dong2021PolypPVT] is
+designed for polyp segmentation and achieves SOTA seg-
+mentation capabilities and generalization performance.
+It uses transformer as the backbone network to ex-
+tract richer features and solves the impact of colorec-
+tal image acquisition. Here, we adopt the standard
+structure without any modification. For the Trans-
+fuse [zhang2021transfuse], which is also adopted in
+the polyp segmentation, we improve it by replacing
+the transformer part with the PVT [wang2021pyramid,
+wang2021pvtv2] to enhance its performance. The
+official Sinv2 [fan2021concealed] proposes an end-to-
+end network for search and recognition the concealed
+Object, which obtains considerable segmentation per-
+formance. This task is similar to the polyp seg-
+mentation and surgical instrument segmentation, so
+we adopt. Here we employ a stronger PVT trans-
+former [wang2021pyramid, wang2021pvtv2] to replace
+the original res2net [gao2019res2net] backbone to ex-
+tract more powerful features.
+Hyperparameter settings
+We use the PyTorch framework to implement our model,
+and use Tesla V100 to accelerate the calculation. Taking
+intoaccountthedifferenceinthesizeofeachpolypimage,
+we adopted a multi-scale strategy in the training phase.
+The hyperparameter details are as follows. To update
+the network parameters, we use the AdamW optimizer,
+whichiswidelyusedintransformernetworks. Thelearning
+rate is set to 1e-4, and the weight attenuation is also
+© 2021 Author(s). This is an open access article licensed under the Creative Commons Attribution License 4.0.
+(http://creativecommons.org/licenses/by/4.0/).
+arXiv:2108.06932v8  [eess.IV]  19 Feb 2024
+
+===== PAGE 16 =====
+Author et al.: Short version of title. NMI, 10, 11–13, 2021
+Table 1: 5-fold cross-validation results of surgical instrument segmentation. Intersection-Over-Union (Jaccard index),
+Dice coefficient, and the pixel accuracy are abbreviated as IoU, Dice, PA respectively.
+models Metrics Flod-1 Flod-2 Flod-3 Flod-4 Flod-5 Mean
+Polyp-PVT
+IoU 0.9012 0.8744 0.9310 0.9529 0.9522 0.9224
+Dice 0.9427 0.9226 0.9616 0.9754 0.9748 0.9554
+PA 0.9915 0.9900 0.9939 0.9937 0.9934 0.9925
+Sinv2-PVT
+IoU 0.8971 0.8760 0.9315 0.9521 0.9519 0.9217
+Dice 0.9392 0.9237 0.9622 0.9751 0.9745 0.9549
+PA 0.9908 0.9897 0.9940 0.9936 0.9934 0.9923
+Transfuse-PVT
+IoU 0.9034 0.8691 0.9313 0.9497 0.9511 0.9209
+Dice 0.9443 0.9207 0.9611 0.9734 0.9742 0.9547
+PA 0.9917 0.9891 0.9931 0.9925 0.9930 0.9919
+Prediction Prediction
+Figure 1: Qualitative description of our predication.
+adjusted to 1e-4. In addition, we adjusted the size of
+the input image to 352×352, the mini-batch size was
+16, and it lasted 100 epochs. The total training time
+is close to 4 hours to achieve the best (for example,
+40 epochs) performance. For testing, we only adjust
+the image size to 352×352 without any post-processing
+optimization strategy. It is worth noting that all three
+models use the same hyperparameter settings.
+Training stage:
+We use the same training strategy to train Polyp-PVT,
+Sinv2-PVT, and Transfuse-PVT. Specifically, we first
+divide the dataset into 5 groups (folds). At each time,
+we use 4 groups of dataset as the training set and the
+remaining one as the validation set. During training, we
+keepthemodelweightswiththebestIoUonthevalidation
+set. After 5-fold training, all of Polyp-PVT, Sinv2-PVT,
+and Transfuse-PVT have 5 model weights, and a total of
+15 different model weights are obtained.
+Inference stage
+In the inference stage, for the input images, we only resize
+the images to352 × 352 without any data enhancement.
+Fortheoutput, weupsampleittotheoriginalfeaturesize.
+So, we can obtain 15 different prediction results of test
+dataset without any data enhancement.
+In order to obtain a more stable prediction, we
+merge the 15 prediction results with a minority voting
+method. Because the voting strategy will produce many
+Prediction
+Prediction
+Prediction Prediction
+Figure 2: Some failure cases in surgical instrument
+segmentation
+independent noise pixels on the edge of polyps or surgical
+instruments. We use open operation and counting to
+remove. First, the open operation is used to remove
+independent noise points, and then the area of the block
+in the prediction image is counted to remove relatively
+small noise blocks in the prediction image, so as to obtain
+the final prediction result.
+Result
+We show the qualitative results in Fig. 1, and give the
+results of the evaluations in Tab. 1. At the same time,
+we shared our failure cases in Fig. 2.
+Discussion
+It can be found that both of our improved algorithms
+Sinv2-PVT and Transfuse-PVT have the same perfor-
+mance as polyp-pvt. In the 5-fold cross-validation, the
+three results are relatively stable. There are results above
+0.92 on the IoU, and we give some visual results in 1.
+However, there are certain shortcomings shown in 2.
+Our results almost correctly segment the equipment, but
+introduce some noise. One characteristic of these noises
+is that they are biased towards black. This is mainly
+due to the fact that there are more black instruments
+in the entire data set. Therefore, small black areas (food
+residuals, etc.) in the colonoscope will be identified as
+surgical instruments. These noises can be filtered by the
+12
+
+===== PAGE 17 =====
+Author et al.: Short version of title. NMI, 10, 11–13, 2021
+size of the area to achieve the purpose of noise removal.
+Conclusion
+In this paper, we propose a robust generalized medical
+image segmentation framework, which is composed of
+multiple models, and uses the pyramid vision transformer
+backboneasanencodertoexplicitlyextractmorepowerful
+and powerful features.
+Acknowledgments
+I would first like to thank the researcher Dengping Fan
+in IIAI, whose expertise was invaluable in formulating the
+research questions and methodology.
+Conflict of interest
+Authors state no conflict of interest. (Either keep this
+sentence or describe any comflict of interest.)
+13

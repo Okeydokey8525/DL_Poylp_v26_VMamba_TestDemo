@@ -1,0 +1,124 @@
+[
+  {
+    "id": "CIT-001",
+    "url": "https://api.crossref.org/works/10.1007%2F978-3-030-37734-2_37",
+    "status": "retrieved",
+    "title": [
+      "Kvasir-SEG: A Segmented Polyp Dataset"
+    ],
+    "keys": [
+      "indexed",
+      "publisher-location",
+      "reference-count",
+      "publisher",
+      "isbn-type",
+      "license",
+      "content-domain",
+      "short-container-title"
+    ]
+  },
+  {
+    "id": "CIT-002",
+    "url": "https://api.crossref.org/works/10.1145%2F3083187.3083212",
+    "status": "retrieved",
+    "title": [
+      "KVASIR"
+    ],
+    "keys": [
+      "indexed",
+      "publisher-location",
+      "reference-count",
+      "publisher",
+      "license",
+      "content-domain",
+      "short-container-title",
+      "published-print"
+    ]
+  },
+  {
+    "id": "CIT-006",
+    "url": "https://api.crossref.org/works/10.1109%2FTSMC.1979.4310076",
+    "status": "retrieved",
+    "title": [
+      "A Threshold Selection Method from Gray-Level Histograms"
+    ],
+    "keys": [
+      "indexed",
+      "reference-count",
+      "publisher",
+      "issue",
+      "content-domain",
+      "short-container-title",
+      "published-print",
+      "DOI"
+    ]
+  },
+  {
+    "id": "CIT-008",
+    "url": "https://api.crossref.org/works/10.1016%2F0734-189X%2885%2990016-7",
+    "status": "retrieved",
+    "title": [
+      "Topological structural analysis of digitized binary images by border following"
+    ],
+    "keys": [
+      "indexed",
+      "reference-count",
+      "publisher",
+      "issue",
+      "license",
+      "funder",
+      "content-domain",
+      "short-container-title"
+    ]
+  },
+  {
+    "id": "CIT-009",
+    "url": "https://api.crossref.org/works/10.3138%2FFM57-6770-U75U-7727",
+    "status": "retrieved",
+    "title": [
+      "ALGORITHMS FOR THE REDUCTION OF THE NUMBER OF POINTS REQUIRED TO REPRESENT A DIGITIZED LINE OR ITS CARICATURE"
+    ],
+    "keys": [
+      "indexed",
+      "reference-count",
+      "publisher",
+      "issue",
+      "content-domain",
+      "short-container-title",
+      "published-print",
+      "abstract"
+    ]
+  },
+  {
+    "id": "CIT-017",
+    "url": "https://api.crossref.org/works/10.1007%2F978-3-031-72111-3_48",
+    "status": "retrieved",
+    "title": [
+      "Polyp-Mamba: Polyp Segmentation with Visual Mamba"
+    ],
+    "keys": [
+      "indexed",
+      "publisher-location",
+      "reference-count",
+      "publisher",
+      "isbn-type",
+      "license",
+      "content-domain",
+      "short-container-title"
+    ]
+  },
+  {
+    "id": "KAGGLE_FILES",
+    "url": "https://www.kaggle.com/api/v1/datasets/list/debeshjha1/kvasirseg",
+    "status": "retrieved",
+    "title": "",
+    "keys": [
+      "nextPageTokenNullable",
+      "datasetFiles",
+      "errorMessage",
+      "hasErrorMessage",
+      "nextPageToken",
+      "hasNextPageToken"
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "status": "ok",
+  "service": "polypvision-ai",
+  "device": "cpu",
+  "readyModels": 2,
+  "totalModels": 2,
+  "models": {
+    "YOLO26s-seg": {
+      "status": "ready",
+      "loaded": true,
+      "family": "baseline",
+      "checkpoint": "yolo26s-seg-best.pt",
+      "checkpointSha256": "61EBD02851F5A12921AB10F64ADE433C745F87AAC91FD41A310CD00C7D2A3906",
+      "error": null
+    },
+    "YOLO26s-TSVM-FP32-seg": {
+      "status": "ready",
+      "loaded": true,
+      "family": "vmamba",
+      "checkpoint": "yolo26s-tsvm-fp32-best.pt",
+      "checkpointSha256": "B0578C7612E1E48CC490EF71ECA5F025FB1EEB5A02C1FE6CB7E869D639E2C7A8",
+      "error": null
+    }
+  }
+}

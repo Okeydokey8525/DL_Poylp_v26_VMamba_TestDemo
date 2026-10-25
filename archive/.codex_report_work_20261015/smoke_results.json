@@ -1,0 +1,60 @@
+[
+  {
+    "key": "YOLO26s-seg",
+    "status": "ready",
+    "sha256": "61EBD02851F5A12921AB10F64ADE433C745F87AAC91FD41A310CD00C7D2A3906",
+    "params": 11434463,
+    "floating_dtypes": {
+      "torch.float32": 710
+    },
+    "seed": 0,
+    "task": "segment",
+    "samples": [
+      {
+        "input": "cju0s690hkp960855tjuaqvv0.jpg",
+        "detected": true,
+        "label": "polyp",
+        "confidence": 0.883303165435791,
+        "processingTimeMs": 417.186,
+        "maskCount": 1
+      },
+      {
+        "input": "bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.jpg",
+        "detected": false,
+        "label": null,
+        "confidence": 0.0,
+        "processingTimeMs": 265.929,
+        "maskCount": 0
+      }
+    ]
+  },
+  {
+    "key": "YOLO26s-TSVM-FP32-seg",
+    "status": "ready",
+    "sha256": "B0578C7612E1E48CC490EF71ECA5F025FB1EEB5A02C1FE6CB7E869D639E2C7A8",
+    "params": 12254688,
+    "floating_dtypes": {
+      "torch.float32": 759
+    },
+    "seed": 0,
+    "task": "segment",
+    "samples": [
+      {
+        "input": "cju0s690hkp960855tjuaqvv0.jpg",
+        "detected": true,
+        "label": "polyp",
+        "confidence": 0.5838399529457092,
+        "processingTimeMs": 648.207,
+        "maskCount": 2
+      },
+      {
+        "input": "bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.jpg",
+        "detected": false,
+        "label": null,
+        "confidence": 0.0,
+        "processingTimeMs": 590.682,
+        "maskCount": 0
+      }
+    ]
+  }
+]

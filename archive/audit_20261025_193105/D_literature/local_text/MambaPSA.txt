@@ -1,0 +1,242 @@
+===== PAGE 1 =====
+MambaPSA: A Mamba-based Replacement for C2PSA in YOLO26
+Sheng-Wei Chan1, Chia-Min Lin1, Hsin-Jui Pan1, Ching-Yu Tsai1, Chih-Hsiang Yang1, Yung-Che Wang1, Jen-Shiun Chiang1∗
+1Department of Electrical and Computer Engineering, Tamkang University, New Taipei City, Taiwan
+∗chiang@mail.tku.edu.tw
+Keywords:Object detection; YOLO26; State space model; Mamba; Lightweight network; PASCAL VOC.
+Abstract— State space models (SSMs), notably Mamba, have recently emerged as efficient alternatives to self-attention with
+linear computational complexity. We investigate the integration of Mamba into YOLO26, the latest non-maximum suppression
+(NMS)-free object detection framework, by proposingMambaPSA—a lightweight Mamba-based replacement for the C2PSA
+block at the end of the backbone. To complement this study, we additionally insert a bidirectional Vision Mamba (BiViM)
+module at the P3, P4, and P5 levels of the neck. Experiments on PASCAL VOC 2007+2012 show that MambaPSA reduces
+parameters by 2.9%, FLOPs by 12.1%, and improves CPU inference throughput by 17.6% (from 17 to 20 FPS) with negligible
+accuracy change (−0.1mAP 50:95), while the P4 BiViM placement yields the best accuracy gain (+0.9mAP 50:95). These results
+suggest that SSMs offer a favorable efficiency–accuracy trade-off when replacing attention-based blocks in NMS-free lightweight
+detectors.
+1 Introduction
+The YOLO family of single-stage detectors [1, 2] continu-
+ously evolves through architectural refinements. YOLO26, re-
+leased in January 2026 [2], adopts a non-maximum suppres-
+sion (NMS)-free dual-head training strategy and simplifies the
+regression head. At the end of its backbone, YOLO26 em-
+ploys the C2PSA block, which performs global feature aggre-
+gation through a position-sensitive self-attention (PSA) mecha-
+nism built on the cross-stage partial (CSP) topology [3]. While
+effective, self-attention [4, 5] scales quadratically with token
+count, constraining its use in lightweight edge deployments.
+State space models (SSMs), notably Mamba [7], recently
+emerged as efficient sequence models with linear complex-
+ity through a selective scan mechanism, building on struc-
+tured SSMs such as S4 [6]. Vision adaptations such as Vi-
+sion Mamba [8] and VMamba [9] have shown that SSMs ri-
+val Transformer-based backbones on classification, and recent
+works integrate Mamba into the YOLO family [10]. To our
+knowledge, however, whether Mamba can directly replace the
+C2PSA block in YOLO26 has not been examined in the public
+literature; we therefore proposeMambaPSA, a Mamba-based
+replacement that preserves the CSP wrapper. We additionally
+insert a bidirectional Vision Mamba (BiViM) module at three
+neck levels (P3, P4, P5) to identify effective positions for SSM-
+based feature aggregation. Our contributions are:
+• We propose MambaPSA, a lightweight Mamba-based re-
+placement for the C2PSA block of YOLO26.
+• We conduct a placement study of SSM modules at P3, P4,
+and P5 of the neck, revealing a non-monotonic relationship
+between placement and accuracy.
+• Empirical evaluation on PASCAL VOC shows that Mam-
+baPSA reduces FLOPs by 12.1% and improves CPU infer-
+ence throughput by 17.6% with negligible accuracy degrada-
+tion, while P4 BiViM yields the best accuracy gain.
+2 Related Work
+Mamba [7] introduces selective scanning that enables SSMs to
+model long sequences in linear time, building on S4 [6]. Vi-
+sion Mamba [8] and VMamba [9] extend SSMs to image data
+via bidirectional or four-directional scan strategies. Several
+recent works integrate SSMs into YOLO detectors: Mamba-
+YOLO [10] replaces the C2f block in the PAFPN neck of
+YOLOv8, and subsequent works target the C3k2 block in
+YOLO11. The integration of SSMs with the C2PSA block of
+YOLO26—an NMS-free framework—remains, to our knowl-
+edge, unexplored.
+Backbone Neck (PAN-FPN) Head
+Input
+Stem
+C3k2 P2
+C3k2 P3
+C3k2 P4
+C3k2 P5
+SPPF
+MambaPSA
+N3
+N4
+N5
+BiViM P3
+BiViM P4
+BiViM P5
+Detect
+Detect
+Detect
+Figure 1YOLO26 with two SSM integration points (red).MambaPSAre-
+places the original C2PSA block at the end of the backbone. A bidirectional
+Vision Mamba block (BiViM, dashed red) is optionally inserted at P3, P4, or
+P5 of the neck; only one is active per variant. N3/N4/N5 denote neck features
+at the corresponding resolutions.
+3 Method
+Fig. 1 illustrates the overall YOLO26 pipeline with the two
+SSM integration points, and Fig. 2 details the internal structure
+of the two proposed blocks, MambaPSA and BiViM.
+3.1 MambaPSA
+MambaPSA preserves the CSP wrapper of C2PSA but replaces
+the internal self-attention branch with a Mamba core (Fig. 2,
+left). Given an inputx∈R C×H×W , a1×1convolution
+projectsxto2C ′ channels split into halvesaandb. The
+first halfais flattened intoHWtokens, processed by a sin-
+gle Mamba block [7], and reshaped back; the second halfbis
+preserved through identity. The two halves are concatenated
+and projected back toCchannels by a second1×1convo-
+lution. The Mamba core is configured as lightweight (d state=8,
+e=1, mono-directional scan) so that the overall block is approx-
+imately parameter-neutral relative to C2PSA.
+3.2 Mamba in the Neck
+For the placement study, a bidirectional Vision Mamba (BiViM)
+block is applied immediately after the upsample-concat-C3k2
+stage at the P3, P4, or P5 level (Fig. 2, right). The block scans
+the flattened token sequence in both directions, sums the two
+outputs, applies a linear projection, and adds a residual connec-
+tion (dstate=16,e=2).
+4 Experiments
+4.1 Setup
+We evaluate on PASCAL VOC. The training set combines VOC
+2007 and 2012 trainval (16,551 images); evaluation is on VOC
+2007 test (4,952 images, 20 classes) [11]. All models are
+trained for 100 epochs using AdamW (lr10 −3, batch 32, im-
+1
+arXiv:2607.12681v1  [cs.CV]  14 Jul 2026
+
+===== PAGE 2 =====
+Table 1Per-class mAP 50:95 (%) on PASCAL VOC 2007 test. Best per class is in bold. Methods: Base = YOLO26-n baseline; +PkBiViM = BiVisionMamba
+inserted at the Pklevel of the neck; MPSA = MambaPSA (ours). Class abbreviations: aero=aeroplane, bike=bicycle, bot=bottle, cha=chair, tab=diningtable,
+hor=horse, mbk=motorbike, per=person, pot=pottedplant, she=sheep, sof=sofa, tra=train, tv=tvmonitor.
+Method aero bike bird boat bot bus car cat cha cow tab dog hor mbk per pot she sof tra tv all
+Base 55.6 59.3 40.039.130.5 68.6 64.9 60.9 30.8 47.1 48.8 54.8 59.0 55.953.519.3 48.3 51.4 60.450.649.9
++ P3 BiViM 54.1 57.3 37.2 36.3 29.5 67.8 64.4 58.9 28.5 48.6 47.3 52.8 56.9 55.0 52.6 17.9 46.9 48.1 59.8 47.9 48.4
++ P4 BiViM58.160.0 41.0 37.231.2 70.765.462.8 31.5 48.649.8 54.8 59.057.152.921.548.5 52.562.849.950.8
++ P5 BiViM 56.061.4 42.937.3 30.0 70.565.560.3 31.4 46.151.6 55.8 60.856.5 53.2 17.9 49.153.761.1 49.9 50.6
+MPSA (ours)56.6 58.9 42.5 37.0 29.7 70.4 65.3 60.7 29.7 47.1 45.6 54.8 59.1 55.1 52.8 18.950.151.6 58.550.649.8
+MambaPSA
+Input
+1×1conv, split
+Mamba identity
+concat
+1×1conv
+Output
+a b
+BiViM
+Input
+flatten
+fwd scan bwd scan
+sum
+linear proj
+Output
++
+Figure 2Internal structure of the two proposed blocks.Left:MambaPSA
+splits the projected feature into two halves; halfapasses through a single
+(mono-directional) Mamba core (red) while halfbis kept as identity, before
+concatenation and a second1×1convolution.Right:BiViM scans the flat-
+tened tokens in forward and backward directions (red), sums the two outputs,
+applies a linear projection, and adds a residual connection.
+Table 2Comparison of MambaPSA and SSM placement variants against the
+YOLO26-Nano baseline on PASCAL VOC 2007 test. Values in parentheses are
+relative changes with respect to the baseline. CPU FPS is measured on an Intel
+Core i7 workstation CPU (batch size 1) from a single benchmarking run; “—”
+denotes not measured, as placement variants target the accuracy trade-off rather
+than efficiency.
+Method Params GFLOPs mAP 50:95 CPU FPS
+YOLO26-n 2.4M 5.8 49.9 17
++ P3 BiViM 2.45M (+2.1%) 6.5 (+12.1%) 48.4 (−1.5) —
++ P4 BiViM 2.63M (+9.6%) 6.2 (+6.9%)50.8(+0.9) —
++ P5 BiViM 3.45M (+43.8%) 6.1 (+5.2%) 50.6 (+0.7) —
+MambaPSA 2.33M(−2.9%)5.1(−12.1%) 49.8 (−0.1)20(+17.6%)
+age size640×640) with a 5-epoch warmup, last-15-epoch mo-
+saic close, and mixed-precision (fp16). Training is on a single
+NVIDIA RTX 4090; parameters are reported post-fusion. CPU
+throughput is measured on an Intel Core i7 workstation CPU
+(batch size 1, single run).
+4.2 Main Results
+Table 2 compares the YOLO26-Nano baseline, three placement
+variants, and the proposed MambaPSA. MambaPSA reduces
+parameters by 2.9% and FLOPs by 12.1% relative to the base-
+line with only a 0.1 mAP 50:95 decrease. Among the placement
+variants, P4 yields the highest accuracy gain (+0.9), P3 de-
+grades accuracy substantially (−1.5), and P5 provides moder-
+ate improvement (+0.7) at a parameter overhead of+43.8%. In
+terms of parameter cost per1%relativemAP 50:95 change (rel-
+ative parameter change divided by relative mAP change), P4 is
+the most efficient (+5.3%), P5 is over five times more expen-
+sive (+31.3%), whereas MambaPSA reduces parameters rather
+than expending them (−14.5%), placing it on the opposite side
+of the efficiency–accuracy trade-off.
+On CPU inference, MambaPSA reaches 20 FPS versus the
+baseline’s 17 FPS, a 17.6% throughput improvement broadly
+consistent with the FLOP reduction. Precise mean±std across
+multiple runs, alternative deployment runtimes (ONNX Run-
+time, OpenVINO), and edge-device profiling are deferred to fu-
+ture work.
+4.3 Per-class Analysis
+Table 1 reports per-class mAP50:95 across the 20 PASCAL VOC
+categories. The P4 variant attains the best accuracy on 9 cate-
+gories, including large objects (bus+2.1,train+2.4,aeroplane
++2.5) and small objects (bottle+0.7,pottedplant+2.2), sup-
+porting its role as a balanced sweet spot. The P5 variant ex-
+cels on categories with rich global context (bird+2.9,horse
++1.8,sofa+2.3) but degrades on small objects such aspotted-
+plant(−1.4). The P3 variant regresses on nearly all categories,
+suggesting that one-dimensional scanning over high-resolution
+feature maps may disrupt the local spatial structure required
+for fine-grained detection. MambaPSA exhibits a category-
+dependent trade-off with gains on animals and large vehicles
+(bird+2.5,bus+1.8,sheep+1.8) and losses on indoor and elon-
+gated structures (diningtable−3.2,boat−2.1,train−1.9).
+5 Discussion and Conclusion
+We propose MambaPSA, a lightweight Mamba-based replace-
+ment for the C2PSA block in YOLO26, achieving∼12% FLOP
+reduction and 17.6% CPU throughput improvement with negli-
+gible accuracy impact on PASCAL VOC. The placement study
+identifies P4 as a favorable position for SSM-based aggregation.
+All results reflect a single training seed; inter-seed variance
+on VOC-nano scale can approach the magnitudes of the per-
+variant differences reported here, so the observed gaps should
+be interpreted as directional trends. Future work will address
+multi-seed stability, the combination of MambaPSA with the
+P4 BiViM placement, precise CPU/edge-device profiling across
+deployment runtimes, and MS COCO validation.
+Acknowledgements
+This research work is partially supported by National Science
+and Technology Council, Taiwan, under grant number 114-
+2221-E-032-011.
+References
+[1] J. Redmon, S. Divvala, R. Girshick, and A. Farhadi, “You only look
+once: Unified, real-time object detection,” inProc. IEEE Conf. Comput.
+Vis. Pattern Recognit. (CVPR), 2016, pp. 779–788.
+[2] G. Jocher, A. Chaurasia, and J. Qiu, “Ultralytics YOLO,” GitHub,
+https://github.com/ultralytics/ultralytics, 2026.
+[3] C.-Y . Wanget al., “CSPNet: A new backbone that can enhance learning
+capability of CNN,” inCVPR Workshops, 2020, pp. 390–391.
+[4] A. Vaswaniet al., “Attention is all you need,” inProc. Adv. Neural Inf.
+Process. Syst. (NeurIPS), 2017, pp. 5998–6008.
+[5] A. Dosovitskiyet al., “An image is worth 16x16 words: Transformers for
+image recognition at scale,” inProc. Int. Conf. Learn. Representations
+(ICLR), 2021.
+[6] A. Gu, K. Goel, and C. R ´e, “Efficiently modeling long sequences with
+structured state spaces,” inICLR, 2022.
+[7] A. Gu and T. Dao, “Mamba: Linear-time sequence modeling with selec-
+tive state spaces,”arXiv preprint arXiv:2312.00752, 2023.
+[8] L. Zhuet al., “Vision Mamba: Efficient visual representation learning
+with bidirectional state space model,” inProc. Int. Conf. Mach. Learn.
+(ICML), 2024.
+[9] Y . Liuet al., “VMamba: Visual state space model,” inNeurIPS, 2024.
+[10] Z. Wanget al., “Mamba YOLO: SSMs-based YOLO for object detec-
+tion,” inProc. AAAI Conf. Artif. Intell., 2025.
+[11] M. Everinghamet al., “The PASCAL Visual Object Classes (VOC) chal-
+lenge,”Int. J. Comput. Vis., vol. 88, no. 2, pp. 303–338, 2010.
+2

@@ -1,0 +1,23 @@
+{
+  "train": {
+    "images": 1040,
+    "labels": 1040,
+    "empty": 160,
+    "instances": 936,
+    "invalid_labels": [],
+    "missing_labels": [],
+    "orphan_labels": []
+  },
+  "val": {
+    "images": 160,
+    "labels": 160,
+    "empty": 40,
+    "instances": 127,
+    "invalid_labels": [],
+    "missing_labels": [],
+    "orphan_labels": []
+  },
+  "exact_image_hash_overlap": 0,
+  "root_data_yaml_path_exists": false,
+  "actual_data_path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\Kvasir_YOLO_SEG_BG20"
+}

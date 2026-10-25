@@ -1,0 +1,179 @@
+0 Normal BỘ CÔNG THƯƠNG
+1 Normal TRƯỜNG ĐẠI HỌC CÔNG THƯƠNG THÀNH PHỐ HỒ CHÍ MINH
+2 Normal KHOA CÔNG NGHỆ THÔNG TIN
+4 Normal KHÓA LUẬN CỬ NHÂN
+5 Normal NGÀNH CÔNG NGHỆ THÔNG TIN
+6 Normal MÃ ĐỀ TÀI CNTT_KLCN182
+7 Normal NGHIÊN CỨU PHƯƠNG PHÁP TÍCH HỢP VMAMBA
+VÀO MÔ HÌNH YOLO26-SEG TRONG PHÂN ĐOẠN
+POLYP TỪ ẢNH NỘI SOI ĐẠI TRỰC TRÀNG
+13 Normal TP. HỒ CHÍ MINH NĂM 2026
+15 Normal BỘ CÔNG THƯƠNG
+16 Normal TRƯỜNG ĐẠI HỌC CÔNG THƯƠNG THÀNH PHỐ HỒ CHÍ MINH
+17 Normal KHOA CÔNG NGHỆ THÔNG TIN
+19 Normal KHÓA LUẬN CỬ NHÂN
+20 Normal NGÀNH CÔNG NGHỆ THÔNG TIN
+21 Normal MÃ ĐỀ TÀI CNTT_KLCN182
+22 Normal NGHIÊN CỨU PHƯƠNG PHÁP TÍCH HỢP VMAMBA
+VÀO MÔ HÌNH YOLO26-SEG TRONG PHÂN ĐOẠN
+POLYP TỪ ẢNH NỘI SOI ĐẠI TRỰC TRÀNG
+28 Normal TP. HỒ CHÍ MINH NĂM 2026
+36 Title LỜI CAM ĐOAN
+41 Title NHẬN XÉT CỦA GIẢNG VIÊN HƯỚNG DẪN
+57 Title NHẬN XÉT CỦA GIẢNG VIÊN PHẢN BIỆN
+73 Title TÓM TẮT KHÓA LUẬN
+87 Normal 1 LÝ DO CHỌN ĐỀ TÀI	
+88 Normal 2 MỤC TIÊU VÀ CÂU HỎI NGHIÊN CỨU	
+89 Normal 3 ĐỐI TƯỢNG VÀ PHẠM VI NGHIÊN CỨU	
+90 Normal 4 PHƯƠNG PHÁP THỰC HIỆN VÀ ĐÓNG GÓP	
+91 Normal 5 BỐ CỤC BÁO CÁO	
+92 Normal CHƯƠNG 1 TỔNG QUAN VÀ CƠ SỞ NGHIÊN CỨU	
+93 Normal 1.1 BÀI TOÁN PHÂN ĐOẠN POLYP	
+94 Normal 1.2 CÁC MÔ HÌNH NỀN TẢNG	
+95 Normal 1.3 MAMBA VÀ MÔ HÌNH TRẠNG THÁI THỊ GIÁC	
+96 Normal 1.4 NGHIÊN CỨU LIÊN QUAN VÀ VỊ TRÍ CỦA ĐỀ TÀI	
+97 Normal 1.5 TÓM TẮT CHƯƠNG	
+98 Normal CHƯƠNG 2 PHÂN TÍCH VÀ THIẾT KẾ MÔ HÌNH ĐỀ XUẤT	
+99 Normal 2.1 KIẾN TRÚC ĐỐI CHỨNG YOLO26S SEG	
+100 Normal 2.2 WRAPPER C2TSVMAMBA	
+101 Normal 2.3 CÁC NHÁNH CỦA TSVMAMBA	
+102 Normal 2.4 ĐỘ PHỨC TẠP VÀ ĐỘ CHÍNH XÁC SỐ	
+103 Normal 2.5 HUẤN LUYỆN VÀ KHỞI TẠO TRỌNG SỐ	
+104 Normal 2.6 CÁC CHẾ ĐỘ ABLATION VÀ GIẢ THUYẾT KIỂM CHỨNG	
+105 Normal 2.7 TÓM TẮT CHƯƠNG	
+106 Normal CHƯƠNG 3 XÂY DỰNG BỘ DỮ LIỆU VÀ TIỀN XỬ LÝ DỮ LIỆU	
+107 Normal 3.1. NGUỒN DỮ LIỆU	
+108 Normal 3.2. XÂY DỰNG VÀ PHÂN CHIA BỘ DỮ LIỆU BG20	
+109 Normal 3.3. CHUYỂN MẶT NẠ PHÂN ĐOẠN THÀNH NHÃN ĐA GIÁC	
+110 Normal 3.4. ĐỔI KÍCH THƯỚC ẢNH	
+111 Normal 3.5. TĂNG CƯỜNG DỮ LIỆU	
+112 Normal 3.6. ĐỊNH DẠNG VÀ CHUẨN HÓA DỮ LIỆU ĐẦU VÀO	
+113 Normal 3.7. KIỂM TRA TÍNH TOÀN VẸN CỦA DỮ LIỆU	
+114 Normal 3.8. TỔNG HỢP QUY TRÌNH TIỀN XỬ LÝ	
+115 Normal CHƯƠNG 4 CÀI ĐẶT THUẬT TOÁN VÀ ỨNG DỤNG MINH HỌA	
+116 Normal 4.1 TỔ CHỨC CÀI ĐẶT VÀ MÔI TRƯỜNG	
+117 Normal 4.2 QUY TRÌNH NOTEBOOK VÀ LƯU KẾT QUẢ	
+118 Normal 4.3 TỔNG QUAN ỨNG DỤNG POLYPVISION	
+119 Normal 4.4 DỊCH VỤ SUY LUẬN VÀ HỢP ĐỒNG API	
+120 Normal 4.5 CHỨC NĂNG WEB VÀ MOBILE	
+121 Normal 4.6 KIỂM TRA TÍCH HỢP VỚI CHECKPOINT THỰC NGHIỆM	
+122 Normal 4.7 VẬN HÀNH VÀ GIỚI HẠN ỨNG DỤNG	
+123 Normal 4.8 TÓM TẮT CHƯƠNG	
+124 Normal CHƯƠNG 5 THỬ NGHIỆM VÀ ĐÁNH GIÁ KẾT QUẢ	
+125 Normal 5.1 THIẾT KẾ SO SÁNH VÀ NGUỒN SỐ LIỆU	
+126 Normal 5.2 ĐỘ ĐO VÀ PHƯƠNG PHÁP THỐNG KÊ	
+127 Normal 5.3 KẾT QUẢ TỔNG HỢP QUA 20 SEED	
+128 Normal 5.4 BẰNG CHỨNG THỐNG KÊ VÀ ĐỘ ỔN ĐỊNH	
+129 Normal 5.5 KẾT QUẢ TỪNG SEED VÀ DIỄN BIẾN HUẤN LUYỆN	
+130 Normal 5.6 MA TRẬN NHẦM LẪN VÀ NHẬN XÉT ĐỊNH TÍNH	
+131 Normal 5.7 CHI PHÍ MÔ HÌNH VÀ KHẢ NĂNG TRIỂN KHAI	
+132 Normal 5.8 ĐỐI CHIẾU KẾT QUẢ CÔNG BỐ TRONG TÀI LIỆU	
+133 Normal 5.9 HẠN CHẾ VÀ NGUY CƠ ẢNH HƯỞNG ĐỘ TIN CẬY	
+134 Normal 5.10 TÓM TẮT CHƯƠNG	
+135 Normal KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN	
+136 Normal KẾT QUẢ ĐẠT ĐƯỢC	
+137 Normal GIỚI HẠN CỦA KẾT LUẬN	
+138 Normal HƯỚNG PHÁT TRIỂN	
+139 Normal TÀI LIỆU THAM KHẢO	
+140 Normal PHỤ LỤC A NGUỒN SỐ LIỆU VÀ QUY TẮC TÁI LẬP	
+141 Normal PHỤ LỤC B ĐỐI CHIẾU EPOCH VÀ CHECKPOINT	
+142 Normal PHỤ LỤC C CẤU HÌNH VÀ KIỂM TRA ỨNG DỤNG	
+143 Normal PHỤ LỤC D KẾ HOẠCH THỰC NGHIỆM BỔ SUNG	
+146 Title DANH MỤC HÌNH
+163 Title DANH MỤC BẢNG
+181 Title DANH MỤC CHỮ VIẾT TẮT
+185 Heading 1 MỞ ĐẦU
+186 Heading 2 1 LÝ DO CHỌN ĐỀ TÀI
+190 Heading 2 2 MỤC TIÊU VÀ CÂU HỎI NGHIÊN CỨU
+193 Heading 2 3 ĐỐI TƯỢNG VÀ PHẠM VI NGHIÊN CỨU
+196 Heading 2 4 PHƯƠNG PHÁP THỰC HIỆN VÀ ĐÓNG GÓP
+199 Heading 2 5 BỐ CỤC BÁO CÁO
+201 Heading 1 CHƯƠNG 1 TỔNG QUAN VÀ CƠ SỞ NGHIÊN CỨU
+202 Heading 2 1.1 BÀI TOÁN PHÂN ĐOẠN POLYP
+203 Heading 3 1.1.1 Phân đoạn ngữ nghĩa và phân đoạn từng đối tượng
+206 Heading 3 1.1.2 Các khó khăn về hình ảnh và dữ liệu
+209 Heading 2 1.2 CÁC MÔ HÌNH NỀN TẢNG
+210 Heading 3 1.2.1 Mạng tích chập và kiến trúc encoder decoder
+213 Heading 3 1.2.2 YOLO26 và đầu phân đoạn
+216 Heading 2 1.3 MAMBA VÀ MÔ HÌNH TRẠNG THÁI THỊ GIÁC
+217 Heading 3 1.3.1 Biểu diễn trạng thái chọn lọc
+221 Heading 3 1.3.2 Cơ chế SS2D bốn hướng
+224 Heading 2 1.4 NGHIÊN CỨU LIÊN QUAN VÀ VỊ TRÍ CỦA ĐỀ TÀI
+225 Heading 3 1.4.1 Mamba cho phân đoạn polyp
+229 Heading 3 1.4.2 Mamba trong YOLO và các hướng về biên
+234 Heading 3 1.4.3 Phạm vi tính mới
+237 Heading 2 1.5 TÓM TẮT CHƯƠNG
+239 Heading 1 CHƯƠNG 2 PHÂN TÍCH VÀ THIẾT KẾ MÔ HÌNH ĐỀ XUẤT
+240 Heading 2 2.1 KIẾN TRÚC ĐỐI CHỨNG YOLO26S SEG
+248 Heading 2 2.2 WRAPPER C2TSVMAMBA
+252 Heading 2 2.3 CÁC NHÁNH CỦA TSVMAMBA
+253 Heading 3 2.3.1 Nhánh SS2D toàn cục
+256 Heading 3 2.3.2 Nhánh hình dạng đa tỉ lệ và có hướng
+260 Heading 3 2.3.3 Guidance và hợp nhất
+268 Heading 2 2.4 ĐỘ PHỨC TẠP VÀ ĐỘ CHÍNH XÁC SỐ
+269 Heading 3 2.4.1 Chi phí của phép quét đang triển khai
+272 Heading 3 2.4.2 Vì sao cần checkpoint FP32
+275 Heading 2 2.5 HUẤN LUYỆN VÀ KHỞI TẠO TRỌNG SỐ
+278 Heading 2 2.6 CÁC CHẾ ĐỘ ABLATION VÀ GIẢ THUYẾT KIỂM CHỨNG
+283 Heading 2 2.7 TÓM TẮT CHƯƠNG
+285 Heading 1 CHƯƠNG 3 XÂY DỰNG BỘ DỮ LIỆU VÀ TIỀN XỬ LÝ DỮ LIỆU
+288 Heading 2 3.1. NGUỒN DỮ LIỆU
+289 Heading 3 3.1.1. Bộ dữ liệu Kvasir-SEG
+293 Heading 3 3.1.2. Ảnh nền normal-cecum
+300 Heading 2 3.2. XÂY DỰNG VÀ PHÂN CHIA BỘ DỮ LIỆU BG20
+308 Heading 2 3.3. CHUYỂN MẶT NẠ PHÂN ĐOẠN THÀNH NHÃN ĐA GIÁC
+310 Heading 3 3.3.1. Nhị phân hóa mặt nạ bằng phương pháp Otsu
+316 Heading 3 3.3.2. Làm liền vùng polyp bằng phép đóng hình thái học
+320 Heading 3 3.3.3. Tìm đường bao và loại bỏ vùng nhiễu nhỏ
+323 Heading 3 3.3.4. Đơn giản hóa đường bao
+327 Heading 3 3.3.5. Chuẩn hóa tọa độ và ghi tệp nhãn
+336 Heading 2 3.4. ĐỔI KÍCH THƯỚC ẢNH
+349 Heading 2 3.5. TĂNG CƯỜNG DỮ LIỆU
+352 Heading 3 3.5.1. Ghép bốn ảnh bằng Mosaic
+355 Heading 3 3.5.2. Dịch chuyển và thu phóng ngẫu nhiên
+359 Heading 3 3.5.3. Biến đổi màu trong không gian HSV
+364 Heading 3 3.5.4. Lật ngang và các phép bổ sung
+375 Heading 2 3.6. ĐỊNH DẠNG VÀ CHUẨN HÓA DỮ LIỆU ĐẦU VÀO
+383 Heading 2 3.7. KIỂM TRA TÍNH TOÀN VẸN CỦA DỮ LIỆU
+387 Heading 2 3.8. TỔNG HỢP QUY TRÌNH TIỀN XỬ LÝ
+395 Heading 1 CHƯƠNG 4 CÀI ĐẶT THUẬT TOÁN VÀ ỨNG DỤNG MINH HỌA
+396 Heading 2 4.1 TỔ CHỨC CÀI ĐẶT VÀ MÔI TRƯỜNG
+401 Heading 2 4.2 QUY TRÌNH NOTEBOOK VÀ LƯU KẾT QUẢ
+402 Heading 3 4.2.1 Notebook baseline
+404 Heading 3 4.2.2 Notebook mô hình đề xuất và yêu cầu FP32
+407 Heading 2 4.3 TỔNG QUAN ỨNG DỤNG POLYPVISION
+413 Heading 2 4.4 DỊCH VỤ SUY LUẬN VÀ HỢP ĐỒNG API
+414 Heading 3 4.4.1 Nạp và định danh mô hình
+417 Heading 3 4.4.2 Tiếp nhận ảnh và suy luận
+422 Heading 3 4.4.3 Điều phối yêu cầu và xử lý lỗi
+425 Heading 2 4.5 CHỨC NĂNG WEB VÀ MOBILE
+426 Heading 3 4.5.1 Ứng dụng Web
+429 Heading 3 4.5.2 Ứng dụng Mobile Direct AI
+432 Heading 2 4.6 KIỂM TRA TÍCH HỢP VỚI CHECKPOINT THỰC NGHIỆM
+440 Heading 2 4.7 VẬN HÀNH VÀ GIỚI HẠN ỨNG DỤNG
+443 Heading 2 4.8 TÓM TẮT CHƯƠNG
+445 Heading 1 CHƯƠNG 5 THỬ NGHIỆM VÀ ĐÁNH GIÁ KẾT QUẢ
+446 Heading 2 5.1 THIẾT KẾ SO SÁNH VÀ NGUỒN SỐ LIỆU
+447 Heading 3 5.1.1 Đơn vị thực nghiệm
+450 Heading 3 5.1.2 Quy tắc chọn epoch
+453 Heading 3 5.1.3 Kiểm tra nhất quán
+455 Heading 2 5.2 ĐỘ ĐO VÀ PHƯƠNG PHÁP THỐNG KÊ
+456 Heading 3 5.2.1 Các độ đo phát hiện và mặt nạ
+461 Heading 3 5.2.2 So sánh ghép cặp và khoảng tin cậy
+466 Heading 2 5.3 KẾT QUẢ TỔNG HỢP QUA 20 SEED
+475 Heading 2 5.4 BẰNG CHỨNG THỐNG KÊ VÀ ĐỘ ỔN ĐỊNH
+488 Heading 2 5.5 KẾT QUẢ TỪNG SEED VÀ DIỄN BIẾN HUẤN LUYỆN
+502 Heading 2 5.6 MA TRẬN NHẦM LẪN VÀ NHẬN XÉT ĐỊNH TÍNH
+508 Heading 2 5.7 CHI PHÍ MÔ HÌNH VÀ KHẢ NĂNG TRIỂN KHAI
+514 Heading 2 5.8 ĐỐI CHIẾU KẾT QUẢ CÔNG BỐ TRONG TÀI LIỆU
+520 Heading 2 5.9 HẠN CHẾ VÀ NGUY CƠ ẢNH HƯỞNG ĐỘ TIN CẬY
+524 Heading 2 5.10 TÓM TẮT CHƯƠNG
+526 Heading 1 KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
+527 Heading 2 KẾT QUẢ ĐẠT ĐƯỢC
+531 Heading 2 GIỚI HẠN CỦA KẾT LUẬN
+533 Heading 2 HƯỚNG PHÁT TRIỂN
+537 Heading 1 TÀI LIỆU THAM KHẢO
+562 Heading 1 PHỤ LỤC A NGUỒN SỐ LIỆU VÀ QUY TẮC TÁI LẬP
+573 Heading 1 PHỤ LỤC B ĐỐI CHIẾU EPOCH VÀ CHECKPOINT
+576 Heading 1 PHỤ LỤC C CẤU HÌNH VÀ KIỂM TRA ỨNG DỤNG
+585 Heading 1 PHỤ LỤC D KẾ HOẠCH THỰC NGHIỆM BỔ SUNG

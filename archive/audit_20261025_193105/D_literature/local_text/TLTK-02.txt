@@ -1,0 +1,540 @@
+===== PAGE 1 =====
+Noname manuscript No.
+(will be inserted by the editor)
+A Benchmark for Endoluminal Scene Segmentation
+of Colonoscopy Images
+David V´ azquez1,2 · Jorge Bernal 1 ·
+F. Javier S´ anchez1 · Gloria
+Fern´ andez-Esparrach4 · Antonio M.
+L´ opez1,2 · Adriana Romero 2 · Michal
+Drozdzal3,5 · Aaron Courville 2
+Received: 07 Nov 2016 / Accepted: date
+Abstract Colorectal cancer (CRC) is the third cause of cancer death world-
+wide. Currently, the standard approach to reduce CRC-related mortality is to
+perform regular screening in search for polyps and colonoscopy is the screening
+tool of choice. The main limitations of this screening procedure are polyp miss-
+rate and inability to perform visual assessment of polyp malignancy. These
+drawbacks can be reduced by designing Decision Support Systems (DSS) aim-
+ing to help clinicians in the diﬀerent stages of the procedure by providing en-
+doluminal scene segmentation. Thus, in this paper, we introduce an extended
+benchmark of colonoscopy image, with the hope of establishing a new strong
+benchmark for colonoscopy image analysis research. We provide new baselines
+on this dataset by training standard fully convolutional networks (FCN) for
+semantic segmentation and signiﬁcantly outperforming, without any further
+post-processing, prior results in endoluminal scene segmentation.
+Keywords Colonoscopy· Polyp· Semantic Segmentation· Deep Learning
+1 Introduction
+Colorectal cancer (CRC) is the third cause of cancer death worldwide [30].
+CRC arises from adenomatous polyps (adenomas) which are initially benign;
+David V´ azquez
+E-mail: dvazquez@cvc.uab.es
+1 Computer Vision Center, Computer Science Department, Universitat Autonoma de
+Barcelona, Spain
+2 Montreal Institute for Learning Algorithms, Universit´ e de Montr´ eal, Canada
+3 ´Ecole Polytechnique de Montr´ eal, Montr´ eal, Canada
+4 Endoscopy Unit, Gastroenterology Service, CIBERHED, IDIBAPS, Hospital Clinic, Uni-
+versidad de Barcelona, Spain
+5 Imagia Inc., Montr´ eal, Canada
+arXiv:1612.00799v1  [cs.CV]  2 Dec 2016
+
+===== PAGE 2 =====
+2 David V´ azquez et al.
+however, with time some of them can become malignant. Currently, the stan-
+dard approach to reduce CRC-related mortality is to perform regular screening
+in search for polyps and colonoscopy is the screening tool of choice. During the
+examination, clinicians visually inspect intestinal wall (see Figure 1(a) for an
+example of intestinal scene) in search of polyps; once found they are resected
+for histological analysis.
+The main limitations of colonoscopy are its associated polyp miss-rate
+(small/ﬂat polyps or the ones hidden behind intestine folds can be missed
+[18]) and the fact that polyp’s malignancy degree is only known after histolog-
+ical analysis. These drawbacks can be reduced by developing new colonoscopy
+modalities to improve visualization (e.g. High Deﬁnition imaging, Narrow
+Band Imaging (NBI) [21] and magniﬁcation endoscopes [8]) and/or by de-
+veloping Decision Support Systems (DSS) aiming to help clinicians in the
+diﬀerent stages of the procedure. Ideally, DSS should be able to detect, seg-
+ment and assess the malignancy degree (e.g. by optical biopsy [28]) of polyps
+during colonoscopy procedure (Figure 1(b) depicts steps of DSS in colonoscopy
+procedure).
+The development of DSS for colonoscopy has been an active research topic
+during the last decades. The majority of available works on optical colonoscopy
+are focused on polyp detection (e.g. see [4,29,16,24,26,33]) and only few works
+address the problems of endoluminal scene segmentation.
+Endoluminal scene segmentation is of crucial relevance for clinical appli-
+cations [3,4,23,2]. First, segmenting lumen is relevant to help clinicians in
+navigation during the procedure. Second, segmenting polyps is important to
+indicate the area covered by a potential lesion that should be carefully in-
+spected by clinicians. Finally, specular highlight have proven to be useful in
+reducing polyp detection false positive ratio in the context of hand-crafted
+methods [4,6].
+In the recent years, convolutional neural networks (CNNs) have become a
+de facto standard in computer vision, achieving state-of-the-art performance in
+tasks such as image classiﬁcation, object detection and semantic segmentation;
+and making traditional methods based on hand-crafted features obsolete. Two
+major components in this groundbreaking progress were the availability of
+increased computational power (GPUs) and the introduction of large labeled
+datasets [12,19].
+Despite the additional diﬃculty of having limited amounts of labeled data,
+CNNs have successfully been applied to a variety of medical imaging tasks,
+by resorting to aggressive data augmentation techniques [27,13]. More pre-
+cisely, CNNs have excelled at semantic segmentation tasks in medical imag-
+ing, such as the EM ISBI 2012 dataset [1], BRATS [22] or MS lesions [32],
+where the top entries are built on CNNs [27,10,17,7,13]. Surprisingly, to the
+best of our knowledge, CNNs have not been applied to semantic segmentation
+of colonoscopy data. We associate this to the lack of large publicly available
+annotated databases, which is needed in order to train and validate such net-
+works.
+
+===== PAGE 3 =====
+EndoScene benchmark 3
+(a)
+(b)
+Fig. 1 (a) Colonoscopy image and corresponding labeling: blue for lumen, red for back-
+ground (mucosa wall), and green for polyp, (b) Proposed pipeline of a decision support
+system for colonoscopy.
+In this paper, we aim to overcome this limitation and introduce an extended
+benchmark of colonoscopy images by combining the two largest datasets of
+colonoscopy images [5,4] and incorporating additional annotations to segment
+lumen and specular highlights, with the hope of establishing a new strong
+benchmark for colonoscopy image analysis research. We provide new baselines
+on this dataset by training standard fully convolutional networks (FCN) for se-
+mantic segmentation [20], and signiﬁcantly outperforming, without any further
+post-processing, prior results in endoluminal scene segmentation.
+Therefore, the contributions of this paper are two-fold:
+1. Extended benchmark for colonoscopy image segmentation.
+2. New state-of-the-art in colonoscopy image segmentation.
+The rest of the paper is organized as follows. In Section 2, we present the
+new extended benchmark, including the introduction of datasets as well as the
+performance metrics. After that, in Section 3, we introduce the FCN architec-
+ture used as baseline for the new endoluminal scene segmentation benchmark.
+Then, in Section 4, we show qualitative and quantitative experimental results.
+Finally, Section 5 concludes the paper.
+2 Endoluminal scene segmentation benchmark
+In this section, we describe the endoluminal scene segmentation benchmark,
+including evaluation metrics.
+
+===== PAGE 4 =====
+4 David V´ azquez et al.
+T able 1 Summary of prior database content. All frames show at least one polyp.
+Database # patients # seq. # frames Resolution Annotations
+CVC-
+ColonDB 13 13 300 500x574 polyp
+background
+CVC-
+ClinicDB 23 31 612 384x288 polyp
+background
+EndoScene 36 44 912 500x574 & 384x288
+polyp
+lumen
+background
+specularity
+border (void)
+2.1 Dataset
+Inspired by already published benchmarks for polyp detection, proposed within
+a challenge held in conjunction with MICCAI 20151, we introduce a benchmark
+for endoluminal scene object segmentation.
+We combine CVC-ColonDB and CVC-ClinicDB into a new dataset
+(EndoScene) composed of 912 images obtained from 44 video sequences ac-
+quired from 36 patients.
+– CVC-ColonDB contains 300 images with associated polyp and back-
+ground (here, mucosa and lumen) segmentation masks obtained from 13
+polyp video sequences acquired from 13 patients.
+– CVC-ClinicDB contains 612 images with associated polyp and back-
+ground (here, mucosa and lumen) segmentation masks obtained from 31
+polyp video sequences acquired from 23 patients.
+We extend the old annotations to account for lumen, specular highlights
+as well as a void class for black borders present in each frame. In the new
+annotations, background only contains mucosa (intestinal wall). Please refer
+to Table 1 for datasets details and to Figure 2 for a dataset sample.
+We split the resulting dataset into three sets: training, validation and test
+containing 60%, 20% and 20% images respectively. We impose the constraint
+that one patient can not be in diﬀerent sets. As a result, the ﬁnal training set
+contains 20 patients and 547 frames, the validation set contains 8 patients and
+183 frames; and test set contains 8 patients and 182 frames. The dataset is
+available online2.
+2.2 Metrics
+We use Intersection over Union (IoU), also known as Jaccard index, and per
+pixel accuracy as segmentation metrics. These metrics are commonly used in
+medical image segmentation tasks [9,25].
+1 http://endovis.grand-challenge.org
+2 http://adas.cvc.uab.es/endoscene
+
+===== PAGE 5 =====
+EndoScene benchmark 5
+(a)
+ (b)
+ (c)
+ (d)
+Fig. 2 Example of a colonoscopy image and its corresponding ground truth: (a) Original
+image, (b) Polyp mask, (c) Specular highlights mask and (d) lumen mask.
+We compute the mean of per-class IoU. Each per-class IoU is computed
+over a validation/test set according to following formula:
+IoU (PR(class), GT(class)) =|PR(class) ⋂ GT(class)|
+|PR(class) ⋃ GT(class)|, (1)
+where PR represents the binary mask produced by the segmentation method,
+GT represents the ground truth mask, ⋂ represents set intersection and ⋃
+represents set union.
+We compute the mean global accuracy for each set as follows:
+Acc(PR, GT) = #TP
+#pixels, (2)
+where TP represents the number of true positives.
+Notably, this new benchmark might as well be used for the relevant task of
+polyp localization. In that case, we follow Pascal VOC challenge metrics [15]
+and determine that a polyp is localized if it has a high overlap degree with its
+associated ground truth, namely:
+IoU (PR(polyp), GT(polyp))> 0.5, (3)
+where the metric is computed for each polyp independently, and averaged per
+set to give a ﬁnal score.
+3 Baseline
+CNN are a standard architecture used for tasks, where a single prediction per
+input is expected (e.g. image classiﬁcation). Such architectures capture hier-
+archical representations of the input data by stacking blocks of convolutional,
+non-linearity and pooling layers on top of each other. Convolutional layers
+extract local features. Non-linearity layers allow deep networks to learn non-
+linear mappings of the input data. Pooling layers reduce the spatial resolution
+of the representation maps by aggregating local statistics.
+FCNs [20,27] were introduced in the computer vision and medical imaging
+communities in the context of semantic segmentation. FCNs naturally extend
+CNNs to tackle per pixel prediction problems, by adding upsampling layers
+
+===== PAGE 6 =====
+6 David V´ azquez et al.
+to recover the spatial resolution of the input at the output layer. As a conse-
+quence, FCNs can process images of arbitrary size. In order to compensate for
+the resolution loss induced by pooling layers, FCNs introduce skip connections
+between their downsampling and upsampling paths. Skip connections help the
+upsampling path recover ﬁne-grained information from the downsampling lay-
+ers.
+We implemented FCN8 architecture from [20] 3. and trained the network
+by means of stochastic gradient descent with rmsprop adaptive learning rate
+[35]. The validation split is used to early-stop the training, we monitor mean
+IoU for validation set and use patience of 50. We used a mini-batch size of 10
+images. The input image is normalized in the range 0-1. We randomly crop
+the training images to 224× 224 pixels. As regularization, we use dropout[31]
+of 0.5, as mentioned in the paper [20]. We do not use any weight decay.
+As described in Section 2.1, colonoscopy images have a black border that
+we consider as a void class. Void classes do not inﬂuence the computation of
+the loss nor the metrics of any set, since the pixels marked as void class are
+ignored. As the number of pixels per class is unbalanced, in some experiments,
+we apply the median frequency balancing of [14].
+During training, we experiment with data augmentation techniques such
+as random cropping, rotations, zooming, sharing and elastic transformations.
+4 Experimental results
+In this section, we report semantic segmentation and polyp localization results
+on the new benchmark.
+4.1 Endoluminal Scene Semantic Segmentation
+In this section, we ﬁrst analyze the inﬂuence of diﬀerent data augmentation
+techniques. Second, we evaluate the eﬀect of having diﬀerent number of endo-
+luminal classes on polyp segmentation results. Finally, we compare our results
+with previously published methods.
+4.1.1 Inﬂuence of data augmentation
+Table 2 presents an analysis on the inﬂuence of diﬀerent data augmentation
+techniques and their impact on the validation performance. We evaluate ran-
+dom zoom from 0.9 to 1.1, rotations from 0 to 180 degrees, shearing from
+0 to 0.4 and warping with σ ranging from 0 to 10. Finally, we evaluate the
+combination of all the data augmentation techniques.
+As shown in the table, polyps signiﬁcantly beneﬁt from all data augmenta-
+tion methods, in particular, from warping. Note that warping applies small
+elastic deformation locally, accounting for many realistic variations in the
+3 https://github.com/jbernoz/deeppolyp
+
+===== PAGE 7 =====
+EndoScene benchmark 7
+Data
+Augmentation
+IoU
+background
+IoU
+polyp
+IoU
+lumen
+IoU
+spec.
+IoU
+mean
+Acc
+mean
+None 88.93 44.45 54.02 25.54 57.88 92.48
+Zoom 89.89 52.73 51.15 37.10 57.72 90.72
+Warp 90.00 54.00 49.69 37.27 58.97 90.93
+Shear 89.60 46.61 54.27 36.86 56.83 90.49
+Rotation 90.52 52.83 56.39 35.81 58.89 91.38
+Combination 92.62 54.82 55.08 35.75 59.57 93.02
+T able 2 FCN8 endoluminal scene semantic segmentation results for diﬀerent data augmen-
+tation techniques. The results are reported on validation set.
+polyp shape. Rotation and zoom also have a strong positive impact on the
+polyp segmentation performance. It goes without saying that such transfor-
+mations are the least aggressive ones, since they do not alter the polyp ap-
+pearance. Shearing is most likely the most aggressive transformation, since it
+changes the polyp appearance and might, in some cases, result in unrealistic
+deformations.
+While for lumen it is diﬃcult to draw any strong conclusions, it looks like
+zooming and warping slightly deteriorate the performance, whereas shearing
+and rotation slightly improve it. As for specularity highlights, all the data
+augmentation techniques that we tested signiﬁcantly boost the segmentation
+results. Finally, background (mucosa) shows only slight improvement when in-
+corporating data augmentations. This is not surprising, given its predominance
+throughout the data it could be even considered background.
+Overall, combining all the discussed data augmentation techniques, leads to
+better results in terms of mean IoU and mean global accuracy. More precisely,
+we increase the mean IoU by 4.51% and the global mean accuracy by 1 .52%
+4.1.2 Inﬂuence of number of classes
+Table 3 presents endoluminal scene semantic segmentation results for diﬀerent
+number of classes. As shown in the table, using more underrepresented classes
+such as lumen or specular highlights makes the optimization problem more
+diﬃcult. As expected and contrary to hand-crafted segmentation methods,
+when considering polyp segmentation, deep learning based approaches do not
+suﬀer from specular highlights, showing the robustness of the learnt features
+towards saturation zones in colonoscopy images.
+Best results for polyp segmentation are obtained in the 2 classes scenario
+(polyp vs background). However, segmenting lumen is a relevant clinical prob-
+lem as mentioned in Section 1. Results achieved in the 3 classes scenario are
+very encouraging, with a IoU higher than 50% for both polyp and lumen
+classes.
+
+===== PAGE 8 =====
+8 David V´ azquez et al.
+#
+classes
+IoU
+background
+IoU
+polyp
+IoU
+lumen
+IoU
+spec.
+IoU
+mean
+Acc
+mean
+4 92.07 39.37 59.55 40.52 57.88 92.48
+3 92.19 50.70 56.48 – 66.46 92.82
+2 96.63 56.07 – – 76.35 96.77
+T able 3 FCN8 endoluminal scene semantic segmentation results for diﬀerent number of
+classes. The results are reported on validation set. In all cases, we selected the model that
+provided best validation results (with or without class balancing).
+Data
+Augmentation
+IoU
+background
+IoU
+polyp
+IoU
+lumen
+IoU
+spec.
+IoU
+mean
+Acc
+mean
+FCN8 performance
+4 classes None 86.36 38.51 43.97 32.98 50.46 87.40
+3 classes None 84.66 47.55 36.93 – 56.38 86.08
+2 classes None 94.62 50.85 – – 72.74 94.91
+4 classes Combination 88.81 51.60 41.21 38.87 55.13 89.69
+State-of-the-art methods
+[3,2,6] - 73.93 22.13 23.82 44.86 41.19 75.58
+T able 4 Results on the tests set: FCN8 with respect to previously published methods.
+4.1.3 Comparison to state-of-the-art
+Finally, we evaluate the FCN model on the test set. We compare our results
+to the combination of previously published hand-crafted methods: 1) [3] an
+energy-map based method for polyp segmentation, 2) [2] a watershed-based
+method for lumen segmentation and 3) [6] for specular highlights segmentation.
+The segmentation results on the test set are reported in Table 4 and show a
+clear improvement of FCN8 over previously published methods. The following
+improvements can be observed when comparing previously published methods
+to 4-class FCN8 model trained with data augmentation: 15% in IoU for back-
+ground (mucosa), 29% in IoU for polyps, 18% in IoU for lumen, 14% in mean
+IoU and 14% in mean accuracy. FCN8 is still outperformed by traditional
+methods when it comes to specular highlights class. However, it is important
+to note that specular highlights class is used by hand-crafted methods to re-
+duce false positive ratio of polyp detection and from our analysis it looks like
+FCN model is able to segment well polyps even when ignoring this class. For
+example, the best mean IoU of 72.74 % and mean accuracy of 94.91% are
+obtained by 2-class model without additional data augmentation.
+Figure 3 shows qualitative results of 4-class FCN8 model trained with data
+augmentation. From left to right, each row shows a colonoscopy frame, followed
+by the corresponding ground truth annotation and FCN8 prediction. Rows 1
+to 4 show correct segmentation masks, with very clean polyp segmentation.
+Rows 5 and 6 show failure modes of the model, where polyps have been missed
+or under-segmented. In row 5, the small polyp is missed by our segmentation
+
+===== PAGE 9 =====
+EndoScene benchmark 9
+methond while, in row 6, the polyp is under-segmented. All cases exhibit decent
+lumen segmentation and good background (mucosa) segmentation.
+4.2 Polyp localization
+Endoluminal scene segmentation can be seen as a proxy to proper polyp de-
+tection in colonoscopy video. In order to understand how well suited FCN is to
+localize polyps, we perform a last experiment. In this experiment, we compute
+the polyp localization rate as a function of IoU between the model prediction
+and the ground truth. We can compute this IoU per frame, since our dataset
+contains a maximum of one polyp per image. This analysis describes the abil-
+ity of a given method to cope with polyp appearance variability and stability
+on polyp localization.
+The localization results are presented in Figure 4 and show a signiﬁcant im-
+provement when comparing FCN8 variants to the previously published method
+[3]. For example, when considering a correct polyp localization to have at least
+50% IoU, we observe an increase of 40% in polyp localization rate. As a gen-
+eral trend, we observe that architectures trained using fewer number of classes
+achieve a higher IoU, though the polyp localization diﬀerence starts to be
+more visible when really high overlapping degrees are imposed. Finally, as one
+would expect, we observe that the architectures that show better results in
+polyp segmentation are the ones that show better results in polyp localiza-
+tion.
+5 Conclusions
+In this paper, we have introduced an extended benchmark for endoluminal
+scene semantic segmentation. The benchmark includes extended annotations
+of polyps, background (mucosa), lumen and specular highlights. The dataset
+provides the standard training, validation and test splits for machine learning
+practitioners and will be publicly available upon paper acceptance. Moreover,
+standard metrics for the comparison haven been deﬁned; with the hope to
+speed-up the research in the endoluminal scene segmentation area.
+Together with the dataset, we provided new baselines based on fully con-
+volutional networks, which outperformed by a large margin previously pub-
+lished results, without any further post-processing. We extended the proposed
+pipeline and used it as proxy to perform polyp detection. Due to the lack
+of non-polyp frames in the dataset, we reformulated the task as polyp lo-
+calization. Once again, we highlighted the superiority of deep learning based
+models over traditional hand-crafted approaches. As expected and contrary
+to hand-crafted segmentation methods, when considering polyp segmentation,
+deep learning based approaches do not suﬀer from specular highlights, showing
+the robustness of the learnt features towards saturation zones in colonoscopy
+images. Moreover, given that FCN not only excels in terms of performance
+
+===== PAGE 10 =====
+10 David V´ azquez et al.
+but also allows for nearly real-time processing, it has a great potential to be
+included in future DSS for colonoscopy.
+Knowing the potential of deep learning techniques, eﬀorts in the medical
+imaging community should be devoted to gather larger labeled datasets as
+well as designing deep learning architectures that would be better suited to
+deal with colonoscopy data. This paper pretends to make a ﬁrst step towards
+novel and more accurate DSS by making all code and data publicly available,
+paving the road for more researcher to contribute to the endoluminal scene
+segmentation domain.
+Acknowledgements The authors would like to thank the developers of Theano [34] and
+Keras [11]. We acknowledge the support of the following agencies for research funding
+and computing support: Imagia Inc., Spanish government through funded project AC/DC
+TRA2014-57088-C2-1-R and iVENDIS (DPI2015-65286-R), SGR projects 2014-SGR-1506,
+2014-SGR-1470 and 2014-SGR-135and TECNIOspring-FP7-ACCI grant, by the FSEED and
+NVIDIA Corporation for the generous support in the form of diﬀerent GPU hardware units.
+References
+1. Arganda-Carreras, I., Turaga, S.C., Berger, D.R., et al.: Crowdsourcing the creation of
+image segmentation algorithms for connectomics. Frontiers in Neuroanatomy 9(142)
+(2015). DOI 10.3389/fnana.2015.00142
+2. Bernal, J., Gil, D., S´ anchez, C., S´ anchez, F.J.: Discarding non informative regions for
+eﬃcient colonoscopy image analysis. In: International Workshop on Computer-Assisted
+and Robotic Endoscopy, pp. 1–10. Springer (2014)
+3. Bernal, J., N´ u˜ nez, J.M., S´ anchez, F.J., Vilari˜ no, F.: Polyp Segmentation Method in
+Colonoscopy Videos by Means of MSA-DOVA Energy Maps Calculation. In: MICCAI
+2014 Workshop on Clinical Image-Based Procedures, pp. 41–49. Springer (2014)
+4. Bernal, J., S´ anchez, F.J., et al.: WM-DOVA maps for accurate polyp highlighting in
+colonoscopy: Validation vs. saliency maps from physicians. Computerized Medical Imag-
+ing and Graphics 43, 99–111 (2015)
+5. Bernal, J., S´ anchez, J., Vilarino, F.: Towards automatic polyp detection with a polyp
+appearance model. Pattern Recognition 45(9), 3166–3182 (2012)
+6. Bernal, J., S´ anchez, J., Vilarino, F.: Impact of image preprocessing methods on polyp
+localization in colonoscopy frames. In: 2013 35th Annual International Conference of
+the IEEE Engineering in Medicine and Biology Society (EMBC), pp. 7350–7354. IEEE
+(2013)
+7. Brosch, T., Tang, L.Y.W., Yoo, Y., et al.: Deep 3d convolutional encoder networks
+with shortcuts for multiscale feature integration applied to multiple sclerosis lesion
+segmentation. IEEE TMI 35(5), 1229–1239 (2016). DOI 10.1109/TMI.2016.2528821
+8. Bruno, M.: Magniﬁcation endoscopy, high resolution endoscopy, and chromoscopy; to-
+wards a better optical diagnosis. Gut 52(suppl 4), iv7–iv11 (2003)
+9. Cha, K.H., Hadjiiski, L., Samala, R.K., Chan, H.P., Caoili, E.M., Cohan, R.H.: Urinary
+bladder segmentation in ct urography using deep-learning convolutional neural network
+and level sets. Medical physics 43(4), 1882–1896 (2016)
+10. Chen, H., Qi, X., Cheng, J., Heng, P.A.: Deep contextual networks for neuronal structure
+segmentation. In: Proceedings of the 13th AAAI Conference on Artiﬁcial Intelligence,
+February 12-17, 2016, Phoenix, Arizona, USA., pp. 1167–1173 (2016)
+11. Chollet, F.: Keras. https://github.com/fchollet/keras (2015)
+12. Deng, J., Dong, W., Socher, R., Li, L.J., Li, K., Fei-Fei, L.: ImageNet: A Large-Scale
+Hierarchical Image Database. In: CVPR09 (2009)
+13. Drozdzal, M., Vorontsov, E., Chartrand, G., Kadoury, S., Pal, C.: The importance of
+skip connections in biomedical image segmentation. CoRR abs/1608.04117 (2016).
+URL http://arxiv.org/abs/1608.04117
+
+===== PAGE 11 =====
+EndoScene benchmark 11
+14. Eigen, D., Fergus, R.: Predicting depth, surface normals and semantic labels with a
+common multi-scale convolutional architecture. CoRR abs/1411.4734 (2014). URL
+http://arxiv.org/abs/1411.4734
+15. Everingham, M., Van Gool, L., Williams, C.K.I., Winn, J., Zisserman, A.: The pascal
+visual object classes (voc) challenge. International Journal of Computer Vision 88(2),
+303–338 (2010)
+16. Gross, S., Stehle, T., et al.: A comparison of blood vessel features and local binary
+patterns for colorectal polyp classiﬁcation. In: SPIE Medical Imaging, pp. 72,602Q–
+72,602Q. International Society for Optics and Photonics (2009)
+17. Havaei, M., Davy, A., Warde-Farley, D., et al.: Brain tumor segmentation with deep
+neural networks. CoRR abs/1505.03540 (2015)
+18. Leufkens, A., Van Oijen, M., et al.: Factors inﬂuencing the miss rate of polyps in a
+back-to-back colonoscopy study. Endoscopy 44(5), 470–475 (2012)
+19. Lin, T.Y., Maire, M., Belongie, S., Hays, J., Perona, P., Ramanan, D., Dollr, P., Zit-
+nick, C.L.: Microsoft coco: Common objects in context. In: European Conference on
+Computer Vision (ECCV). Zrich (2014)
+20. Long, J., Shelhamer, E., Darrell, T.: Fully convolutional networks for semantic seg-
+mentation. In: Proceedings of the IEEE Conference on Computer Vision and Pattern
+Recognition, pp. 3431–3440 (2015)
+21. Machida, H., Sano, Y., et al.: Narrow-band imaging in the diagnosis of colorectal mucosal
+lesions: a pilot study. Endoscopy 36(12), 1094–1098 (2004)
+22. Menze, B., Jakab, A., Bauer, S., et al.: The Multimodal Brain Tumor Image Segmenta-
+tion Benchmark (BRATS). IEEE TMI p. 33 (2014). DOI 10.1109/TMI.2014.2377694
+23. N´ u˜ nez, J.M., Bernal, J., Ferrer, M., Vilari˜ no, F.: Impact of keypoint detection on graph-
+based characterization of blood vessels in colonoscopy videos. In: International Work-
+shop on Computer-Assisted and Robotic Endoscopy, pp. 22–33. Springer (2014)
+24. Park, S.Y., Sargent, D.: Colonoscopic polyp detection using convolutional neural net-
+works. In: SPIE Medical Imaging, pp. 978,528–978,528. International Society for Optics
+and Photonics (2016)
+25. Prastawa, M., Bullitt, E., Ho, S., Gerig, G.: A brain tumor segmentation framework
+based on outlier detection. Medical image analysis 8(3), 275–283 (2004)
+26. Ribeiro, E., Uhl, A., H¨ afner, M.: Colonic polyp classiﬁcation with convolutional neural
+networks. In: 2016 IEEE 29th International Symposium on Computer-Based Medical
+Systems (CBMS), pp. 253–258. IEEE (2016)
+27. Ronneberger, O., Fischer, P., Brox, T.: U-net: Convolutional networks for biomedical
+image segmentation. In: International Conference on Medical Image Computing and
+Computer-Assisted Intervention, pp. 234–241. Springer (2015)
+28. Roy, H.K., Goldberg, M.J., Bajaj, S., Backman, V.: Colonoscopic optical biopsy: Bridg-
+ing technological advances to clinical practice. Gastroenterology 140(7), 1863 (2011)
+29. Silva, J., Histace, A., Romain, O., Dray, X., Granado, B.: Toward embedded detection
+of polyps in wce images for early diagnosis of colorectal cancer. International Journal
+of Computer Assisted Radiology and Surgery 9(2), 283–293 (2014). DOI 10.1007/
+s11548-013-0926-3. URL http://dx.doi.org/10.1007/s11548-013-0926-3
+30. Society, A.C.: Colorectal cancer. online (2016)
+31. Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., Salakhutdinov, R.: Dropout:
+A simple way to prevent neural networks from overﬁtting. J. Mach. Learn. Res. 15(1),
+1929–1958 (2014)
+32. Styner, M., Lee, J., Chin, B., et al.: 3d segmentation in the clinic: A grand challenge ii:
+Ms lesion segmentation (2008)
+33. Tajbakhsh, N., Gurudu, S., Liang, J.: Automated polyp detection in colonoscopy videos
+using shape and context information. Medical Imaging, IEEE Transactions on PP(99),
+1–1 (2015). DOI 10.1109/TMI.2015.2487997
+34. Theano Development Team: Theano: A Python framework for fast computation of math-
+ematical expressions. arXiv e-prints abs/1605.02688 (2016). URL http://arxiv.org/
+abs/1605.02688
+35. Tieleman, T., Hinton, G.: rmsprop adaptive learning. In: COURSERA: Neural Networks
+for Machine Learning (2012)
+
+===== PAGE 12 =====
+12 David V´ azquez et al.
+(a)
+(b)
+(c)
+(d)
+(e)
+(f)
+Fig. 3 Examples of predictions for 4-class FCN8 model. Each sub-ﬁgure represents a single
+frame, a ground truth annotation and a prediction image. We use the following color coding
+in the annotations: red for background (mucosa), blue for lumen, yellow for polyp and green
+specularity. (a, b, c, d) show correct polyp segmentation, whereas (e, d) show incorrect polyp
+segmentation.
+
+===== PAGE 13 =====
+EndoScene benchmark 13
+Fig. 4 Localization rate of polyps as a function of IoU. The x-axis represents the degree of
+overlap between ground truth and model prediction. The y-axis represents the percentage
+of correctly localized polyps. Diﬀerent color plots represent diﬀerent models: FCN8 with
+4 classes, FCN8 with 3 classes, FCN8 with 2 classes and previously published method [3]
+(refereed to as state-of-the-art in the plot)

@@ -1,0 +1,15 @@
+{
+  "word_sha256": "2caaf8b42c299f3c73a0087654f8f7d3c2986a83b8878d713613e0c9e1ed0856",
+  "reviewed_paragraphs": 783,
+  "tables": 19,
+  "references": 24,
+  "numeric_cell_checks": 357,
+  "numeric_cell_mismatches": 0,
+  "config_field_checks": 1240,
+  "config_field_mismatches": 0,
+  "epoch_selection_disagreements": 16,
+  "original_files_edited": false,
+  "training": false,
+  "inference": false,
+  "external_upload": false
+}

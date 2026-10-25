@@ -1,0 +1,62 @@
+[
+  {
+    "stage": "after_restart",
+    "case": "login",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "requestId": "3e6b20c8-acd2-4dd2-8ecc-0ec21a62c261",
+    "json": {
+      "user": {
+        "id": "6ade2c9cd5a922967e96598d",
+        "fullName": "Audit Primary",
+        "email": "audit_primary_20261025@example.invalid",
+        "role": "USER",
+        "createdAt": "2026-10-25T23:21:48.684",
+        "updatedAt": "2026-10-25T23:21:48.684"
+      }
+    }
+  },
+  {
+    "stage": "after_restart",
+    "case": "record_survives_web_restart",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "requestId": "7ac991cf-4690-4946-b037-946f9009fdaf",
+    "json": {
+      "id": "6ade2ca0d5a922967e96598f",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-seg",
+      "modelCategory": "BASELINE",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.883303165435791,
+      "maskCount": 1,
+      "processingTimeMs": 2205.425,
+      "createdAt": "2026-10-25T23:21:52.484",
+      "originalImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/original",
+      "resultImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/result",
+      "metadataUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/metadata"
+    }
+  },
+  {
+    "stage": "after_restart",
+    "case": "original_survives_web_restart",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "requestId": "ed593f97-a30c-4bb9-a6bf-7b143d05d9ca"
+  },
+  {
+    "stage": "after_restart",
+    "case": "stored_image_bytes_preserved",
+    "pass": true
+  }
+]

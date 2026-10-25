@@ -1,0 +1,27 @@
+{
+  "inventory": {
+    "package": 46,
+    "raw": 400,
+    "word": 33
+  },
+  "new_result_reproductions": 27,
+  "new_result_pixel_identical": 27,
+  "benchmark_reproductions": 8,
+  "benchmark_pixel_identical": 8,
+  "legacy_pixel_not_identical": 11,
+  "cm_checks": 320,
+  "cm_statuses": {
+    "PASS_BLANK": 80,
+    "PASS": 240
+  },
+  "digitized_curves": 320,
+  "pr_curves": 80,
+  "pr_legend_vs_fitness_log_max_abs": 0.0012499999999999734,
+  "pr_pixel_area_vs_legend_max_abs": 0.0036373406265146624,
+  "custom_word_numeric_checks": 560,
+  "custom_word_numeric_mismatches": 0,
+  "word_cached_curve_non_time_cells": 88000,
+  "word_cached_curve_mismatches": [],
+  "word_source_mappings": 33,
+  "word_source_hash_matches": 33
+}

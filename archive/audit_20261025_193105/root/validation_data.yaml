@@ -1,0 +1,5 @@
+path: C:/LeDucLuong/HK VII/LuanCuNhan/DeepLearning/Test_Mau/archive/audit_20261025_193105/root/validation_dataset
+train: images/val
+val: images/val
+names:
+  0: polyp
