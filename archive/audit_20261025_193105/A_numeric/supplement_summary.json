@@ -1,0 +1,59 @@
+{
+  "numeric_lineage_total_cells": 46000,
+  "numeric_lineage_different_cells": 2000,
+  "different_columns": [
+    "time"
+  ],
+  "duplicate_histories_within_current40": {},
+  "historical21": {
+    "n": 21,
+    "baseline_mean": 0.7188161904761904,
+    "baseline_sd": 0.011472359162870762,
+    "tsvm_mean": 0.7229385714285714,
+    "tsvm_sd": 0.007094753896869348,
+    "paired_t_p": 0.05990878420368892,
+    "note": "Historical unpatched TSVM; not interchangeable with 20seed_FP32. CSV arithmetic only."
+  },
+  "selection_sensitivity": [
+    {
+      "rule": "max_mask",
+      "baseline_mean": 0.718868,
+      "baseline_sd": 0.011767871336374887,
+      "tsvm_mean": 0.723171,
+      "tsvm_sd": 0.007196567090963355,
+      "delta": 0.0043030000000000065,
+      "ci_low": -0.00022763190312060158,
+      "ci_high": 0.008833631903120615,
+      "paired_t_p": 0.06143134845867148,
+      "tsvm_wins": 13,
+      "baseline_wins": 7
+    },
+    {
+      "rule": "max_fitness",
+      "baseline_mean": 0.717397,
+      "baseline_sd": 0.012876845846222144,
+      "tsvm_mean": 0.7221989999999999,
+      "tsvm_sd": 0.007527215812950831,
+      "delta": 0.0048019999999999955,
+      "ci_low": -0.00026398725647731446,
+      "ci_high": 0.009867987256477306,
+      "paired_t_p": 0.061898000568015386,
+      "tsvm_wins": 14,
+      "baseline_wins": 6
+    },
+    {
+      "rule": "final_epoch",
+      "baseline_mean": 0.7093404999999999,
+      "baseline_sd": 0.0132262925843305,
+      "tsvm_mean": 0.7118545000000001,
+      "tsvm_sd": 0.01295285153526963,
+      "delta": 0.002514000000000005,
+      "ci_low": -0.004404410683173672,
+      "ci_high": 0.009432410683173683,
+      "paired_t_p": 0.456255714420967,
+      "tsvm_wins": 12,
+      "baseline_wins": 8
+    }
+  ],
+  "facts_matches": true
+}

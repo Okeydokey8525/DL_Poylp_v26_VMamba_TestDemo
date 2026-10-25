@@ -1,0 +1,15 @@
+﻿claim_id,claim,evidence_level,result,evidence
+APP-001,Word ch4 Web Java17/Spring4.1,REAL_RUNTIME,Java17 executable; built Boot4.1 jar; Webstarted18080,logs/web_resume_stdout.log
+APP-002,Hai checkpoint S/TSVMFP32 seed0,REAL_INFERENCE,health2/2ready and exact checkpoint hashes; four trueimage predictions,runtime/health.json;runtime/true_inference_smoke.json
+APP-003,C-002 WordP0515 one mask each,CONFIRMED_MISMATCH,Baseline1 TSVM2 bg0/0,runtime/true_inference_smoke.json
+APP-004,Tổng51AItests,TEST_MOCK_AND_UNIT,"51passed3warnings; model doubles/mocks in suites, separate from trueinference",logs/ai_tests.log;logs/ai_tests.xml
+APP-005,Tổng261Javatests,TEST_MOCK_AND_UNIT,261tests0failure0error in isolatedcurrent-source copy,logs/maven_test_package.log;java_test_summary.json
+APP-006,Webuploadandcompare,BROWSER_END_TO_END,Actual browserlogin/uploadTSVM/compare from samepublicvalidation image,screenshots/03_tsvm_result_badge.png;screenshots/05_comparison.png
+APP-007,MongoDB/filespersistenthistory,REAL_RUNTIME,"Singlehistory readable, originaldownloadsamehashafterJava restart",runtime_http_after_restart.json;screenshots/08_history_records.png
+APP-008,Comparisonhistorylist,CONFIRMED_RUNTIME_FAILURE,nestedfacetillegal;500API503HTML,logs/comparison_diagnostic.log;runtime_http_before.json
+APP-009,Ownershipandexportdelete,REAL_HTTP_INTEGRATION,"Otheraccountdetail/export/delete403;ownerexport200,delete204;postdelete404",runtime_http_results.json
+APP-010,AIerrornotfakesuccess,REAL_HTTP_INTEGRATION,AIstopped->503;history unchanged,runtime_http_ai_off.json
+APP-011,MobileDirectAI,SOURCE_ONLY_NOT_RUN,main.dart initializesPolypVisionApp and DirectAIconfig; no Flutterrun/testperformed,app_polyp/lib/main.dart;app_polyp/lib/core/config/ai_service_config.dart
+APP-012,498Mobiletests in Word,NOT_REEXECUTED,Historical count not verified as current runtime result; Mobile explicitly outside execution scope,C_report/report.md
+APP-013,Pipeline timing,NOT_BENCHMARK,Runtime overloaded/coldstarts; displayed latency cannot replace controlledCPUBenchmark,runtime/true_inference_smoke.json
+APP-014,Source copy current,HASH_VERIFIED,174srcfiles exactlymatchoriginal; jar templates exact,source_copy_comparison.json

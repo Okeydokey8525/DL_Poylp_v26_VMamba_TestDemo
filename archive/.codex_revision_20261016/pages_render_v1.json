@@ -1,0 +1,477 @@
+[
+  {
+    "physical": 1,
+    "first": "BỘ CÔNG THƯƠNG | TRƯỜNG ĐẠI HỌC CÔNG THƯƠNG THÀNH PHỐ HỒ CHÍ MINH | KHOA CÔNG NGHỆ THÔNG TIN | KHÓA LUẬN CỬ NHÂN",
+    "words": 92
+  },
+  {
+    "physical": 2,
+    "first": "BỘ CÔNG THƯƠNG | TRƯỜNG ĐẠI HỌC CÔNG THƯƠNG THÀNH PHỐ HỒ CHÍ MINH | KHOA CÔNG NGHỆ THÔNG TIN | KHÓA LUẬN CỬ NHÂN",
+    "words": 92
+  },
+  {
+    "physical": 3,
+    "first": "i | LỜI CẢM ƠN | Nhóm sinh viên xin cảm ơn quý thầy cô Khoa Công nghệ Thông tin, Trường  | Đại học Công Thương Thành phố Hồ Chí Minh đã trang bị kiến thức và tạo điều ",
+    "words": 175
+  },
+  {
+    "physical": 4,
+    "first": "ii | LỜI CAM ĐOAN | Nhóm sinh viên cam đoan các kết quả thực nghiệm trong khóa luận được  | trình bày theo số liệu và cấu hình lưu trữ của đề tài. Những nội dung kế thừa, kết ",
+    "words": 138
+  },
+  {
+    "physical": 5,
+    "first": "iii | NHẬN XÉT CỦA GIẢNG VIÊN HƯỚNG DẪN | Nội dung và phương pháp nghiên cứu | ..............................................................................................................",
+    "words": 57
+  },
+  {
+    "physical": 6,
+    "first": "iv | NHẬN XÉT CỦA GIẢNG VIÊN PHẢN BIỆN | Nội dung và phương pháp nghiên cứu | ..............................................................................................................",
+    "words": 57
+  },
+  {
+    "physical": 7,
+    "first": "v | TÓM TẮT KHÓA LUẬN | Khóa luận nghiên cứu phương pháp tích hợp Topology-Shape-aware  | VMamba vào YOLO26s-seg cho phân đoạn polyp từ ảnh nội soi đại trực tràng. ",
+    "words": 244
+  },
+  {
+    "physical": 8,
+    "first": "vi | ABSTRACT | This thesis investigates the integration of a Topology-Shape-aware VMamba  | block into YOLO26s-seg for colorectal polyp instance segmentation. ",
+    "words": 177
+  },
+  {
+    "physical": 9,
+    "first": "vii | MỤC LỤC | MỞ ĐẦU..........................................................................................................................0 | 1 LÝ DO CHỌN ĐỀ TÀI..........................................................................................0",
+    "words": 258
+  },
+  {
+    "physical": 10,
+    "first": "viii | 4.5 CHỨC NĂNG WEB VÀ MOBILE...................................................................0 | 4.6 KIỂM TRA TÍCH HỢP VỚI CHECKPOINT THỰC NGHIỆM..................0 | 4.7 VẬN HÀNH VÀ GIỚI HẠN ỨNG DỤNG.....................................................0",
+    "words": 196
+  },
+  {
+    "physical": 11,
+    "first": "ix | DANH MỤC HÌNH | Hình 2.1 Kiến trúc YOLO26s seg và vị trí thay thế module ở tầng 10..................13 | Hình 2.2 Hai nhánh SS2D và hình dạng cùng cơ chế guidance trong TSVMamba",
+    "words": 387
+  },
+  {
+    "physical": 12,
+    "first": "x | DANH MỤC BẢNG | Bảng 1.1 Đối chiếu các công trình gần với đề tài.....................................................11 | Bảng 2.1 Các mức đặc trưng của cấu hình small......................................................13",
+    "words": 219
+  },
+  {
+    "physical": 13,
+    "first": "xi | DANH MỤC CHỮ VIẾT TẮT | Các thuật ngữ dùng trong báo cáo | Ký hiệu",
+    "words": 158
+  },
+  {
+    "physical": 14,
+    "first": "1 | MỞ ĐẦU | 1 LÝ DO CHỌN ĐỀ TÀI | Phân đoạn polyp từ ảnh nội soi là bài toán xác định vùng tổn thương ở mức ",
+    "words": 497
+  },
+  {
+    "physical": 15,
+    "first": "2 | cùng tập chia. Nếu chỉ chọn lượt tốt nhất của mỗi mô hình, sự khác biệt quan sát  | được có thể trộn lẫn tác động của thiết kế với thuận lợi ngẫu nhiên của lượt chạy.  | Vì vậy, đề tài sử dụng 20 seed cho mỗi kiến trúc, trình bày cả mức trung bình, độ ",
+    "words": 510
+  },
+  {
+    "physical": 16,
+    "first": "3 | Các nhiệm vụ này tương ứng với bốn nhóm căn cứ trong báo cáo: mã nguồn  | và YAML để giải thích thiết kế; ảnh, nhãn và thống kê dữ liệu để mô tả đầu vào;  | args.yaml, results.csv và tệp tổng hợp để đánh giá thực nghiệm; mã ứng dụng, ",
+    "words": 487
+  },
+  {
+    "physical": 17,
+    "first": "4 | Trong phạm vi hệ thống, Web và Mobile sử dụng ảnh tĩnh tải lên. Báo cáo  | phân biệt thời gian tính toán mô hình với thời gian của một yêu cầu ứng dụng, vì  | yêu cầu còn có truyền mạng, giải mã ảnh và tạo kết quả hiển thị. Thực nghiệm ",
+    "words": 499
+  },
+  {
+    "physical": 18,
+    "first": "5 | 5 BỐ CỤC BÁO CÁO | Chương 1 trình bày cơ sở và nghiên cứu liên quan. Chương 2 mô tả kiến  | trúc, luồng dữ liệu và độ chính xác số. Chương 3 trình bày dữ liệu và tiền xử lý. ",
+    "words": 90
+  },
+  {
+    "physical": 19,
+    "first": "6 | CHƯƠNG 1 TỔNG QUAN VÀ CƠ SỞ NGHIÊN CỨU | 1.1 BÀI TOÁN PHÂN ĐOẠN POLYP | 1.1.1 Phân đoạn ngữ nghĩa và phân đoạn từng đối tượng",
+    "words": 481
+  },
+  {
+    "physical": 20,
+    "first": "7 | động cơ thiết kế. Muốn khẳng định một module cải thiện biên hoặc liên thông,  | cần độ đo và tập ca kiểm chứng tương ứng, ngoài các chỉ số phát hiện tổng hợp. | Kvasir-SEG và ảnh normal-cecum có khác biệt về bối cảnh giải phẫu, thiết ",
+    "words": 487
+  },
+  {
+    "physical": 21,
+    "first": "8 | Trong các tầng nông, một kernel nhỏ quan sát vùng lân cận và học những  | biến đổi màu sắc, cạnh hoặc kết cấu. Khi xếp chồng nhiều tầng và giảm độ phân  | giải, trường tiếp nhận lý thuyết mở rộng, đồng thời đặc trưng mang nhiều thông ",
+    "words": 488
+  },
+  {
+    "physical": 22,
+    "first": "9 | Ở giai đoạn suy luận, đầu ra cần được chuyển từ không gian đặc trưng về  | ảnh quan sát và áp dụng quy tắc chọn dự đoán của phiên bản đang dùng. Vì vậy,  | khi tái lập cần cố định không chỉ tên YOLO mà cả phiên bản Ultralytics, chế độ ",
+    "words": 491
+  },
+  {
+    "physical": 23,
+    "first": "10 | 1.3.2 Cơ chế SS2D bốn hướng | VMamba mở rộng cách xử lý chuỗi sang dữ liệu ảnh thông qua SS2D [15].  | Một bản đồ H×W được sắp thành chuỗi theo hàng và theo cột; hai chuỗi đảo ",
+    "words": 473
+  },
+  {
+    "physical": 24,
+    "first": "11 | nhưng nguồn tín hiệu topology khác nhau; TSVM chưa có phép đo hoặc ràng  | buộc topology tường minh như persistent homology. | CSG-Mamba đặt convolutional scoring gate tại bottleneck của mạng Vision ",
+    "words": 329
+  },
+  {
+    "physical": 25,
+    "first": "12 | phân biệt gồm nhánh hình dạng có hướng, guidance một chiều từ nhánh đó đến  | SS2D, cách hợp nhất hai nhánh và tích hợp vào YOLO26s-seg tại tầng 10. Tuy  | nhiên, các đóng góp riêng của từng thành phần chỉ có thể tách bạch bằng ablation ",
+    "words": 414
+  },
+  {
+    "physical": 26,
+    "first": "13 | CHƯƠNG 2 PHÂN TÍCH VÀ THIẾT KẾ MÔ HÌNH  | ĐỀ XUẤT | 2.1 KIẾN TRÚC ĐỐI CHỨNG YOLO26S SEG",
+    "words": 235
+  },
+  {
+    "physical": 27,
+    "first": "14 | Vị trí | Stride | Kích thước với 640",
+    "words": 413
+  },
+  {
+    "physical": 28,
+    "first": "15 | [a, b] = split(Conv₁×₁(x)) ; y = Conv₁×₁(concat(a, TSVMamba(b))) | YAML ghi repeats bằng 2, nhưng parser áp dụng depth multiplier bằng 0,5  | cho biến thể s nên số block nội bộ là 1. Điều kiện c1 = c2 được kiểm tra trong ",
+    "words": 436
+  },
+  {
+    "physical": 29,
+    "first": "16 | Tại mỗi hướng, tín hiệu đầu vào được chiếu để sinh các hệ số phụ thuộc vị  | trí; trạng thái sau đó kết hợp thông tin hiện tại với trạng thái trước. Những hệ số  | này được chia sẻ hoặc bố trí theo các chiều tensor của triển khai, không phải một ",
+    "words": 483
+  },
+  {
+    "physical": 30,
+    "first": "17 | độ lớn có thể làm mất thông tin về hướng và dấu của các bộ lọc. Dù vậy, việc  | mạng học được cấu trúc hữu ích nào vẫn phải được khảo sát bằng đầu ra và  | ablation; không thể suy ra một đường bao hoàn chỉnh chỉ từ biểu thức của ",
+    "words": 300
+  },
+  {
+    "physical": 31,
+    "first": "18 | Do đó, “một chiều” mô tả hướng tính toán của tín hiệu guidance trong forward,  | không phải nhánh shape được tách khỏi quá trình học của toàn mạng. | Hệ số γ được học và khởi tạo bằng 0,001 để bắt đầu với đóng góp residual có ",
+    "words": 510
+  },
+  {
+    "physical": 32,
+    "first": "19 | 2.4.2 Vì sao cần checkpoint FP32 | Trong fork cơ bản, bước lưu checkpoint chuyển bản sao EMA sang half. Đối  | với TSVM, nhánh trạng thái có thể tạo các giá trị lớn trước BatchNorm; các ",
+    "words": 471
+  },
+  {
+    "physical": 33,
+    "first": "20 | TSVM. Các hệ số có tên trong args.yaml phải được diễn giải cùng nhánh thực  | thi; riêng reg_max bằng 1 làm mất mát DFL dạng nhiều bin không hoạt động như  | ở cấu hình reg_max lớn hơn 1.",
+    "words": 366
+  },
+  {
+    "physical": 34,
+    "first": "21 | Thử nghiệm ablation trong tương lai cần dùng cùng seed, dữ liệu, pretrained  | policy, epoch và tiêu chí chọn checkpoint. Nếu thêm một module làm tăng tham  | số, có thể bổ sung đối chứng convolution với mức tham số tương đương. Điều ",
+    "words": 140
+  },
+  {
+    "physical": 35,
+    "first": "22 | CHƯƠNG 3 XÂY DỰNG BỘ DỮ LIỆU VÀ TIỀN XỬ  | LÝ DỮ LIỆU | Chất lượng của dữ liệu đầu vào ảnh hưởng trực tiếp đến khả năng học của ",
+    "words": 452
+  },
+  {
+    "physical": 36,
+    "first": "23 | Ngoài ra, cả ảnh và mặt nạ đều được lưu ở định dạng nén JPEG [1]. Phép  | nén này làm xuất hiện một số pixel có mức xám trung gian dọc theo ranh giới  | giữa vùng trắng và vùng đen, nên mặt nạ không còn hoàn toàn chỉ gồm hai giá ",
+    "words": 372
+  },
+  {
+    "physical": 37,
+    "first": "24 | 3.2. XÂY DỰNG VÀ PHÂN CHIA BỘ DỮ LIỆU BG20 | Ảnh polyp được chia theo danh sách có sẵn gồm 880 ảnh huấn luyện và 120  | ảnh kiểm định do nhóm tác giả Kvasir-SEG cung cấp trong hai tệp train.txt và ",
+    "words": 460
+  },
+  {
+    "physical": 38,
+    "first": "25 | 3.3. CHUYỂN MẶT NẠ PHÂN ĐOẠN THÀNH NHÃN ĐA GIÁC | Mặt nạ của Kvasir-SEG là một ảnh, mỗi pixel cho biết vị trí đó có thuộc  | polyp hay không. Trong khi đó, YOLO26-seg yêu cầu nhãn ở dạng văn bản: mỗi ",
+    "words": 471
+  },
+  {
+    "physical": 39,
+    "first": "26 | Trong đó, A là tập các pixel trắng của mặt nạ và B là phần tử cấu trúc, ở đây  | là một hình vuông kích thước 3 × 3 pixel. Phép giãn nở, ký hiệu  | , làm vùng",
+    "words": 491
+  },
+  {
+    "physical": 40,
+    "first": "27 | giác giảm từ 333,2 xuống còn 24,6 điểm, tức giảm 92,6%, và mỗi đa giác có từ  | 10 đến 80 đỉnh. | 3.3.5. Chuẩn hóa tọa độ và ghi tệp nhãn",
+    "words": 249
+  },
+  {
+    "physical": 41,
+    "first": "28 | Ảnh b là mặt nạ gốc trước khi xử lý. Sau các bước Otsu, phép đóng và tìm  | đường bao, ảnh c cho thấy đường bao màu xanh gồm 377 điểm bám sát biên  | polyp. Ở mặt nạ này còn có một đốm nhiễu nhỏ hơn 20 pixel vuông và đã bị loại ",
+    "words": 487
+  },
+  {
+    "physical": 42,
+    "first": "29 | Hình 3.3 minh họa kết quả trước và sau công đoạn đổi kích thước trên một  | ảnh của tập kiểm định có kích thước lớn nhất trong bộ dữ liệu, với khung đích  | 640 × 640 pixel.",
+    "words": 348
+  },
+  {
+    "physical": 43,
+    "first": "30 | được thực hiện theo thứ tự: Mosaic, dịch chuyển và thu phóng, biến đổi màu  | HSV, cuối cùng là lật ngang. Thông số của từng phép được lấy từ tệp cấu hình  | của lần huấn luyện và tổng hợp trong Bảng 3.2.",
+    "words": 497
+  },
+  {
+    "physical": 44,
+    "first": "31 | không gian màu HSV, trong đó H là sắc độ, tức màu cơ bản như đỏ hay cam; S là  | độ bão hòa, tức độ đậm nhạt của màu; V là độ sáng. Với mỗi ảnh, ba hệ số ngẫu  | nhiên gh, gs, gv được chọn đều trong các đoạn từ −0,015 đến 0,015, từ −0,7 đến ",
+    "words": 440
+  },
+  {
+    "physical": 45,
+    "first": "32 | Phép biến đổi | Tham số | Giá trị",
+    "words": 207
+  },
+  {
+    "physical": 46,
+    "first": "33 | bao màu xanh không đổi. Ảnh d được thu nhỏ và dịch lệch khỏi tâm, phần trống  | được tô xám. Ảnh e là kết quả Mosaic từ bốn ảnh, trong đó có một ảnh nền, và  | các polyp chỉ hiện ra một phần ở góc ảnh. Ảnh f kết hợp lật ngang, biến đổi màu ",
+    "words": 480
+  },
+  {
+    "physical": 47,
+    "first": "34 | 160 ảnh và 160 tệp nhãn ở tập kiểm định, cùng với số tệp nhãn rỗng lần lượt là  | 160 và 40. Nếu một con số không khớp, chương trình dừng lại và báo lỗi. | Bên cạnh đó, đề tài thực hiện thêm một lượt kiểm tra độc lập trên bộ dữ liệu ",
+    "words": 344
+  },
+  {
+    "physical": 48,
+    "first": "35 | Hình 3.5. Quy trình xây dựng bộ dữ liệu BG20 và tiền xử lý dữ liệu | Nguồn: đề tài tự xây dựng. | Phần phía trên của sơ đồ là giai đoạn chuẩn bị dữ liệu, chỉ thực hiện một lần ",
+    "words": 210
+  },
+  {
+    "physical": 49,
+    "first": "36 | CHƯƠNG 4 CÀI ĐẶT THUẬT TOÁN VÀ ỨNG  | DỤNG MINH HỌA | 4.1 TỔ CHỨC CÀI ĐẶT VÀ MÔI TRƯỜNG",
+    "words": 293
+  },
+  {
+    "physical": 50,
+    "first": "37 | [22]. Các phiên bản Python, PyTorch và phần cứng dùng trong kiểm tra ứng  | dụng cục bộ được tách khỏi môi trường huấn luyện trên Kaggle. | Các thành phần được tổ chức thành ba nhóm. Nhóm nghiên cứu chứa mã ",
+    "words": 472
+  },
+  {
+    "physical": 51,
+    "first": "38 | dùng, 40 results.csv đều có 100 dòng epoch; đây là bằng chứng lịch sử đã ghi  | nhận đủ số epoch, khác với việc suy đoán từ một biến EPOCHS trong notebook.  | Sau khi tải về máy, cần kiểm tra tệp kết quả và trọng số còn tương ứng cùng lượt ",
+    "words": 476
+  },
+  {
+    "physical": 52,
+    "first": "39 | tiếp tới FastAPI, không bắt buộc đi qua Web và không dùng MongoDB như một  | lịch sử cloud mặc định. | Hình 4.1 Kiến trúc Web và Mobile dùng chung dịch vụ suy luận FastAPI",
+    "words": 315
+  },
+  {
+    "physical": 53,
+    "first": "40 | đánh giá định lượng. Vì vậy, giao diện cần giữ thông tin tên mô hình và ảnh gốc  | để người đọc truy nguyên kết quả đang xem. | 4.4 DỊCH VỤ SUY LUẬN VÀ HỢP ĐỒNG API",
+    "words": 409
+  },
+  {
+    "physical": 54,
+    "first": "41 | khi chuyển cho Ultralytics. Cách này tránh việc một mảng RGB bị thư viện hiểu  | là BGR và đảo sai kênh màu. | Cả hai mô hình được chuyển về float32; nhánh predict sử dụng half=False. ",
+    "words": 364
+  },
+  {
+    "physical": 55,
+    "first": "42 | 4.4.3 Điều phối yêu cầu và xử lý lỗi | Các endpoint Mobile sử dụng requestId để theo dõi yêu cầu và trả lỗi JSON  | thống nhất. Dịch vụ giới hạn số lượt suy luận đồng thời bằng semaphore, áp dụng ",
+    "words": 479
+  },
+  {
+    "physical": 56,
+    "first": "43 | lớp tùy biến sẽ không tạo ra một phép so sánh đúng. Lịch sử của nghiên cứu cũ  | cần được nhận biết theo modelType đã lưu, không được đổi dữ liệu cũ thành kết  | quả TSVM FP32 chỉ bằng cách đổi tên giao diện.",
+    "words": 493
+  },
+  {
+    "physical": 57,
+    "first": "44 | Kiểm tra kết nối và trạng thái mô hình trước khi gửi ảnh giúp phân biệt lỗi mạng  | với lỗi suy luận. | Ảnh chọn từ bộ nhớ hoặc camera cần được đưa vào cùng quy trình kiểm tra ",
+    "words": 295
+  },
+  {
+    "physical": 58,
+    "first": "45 | Hình 4.2 Ví dụ suy luận thực tế của hai checkpoint seed 0 và đường bao nhãn đối chiếu | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài. | Hình 4.2 dùng cùng ảnh và cùng checkpoint đã nạp vào dịch vụ. Confidence ",
+    "words": 298
+  },
+  {
+    "physical": 59,
+    "first": "46 | định như Chương 5. Việc tách các mức kiểm tra giúp báo cáo ghi nhận đúng  | phần mềm đã chạy mà không gán ý nghĩa vượt quá dữ liệu quan sát. | 4.7 VẬN HÀNH VÀ GIỚI HẠN ỨNG DỤNG",
+    "words": 463
+  },
+  {
+    "physical": 60,
+    "first": "47 | CHƯƠNG 5 THỬ NGHIỆM VÀ ĐÁNH GIÁ KẾT  | QUẢ | 5.1 MỤC TIÊU VÀ TỔ CHỨC THỰC NGHIỆM",
+    "words": 431
+  },
+  {
+    "physical": 61,
+    "first": "48 | 5.1.3 Nguồn số liệu và khả năng truy vết | Nguồn chính là 40 tệp results.csv cùng args.yaml tương ứng trong hai nhóm  | thư mục thực nghiệm. Bộ KQ_Nen_DX_20seed_FP32 được tổ chức lại thành các ",
+    "words": 421
+  },
+  {
+    "physical": 62,
+    "first": "49 | 5.2.2 Ý nghĩa các độ đo | IoU đo tỷ lệ phần giao trên phần hợp giữa vùng dự đoán và vùng nhãn.  | Trong đánh giá từng đối tượng, dự đoán còn phải được ghép với đối tượng thật ",
+    "words": 472
+  },
+  {
+    "physical": 63,
+    "first": "50 | Mask mAP50–95 là chỉ số chính; những phép kiểm định khác có tính bổ  | sung hoặc thăm dò. Khi xem nhiều p-value cùng lúc, nguy cơ gặp một giá trị nhỏ  | do ngẫu nhiên tăng lên. Báo cáo không chọn riêng một phép kiểm định thuận lợi ",
+    "words": 288
+  },
+  {
+    "physical": 64,
+    "first": "51 | Hình 5.1 Trung bình và độ lệch chuẩn mask mAP50 95 của hai mô hình | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài. | Hình 5.1 thể hiện đồng thời mức trung bình và biến thiên giữa seed. Độ cao ",
+    "words": 111
+  },
+  {
+    "physical": 65,
+    "first": "52 | 5.3.2 Đối chiếu mAP50 và mAP50 95 | Hình 5.2 So sánh mask mAP50 trên 20 seed | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài.",
+    "words": 191
+  },
+  {
+    "physical": 66,
+    "first": "53 | 5.3.3 Mối quan hệ Precision và Recall | Hình 5.3 Mask Precision và Recall của hai nhóm thực nghiệm | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài.",
+    "words": 185
+  },
+  {
+    "physical": 67,
+    "first": "54 | 5.3.4 Chất lượng hộp bao và quan hệ với mặt nạ | Hình 5.4 Các chỉ số hộp bao trên hai nhóm 20 seed | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài.",
+    "words": 167
+  },
+  {
+    "physical": 68,
+    "first": "55 | 5.4 CHÊNH LỆCH GHÉP CẶP VÀ ĐỘ BẤT ĐỊNH | 5.4.1 Quan sát từng cặp seed | Hình 5.5 Kết quả ghép cặp mask mAP50 95 và Precision của 20 seed",
+    "words": 190
+  },
+  {
+    "physical": 69,
+    "first": "56 | Hình 5.6 Chênh lệch trung bình và khoảng tin cậy 95 phần trăm | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài. | Đối với mask mAP50–95, kiểm định t ghép cặp cho p = 0,0614 và Wilcoxon ",
+    "words": 228
+  },
+  {
+    "physical": 70,
+    "first": "57 | 5.5 PHÂN BỐ KẾT QUẢ VÀ ĐỘ ỔN ĐỊNH GIỮA SEED | 5.5.1 Giá trị theo từng seed | Hình 5.7 Chênh lệch mask mAP50 95 của từng cặp seed",
+    "words": 141
+  },
+  {
+    "physical": 71,
+    "first": "58 | Seed | Epoch B | Epoch T",
+    "words": 220
+  },
+  {
+    "physical": 72,
+    "first": "59 | Trục seed trong Hình 5.8 chỉ là nhãn của các lượt độc lập, không phải thời  | gian. Đường nối giúp đối chiếu vị trí các giá trị nhưng không thể được diễn giải  | như một quá trình học liên tục qua seed. Hai đường đan xen phản ánh sự khác ",
+    "words": 264
+  },
+  {
+    "physical": 73,
+    "first": "60 | bố quan sát được, không xem một phép kiểm định phương sai riêng lẻ là chứng  | minh ổn định cho mọi cấu hình. | Hình 5.10 Phân bố tần suất mask mAP50 95 giữa các seed",
+    "words": 159
+  },
+  {
+    "physical": 74,
+    "first": "61 | Các đường trung bình được tính tại cùng epoch trên 20 lượt của mỗi mô  | hình. Chúng thể hiện giai đoạn chất lượng tăng nhanh ban đầu rồi tiếp tục thay  | đổi chậm hơn về cuối. Vùng tô là trung bình cộng trừ một SD giữa các seed ở ",
+    "words": 253
+  },
+  {
+    "physical": 75,
+    "first": "62 | Hình 5.13 Diễn biến các thành phần validation loss qua 100 epoch | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài. | Các thành phần loss được quan sát riêng vì chúng có thang đo và ý nghĩa ",
+    "words": 245
+  },
+  {
+    "physical": 76,
+    "first": "63 | Hình 5.14 So sánh số đối tượng đúng sai và bỏ sót trung bình | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài. | Số TP trung bình là 110,55 ở baseline và 110,65 ở TSVM FP32; FP giảm từ ",
+    "words": 199
+  },
+  {
+    "physical": 77,
+    "first": "64 | 5.7.2 Cách đọc các ô background | Hình 5.15 Ma trận số đếm trung bình của baseline | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài.",
+    "words": 54
+  },
+  {
+    "physical": 78,
+    "first": "65 | Trong ma trận phát hiện của Ultralytics, background không đóng vai trò một  | lớp đối tượng được gán hộp bao như lớp polyp. Ô tương ứng đối tượng thật  | nhưng không có dự đoán phù hợp biểu thị FN; ô dự đoán polyp không ghép với ",
+    "words": 473
+  },
+  {
+    "physical": 79,
+    "first": "66 | tham số không thay đổi chỉ vì chuyển kiểu số FP16 sang FP32; điều thay đổi là  | số byte biểu diễn và có thể là chi phí tính toán trên từng thiết bị. | Bảng 5.6 Quy mô hai checkpoint được tích hợp vào ứng dụng",
+    "words": 349
+  },
+  {
+    "physical": 80,
+    "first": "67 | Mỗi chế độ có 20 lượt warmup và 100 lượt bấm giờ bằng perf_counter_ns  | trong torch.inference_mode. Chế độ forward only tái sử dụng tensor đã chuẩn  | hóa từ cùng một ảnh, chỉ bấm giờ thực thi mạng. Chế độ predict pipeline dùng 20 ",
+    "words": 268
+  },
+  {
+    "physical": 81,
+    "first": "68 | Hình 5.17 Độ trễ trung bình của forward và pipeline suy luận FP32 | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài. | Forward only của baseline đạt trung bình 269,56 ms, còn TSVM FP32 đạt ",
+    "words": 109
+  },
+  {
+    "physical": 82,
+    "first": "69 | Hình 5.18 Các phân vị độ trễ của pipeline predict | Nguồn: nhóm thực hiện từ mã nguồn hoặc số liệu của đề tài. | Median pipeline lần lượt là 286,82 và 566,94 ms; p95 là 319,22 và 611,67 ",
+    "words": 124
+  },
+  {
+    "physical": 83,
+    "first": "70 | Thời gian inference nội bộ trung bình khoảng 276,96 ms ở baseline và  | 558,06 ms ở TSVM; tiền xử lý khoảng 4,35 và 4,16 ms; hậu xử lý khoảng 1,10  | và 1,46 ms. Phần còn lại giữa tổng các mốc nội bộ và đồng hồ bao ngoài là chi ",
+    "words": 309
+  },
+  {
+    "physical": 84,
+    "first": "71 | phần xử lý trạng thái. VRAM không áp dụng trong phiên CPU này, thay vì được  | ghi thành 0 MiB GPU. Thứ tự chạy cố định, nhiệt độ, quản lý điện năng và tác vụ  | nền có thể tác động số đo; 100 lượt timing không phải 100 seed độc lập để kiểm ",
+    "words": 372
+  },
+  {
+    "physical": 85,
+    "first": "72 | ứng. Mỗi công trình sử dụng nguồn train, cách chia, kích thước ảnh và nhiệm vụ  | đầu ra riêng. | Kvasir-SEG nguyên bản và BG20 không có cùng thành phần mẫu, vì BG20 ",
+    "words": 473
+  },
+  {
+    "physical": 86,
+    "first": "73 | tra của dịch vụ và client, trong khi đánh giá khả năng ứng dụng trong nội soi thực  | tế cần dữ liệu, quy trình và thẩm định riêng. | 5.11 TÓM TẮT CHƯƠNG",
+    "words": 125
+  },
+  {
+    "physical": 87,
+    "first": "74 | KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN | KẾT QUẢ ĐẠT ĐƯỢC | Đề tài đã xây dựng khối C2TSVMamba thay C2PSA ở tầng 10 của ",
+    "words": 409
+  },
+  {
+    "physical": 88,
+    "first": "75 | HƯỚNG PHÁT TRIỂN | Ưu tiên đầu tiên là đánh giá lại cùng một tập kiểm định từ các checkpoint đã  | lưu, dùng chính xác tiêu chí chọn best.pt và lưu kết quả dạng JSON/CSV. Tiếp ",
+    "words": 236
+  },
+  {
+    "physical": 89,
+    "first": "76 | TÀI LIỆU THAM KHẢO | [1] D. Jha và cộng sự, “Kvasir-SEG: A Segmented Polyp Dataset,” MMM, 2020, tr. 451 | –462. DOI: 10.1007/978-3-030-37734-2_37. https://arxiv.org/abs/1911.07069",
+    "words": 280
+  },
+  {
+    "physical": 90,
+    "first": "77 | [16] Ultralytics, “Ultralytics YOLO26” và mã cấu hình Segment26 của fork 8.4.127 sử  | dụng trong đề tài. https://docs.ultralytics.com/models/yolo26/. Truy cập 15/10/2026. | [17] Z. Xu và cộng sự, “Polyp-Mamba: Polyp Segmentation with Visual Mamba,” ",
+    "words": 157
+  },
+  {
+    "physical": 91,
+    "first": "78 | PHỤ LỤC A NGUỒN SỐ LIỆU VÀ QUY TẮC TÁI  | LẬP | Các đường dẫn dưới đây được tính tương đối từ thư mục archive để tránh ",
+    "words": 143
+  },
+  {
+    "physical": 92,
+    "first": "79 | PHỤ LỤC B ĐỐI CHIẾU EPOCH VÀ  | CHECKPOINT | Bảng B.1 Epoch chọn theo mask và theo fitness của 40 lượt",
+    "words": 123
+  },
+  {
+    "physical": 93,
+    "first": "80 | Mô hình | Seed | Max mask",
+    "words": 93
+  },
+  {
+    "physical": 94,
+    "first": "81 | PHỤ LỤC C CẤU HÌNH VÀ KIỂM TRA ỨNG DỤNG | Ứng dụng nằm tại DeepLearning/Ung_Dung/polypweb. Thư mục  | polypweb/ai-service là FastAPI, polypweb là Spring Boot và app_polyp là ",
+    "words": 193
+  },
+  {
+    "physical": 95,
+    "first": "82 | PHỤ LỤC D KẾ HOẠCH THỰC NGHIỆM BỔ  | SUNG | Bảng D.1 Các phép kiểm cần bổ sung trước khi mở rộng kết luận",
+    "words": 179
+  }
+]

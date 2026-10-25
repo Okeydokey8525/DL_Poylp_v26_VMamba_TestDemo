@@ -1,0 +1,990 @@
+{
+  "versions": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "PyYAML": "6.0.3"
+  },
+  "inputs": [
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "6762a07ca3119e3b98c4ba097c3b62e27cfd23ad18396d6793c0fa4dde19ab06",
+      "bytes": 17963
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "25c66016f52233527f7cf013922427c9451e4e8f966e92624a576f11d389bb76",
+      "bytes": 1768
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "170c0d4b4059ea9085e6e1e5b9791cc9c32de00f55aa3af07fd9b1d4f6a7817d",
+      "bytes": 91781
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "b7e42717b6da9d1cc05cbd364a0a7bc2399080127305dcb60cdb3fc8ca38d1a6",
+      "bytes": 97884
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "204497b83743d87a87d7d4c0ee58c7f67c86e0bed4399ea70c991cfb8a100934",
+      "bytes": 17965
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "20b21322b2c6523db5279bdd7bd1aee437507a82a17362fca529df6c6c7562af",
+      "bytes": 1768
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "0d82deb3dbf8a85ffa06598f44ad7f2f15a1a22038f32f8761d30a0be6f80907",
+      "bytes": 93658
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "4127698a8b6663273036bf43ab72a4a3cb9a6d42c21ee805ed1b14cbff567b76",
+      "bytes": 98067
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "3036389e0b27528cc396245a3356c29d16eca0c181f4b61e00c769c4cf4700d7",
+      "bytes": 17969
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "af732692cee00d484494d797ab1f7b253ff85b3866433c91ff0f82db66fc7f05",
+      "bytes": 1768
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "4c6429be20d1ad77e2fe0dc5801400d596d47f49ffedd5a75980e5ae7ee149fc",
+      "bytes": 91238
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "95886e0b347d9f17fb59cbe306552fc53aa523e8a753b2663fbd0fd6518fd4bc",
+      "bytes": 97890
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "b7489d529f335a1f4115a4ba77d9c99e6b470ba760db306c79210cdd7bdc8626",
+      "bytes": 17988
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "258f9df80a5813d1039e6851b1fd673cff9ca7d7702094c3f45c0f2ca548f441",
+      "bytes": 1768
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "68b8d7e0aaf59c233d1135d7e0783381a8ee59d77e7b2e1eb4f2bbd50f2235b8",
+      "bytes": 91650
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "b7e42717b6da9d1cc05cbd364a0a7bc2399080127305dcb60cdb3fc8ca38d1a6",
+      "bytes": 97884
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "c0e7311ddfa533bd4f900fb425466af4fe03d77670ae54d10173e0c639a15f7d",
+      "bytes": 17984
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "7e759aa98a16a0001436e9001ffa69d2d6a7e1db008c8ba8817f70830e1b0182",
+      "bytes": 1768
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "f3984c8c85cb65779b57e812a514af689eeb99f264db4a78bae15b251053596d",
+      "bytes": 91396
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "a5669c6ea6469eb52196a8a81d91641dfa8ed03c83bc0071969c5daf528a3e00",
+      "bytes": 98276
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "d4cead393af6c4153e5b96e94aa1d6c7b30fb0e543ef845d08c9f365d820fcd6",
+      "bytes": 17980
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "d2005c333b35a7d0826b87ff6e55250a990414b78ef9805c01f690e24f69d094",
+      "bytes": 1768
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "c72e28d79e7c8bf6922713115a6ee8f08a5a37e7ec8a4e6e5bc6b14325d8b61b",
+      "bytes": 91189
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "30c3e631dbd4d40726e1e923684eaf0aa69fdc8fa79b4b51320da0a6da74f28e",
+      "bytes": 98280
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "e9033e209911729687bb5d6b8d25db94d08211439411b31b1a5f3f4266c0de95",
+      "bytes": 17990
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "c4162feac37ad7dc108f7991bf442bcf1aad5088094dc4e3e79bf8d39f1e29ab",
+      "bytes": 1768
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "b4445e5213b07e6471544fed08ba13d6502330fa1095bf3f9fd6b957c77c8d55",
+      "bytes": 91198
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "ebcd4e127c21aec964b6427ccee47dd16adb8295b0a2298730d1d598eb7f1c00",
+      "bytes": 98246
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "74183f98dc03c6c9d81a3b804053832aef91312fca618fb0519230c02afb45e3",
+      "bytes": 17975
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "33899e3747ff88e6c3b1b192439707df66f0e8a252a3b5d3dbeeb072cf4ca383",
+      "bytes": 1768
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "2056d2341344ef2b55ff4fa2e7b8816f5ff69f4cc1843650e83834f9589a75d8",
+      "bytes": 93201
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "4127698a8b6663273036bf43ab72a4a3cb9a6d42c21ee805ed1b14cbff567b76",
+      "bytes": 98067
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "bba8931938c4f5b5e0ff896401e474547bc69ea734fa3a080339c45ed3eb35f8",
+      "bytes": 18002
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "59aa6eb035e2bc1c5a1db796f9344f5d4fb01e0af7cd11c9191a2eb499a05e90",
+      "bytes": 1768
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "a610452b67a84ae674c2cfb91a2d8f6941d2fbdc3eb008a9d6ba8b59d9fbcf20",
+      "bytes": 91685
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "9ce396ab26c838cefafb44bccae2b6f5dfba495119c934754d3aa567df62cb1f",
+      "bytes": 98321
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "98e24cd03d9f8d210b5290d2f40ef69c3a5979854e211773a83308c0690b1a86",
+      "bytes": 17964
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "29b425652755a5d8c1802a2eadbda381b5d6c9f34122852d491307bb9a9373d3",
+      "bytes": 1768
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "d40b0e2fe777905c23f76f32dd39e7bbd7082f9e05867712ba64ac00605a7ffa",
+      "bytes": 92553
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "c1ef942555245f051d2031241e60bddff6557051fe7dc4d2858021140002f053",
+      "bytes": 98417
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "27c52eb13157e23d5abee10861ff39c3fad401b1244eb035c4ee0d5401e87b19",
+      "bytes": 17985
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "810719b5b4ee4ee2af5d23d4269d77b6dd4cccddccf3214d836cbc798906572c",
+      "bytes": 1771
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "31243a604a876aeea4c756134a711fb772f5ad63e29c44a9a5d4fb05e03beb43",
+      "bytes": 93667
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "29d67733b50125d4b1f5c786f1158771151fb1374f5f53f8025e3c83abcf3bb5",
+      "bytes": 97884
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "9ad87a8d4e4db64c6dccc39ff21cc824297d2518cbdf992cea478ff9a2425450",
+      "bytes": 17979
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "2ece1e905bb8244efed32501be9bac3dced17b843988906168675275755a32e3",
+      "bytes": 1771
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "a1edefe4dd8acbf3dd8a3fe334ee5d1ed547df23ac666424729ad5d9bd554173",
+      "bytes": 90803
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "b7e42717b6da9d1cc05cbd364a0a7bc2399080127305dcb60cdb3fc8ca38d1a6",
+      "bytes": 97884
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "b0f4ab68915ea9e219d28514a03c67315f455df0513f91d7e586c8694a8f281d",
+      "bytes": 17972
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "154ba4d8502be865a92855894244d04cd85ecb2edd07236d9b3976a49ca8897a",
+      "bytes": 1771
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "0b5f606497577513c671a624caed4a017f37440b91ad12db6b2dd02e7e7e0769",
+      "bytes": 91250
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "95886e0b347d9f17fb59cbe306552fc53aa523e8a753b2663fbd0fd6518fd4bc",
+      "bytes": 97890
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "c536e2467e600e196358db55ef61f222261ec163934af5e063901ee7e970e328",
+      "bytes": 17993
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "ee21c2ff3718569cabfd8e65e72722a3bb45675f25216eebe15d62ca31168844",
+      "bytes": 1771
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "9b1c194596d6afbdbf5c77d028672dab2efc25d57b231181bff6e84a6048fe0f",
+      "bytes": 91828
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "5d7c0661cb2ff656ac03beb47b0b6fc399ad2732ac1d70d47e3e82877f519416",
+      "bytes": 97721
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "0a78d11c150600d681abc4f6722f2830a955bb3d5092e45c4891300868a7cfdb",
+      "bytes": 17983
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "6dbbba58b531fb6642d9dee2e64e7e4055f6f3424ea9720fa3d90d466c04d3a4",
+      "bytes": 1771
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "63c0ac81dc517cedb284c4bcebc781b37c330bcb4e46b37cb47d7841464248f6",
+      "bytes": 92824
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "251826c849b5f580bd0564ddd2ca0dd2f67f2c30a9e86d9feb635e83861d0bf9",
+      "bytes": 97885
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "830e5a613cbe2e315ff55cda8dfc9d8488d26f4ac8c37976dc053d8d78dfb475",
+      "bytes": 17989
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "ed8d7ddc98db24ff61b286a468933908b505d081120212a0a3bed4b9840a1bda",
+      "bytes": 1771
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "909afcb42fbac41bec2c569704fc3c1256092b69ee9fec53b0de2d7bb5c93903",
+      "bytes": 91764
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "a5669c6ea6469eb52196a8a81d91641dfa8ed03c83bc0071969c5daf528a3e00",
+      "bytes": 98276
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "f708ba2a367cc02d95633c000b05710fc42fb9220facd5f043d50363c2e8150e",
+      "bytes": 17988
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "4e7c45e65a01662acf8b30fa1d861565b0d20beb2698dbf31415d12872206ee1",
+      "bytes": 1771
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "172e16c0197f354f5738ae1ee3fb11518fefda16457274b9a7967fb9ceb52b62",
+      "bytes": 93290
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "29d67733b50125d4b1f5c786f1158771151fb1374f5f53f8025e3c83abcf3bb5",
+      "bytes": 97884
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "1d35d9ea913679b760644cca1997e7e7ebdf38e6611c17afc3c63acfb4c02226",
+      "bytes": 17989
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "df667d6d96576ada5f898a09f250ac14cc0d69d6745e4f9814c4c363336a4349",
+      "bytes": 1771
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "f3946cc98fe665557fb0514210d204d2dfabe0cdf4e1bc1769d834e62d6976cd",
+      "bytes": 90932
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "8313c5c5e2376fdce5425211ad39af6f3cdea8edf972322d42dcaf13a07ff71b",
+      "bytes": 98292
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "58fe9ecd9264611f53a08b8434b0577771948fe4abca5fb5339f00c9485f15d8",
+      "bytes": 17994
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "7507e16242fcdca25498deb70e7c8c7b22141301d6be56d2ac65403b36465575",
+      "bytes": 1771
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "0d82deb3dbf8a85ffa06598f44ad7f2f15a1a22038f32f8761d30a0be6f80907",
+      "bytes": 93658
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "4127698a8b6663273036bf43ab72a4a3cb9a6d42c21ee805ed1b14cbff567b76",
+      "bytes": 98067
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "ea1c98e8ebdf181fc811086f4ed16d1bb76de09daae611ae4490a3a72d4d297c",
+      "bytes": 17968
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "98db50d9dbc9153a1fa0b1948f3b2f74fe38d961500969b53fcd5facc041aa13",
+      "bytes": 1771
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "645f372ff8b9b000d63f36718aa0965607cd27ccd95e55601be71c47c80b58a1",
+      "bytes": 92012
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "a5669c6ea6469eb52196a8a81d91641dfa8ed03c83bc0071969c5daf528a3e00",
+      "bytes": 98276
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "93d8638599eed92142059739024084329d2e42dfaafc5a57408da01645c889ec",
+      "bytes": 17979
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "477789f31ea20cbb11189a9f1f43ba52b90651bc2e635a15ad6c3d08dcbe06e5",
+      "bytes": 1818
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "4c9d51ee44421db36079d3e8f71134783af4c00be7a5a33ec030fff0041fb8cb",
+      "bytes": 92797
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "ba2e8296865efee02fa798727fd3091c9d6baad3e4e8a88dfa862bc27093bfbc",
+      "bytes": 97766
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "8511e4d2e592950fd85f411e87cc1185dfed6662a2ce0f83ddf753fb0c7c2b92",
+      "bytes": 17987
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "5f129dcbb904bb0f0a5d6a80e374b5d60f924ce34689fe6161f6e87b8cf05f80",
+      "bytes": 1818
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "9192b93976780348f5340128f65514fe637dbf0949b48c8f0a72435682c1e4d5",
+      "bytes": 91834
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "2f8790e4ef9c2f02a0f5261da915644fb713fd2dcd0da6c45756fd69718b9fe8",
+      "bytes": 98245
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "f2c46c0432d7cf8d8850446b32e5ca8459a6d5724bbc3c0b1ebffa5690336acb",
+      "bytes": 17975
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "6246072c242569bf3093d5c6820cf2bfc84139a6c09550e29709e6b6f2c08275",
+      "bytes": 1818
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "2b2cadc841e498aadfda1d4b7e088ea5a1de93375a3a59605e16367a4e956961",
+      "bytes": 91646
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "2cedf8aae2a12a12959672682b17c9dead2539509b059941170de8f7ef26286b",
+      "bytes": 97889
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "6febe8ce48c8b297387314b768b18de75b3d47e15d96e88a4731bf71d887237c",
+      "bytes": 17962
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "ef8f29d096357a3a5111f7233ff42a998ddc63507f00ff103205135122c2233c",
+      "bytes": 1818
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "444a19c7c2188aa2cb0a74ff5c5841245323db077d74ca15bb42078fe44f5e0e",
+      "bytes": 91430
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "2f8790e4ef9c2f02a0f5261da915644fb713fd2dcd0da6c45756fd69718b9fe8",
+      "bytes": 98245
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "e3604fd54cac00b2e7d4c8cfb181cbde4cbc898937aa302a9d864cf404751a00",
+      "bytes": 17947
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "f06b545f32962ae44f2d62b75434a343b4b3501154ad27c2749890bbc8dbfae4",
+      "bytes": 1818
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "9b1c194596d6afbdbf5c77d028672dab2efc25d57b231181bff6e84a6048fe0f",
+      "bytes": 91828
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "5d7c0661cb2ff656ac03beb47b0b6fc399ad2732ac1d70d47e3e82877f519416",
+      "bytes": 97721
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "932f895f6ca29c70d09a4cb6103a22d2a8264ca780b470c2dd99b3f8d791b92c",
+      "bytes": 17976
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "181a1519ca619a5eff77ee8136a78440d88002422d385a719a213e2361eaa12b",
+      "bytes": 1818
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "f3984c8c85cb65779b57e812a514af689eeb99f264db4a78bae15b251053596d",
+      "bytes": 91396
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "a5669c6ea6469eb52196a8a81d91641dfa8ed03c83bc0071969c5daf528a3e00",
+      "bytes": 98276
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "700d2574d12861e893a32e7e68701f37a598c37db2c29c6a1dd139499c7112c4",
+      "bytes": 17986
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "5eebc806fb90530fb15c620a176890e577dfab0b5d2b50697bcf687750270cce",
+      "bytes": 1818
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "170c0d4b4059ea9085e6e1e5b9791cc9c32de00f55aa3af07fd9b1d4f6a7817d",
+      "bytes": 91781
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "b7e42717b6da9d1cc05cbd364a0a7bc2399080127305dcb60cdb3fc8ca38d1a6",
+      "bytes": 97884
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "c1db8675eb94e7063478dff6ee7cd9ef62b512103bff6398f1d60dea40a1737d",
+      "bytes": 17970
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "eba38eeba98e207c7e1ebc1e280521854375afc88c667cff53246e93a0760d21",
+      "bytes": 1818
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "75198c1be113c531725d4ccacd5aa651cb169b73e81df645b29fcc173b4c7037",
+      "bytes": 93430
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "4ef7a70c015c1acae836f1c97832666e5335762d89cccf7edd054d63e4347d5a",
+      "bytes": 97765
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "9c0d7a7bb31b66e87cc4383baf59e68cb2ca0ceac091c4914bb57f1216b6c250",
+      "bytes": 17968
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "0470d5ea07b034b422bd6aad52f9b724d0e0c148bcf512e15c6151912e8b600f",
+      "bytes": 1818
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "7771985f3c53f77a3881f7fc067f3287eb85d36300bec194535a3232c949a3e7",
+      "bytes": 93160
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "29d67733b50125d4b1f5c786f1158771151fb1374f5f53f8025e3c83abcf3bb5",
+      "bytes": 97884
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "979b58f5423b3e3bc292be4acae850a3f00baa83750efa3e1e53079d0d0ac232",
+      "bytes": 17986
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "58a70b2ede41869d4ff078bb54502bee544008c3d16b1108eda5caa296133d38",
+      "bytes": 1818
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "d3b8a9ed2e2236f747dfb44248b7f1247e569b4567230b3c8c79cfe016009861",
+      "bytes": 93312
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "251826c849b5f580bd0564ddd2ca0dd2f67f2c30a9e86d9feb635e83861d0bf9",
+      "bytes": 97885
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "937ec284d9b33707ea7f28f411df1fd2a6b92b00f27de7dc2df9603a7c232c36",
+      "bytes": 17949
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "743750967c44352a33c833a346dfa940be4d5909efab88ad54ba9a8e7061b233",
+      "bytes": 1821
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "e038d0963e627c6474c2987cf2e32f033200153741e53e970d4d3a52199b9c5a",
+      "bytes": 91356
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "b7e42717b6da9d1cc05cbd364a0a7bc2399080127305dcb60cdb3fc8ca38d1a6",
+      "bytes": 97884
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "09eeab60102eec4c3482e78684e77d786dd13d23ca1c506fd816e5a9fb48101f",
+      "bytes": 17966
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "5cc14b9582ae70b755f30a11f9d73aed3084c0f41be2c8d33c55e6ff75c3cea3",
+      "bytes": 1821
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "c72e28d79e7c8bf6922713115a6ee8f08a5a37e7ec8a4e6e5bc6b14325d8b61b",
+      "bytes": 91189
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "30c3e631dbd4d40726e1e923684eaf0aa69fdc8fa79b4b51320da0a6da74f28e",
+      "bytes": 98280
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "3f44c7bda7a90b567ec05b67a5b2d38bccd78ca8352d3962cc7de367b3958b27",
+      "bytes": 17974
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "1b3871f326b616a8140170cff79a2e5a11a5898f34a9c9eeab971f2506805590",
+      "bytes": 1821
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "0b5f606497577513c671a624caed4a017f37440b91ad12db6b2dd02e7e7e0769",
+      "bytes": 91250
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "95886e0b347d9f17fb59cbe306552fc53aa523e8a753b2663fbd0fd6518fd4bc",
+      "bytes": 97890
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "e2d469bc8bb611be2b1284bf2dd3c7597b8a80c4bb46ce94d88d7ca56ef15ff3",
+      "bytes": 17972
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "25762a1235ea6fb11337bc769dad75b89854fbb6e5f235653246c6d6d0f3d754",
+      "bytes": 1821
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "35cc0866330562e0c7bca83b21473b83055ce60b42ca02af51a68c5abba936a9",
+      "bytes": 91024
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "5e5ca018e6dd2e59d204cbc371fbc82c12db035c0d118012cd7fc9a0d0f53355",
+      "bytes": 97885
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "7faff7d9d13fed48c24561565a655a700b375b0e0ff6f1482d9a5bf50aeebb62",
+      "bytes": 17965
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "eb18d278bef43a744cf50c78f7b1d24dc983fd8954306e89d46a9b38e96590e4",
+      "bytes": 1821
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "df1412894cbb51a78972437619476c1e76fdffc04df51fc77e6fb2ebf76f465c",
+      "bytes": 91807
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "30c3e631dbd4d40726e1e923684eaf0aa69fdc8fa79b4b51320da0a6da74f28e",
+      "bytes": 98280
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "7aca9aa919891fab688daeaa58975d60ded64c81fcf2192893c70c0abcb9e1dc",
+      "bytes": 17986
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "26a2b615974183cd2adb9b73549f1f1b81c0273458e00b4b959e445f119525c7",
+      "bytes": 1821
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "8555f5f36030c60c21ecd6b88217b08c6a9ecb02bda2ac428cd3ab04ed4df9ec",
+      "bytes": 93161
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "4ef7a70c015c1acae836f1c97832666e5335762d89cccf7edd054d63e4347d5a",
+      "bytes": 97765
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "055a7bf449ebb4a76f8153169fe8dffd887256fb36f406ee6d646e54745afceb",
+      "bytes": 17980
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "32b7c8c160ea4a3f2effaaf533ab8ccb310c3af42a8aac7f26d265626d2e56ab",
+      "bytes": 1821
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "7771985f3c53f77a3881f7fc067f3287eb85d36300bec194535a3232c949a3e7",
+      "bytes": 93160
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "29d67733b50125d4b1f5c786f1158771151fb1374f5f53f8025e3c83abcf3bb5",
+      "bytes": 97884
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "1b9a78815485b3129bb7048a128a1162deed6b8d62611a536278509afa94f1aa",
+      "bytes": 17959
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "361dd4a4821532a1924ff07b3342f78513c1378bb6d0cdaecc4360eb0a44efc9",
+      "bytes": 1821
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "cc39bed086b116dc90775c3cf15441a7f13e4eb0d8f3f84e2eb540ef1ea99584",
+      "bytes": 91802
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "a5669c6ea6469eb52196a8a81d91641dfa8ed03c83bc0071969c5daf528a3e00",
+      "bytes": 98276
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "e8e01930d8c0a32d1d54eaa476e39ed1fdf49455a8515bb9c59b86b13280544c",
+      "bytes": 17974
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "641feb603991917b85f07ecff66fbb2dfcdc4b2553514d4d21ec64a785779198",
+      "bytes": 1821
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "c981b18a1ad8b4d72645d55ee455e5c3bc8a1decb2d7396f538c0947e1af7ab9",
+      "bytes": 91804
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "2cedf8aae2a12a12959672682b17c9dead2539509b059941170de8f7ef26286b",
+      "bytes": 97889
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2\\results.csv",
+      "role": "training_source",
+      "sha256": "5771fbdaf04559b462f02d709c7ead00996fc2700cf0cb4766399b108a3442c9",
+      "bytes": 17959
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2\\args.yaml",
+      "role": "training_source",
+      "sha256": "8d0767e36d730bdb7584dc7ec7f6894621187c2622f65e8857b07827024b5b48",
+      "bytes": 1821
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2\\confusion_matrix.png",
+      "role": "training_source",
+      "sha256": "01138fa78f0f3b5a4dfdd325b616ada78606e028be2caa84039325b887187d06",
+      "bytes": 91804
+    },
+    {
+      "path": "Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2\\confusion_matrix_normalized.png",
+      "role": "training_source",
+      "sha256": "2cedf8aae2a12a12959672682b17c9dead2539509b059941170de8f7ef26286b",
+      "bytes": 97889
+    },
+    {
+      "path": "audit_20261025_193105\\B_visual\\reproduced\\raw_20seeds_extracted_metrics.csv",
+      "role": "existing_input",
+      "sha256": "6e0dbcce774b77f33c3b97a9c433a1cd6a0537416a1f4528e38f5a5c36423d89",
+      "bytes": 6951
+    },
+    {
+      "path": "audit_20261025_193105\\B_visual\\reproduced\\raw_20seeds_confusion_matrices.csv",
+      "role": "existing_cm_input",
+      "sha256": "bd9c6206158871aa191b8ebea3c7504d7995588d7e6760d9a040ce806a3a2119",
+      "bytes": 1187
+    },
+    {
+      "path": "Stracth\\Bao_Cao\\generate_20seed_fp32_thesis_package.py",
+      "role": "generator",
+      "sha256": "488a6e7d6343b61ae7652a667bebb140d569eaf8731d306d3a793772fc17ad59",
+      "bytes": 30372
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+﻿model,seed,TP,FP,FN,ground_truth_objects,object_recall_at_cm_threshold,object_precision_at_cm_threshold,source_status
+TSVM,0,108,14,19,127,0.8503937007874016,0.8852459016393442,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,1,114,16,13,127,0.8976377952755905,0.8769230769230769,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,2,110,13,17,127,0.8661417322834646,0.8943089430894309,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,3,114,15,13,127,0.8976377952755905,0.8837209302325582,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,4,113,18,14,127,0.889763779527559,0.8625954198473282,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,5,112,15,15,127,0.8818897637795275,0.8818897637795275,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,6,111,18,16,127,0.8740157480314961,0.8604651162790697,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,7,108,18,19,127,0.8503937007874016,0.8571428571428571,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,8,109,12,18,127,0.8582677165354331,0.9008264462809917,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,9,109,19,18,127,0.8582677165354331,0.8515625,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,10,111,12,16,127,0.8740157480314961,0.9024390243902439,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,11,112,14,15,127,0.8818897637795275,0.8888888888888888,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,12,110,14,17,127,0.8661417322834646,0.8870967741935484,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,13,111,17,16,127,0.8740157480314961,0.8671875,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,14,112,19,15,127,0.8818897637795275,0.8549618320610687,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,15,108,13,19,127,0.8503937007874016,0.8925619834710744,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,16,109,12,18,127,0.8582677165354331,0.9008264462809917,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,17,112,16,15,127,0.8818897637795275,0.875,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,18,110,24,17,127,0.8661417322834646,0.8208955223880597,inherited extraction from saved confusion_matrix.png; not re-inference
+TSVM,19,110,16,17,127,0.8661417322834646,0.873015873015873,inherited extraction from saved confusion_matrix.png; not re-inference

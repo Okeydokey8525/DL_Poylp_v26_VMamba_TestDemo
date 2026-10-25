@@ -1,0 +1,116 @@
+[
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\01_overall_benchmark_barchart.png",
+    "same_shape": true,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": 7.217919952210274
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\02_val_seg_loss_barchart.png",
+    "same_shape": true,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": 4.858827407407407
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\03_seed_by_seed_barchart.png",
+    "same_shape": true,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": 8.75422126068376
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\04_convergence_loss_curves.png",
+    "same_shape": true,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": 6.7796079365079365
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\05_metric_curves_mAP.png",
+    "same_shape": true,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": 2.681629773929774
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\07b_pie_head_to_head_winrate.png",
+    "same_shape": true,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": 5.516576543209877
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\09_metric_stability_band_area.png",
+    "same_shape": true,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": 9.45745146871009
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\10_radar_multiobjective_tradeoff.png",
+    "same_shape": true,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": 7.547643018905081
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\11_boxplot_variance_stability.png",
+    "same_shape": true,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": 10.23394748263889
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\12_confusion_matrix_mean_comparison.png",
+    "same_shape": false,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": null
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\figures\\13_confusion_matrix_mean_ultralytics.png",
+    "same_shape": false,
+    "pixel_identical": false,
+    "mean_abs_pixel_diff": null
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\efficiency_benchmark\\figures\\fig01_latency_mean.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\efficiency_benchmark\\figures\\fig02_latency_distribution.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\efficiency_benchmark\\figures\\fig03_latency_percentiles.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\efficiency_benchmark\\figures\\fig04_pipeline_stages.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\efficiency_benchmark\\figures\\fig05_parameters_fp32_memory.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\efficiency_benchmark\\figures\\fig06_checkpoint_vs_parameter_bytes.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\efficiency_benchmark\\figures\\fig07_accuracy_latency_tradeoff.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\efficiency_benchmark\\figures\\fig08_serial_throughput.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  }
+]

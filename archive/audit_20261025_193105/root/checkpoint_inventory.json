@@ -1,0 +1,1122 @@
+[
+  {
+    "model": "Baseline",
+    "seed": 0,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "61ebd02851f5a12921ab10f64ade433c745f87aac91fd41a310cd00c7d2a3906",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-09-21T11:40:17.668385+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 1,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "3c1dbe6f4b84e77b047442830d6e0687628a28458ea8c304865803dc7e63ba91",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-09-21T14:30:12.997815+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 2,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "5f9908f7fb8ef0e09c1869f2b3f4e6e0a371b6d6cca4c2e4d649b557c9f24db6",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-09-21T17:19:30.108715+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 3,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "4a90ee9f7474332ffe23d10125ecbad8586ada8fde2d97eb4541a255cc15889e",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-09-22T01:02:31.061922+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 4,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "a0d6fd053593ab94a4361bdddbff9d4536c7ffd6dd5fb2e7627e5f03d23a6f72",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-09-22T04:50:39.533819+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 5,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "2d3c0c43da7a75ba443ba14f1994acac697db524c5cf4511c8a624b07cffc2cd",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-09-22T07:45:26.922417+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 6,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "7e030af7b7f331a8bad26761798adab0e27ae911f65d9f7075c5377945db0c27",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-09-26T02:44:24.998099+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 7,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "e673343d6099fe671c0d45a66418eed2d3c80afa4a13419230cd47af18c006e5",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-09-26T04:51:54.477607+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 8,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "8af059ae2227c0dbee15af6f04faad34fa4beb0de7e23c10bdb770b261132968",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-09-26T08:28:11.715324+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 9,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "cc33856932552ccb549f240c920cc8e2d167508de9efc6bf6d900e41cb3a7939",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-09-26T13:56:44.615422+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 10,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "fddb092f26a557d22f16eea495da53b6acac2d2f4dcf82907ed5562db472f6f7",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-03T06:57:22.297384+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 11,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "788ee461dc9c9f1c7f1252c6cba9f0383dc07ceb08e667ceae4d5185e87c3c2f",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-08T04:02:06.453013+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 12,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "0031c4547ce07c568206a08c098fbaf5bb049e356a6d94a863cb83c0a1a15531",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-08T06:13:56.346357+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 13,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "34f116e3cd12922ebbf836f0c8e99fa6ab57951408116ab84ba863bd1d9335da",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-08T08:51:54.630727+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 14,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "e0293c6b5423ea59d428c2113679523b82a3c9e5c357619ad591a98ecc11f980",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-08T11:15:29.655643+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 15,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "f72845022e2a4eab186af93648fc9e253cda01ac3f1c0634b0b2479aa83df78b",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-08T14:26:39.072851+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 16,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "1446c08eec7dfaa69103bbff9ba2606e5327137a4e611e6be7cdb0a4154e9410",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-08T17:18:36.835912+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 17,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "9c5172e5166eba778d3bef612734b3d9e755a156b15f900beef49fe9e77921c3",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-09T01:09:14.019296+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 18,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "86aa6262807d0131a32660641f860ecf4e1b72a841f1b0da8113b5e4733b5f8c",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-09T05:14:23.183740+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "Baseline",
+    "seed": 19,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\YOLOv26s-seg\\Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "bdab56e4596df42599c8a3b055f0d4ee53d7c0e1464d80b19e505ba3d3744cc1",
+    "bytes": 23350941,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-09T07:42:44.079097+00:00",
+    "floating_dtypes": [
+      "torch.float16"
+    ],
+    "nonfinite": [],
+    "layer10": "C2PSA",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256
+  },
+  {
+    "model": "TSVM",
+    "seed": 0,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "b0578c7612e1e48cc490ef71eca5f025fb1eeb5a02c1fe6cb7e869d639e2c7a8",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T08:24:39.210579+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 92541.90625,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 16925891584.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 1,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "af48700135db5630ecf3be3f8d0b4eeac666f39575515b4ee3c2f29f138f0ed2",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T09:36:15.529205+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 424.4657897949219,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 2455220.75,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 2,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "a9167dc3359e65f75fc4bd2a5feb9b98ebeacbabeb5701c773f84745c0af0220",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T07:53:31.231180+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 789.6517944335938,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 14861564.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 3,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "fa552b89469bff6222d6ca0583ad66b3d15840b716b8ac9e0575805aa087ee8a",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T08:12:11.334729+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 77.1738052368164,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 712848.0625,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 4,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "863de8619ae0d78ea4375fa6a30eb68c72c4376f0816a88c391ff847e2e71193",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T08:17:44.120833+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 23361.099609375,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 1918279168.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 5,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "7ea70585904509fca0a337833b294af4cb730de06b754b3999c16e7c6c40b782",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T13:49:39.795459+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 1415428.375,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 7350079979520.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 6,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "7c9c00012b7769a8f0f1c6fa00141e53be4c3382ff9a388679248d35170439d1",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T14:18:56.759941+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 1948.4986572265625,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 19199554.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 7,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "21fdbf0d4d4f58faacbcee8058bd2e7387d6cb93edd9c4a852056fc8d2f3b0a0",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T12:52:25.786103+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 38562.73046875,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 4856515072.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 8,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "5f049889fac8c9c37b504cec0c96cfca96b3bfcb5b4ba5a2d54f1271b6d2b741",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T14:05:05.433834+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 464129.28125,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 311231643648.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 9,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "bbd6094bb1e46f97be8cb3bdcd5d95702546c3b3723c5108da2b17b992d63db1",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T14:15:06.758001+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 72002.3125,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 6350151168.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 10,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "9fbaaff7799aa1ab06cb441de8e3efa83ebf4f3d5b129613d2e851c3e685db38",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T21:56:18.192871+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 846832.0,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 433428201472.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 11,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "c5f323d8d64651841d17388ed0b32ea13204bb1a5eded51b0559079df7fd6243",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T19:44:35.615929+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 472.7015686035156,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 11873591.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 12,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "51a5f5ed077f3aaaed2cea76dec55d1a4cde69c0be5d5361b3f40a653350086a",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T19:58:27.237058+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 17327.443359375,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 6487597568.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 13,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "82c2d67e135e165a328e6f7b57f0ecd71fd2f06f473dcd35efd6477695c6ef0e",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T20:11:49.326229+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 13557.0791015625,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 318651136.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 14,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "cc23690a11eb4e01372b77de8719615e9ab790496c8b78c126bc6c1797b63c02",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-12T20:14:35.233336+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 62197.5546875,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 48869830656.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 15,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "1de013fb4d4c6a50b1a4b320c360cf12c8b8d44c77ccc40e33e52beb59882617",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-13T01:53:27.276527+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 11362.0419921875,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 565853184.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 16,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "9dee96feee32bcc51e6d505eab619e0eb7fae722a0f427eab9683191cab36e59",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-13T02:27:20.505358+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 15678.435546875,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 7045465088.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 17,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "a69774addadd11b27cbd7dd8a0e1e5dfc9d2ec9f0898c6c542cef58395fe6681",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-13T02:56:06.137360+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 73038.65625,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 33647396864.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 18,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "691efa9fda80363d8fa3bc65ed685bca8e7db83863d52df869c719143cd86a7b",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-13T00:16:44.629327+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 15339.4287109375,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 1982202240.0,
+        "at_fp16_limit": 0
+      }
+    }
+  },
+  {
+    "model": "TSVM",
+    "seed": 19,
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KetQua_Nen\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32\\Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2\\weights\\best.pt",
+    "exists": true,
+    "sha256": "abda5b170da57e9514793c5f1e61e5ddf9442512d3a88dbd4a95c6781bd467d7",
+    "bytes": 49669130,
+    "epoch": -1,
+    "stored_version": "8.4.127",
+    "date": "2026-10-13T02:17:16.453865+00:00",
+    "floating_dtypes": [
+      "torch.float32"
+    ],
+    "nonfinite": [],
+    "layer10": "C2TSVMamba",
+    "layer5_conv_shape": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "layer6_output_channels": 256,
+    "bn10": {
+      "model.10.m.0.fuse.bn.running_mean": {
+        "max_abs": 242709.046875,
+        "at_fp16_limit": 0
+      },
+      "model.10.m.0.fuse.bn.running_var": {
+        "max_abs": 197598380032.0,
+        "at_fp16_limit": 0
+      }
+    }
+  }
+]

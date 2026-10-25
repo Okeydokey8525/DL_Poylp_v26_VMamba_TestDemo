@@ -1,0 +1,677 @@
+{
+  "status": "ok",
+  "message-type": "work",
+  "message-version": "1.0.0",
+  "message": {
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          10,
+          20
+        ]
+      ],
+      "date-time": "2026-10-20T16:26:44Z",
+      "timestamp": 1792513604034,
+      "version": "4.5.0"
+    },
+    "publisher-location": "Cham",
+    "reference-count": 40,
+    "publisher": "Springer Nature Switzerland",
+    "isbn-type": [
+      {
+        "value": "9783031721106",
+        "type": "print"
+      },
+      {
+        "value": "9783031721113",
+        "type": "electronic"
+      }
+    ],
+    "license": [
+      {
+        "start": {
+          "date-parts": [
+            [
+              2024,
+              1,
+              1
+            ]
+          ],
+          "date-time": "2024-01-01T00:00:00Z",
+          "timestamp": 1704067200000
+        },
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "URL": "https://www.springernature.com/gp/researchers/text-and-data-mining"
+      },
+      {
+        "start": {
+          "date-parts": [
+            [
+              2024,
+              1,
+              1
+            ]
+          ],
+          "date-time": "2024-01-01T00:00:00Z",
+          "timestamp": 1704067200000
+        },
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "URL": "https://www.springernature.com/gp/researchers/text-and-data-mining"
+      }
+    ],
+    "content-domain": {
+      "domain": [
+        "link.springer.com"
+      ],
+      "crossmark-restriction": false
+    },
+    "short-container-title": [],
+    "published-print": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "DOI": "10.1007/978-3-031-72111-3_48",
+    "type": "book-chapter",
+    "created": {
+      "date-parts": [
+        [
+          2024,
+          10,
+          5
+        ]
+      ],
+      "date-time": "2024-10-05T17:01:34Z",
+      "timestamp": 1728147694000
+    },
+    "page": "510-521",
+    "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+    "source": "Crossref",
+    "is-referenced-by-count": 39,
+    "title": [
+      "Polyp-Mamba: Polyp Segmentation with Visual Mamba"
+    ],
+    "prefix": "10.1007",
+    "author": [
+      {
+        "given": "Zhongxing",
+        "family": "Xu",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Feilong",
+        "family": "Tang",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Zhe",
+        "family": "Chen",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Zheng",
+        "family": "Zhou",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Weishan",
+        "family": "Wu",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Yuyao",
+        "family": "Yang",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Yu",
+        "family": "Liang",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jiyu",
+        "family": "Jiang",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Xuyue",
+        "family": "Cai",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jionglong",
+        "family": "Su",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "member": "297",
+    "published-online": {
+      "date-parts": [
+        [
+          2024,
+          10,
+          6
+        ]
+      ]
+    },
+    "reference": [
+      {
+        "key": "48_CR1",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Pooler, B.D., et al.: Growth rates and histopathological outcomes of small (6–9 mm) colorectal polyps based on CT colonography surveillance and endoscopic removal. Gut 72(12), 2321–2328 (2023)",
+        "DOI": "10.1136/gutjnl-2022-326970"
+      },
+      {
+        "key": "48_CR2",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Djinbachian, R., Iratni, R., Durand, M., Marques, P., von Renteln, D.: Rates of incomplete resection of 1-to 20-mm colorectal polyps: a systematic review and meta-analysis. Gastroenterology 159(3), 904–914 (2020)",
+        "DOI": "10.1053/j.gastro.2020.05.018"
+      },
+      {
+        "key": "48_CR3",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Haggar, F.A., Boushey, R.P.: Colorectal cancer epidemiology: incidence, mortality, survival, and risk factors. Clin. Colon Rectal Surg. 22(04), 191–197 (2009)",
+        "DOI": "10.1055/s-0029-1242458"
+      },
+      {
+        "key": "48_CR4",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Long, J., Shelhamer, E., Darrell, T.: Fully convolutional networks for semantic segmentation. In: CVPR (2015)",
+        "DOI": "10.1109/CVPR.2015.7298965"
+      },
+      {
+        "key": "48_CR5",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Ronneberger, O., Fischer, P., Brox, T.: U-net: convolutional networks for biomedical image segmentation. In: MICCAI (2015)",
+        "DOI": "10.1007/978-3-319-24574-4_28"
+      },
+      {
+        "key": "48_CR6",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Li, W., Xiong, X., Li, S., Fan, F.: Hybridvps: hybrid-supervised video polyp segmentation under low-cost labels. In: IEEE Signal Processing Letters (2023)",
+        "DOI": "10.1109/LSP.2023.3342613"
+      },
+      {
+        "key": "48_CR7",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Li, W., Lu, W., Chu, J., Fan, F.: LACINet: a lesion-aware contextual interaction network for polyp segmentation. In: IEEE Transactions on Instrumentation and Measurement (2023)",
+        "DOI": "10.1109/TIM.2023.3322994"
+      },
+      {
+        "key": "48_CR8",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Tang, F., Xu, Z., Qu, Z., Feng, W., Jiang, X., Ge, Z.: Hunting attributes: context prototype-aware learning for weakly supervised semantic segmentation. In: CVPR (2024)",
+        "DOI": "10.1109/CVPR52733.2024.00320"
+      },
+      {
+        "key": "48_CR9",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Xia, P., et al.: Generalizing to unseen domains in diabetic retinopathy with disentangled representations. In: MICCAI (2024)",
+        "DOI": "10.1007/978-3-031-72117-5_40"
+      },
+      {
+        "issue": "7",
+        "key": "48_CR10",
+        "doi-asserted-by": "publisher",
+        "first-page": "7525",
+        "DOI": "10.1609/aaai.v38i7.28584",
+        "volume": "38",
+        "author": "X Zhao",
+        "year": "2024",
+        "unstructured": "Zhao, X., Tang, F., Wang, X., Xiao, J.: SFC: shared feature calibration in weakly supervised semantic segmentation. Proc. AAAI Conf. Artif. Intell. 38(7), 7525–7533 (2024). https://doi.org/10.1609/aaai.v38i7.28584",
+        "journal-title": "Proc. AAAI Conf. Artif. Intell."
+      },
+      {
+        "key": "48_CR11",
+        "doi-asserted-by": "publisher",
+        "first-page": "110",
+        "DOI": "10.1007/978-3-031-16437-8_11",
+        "volume-title": "Medical Image Computing and Computer Assisted Intervention – MICCAI 2022",
+        "author": "J Wang",
+        "year": "2022",
+        "unstructured": "Wang, J., Huang, Q., Tang, F., Meng, J., Su, J., Song, S.: Stepwise feature fusion: local guides global. In: Wang, L., Dou, Q., Fletcher, P.T., Speidel, S., Li, S. (eds.) MICCAI 2022, pp. 110–120. Springer, Cham (2022). https://doi.org/10.1007/978-3-031-16437-8_11"
+      },
+      {
+        "key": "48_CR12",
+        "doi-asserted-by": "publisher",
+        "first-page": "343",
+        "DOI": "10.1007/978-981-99-8469-5_27",
+        "volume-title": "Pattern Recognition and Computer Vision",
+        "author": "F Tang",
+        "year": "2024",
+        "unstructured": "Tang, F., et al.: DuAT: dual-aggregation transformer network for medical image segmentation. In: Liu, Q., et al. (eds.) Pattern Recognition and Computer Vision, pp. 343–356. Springer, Singapore (2024). https://doi.org/10.1007/978-981-99-8469-5_27"
+      },
+      {
+        "key": "48_CR13",
+        "unstructured": "Dosovitskiy, A., et al.: An image is worth 16x16 words: transformers for image recognition at scale. arXiv preprint arXiv:2010.11929 (2020)"
+      },
+      {
+        "key": "48_CR14",
+        "unstructured": "Vaswani, A., et al.: Attention is all you need: NeurIPS (2017)"
+      },
+      {
+        "key": "48_CR15",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Kalman, R.E.: A new approach to linear filtering and prediction problems. J. Basic Eng. 82(1), 35–45 (1960)",
+        "DOI": "10.1115/1.3662552"
+      },
+      {
+        "key": "48_CR16",
+        "unstructured": "Gu, A., Dao, T.: Mamba: linear-time sequence modeling with selective state spaces. arXiv preprint arXiv:2312.00752 (2023)"
+      },
+      {
+        "key": "48_CR17",
+        "unstructured": "Zhu, L., Liao, B., Zhang, Q., Wang, X., Liu, W., Wang, X.: Vision mamba: efficient visual representation learning with bidirectional state space model. arXiv preprint arXiv:2401.09417 (2024)"
+      },
+      {
+        "key": "48_CR18",
+        "unstructured": "Ma, J., Li, F., Wang, B.: U-mamba: enhancing long-range dependency for biomedical image segmentation. arXiv preprint arXiv:2401.04722 (2024)"
+      },
+      {
+        "key": "48_CR19",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Xing, Z., Ye, T., Yang, Y., Liu, G., Zhu, L.: Segmamba: long-range sequential modeling mamba for 3D medical image segmentation. arXiv preprint arXiv:2401.13560 (2024)",
+        "DOI": "10.1109/JBHI.2024.3360239"
+      },
+      {
+        "key": "48_CR20",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Wang, Z., Zheng, J.Q., Zhang, Y., Cui, G., Li, L.: Mamba-UNet: UNet-like pure visual mamba for medical image segmentation. arXiv preprint arXiv:2402.05079 (2024)",
+        "DOI": "10.1109/AINIT61980.2024.10581519"
+      },
+      {
+        "key": "48_CR21",
+        "unstructured": "Ruan, J., Xiang, S.: VM-UNET: vision mamba UNet for medical image segmentation. arXiv preprint arXiv:2402.02491 (2024)"
+      },
+      {
+        "key": "48_CR22",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Cao, H., et al.: Swin-Unet: Unet-like pure transformer for medical image segmentation. In: ECCV (2022)",
+        "DOI": "10.1007/978-3-031-25066-8_9"
+      },
+      {
+        "key": "48_CR23",
+        "unstructured": "Ba, J.L., Kiros, J.R., Hinton, G.E.: Layer normalization. arXiv preprint arXiv:1607.06450 (2016)"
+      },
+      {
+        "key": "48_CR24",
+        "unstructured": "Liu, Y., et al.: Vmamba: visual state space model. arXiv preprint arXiv:2401.10166 (2024)"
+      },
+      {
+        "key": "48_CR25",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Elfwing, S., Uchibe, E., Doya, K.: Sigmoid-weighted linear units for neural network function approximation in reinforcement learning. Neural Netw. 107, 3–11 (2018)",
+        "DOI": "10.1016/j.neunet.2017.12.012"
+      },
+      {
+        "key": "48_CR26",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Wei, J., Wang, S., Huang, Q.: F$$^3$$net: fusion, feedback and focus for salient object detection. In: AAAI (2020)",
+        "DOI": "10.1609/aaai.v34i07.6916"
+      },
+      {
+        "key": "48_CR27",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Vázquez, D., et al.: A benchmark for endoluminal scene segmentation of colonoscopy images. J. Healthc. Eng. 2017(1), 4037190 (2017)",
+        "DOI": "10.1155/2017/4037190"
+      },
+      {
+        "key": "48_CR28",
+        "doi-asserted-by": "publisher",
+        "unstructured": "Silva, J., Histace, A., Romain, O., Dray, X., Granado, B.: Toward embedded detection of polyps in WCE images for early diagnosis of colorectal cancer. Int. J. Comput. Assist. Radiol. Surg. 9, 283–293 (2014). https://doi.org/10.1007/s11548-013-0926-3",
+        "DOI": "10.1007/s11548-013-0926-3"
+      },
+      {
+        "key": "48_CR29",
+        "doi-asserted-by": "publisher",
+        "first-page": "99",
+        "DOI": "10.1016/j.compmedimag.2015.02.007",
+        "volume": "43",
+        "author": "J Bernal",
+        "year": "2015",
+        "unstructured": "Bernal, J., Sánchez, F.J., Fernández-Esparrach, G., Gil, D., Rodríguez, C., Vilariño, F.: WM-DOVA maps for accurate polyp highlighting in colonoscopy: validation vs. saliency maps from physicians. Comput. Med. Imag. Graph. 43, 99–111 (2015)",
+        "journal-title": "Comput. Med. Imag. Graph."
+      },
+      {
+        "key": "48_CR30",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Tajbakhsh, N., Gurudu, S.R., Liang, J.: Automated polyp detection in colonoscopy videos using shape and context information. In: IEEE Transactions on Medical Imaging (2015)",
+        "DOI": "10.1109/ISBI.2015.7163821"
+      },
+      {
+        "key": "48_CR31",
+        "series-title": "Lecture Notes in Computer Science",
+        "doi-asserted-by": "publisher",
+        "first-page": "451",
+        "DOI": "10.1007/978-3-030-37734-2_37",
+        "volume-title": "MultiMedia Modeling",
+        "author": "D Jha",
+        "year": "2020",
+        "unstructured": "Jha, D., et al.: Kvasir-SEG: a segmented polyp dataset. In: Ro, Y.M., et al. (eds.) MMM 2020. LNCS, vol. 11962, pp. 451–462. Springer, Cham (2020). https://doi.org/10.1007/978-3-030-37734-2_37"
+      },
+      {
+        "key": "48_CR32",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Dong, B., Wang, W., Fan, D.P., Li, J., Fu, H., Shao, L.: Polyp-PVT: polyp segmentation with pyramid vision transformers. In: AIR (2023)",
+        "DOI": "10.26599/AIR.2023.9150015"
+      },
+      {
+        "key": "48_CR33",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Fan, D.P., et al.: PraNet: parallel reverse attention network for polyp segmentation. In: MICCAI (2020)",
+        "DOI": "10.1007/978-3-030-59725-2_26"
+      },
+      {
+        "key": "48_CR34",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Zhang, Y., Liu, H., Hu, Q.: TransFuse: fusing transformers and CNNs for medical image segmentation. In: MICCAI (2021)",
+        "DOI": "10.1007/978-3-030-87193-2_2"
+      },
+      {
+        "key": "48_CR35",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Jain, S., et al.: CoInNet: a convolution-involution network with a novel statistical attention for automatic polyp segmentation. IEEE Trans. Med. Imag. 42, 3987–4000 (2023)",
+        "DOI": "10.1109/TMI.2023.3320151"
+      },
+      {
+        "key": "48_CR36",
+        "doi-asserted-by": "publisher",
+        "first-page": "632",
+        "DOI": "10.1007/978-3-031-43904-9_61",
+        "volume-title": "Medical Image Computing and Computer Assisted Intervention – MICCAI 2023",
+        "author": "Y Su",
+        "year": "2023",
+        "unstructured": "Su, Y., Shen, Y., Ye, J., He, J., Cheng, J.: Revisiting feature propagation and aggregation in polyp segmentation. In: Greenspan, H., et al. (eds.) MICCAI 2023, pp. 632–641. Springer, Cham (2023). https://doi.org/10.1007/978-3-031-43904-9_61"
+      },
+      {
+        "key": "48_CR37",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Shao, H., Zhang, Y., Hou, Q.: Polyper: boundary sensitive polyp segmentation. In: AAAI (2024)",
+        "DOI": "10.1609/aaai.v38i5.28274"
+      },
+      {
+        "key": "48_CR38",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Fan, D.P., Gong, C., Cao, Y., Ren, B., Cheng, M.M., Borji, A.: Enhanced-alignment measure for binary foreground map evaluation. arXiv preprint arXiv:1805.10421 (2018)",
+        "DOI": "10.24963/ijcai.2018/97"
+      },
+      {
+        "key": "48_CR39",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Fan, D.P., Cheng, M.M., Liu, Y., Li, T., Borji, A.: Structure-measure: a new way to evaluate foreground maps. In: ICCV (2017)",
+        "DOI": "10.1109/ICCV.2017.487"
+      },
+      {
+        "key": "48_CR40",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Fang, Y., Chen, C., Yuan, Y., Tong, K.Y.: Selective feature aggregation network with area-boundary constraints for polyp segmentation. In: MICCAI (2019)",
+        "DOI": "10.1007/978-3-030-32239-7_34"
+      }
+    ],
+    "container-title": [
+      "Lecture Notes in Computer Science",
+      "Medical Image Computing and Computer Assisted Intervention – MICCAI 2024"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "https://link.springer.com/content/pdf/10.1007/978-3-031-72111-3_48",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2024,
+          10,
+          5
+        ]
+      ],
+      "date-time": "2024-10-05T17:06:12Z",
+      "timestamp": 1728147972000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://link.springer.com/10.1007/978-3-031-72111-3_48"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "ISBN": [
+      "9783031721106",
+      "9783031721113"
+    ],
+    "references-count": 40,
+    "URL": "https://doi.org/10.1007/978-3-031-72111-3_48",
+    "relation": {},
+    "ISSN": [
+      "0302-9743",
+      "1611-3349"
+    ],
+    "issn-type": [
+      {
+        "value": "0302-9743",
+        "type": "print"
+      },
+      {
+        "value": "1611-3349",
+        "type": "electronic"
+      }
+    ],
+    "subject": [],
+    "published": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "assertion": [
+      {
+        "value": "6 October 2024",
+        "order": 1,
+        "name": "first_online",
+        "label": "First Online",
+        "group": {
+          "name": "ChapterHistory",
+          "label": "Chapter History"
+        }
+      },
+      {
+        "value": "The authors declare that they have no competing interests.",
+        "order": 1,
+        "name": "Ethics",
+        "group": {
+          "name": "EthicsHeading",
+          "label": "Disclosure of Interests"
+        }
+      },
+      {
+        "value": "MICCAI",
+        "order": 1,
+        "name": "conference_acronym",
+        "label": "Conference Acronym",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "International Conference on Medical Image Computing and Computer-Assisted Intervention",
+        "order": 2,
+        "name": "conference_name",
+        "label": "Conference Name",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "Marrakesh",
+        "order": 3,
+        "name": "conference_city",
+        "label": "Conference City",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "Morocco",
+        "order": 4,
+        "name": "conference_country",
+        "label": "Conference Country",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "2024",
+        "order": 5,
+        "name": "conference_year",
+        "label": "Conference Year",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "7 October 2024",
+        "order": 7,
+        "name": "conference_start_date",
+        "label": "Conference Start Date",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "11 October 2024",
+        "order": 8,
+        "name": "conference_end_date",
+        "label": "Conference End Date",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "27",
+        "order": 9,
+        "name": "conference_number",
+        "label": "Conference Number",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "miccai2024",
+        "order": 10,
+        "name": "conference_id",
+        "label": "Conference ID",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      },
+      {
+        "value": "https://conferences.miccai.org/2024/en/",
+        "order": 11,
+        "name": "conference_url",
+        "label": "Conference URL",
+        "group": {
+          "name": "ConferenceInfo",
+          "label": "Conference Information"
+        }
+      }
+    ]
+  }
+}

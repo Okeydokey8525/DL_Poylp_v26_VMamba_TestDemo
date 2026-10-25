@@ -1,0 +1,4 @@
+﻿file,row,column,expected,actual,severity,cause,recommendation
+Ket_Qua_V2/KQ_Nen_DX_20seed_FP32/facts.json,cm_mean,TN_reconstructed,N/A: object FP does not determine image TN,23.55 baseline; 24.25 TSVM,P2,Confirmed invalid image-level interpretation retained in legacy artifact; main 04_confusion_matrix excludes it,Quarantine/deprecate this field; retain source bytes for traceability and prevent downstream reuse
+Ket_Qua_V2/KQ_Nen_DX_20seed_FP32/raw_20seeds_confusion_matrices.csv,all 40,TN_reconstructed,N/A for image-level TN,40 minus object FP,P2,Confirmed formula exists; arithmetic valid but inference invalid,Keep original archived; do not cite as measured TN or specificity
+Ket_Qua_V2/KQ_Nen_DX_20seed_FP32/summary_20seeds_paired.csv,val_seg_loss,tsvm_wins,14 when lower loss is better,6 (counts higher loss),P2,Confirmed legacy win direction differs from new lower_is_better schema,Label legacy higher/lower counts or use new canonical win-loss table

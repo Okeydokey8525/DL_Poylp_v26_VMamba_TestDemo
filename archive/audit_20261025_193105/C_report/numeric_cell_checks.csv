@@ -1,0 +1,358 @@
+﻿word_id,field,word_value,expected_unrounded,display_decimals,status,source
+T10R002,baseline_mean,0.7189,0.718868,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R002,baseline_sd,0.0118,0.011767871336374885,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R002,tsvm_mean,0.7232,0.723171,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R002,tsvm_sd,0.0072,0.007196567090963355,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R002,delta_tsvm_minus_baseline,0.0043,0.0043030000000000065,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R003,baseline_mean,0.9069,0.9068885,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R003,baseline_sd,0.0125,0.012468336855706487,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R003,tsvm_mean,0.9083,0.9082735,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R003,tsvm_sd,0.0086,0.008568704548038689,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R003,delta_tsvm_minus_baseline,0.0014,0.0013849999999999917,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R004,baseline_mean,0.9041,0.904095,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R004,baseline_sd,0.0287,0.028748075175840722,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R004,tsvm_mean,0.9145,0.9144515,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R004,tsvm_sd,0.0233,0.023323324732527892,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R004,delta_tsvm_minus_baseline,0.0104,0.01035649999999998,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R005,baseline_mean,0.8594,0.8593665,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R005,baseline_sd,0.0241,0.024112247221124615,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R005,tsvm_mean,0.859,0.858979,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R005,tsvm_sd,0.0179,0.017933841840439384,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R005,delta_tsvm_minus_baseline,-0.0004,-0.0003874999999999906,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R006,baseline_mean,0.7228,0.722758,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R006,baseline_sd,0.0159,0.015940793614266258,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R006,tsvm_mean,0.7273,0.727274,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R006,tsvm_sd,0.0134,0.01342861493034067,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R006,delta_tsvm_minus_baseline,0.0045,0.004516000000000009,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R007,baseline_mean,0.9006,0.9006095,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R007,baseline_sd,0.0116,0.011597558034708045,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R007,tsvm_mean,0.9014,0.9014445,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R007,tsvm_sd,0.0083,0.008345998395070926,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R007,delta_tsvm_minus_baseline,0.0008,0.0008350000000000024,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R008,baseline_mean,0.9006,0.9006355,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R008,baseline_sd,0.0263,0.026284880079419676,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R008,tsvm_mean,0.9067,0.906741,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R008,tsvm_sd,0.0238,0.02375412250093599,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R008,delta_tsvm_minus_baseline,0.0061,0.006105500000000002,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R009,baseline_mean,0.8501,0.8501205000000001,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R009,baseline_sd,0.0293,0.029275496395629683,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R009,tsvm_mean,0.8522,0.8522205,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R009,tsvm_sd,0.0145,0.01450673399893269,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R009,delta_tsvm_minus_baseline,0.0021,0.0020999999999999964,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R010,baseline_mean,1.2663,1.266294,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R010,baseline_sd,0.0843,0.08430327666729275,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R010,tsvm_mean,1.2329,1.2328615,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R010,tsvm_sd,0.041,0.04102491711079218,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T10R010,delta_tsvm_minus_baseline,-0.0334,-0.0334325,4,MATCH,"40 raw results.csv, same selected max-mask row"
+T11R002,delta_ci95_low,-0.0002,-0.0002276319031205027,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R002,delta_ci95_high,0.0088,0.008833631903120516,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R002,paired_t_p,0.0614,0.061431348458673485,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R002,wilcoxon_two_sided_p,0.0696,0.069580078125,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R003,delta_ci95_low,-0.0053,-0.005258967213184312,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R003,delta_ci95_high,0.008,0.008028967213184296,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R003,paired_t_p,0.6675,0.6675283671880452,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R003,wilcoxon_two_sided_p,0.8124,0.8123550415039062,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R004,delta_ci95_low,-0.0086,-0.008566567478368817,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R004,delta_ci95_high,0.0293,0.029279567478368778,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R004,paired_t_p,0.2662,0.2662254771853989,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R004,wilcoxon_two_sided_p,0.498,0.49800872802734375,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R005,delta_ci95_low,-0.0126,-0.012637030849007757,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R005,delta_ci95_high,0.0119,0.011862030849007776,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R005,paired_t_p,0.9479,0.947902021260637,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R005,wilcoxon_two_sided_p,0.9256,0.9256336101869982,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R006,delta_ci95_low,-0.0031,-0.0030625446186300443,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R006,delta_ci95_high,0.0121,0.012094544618630063,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R006,paired_t_p,0.2275,0.22747303741813774,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R006,wilcoxon_two_sided_p,0.1054,0.10539817810058594,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R007,delta_ci95_low,-0.0128,-0.012779239906637036,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R007,delta_ci95_high,0.017,0.01697923990663703,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R007,paired_t_p,0.7709,0.770891099227721,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R007,wilcoxon_two_sided_p,0.9563,0.956329345703125,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R008,delta_ci95_low,-0.0807,-0.08070000227039903,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R008,delta_ci95_high,0.0138,0.013835002270399029,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R008,paired_t_p,0.1552,0.15515745930444025,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T11R008,wilcoxon_two_sided_p,0.1769,0.17685317993164062,4,MATCH,raw CSV + independent stdlib mean/SD/t integration; Wilcoxon checked to stored table and A independent SciPy
+T12R002,0,0.0,0,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/results.csv
+T12R002,1,89.0,89,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/results.csv
+T12R002,2,88.0,88,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/results.csv
+T12R002,3,0.73663,0.73663,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/results.csv
+T12R002,4,0.72451,0.72451,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/results.csv
+T12R002,5,-0.01212,-0.01212000000000002,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/results.csv
+T12R003,0,1.0,1,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2/results.csv
+T12R003,1,98.0,98,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2/results.csv
+T12R003,2,98.0,98,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2/results.csv
+T12R003,3,0.71649,0.71649,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2/results.csv
+T12R003,4,0.72739,0.72739,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2/results.csv
+T12R003,5,0.0109,0.01090000000000002,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2/results.csv
+T12R004,0,2.0,2,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2/results.csv
+T12R004,1,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2/results.csv
+T12R004,2,83.0,83,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2/results.csv
+T12R004,3,0.71377,0.71377,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2/results.csv
+T12R004,4,0.72591,0.72591,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2/results.csv
+T12R004,5,0.01214,0.01214000000000004,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2/results.csv
+T12R005,0,3.0,3,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2/results.csv
+T12R005,1,61.0,61,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2/results.csv
+T12R005,2,89.0,89,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2/results.csv
+T12R005,3,0.69411,0.69411,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2/results.csv
+T12R005,4,0.72126,0.72126,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2/results.csv
+T12R005,5,0.02715,0.027150000000000007,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2/results.csv
+T12R006,0,4.0,4,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2/results.csv
+T12R006,1,99.0,99,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2/results.csv
+T12R006,2,97.0,97,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2/results.csv
+T12R006,3,0.72741,0.72741,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2/results.csv
+T12R006,4,0.7197,0.7197,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2/results.csv
+T12R006,5,-0.00771,-0.007709999999999995,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2/results.csv
+T12R007,0,5.0,5,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2/results.csv
+T12R007,1,94.0,94,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2/results.csv
+T12R007,2,90.0,90,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2/results.csv
+T12R007,3,0.73505,0.73505,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2/results.csv
+T12R007,4,0.72845,0.72845,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2/results.csv
+T12R007,5,-0.0066,-0.006599999999999939,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2/results.csv
+T12R008,0,6.0,6,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2/results.csv
+T12R008,1,81.0,81,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2/results.csv
+T12R008,2,95.0,95,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2/results.csv
+T12R008,3,0.71531,0.71531,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2/results.csv
+T12R008,4,0.72537,0.72537,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2/results.csv
+T12R008,5,0.01006,0.010059999999999958,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2/results.csv
+T12R009,0,7.0,7,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2/results.csv
+T12R009,1,71.0,71,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2/results.csv
+T12R009,2,88.0,88,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2/results.csv
+T12R009,3,0.71449,0.71449,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2/results.csv
+T12R009,4,0.7065,0.7065,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2/results.csv
+T12R009,5,-0.00799,-0.007989999999999942,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2/results.csv
+T12R010,0,8.0,8,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2/results.csv
+T12R010,1,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2/results.csv
+T12R010,2,93.0,93,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2/results.csv
+T12R010,3,0.73175,0.73175,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2/results.csv
+T12R010,4,0.73385,0.73385,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2/results.csv
+T12R010,5,0.0021,0.0020999999999999908,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2/results.csv
+T12R011,0,9.0,9,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2/results.csv
+T12R011,1,84.0,84,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2/results.csv
+T12R011,2,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2/results.csv
+T12R011,3,0.72528,0.72528,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2/results.csv
+T12R011,4,0.73285,0.73285,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2/results.csv
+T12R011,5,0.00757,0.007569999999999966,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2/results.csv
+T12R012,0,10.0,10,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2/results.csv
+T12R012,1,82.0,82,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2/results.csv
+T12R012,2,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2/results.csv
+T12R012,3,0.70452,0.70452,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2/results.csv
+T12R012,4,0.71982,0.71982,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2/results.csv
+T12R012,5,0.0153,0.01529999999999998,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2/results.csv
+T12R013,0,11.0,11,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2/results.csv
+T12R013,1,99.0,99,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2/results.csv
+T12R013,2,87.0,87,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2/results.csv
+T12R013,3,0.72987,0.72987,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2/results.csv
+T12R013,4,0.72264,0.72264,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2/results.csv
+T12R013,5,-0.00723,-0.00723000000000007,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2/results.csv
+T12R014,0,12.0,12,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2/results.csv
+T12R014,1,87.0,87,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2/results.csv
+T12R014,2,89.0,89,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2/results.csv
+T12R014,3,0.70556,0.70556,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2/results.csv
+T12R014,4,0.71569,0.71569,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2/results.csv
+T12R014,5,0.01013,0.010130000000000083,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2/results.csv
+T12R015,0,13.0,13,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2/results.csv
+T12R015,1,97.0,97,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2/results.csv
+T12R015,2,99.0,99,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2/results.csv
+T12R015,3,0.73151,0.73151,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2/results.csv
+T12R015,4,0.73061,0.73061,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2/results.csv
+T12R015,5,-0.0009,-0.0009000000000000119,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2/results.csv
+T12R016,0,14.0,14,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2/results.csv
+T12R016,1,74.0,74,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2/results.csv
+T12R016,2,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2/results.csv
+T12R016,3,0.72232,0.72232,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2/results.csv
+T12R016,4,0.72107,0.72107,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2/results.csv
+T12R016,5,-0.00125,-0.0012499999999999734,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2/results.csv
+T12R017,0,15.0,15,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2/results.csv
+T12R017,1,80.0,80,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2/results.csv
+T12R017,2,84.0,84,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2/results.csv
+T12R017,3,0.71758,0.71758,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2/results.csv
+T12R017,4,0.72621,0.72621,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2/results.csv
+T12R017,5,0.00863,0.008630000000000027,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2/results.csv
+T12R018,0,16.0,16,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2/results.csv
+T12R018,1,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2/results.csv
+T12R018,2,93.0,93,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2/results.csv
+T12R018,3,0.71248,0.71248,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2/results.csv
+T12R018,4,0.72374,0.72374,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2/results.csv
+T12R018,5,0.01126,0.011260000000000048,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2/results.csv
+T12R019,0,17.0,17,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2/results.csv
+T12R019,1,73.0,73,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2/results.csv
+T12R019,2,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2/results.csv
+T12R019,3,0.72744,0.72744,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2/results.csv
+T12R019,4,0.73015,0.73015,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2/results.csv
+T12R019,5,0.00271,0.00270999999999999,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2/results.csv
+T12R020,0,18.0,18,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2/results.csv
+T12R020,1,94.0,94,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2/results.csv
+T12R020,2,47.0,47,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2/results.csv
+T12R020,3,0.7022,0.7022,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2/results.csv
+T12R020,4,0.70821,0.70821,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2/results.csv
+T12R020,5,0.00601,0.00600999999999996,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2/results.csv
+T12R021,0,19.0,19,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2/results.csv
+T12R021,1,71.0,71,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2/results.csv
+T12R021,2,91.0,91,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2/results.csv
+T12R021,3,0.71359,0.71359,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2/results.csv
+T12R021,4,0.71949,0.71949,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2/results.csv
+T12R021,5,0.0059,0.005900000000000016,5,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2/results.csv; Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2/results.csv
+T13R002,min,0.69411,0.69411,5,MATCH,40 raw CSV
+T13R002,median,0.71703,0.717035,5,MATCH,40 raw CSV
+T13R002,max,0.73663,0.73663,5,MATCH,40 raw CSV
+T13R002,range,0.04252,0.04252,5,MATCH,40 raw CSV
+T13R003,min,0.7065,0.7065,5,MATCH,40 raw CSV
+T13R003,median,0.72413,0.724125,5,MATCH,40 raw CSV
+T13R003,max,0.73385,0.73385,5,MATCH,40 raw CSV
+T13R003,range,0.02735,0.027349999999999985,5,MATCH,40 raw CSV
+T18R002,seed,0.0,0,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2/results.csv
+T18R002,max_mask_epoch,89.0,89,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2/results.csv
+T18R002,max_fitness_epoch,89.0,89,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2/results.csv
+T18R003,seed,1.0,1,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2/results.csv
+T18R003,max_mask_epoch,98.0,98,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2/results.csv
+T18R003,max_fitness_epoch,98.0,98,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2/results.csv
+T18R004,seed,2.0,2,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2/results.csv
+T18R004,max_mask_epoch,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2/results.csv
+T18R004,max_fitness_epoch,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2/results.csv
+T18R005,seed,3.0,3,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2/results.csv
+T18R005,max_mask_epoch,61.0,61,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2/results.csv
+T18R005,max_fitness_epoch,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2/results.csv
+T18R006,seed,4.0,4,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2/results.csv
+T18R006,max_mask_epoch,99.0,99,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2/results.csv
+T18R006,max_fitness_epoch,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2/results.csv
+T18R007,seed,5.0,5,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2/results.csv
+T18R007,max_mask_epoch,94.0,94,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2/results.csv
+T18R007,max_fitness_epoch,94.0,94,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2/results.csv
+T18R008,seed,6.0,6,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2/results.csv
+T18R008,max_mask_epoch,81.0,81,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2/results.csv
+T18R008,max_fitness_epoch,98.0,98,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2/results.csv
+T18R009,seed,7.0,7,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2/results.csv
+T18R009,max_mask_epoch,71.0,71,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2/results.csv
+T18R009,max_fitness_epoch,62.0,62,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2/results.csv
+T18R010,seed,8.0,8,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2/results.csv
+T18R010,max_mask_epoch,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2/results.csv
+T18R010,max_fitness_epoch,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2/results.csv
+T18R011,seed,9.0,9,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2/results.csv
+T18R011,max_mask_epoch,84.0,84,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2/results.csv
+T18R011,max_fitness_epoch,84.0,84,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2/results.csv
+T18R012,seed,10.0,10,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2/results.csv
+T18R012,max_mask_epoch,82.0,82,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2/results.csv
+T18R012,max_fitness_epoch,81.0,81,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2/results.csv
+T18R013,seed,11.0,11,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2/results.csv
+T18R013,max_mask_epoch,99.0,99,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2/results.csv
+T18R013,max_fitness_epoch,99.0,99,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2/results.csv
+T18R014,seed,12.0,12,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2/results.csv
+T18R014,max_mask_epoch,87.0,87,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2/results.csv
+T18R014,max_fitness_epoch,87.0,87,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2/results.csv
+T18R015,seed,13.0,13,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2/results.csv
+T18R015,max_mask_epoch,97.0,97,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2/results.csv
+T18R015,max_fitness_epoch,94.0,94,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2/results.csv
+T18R016,seed,14.0,14,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2/results.csv
+T18R016,max_mask_epoch,74.0,74,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2/results.csv
+T18R016,max_fitness_epoch,88.0,88,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2/results.csv
+T18R017,seed,15.0,15,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2/results.csv
+T18R017,max_mask_epoch,80.0,80,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2/results.csv
+T18R017,max_fitness_epoch,80.0,80,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2/results.csv
+T18R018,seed,16.0,16,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2/results.csv
+T18R018,max_mask_epoch,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2/results.csv
+T18R018,max_fitness_epoch,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2/results.csv
+T18R019,seed,17.0,17,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2/results.csv
+T18R019,max_mask_epoch,73.0,73,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2/results.csv
+T18R019,max_fitness_epoch,73.0,73,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2/results.csv
+T18R020,seed,18.0,18,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2/results.csv
+T18R020,max_mask_epoch,94.0,94,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2/results.csv
+T18R020,max_fitness_epoch,84.0,84,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2/results.csv
+T18R021,seed,19.0,19,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2/results.csv
+T18R021,max_mask_epoch,71.0,71,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2/results.csv
+T18R021,max_fitness_epoch,71.0,71,0,MATCH,Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2/results.csv
+T18R022,seed,0.0,0,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/results.csv
+T18R022,max_mask_epoch,88.0,88,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/results.csv
+T18R022,max_fitness_epoch,88.0,88,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/results.csv
+T18R023,seed,1.0,1,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2/results.csv
+T18R023,max_mask_epoch,98.0,98,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2/results.csv
+T18R023,max_fitness_epoch,98.0,98,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s1_w2/results.csv
+T18R024,seed,2.0,2,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2/results.csv
+T18R024,max_mask_epoch,83.0,83,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2/results.csv
+T18R024,max_fitness_epoch,83.0,83,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s2_w2/results.csv
+T18R025,seed,3.0,3,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2/results.csv
+T18R025,max_mask_epoch,89.0,89,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2/results.csv
+T18R025,max_fitness_epoch,89.0,89,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s3_w2/results.csv
+T18R026,seed,4.0,4,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2/results.csv
+T18R026,max_mask_epoch,97.0,97,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2/results.csv
+T18R026,max_fitness_epoch,97.0,97,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s4_w2/results.csv
+T18R027,seed,5.0,5,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2/results.csv
+T18R027,max_mask_epoch,90.0,90,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2/results.csv
+T18R027,max_fitness_epoch,90.0,90,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s5_w2/results.csv
+T18R028,seed,6.0,6,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2/results.csv
+T18R028,max_mask_epoch,95.0,95,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2/results.csv
+T18R028,max_fitness_epoch,98.0,98,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s6_w2/results.csv
+T18R029,seed,7.0,7,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2/results.csv
+T18R029,max_mask_epoch,88.0,88,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2/results.csv
+T18R029,max_fitness_epoch,70.0,70,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s7_w2/results.csv
+T18R030,seed,8.0,8,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2/results.csv
+T18R030,max_mask_epoch,93.0,93,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2/results.csv
+T18R030,max_fitness_epoch,99.0,99,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s8_w2/results.csv
+T18R031,seed,9.0,9,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2/results.csv
+T18R031,max_mask_epoch,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2/results.csv
+T18R031,max_fitness_epoch,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s9_w2/results.csv
+T18R032,seed,10.0,10,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2/results.csv
+T18R032,max_mask_epoch,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2/results.csv
+T18R032,max_fitness_epoch,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s10_w2/results.csv
+T18R033,seed,11.0,11,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2/results.csv
+T18R033,max_mask_epoch,87.0,87,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2/results.csv
+T18R033,max_fitness_epoch,87.0,87,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s11_w2/results.csv
+T18R034,seed,12.0,12,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2/results.csv
+T18R034,max_mask_epoch,89.0,89,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2/results.csv
+T18R034,max_fitness_epoch,88.0,88,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s12_w2/results.csv
+T18R035,seed,13.0,13,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2/results.csv
+T18R035,max_mask_epoch,99.0,99,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2/results.csv
+T18R035,max_fitness_epoch,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s13_w2/results.csv
+T18R036,seed,14.0,14,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2/results.csv
+T18R036,max_mask_epoch,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2/results.csv
+T18R036,max_fitness_epoch,96.0,96,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s14_w2/results.csv
+T18R037,seed,15.0,15,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2/results.csv
+T18R037,max_mask_epoch,84.0,84,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2/results.csv
+T18R037,max_fitness_epoch,81.0,81,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2/results.csv
+T18R038,seed,16.0,16,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2/results.csv
+T18R038,max_mask_epoch,93.0,93,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2/results.csv
+T18R038,max_fitness_epoch,93.0,93,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s16_w2/results.csv
+T18R039,seed,17.0,17,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2/results.csv
+T18R039,max_mask_epoch,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2/results.csv
+T18R039,max_fitness_epoch,100.0,100,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s17_w2/results.csv
+T18R040,seed,18.0,18,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2/results.csv
+T18R040,max_mask_epoch,47.0,47,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2/results.csv
+T18R040,max_fitness_epoch,47.0,47,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s18_w2/results.csv
+T18R041,seed,19.0,19,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2/results.csv
+T18R041,max_mask_epoch,91.0,91,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2/results.csv
+T18R041,max_fitness_epoch,90.0,90,0,MATCH,Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s19_w2/results.csv
+T14R002,0,110.55,110.55,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R002,1,2.95,2.9464519251751624,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R002,2,16.45,16.45,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R002,3,3.43,3.42552339450715,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R002,4,16.45,16.45,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R002,5,2.95,2.9464519251751624,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R003,0,110.65,110.65,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R003,1,1.87,1.8715318802914815,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R003,2,15.75,15.75,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R003,3,3.02,3.024026594146497,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R003,4,16.35,16.35,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T14R003,5,1.87,1.8715318802914815,2,MATCH,"inherited CM extraction, validity against raw images delegated B"
+T16R002,0,269.56,269.556058,2,MATCH,400 stored raw timing rows; no rerun
+T16R002,1,18.71,18.708566803948777,2,MATCH,400 stored raw timing rows; no rerun
+T16R002,2,577.36,577.355012,2,MATCH,400 stored raw timing rows; no rerun
+T16R002,3,24.4,24.399182308774698,2,MATCH,400 stored raw timing rows; no rerun
+T16R003,0,270.97,270.97384999999997,2,MATCH,400 stored raw timing rows; no rerun
+T16R003,1,576.84,576.8438,2,MATCH,400 stored raw timing rows; no rerun
+T16R004,0,297.76,297.764025,2,MATCH,400 stored raw timing rows; no rerun
+T16R004,1,623.5,623.49551,2,MATCH,400 stored raw timing rows; no rerun
+T16R005,0,308.62,308.616281,2,MATCH,400 stored raw timing rows; no rerun
+T16R005,1,636.82,636.824198,2,MATCH,400 stored raw timing rows; no rerun
+T16R006,0,3.71,3.70980347249328,2,MATCH,400 stored raw timing rows; no rerun
+T16R006,1,1.73,1.7320365792546373,2,MATCH,400 stored raw timing rows; no rerun
+T16R007,0,286.56,286.562767,2,MATCH,400 stored raw timing rows; no rerun
+T16R007,1,20.09,20.09441766232831,2,MATCH,400 stored raw timing rows; no rerun
+T16R007,2,567.86,567.856084,2,MATCH,400 stored raw timing rows; no rerun
+T16R007,3,24.45,24.448465042151774,2,MATCH,400 stored raw timing rows; no rerun
+T16R008,0,286.82,286.82165,2,MATCH,400 stored raw timing rows; no rerun
+T16R008,1,566.94,566.94075,2,MATCH,400 stored raw timing rows; no rerun
+T16R009,0,319.22,319.22141500000004,2,MATCH,400 stored raw timing rows; no rerun
+T16R009,1,611.67,611.66612,2,MATCH,400 stored raw timing rows; no rerun
+T16R010,0,326.73,326.7261490000001,2,MATCH,400 stored raw timing rows; no rerun
+T16R010,1,638.48,638.4767410000001,2,MATCH,400 stored raw timing rows; no rerun
+T16R011,0,3.49,3.4896368794484736,2,MATCH,400 stored raw timing rows; no rerun
+T16R011,1,1.76,1.7610095729818753,2,MATCH,400 stored raw timing rows; no rerun

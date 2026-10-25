@@ -1,0 +1,132 @@
+CELL 0 code
+# ============================================================
+# CELL 1: SETUP REPO CUSTOM + YAML SCALE S + DATA_BG20.YAML
+# ============================================================
+import os, sys, shutil, yaml
+
+# 1. Khai báo repo custom và tập dữ liệu BG20
+CUSTOM_REPO_PATH = "/kaggle/input/datasets/luong2005lam/ultralytics-topology-shape-aware-vmamba/ultralytics_Topology-Shape-aware VMamba"
+DATASET_ROOT = "/kaggle/input/datasets/luong2005lam/kvasir-yolo-seg-bg20/Kvasir_YOLO_SEG_BG20"
+
+assert os.path.exists(CUSTOM_REPO_PATH), f"❌ Không tìm thấy repo: {CUSTOM_REPO_PATH}"
+assert os.path.exists(DATASET_ROOT), f"❌ Không tìm thấy dataset: {DATASET_ROOT}"
+
+# 2. Tạo symlink và nạp sys.path
+if not os.path.exists("/kaggle/working/ultralytics"):
+    os.symlink(CUSTOM_REPO_PATH, "/kaggle/working/ultralytics")
+    print("🔗 Đã tạo symlink 'ultralytics'")
+
+for p in ["/kaggle/working", CUSTOM_REPO_PATH]:
+    if p not in sys.path:
+        sys.path.insert(0, p)
+
+import ultralytics
+from ultralytics.nn.modules import C2TSVMamba
+print(f"✅ Nạp Ultralytics Custom ({ultralytics.__version__}) từ: {ultralytics.__file__}")
+print("✅ Nạp Module C2TSVMamba thành công:", C2TSVMamba)
+
+# 3. Tạo file YAML kiến trúc chuẩn scale 's'
+SRC_YAML = f"{CUSTOM_REPO_PATH}/cfg/models/26/yolo26-seg-TopologyShapeVMamba.yaml"
+YAML_SCALE_S = "/kaggle/working/yolo26s-seg-TopologyShapeVMamba.yaml"
+shutil.copy2(SRC_YAML, YAML_SCALE_S)
+
+with open(YAML_SCALE_S, "r", encoding="utf-8") as f:
+    cfg = yaml.safe_load(f)
+cfg["scale"] = "s"
+with open(YAML_SCALE_S, "w", encoding="utf-8") as f:
+    yaml.safe_dump(cfg, f, sort_keys=False)
+print("✅ Đã tạo file YAML chuẩn scale s:", YAML_SCALE_S)
+
+# 4. Tạo file data_bg20.yaml
+DATA_YAML = "/kaggle/working/data_bg20.yaml"
+with open(DATA_YAML, "w", encoding="utf-8") as f:
+    yaml.safe_dump({
+        "path": DATASET_ROOT,
+        "train": "images/train",
+        "val": "images/val",
+        "nc": 1,
+        "names": {0: "polyp"}
+    }, f, sort_keys=False, allow_unicode=True)
+
+print("✅ Đã tạo data_bg20.yaml thành công!")
+CELL 1 code
+# ============================================================
+# TẢI SẴN FILE TRỌNG SỐ (CÓ TỰ ĐỘNG RETRY & KIỂM TRA DUNG LƯỢNG)
+# ============================================================
+import os, time
+
+WEIGHT_PATH = "/kaggle/working/yolo26s-seg.pt"
+URL = "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s-seg.pt"
+
+# Xóa file cũ nếu bị tải dở dang
+if os.path.exists(WEIGHT_PATH):
+    if os.path.getsize(WEIGHT_PATH) < 20 * 1024 * 1024:
+        os.remove(WEIGHT_PATH)
+
+# Tải file bằng curl với cờ tự động thử lại 5 lần (-L: chuyển hướng, -C -: tiếp tục tải nếu đứt)
+if not os.path.exists(WEIGHT_PATH):
+    print("⏳ Đang tải trọng số yolo26s-seg.pt...")
+    !curl -L --retry 5 --retry-delay 2 -C - "{URL}" -o "{WEIGHT_PATH}"
+
+# Kiểm tra dung lượng (chuẩn là ~22.4 MB)
+if os.path.exists(WEIGHT_PATH):
+    size_mb = os.path.getsize(WEIGHT_PATH) / (1024 * 1024)
+    print(f" Dung lượng file: {size_mb:.2f} MB")
+    assert size_mb > 20.0, "❌ File tải về chưa đủ dung lượng, hãy bấm chạy lại cell này!"
+    print(" Trọng số đã sẵn sàng! Bây giờ bạn có thể bấm chạy Cell 2 bình thường.")
+else:
+    print("❌ Chưa tải được file, hãy kiểm tra lại kết nối mạng Kaggle (Settings > Internet: ON).")
+CELL 2 code
+# ============================================================
+# CELL 2: KHÓA TẤT ĐỊNH & TRAIN MODEL (BG20 - 100 EPOCHS)
+# ============================================================
+import os, random, numpy as np, torch
+from ultralytics import YOLO
+
+# 1. THIẾT LẬP SIÊU THAM SỐ
+SEED = 10
+WORKERS = 2    
+BATCH = 8
+EPOCHS = 100
+
+# 2. KHÓA TẤT ĐỊNH HỆ THỐNG
+os.environ["PYTHONHASHSEED"] = str(SEED)
+os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
+random.seed(SEED)
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+if torch.cuda.is_available():
+    torch.cuda.manual_seed(SEED)
+    torch.cuda.manual_seed_all(SEED)
+
+torch.backends.cudnn.benchmark = False
+torch.backends.cudnn.deterministic = True
+torch.use_deterministic_algorithms(True, warn_only=False)
+
+# 3. LOAD MODEL & HUẤN LUYỆN
+yaml_cfg = "/kaggle/working/yolo26s-seg-TopologyShapeVMamba.yaml"
+model = YOLO(yaml_cfg).load("yolo26s-seg.pt")
+
+results = model.train(
+    data="/kaggle/working/data_bg20.yaml",
+    epochs=EPOCHS,
+    imgsz=640,
+    batch=BATCH,
+    device=0,
+    workers=WORKERS,
+    cache=False,
+    amp=False,
+    optimizer="AdamW",
+    seed=SEED,
+    lr0=0.001,
+    warmup_epochs=5.0,
+    deterministic=True,
+    patience=100,
+    close_mosaic=10,
+    project="/kaggle/working/runs",
+    name=f"Kvasir_BG20_YOLO26s_seg_TSVM_s{SEED}_w{WORKERS}",
+    exist_ok=True,
+    plots=True
+)
+CELL 3 code
+!zip -r /kaggle/working/runs.zip /kaggle/working/runs

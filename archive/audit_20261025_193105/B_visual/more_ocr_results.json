@@ -1,0 +1,1402 @@
+[
+  {
+    "id": "V0047",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0047_TP_threshold.png",
+    "text": "111\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0048",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0048_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0048",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0048_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0048",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0048_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0048",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0048_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0059",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0059_TP_threshold.png",
+    "text": "107\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0060",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0060_TP_threshold.png",
+    "text": "0.84\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0060",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0060_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0060",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0060_FN_threshold.png",
+    "text": "0.16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0060",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0060_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0071",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0071_TP_threshold.png",
+    "text": "110\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0072",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0072_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0072",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0072_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0072",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0072_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0072",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0072_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0083",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0083_TP_threshold.png",
+    "text": "111\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0084",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0084_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0084",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0084_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0084",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0084_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0084",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0084_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0095",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0095_TP_threshold.png",
+    "text": "112\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0096",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0096_TP_threshold.png",
+    "text": "0.88\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0096",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0096_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0096",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0096_FN_threshold.png",
+    "text": "0.12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0096",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0096_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0107",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0107_TP_threshold.png",
+    "text": "112\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0108",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0108_TP_threshold.png",
+    "text": "0.88\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0108",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0108_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0108",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0108_FN_threshold.png",
+    "text": "0.12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0108",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0108_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0119",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0119_TP_threshold.png",
+    "text": "114\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0120",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0120_TP_threshold.png",
+    "text": "0.90\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0120",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0120_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0120",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0120_FN_threshold.png",
+    "text": "0.10\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0120",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0120_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0131",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0131_TP_threshold.png",
+    "text": "107\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0132",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0132_TP_threshold.png",
+    "text": "0.84\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0132",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0132_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0132",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0132_FN_threshold.png",
+    "text": "0.16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0132",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0132_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0143",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0143_TP_threshold.png",
+    "text": "115\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0144",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0144_TP_threshold.png",
+    "text": "0.91\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0144",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0144_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0144",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0144_FN_threshold.png",
+    "text": "0.09\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0144",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0144_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0155",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0155_TP_threshold.png",
+    "text": "104\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0156",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0156_TP_threshold.png",
+    "text": "0.82\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0156",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0156_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0156",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0156_FN_threshold.png",
+    "text": "0.18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0156",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0156_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0167",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0167_TP_threshold.png",
+    "text": "109\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0168",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0168_TP_threshold.png",
+    "text": "0.86\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0168",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0168_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0168",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0168_FN_threshold.png",
+    "text": "0.14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0168",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0168_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0179",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0179_TP_threshold.png",
+    "text": "111\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0180",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0180_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0180",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0180_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0180",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0180_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0180",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0180_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0191",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0191_TP_threshold.png",
+    "text": "110\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0192",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0192_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0192",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0192_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0192",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0192_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0192",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0192_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0203",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0203_TP_threshold.png",
+    "text": "113\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0204",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0204_TP_threshold.png",
+    "text": "0.89\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0204",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0204_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0204",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0204_FN_threshold.png",
+    "text": "0.11\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0204",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0204_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0215",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0215_TP_threshold.png",
+    "text": "109\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0216",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0216_TP_threshold.png",
+    "text": "0.86\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0216",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0216_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0216",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0216_FN_threshold.png",
+    "text": "0.14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0216",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0216_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0227",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0227_TP_threshold.png",
+    "text": "112\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0228",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0228_TP_threshold.png",
+    "text": "0.88\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0228",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0228_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0228",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0228_FN_threshold.png",
+    "text": "0.12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0228",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0228_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0239",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0239_TP_threshold.png",
+    "text": "109\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0240",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0240_TP_threshold.png",
+    "text": "0.86\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0240",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0240_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0240",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0240_FN_threshold.png",
+    "text": "0.14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0240",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0240_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0251",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0251_TP_threshold.png",
+    "text": "116\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0252",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0252_TP_threshold.png",
+    "text": "0.91\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0252",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0252_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0252",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0252_FN_threshold.png",
+    "text": "0.09\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0252",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0252_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0263",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0263_TP_threshold.png",
+    "text": "107\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0264",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0264_TP_threshold.png",
+    "text": "0.84\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0264",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0264_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0264",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0264_FN_threshold.png",
+    "text": "0.16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0264",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0264_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0275",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0275_TP_threshold.png",
+    "text": "112\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0276",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0276_TP_threshold.png",
+    "text": "0.88\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0276",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0276_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0276",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0276_FN_threshold.png",
+    "text": "0.12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0276",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0276_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0287",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0287_TP_threshold.png",
+    "text": "108\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0288",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0288_TP_threshold.png",
+    "text": "0.85\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0288",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0288_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0288",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0288_FN_threshold.png",
+    "text": "0.15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0288",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0288_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0299",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0299_TP_threshold.png",
+    "text": "114\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0300",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0300_TP_threshold.png",
+    "text": "0.90\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0300",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0300_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0300",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0300_FN_threshold.png",
+    "text": "0.10\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0300",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0300_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0311",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0311_TP_threshold.png",
+    "text": "110\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0312",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0312_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0312",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0312_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0312",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0312_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0312",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0312_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0323",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0323_TP_threshold.png",
+    "text": "114\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0324",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0324_TP_threshold.png",
+    "text": "0.90\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0324",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0324_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0324",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0324_FN_threshold.png",
+    "text": "0.10\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0324",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0324_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0335",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0335_TP_threshold.png",
+    "text": "113\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0336",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0336_TP_threshold.png",
+    "text": "0.89\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0336",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0336_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0336",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0336_FN_threshold.png",
+    "text": "0.11\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0336",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0336_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0347",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0347_TP_threshold.png",
+    "text": "112\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0348",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0348_TP_threshold.png",
+    "text": "0.88\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0348",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0348_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0348",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0348_FN_threshold.png",
+    "text": "0.12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0348",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0348_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0359",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0359_TP_threshold.png",
+    "text": "111\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0360",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0360_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0360",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0360_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0360",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0360_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0360",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0360_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0371",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0371_TP_threshold.png",
+    "text": "108\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0372",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0372_TP_threshold.png",
+    "text": "0.85\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0372",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0372_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0372",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0372_FN_threshold.png",
+    "text": "0.15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0372",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0372_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0383",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0383_TP_threshold.png",
+    "text": "109\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0384",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0384_TP_threshold.png",
+    "text": "0.86\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0384",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0384_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0384",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0384_FN_threshold.png",
+    "text": "0.14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0384",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0384_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0395",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0395_TP_threshold.png",
+    "text": "109\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0396",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0396_TP_threshold.png",
+    "text": "0.86\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0396",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0396_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0396",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0396_FN_threshold.png",
+    "text": "0.14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0396",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0396_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0407",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0407_TP_threshold.png",
+    "text": "111\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0408",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0408_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0408",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0408_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0408",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0408_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0408",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0408_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0419",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0419_TP_threshold.png",
+    "text": "112\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0420",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0420_TP_threshold.png",
+    "text": "0.88\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0420",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0420_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0420",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0420_FN_threshold.png",
+    "text": "0.12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0420",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0420_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0431",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0431_TP_threshold.png",
+    "text": "110\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0432",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0432_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0432",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0432_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0432",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0432_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0432",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0432_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0443",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0443_TP_threshold.png",
+    "text": "111\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0444",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0444_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0444",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0444_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0444",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0444_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0444",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0444_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0455",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0455_TP_threshold.png",
+    "text": "112\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0456",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0456_TP_threshold.png",
+    "text": "0.88\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0456",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0456_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0456",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0456_FN_threshold.png",
+    "text": "0.12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0456",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0456_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0467",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0467_TP_threshold.png",
+    "text": "108\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0468",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0468_TP_threshold.png",
+    "text": "0.85\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0468",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0468_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0468",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0468_FN_threshold.png",
+    "text": "0.15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0468",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0468_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0479",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0479_TP_threshold.png",
+    "text": "109\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0480",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0480_TP_threshold.png",
+    "text": "0.86\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0480",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0480_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0480",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0480_FN_threshold.png",
+    "text": "0.14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0480",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0480_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0491",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0491_TP_threshold.png",
+    "text": "112\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0492",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0492_TP_threshold.png",
+    "text": "0.88\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0492",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0492_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0492",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0492_FN_threshold.png",
+    "text": "0.12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0492",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0492_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0503",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0503_TP_threshold.png",
+    "text": "110\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0504",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0504_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0504",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0504_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0504",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0504_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0504",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0504_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0515",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0515_TP_threshold.png",
+    "text": "110\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0516",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0516_TP_threshold.png",
+    "text": "0.87\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0516",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0516_FP_threshold.png",
+    "text": "1.00\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0516",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0516_FN_threshold.png",
+    "text": "0.13\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0516",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0516_TN_threshold.png",
+    "text": "oo\n",
+    "confidence": 0
+  }
+]

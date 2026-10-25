@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.polyp.polypweb.ApiComparisonIntegrationTests
+-------------------------------------------------------------------------------
+Tests run: 27, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.602 s -- in com.polyp.polypweb.ApiComparisonIntegrationTests

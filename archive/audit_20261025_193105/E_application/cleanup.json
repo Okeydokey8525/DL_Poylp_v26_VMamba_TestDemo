@@ -1,0 +1,8 @@
+{
+  "checked": "2026-10-25T23:33:14.9447236+07:00",
+  "audit_listeners_remaining": [],
+  "mongo_shutdown": "logs/mongo_resume.log confirms exitCode0",
+  "web_stopped_pid": 25144,
+  "ai_stopped_pid": 45416,
+  "source_changed_count": 0
+}

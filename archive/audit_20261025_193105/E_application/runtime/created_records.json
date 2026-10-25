@@ -1,0 +1,64 @@
+{
+  "diagnoses": [
+    {
+      "id": "6ade2ca0d5a922967e96598f",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-seg",
+      "modelCategory": "BASELINE",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.883303165435791,
+      "maskCount": 1,
+      "processingTimeMs": 2205.425,
+      "createdAt": "2026-10-25T23:21:52.4844658",
+      "originalImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/original",
+      "resultImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/result",
+      "metadataUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/metadata"
+    },
+    {
+      "id": "6ade2ca4d5a922967e965990",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-TSVM-FP32-seg",
+      "modelCategory": "VMAMBA",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.5838399529457092,
+      "maskCount": 2,
+      "processingTimeMs": 3559.228,
+      "createdAt": "2026-10-25T23:21:56.2601727",
+      "originalImageUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/images/original",
+      "resultImageUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/images/result",
+      "metadataUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/metadata"
+    }
+  ],
+  "comparison": {
+    "comparisonGroupId": "12510284-9302-4c2e-b125-89fffb5d4f9d",
+    "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+    "createdAt": "2026-10-25T23:22:04.2954229",
+    "originalImageUrl": "/api/v1/diagnoses/6ade2cacd5a922967e965991/images/original",
+    "baseline": {
+      "id": "6ade2cacd5a922967e965991",
+      "modelType": "YOLO26s-seg",
+      "modelCategory": "BASELINE",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.883303165435791,
+      "maskCount": 1,
+      "processingTimeMs": 1639.015,
+      "resultImageUrl": "/api/v1/diagnoses/6ade2cacd5a922967e965991/images/result"
+    },
+    "vmamba": {
+      "id": "6ade2cacd5a922967e965992",
+      "modelType": "YOLO26s-TSVM-FP32-seg",
+      "modelCategory": "VMAMBA",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.5838399529457092,
+      "maskCount": 2,
+      "processingTimeMs": 4586.106,
+      "resultImageUrl": "/api/v1/diagnoses/6ade2cacd5a922967e965992/images/result"
+    },
+    "totalProcessingTimeMs": 6225.121,
+    "metadataUrl": "/api/v1/comparisons/12510284-9302-4c2e-b125-89fffb5d4f9d/metadata"
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "status": "ok",
+  "message-type": "work",
+  "message-version": "1.0.0",
+  "message": {
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          10,
+          23
+        ]
+      ],
+      "date-time": "2026-10-23T21:18:23Z",
+      "timestamp": 1792790303918,
+      "version": "4.5.0"
+    },
+    "reference-count": 0,
+    "publisher": "University of Toronto Press Inc. (UTPress)",
+    "issue": "2",
+    "content-domain": {
+      "domain": [],
+      "crossmark-restriction": false
+    },
+    "short-container-title": [
+      "Cartographica"
+    ],
+    "published-print": {
+      "date-parts": [
+        [
+          1973,
+          12,
+          1
+        ]
+      ]
+    },
+    "abstract": "<jats:p>All digitizing methods, as a general rule, record lines with far more data than is necessary for accurate graphic reproduction or for computer analysis. Two algorithms to reduce the number of points required to represent the line and, if desired, produce caricatures, are presented and compared with the most promising methods so far suggested. Line reduction will form a major part of automated generalization.</jats:p>",
+    "DOI": "10.3138/fm57-6770-u75u-7727",
+    "type": "journal-article",
+    "created": {
+      "date-parts": [
+        [
+          2007,
+          4,
+          4
+        ]
+      ],
+      "date-time": "2007-04-04T09:41:41Z",
+      "timestamp": 1175679701000
+    },
+    "page": "112-122",
+    "source": "Crossref",
+    "is-referenced-by-count": 3040,
+    "title": [
+      "ALGORITHMS FOR THE REDUCTION OF THE NUMBER OF POINTS REQUIRED TO REPRESENT A DIGITIZED LINE OR ITS CARICATURE"
+    ],
+    "prefix": "10.3138",
+    "volume": "10",
+    "author": [
+      {
+        "given": "DAVID H",
+        "family": "DOUGLAS",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "University of Ottawa/Simon Fraser University, British Columbia"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "THOMAS K",
+        "family": "PEUCKER",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "member": "1696",
+    "container-title": [
+      "Cartographica"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "https://utppublishing.com/doi/pdf/10.3138/FM57-6770-U75U-7727",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2025,
+          3,
+          13
+        ]
+      ],
+      "date-time": "2025-03-13T04:28:51Z",
+      "timestamp": 1741840131000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://utppublishing.com/doi/10.3138/FM57-6770-U75U-7727"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          1973,
+          12,
+          1
+        ]
+      ]
+    },
+    "references-count": 0,
+    "journal-issue": {
+      "issue": "2",
+      "published-print": {
+        "date-parts": [
+          [
+            1973,
+            12,
+            1
+          ]
+        ]
+      }
+    },
+    "alternative-id": [
+      "10.3138/FM57-6770-U75U-7727"
+    ],
+    "URL": "https://doi.org/10.3138/fm57-6770-u75u-7727",
+    "relation": {},
+    "ISSN": [
+      "0317-7173",
+      "1911-9925"
+    ],
+    "issn-type": [
+      {
+        "value": "0317-7173",
+        "type": "print"
+      },
+      {
+        "value": "1911-9925",
+        "type": "electronic"
+      }
+    ],
+    "subject": [],
+    "published": {
+      "date-parts": [
+        [
+          1973,
+          12,
+          1
+        ]
+      ]
+    }
+  }
+}

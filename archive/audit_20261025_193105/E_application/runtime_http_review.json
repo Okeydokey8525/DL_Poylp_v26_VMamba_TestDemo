@@ -1,0 +1,10 @@
+{
+  "original_http_cases": 44,
+  "original_expected_status_matches": 43,
+  "harness_issue": {
+    "case": "reject_empty_web_image",
+    "observed": 415,
+    "reason": "Request was application/x-www-form-urlencoded while endpoint consumes multipart; 415 was correct routing rejection, not an application defect.",
+    "correction": "Supplement before/correct_multipart_empty sent a true multipart zero-byte JPEG and received expected400."
+  }
+}

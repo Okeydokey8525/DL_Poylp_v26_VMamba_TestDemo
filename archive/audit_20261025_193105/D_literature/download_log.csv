@@ -1,0 +1,5 @@
+﻿name,url,sha256,pages,status,error
+Topo-VM-UNetV2,https://arxiv.org/pdf/2505.06210v1,4bd540c0dbca1d718d09edbf65cd35714cde5da5a180aa44b9cc9246b3097169,6,downloaded public arxiv PDF for private audit; not redistributed,
+CSG-Mamba,https://arxiv.org/pdf/2608.14146v1,26f1f9a6f71594d721883f935260f3ee4f93315691099222ec520dff2dd33fa0,14,downloaded public arxiv PDF for private audit; not redistributed,
+MambaPSA,https://arxiv.org/pdf/2607.12681v1,9e9bbf657c172fd2222ade1b4d2ca0fec9a0811604ac27c63c5f7f4dc5c02c0e,2,downloaded public arxiv PDF for private audit; not redistributed,
+SAM-MaGuP,https://arxiv.org/pdf/2507.01509v1,561442c2ef604a422a7b1c1b5f2ac46d500bdc0518c652be31a1aba57245b7a9,11,downloaded public arxiv PDF for private audit; not redistributed,

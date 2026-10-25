@@ -1,0 +1,109 @@
+P0 [Normal] BỘ CÔNG THƯƠNG
+P1 [Normal] TRƯỜNG ĐẠI HỌC CÔNG THƯƠNG TP. HCM
+P2 [Normal] KHOA CÔNG NGHỆ THÔNG TIN
+P7 [Normal] ĐỒ ÁN CHUYÊN NGÀNH/LUẬN VĂN TỐT NGHIỆP
+P10 [Normal] <TÊN ĐỀ TÀI ĐỒ ÁN/LUẬN VĂN>
+P12 [Normal] Ngành: <Tên ngành>
+P15 [Normal] SINH VIÊN THỰC HIỆN:
+P16 [Normal] 	1. <Mã sinh viên – Họ tên – Lớp>
+P17 [Normal] 	2. < Mã sinh viên – Họ tên – Lớp >
+P18 [Normal] 	3. < Mã sinh viên – Họ tên – Lớp >
+P23 [Normal] TP. HỒ CHÍ MINH, tháng....năm 202...
+P24 [Normal] BỘ CÔNG THƯƠNG
+P25 [Normal] TRƯỜNG ĐẠI HỌC CÔNG THƯƠNG TP. HCM
+P26 [Normal] KHOA CÔNG NGHỆ THÔNG TIN
+P31 [Normal] ĐỒ ÁN CHUYÊN NGÀNH/LUẬN VĂN TỐT NGHIỆP
+P34 [Normal] <TÊN ĐỀ TÀI ĐỒ ÁN/LUẬN VĂN>
+P36 [Normal] Ngành: <Tên ngành>
+P38 [Normal] GIẢNG VIÊN HƯỚNG DẪN: 
+P39 [Normal] <Họ tên giảng viên hướng dẫn>
+P41 [Normal] SINH VIÊN THỰC HIỆN:
+P42 [Normal] 	1. <Mã sinh viên – Họ tên – Lớp>
+P43 [Normal] 	2. < Mã sinh viên – Họ tên – Lớp >
+P44 [Normal] 	3. < Mã sinh viên – Họ tên – Lớp >
+P47 [Normal] TP. HỒ CHÍ MINH, tháng....năm 202...
+P48 [Normal] LỜI CẢM ƠN
+P49 [Normal] Viết ngắn gọn, trang trọng, bày tỏ lòng biết ơn đến những cá nhân, tập thể có liên quan đã hỗ trợ nhóm tác giả trong quá trình tác giả thực hiện đề tài.
+P74 [Normal] MỤC LỤC
+P75 [Normal] LỜI CẢM ƠN	i
+P76 [Normal] MỤC LỤC	ii
+P77 [Normal] DANH MỤC CÁC KÝ HIỆU VÀ CHỮ VIẾT TẮT	iii
+P78 [Normal] DANH MỤC HÌNH	iv
+P79 [Normal] DANH MỤC BẢNG	v
+P80 [Normal] MỞ ĐẦU	1
+P81 [Normal] CHƯƠNG 1: KHẢO SÁT HỆ THỐNG	2
+P82 [Normal] 1.1. MỤC TIÊU HỆ THỐNG	3
+P83 [Normal] 1.2. HIỆN TRẠNG	4
+P84 [Normal] 1.2.1. Hiện trạng tổ chức	5
+P85 [Normal] 1.2.2. Qui trình nghiệp vụ	8
+P86 [Normal] ...
+P87 [Normal] (Tạo mục lục tự động)
+P102 [Normal] DANH MỤC CÁC KÝ HIỆU VÀ CHỮ VIẾT TẮT
+P104 [Normal] Viết tắt	Tiếng Anh	Tiếng Việt
+P105 [noidung] DBMS	Database Management System	Hệ quản trị cơ sở dữ liệu
+P106 [Normal] IT	Information Technology	Công nghệ thông tin
+P107 [Normal] ....
+P131 [Normal] DANH MỤC HÌNH
+P132 [Normal] Hình 1.1: Sơ đồ hệ thống	7
+P133 [Normal] Hình 1.2: Kiến trúc hệ thống	10
+P134 [Normal] …
+P135 [Normal] (Tạo mục lục tự động cho đề mục hình)
+P158 [Normal] DANH MỤC BẢNG
+P159 [Normal] Bảng 1.1: Dữ liệu thực nghiệm	28
+P160 [Normal] Bảng 1.2: Danh sách người dùng	30
+P161 [Normal] …
+P162 [Normal] (Tạo mục lục tự động cho đề mục bảng nếu có)
+P183 [Normal] MỞ ĐẦU
+P184 [Normal] 1. GIỚI THIỆU 
+P185 [Normal] Giới thiệu những vấn đề liên quan đến đề tài, có thể đưa ra những dẫn chứng cụ thể và trình bày lý do chọn đề tài.
+P186 [Normal] ...
+P187 [Normal] 2. MỤC TIÊU ĐỀ TÀI
+P188 [Normal] Trình bày mục tiêu mà đề tài phải đạt được.
+P189 [Normal] 3. ĐỐI TƯỢNG VÀ PHẠM VI ĐỀ TÀI
+P190 [Normal] Trình bày những đối tượng nghiên cứu khi thực hiện đề tài, phạm vi giới hạn mà đề tài thực hiện.
+P208 [Normal] CHƯƠNG 1: KHẢO SÁT HỆ THỐNG
+P209 [Normal] Tên chương có thể thay đổi cho phù hợp với tính chất của đề tài thuộc ngành / chuyên ngành tương ứng. Nội dung trình bày liên quan đến khảo sát hệ thống / tổng quan về các thuật toán / các công trình nghiên cứu / các mô hình mạng máy tính.
+P210 [Normal] CHƯƠNG 2: PHÂN TÍCH HỆ THỐNG
+P211 [Normal] Tên chương có thể thay đổi cho phù hợp với tính chất của đề tài thuộc ngành / chuyên ngành tương ứng. Nội dung trình bày liên quan đến việc phân tích hệ thống và xây dựng các mô hình mức nghiệp vụ / tìm hiểu nghiên cứu thuật toán, các mô hình áp dụng / tìm hiểu các hệ thống mạng.
+P213 [Normal] CHƯƠNG 3: THIẾT KẾ HỆ THỐNG
+P214 [Normal] Nội dung trình bày liên quan đến việc thiết kế cấu trúc, giao diện và tương tác giữa các thành phần trong hệ thống / thiết kế, đề xuất mô hình thuật toán / mô hình, giải pháp mạng máy tính. 
+P215 [Normal] CHƯƠNG 4: CÀI ĐẶT HỆ THỐNG
+P216 [Normal] Nội dung trình bày liên quan đến việc cài đặt/cấu hình các thành phần hệ thống/thuật toán liên quan; Trình bày rõ môi trường cài đặt và đặc tả tương ứng.
+P217 [Normal] CHƯƠNG 5: THỬ NGHIỆM VÀ TRIỂN KHAI
+P218 [Normal] Trình bày các nội dung liên quan đến việc thử nghiệm, triển khai hệ thống / đánh giá mô hình, thuật toán.
+P220 [Normal] KẾT LUẬN
+P221 [Normal] Kết quả đạt được: Trình bày tóm tắt kết quả đạt được của đề tài
+P222 [Normal] Đánh giá kết quả: Xác định hệ thống đã hoàn thành được những yêu cầu nào, mức độ hoàn thiện bao nhiêu so với mục tiêu ban đầu.
+P223 [Normal] Hạn chế: Nêu ra những điểm còn hạn chế, khó khăn gặp phải trong quá trình thực hiện.
+P224 [Normal] Hướng phát triển: Đề xuất các cải tiến hoặc mở rộng để phát triển hệ thống hoàn thiện hơn trong tương lai.
+P226 [Normal] TÀI LIỆU THAM KHẢO
+P228 [noidung] [1] Trần Minh Hải, Giáo trình Phát triển hệ thống, NXB Giáo Dục, 2024
+P229 [noidung] [2] Peter MacIntyre, Kevin Tatroe, Programming PHP 4th Edition, O'Reilly Media, Inc, 2020
+P230 [noidung] [3] Unil Yun, Donggyu Kim, Mining of high average-utility itemsets using novel list structure and pruning strategy, Future Generation Computer Systems, vol. 68, pp. 346-360, 2017
+P231 [noidung] [4] https://react.dev/learn, truy cập ngày 12/03/2025 
+P242 [Normal] QUI ĐỊNH THỂ THỨC TRÌNH BÀY
+P243 [Normal] 1. Yêu cầu chung
+P244 [Normal] Tất cả nội dung đều sử dụng font Times New Roman.
+P245 [Normal] Lề trang: Trái 3.5 cm, phải 2.5 cm, trên 2.5 cm, dưới 2.5 cm.
+P246 [Normal] Tất cả nội dung in trên một mặt giấy A4, Trang bìa chính in trên giấy bìa, Trang bìa phụ in giấy trắng thường.
+P247 [Normal] 2. Định dạng đề mục số phân cấp, đề mục hình ảnh, bảng biểu
+P248 [Normal] Cấp chương: cỡ chữ 18, in hoa, canh giữa, tô đậm.
+P249 [Normal] Đề mục số cấp 1.1: cỡ chữ 14, in hoa, tô đậm.
+P250 [Normal] Đề mục số cấp 1.1.1. và cấp 1.1.1.1 (nếu có): Cỡ chữ 13, in thường, tô đậm.
+P251 [Normal] Đề mục hình: Đánh chỉ mục theo chương và đặt phía dưới hình, canh giữa. Trong chương 1 bắt đầu bằng: Hình 1.1, Hình 1.2,..Chương 2 bắt đầu bằng Hình 2.1, Hình 2.2,...
+P252 [Normal] Ví dụ: 
+P254 [Normal] Hình 1.1: Giao diện trang chủ
+P255 [Normal] Đề mục bảng: Tương tự như đề mục hình nhưng đặt phía trên bảng, canh giữa. Nội dung trong bảng có cỡ chữ 12, Line spacing Multiple at 1.3, Before 0pt, After 0pt. Lặp lại tiêu đề bảng nếu một phần bảng sang trang mới.
+P256 [Normal] Bảng 1.1: Dữ liệu thực nghiệm
+TABLE 257
+STT | Loại dữ liệu | Ghi chú
+1 |  | 
+2 |  | 
+3 |  | 
+P258 [Normal] 3. Định dạng nội dung, bullet
+P259 [Normal] Nội dung: Viết dạng đoạn văn, thục vào đầu dòng mỗi đoạn. Cỡ chữ 13, Line spacing Multiple at 1.3, Before 6pt, After 6pt, canh đều 2 bên. Mô tả, diễn giải vấn đề rõ ràng, mạch lạc theo văn phong khoa học. 
+P260 [Normal] Bullet cấp 1 sử dụng dấu gạch “”; Line spacing Multiple at 1.3, Before 6pt, After 6pt, canh đều 2 bên; Position 0.3 cm, Text indent 0.8 cm.
+P261 [Normal] Bullet cấp 2 sử dụng dấu “+”; Position 0.8 cm, Text indent 1.3 cm. Định dạng paragraph giống như Bullet cấp 1.
+P262 [Normal] 4. Số trang, mục lục
+P263 [Normal] Số trang đánh phía dưới mỗi trang, canh giữa. Không đánh số trang bìa chính, bìa phụ. Từ trang Lời cảm ơn cho đến Danh mục bảng biểu đánh số trang dạng la mã i, ii, iii,...Từ trang Mở đầu trở đi đánh số 1,2,3,...
+P264 [Normal] Mục lục: Tạo mục lục tự động gồm các đề mục như ví dụ trình bày ở trang phần mục lục.

@@ -1,0 +1,716 @@
+===== PAGE 1 =====
+COLON FORMER : A N EFFICIENT TRANSFORMER BASED
+METHOD FOR COLON POLYP SEGMENTATION
+A PREPRINT
+Nguyen Thanh Duc
+School of Information and Communication Technology
+Hanoi University of Science and Technology
+duc.nt170058@sis.hust.edu.vn
+Nguyen Thi Oanh
+School of Information and Communication Technology
+Hanoi University of Science and Technology
+oanhnt@soict.hust.edu.vn
+Nguyen Thi Thuy
+Faculty of Infomation Technology
+Vietnam National University of Agriculture
+ntthuy@vnua.edu.vn
+Tran Minh Triet
+University of Science
+Vietnam National University Ho Chi Minh City
+tmtriet@fit.hcmus.edu.vn
+Dinh Viet Sang∗
+School of Information and Communication Technology
+Hanoi University of Science and Technology
+sangdv@soict.hust.edu.vn
+June 8, 2022
+ABSTRACT
+Identifying polyps is challenging for automatic analysis of endoscopic images in computer-aided
+clinical support systems. Models based on convolutional networks (CNN), transformers, and their
+combinations have been proposed to segment polyps with promising results. However, those ap-
+proaches have limitations either in modeling the local appearance of the polyps only or lack of
+multi-level feature representation for spatial dependency in the decoding process. This paper pro-
+poses a novel network, namely ColonFormer, to address these limitations. ColonFormer is an
+encoder-decoder architecture capable of modeling long-range semantic information at both encoder
+and decoder branches. The encoder is a lightweight architecture based on transformers for modeling
+global semantic relations at multi scales. The decoder is a hierarchical network structure designed
+for learning multi-level features to enrich feature representation. Besides, a reﬁnement module is
+added with a new skip connection technique to reﬁne the boundary of polyp objects in the global
+map for accurate segmentation. Extensive experiments have been conducted on ﬁve popular bench-
+mark datasets for polyp segmentation, including Kvasir, CVC-Clinic DB, CVC-ColonDB, CVC-T,
+and ETIS-Larib. Experimental results show that our ColonFormer outperforms other state-of-the-art
+methods on all benchmark datasets.
+Keywords Semantic segmentation· Deep learning· Encoder-decoder network· Polyp segmentation· Colonoscopy
+1 Introduction
+Colorectal cancer (CRC) is among the most common types of cancer worldwide, causing over 694,000 fatalities
+each year [1]. The most common cause of CRC is colon polyps, particularly adenomas with high-grade dysplasia.
+According to a longitudinal study [2], every 1% increase in adenoma detection rate is linked to a 3 % reduction in the
+risk of colon cancer. As a result, detecting and removing polyps at an early stage is critical for cancer prevention and
+∗Corresponding author
+arXiv:2205.08473v3  [cs.CV]  7 Jun 2022
+
+===== PAGE 2 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+treatment. Therefore, colonoscopy is regarded as the standard tool for detecting colon adenomas and colorectal cancer.
+In practice, overburdened healthcare systems, particularly in low-resource settings, may result in shorter endoscopy
+durations and more missed polyps. According to a literature review, the proportion of colon polyps missing during
+endoscopies could range from 20 to 47 percent [3]. This may lead to high associated risk factors in patients. Therefore,
+research in developing computer-aided tools to assist endoscopists in endoscopy procedures is an essential need.
+Advancements in artiﬁcial intelligence and deep learning have changed the landscape of such systems. Attempts have
+been made to develop learning algorithms to deploy in computer-aided diagnostic (CAD) systems for the automatic
+detection and prediction of polyps, which could beneﬁt clinicians in detecting lesions and lower the miss detection rate
+[4, 5, 6]. Deep neural networks have shown great potential in assisting colon polyp detection in several retrospective
+investigations and diagnoses. A CAD system can support endoscopists in improving lesion detection rates, optimizing
+strategies during endoscopy for high-risk lesions, and increasing clinics’ capacity while preserving diagnostic quality
+[7, 8].
+Despite progress in machine learning and computer vision research, automatic polyp segmentation remains a challeng-
+ing problem. Polyps are caused by abnormal cell growth in the human colon, meaning their appearances have strong
+relationships with the surroundings. Images of polyps come in various shapes, sizes, textures, and colors. In addition,
+the boundary between polyps and their surrounding mucosa is not always apparent during colonoscopy, especially in
+different lighting modes and in cases of ﬂat lesions or unclean bowel preparation. These cause a lot of uncertainty for
+the learning models for polyp segmentation.
+In recent years, the most widely used methods for image segmentation in general and polyp segmentation, in particular,
+are based on Convolutional Neural Networks (CNNs). Most segmentation models use a UNet-based architecture
+containing an encoder and a decoder, which are often built up from convolutional layers. Despite being widely used
+for segmentation tasks with impressive performance, CNNs pose certain limitations: They can only capture local
+information while ignoring spatial context and global information due to the limited receptive ﬁeld. Furthermore, it
+was shown that CNNs act like a series of high-pass ﬁlters and favor high-frequency information.
+Transformer [9] is a recently proposed deep neural network architecture that models the global interactions among
+input components using attention mechanisms. While initially designed to tackle natural language and speech pro-
+cessing problems, Transformers have signiﬁcantly impacted computer vision in recent years. In contrast to CNNs,
+self-attention layers in Transformers work as low-pass ﬁlters, and they can effectively capture long-range dependency.
+Therefore, combining the strengths of convolutional and self-attention layers can increase the representation power
+of deep networks. Very recently, there has been fast-growing interest in using Transformers for semantic image seg-
+mentation [10, 11, 12, 13]. These methods use well-known encoder-decoder architectures wherein Transformers and
+CNNs are combined in various settings. The works in [10, 11, 12] proposed Transformer-CNN architectures, in which
+a Transformer is used as an encoder, and a traditional CNN is used as a decoder. The hybrid architecture of Trans-
+formers and CNN has been proposed in [13], in which the decoder is a traditional CNN or a Transformer, while the
+encoder is a combination of CNN and Transformer layers.
+Inspired by these approaches for modeling multi-scale and multi-level features, we propose a new Transformers-based
+network called ColonFormer. The main design of our ColonFormeralso contains a transformer encoder and a CNN
+decoder, but our approach is different from the models mentioned above in several ways. In ColonFormer, the encoder
+is a hierarchically structured lightweight Transformer for learning multi-scale features. The decoder is a hierarchical
+pyramid structure with the capability of learning from heterogeneous data containing feature maps extracted from
+encoder blocks at different scales and subregions. Besides, a reﬁnement module is proposed for further improving the
+segmentation accuracy on hard regions and small polyps.
+Our main contributions include:
+• A novel deep neural network, namely ColonFormer, that integrates a hierarchical Transformer and a hierar-
+chical pyramid CNN in a uniﬁed architecture for efﬁcient and accurate polyp segmentation;
+• An improved reﬁnement technique using a newly proposed residual axial attention module for feature fusion
+and smoothing aiming at improving the segmentation accuracy;
+• A set of experiments on ﬁve standard benchmark datasets for polyp segmentation (Kvasir, CVC-Clinic DB,
+CVC-ColonDB, CVC-T, and ETIS-Larib) and comparisons of the effectiveness of ColonFormerto current
+state-of-the-art methods.
+The rest of the paper is organized as follows. We provide a brief review of related works in Section 2. The Colon-
+Formerarchitecture is described in Section 3. Section 4 presents our experiments and results. Finally, we conclude the
+paper and highlight future works in Section 5.
+2
+
+===== PAGE 3 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+Figure 1: The overall architecture of our ColonFormercontains three components: an encoder, a decoder, and a reﬁne-
+ment module. The encoder is based on the Mix Transformer backbone. The decoder starts with a pyramid pooling
+module (PPM), where its outputs are combined layer-wise with the output feature maps of the encoder at multi levels
+to produce a global map. The reﬁnement module aims to gradually reﬁne the boundary of the global map to yield the
+ﬁnal accurate segmentation. Besides this predicted output, the global map and two intermediate maps are also passed
+into the training loss in a deep supervision manner. Before calculating the training loss, all reﬁned maps are upsampled
+back to the original image input size.
+2 Related Work
+In this section, we brieﬂy review common methods and techniques that have been developed for polyp segmentation.
+We review CNN architectures and their variants, especially UNet models, in medical image segmentation. Then we
+investigate the attention mechanism as a promising technique that boosts the capability of a deep neural network in
+learning feature representation. Finally, vision Transformer and its applications in polyp segmentation and medical
+image processing are investigated.
+2.1 Convolutional Neural Networks
+CNNs are one of the most widely used deep neural network architectures, especially in computer vision. A deep CNN
+extracts features on multiple layers with increasing levels of abstraction. Low-level features with high resolutions
+represent spatial details, while high-level features with low resolutions represent rich semantic information. CNNs are
+especially powerful in image analysis as they can extract highly informative and valuable features.
+UNet [14] is a pioneering CNN architecture for medical image segmentation. UNet consists of an encoder and a
+decoder. The encoder includes convolutional, pooling layers for feature extraction, and the decoder uses upsampling
+(or deconvolutional) and convolutional layers for yielding the ﬁnal segmentation prediction. Later works attempted
+to improve UNet by introducing skip connections, which alleviate information loss caused by stacking multiple con-
+volutional layers. However, retaining information from low-level may introduce noisy signals that degrade the per-
+formance. UNet variants such as UNet++ [15] and DoubleUnet [16] have achieved stellar results on segmentation
+benchmarks. UNet++ is constructed as an ensemble of nested UNets of varying depths, which partially share an en-
+coder and jointly learn using deep supervision. DoubleUNet stacks two UNet blocks and uses ASPP [17], and SE
+blocks [18] to enhance the feature representation.
+UNet encoders often use an existing pretrained architecture, also known as the backbone. Widely used backbones
+include VGG [19], MobileNet [20], ResNet [21], DenseNet [22], etc. PraNet [23] uses Res2Net as the backbone,
+3
+
+===== PAGE 4 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+while AG-CuResNeSt [24] uses ResNeSt. Meanwhile HarDNet-MSEG [25], NeoUNet [26] and BlazeNeo [27] use
+HarDNet, an improvement of DenseNet to extract features.
+2.2 Attention Mechanism
+The attention mechanism is a widely used technique to help deep neural networks learn better feature representations,
+especially on highly variant inputs. Oktay et al. [28] proposed an Attention Gate module for UNet, which helps
+the model focus on necessary information while preserving computational efﬁciency. AG-ResUNet++ [29] integrates
+the attention gates with the ResNet backbone to improve UNet++ [15] for polyp segmentation. PraNet [23] uses
+the Reverse Attention module [30], which enforces focus on the boundary between a polyp and its surroundings. In
+general, most CNNs and neural networks can beneﬁt by adding attention modules. However, even with these attention
+mechanisms, CNNs are limited by the locality of convolution operations. This limitation makes them difﬁcult to model
+natural long-range spatial dependencies between input segments.
+Figure 2: The architecture of three neural blocks used in our ColonFormer. The left block (a) is the Mix Transformer
+block [31]. The middle block (b) is the channel-wise feature pyramid block. The pyramid pooling module is shown
+on the right (c). Here DR stands for dilation rate.
+2.3 Vision Transformer
+Transformer [9] is a highly inﬂuential deep neural network architecture, originally proposed to solve natural language
+processing and similar problems. While the original Transformer architecture is not very well suited for image analysis,
+attempts have been proposed to leverage its advantages for computer vision through some modiﬁcations. Vision
+Transformer (ViT) [32] was the ﬁrst successful application of Transformers for computer vision. ViT splits an image
+into patches and processes them as sequential tokens. This method greatly reduces computational costs and allows
+Transformers to work with large images feasibly.
+A major issue of ViT is that it requires extensive datasets for training to remain effective while being severely limited
+when trained on small datasets. Such property hinders its usage in problems such as medical image analysis, including
+polyp segmentation, where data is typically scarce. The Kvasir dataset, for example, contains just 1000 images and
+their corresponding ground truth, despite being the largest public image dataset of the gastrointestinal tract for polyp
+segmentation.
+Recent works have attempted to further enhance ViT in several ways. DeiT [33] introduces a data-efﬁcient train-
+ing strategy combined with a distillation approach, which helps improve the performance when training on small
+datasets. Swin Transformer [10] redesigned the encoder for Transformers. The Swin Transformer encoder computes
+self-attention among a collection of adjacent patches within a sliding window. Patches are merged every few blocks,
+reducing the number of tokens and forming a multi-resolution token hierarchy similar to convolutional blocks. Seg-
+4
+
+===== PAGE 5 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+Former [31] is another hierarchical Transformer design, where patches are merged with overlap and preserving local
+continuity around patches. The authors also introduced Efﬁcient Self-Attention, a modiﬁed attention mechanism for
+reducing computational complexity, and Mix-FFN for better positional information.
+Both TransUNet [34] and TransFuse [35] models have been developed based on Transformers for polyp segmentation
+and yielded promising results. TransUNet uses a Transformer-based network with a hybrid ViT encoder and upsam-
+pling CNN decoder. The Hybrid ViT stacks the CNN and Transformer together, leading to high computational costs.
+TransFuse addressed this problem by using a parallel architecture. Both models use the attention gate mechanism [28]
+and a so-called BiFusion Module. These components make the network architecture large and highly complex.
+While there have been promising results in using Transformers to develop networks for polyp segmentation, there is
+plenty of room for improvement in this direction. Most notably, reduced network size and latency can greatly beneﬁt
+downstream applications. In addition, improved accuracy and robustness can also be achieved with more optimized
+architectures. This paper seeks to design a Transformer-based architecture that achieves these goals.
+3 ColonFormer
+Fig. 1 depicts the overall architecture of our proposed network, ColonFormer. The network consists of a hybrid
+encoder, a decoder, and a reﬁnement module. We will describe each component in detail in the following sections.
+3.1 Encoder
+A hierarchically structured model that can extract coarse-to-ﬁne features at multi-scale and multi-level is desired for
+semantic segmentation. Our model uses Mix Transformer (MiT) proposed in [31] as the encoder backbone. MiT is a
+hierarchical Transformer encoder that can represent both high-resolution coarse and low-resolution ﬁne features. As-
+sumeX∈ RH×W×C denotes the input image. MiT generates the CNN-like multi-level features Fi. The hierarchical
+feature map Fi has the resolution of H
+2i+1× W
+2i+1×Ci, where i∈{ 1, 2, 3, 4} andCi is ascending. The hierarchical
+feature representation is brought by the overlapped patch merging. After several Transformer blocks (Fig. 2a), a kernel
+with a stride smaller than kernel size is used to divide the feature map into overlapping patches. Such an overlapping
+patch merging process ensures the local continuity around those patches.
+Like other Transformer blocks, MiT blocks contain three main parts: Multi-head Self-Attention (MHSA) layers, Feed
+Forward Network (FFN), and Layer Norm. The MHSA is improved into Efﬁcient Self-Attention, where the number of
+keys is decreased by a factor ofR to reduce the computational complexity of self-attention layers. Another reason that
+we decide to choose MiT is the Mix-FFN. Instead of using the positional encoding (PE) as ViT, a 3× 3 convolution
+kernel is integrated into FFN. Since the resolution of PE is ﬁxed, it can not utilize the positional information of
+the pretrained dataset like ImageNet when test resolution differs from the training one. In such cases, ViT [32]
+suggests interpolating the PE, which can lead to a drop in accuracy. In contrast, arguing that convolutional layers
+are adequate for providing location information for Transformer, MiT directly uses a 3x3 convolutional layer for
+positional encoding. MiT has a series of variants, from MiT-B1 to MiT-B5, with the same architecture but different
+sizes. We name the variants of our model as ColonFormer-XS, ColonFormer-S, ColonFormer-L, ColonFormer-
+XL, ColonFormer-XXL, corresponding to different MiT backbone scales from MiT-B1 to MiT-B5, respectively.
+According to ablation study described later in Section 4.4, we found that ColonFormer-S and ColonFormer-L achieve
+the best results. Therefore, we mostly use ColonFormer-S and ColonFormer-L for comparison with other state-of-the-
+arts in all experiments except where it is speciﬁed otherwise.
+3.2 Decoder
+In order to further capture global context information, the feature maps extracted from the ﬁnal block of the encoder
+are ﬁrst processed by a Pyramid Pooling Module (PPM) [36] before being passed through the decoder blocks. The
+PPM simultaneously produces multi-scale outputs of the input feature map via a pyramid of pooling layers. The
+resulting feature maps, which form a hierarchy of features containing information at different scales and sub-regions,
+are then concatenated to produce an efﬁcient prior global representation. Fig. 2c depicts the Pyramid Pooling Module
+in detail.
+ColonFormeruses a decoder architecture inspired by UPerNet [37], which we denote as UPer Decoder. The decoder
+gradually fuses the prior global map produced by the PPM with multi-scale feature maps yielded by the MiT backbone.
+We suppose that applying convolutional layers to the feature maps of the MiT backbone is necessary since such layers
+can condense the information by emphasizing the coherence between neighboring elements and thus enhancing the
+resulting semantic map.
+5
+
+===== PAGE 6 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+3.3 Reﬁnement Module
+The decoder’s outputs are further processed by a reﬁnement module to achieve more precise and complete predic-
+tion maps. The reﬁnement module consists of Channel-wise Feature Pyramid (CFP) module [38] (Fig. 2b) and our
+novel Reverse Attention module enhanced by a new residual axial attention block for incremental correction of polyp
+boundary [30, 39].
+In the parallel reverse attention network architecture [23], the global map is derived from the deepest CNN layer, so it
+does not have many structural details and hence can present only rough locations of the polyp tissues. The proposed
+strategy to recover precise location and label is to exploit complementary regions and details in a sequential manner
+by removing previously estimated polyp regions from high-level side-output features, where the current estimation
+is up-sampled from the deeper layer. By using Reverse Attention, a coarse saliency map is guided to sequentially
+discover complement object regions and details by erasing the current predicted salient regions from side-output
+features. The current prediction is upsampled from its deeper layer. This erasing approach can reﬁne the imprecise
+and coarse estimation into an accurate and complete prediction map. It was shown that self-attention layers in the
+MiT backbone work like low-pass ﬁlters. Therefore, we argue that using convolutional layers is important for the
+reﬁnement module since such layers favor high-frequency components and can provide richer edge information for
+the boundary correction.
+Inspired by CaraNet [40], we use Channel-wise Feature Pyramid (CFP) to extract features from the encoder in multi-
+scale views. As depicted in Fig. 2b, the CFP module has K = 4 branches with different dilation rates that allow
+them to capture information at multiple scales. However, a direct concatenation of all branches could lead to some
+unwanted checkerboard or gridding artifacts that signiﬁcantly impact the quality of the following boundary correction.
+In order to avoid this issue, the CFP module combines these branches step by step to build a ﬁnal accurate feature map
+to correct the polyp boundaries.
+CaraNet [40] also enhanced the Reverse Attention module by an axial attention block, which is a straightforward
+generalization of self-attention that naturally aligns with the multiple dimensions of the tensors. This module is
+supposed to ﬁlter the necessary information for the reﬁnement process. However, axial attention may not always be
+good for the network since it can accidentally eliminate important edge information. Therefore, we propose to relax
+this mechanism using an additional residual connection, which allows the network to omit the axial attention layers
+when required and thus facilitates the learning process. The novel reﬁnement module is called Residual Axial Reverse
+Attention (RA-RA). We experimentally found that utilizing the RA-RA module up to the ﬁnest feature map does not
+help reﬁne the polyp boundary better. Hence, we propose to use just three RA-RA blocks, as shown in Fig. 1. The
+effectiveness of the RA-RA module is investigated in detail in Section 4.4.
+3.4 Loss Function
+ColonFormeruses a compound loss combining the weighted focal loss and weighted IoU loss to train the model. The
+weighted focal loss is a distribution-based loss that treats every pixel individually. In contrast, the weighted IoU loss
+is a region-based loss that considers the relationships between neighboring pixels.
+Image pixels can be easy to be correctly recognized. However, some pixels, such as those on the edge regions, may
+be harder to learn. Thus, the model should pay more attention to more challenging samples. In other words, some
+image pixels may be more important than others in contributing to the learning process. We represent the importance
+of pixel (i,j ) by a weightβij. As suggested in [41], the weightβij for pixel (i,j ) is deﬁned as the difference between
+the center pixel and its neighbors:
+βij =
+⏐⏐⏐
+∑
+m,n∈Nijgmn
+|Nij| −gij
+⏐⏐⏐ (1)
+where Nij represents the area of 31× 31 size surrounding the pixel (i,j ), and gij∈{ 0, 1} is the true label of pixel
+(i,j ). A large value of βij indicates a pixel with considerable distinction from its vicinity, i.e., pixels at polyp edges.
+Such a weighting scheme enforces the model to focus more on the boundary regions.
+Assume thatpij is the prediction probability of the pixel (i,j ) belonging the polyp class. Let us deﬁneqij as:
+qij =
+{
+pij, ifgij = 1
+1−pij, otherwise (2)
+As polyp segmentation is a problem with highly imbalanced data, focal loss is employed to deal with class imbalance
+during training. It integrates a modulating term in order to focus learning on hard pixels. The weighted focal loss is
+6
+
+===== PAGE 7 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+Table 1: Performance comparison of different methods on the Kvasir, ClinicDB, ColonDB, CVC-T and ETIS-Larib
+test sets. All results of ColonFormerare averaged over ﬁve runs.
+Method Kvasir CVC-ClinicDB CVC-ColonDB CVC-T ETIS-Larib
+mDice mIOU mDice mIOU mDice mIOU mDice mIOU mDice mIOU
+UNet [14] 0.818 0.746 0.823 0.750 0.512 0.444 0.710 0.627 0.398 0.335
+UNet++ [15] 0.821 0.743 0.794 0.729 0.483 0.410 0.707 0.624 0.401 0.344
+SFA [42] 0.723 0.611 0.700 0.607 0.469 0.347 0.297 0.217 0.467 0.329
+PraNet [23] 0.898 0.840 0.899 0.849 0.709 0.640 0.871 0.797 0.628 0.567
+HarDNet-MSEG [25] 0.912 0.857 0.932 0.882 0.731 0.660 0.887 0.821 0.677 0.613
+CaraNet [40] 0.918 0.865 0.936 0.887 0.773 0.689 0.903 0.838 0.747 0.672
+TransUNet [34] 0.913 0.857 0.935 0.887 0.781 0.699 0.893 0.824 0.731 0.660
+TransFuse-L* [35] 0.920 0.870 0.942 0.897 0.781 0.706 0.894 0.826 0.737 0.663
+ColonFormer-S (Ours) 0.927 0.877 0.932 0.883 0.811 0.730 0.894 0.826 0.789 0.711
+ColonFormer-L (Ours) 0.924 0.876 0.932 0.884 0.811 0.733 0.906 0.842 0.801 0.722
+then deﬁned as follows:
+Lwfocal =−
+∑H
+i=1
+∑W
+j=1(1 +λβij )α(1−qij)γ log(qij)
+∑H
+i=1
+∑W
+j=1(1 +λβij)
+(3)
+whereα,γ are tunable hyperparameters.
+The weighted IoU loss is deﬁned as follows:
+Lwiou = 1−
+∑H
+i=1
+∑W
+j=1(gij∗pij)∗ (1 +λβij)
+∑H
+i=1
+∑W
+j=1(gij +pij−gij∗pij)∗ (1 +λβij)
+(4)
+whereλ is a hyperparameter to adjust the impact of importance weightsβij.
+The total loss of our ColonFormeris calculated as:
+Ltotal =Lwfocal +Lwiou
+2 (5)
+The total loss in Eq. (5) is applied to train our model for multi-scale outputs as shown in Fig. 1. The ﬁnal loss is the
+sum of all total losses computed at different output levels. Note that each output is upsampled back to the original size
+of the image’s ground truth before the losses are evaluated.
+4 Experiments
+4.1 Datasets
+We perform experiments on the ﬁve popular datasets for polyp segmentation: Kvasir [47], CVC-Clinic DB [48],
+CVC-Colon DB [49], CVC-T [50], and ETIS-Larib Polyp DB [51]. Details of these datasets are described as follows:
+• Kvasir dataset is collected using endoscopic equipment at Vestre Viken Health Trust (VV), Norway. Images
+are carefully annotated and veriﬁed by experienced gastroenterologists from VV and the Cancer Registry of
+Norway. The dataset consists of 1000 images with different resolutions from 720× 576 to 1920× 1072
+pixels.
+• CVC-ClinicDB dataset is a database of frames extracted from colonoscopy videos. The dataset consists of
+612 images with a resolution of384×288 pixels from 31 colonoscopy sequences. The dataset was used in the
+training stages of the MICCAI 2015 Sub-Challenge on Automatic Polyp Detection Challenge in Colonoscopy
+Videos.
+• CVC-ColonDB dataset is provided by the Machine Vision Group (MVG). The dataset consists of 380 images
+with a resolution of 574× 500 pixels from 15 short colonoscopy videos.
+7
+
+===== PAGE 8 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+Table 2: Performance comparison of different methods on 5-fold cross-validation of the CVC-ClinicDB and Kvasir
+datasets. All results are averaged over 5 folds.
+Dataset Method mDice mIOU Recall Precision
+ClinicDB
+UNet [14] - 0.792 - -
+MultiResUNet [43] - 0.849 - -
+ResUNet++ [44] 0.815± 0.018 0 .736± 0.017 0 .832± 0.018 0 .830± 0.020
+DoubleUNet [16] 0.920± 0.018 0 .866± 0.025 0 .922± 0.027 0 .928± 0.017
+DDANet [45] 0.860± 0.014 0 .786± 0.017 0 .858± 0.023 0 .892± 0.014
+ColonSegNet [46] 0.817± 0.020 0 .873± 0.024 0 .926± 0.025 0 .933± 0.014
+HarDNet-MSEG [25] 0.923± 0.020 0 .873± 0.024 0 .926± 0.025 0 .933± 0.014
+PraNet [23] 0.933± 0.012 0 .884± 0.015 0 .940± 0.005 0 .937± 0.016
+ColonFormer-S (Ours) 0.948± 0.002 0.904 ± 0.004 0.958 ± 0.003 0.941 ± 0.004
+ColonFormer-L (Ours) 0.947± 0.002 0.903± 0.003 0.956± 0.002 0.942± 0.005
+Kvasir
+UNet [14] 0.708± 0.017 0 .602± 0.010 0 .805± 0.014 0 .716± 0.020
+ResUNet++ [44] 0.780± 0.010 0 .681± 0.008 0 .834± 0.010 0 .799± 0.010
+DoubleUNet [16] 0.879± 0.018 0 .816± 0.026 0 .902± 0.027 0 .894± 0.039
+DDANet [45] 0.860± 0.005 0 .791± 0.004 0 .876± 0.015 0 .892± 0.018
+ColonSegNet [46] 0.676± 0.037 0 .557± 0.040 0 .731± 0.088 0 .730± 0.080
+HarDNet-MSEG [25] 0.889± 0.011 0 .831± 0.011 0 .892± 0.015 0 .926± 0.014
+PraNet [23] 0.883± 0.020 0 .822± 0.020 0 .897± 0.020 0 .906± 0.010
+ColonFormer-S (Ours) 0.924± 0.008 0.875 ± 0.010 0.941 ± 0.010 0.927 ± 0.008
+ColonFormer-L (Ours) 0.917± 0.006 0.865± 0.007 0.932± 0.007 0.926± 0.008
+(a) ROC curves
+ (b) PR curves
+Figure 3: ROC curves and PR curves on the 5-fold cross-validation on the Kvasir-SEG dataset. All the curves are
+averaged over 5 folds.
+• CVC-T dataset is the test set of a more extensive dataset called Endoscene. CVC-T consists of 60 images
+obtained from 44 video sequences acquired from 36 patients.
+• ETIS-Larib dataset contains 196 high resolution (1226× 996) colonoscopy images.
+4.2 Experiment settings
+We implement ColonFormerusing the PyTorch framework. For a fair setting and comparison, we use the same param-
+eters as [31] for the MiT backbone: kernel size K = 7, strideS = 4, padding sizeP = 3, andK = 3,S = 2,P = 1
+8
+
+===== PAGE 9 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+Figure 4: Qualitative result comparison of different models trained on the ﬁrst fold of the 5-fold cross-validation on
+the Kvasir dataset.
+Table 3: Performance comparison of different methods on cross-dataset conﬁgurations. All results are averaged over
+ﬁve runs.
+Train Test Method mDice mIOU Recall Precision
+CVC-ColonDB
++ ETIS-Larib
+CVC-ClinicDB
+ResUNet++ [44] 0.406 0.302 0.481 0.496
+ColonSegNet [46] 0.427 0.321 0.529 0.552
+DDANet [45] 0.624 0.515 0.697 0.692
+DoubleUNet [16] 0.738 0.651 0.758 0.824
+HarDNet-MSEG [25] 0.765 0.681 0.774 0.863
+PraNet [23] 0.779 0.689 0.832 0.812
+ColonFormer-S (Ours) 0.851 0.771 0.853 0.896
+ColonFormer-L (Ours) 0.847 0.770 0.844 0.902
+CVC-ColonDB
+CVC-ClinicDB
+ResUNet++ [44] 0.339 0.247 0.380 0.484
+DoubleUNet [16] 0.441 0.375 0.423 0.639
+DDANet [45] 0.476 0.370 0.501 0.644
+ResNet101-Mask-RCNN [52] 0.641 0.565 0.646 0.725
+ColonSegNet [46] 0.582 0.268 0.511 0.460
+HarDNet-MSEG [25] 0.721 0.633 0.744 0.818
+PraNet [23] 0.738 0.647 0.751 0.832
+ColonFormer-S (Ours) 0.816 0.731 0.809 0.881
+ColonFormer-L (Ours) 0.804 0.723 0.794 0.877
+CVC-ClinicDB
+ETIS-Larib
+ResUNet++ [44] 0.211 0.155 0.309 0.203
+ColonSegNet [46] 0.217 0.110 0.654 0.144
+DDANet [45] 0.400 0.313 0.507 0.464
+ResNet101-Mask-RCNN [52] 0.565 0.469 0.565 0.639
+DoubleUNet [16] 0.588 0.500 0.689 0.599
+PraNet [23] 0.631 0.555 0.762 0.597
+HarDNet-MSEG [25] 0.659 0.583 0.676 0.705
+ColonFormer-S (Ours) 0.723 0.635 0.797 0.731
+ColonFormer-L (Ours) 0.760 0.673 0.859 0.734
+to produce features with the same size as the non-overlapping process. Based on experiments in [41], [53], we use
+λ = 5,α = 0.25 andγ = 2 for the losses in Eq. (3) and Eq. (4). Training is performed using Google Colab on virtual
+machines with 16GB RAM and an NVIDIA Tesla P100 GPU. Input images are resized to 352× 352 for testing. In
+9
+
+===== PAGE 10 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+order to increase the model’s robustness w.r.t image sizes, the training images are consequently scaled with a factor of
+{0.75, 1, 1.25}, respectively, and fed to the model for learning. None of the data augmentation techniques is used in
+the training phase.
+We use six experiment setups to evaluate our method; each setup is described in detail below:
+• Experiment 1: We use the same split as suggested in [23], where 90% of the Kvasir and ClinicDB datasets
+are used for training. The remaining images in the Kvasir and CVC-ClinicDB datasets and all images from
+CVC-ColonDB, CVC-T, and ETIS-Larib are used for testing.
+• Experiment 2: 5-fold cross-validation on the CVC-ClinicDB and Kvasir datasets. Each dataset is divided
+into ﬁve equal folds. Each run uses one fold for testing and four remaining folds for training.
+• Experiment 3: Cross-dataset evaluation with 3 training-testing conﬁgurations:
+1. CVC-ColonDB and ETIS-Larib for training, CVC-ClinicDB for testing;
+2. CVC-ColonDB for training, CVC-ClinicDB for testing;
+3. CVC-ClinicDB for training, ETIS-Larib for testing.
+The ﬁrst experiment compares our ColonFormermodel with state-of-the-art CNN-based and Transformer-based net-
+works using the same widely-used dataset conﬁguration as suggested in [23]. The second experiment compares Colon-
+Former’s learning ability to several recent polyp segmentation methods. Finally, the last experiment provides deeper
+insights into the generalization capability of ColonFormerand other benchmark models.
+We use the Adam optimizer and cosine annealing scheduler with a learning rate of 1e-4. ColonFormeris trained in
+20 epochs with a batch size of 8. The checkpoint of the last epoch is used for evaluation. Except for the second
+experiment with 5-fold cross-validation, we train ColonFormerﬁve times, and the ColonFormer’s results are averaged
+over ﬁve runs.
+In addition, we perform a series of ablation studies to evaluate the effectiveness of each component in the proposed
+ColonFormer. All ablation studies are performed on the dataset conﬁguration for Experiment 1.
+4.3 Comparison with benchmark models
+Table 1 describes the comparison results for Experiment 1. ColonFormergenerally outperforms the benchmark models
+on most datasets. Notably, both ColonFormer-S and ColonFormer-L outperform the second-best TransFuse-L* by
+3% in mDice and 2.7% in mIOU on the ColonDB dataset. Compared to the second-best CaraNet on the ETIS-
+Larib dataset, ColonFormer-S achieves an improvement of5.2% in mDice, and 4.8% in mIOU, while ColonFormer-L
+achieves an improvement of 6.4% in mDice and 5.9% in mIOU. The high capacity of ColonFormer-L seems more
+suitable for the high resolution of images in the ETIS-Larib dataset. However, both ColonFormer-S and ColonFormer-
+L achieve roughly 1% lower metrics against TransFuse-L* on the CVC-ClinicDB dataset, whose images obtain very
+low resolution.
+Table 2 describes the comparison results for Experiment 2. We report both the average value and the standard deviation
+for each metric, which reﬂects the models’ stability. One can see that both ColonFormer-S and ColonFormer-L
+outperform all other state-of-the-art models in mDice, mIOU, precision, and recall on both datasets. Notably, our
+ColonFormeris the most stable model on both datasets, achieving the lowest standard deviation for each evaluation
+metric.
+Qualitative results for Experiment 2 are shown in Fig. 4. ColonFormer-S demonstrates much fewer wrongly predicted
+pixels in segmentation results than other models. ColonFormer-S also produces better ROC and PR curves than the
+benchmark models, as depicted in Fig. 3.
+Table 3 describes the comparison results for Experiment 3. Overall, both ColonFormer-S and ColonFormer-L signif-
+icantly outperform benchmark models on cross-dataset metrics. For the ﬁrst conﬁguration, ColonFormer-S outper-
+forms the second-best PraNet by 7− 8% on all metrics. In the second conﬁguration, ColonFormer-S continues to
+achieve a 5.8% improvement in precision and 7.8% improvement in mDice over PraNet. For the third conﬁguration,
+ColonFormer-L again shows its suitability to the ETIS-Larib dataset achieving a 10.1% improvement in mDice and
+18.3% in recall over PraNet. These are highly signiﬁcant improvements, showing that our ColonFormercan generalize
+very well to new unseen data. Some result samples for this experiment are shown in Fig. 5. Similar to Fig. 4, one can
+see that ColonFormeryields better segmentation results compared to other state-of-the-arts.
+Table 4 compares ColonFormerwith other benchmark models in terms of size and computational complexity. One can
+see that our ColonFormer-S obtains competitive size and computational complexity compared to the most lightweight
+10
+
+===== PAGE 11 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+Figure 5: Qualitative result comparison using CVC-Colon for training and CVC-Clinic for testing.
+CNN-based models such as PraNet [23], and HarDNet-MSEG [25]. Our ColonFormer-L is larger than most CNN-
+based neural networks but still more efﬁcient than other Transformer-based methods in terms of GFlops.
+Table 4: Number of parameters and GFLOPs of different methods
+Method Parameters (M) GFLOPs
+PraNet [23] 32.55 13.11
+HarDNet-MSEG [25] 33.34 11.38
+CaraNet [40] 46.64 21.69
+TransUNet [34] 105.5 60.75
+TransFuse-L* [35] - -
+SegFormer-B3 [31] 47.22 33.68
+SegFormer-B3-Uper 46.61 20.99
+ColonFormer-S (Ours) 33.04 16.03
+ColonFormer-L (Ours) 52.94 22.94
+4.4 Ablation studies
+Effectiveness of the UPer Decoder. We ﬁrstly compare the original SegFormer-B3 [31] with MLP Decoder and
+another model called SegFormer-B3-Uper that replaces the original MLP decoder with the UPer Decoder. Both
+models use the MiT-B3 backbone in terms of encoder. Results are shown in the ﬁrst two rows of Table 5. Both
+network versions show similar metrics across the test datasets, with slight variations of roughly1%. However, one can
+see from Table 4 that UPer Decoder is also signiﬁcantly less costly, requiring only 20.99 GFLOPs as opposed to MLP
+Decoder (33.68 GFLOPs). These results compel us to choose the UPer decoder for ColonFormer, which alleviates the
+large computation costs incurred with the Transformer backbone.
+Effectiveness of the Reﬁnement Module. We evaluate the performance of SegFormer-B3-Uper-ARA with the A-RA
+Reﬁnement Module as in [40], and our ColonFormer-L with the adjusted Reﬁnement Module as described in Section
+3.3. Results are shown in Table 5. Overall, incorporating the Reﬁnement Module yields improvement across all
+datasets. Our ColonFormer-L also yields superior performance than SegFormer-B3-Uper-ARA on the Kvasir, CVC-
+ClinicDB, and most signiﬁcantly, the ETIS-Larib datasets, while slightly underperforming on the CVC-ColonDB and
+CVC-T datasets.
+Effectiveness of the MiT Backbone. The Mix Transformer (MiT) [31] backbone has several variations ranging
+from MiT-B0 to MiT-B5. Accordingly, our ColonFormeralso have different variations, including ColonFormer-XS,
+ColonFormer-S, ColonFormer-L, ColonFormer-XL, ColonFormer-XXL, respectively. Table 6 shows our comparison
+11
+
+===== PAGE 12 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+between all variations of ColonFormer. Overall, ColonFormer-S and ColonFormer-L yield the best average results
+across our test datasets.
+Table 5: Ablation study on the effectiveness of different components. All results are averaged over ﬁve runs.
+Method Uper A-RA RA-RA Kvasir CVC-ClinicDBCVC-ColonDB CVC-T ETIS-Larib
+mDice mIOU mDice mIOU mDice mIOU mDice mIOU mDice mIOU
+SegFormer-B3 [31] — — — 0.920 0.866 0.925 0.876 0.806 0.726 0.905 0.840 0.786 0.707
+SegFormer-B3-Uper ✓ — — 0.916 0.864 0.924 0.876 0.811 0.731 0.900 0.832 0.784 0.707
+SegFormer-B3-Uper-ARA✓ ✓ — 0.922 0.872 0.922 0.875 0.812 0.734 0.903 0.837 0.787 0.704
+ColonFormer-L (Ours)✓ — ✓ 0.924 0.876 0.932 0.884 0.811 0.733 0.906 0.842 0.801 0.722
+Table 6: Evaluation metrics for different variations of the MiT backbone. All results are averaged over ﬁve runs.
+Method Backbone Kvasir CVC-ClinicDB CVC-ColonDB CVC-T ETIS-Larib
+mDice mIOU mDice mIOU mDice mIOU mDice mIOU mDice mIOU
+ColonFormer-XS MiT-B1 0.913 0.859 0.926 0.876 0.784 0.700 0.879 0.808 0.758 0.679
+ColonFormer-S MiT-B2 0.927 0.877 0.932 0.883 0.811 0.730 0.894 0.826 0.789 0.711
+ColonFormer-L MiT-B3 0.924 0.876 0.932 0.884 0.811 0.733 0.906 0.842 0.801 0.722
+ColonFormer-XL MiT-B4 0.920 0.870 0.923 0.875 0.814 0.735 0.905 0.840 0.795 0.715
+ColonFormer-XXL MiT-B5 0.920 0.872 0.924 0.876 0.802 0.724 0.899 0.831 0.776 0.700
+5 Conclusion
+This paper proposes a novel deep neural network architecture called ColonFormerfor colon polyp segmentation. Our
+model leverages both the advantages of Transformers and CNNs architectures to learn a powerful multi-scale hierar-
+chical feature representation. We also enhance the reverse attention with axial attention by relaxing it with a residual
+connection. The reﬁnement module allows the network to incrementally correct the polyp boundary from a coarse
+global map produced by the decoder. Our extensive experiments show that ColonFormersigniﬁcantly outperforms
+existing state-of-the-art models on popular benchmark datasets.
+In future works, we will investigate lightweight or sparse self-attention layers to reduce the computational complexity.
+In addition, other types of architectures for combining Transformers and CNNs can also be exploited.
+6 Acknowledgments
+This work was funded by Vingroup Innovation Foundation (VINIF) under project code VINIF.2020.DA17.
+References
+[1] J. Bernal, N. Tajkbaksh, F. J. S ´anchez, B. J. Matuszewski, H. Chen, L. Yu, Q. Angermann, O. Romain, B. Rus-
+tad, I. Balasingham, K. Pogorelov, S. Choi, Q. Debard, L. Maier-Hein, S. Speidel, D. Stoyanov, P. Brandao,
+H. C ´ordova, C. S ´anchez-Montes, S. R. Gurudu, G. Fern ´andez-Esparrach, X. Dray, J. Liang, and A. Histace.
+Comparative validation of polyp detection methods in video colonoscopy: Results from the miccai 2015 endo-
+scopic vision challenge. IEEE Transactions on Medical Imaging, 36(6):1231–1249, 2017.
+[2] Douglas A Corley, Christopher D Jensen, Amy R Marks, Wei K Zhao, Jeffrey K Lee, Chyke A Doubeni, Ann G
+Zauber, Jolanda de Boer, Bruce H Fireman, Joanne E Schottinger, et al. Adenoma detection rate and risk of
+colorectal cancer and death. New england journal of medicine, 370(14):1298–1306, 2014.
+[3] AM Leufkens, MGH Van Oijen, FP Vleggaar, and PD Siersema. Factors inﬂuencing the miss rate of polyps in a
+back-to-back colonoscopy study. Endoscopy, 44(05):470–475, 2012.
+[4] Pablo Mesejo, Daniel Pizarro, Armand Abergel, Olivier Rouquette, Sylvain Beorchia, Laurent Poincloux, and
+Adrien Bartoli. Computer-aided classiﬁcation of gastrointestinal lesions in regular colonoscopy. IEEE transac-
+tions on medical imaging, 35(9):2051–2063, 2016.
+[5] Guanyu Zhou, Xiaogang Liu, Tyler M Berzin, Jeremy R Glissen Brown, Liangping Li, Chao Zhou, Zhenzhen
+Guo, Lei Lei, Fei Xiong, Yan Pan, et al. 951e–a real-time automatic deep learning polyp detection system
+12
+
+===== PAGE 13 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+increases polyp and adenoma detection during colonoscopy: a prospective double-blind randomized study. Gas-
+troenterology, 156(6):S–1511, 2019.
+[6] Shin-ei Kudo, Yuichi Mori, Masashi Misawa, Kenichi Takeda, Toyoki Kudo, Hayato Itoh, Masahiro Oda, and
+Kensaku Mori. Artiﬁcial intelligence and colonoscopy: Current status and future perspectives. Digestive En-
+doscopy, 31(4):363–371, 2019.
+[7] Peng-Jen Chen, Meng-Chiung Lin, Mei-Ju Lai, Jung-Chun Lin, Henry Horng-Shing Lu, and Vincent S Tseng.
+Accurate classiﬁcation of diminutive colorectal polyps using computer-aided analysis. Gastroenterology,
+154(3):568–575, 2018.
+[8] Raf Bisschops, James E East, Cesare Hassan, Yark Hazewinkel, Michał F Kami ´nski, Helmut Neumann, Maria
+Pellis´e, Giulio Antonelli, Marco Bustamante Balen, Emmanuel Coron, et al. Advanced imaging for detection and
+differentiation of colorectal neoplasia: European society of gastrointestinal endoscopy (esge) guideline–update
+2019. Endoscopy, 51(12):1155–1179, 2019.
+[9] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser,
+and Illia Polosukhin. Attention is all you need. Advances in neural information processing systems, 30, 2017.
+[10] Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, and Baining Guo. Swin trans-
+former: Hierarchical vision transformer using shifted windows. In Proceedings of the IEEE/CVF International
+Conference on Computer Vision, pages 10012–10022, 2021.
+[11] Wenhai Wang, Enze Xie, Xiang Li, Deng-Ping Fan, Kaitao Song, Ding Liang, Tong Lu, Ping Luo, and Ling Shao.
+Pyramid vision transformer: A versatile backbone for dense prediction without convolutions. In Proceedings of
+the IEEE/CVF International Conference on Computer Vision, pages 568–578, 2021.
+[12] Ren ´e Ranftl, Alexey Bochkovskiy, and Vladlen Koltun. Vision transformers for dense prediction. InProceedings
+of the IEEE/CVF International Conference on Computer Vision, pages 12179–12188, 2021.
+[13] Sixiao Zheng, Jiachen Lu, Hengshuang Zhao, Xiatian Zhu, Zekun Luo, Yabiao Wang, Yanwei Fu, Jianfeng Feng,
+Tao Xiang, Philip HS Torr, et al. Rethinking semantic segmentation from a sequence-to-sequence perspective
+with transformers. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition ,
+pages 6881–6890, 2021.
+[14] Olaf Ronneberger, Philipp Fischer, and Thomas Brox. U-net: Convolutional networks for biomedical image
+segmentation. In International Conference on Medical image computing and computer-assisted intervention ,
+pages 234–241. Springer, 2015.
+[15] Zongwei Zhou, Md Mahfuzur Rahman Siddiquee, Nima Tajbakhsh, and Jianming Liang. Unet++: A nested
+u-net architecture for medical image segmentation. In Deep learning in medical image analysis and multimodal
+learning for clinical decision support, pages 3–11. Springer, 2018.
+[16] Debesh Jha, Michael A Riegler, Dag Johansen, P ˚al Halvorsen, and H ˚avard D Johansen. Doubleu-net: A deep
+convolutional neural network for medical image segmentation. In 2020 IEEE 33rd International symposium on
+computer-based medical systems (CBMS), pages 558–564. IEEE, 2020.
+[17] Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, and Alan L Yuille. Deeplab: Se-
+mantic image segmentation with deep convolutional nets, atrous convolution, and fully connected crfs. IEEE
+transactions on pattern analysis and machine intelligence, 40(4):834–848, 2017.
+[18] Jie Hu, Li Shen, and Gang Sun. Squeeze-and-excitation networks. In Proceedings of the IEEE conference on
+computer vision and pattern recognition, pages 7132–7141, 2018.
+[19] Karen Simonyan and Andrew Zisserman. Very deep convolutional networks for large-scale image recognition.
+arXiv preprint arXiv:1409.1556, 2014.
+[20] Andrew G Howard, Menglong Zhu, Bo Chen, Dmitry Kalenichenko, Weijun Wang, Tobias Weyand, Marco An-
+dreetto, and Hartwig Adam. Mobilenets: Efﬁcient convolutional neural networks for mobile vision applications.
+arXiv preprint arXiv:1704.04861, 2017.
+[21] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. In
+Proceedings of the IEEE conference on computer vision and pattern recognition, pages 770–778, 2016.
+[22] Gao Huang, Zhuang Liu, Laurens Van Der Maaten, and Kilian Q Weinberger. Densely connected convolutional
+networks. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 4700–4708,
+2017.
+[23] Deng-Ping Fan, Ge-Peng Ji, Tao Zhou, Geng Chen, Huazhu Fu, Jianbing Shen, and Ling Shao. Pranet: Parallel
+reverse attention network for polyp segmentation. In International Conference on Medical Image Computing
+and Computer-Assisted Intervention, pages 263–273. Springer, 2020.
+13
+
+===== PAGE 14 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+[24] Dinh Viet Sang, Tran Quang Chung, Phan Ngoc Lan, Dao Viet Hang, Dao Van Long, and Nguyen Thi Thuy.
+Ag-curesnest: A novel method for colon polyp segmentation. arXiv preprint arXiv:2105.00402, 2021.
+[25] Chien-Hsiang Huang, Hung-Yu Wu, and Youn-Long Lin. Hardnet-mseg: A simple encoder-decoder polyp seg-
+mentation neural network that achieves over 0.9 mean dice and 86 fps. arXiv preprint arXiv:2101.07172, 2021.
+[26] Phan Ngoc Lan, Nguyen Sy An, Dao Viet Hang, Dao Van Long, Tran Quang Trung, Nguyen Thi Thuy, and
+Dinh Viet Sang. Neounet: Towards accurate colon polyp segmentation and neoplasm detection. In International
+Symposium on Visual Computing, pages 15–28. Springer, 2021.
+[27] Nguyen S An, Phan N Lan, Dao V Hang, Dao V Long, Tran Q Trung, Nguyen T Thuy, and Dinh V Sang.
+Blazeneo: Blazing fast polyp segmentation and neoplasm detection. IEEE Access, 2022.
+[28] Jo Schlemper, Ozan Oktay, Michiel Schaap, Mattias Heinrich, Bernhard Kainz, Ben Glocker, and Daniel Rueck-
+ert. Attention gated networks: Learning to leverage salient regions in medical images. Medical image analysis,
+53:197–207, 2019.
+[29] Nguyen Ba Hung, Nguyen Thanh Duc, Thai Van Chien, and Dinh Viet Sang. Ag-resunet++: An improved
+encoder-decoder based method for polyp segmentation in colonoscopy images. In 2021 RIVF International
+Conference on Computing and Communication Technologies (RIVF), pages 1–6. IEEE, 2021.
+[30] Shuhan Chen, Xiuli Tan, Ben Wang, and Xuelong Hu. Reverse attention for salient object detection. In Proceed-
+ings of the European conference on computer vision (ECCV), pages 234–250, 2018.
+[31] Enze Xie, Wenhai Wang, Zhiding Yu, Anima Anandkumar, Jose M Alvarez, and Ping Luo. Segformer: Simple
+and efﬁcient design for semantic segmentation with transformers. Advances in Neural Information Processing
+Systems, 34, 2021.
+[32] Alexander Kolesnikov, Alexey Dosovitskiy, Dirk Weissenborn, Georg Heigold, Jakob Uszkoreit, Lucas Beyer,
+Matthias Minderer, Mostafa Dehghani, Neil Houlsby, Sylvain Gelly, Thomas Unterthiner, and Xiaohua Zhai. An
+image is worth 16x16 words: Transformers for image recognition at scale. In 9th International Conference on
+Learning Representations, ICLR 2021, Virtual Event, Austria, May 3-7, 2021, 2021.
+[33] Hugo Touvron, Matthieu Cord, Matthijs Douze, Francisco Massa, Alexandre Sablayrolles, and Herv ´e J ´egou.
+Training data-efﬁcient image transformers & distillation through attention. In International Conference on Ma-
+chine Learning, pages 10347–10357. PMLR, 2021.
+[34] Jieneng Chen, Yongyi Lu, Qihang Yu, Xiangde Luo, Ehsan Adeli, Yan Wang, Le Lu, Alan L Yuille, and
+Yuyin Zhou. Transunet: Transformers make strong encoders for medical image segmentation. arXiv preprint
+arXiv:2102.04306, 2021.
+[35] Yundong Zhang, Huiye Liu, and Qiang Hu. Transfuse: Fusing transformers and cnns for medical image segmen-
+tation. In International Conference on Medical Image Computing and Computer-Assisted Intervention , pages
+14–24. Springer, 2021.
+[36] Hengshuang Zhao, Jianping Shi, Xiaojuan Qi, Xiaogang Wang, and Jiaya Jia. Pyramid scene parsing network.
+In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 2881–2890, 2017.
+[37] Tete Xiao, Yingcheng Liu, Bolei Zhou, Yuning Jiang, and Jian Sun. Uniﬁed perceptual parsing for scene under-
+standing. In Proceedings of the European Conference on Computer Vision (ECCV), pages 418–434, 2018.
+[38] Ange Lou and Murray Loew. Cfpnet: channel-wise feature pyramid for real-time semantic segmentation. In
+2021 IEEE International Conference on Image Processing (ICIP), pages 1894–1898. IEEE, 2021.
+[39] Jonathan Ho, Nal Kalchbrenner, Dirk Weissenborn, and Tim Salimans. Axial attention in multidimensional
+transformers. arXiv preprint arXiv:1912.12180, 2019.
+[40] Ange Lou, Shuyue Guan, and Murray Loew. Caranet: Context axial reverse attention network for segmentation
+of small medical objects. arXiv preprint arXiv:2108.07368, 2021.
+[41] Jun Wei, Shuhui Wang, and Qingming Huang. F 3net: Fusion, feedback and focus for salient object detection. In
+Proceedings of the AAAI Conference on Artiﬁcial Intelligence, volume 34, pages 12321–12328, 2020.
+[42] Yuqi Fang, Cheng Chen, Yixuan Yuan, and Kai-yu Tong. Selective feature aggregation network with area-
+boundary constraints for polyp segmentation. In International Conference on Medical Image Computing and
+Computer-Assisted Intervention, pages 302–310. Springer, 2019.
+[43] Nabil Ibtehaz and M Sohel Rahman. Multiresunet: Rethinking the u-net architecture for multimodal biomedical
+image segmentation. Neural Networks, 121:74–87, 2020.
+[44] Debesh Jha, Pia H Smedsrud, Michael A Riegler, Dag Johansen, Thomas De Lange, P˚al Halvorsen, and H˚avard D
+Johansen. Resunet++: An advanced architecture for medical image segmentation. In 2019 IEEE International
+Symposium on Multimedia (ISM), pages 225–2255. IEEE, 2019.
+14
+
+===== PAGE 15 =====
+ColonFormer: An Efﬁcient Transformer based Method for Colon Polyp Segmentation A PREPRINT
+[45] Nikhil Kumar Tomar, Debesh Jha, Sharib Ali, H ˚avard D Johansen, Dag Johansen, Michael A Riegler, and P ˚al
+Halvorsen. Ddanet: Dual decoder attention network for automatic polyp segmentation. In ICPR International
+Workshop and Challenges, 2021.
+[46] Debesh Jha, Sharib Ali, Nikhil Kumar Tomar, H ˚avard D Johansen, Dag Johansen, Jens Rittscher, Michael A
+Riegler, and P˚al Halvorsen. Real-time polyp detection, localization and segmentation in colonoscopy using deep
+learning. Ieee Access, 9:40496–40510, 2021.
+[47] Debesh Jha, Pia H Smedsrud, Michael A Riegler, P˚al Halvorsen, Thomas de Lange, Dag Johansen, and H˚avard D
+Johansen. Kvasir-seg: A segmented polyp dataset. In International Conference on Multimedia Modeling, pages
+451–462. Springer, 2020.
+[48] Jorge Bernal, F Javier S ´anchez, Gloria Fern ´andez-Esparrach, Debora Gil, Cristina Rodr ´ıguez, and Fernando
+Vilari˜no. Wm-dova maps for accurate polyp highlighting in colonoscopy: Validation vs. saliency maps from
+physicians. Computerized Medical Imaging and Graphics, 43:99–111, 2015.
+[49] Nima Tajbakhsh, Suryakanth R Gurudu, and Jianming Liang. Automated polyp detection in colonoscopy videos
+using shape and context information. IEEE transactions on medical imaging, 35(2):630–644, 2015.
+[50] David V ´azquez, Jorge Bernal, F Javier S ´anchez, Gloria Fern ´andez-Esparrach, Antonio M L ´opez, Adriana
+Romero, Michal Drozdzal, and Aaron Courville. A benchmark for endoluminal scene segmentation of
+colonoscopy images. Journal of healthcare engineering, 2017, 2017.
+[51] Juan Silva, Aymeric Histace, Olivier Romain, Xavier Dray, and Bertrand Granado. Toward embedded detection
+of polyps in wce images for early diagnosis of colorectal cancer. International journal of computer assisted
+radiology and surgery, 9(2):283–293, 2014.
+[52] Hemin Ali Qadir, Younghak Shin, Johannes Solhusvik, Jacob Bergsland, Lars Aabakken, and Ilangko Balasing-
+ham. Polyp detection and segmentation using mask r-cnn: Does a deeper feature extractor cnn always perform
+better? In 2019 13th International Symposium on Medical Information and Communication Technology (IS-
+MICT), pages 1–6. IEEE, 2019.
+[53] Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Doll ´ar. Focal loss for dense object detection.
+In Proceedings of the IEEE international conference on computer vision, pages 2980–2988, 2017.
+15

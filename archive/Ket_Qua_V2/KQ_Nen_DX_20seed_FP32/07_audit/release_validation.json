@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-16",
+  "source_hashes_passed": 163,
+  "metric_count": 13,
+  "training_runs": 40,
+  "epochs_per_run": 100,
+  "benchmark_timing_rows": 400,
+  "benchmark_groups": 4,
+  "new_result_figures": 27,
+  "new_benchmark_figures": 8,
+  "report_pages": 97,
+  "report_figures": 31,
+  "report_tables_including_abbreviations": 19,
+  "navigation_fields_checked": 108,
+  "pages_changed_after_final_review": [
+    10,
+    62
+  ],
+  "report_sha256": "2caaf8b42c299f3c73a0087654f8f7d3c2986a83b8878d713613e0c9e1ed0856"
+}

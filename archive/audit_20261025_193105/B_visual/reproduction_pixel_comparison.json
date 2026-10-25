@@ -1,0 +1,164 @@
+[
+  {
+    "path": "04_confusion_matrix\\count\\baseline_mean_count.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "04_confusion_matrix\\count\\mean_tp_fn_fp_comparison.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "04_confusion_matrix\\count\\tsvm_fp32_mean_count.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "04_confusion_matrix\\percentage\\baseline_mean_percentage.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "04_confusion_matrix\\percentage\\tsvm_fp32_mean_percentage.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\convergence\\22_validation_losses_mean_sd.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\convergence\\23_map_curves_mean_sd.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\convergence\\25_val_losses_mean_sd_epoch11_100.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\convergence\\26_train_losses_mean_sd.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\correlation\\11_scatter_mask_recall_vs_mask_precision.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\correlation\\12_scatter_mask_map50_95_vs_mask_precision.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\correlation\\13_scatter_mask_map50_95_vs_mask_recall.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\distribution\\08_boxplot_mask_map50_95.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\distribution\\09_histogram_kde_mask_map50_95.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\performance\\01_mask_map50_95_comparison.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\performance\\02_mask_map50_comparison.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\performance\\03_precision_recall_comparison.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\performance\\04_box_metrics_comparison.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\performance\\05_val_seg_loss_comparison.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\stability\\06_seed_mask_map50_95_trends.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\stability\\07_seed_box_map50_95_trends.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\stability\\10_mean_std_errorbars.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\summary\\18_grouped_bar_main_metrics.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\summary\\19_radar_chart_main_metrics.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\summary\\20_delta_tsvm_vs_baseline.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\summary\\21_paired_mask_map_delta.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  },
+  {
+    "path": "05_charts\\summary\\24_head_to_head_seed_wins.png",
+    "same_shape": true,
+    "pixel_identical": true,
+    "mean_abs_pixel_diff": 0.0
+  }
+]

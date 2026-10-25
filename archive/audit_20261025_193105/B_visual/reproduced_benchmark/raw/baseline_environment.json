@@ -1,0 +1,218 @@
+{
+  "model": "YOLO26s-seg",
+  "checkpoint": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Ung_Dung\\polypweb\\polypweb\\ai-service\\models\\yolo26s-seg-best.pt",
+  "sha256": "61EBD02851F5A12921AB10F64ADE433C745F87AAC91FD41A310CD00C7D2A3906",
+  "checkpoint_bytes": 23350941,
+  "seed": 0,
+  "parameters_unfused": 11434463,
+  "fp32_parameter_bytes_unfused": 45737852,
+  "buffer_bytes_unfused": 163504,
+  "parameters_fused": 10365727,
+  "floating_state_dtypes_before_fusion": {
+    "torch.float32": 710
+  },
+  "precision": "float32",
+  "autocast": false,
+  "device": "cpu",
+  "cuda_available": false,
+  "cuda_device_count": 0,
+  "cpu_name": "AMD Ryzen 7 250 w/ Radeon 780M Graphics",
+  "logical_cpus": 16,
+  "physical_cpus": 8,
+  "system_ram_bytes": 16435761152,
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "torch": "2.6.0+cpu",
+  "ultralytics": "8.4.103",
+  "ultralytics_path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Ung_Dung\\polypweb\\polypweb\\ai-service\\.venv\\Lib\\site-packages\\ultralytics\\__init__.py",
+  "numpy": "2.2.6",
+  "os": "Windows-11-10.0.26300-SP0",
+  "threads": 4,
+  "interop_threads": 1,
+  "warmups_per_mode": 20,
+  "measured_iterations_per_mode": 100,
+  "batch": 1,
+  "tensor_shape": [
+    1,
+    3,
+    640,
+    640
+  ],
+  "rect": false,
+  "conf": 0.25,
+  "iou": 0.7,
+  "max_det": 300,
+  "rss_process_before_model_bytes": 248672256,
+  "rss_process_sample_max_bytes": 536842240,
+  "rss_delta_sample_max_bytes": 288169984,
+  "rss_metric": "sampled RSS, not allocator peak; process includes Python/PyTorch/loaded model/predictor/images",
+  "gflops": null,
+  "gflops_reason": "No validated counting rule for custom parallel selective scan; THOP Conv-only totals would omit operations.",
+  "utc_finished": "2026-10-15T20:27:44.468351+00:00",
+  "inputs": [
+    {
+      "file": "cju0s690hkp960855tjuaqvv0.jpg",
+      "sha256": "96696f7cbcdff52a62d26d51c2c4154ed7f6eebee43fe5ad4cf6c5fa55825476",
+      "original_hw": [
+        530,
+        621
+      ]
+    },
+    {
+      "file": "cju0sr5ghl0nd08789uzf1raf.jpg",
+      "sha256": "d2c38f0e93dd9e618e1e81b66cdc75b86720a437fc02efb46c28c3b944d83038",
+      "original_hw": [
+        1019,
+        1214
+      ]
+    },
+    {
+      "file": "cju0sxqiclckk08551ycbwhno.jpg",
+      "sha256": "1ad00a52c1e6d700bb8c38107caa152b50edba55515bbba5ae66fcf594db68a4",
+      "original_hw": [
+        531,
+        570
+      ]
+    },
+    {
+      "file": "cju0t4oil7vzk099370nun5h9.jpg",
+      "sha256": "3e602f1232d712958f87b2b4bc89f9af48f3ed811e92358f9e3d9da9bfcfaba3",
+      "original_hw": [
+        530,
+        622
+      ]
+    },
+    {
+      "file": "cju0tl3uz8blh0993wxvn7ly3.jpg",
+      "sha256": "f1918d7b5478ff6b755a4bad637c87d28179ae2b44227075f85d6d93bb0a46e6",
+      "original_hw": [
+        529,
+        622
+      ]
+    },
+    {
+      "file": "cju0u2g7pmnux0801vkk47ivj.jpg",
+      "sha256": "c880e6aa09b169c19bbe6acace56b8b7e5efcb86ce29f64175d2073ffe59b86e",
+      "original_hw": [
+        530,
+        611
+      ]
+    },
+    {
+      "file": "cju0u82z3cuma0835wlxrnrjv.jpg",
+      "sha256": "0f49a7445435432711115772a72a4edb04f4878324d17dcc52e7441d2d03db27",
+      "original_hw": [
+        546,
+        626
+      ]
+    },
+    {
+      "file": "cju0ue769mxii08019zqgdbxn.jpg",
+      "sha256": "0c14886480421dd23529805d630fda599aeb062b35b98f66c342787a73c8cb42",
+      "original_hw": [
+        547,
+        626
+      ]
+    },
+    {
+      "file": "cju0vtox5ain6099360pu62rp.jpg",
+      "sha256": "2eb5b5f315b0898870277031d1ae8087440b8cc70d8dd3dc6740561b5e90f117",
+      "original_hw": [
+        531,
+        622
+      ]
+    },
+    {
+      "file": "cju13cgqmnhwn0988yrainhcp.jpg",
+      "sha256": "fdc33b5e589f8cf6e0623cee526d7a36bff4f91ae713f0c4fc99f3436a71af58",
+      "original_hw": [
+        546,
+        626
+      ]
+    },
+    {
+      "file": "bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.jpg",
+      "sha256": "d9787e9265fc2b80a022d971c23e7e94a78b3b46d70088c460d4a54dd336b224",
+      "original_hw": [
+        576,
+        720
+      ]
+    },
+    {
+      "file": "bg_01c6ae3a-6ee5-4a98-a792-c7f59a1c2fc4.jpg",
+      "sha256": "16c4f2636db6c17f26199f01c5908f97e5f0b7aeac243de6e18661e836b3c773",
+      "original_hw": [
+        576,
+        720
+      ]
+    },
+    {
+      "file": "bg_06206f23-d116-4bfa-a081-12216b37d7e0.jpg",
+      "sha256": "f1b1063f71fc2399b4116e01758e0a86cc901e9eddf31ed7467522da10d63adc",
+      "original_hw": [
+        576,
+        720
+      ]
+    },
+    {
+      "file": "bg_0ab26ff5-3161-4a17-bcf4-95663033af0a.jpg",
+      "sha256": "2e4e71e405a3233d6cebfbe0ba3cf48b819be3ea5fe7ea5dbada0d510437ad75",
+      "original_hw": [
+        576,
+        720
+      ]
+    },
+    {
+      "file": "bg_0f601b5d-d7ea-4bd1-af97-3fe395620a39.jpg",
+      "sha256": "898810031c74b74dfdc8ac05c234928c6ad0370b678b85536672db8ef6456430",
+      "original_hw": [
+        576,
+        720
+      ]
+    },
+    {
+      "file": "bg_149cfe53-bc42-4873-89b7-c9d3ebdae285.jpg",
+      "sha256": "de58156116ae77270fe7a9094ffd1c27415826bb1c617d0bbc35123a70ac42c4",
+      "original_hw": [
+        576,
+        720
+      ]
+    },
+    {
+      "file": "bg_158e02a2-d752-4830-a528-ae2a21634b2e.jpg",
+      "sha256": "c3599b3b723d33ebbd63f6b59500955f48db73b149ebc38236089b4c471dda24",
+      "original_hw": [
+        576,
+        720
+      ]
+    },
+    {
+      "file": "bg_1d096835-06b1-4649-ab10-c09824ef9732.jpg",
+      "sha256": "427217cbecd2a600508969cbe0ea1e9e7d0a52432e09c157755f6be039b640df",
+      "original_hw": [
+        576,
+        720
+      ]
+    },
+    {
+      "file": "bg_1d46d800-f4f7-41ce-8eb5-386ea644c8e0.jpg",
+      "sha256": "db66bf006d7641d2b0461a70949f1c4c4ad37092fbefa23e161bbfb36a339703",
+      "original_hw": [
+        576,
+        720
+      ]
+    },
+    {
+      "file": "bg_31fc3c22-76d5-484b-839a-8ada69051b4d.jpg",
+      "sha256": "3a762c8229398fffbbfc514e4d12f97080c841fe4ea0d634bd913204cb8c54ab",
+      "original_hw": [
+        576,
+        720
+      ]
+    }
+  ],
+  "checkpoint_storage_floating_dtypes": {
+    "torch.float16": 710
+  },
+  "custom_module_sha256": "31f8e041400cba64c981153dc5bef36242f6d90350593c39ce33f32060ab9645",
+  "custom_module_path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Ung_Dung\\polypweb\\polypweb\\ai-service\\custom_ultralytics\\topology_shape_vmamba.py"
+}

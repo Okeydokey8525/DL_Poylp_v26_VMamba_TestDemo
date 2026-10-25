@@ -1,0 +1,54 @@
+[
+  {
+    "input": "cju0s690hkp960855tjuaqvv0.jpg",
+    "input_sha256": "96696f7cbcdff52a62d26d51c2c4154ed7f6eebee43fe5ad4cf6c5fa55825476",
+    "success": true,
+    "detected": true,
+    "label": "polyp",
+    "confidence": 0.883303165435791,
+    "processingTimeMs": 8506.661,
+    "maskCount": 1,
+    "modelType": "YOLO26s-seg",
+    "originalFileName": "cju0s690hkp960855tjuaqvv0.jpg",
+    "message": "Inference completed"
+  },
+  {
+    "input": "bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.jpg",
+    "input_sha256": "d9787e9265fc2b80a022d971c23e7e94a78b3b46d70088c460d4a54dd336b224",
+    "success": true,
+    "detected": false,
+    "label": null,
+    "confidence": 0.0,
+    "processingTimeMs": 3337.594,
+    "maskCount": 0,
+    "modelType": "YOLO26s-seg",
+    "originalFileName": "bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.jpg",
+    "message": "No suspected polyp region detected"
+  },
+  {
+    "input": "cju0s690hkp960855tjuaqvv0.jpg",
+    "input_sha256": "96696f7cbcdff52a62d26d51c2c4154ed7f6eebee43fe5ad4cf6c5fa55825476",
+    "success": true,
+    "detected": true,
+    "label": "polyp",
+    "confidence": 0.5838399529457092,
+    "processingTimeMs": 6941.811,
+    "maskCount": 2,
+    "modelType": "YOLO26s-TSVM-FP32-seg",
+    "originalFileName": "cju0s690hkp960855tjuaqvv0.jpg",
+    "message": "Inference completed"
+  },
+  {
+    "input": "bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.jpg",
+    "input_sha256": "d9787e9265fc2b80a022d971c23e7e94a78b3b46d70088c460d4a54dd336b224",
+    "success": true,
+    "detected": false,
+    "label": null,
+    "confidence": 0.0,
+    "processingTimeMs": 4405.235,
+    "maskCount": 0,
+    "modelType": "YOLO26s-TSVM-FP32-seg",
+    "originalFileName": "bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.jpg",
+    "message": "No suspected polyp region detected"
+  }
+]

@@ -1,0 +1,606 @@
+{
+  "status": "ok",
+  "message-type": "work",
+  "message-version": "1.0.0",
+  "message": {
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          10,
+          24
+        ]
+      ],
+      "date-time": "2026-10-24T06:20:52Z",
+      "timestamp": 1792822852610,
+      "version": "4.5.0"
+    },
+    "publisher-location": "New York, NY, USA",
+    "reference-count": 41,
+    "publisher": "ACM",
+    "license": [
+      {
+        "start": {
+          "date-parts": [
+            [
+              2017,
+              6,
+              20
+            ]
+          ],
+          "date-time": "2017-06-20T00:00:00Z",
+          "timestamp": 1497916800000
+        },
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+      }
+    ],
+    "content-domain": {
+      "domain": [
+        "dl.acm.org"
+      ],
+      "crossmark-restriction": true
+    },
+    "short-container-title": [],
+    "published-print": {
+      "date-parts": [
+        [
+          2017,
+          6,
+          20
+        ]
+      ]
+    },
+    "DOI": "10.1145/3083187.3083212",
+    "type": "proceedings-article",
+    "created": {
+      "date-parts": [
+        [
+          2017,
+          6,
+          7
+        ]
+      ],
+      "date-time": "2017-06-07T08:47:29Z",
+      "timestamp": 1496825249000
+    },
+    "page": "164-169",
+    "update-policy": "https://doi.org/10.1145/crossmark-policy",
+    "source": "Crossref",
+    "is-referenced-by-count": 682,
+    "title": [
+      "KVASIR"
+    ],
+    "prefix": "10.1145",
+    "author": [
+      {
+        "given": "Konstantin",
+        "family": "Pogorelov",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Simula Research Laboratory, Norway, University of Oslo, Norway"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Kristin Ranheim",
+        "family": "Randel",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Cancer Registry of Norway, University of Oslo, Norway"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Carsten",
+        "family": "Griwodz",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Simula Research Laboratory, Norway, University of Oslo, Norway"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Sigrun Losada",
+        "family": "Eskeland",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Bærum Hospital, Norway"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Thomas",
+        "family": "de Lange",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Bærum Hospital, Norway, Cancer Registry of Norway"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Dag",
+        "family": "Johansen",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "UiT-The Arctic University of Norway"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Concetto",
+        "family": "Spampinato",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "University of Catania, Italy"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Duc-Tien",
+        "family": "Dang-Nguyen",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Dublin City University, Ireland"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Mathias",
+        "family": "Lux",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "University of Klagenfurt, Austria"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Peter Thelin",
+        "family": "Schmidt",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Karolinska Institutet, Solna, Sweden, Karolinska Hospital, Sweden"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Michael",
+        "family": "Riegler",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Simula Research Laboratory, Norway, University of Oslo, Norway"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Pål",
+        "family": "Halvorsen",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Simula Research Laboratory, Norway, University of Oslo, Norway"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "member": "320",
+    "published-online": {
+      "date-parts": [
+        [
+          2017,
+          6,
+          20
+        ]
+      ]
+    },
+    "reference": [
+      {
+        "key": "e_1_3_2_1_1_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1111/jgh.12489"
+      },
+      {
+        "key": "e_1_3_2_1_2_1",
+        "volume-title": "Tensorflow: Large-scale machine learning on heterogeneous distributed systems. arXiv preprint arXiv: 1603.04467",
+        "author": "Abadi Martin",
+        "year": "2016",
+        "unstructured": "Martin Abadi , Ashish Agarwal , Paul Barham , Eugene Brevdo , Zhifeng Chen , Craig Citro , Greg S Corrado , Andy Davis , Jeffrey Dean , Matthieu Devin , and others. 2016 . Tensorflow: Large-scale machine learning on heterogeneous distributed systems. arXiv preprint arXiv: 1603.04467 (2016). Martin Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen, Craig Citro, Greg S Corrado, Andy Davis, Jeffrey Dean, Matthieu Devin, and others. 2016. Tensorflow: Large-scale machine learning on heterogeneous distributed systems. arXiv preprint arXiv: 1603.04467 (2016)."
+      },
+      {
+        "key": "e_1_3_2_1_3_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1007/978-3-540-74976-9_34"
+      },
+      {
+        "key": "e_1_3_2_1_4_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1055/s-2006-944778"
+      },
+      {
+        "key": "e_1_3_2_1_5_1",
+        "volume-title": "Bildverarbeitung für die Medizin",
+        "author": "Ameling Stefan",
+        "unstructured": "Stefan Ameling , Stephan Wirth , Dietrich Paulus , Gerard Lacey , and Fernando Vilarino . 2009. Texture-based polyp detection in colonoscopy . In Bildverarbeitung für die Medizin . Springer , 346--350. Stefan Ameling, Stephan Wirth, Dietrich Paulus, Gerard Lacey, and Fernando Vilarino. 2009. Texture-based polyp detection in colonoscopy. In Bildverarbeitung für die Medizin. Springer, 346--350."
+      },
+      {
+        "key": "e_1_3_2_1_6_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1053/j.gastro.2010.09.006"
+      },
+      {
+        "key": "e_1_3_2_1_7_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1016/j.patcog.2012.03.002"
+      },
+      {
+        "key": "e_1_3_2_1_8_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1109/ICIP.2016.7532629"
+      },
+      {
+        "key": "e_1_3_2_1_9_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1007/978-3-540-70715-8_6"
+      },
+      {
+        "key": "e_1_3_2_1_10_1",
+        "volume-title": "Keras: Deep learning library for theano and tensorflow.",
+        "author": "Chollet François",
+        "year": "2015",
+        "unstructured": "François Chollet . 2015 . Keras: Deep learning library for theano and tensorflow. (2015). https://keras.io/ Accessed : 2017-04-19. François Chollet. 2015. Keras: Deep learning library for theano and tensorflow. (2015). https://keras.io/ Accessed: 2017-04-19."
+      },
+      {
+        "key": "e_1_3_2_1_11_1",
+        "volume-title": "Inter-observer agreement in the assessment of endoscopic findings in ulcerative colitis. BMC Gastroenterology 4, 9",
+        "author": "de Lange Thomas",
+        "year": "2004",
+        "unstructured": "Thomas de Lange , Stig Larsen , and Lars Aabakken . 2004. Inter-observer agreement in the assessment of endoscopic findings in ulcerative colitis. BMC Gastroenterology 4, 9 ( 2004 ). Thomas de Lange, Stig Larsen, and Lars Aabakken. 2004. Inter-observer agreement in the assessment of endoscopic findings in ulcerative colitis. BMC Gastroenterology 4, 9 (2004)."
+      },
+      {
+        "key": "e_1_3_2_1_12_1",
+        "first-page": "647",
+        "article-title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition",
+        "volume": "32",
+        "author": "Donahue Jeff",
+        "year": "2014",
+        "unstructured": "Jeff Donahue , Yangqing Jia , Oriol Vinyals , Judy Hoffman , Ning Zhang , Eric Tzeng , and Trevor Darrell . 2014 . DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition .. In Proc. of ICML , Vol. 32. 647 -- 655 . Jeff Donahue, Yangqing Jia, Oriol Vinyals, Judy Hoffman, Ning Zhang, Eric Tzeng, and Trevor Darrell. 2014. DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition.. In Proc. of ICML, Vol. 32. 647--655.",
+        "journal-title": "Proc. of ICML"
+      },
+      {
+        "key": "e_1_3_2_1_13_1",
+        "first-page": "548",
+        "article-title": "Improvements on Cross-Validation: The .632+ Bootstrap Method",
+        "volume": "92",
+        "author": "Efron Bradley",
+        "year": "1997",
+        "unstructured": "Bradley Efron and Robert Tibshirani . 1997 . Improvements on Cross-Validation: The .632+ Bootstrap Method . J. Amer. Statist. Assoc. 92 , 438 (1997), 548 -- 560 . Bradley Efron and Robert Tibshirani. 1997. Improvements on Cross-Validation: The .632+ Bootstrap Method. J. Amer. Statist. Assoc. 92, 438 (1997), 548--560.",
+        "journal-title": "J. Amer. Statist. Assoc."
+      },
+      {
+        "key": "e_1_3_2_1_14_1",
+        "volume-title": "Digital selection and analogue amplification coexist in a cortex-inspired silicon circuit. Nature 405, 6789",
+        "author": "Hahnloser Richard HR",
+        "year": "2000",
+        "unstructured": "Richard HR Hahnloser , Rahul Sarpeshkar , Misha A Mahowald , Rodney J Douglas , and H Sebastian Seung . 2000. Digital selection and analogue amplification coexist in a cortex-inspired silicon circuit. Nature 405, 6789 ( 2000 ), 947--951. Richard HR Hahnloser, Rahul Sarpeshkar, Misha A Mahowald, Rodney J Douglas, and H Sebastian Seung. 2000. Digital selection and analogue amplification coexist in a cortex-inspired silicon circuit. Nature 405, 6789 (2000), 947--951."
+      },
+      {
+        "key": "e_1_3_2_1_15_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1145/1656274.1656278"
+      },
+      {
+        "key": "e_1_3_2_1_16_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1055/s-0033-1344952"
+      },
+      {
+        "key": "e_1_3_2_1_17_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1016/j.gie.2015.05.001"
+      },
+      {
+        "key": "e_1_3_2_1_18_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1109/ICIP.2007.4379193"
+      },
+      {
+        "key": "e_1_3_2_1_19_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1056/NEJMoa0907667"
+      },
+      {
+        "key": "e_1_3_2_1_20_1",
+        "volume-title": "Adam: A method for stochastic optimization. arXiv preprint arXiv: 1412.6980",
+        "author": "Kingma Diederik",
+        "year": "2014",
+        "unstructured": "Diederik Kingma and Jimmy Ba . 2014 . Adam: A method for stochastic optimization. arXiv preprint arXiv: 1412.6980 (2014). Diederik Kingma and Jimmy Ba. 2014. Adam: A method for stochastic optimization. arXiv preprint arXiv: 1412.6980 (2014)."
+      },
+      {
+        "key": "e_1_3_2_1_21_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1109/TITB.2012.2185807"
+      },
+      {
+        "key": "e_1_3_2_1_22_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1145/2910017.2910630"
+      },
+      {
+        "key": "e_1_3_2_1_23_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1109/TMI.2014.2314959"
+      },
+      {
+        "key": "e_1_3_2_1_24_1",
+        "unstructured": "McKinsey Global Institute. 2013. The big-data revolution in US health care: Accelerating value and innovation. (2013). https://goo.gl/SqS5Dl Accessed: 2017-04-19.  McKinsey Global Institute. 2013. The big-data revolution in US health care: Accelerating value and innovation. (2013). https://goo.gl/SqS5Dl Accessed: 2017-04-19."
+      },
+      {
+        "key": "e_1_3_2_1_25_1",
+        "volume-title": "Proc. of ICML. 265--272",
+        "author": "Ngiam Jiquan",
+        "year": "2011",
+        "unstructured": "Jiquan Ngiam , Adam Coates , Ahbik Lahiri , Bobby Prochnow , Quoc V Le , and Andrew Y Ng . 2011 . On optimization methods for deep learning . In Proc. of ICML. 265--272 . Jiquan Ngiam, Adam Coates, Ahbik Lahiri, Bobby Prochnow, Quoc V Le, and Andrew Y Ng. 2011. On optimization methods for deep learning. In Proc. of ICML. 265--272."
+      },
+      {
+        "key": "e_1_3_2_1_26_1",
+        "unstructured": "PMLiVE (Dominic Tyer). 2014. European Commission forms EUR2.5bn big data partnership. (2014). https://goo.gl/NeKb7H Accessed: 2017-04-19.  PMLiVE (Dominic Tyer). 2014. European Commission forms EUR2.5bn big data partnership. (2014). https://goo.gl/NeKb7H Accessed: 2017-04-19."
+      },
+      {
+        "key": "e_1_3_2_1_27_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1109/CBMS.2016.63"
+      },
+      {
+        "key": "e_1_3_2_1_28_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1109/CVPR.2008.4587637"
+      },
+      {
+        "key": "e_1_3_2_1_29_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1038/ajg.2014.385"
+      },
+      {
+        "key": "e_1_3_2_1_30_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1055/s-2001-42537"
+      },
+      {
+        "key": "e_1_3_2_1_31_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1145/2964284.2976760"
+      },
+      {
+        "key": "e_1_3_2_1_32_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1109/CBMI.2016.7500257"
+      },
+      {
+        "key": "e_1_3_2_1_33_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1145/2910017.2910629"
+      },
+      {
+        "key": "e_1_3_2_1_34_1",
+        "volume-title": "Rethinking the inception architecture for computer vision. arXiv preprint arXiv.1512.00567",
+        "author": "Szegedy Christian",
+        "year": "2015",
+        "unstructured": "Christian Szegedy , Vincent Vanhoucke , Sergey Ioffe , Jonathon Shlens , and Zbigniew Wojna . 2015. Rethinking the inception architecture for computer vision. arXiv preprint arXiv.1512.00567 ( 2015 ). Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and Zbigniew Wojna. 2015. Rethinking the inception architecture for computer vision. arXiv preprint arXiv.1512.00567 (2015)."
+      },
+      {
+        "key": "e_1_3_2_1_35_1",
+        "first-page": "2",
+        "article-title": "Automated Polyp Detection in Colonoscopy Videos Using Shape and Context Information",
+        "volume": "35",
+        "author": "Tajbakhsh Nima",
+        "year": "2015",
+        "unstructured": "Nima Tajbakhsh , Suryakanth Gurudu , and Jianming Liang . 2015 . Automated Polyp Detection in Colonoscopy Videos Using Shape and Context Information . IEEE Transactions on Medical Imaging 35 , 2 (feb 2015), 630--644. Nima Tajbakhsh, Suryakanth Gurudu, and Jianming Liang. 2015. Automated Polyp Detection in Colonoscopy Videos Using Shape and Context Information. IEEE Transactions on Medical Imaging 35, 2 (feb 2015), 630--644.",
+        "journal-title": "IEEE Transactions on Medical Imaging"
+      },
+      {
+        "key": "e_1_3_2_1_36_1",
+        "doi-asserted-by": "crossref",
+        "unstructured": "R. Valori J-F. Rey W. S. Atkin M. Bretthauer C. Senore G. Hoff E.J. Kuipers L. Altenhofen R. Lambert and G. Minoli. 2012. European guidelines for quality assurance in colorectal cancer screening and diagnosis. First Edition -- Quality assurance in endoscopy in colorectal cancer screening and diagnosis. Endoscopy 44 S03 (2012) SE88--SE105.  R. Valori J-F. Rey W. S. Atkin M. Bretthauer C. Senore G. Hoff E.J. Kuipers L. Altenhofen R. Lambert and G. Minoli. 2012. European guidelines for quality assurance in colorectal cancer screening and diagnosis. First Edition -- Quality assurance in endoscopy in colorectal cancer screening and diagnosis. Endoscopy 44 S03 (2012) SE88--SE105.",
+        "DOI": "10.1055/s-0032-1309795"
+      },
+      {
+        "key": "e_1_3_2_1_37_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1016/j.crohns.2013.09.010"
+      },
+      {
+        "key": "e_1_3_2_1_38_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1109/JBHI.2013.2285230"
+      },
+      {
+        "key": "e_1_3_2_1_39_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1016/j.cmpb.2015.04.002"
+      },
+      {
+        "key": "e_1_3_2_1_40_1",
+        "volume-title": "Estimated Cancer Incidence, Mortality and Prevalence Worldwide",
+        "author": "World Health Organization - International Agency for Research on Cancer. 2012.",
+        "year": "2012",
+        "unstructured": "World Health Organization - International Agency for Research on Cancer. 2012. Estimated Cancer Incidence, Mortality and Prevalence Worldwide in 2012 . (2012). https://goo.gl/IgZpVl Accessed : 2017-04-19. World Health Organization - International Agency for Research on Cancer. 2012. Estimated Cancer Incidence, Mortality and Prevalence Worldwide in 2012. (2012). https://goo.gl/IgZpVl Accessed: 2017-04-19."
+      },
+      {
+        "key": "e_1_3_2_1_41_1",
+        "doi-asserted-by": "publisher",
+        "DOI": "10.1109/BMEI.2014.7002777"
+      }
+    ],
+    "event": {
+      "name": "MMSys'17: Multimedia Systems Conference 2017",
+      "location": "Taipei Taiwan",
+      "acronym": "MMSys'17",
+      "sponsor": [
+        "SIGMM ACM Special Interest Group on Multimedia",
+        "SIGCOMM ACM Special Interest Group on Data Communication",
+        "SIGMOBILE ACM Special Interest Group on Mobility of Systems, Users, Data and Computing"
+      ]
+    },
+    "container-title": [
+      "Proceedings of the 8th ACM on Multimedia Systems Conference"
+    ],
+    "original-title": [],
+    "link": [
+      {
+        "URL": "https://dl.acm.org/doi/10.1145/3083187.3083212",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://dl.acm.org/doi/pdf/10.1145/3083187.3083212",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2025,
+          6,
+          17
+        ]
+      ],
+      "date-time": "2025-06-17T23:03:32Z",
+      "timestamp": 1750201412000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://dl.acm.org/doi/10.1145/3083187.3083212"
+      }
+    },
+    "subtitle": [
+      "A Multi-Class Image Dataset for Computer Aided Gastrointestinal Disease Detection"
+    ],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          6,
+          20
+        ]
+      ]
+    },
+    "references-count": 41,
+    "alternative-id": [
+      "10.1145/3083187.3083212",
+      "10.1145/3083187"
+    ],
+    "URL": "https://doi.org/10.1145/3083187.3083212",
+    "relation": {},
+    "subject": [],
+    "published": {
+      "date-parts": [
+        [
+          2017,
+          6,
+          20
+        ]
+      ]
+    },
+    "assertion": [
+      {
+        "value": "2017-06-20",
+        "order": 2,
+        "name": "published",
+        "label": "Published",
+        "group": {
+          "name": "publication_history",
+          "label": "Publication History"
+        }
+      }
+    ]
+  }
+}

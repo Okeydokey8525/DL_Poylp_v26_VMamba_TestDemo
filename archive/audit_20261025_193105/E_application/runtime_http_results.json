@@ -1,0 +1,883 @@
+[
+  {
+    "case": "ai_health",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18000/health",
+    "bytes": 516,
+    "extra": null,
+    "json": {
+      "status": "ok",
+      "service": "polypvision-ai",
+      "device": "cpu",
+      "readyModels": 2,
+      "totalModels": 2,
+      "models": {
+        "YOLO26s-seg": {
+          "status": "ready",
+          "loaded": true,
+          "family": "baseline",
+          "checkpoint": "yolo26s-seg-best.pt",
+          "checkpointSha256": "61EBD02851F5A12921AB10F64ADE433C745F87AAC91FD41A310CD00C7D2A3906",
+          "error": null
+        },
+        "YOLO26s-TSVM-FP32-seg": {
+          "status": "ready",
+          "loaded": true,
+          "family": "vmamba",
+          "checkpoint": "yolo26s-tsvm-fp32-best.pt",
+          "checkpointSha256": "B0578C7612E1E48CC490EF71ECA5F025FB1EEB5A02C1FE6CB7E869D639E2C7A8",
+          "error": null
+        }
+      }
+    }
+  },
+  {
+    "case": "web_health",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/actuator/health",
+    "bytes": 49,
+    "extra": null
+  },
+  {
+    "case": "unauthenticated_diagnose",
+    "status": 302,
+    "expected_status": [
+      302
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/diagnose",
+    "bytes": 0,
+    "extra": null
+  },
+  {
+    "case": "unauthenticated_api",
+    "status": 401,
+    "expected_status": [
+      401
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses",
+    "bytes": 228,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:21:24.356973200Z",
+      "status": 401,
+      "code": "UNAUTHENTICATED",
+      "message": "Phiên đăng nhập không hợp lệ hoặc đã hết hạn.",
+      "fieldErrors": {},
+      "requestId": "13beffd9-4b2a-41bc-8a45-9c6c67c1ef3a"
+    }
+  },
+  {
+    "case": "csrf_missing_login",
+    "status": 403,
+    "expected_status": [
+      403
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/auth/login",
+    "bytes": 215,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:21:24.380501900Z",
+      "status": 403,
+      "code": "CSRF_INVALID",
+      "message": "CSRF token không hợp lệ hoặc đã hết hạn.",
+      "fieldErrors": {},
+      "requestId": "aab4e8ec-92cc-47c6-b90c-95f7c5f867e2"
+    }
+  },
+  {
+    "case": "true_inference_YOLO26s-seg_polyp",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18000/predict",
+    "bytes": 70165,
+    "extra": null,
+    "json": {
+      "success": true,
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.883303165435791,
+      "processingTimeMs": 8506.661,
+      "maskCount": 1,
+      "modelType": "YOLO26s-seg",
+      "originalFileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "message": "Inference completed"
+    }
+  },
+  {
+    "case": "true_inference_YOLO26s-seg_background",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18000/predict",
+    "bytes": 99506,
+    "extra": null,
+    "json": {
+      "success": true,
+      "detected": false,
+      "label": null,
+      "confidence": 0.0,
+      "processingTimeMs": 3337.594,
+      "maskCount": 0,
+      "modelType": "YOLO26s-seg",
+      "originalFileName": "bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.jpg",
+      "message": "No suspected polyp region detected"
+    }
+  },
+  {
+    "case": "true_inference_YOLO26s-TSVM-FP32-seg_polyp",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18000/predict",
+    "bytes": 70440,
+    "extra": null,
+    "json": {
+      "success": true,
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.5838399529457092,
+      "processingTimeMs": 6941.811,
+      "maskCount": 2,
+      "modelType": "YOLO26s-TSVM-FP32-seg",
+      "originalFileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "message": "Inference completed"
+    }
+  },
+  {
+    "case": "true_inference_YOLO26s-TSVM-FP32-seg_background",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18000/predict",
+    "bytes": 99516,
+    "extra": null,
+    "json": {
+      "success": true,
+      "detected": false,
+      "label": null,
+      "confidence": 0.0,
+      "processingTimeMs": 4405.235,
+      "maskCount": 0,
+      "modelType": "YOLO26s-TSVM-FP32-seg",
+      "originalFileName": "bg_0111fb06-3113-4abf-9050-7bfb8d4688f5.jpg",
+      "message": "No suspected polyp region detected"
+    }
+  },
+  {
+    "case": "ai_reject_non_image",
+    "status": 415,
+    "expected_status": [
+      415
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18000/predict",
+    "bytes": 56,
+    "extra": null,
+    "json": {
+      "detail": "Only JPG, JPEG and PNG images are supported"
+    }
+  },
+  {
+    "case": "ai_reject_unknown_model",
+    "status": 422,
+    "expected_status": [
+      422
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18000/predict",
+    "bytes": 35,
+    "extra": null,
+    "json": {
+      "detail": "Model is not available"
+    }
+  },
+  {
+    "case": "register_Audit Primary",
+    "status": 201,
+    "expected_status": [
+      201,
+      409
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/auth/register",
+    "bytes": 87,
+    "extra": null,
+    "json": {
+      "message": "Đăng ký thành công.",
+      "email": "audit_primary_20261025@example.invalid"
+    }
+  },
+  {
+    "case": "login_Audit Primary",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/auth/login",
+    "bytes": 208,
+    "extra": null,
+    "json": {
+      "user": {
+        "id": "6ade2c9cd5a922967e96598d",
+        "fullName": "Audit Primary",
+        "email": "audit_primary_20261025@example.invalid",
+        "role": "USER",
+        "createdAt": "2026-10-25T23:21:48.684",
+        "updatedAt": "2026-10-25T23:21:48.684"
+      }
+    }
+  },
+  {
+    "case": "register_Audit Other",
+    "status": 201,
+    "expected_status": [
+      201,
+      409
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/auth/register",
+    "bytes": 85,
+    "extra": null,
+    "json": {
+      "message": "Đăng ký thành công.",
+      "email": "audit_other_20261025@example.invalid"
+    }
+  },
+  {
+    "case": "login_Audit Other",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/auth/login",
+    "bytes": 204,
+    "extra": null,
+    "json": {
+      "user": {
+        "id": "6ade2c9dd5a922967e96598e",
+        "fullName": "Audit Other",
+        "email": "audit_other_20261025@example.invalid",
+        "role": "USER",
+        "createdAt": "2026-10-25T23:21:49.419",
+        "updatedAt": "2026-10-25T23:21:49.419"
+      }
+    }
+  },
+  {
+    "case": "authenticated_me",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/me",
+    "bytes": 199,
+    "extra": null,
+    "json": {
+      "id": "6ade2c9cd5a922967e96598d",
+      "fullName": "Audit Primary",
+      "email": "audit_primary_20261025@example.invalid",
+      "role": "USER",
+      "createdAt": "2026-10-25T23:21:48.684",
+      "updatedAt": "2026-10-25T23:21:48.684"
+    }
+  },
+  {
+    "case": "web_api_create_YOLO26s-seg",
+    "status": 201,
+    "expected_status": [
+      201
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses",
+    "bytes": 500,
+    "extra": null,
+    "json": {
+      "id": "6ade2ca0d5a922967e96598f",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-seg",
+      "modelCategory": "BASELINE",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.883303165435791,
+      "maskCount": 1,
+      "processingTimeMs": 2205.425,
+      "createdAt": "2026-10-25T23:21:52.4844658",
+      "originalImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/original",
+      "resultImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/result",
+      "metadataUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/metadata"
+    }
+  },
+  {
+    "case": "web_api_create_YOLO26s-TSVM-FP32-seg",
+    "status": 201,
+    "expected_status": [
+      201
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses",
+    "bytes": 509,
+    "extra": null,
+    "json": {
+      "id": "6ade2ca4d5a922967e965990",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-TSVM-FP32-seg",
+      "modelCategory": "VMAMBA",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.5838399529457092,
+      "maskCount": 2,
+      "processingTimeMs": 3559.228,
+      "createdAt": "2026-10-25T23:21:56.2601727",
+      "originalImageUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/images/original",
+      "resultImageUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/images/result",
+      "metadataUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/metadata"
+    }
+  },
+  {
+    "case": "web_history_list",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses",
+    "bytes": 962,
+    "extra": null,
+    "json": {
+      "items": [
+        {
+          "id": "6ade2ca4d5a922967e965990",
+          "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+          "modelType": "YOLO26s-TSVM-FP32-seg",
+          "modelCategory": "VMAMBA",
+          "detected": true,
+          "label": "polyp",
+          "confidence": 0.5838399529457092,
+          "maskCount": 2,
+          "processingTimeMs": 3559.228,
+          "createdAt": "2026-10-25T23:21:56.26",
+          "originalImageUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/images/original",
+          "resultImageUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/images/result"
+        },
+        {
+          "id": "6ade2ca0d5a922967e96598f",
+          "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+          "modelType": "YOLO26s-seg",
+          "modelCategory": "BASELINE",
+          "detected": true,
+          "label": "polyp",
+          "confidence": 0.883303165435791,
+          "maskCount": 1,
+          "processingTimeMs": 2205.425,
+          "createdAt": "2026-10-25T23:21:52.484",
+          "originalImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/original",
+          "resultImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/result"
+        }
+      ],
+      "page": 0,
+      "size": 10,
+      "totalItems": 2,
+      "totalPages": 1,
+      "hasNext": false,
+      "hasPrevious": false
+    }
+  },
+  {
+    "case": "owner_detail_6ade2ca0d5a922967e96598f",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses/6ade2ca0d5a922967e96598f",
+    "bytes": 496,
+    "extra": null,
+    "json": {
+      "id": "6ade2ca0d5a922967e96598f",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-seg",
+      "modelCategory": "BASELINE",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.883303165435791,
+      "maskCount": 1,
+      "processingTimeMs": 2205.425,
+      "createdAt": "2026-10-25T23:21:52.484",
+      "originalImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/original",
+      "resultImageUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/images/result",
+      "metadataUrl": "/api/v1/diagnoses/6ade2ca0d5a922967e96598f/metadata"
+    }
+  },
+  {
+    "case": "nonowner_detail_6ade2ca0d5a922967e96598f",
+    "status": 403,
+    "expected_status": [
+      404,
+      403
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses/6ade2ca0d5a922967e96598f",
+    "bytes": 217,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:21:56.568999400Z",
+      "status": 403,
+      "code": "ACCESS_DENIED",
+      "message": "Bạn không có quyền truy cập tài nguyên này.",
+      "fieldErrors": {},
+      "requestId": "6c58b899-4467-4184-b84c-1875ab2158f9"
+    }
+  },
+  {
+    "case": "nonowner_export_6ade2ca0d5a922967e96598f",
+    "status": 403,
+    "expected_status": [
+      404,
+      403
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/diagnoses/6ade2ca0d5a922967e96598f/metadata.json",
+    "bytes": 9045,
+    "extra": null
+  },
+  {
+    "case": "nonowner_delete_6ade2ca0d5a922967e96598f",
+    "status": 403,
+    "expected_status": [
+      404,
+      403
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses/6ade2ca0d5a922967e96598f",
+    "bytes": 214,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:21:56.629762Z",
+      "status": 403,
+      "code": "ACCESS_DENIED",
+      "message": "Bạn không có quyền truy cập tài nguyên này.",
+      "fieldErrors": {},
+      "requestId": "9343e325-78f8-4246-a0e9-5c780e9ec188"
+    }
+  },
+  {
+    "case": "owner_export_metadata_6ade2ca0d5a922967e96598f",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/diagnoses/6ade2ca0d5a922967e96598f/metadata.json",
+    "bytes": 339,
+    "extra": null,
+    "json": {
+      "id": "6ade2ca0d5a922967e96598f",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-seg",
+      "modelCategory": "BASELINE",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.883303165435791,
+      "maskCount": 1,
+      "processingTimeMs": 2205.425,
+      "imageSize": null,
+      "createdAt": "2026-10-25T23:21:52.484",
+      "comparisonResult": false,
+      "comparisonGroupId": null
+    }
+  },
+  {
+    "case": "owner_download_original_6ade2ca0d5a922967e96598f",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/diagnoses/6ade2ca0d5a922967e96598f/download/original",
+    "bytes": 64765,
+    "extra": null
+  },
+  {
+    "case": "owner_download_result_6ade2ca0d5a922967e96598f",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/diagnoses/6ade2ca0d5a922967e96598f/download/result",
+    "bytes": 52433,
+    "extra": null
+  },
+  {
+    "case": "owner_detail_6ade2ca4d5a922967e965990",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses/6ade2ca4d5a922967e965990",
+    "bytes": 504,
+    "extra": null,
+    "json": {
+      "id": "6ade2ca4d5a922967e965990",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-TSVM-FP32-seg",
+      "modelCategory": "VMAMBA",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.5838399529457092,
+      "maskCount": 2,
+      "processingTimeMs": 3559.228,
+      "createdAt": "2026-10-25T23:21:56.26",
+      "originalImageUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/images/original",
+      "resultImageUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/images/result",
+      "metadataUrl": "/api/v1/diagnoses/6ade2ca4d5a922967e965990/metadata"
+    }
+  },
+  {
+    "case": "nonowner_detail_6ade2ca4d5a922967e965990",
+    "status": 403,
+    "expected_status": [
+      404,
+      403
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses/6ade2ca4d5a922967e965990",
+    "bytes": 217,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:21:56.821550900Z",
+      "status": 403,
+      "code": "ACCESS_DENIED",
+      "message": "Bạn không có quyền truy cập tài nguyên này.",
+      "fieldErrors": {},
+      "requestId": "aa0a7351-91c8-42a5-9bb5-3e64a56c19f2"
+    }
+  },
+  {
+    "case": "nonowner_export_6ade2ca4d5a922967e965990",
+    "status": 403,
+    "expected_status": [
+      404,
+      403
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/diagnoses/6ade2ca4d5a922967e965990/metadata.json",
+    "bytes": 9045,
+    "extra": null
+  },
+  {
+    "case": "nonowner_delete_6ade2ca4d5a922967e965990",
+    "status": 403,
+    "expected_status": [
+      404,
+      403
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses/6ade2ca4d5a922967e965990",
+    "bytes": 217,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:21:56.889717500Z",
+      "status": 403,
+      "code": "ACCESS_DENIED",
+      "message": "Bạn không có quyền truy cập tài nguyên này.",
+      "fieldErrors": {},
+      "requestId": "cc901bb6-2830-4aa5-8e98-b5a5daa88ca3"
+    }
+  },
+  {
+    "case": "owner_export_metadata_6ade2ca4d5a922967e965990",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/diagnoses/6ade2ca4d5a922967e965990/metadata.json",
+    "bytes": 347,
+    "extra": null,
+    "json": {
+      "id": "6ade2ca4d5a922967e965990",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-TSVM-FP32-seg",
+      "modelCategory": "VMAMBA",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.5838399529457092,
+      "maskCount": 2,
+      "processingTimeMs": 3559.228,
+      "imageSize": null,
+      "createdAt": "2026-10-25T23:21:56.26",
+      "comparisonResult": false,
+      "comparisonGroupId": null
+    }
+  },
+  {
+    "case": "owner_download_original_6ade2ca4d5a922967e965990",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/diagnoses/6ade2ca4d5a922967e965990/download/original",
+    "bytes": 64765,
+    "extra": null
+  },
+  {
+    "case": "owner_download_result_6ade2ca4d5a922967e965990",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/diagnoses/6ade2ca4d5a922967e965990/download/result",
+    "bytes": 52631,
+    "extra": null
+  },
+  {
+    "case": "web_api_compare",
+    "status": 201,
+    "expected_status": [
+      201
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/comparisons",
+    "bytes": 905,
+    "extra": null,
+    "json": {
+      "comparisonGroupId": "12510284-9302-4c2e-b125-89fffb5d4f9d",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "createdAt": "2026-10-25T23:22:04.2954229",
+      "originalImageUrl": "/api/v1/diagnoses/6ade2cacd5a922967e965991/images/original",
+      "baseline": {
+        "id": "6ade2cacd5a922967e965991",
+        "modelType": "YOLO26s-seg",
+        "modelCategory": "BASELINE",
+        "detected": true,
+        "label": "polyp",
+        "confidence": 0.883303165435791,
+        "maskCount": 1,
+        "processingTimeMs": 1639.015,
+        "resultImageUrl": "/api/v1/diagnoses/6ade2cacd5a922967e965991/images/result"
+      },
+      "vmamba": {
+        "id": "6ade2cacd5a922967e965992",
+        "modelType": "YOLO26s-TSVM-FP32-seg",
+        "modelCategory": "VMAMBA",
+        "detected": true,
+        "label": "polyp",
+        "confidence": 0.5838399529457092,
+        "maskCount": 2,
+        "processingTimeMs": 4586.106,
+        "resultImageUrl": "/api/v1/diagnoses/6ade2cacd5a922967e965992/images/result"
+      },
+      "totalProcessingTimeMs": 6225.121,
+      "metadataUrl": "/api/v1/comparisons/12510284-9302-4c2e-b125-89fffb5d4f9d/metadata"
+    }
+  },
+  {
+    "case": "comparison_html",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/comparisons/12510284-9302-4c2e-b125-89fffb5d4f9d",
+    "bytes": 17369,
+    "extra": null
+  },
+  {
+    "case": "comparison_metadata",
+    "status": 200,
+    "expected_status": [
+      200
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/comparisons/12510284-9302-4c2e-b125-89fffb5d4f9d/metadata.json",
+    "bytes": 630,
+    "extra": null,
+    "json": {
+      "comparisonGroupId": "12510284-9302-4c2e-b125-89fffb5d4f9d",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "createdAt": "2026-10-25T23:22:04.295",
+      "baseline": {
+        "id": "6ade2cacd5a922967e965991",
+        "modelType": "YOLO26s-seg",
+        "modelCategory": "BASELINE",
+        "detected": true,
+        "label": "polyp",
+        "confidence": 0.883303165435791,
+        "maskCount": 1,
+        "processingTimeMs": 1639.015,
+        "createdAt": "2026-10-25T23:22:04.295"
+      },
+      "vmamba": {
+        "id": "6ade2cacd5a922967e965992",
+        "modelType": "YOLO26s-TSVM-FP32-seg",
+        "modelCategory": "VMAMBA",
+        "detected": true,
+        "label": "polyp",
+        "confidence": 0.5838399529457092,
+        "maskCount": 2,
+        "processingTimeMs": 4586.106,
+        "createdAt": "2026-10-25T23:22:04.295"
+      }
+    }
+  },
+  {
+    "case": "nonowner_comparison",
+    "status": 403,
+    "expected_status": [
+      404,
+      403
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/comparisons/12510284-9302-4c2e-b125-89fffb5d4f9d",
+    "bytes": 217,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:22:04.471892800Z",
+      "status": 403,
+      "code": "ACCESS_DENIED",
+      "message": "Bạn không có quyền truy cập tài nguyên này.",
+      "fieldErrors": {},
+      "requestId": "85e38c20-f647-433e-849a-47528423a369"
+    }
+  },
+  {
+    "case": "nonowner_comparison_delete",
+    "status": 403,
+    "expected_status": [
+      404,
+      403
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/comparisons/12510284-9302-4c2e-b125-89fffb5d4f9d",
+    "bytes": 214,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:22:04.522913Z",
+      "status": 403,
+      "code": "ACCESS_DENIED",
+      "message": "Bạn không có quyền truy cập tài nguyên này.",
+      "fieldErrors": {},
+      "requestId": "ea1d599e-9e21-4cd3-9c5f-69a4543e6303"
+    }
+  },
+  {
+    "case": "owner_comparison_delete",
+    "status": 204,
+    "expected_status": [
+      204
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/comparisons/12510284-9302-4c2e-b125-89fffb5d4f9d",
+    "bytes": 0,
+    "extra": null
+  },
+  {
+    "case": "comparison_after_delete",
+    "status": 404,
+    "expected_status": [
+      404
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/comparisons/12510284-9302-4c2e-b125-89fffb5d4f9d",
+    "bytes": 203,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:22:04.665714500Z",
+      "status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "message": "Không tìm thấy phiên so sánh.",
+      "fieldErrors": {},
+      "requestId": "d6118d90-c0a1-4420-8d8a-9533c5a64c8b"
+    }
+  },
+  {
+    "case": "reject_empty_web_image",
+    "status": 415,
+    "expected_status": [
+      400,
+      422
+    ],
+    "pass": false,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses",
+    "bytes": 8949,
+    "extra": null
+  },
+  {
+    "case": "reject_invalid_web_image",
+    "status": 422,
+    "expected_status": [
+      400,
+      415,
+      422
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses",
+    "bytes": 232,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:22:04.749292200Z",
+      "status": 422,
+      "code": "INVALID_IMAGE",
+      "message": "Nội dung tệp không phải ảnh JPG, JPEG hoặc PNG hợp lệ.",
+      "fieldErrors": {},
+      "requestId": "3d3032ed-2b0c-46da-82d3-29f3e765702c"
+    }
+  },
+  {
+    "case": "owner_delete_diagnosis",
+    "status": 204,
+    "expected_status": [
+      204
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses/6ade2ca4d5a922967e965990",
+    "bytes": 0,
+    "extra": null
+  },
+  {
+    "case": "diagnosis_after_delete",
+    "status": 404,
+    "expected_status": [
+      404
+    ],
+    "pass": true,
+    "url": "http://127.0.0.1:18080/api/v1/diagnoses/6ade2ca4d5a922967e965990",
+    "bytes": 211,
+    "extra": null,
+    "json": {
+      "timestamp": "2026-10-25T16:22:04.809890200Z",
+      "status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "message": "Không tìm thấy kết quả phân tích.",
+      "fieldErrors": {},
+      "requestId": "44373920-5fc0-4896-ae30-c1872c272058"
+    }
+  }
+]

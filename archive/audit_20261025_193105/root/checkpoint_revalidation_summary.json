@@ -1,0 +1,127 @@
+{
+  "complete": true,
+  "models": {
+    "Baseline": {
+      "records": 20,
+      "successful": 20,
+      "errors": [],
+      "AP_flags_over_0_005": [],
+      "metrics": {
+        "metrics/precision(B)": {
+          "actual_mean": 0.9079719596230234,
+          "actual_sample_sd": 0.027917063326026805,
+          "max_abs_delta_to_csv": 0.013822571062284794,
+          "n_abs_delta_over_0_005": 8
+        },
+        "metrics/recall(B)": {
+          "actual_mean": 0.8410661224740037,
+          "actual_sample_sd": 0.02945153517267284,
+          "max_abs_delta_to_csv": 0.020232413419167927,
+          "n_abs_delta_over_0_005": 7
+        },
+        "metrics/mAP50(B)": {
+          "actual_mean": 0.899591089007431,
+          "actual_sample_sd": 0.01151569183637354,
+          "max_abs_delta_to_csv": 0.0007744771278890283,
+          "n_abs_delta_over_0_005": 0
+        },
+        "metrics/mAP50-95(B)": {
+          "actual_mean": 0.7265670121550701,
+          "actual_sample_sd": 0.012338403756619033,
+          "max_abs_delta_to_csv": 0.0017331842970824685,
+          "n_abs_delta_over_0_005": 0
+        },
+        "metrics/precision(M)": {
+          "actual_mean": 0.9114488614669083,
+          "actual_sample_sd": 0.03236602849648675,
+          "max_abs_delta_to_csv": 0.013822571062284794,
+          "n_abs_delta_over_0_005": 10
+        },
+        "metrics/recall(M)": {
+          "actual_mean": 0.8525156512332671,
+          "actual_sample_sd": 0.027559794514460393,
+          "max_abs_delta_to_csv": 0.017678737498683095,
+          "n_abs_delta_over_0_005": 8
+        },
+        "metrics/mAP50(M)": {
+          "actual_mean": 0.9052783515678062,
+          "actual_sample_sd": 0.013285721237083551,
+          "max_abs_delta_to_csv": 0.0010721146130378,
+          "n_abs_delta_over_0_005": 0
+        },
+        "metrics/mAP50-95(M)": {
+          "actual_mean": 0.7171808928161794,
+          "actual_sample_sd": 0.012831218652625598,
+          "max_abs_delta_to_csv": 0.0014822800344148623,
+          "n_abs_delta_over_0_005": 0
+        }
+      }
+    },
+    "TSVM": {
+      "records": 20,
+      "successful": 20,
+      "errors": [],
+      "AP_flags_over_0_005": [],
+      "metrics": {
+        "metrics/precision(B)": {
+          "actual_mean": 0.9077295653009797,
+          "actual_sample_sd": 0.02052928198828387,
+          "max_abs_delta_to_csv": 1.1709176737428884e-05,
+          "n_abs_delta_over_0_005": 0
+        },
+        "metrics/recall(B)": {
+          "actual_mean": 0.8491925824598058,
+          "actual_sample_sd": 0.015663946652991135,
+          "max_abs_delta_to_csv": 2.3533137140097082e-05,
+          "n_abs_delta_over_0_005": 0
+        },
+        "metrics/mAP50(B)": {
+          "actual_mean": 0.9017929856000377,
+          "actual_sample_sd": 0.010998755903190447,
+          "max_abs_delta_to_csv": 6.075330170340898e-05,
+          "n_abs_delta_over_0_005": 0
+        },
+        "metrics/mAP50-95(B)": {
+          "actual_mean": 0.7300022561803576,
+          "actual_sample_sd": 0.013423653938032075,
+          "max_abs_delta_to_csv": 4.8181609743735976e-05,
+          "n_abs_delta_over_0_005": 0
+        },
+        "metrics/precision(M)": {
+          "actual_mean": 0.9154628370135907,
+          "actual_sample_sd": 0.019922598424841693,
+          "max_abs_delta_to_csv": 6.569126473898734e-06,
+          "n_abs_delta_over_0_005": 0
+        },
+        "metrics/recall(M)": {
+          "actual_mean": 0.8578720566694316,
+          "actual_sample_sd": 0.018407128722021025,
+          "max_abs_delta_to_csv": 2.7548885171646553e-05,
+          "n_abs_delta_over_0_005": 0
+        },
+        "metrics/mAP50(M)": {
+          "actual_mean": 0.9081432309254485,
+          "actual_sample_sd": 0.009630351359717886,
+          "max_abs_delta_to_csv": 6.87216147386982e-05,
+          "n_abs_delta_over_0_005": 0
+        },
+        "metrics/mAP50-95(M)": {
+          "actual_mean": 0.7222014019962164,
+          "actual_sample_sd": 0.007527830968234846,
+          "max_abs_delta_to_csv": 5.073950541845118e-05,
+          "n_abs_delta_over_0_005": 0
+        }
+      }
+    }
+  },
+  "protocol_note": "rect=True, batch=16, CPU float32, patched research fork8.4.127. Original threads=4 field is requested setting; CPU select_device resets to8 (verified separately). Not a latency benchmark.",
+  "secondary_checkpoint_comparison": {
+    "delta_mask_AP": 0.005020509180037086,
+    "paired_t_p": 0.05123318402246557,
+    "CI95": [
+      -2.9757093013550902e-05,
+      0.010070775453087724
+    ],
+    "note": "Secondary reproducibility check at best.pt; does not replace the original max-mask primary endpoint or an independent test set."
+  }
+}

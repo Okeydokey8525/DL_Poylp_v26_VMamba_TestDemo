@@ -1,0 +1,1046 @@
+[
+  {
+    "file": "src\\main\\resources\\application-dev.properties",
+    "same": true,
+    "original_sha": "e920fb78b059f0403d9667051422dc1ae55c8704f95958f41bcbbff042f7c0b2",
+    "copy_sha": "e920fb78b059f0403d9667051422dc1ae55c8704f95958f41bcbbff042f7c0b2"
+  },
+  {
+    "file": "src\\main\\resources\\application-prod.properties",
+    "same": true,
+    "original_sha": "4ffd56039a72c378a0c9b890fb88c2dbed772007ecb0d5302386340e7e258f9f",
+    "copy_sha": "4ffd56039a72c378a0c9b890fb88c2dbed772007ecb0d5302386340e7e258f9f"
+  },
+  {
+    "file": "src\\main\\resources\\application.properties",
+    "same": true,
+    "original_sha": "14ed3705a274cf8d1ca6bff06fc020b017ac4b842f67f90584c3c9c65cceb2bc",
+    "copy_sha": "14ed3705a274cf8d1ca6bff06fc020b017ac4b842f67f90584c3c9c65cceb2bc"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\PolypwebApplication.java",
+    "same": true,
+    "original_sha": "b1d712eea31a5b12fe15c43844a665df72adfea1e3cb6e3106d6180c05017842",
+    "copy_sha": "b1d712eea31a5b12fe15c43844a665df72adfea1e3cb6e3106d6180c05017842"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\ApiAuthController.java",
+    "same": true,
+    "original_sha": "9fdc109647f393d208b4d47523750b50649e82cde40f90b1b9ee6536dccd5bb5",
+    "copy_sha": "9fdc109647f393d208b4d47523750b50649e82cde40f90b1b9ee6536dccd5bb5"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\ApiComparisonController.java",
+    "same": true,
+    "original_sha": "d44b3131f801b5bea7b4101d9a78ac451a765dc749e02ffece65bc6a18129de1",
+    "copy_sha": "d44b3131f801b5bea7b4101d9a78ac451a765dc749e02ffece65bc6a18129de1"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\ApiDashboardController.java",
+    "same": true,
+    "original_sha": "2e4c92dfc4b31ca0f52f601b935cb8cc0397f5f550bbb5ab22d23d2b4ef79d16",
+    "copy_sha": "2e4c92dfc4b31ca0f52f601b935cb8cc0397f5f550bbb5ab22d23d2b4ef79d16"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\ApiDiagnosisController.java",
+    "same": true,
+    "original_sha": "70cc0221f2ba96cee97a31a9b045cd30c3fa7a0c17ba250f56e6429f6668472f",
+    "copy_sha": "70cc0221f2ba96cee97a31a9b045cd30c3fa7a0c17ba250f56e6429f6668472f"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\ApiExceptionHandler.java",
+    "same": true,
+    "original_sha": "dabd9f76080181489a65686c4aebde3fc7ac564aa06d2950d08f26853490e5da",
+    "copy_sha": "dabd9f76080181489a65686c4aebde3fc7ac564aa06d2950d08f26853490e5da"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\ApiUserController.java",
+    "same": true,
+    "original_sha": "2076d7af37399bc6620497aecfa33c6c9fcb60ff8b795aa5812f885a33c8a30c",
+    "copy_sha": "2076d7af37399bc6620497aecfa33c6c9fcb60ff8b795aa5812f885a33c8a30c"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\client\\AiInferenceClient.java",
+    "same": true,
+    "original_sha": "3f251df54c2ef5acb0cf5680d4f598649a97c62612c40dda556fc5fc4885137f",
+    "copy_sha": "3f251df54c2ef5acb0cf5680d4f598649a97c62612c40dda556fc5fc4885137f"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\client\\AiServiceException.java",
+    "same": true,
+    "original_sha": "60a5723d49e1b6fabe136bb1a5d6d7352b9a597731b6b6df672e53ddad4efa84",
+    "copy_sha": "60a5723d49e1b6fabe136bb1a5d6d7352b9a597731b6b6df672e53ddad4efa84"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\client\\AiServiceStatus.java",
+    "same": true,
+    "original_sha": "b50c80334e68f1653a1808acac43a135cfa76fa19d2444a330d8b9fe7a0d0660",
+    "copy_sha": "b50c80334e68f1653a1808acac43a135cfa76fa19d2444a330d8b9fe7a0d0660"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\config\\AdminSeedRunner.java",
+    "same": true,
+    "original_sha": "debfba1f1efbec8c9d4c0b22e3ca174e1dec46df931046bc3006b7912ed0e97e",
+    "copy_sha": "debfba1f1efbec8c9d4c0b22e3ca174e1dec46df931046bc3006b7912ed0e97e"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\config\\AiClientConfiguration.java",
+    "same": true,
+    "original_sha": "9a77a5ef2cc8615f9b3f383da57166a42a72a5a7fbb6d07b917e6c991c292080",
+    "copy_sha": "9a77a5ef2cc8615f9b3f383da57166a42a72a5a7fbb6d07b917e6c991c292080"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\config\\AiServiceProperties.java",
+    "same": true,
+    "original_sha": "770d47dbda87b5cbaee364d99d564dc5bc111dbd8fdd6046f330b481be36e684",
+    "copy_sha": "770d47dbda87b5cbaee364d99d564dc5bc111dbd8fdd6046f330b481be36e684"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\config\\DiagnosisHistoryIndexInitializer.java",
+    "same": true,
+    "original_sha": "43c73ab3634401055fb8113bee489cd87a334a093519c60fc6ffaad15a1c5efc",
+    "copy_sha": "43c73ab3634401055fb8113bee489cd87a334a093519c60fc6ffaad15a1c5efc"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\config\\SecurityConfig.java",
+    "same": true,
+    "original_sha": "d9b147c58d570ea9613ebd72df1e0a64fd6af2bbcc02cabff3796d407b7b4b11",
+    "copy_sha": "d9b147c58d570ea9613ebd72df1e0a64fd6af2bbcc02cabff3796d407b7b4b11"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\config\\StorageProperties.java",
+    "same": true,
+    "original_sha": "fc8f07ee6e97251f306cdda51b6d6da5c62de18c878f64c0c3431a503a6a6d5f",
+    "copy_sha": "fc8f07ee6e97251f306cdda51b6d6da5c62de18c878f64c0c3431a503a6a6d5f"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\config\\UserAccountIndexInitializer.java",
+    "same": true,
+    "original_sha": "9386a3bd7b096f945fe11888bae5fff7fbe6999152dacdb50dbd4dd91181315d",
+    "copy_sha": "9386a3bd7b096f945fe11888bae5fff7fbe6999152dacdb50dbd4dd91181315d"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\AccessDeniedController.java",
+    "same": true,
+    "original_sha": "96e3600d65462165f155800551ad425c79965fc0fc0f09f524579cce5825f6f4",
+    "copy_sha": "96e3600d65462165f155800551ad425c79965fc0fc0f09f524579cce5825f6f4"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\AdminController.java",
+    "same": true,
+    "original_sha": "15f5f6d98754294bc5659e6b4bfd3c0a14b693bea0ba1b766accb0481745f76e",
+    "copy_sha": "15f5f6d98754294bc5659e6b4bfd3c0a14b693bea0ba1b766accb0481745f76e"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\AuthController.java",
+    "same": true,
+    "original_sha": "d0b0abb63aeb30790c4c9efd16861913cd3ddf097442f4ac0a05cc39c47fb6da",
+    "copy_sha": "d0b0abb63aeb30790c4c9efd16861913cd3ddf097442f4ac0a05cc39c47fb6da"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\ComparisonController.java",
+    "same": true,
+    "original_sha": "2d3400231df82a24a083df48a94894ae591c1bc9c732463b4e2706e4ff15770e",
+    "copy_sha": "2d3400231df82a24a083df48a94894ae591c1bc9c732463b4e2706e4ff15770e"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\DashboardController.java",
+    "same": true,
+    "original_sha": "e769f684148333f450960b4bbcc9ae596996be3496007bf4c01c55a11d0f3d3a",
+    "copy_sha": "e769f684148333f450960b4bbcc9ae596996be3496007bf4c01c55a11d0f3d3a"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\DiagnosisController.java",
+    "same": true,
+    "original_sha": "8996c0829d739dfcccb75951219e096a1dbbff1174fd7c7246c208f8375d3629",
+    "copy_sha": "8996c0829d739dfcccb75951219e096a1dbbff1174fd7c7246c208f8375d3629"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\ExportController.java",
+    "same": true,
+    "original_sha": "d4024afd07f59232380ac20b35899e0be38ad9149045639e2796f90a384f3205",
+    "copy_sha": "d4024afd07f59232380ac20b35899e0be38ad9149045639e2796f90a384f3205"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\GlobalErrorHandler.java",
+    "same": true,
+    "original_sha": "2bf227261cf09f999b8bab0a94fc7e9598c49d6532367aa93826337e4593ce72",
+    "copy_sha": "2bf227261cf09f999b8bab0a94fc7e9598c49d6532367aa93826337e4593ce72"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\HistoryController.java",
+    "same": true,
+    "original_sha": "c6035731017fa404cd8eedd69a3efc07f15ee2aceaecf898263a346bccbc8e9d",
+    "copy_sha": "c6035731017fa404cd8eedd69a3efc07f15ee2aceaecf898263a346bccbc8e9d"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\HomeController.java",
+    "same": true,
+    "original_sha": "b109a83aa256c5adadad665849cab38e4e2806e1c07fbf3e8e91f6f7248ab5da",
+    "copy_sha": "b109a83aa256c5adadad665849cab38e4e2806e1c07fbf3e8e91f6f7248ab5da"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\LegalController.java",
+    "same": true,
+    "original_sha": "c02156ff8820a169d45797391f6528c74d6a8ecabf45605a73805d72cb056e42",
+    "copy_sha": "c02156ff8820a169d45797391f6528c74d6a8ecabf45605a73805d72cb056e42"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\MediaController.java",
+    "same": true,
+    "original_sha": "ccf4d76c31c38681f330f5aadba7122181681c4a75aa63a5605490cd7a1acfb4",
+    "copy_sha": "ccf4d76c31c38681f330f5aadba7122181681c4a75aa63a5605490cd7a1acfb4"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\NavigationAdvice.java",
+    "same": true,
+    "original_sha": "6b8bc59e1e67e4735443a48d64d89f514113b6a4a5eabbc5961f546a5ff9113a",
+    "copy_sha": "6b8bc59e1e67e4735443a48d64d89f514113b6a4a5eabbc5961f546a5ff9113a"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\controller\\ProfileController.java",
+    "same": true,
+    "original_sha": "2688fe58a5d9400a8c5872762cab499b449d8c07f1543476e1bdb67db18abe8b",
+    "copy_sha": "2688fe58a5d9400a8c5872762cab499b449d8c07f1543476e1bdb67db18abe8b"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\document\\DiagnosisHistory.java",
+    "same": true,
+    "original_sha": "31b4e3c89a4609cc6496ef54d20c069a464f59eeee4dc9e1c2038022f249d980",
+    "copy_sha": "31b4e3c89a4609cc6496ef54d20c069a464f59eeee4dc9e1c2038022f249d980"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\document\\UserAccount.java",
+    "same": true,
+    "original_sha": "9810f13f43d317a9482146ca0505859f8abbf2704bec2d87b2fdcd2374150100",
+    "copy_sha": "9810f13f43d317a9482146ca0505859f8abbf2704bec2d87b2fdcd2374150100"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\document\\UserRole.java",
+    "same": true,
+    "original_sha": "920c5dd59a2e997788040636c7b1021ae18384d5888285848167db557c26b511",
+    "copy_sha": "920c5dd59a2e997788040636c7b1021ae18384d5888285848167db557c26b511"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\dto\\ChangePasswordForm.java",
+    "same": true,
+    "original_sha": "c735006a9a076b89624a79507db7f79f9993df8514d47f1b49c7a04e2e304819",
+    "copy_sha": "c735006a9a076b89624a79507db7f79f9993df8514d47f1b49c7a04e2e304819"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\dto\\ProfileUpdateForm.java",
+    "same": true,
+    "original_sha": "42f49549eb3660efa3bd2af7574876e656ef925e553bcff44ff372ac744e0e10",
+    "copy_sha": "42f49549eb3660efa3bd2af7574876e656ef925e553bcff44ff372ac744e0e10"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\dto\\RegisterForm.java",
+    "same": true,
+    "original_sha": "333e097928109cdb3267f5a322b3d8b45eb4ccc857763cdadd0fed1f5898b617",
+    "copy_sha": "333e097928109cdb3267f5a322b3d8b45eb4ccc857763cdadd0fed1f5898b617"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\exception\\AccountOperationException.java",
+    "same": true,
+    "original_sha": "ce067c20d7c69a14dd1b33d641ffa5a3148c4a040f692ff34ddeb47bd1bba2b7",
+    "copy_sha": "ce067c20d7c69a14dd1b33d641ffa5a3148c4a040f692ff34ddeb47bd1bba2b7"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\exception\\DiagnosisOperationException.java",
+    "same": true,
+    "original_sha": "8a88b49b2847700ea715945ee8077e91d784a2c22a1f08b6dfed9341af8aef62",
+    "copy_sha": "8a88b49b2847700ea715945ee8077e91d784a2c22a1f08b6dfed9341af8aef62"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\exception\\DuplicateEmailException.java",
+    "same": true,
+    "original_sha": "bc77cdc52c6614cf8cb74f3704a26fa8e7668e7f7f31f1702f69b83bbbc81827",
+    "copy_sha": "bc77cdc52c6614cf8cb74f3704a26fa8e7668e7f7f31f1702f69b83bbbc81827"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\exception\\PasswordOperationException.java",
+    "same": true,
+    "original_sha": "24c66dff4491ed3449b130f7026d03d6dc139f007cdfa68e2007b4d1bd252202",
+    "copy_sha": "24c66dff4491ed3449b130f7026d03d6dc139f007cdfa68e2007b4d1bd252202"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\exception\\UploadValidationException.java",
+    "same": true,
+    "original_sha": "457a589ea44a686f40f004b18a502f38f27a019990352a37ef0ae443102153a0",
+    "copy_sha": "457a589ea44a686f40f004b18a502f38f27a019990352a37ef0ae443102153a0"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\health\\AiServiceHealthIndicator.java",
+    "same": true,
+    "original_sha": "3b2fe585678f427c6d1befeb8a43aad23b42bb3828825dd5bef6b7d47a65522e",
+    "copy_sha": "3b2fe585678f427c6d1befeb8a43aad23b42bb3828825dd5bef6b7d47a65522e"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\health\\StorageHealthIndicator.java",
+    "same": true,
+    "original_sha": "b6092956ae79b0d832c6b51d5c574f869ed5328da2bd8a88bed23e66d4de1797",
+    "copy_sha": "b6092956ae79b0d832c6b51d5c574f869ed5328da2bd8a88bed23e66d4de1797"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\repository\\ComparisonHistoryRecord.java",
+    "same": true,
+    "original_sha": "4379bc82989a193d827bbfae24a956e634e744dc0f86084392c24cdadd952df7",
+    "copy_sha": "4379bc82989a193d827bbfae24a956e634e744dc0f86084392c24cdadd952df7"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\repository\\ComparisonHistorySearchRepository.java",
+    "same": true,
+    "original_sha": "0eebf210571ec5bd33cbf47a8d5dcce01a9cbdfa229c3df7d7e9acf60398db14",
+    "copy_sha": "0eebf210571ec5bd33cbf47a8d5dcce01a9cbdfa229c3df7d7e9acf60398db14"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\repository\\DashboardStatisticsRepository.java",
+    "same": true,
+    "original_sha": "04362ab94d5c16cbbe1bdc864c912062a4554a00dd31ad4840ef7c85704b827e",
+    "copy_sha": "04362ab94d5c16cbbe1bdc864c912062a4554a00dd31ad4840ef7c85704b827e"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\repository\\DashboardStatisticsSnapshot.java",
+    "same": true,
+    "original_sha": "13b1a2d82c73b6d463b67d0a7aee267cf63653f340d4f7f0d98ff881e8594bf0",
+    "copy_sha": "13b1a2d82c73b6d463b67d0a7aee267cf63653f340d4f7f0d98ff881e8594bf0"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\repository\\DiagnosisHistoryRepository.java",
+    "same": true,
+    "original_sha": "6af277e506395f3d86b9aa72c7f3e1965de7e1877ecbe938e185a656a1f915b1",
+    "copy_sha": "6af277e506395f3d86b9aa72c7f3e1965de7e1877ecbe938e185a656a1f915b1"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\repository\\HistorySearchRepository.java",
+    "same": true,
+    "original_sha": "a9737c19e62550860344b8bf774998835efebcbef78d9aade4ec7f58d07f1a5a",
+    "copy_sha": "a9737c19e62550860344b8bf774998835efebcbef78d9aade4ec7f58d07f1a5a"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\repository\\UserAccountRepository.java",
+    "same": true,
+    "original_sha": "c00891aa4f57ce9467750715445a62a7f8a896266922ebf58926b52b0dffc343",
+    "copy_sha": "c00891aa4f57ce9467750715445a62a7f8a896266922ebf58926b52b0dffc343"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\security\\CurrentUserPrincipal.java",
+    "same": true,
+    "original_sha": "51177e64dd6d92eff9f028ae3e05ae417e9143586d0a69aea850c5fbe73eb15c",
+    "copy_sha": "51177e64dd6d92eff9f028ae3e05ae417e9143586d0a69aea850c5fbe73eb15c"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\security\\LoggingAccessDeniedHandler.java",
+    "same": true,
+    "original_sha": "dc556bf2dd1f7a1a6f8adea8bb89a1922e15cde79ad681da8a809929a2e38f92",
+    "copy_sha": "dc556bf2dd1f7a1a6f8adea8bb89a1922e15cde79ad681da8a809929a2e38f92"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\security\\MongoUserDetailsService.java",
+    "same": true,
+    "original_sha": "d47deb79cfc97dcd5c2bac71b65dbaa0f5d74a36f42ac0fe13bcc0215a85856e",
+    "copy_sha": "d47deb79cfc97dcd5c2bac71b65dbaa0f5d74a36f42ac0fe13bcc0215a85856e"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\service\\DashboardService.java",
+    "same": true,
+    "original_sha": "67843664a64928179417912c439d966baef72572f7396412f9f4ce64c3907cb9",
+    "copy_sha": "67843664a64928179417912c439d966baef72572f7396412f9f4ce64c3907cb9"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\service\\DiagnosisAnalysisService.java",
+    "same": true,
+    "original_sha": "123513fc06c72e04724aca86c6cff749b1ad4b8b725d9059cc269d96749c2f39",
+    "copy_sha": "123513fc06c72e04724aca86c6cff749b1ad4b8b725d9059cc269d96749c2f39"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\service\\DiagnosisHistoryService.java",
+    "same": true,
+    "original_sha": "b7dbcb543cca8aa91980bdef545ec6d47320b577c48541950ec5ccf528ba63ac",
+    "copy_sha": "b7dbcb543cca8aa91980bdef545ec6d47320b577c48541950ec5ccf528ba63ac"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\service\\DiagnosisModel.java",
+    "same": true,
+    "original_sha": "057fec83d064b13b18bc5f0c7e0e001daf99177aaf40e9eccf6b1ec3634160fc",
+    "copy_sha": "057fec83d064b13b18bc5f0c7e0e001daf99177aaf40e9eccf6b1ec3634160fc"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\service\\FileStorageService.java",
+    "same": true,
+    "original_sha": "fb13f1df55a670c5c72cc11bbf8e43662277e14c5125e1454d88fd7885bf8bc7",
+    "copy_sha": "fb13f1df55a670c5c72cc11bbf8e43662277e14c5125e1454d88fd7885bf8bc7"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\service\\ImageUploadValidator.java",
+    "same": true,
+    "original_sha": "fa99c6bdc305e3c6abb11362c9c2c0f0d7850f02a50abac2b48c67596f0c954e",
+    "copy_sha": "fa99c6bdc305e3c6abb11362c9c2c0f0d7850f02a50abac2b48c67596f0c954e"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\service\\ModelComparisonException.java",
+    "same": true,
+    "original_sha": "4dc6b6e89ee495849391020a5395452f1268859079d9dedb5868658d4b3fa37b",
+    "copy_sha": "4dc6b6e89ee495849391020a5395452f1268859079d9dedb5868658d4b3fa37b"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\service\\ModelComparisonService.java",
+    "same": true,
+    "original_sha": "14e3cdae8d188b2f6e127461d38c8665bc71b8824cbbc82d7e34c35b805c6103",
+    "copy_sha": "14e3cdae8d188b2f6e127461d38c8665bc71b8824cbbc82d7e34c35b805c6103"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\service\\StorageException.java",
+    "same": true,
+    "original_sha": "efdd18cca4c0fd6e9b45ac228f7f8455bf6783bf8c1cf4bb9868c928069b9c01",
+    "copy_sha": "efdd18cca4c0fd6e9b45ac228f7f8455bf6783bf8c1cf4bb9868c928069b9c01"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\service\\UserAccountService.java",
+    "same": true,
+    "original_sha": "702cab5c6c85db2a8ede32231b2df791f0feccccf59450e25923fb2322a09e70",
+    "copy_sha": "702cab5c6c85db2a8ede32231b2df791f0feccccf59450e25923fb2322a09e70"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\AdminDashboardView.java",
+    "same": true,
+    "original_sha": "c127b34198c0b527c241e7c21aeef1bfebdecba4d764414a2cd461bcd2c73d0b",
+    "copy_sha": "c127b34198c0b527c241e7c21aeef1bfebdecba4d764414a2cd461bcd2c73d0b"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\AiHealthView.java",
+    "same": true,
+    "original_sha": "b45e188fdb1c798cfb628eafcd494c978efaa579eab64e0fa39b3fa92f593370",
+    "copy_sha": "b45e188fdb1c798cfb628eafcd494c978efaa579eab64e0fa39b3fa92f593370"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\AiPredictionResponse.java",
+    "same": true,
+    "original_sha": "d1e02e2f4bc41344ac1c1b4c65837ab4017a772c02b1ae76216c9e151b7bbe6d",
+    "copy_sha": "d1e02e2f4bc41344ac1c1b4c65837ab4017a772c02b1ae76216c9e151b7bbe6d"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\ComparisonResultView.java",
+    "same": true,
+    "original_sha": "458d9fc5a334fb4d92caf70ff00fdfeedbd99879dfcc47810f26a2bf70756f40",
+    "copy_sha": "458d9fc5a334fb4d92caf70ff00fdfeedbd99879dfcc47810f26a2bf70756f40"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\DailyUsageView.java",
+    "same": true,
+    "original_sha": "043da663ef9ef334dd0d9fc42a2f15706c69c87ace1edb03a12633c5e550c9ee",
+    "copy_sha": "043da663ef9ef334dd0d9fc42a2f15706c69c87ace1edb03a12633c5e550c9ee"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\DiagnosisResultView.java",
+    "same": true,
+    "original_sha": "f4f3cc22bea81b7d2606c3df67a7ef9d9a3fadc38603929b155061c986e9d1ea",
+    "copy_sha": "f4f3cc22bea81b7d2606c3df67a7ef9d9a3fadc38603929b155061c986e9d1ea"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\ModelHealthView.java",
+    "same": true,
+    "original_sha": "04d04ff045bd236f6561804466810eaccc40a41374639692d94621084cc34268",
+    "copy_sha": "04d04ff045bd236f6561804466810eaccc40a41374639692d94621084cc34268"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\ModelOptionView.java",
+    "same": true,
+    "original_sha": "b1b18183794ec57b7c227ca7c59cf5f063e5c7a4ac8c1b06d7552126456df4c3",
+    "copy_sha": "b1b18183794ec57b7c227ca7c59cf5f063e5c7a4ac8c1b06d7552126456df4c3"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\PageNavigationView.java",
+    "same": true,
+    "original_sha": "55d1e1f6d6a2c5af89f48e4aa5468452a6fa330c2aaada6ce5cbf33258a722a8",
+    "copy_sha": "55d1e1f6d6a2c5af89f48e4aa5468452a6fa330c2aaada6ce5cbf33258a722a8"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\RecentActivityView.java",
+    "same": true,
+    "original_sha": "727e137e8feab4716268a36ab432f8fbe9b70cc2e3fd0ad6dad7dbb57e26ff3f",
+    "copy_sha": "727e137e8feab4716268a36ab432f8fbe9b70cc2e3fd0ad6dad7dbb57e26ff3f"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\RecentUserView.java",
+    "same": true,
+    "original_sha": "eefe78ed519b6ed3f0db7865a816475abce71c2de529856a646265ba1e3a35d4",
+    "copy_sha": "eefe78ed519b6ed3f0db7865a816475abce71c2de529856a646265ba1e3a35d4"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\ResearchMetricView.java",
+    "same": true,
+    "original_sha": "c0674b19c6f50cba0b805b10c856ae4a1780163e9f5c8aaf33ae769c5d7bcc38",
+    "copy_sha": "c0674b19c6f50cba0b805b10c856ae4a1780163e9f5c8aaf33ae769c5d7bcc38"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\UserAccountView.java",
+    "same": true,
+    "original_sha": "489ee883a3ff4f38c17ea64819bd91c0bfe9df1991e603508747568856c0ae76",
+    "copy_sha": "489ee883a3ff4f38c17ea64819bd91c0bfe9df1991e603508747568856c0ae76"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\UserDashboardView.java",
+    "same": true,
+    "original_sha": "91d066c37b69c4d32803b36163b03079cb8ff8200796a064fc9a4951a91d3896",
+    "copy_sha": "91d066c37b69c4d32803b36163b03079cb8ff8200796a064fc9a4951a91d3896"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\web\\RequestCorrelationFilter.java",
+    "same": true,
+    "original_sha": "5ea41ba06bc35edead32bf586fa77eba98383e4c90876ed5389e2990257c6851",
+    "copy_sha": "5ea41ba06bc35edead32bf586fa77eba98383e4c90876ed5389e2990257c6851"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiComparisonHistoryItemResponse.java",
+    "same": true,
+    "original_sha": "73d04c587ff639e30736bf2f76ab28746e63f5809e7bf0b92cd53804e0e49ec7",
+    "copy_sha": "73d04c587ff639e30736bf2f76ab28746e63f5809e7bf0b92cd53804e0e49ec7"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiComparisonHistoryModelResponse.java",
+    "same": true,
+    "original_sha": "883c020e79084e791f38bb11253718a1bc48ee7b11e9f083c932ae9735dbbf39",
+    "copy_sha": "883c020e79084e791f38bb11253718a1bc48ee7b11e9f083c932ae9735dbbf39"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiComparisonMetadataResponse.java",
+    "same": true,
+    "original_sha": "787ef091c058598f97f511dc928b5837b2ed9ae7619da0baf142f0c70f57bd04",
+    "copy_sha": "787ef091c058598f97f511dc928b5837b2ed9ae7619da0baf142f0c70f57bd04"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiComparisonModelResultResponse.java",
+    "same": true,
+    "original_sha": "0b97addaecf4d07af98775097fa6fc47a6958994875078d47b01e0e59d2c0e9f",
+    "copy_sha": "0b97addaecf4d07af98775097fa6fc47a6958994875078d47b01e0e59d2c0e9f"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiComparisonResponse.java",
+    "same": true,
+    "original_sha": "be67a943308fe8b535c12e83871ed2900045ef23e3e7e10b594b0b59b8f9b8db",
+    "copy_sha": "be67a943308fe8b535c12e83871ed2900045ef23e3e7e10b594b0b59b8f9b8db"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiCsrfResponse.java",
+    "same": true,
+    "original_sha": "b81e283163e9462ff7e82fd705bec35e3e8826bbcbf80eff9c06983213a3ea93",
+    "copy_sha": "b81e283163e9462ff7e82fd705bec35e3e8826bbcbf80eff9c06983213a3ea93"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiDailyUsageResponse.java",
+    "same": true,
+    "original_sha": "ee298b1696b80f60ef1c231d5a37c46d1f6e13a627b2a7c146fada459bf6ee5d",
+    "copy_sha": "ee298b1696b80f60ef1c231d5a37c46d1f6e13a627b2a7c146fada459bf6ee5d"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiDashboardResponse.java",
+    "same": true,
+    "original_sha": "6e89986e614a23b358410b0254b073b4269d264ec320f60c0167513e0db8b962",
+    "copy_sha": "6e89986e614a23b358410b0254b073b4269d264ec320f60c0167513e0db8b962"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiDashboardSummaryResponse.java",
+    "same": true,
+    "original_sha": "a0ce372adbba9e657c1ad23fd056abb1dbebb920024b23f3cd4bd5640534a7f7",
+    "copy_sha": "a0ce372adbba9e657c1ad23fd056abb1dbebb920024b23f3cd4bd5640534a7f7"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiDiagnosisHistoryItemResponse.java",
+    "same": true,
+    "original_sha": "d37f48ecd8ef255899ae5ad80a30bdb014a61cf4dce16560c5f0ee665371bf57",
+    "copy_sha": "d37f48ecd8ef255899ae5ad80a30bdb014a61cf4dce16560c5f0ee665371bf57"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiDiagnosisMetadataResponse.java",
+    "same": true,
+    "original_sha": "ad89cd37e8be57611f9b801566fee596937cd2f561df699e5979ab63c4a9ae1a",
+    "copy_sha": "ad89cd37e8be57611f9b801566fee596937cd2f561df699e5979ab63c4a9ae1a"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiDiagnosisResponse.java",
+    "same": true,
+    "original_sha": "6c1c48693af447912567cce0e88d07b83bb0b1a73aea8500c5d8cda898a08946",
+    "copy_sha": "6c1c48693af447912567cce0e88d07b83bb0b1a73aea8500c5d8cda898a08946"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiErrorResponse.java",
+    "same": true,
+    "original_sha": "7980ef3f7f7966d8e000a8185b8a30d136ec02e6049114bf135eb9e4b6d9b195",
+    "copy_sha": "7980ef3f7f7966d8e000a8185b8a30d136ec02e6049114bf135eb9e4b6d9b195"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiLoginRequest.java",
+    "same": true,
+    "original_sha": "4bb199fff5a3870fb093b362930481edf7f2ed3b16115a00514ec5f740033fd3",
+    "copy_sha": "4bb199fff5a3870fb093b362930481edf7f2ed3b16115a00514ec5f740033fd3"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiLoginResponse.java",
+    "same": true,
+    "original_sha": "b1056c4f750c63463b3bc7faa6468c8a58a4c6444db540f3f07c62acbb827cf5",
+    "copy_sha": "b1056c4f750c63463b3bc7faa6468c8a58a4c6444db540f3f07c62acbb827cf5"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiModelUsageResponse.java",
+    "same": true,
+    "original_sha": "886b80ae744e4f5fb446731735fdba6a8657385267daa88223240b122fe9ee7a",
+    "copy_sha": "886b80ae744e4f5fb446731735fdba6a8657385267daa88223240b122fe9ee7a"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiPagedResponse.java",
+    "same": true,
+    "original_sha": "512441d2a8f8d08e02537b3d209f919728a3cda6dd2f8a5bd06831ba11a6191a",
+    "copy_sha": "512441d2a8f8d08e02537b3d209f919728a3cda6dd2f8a5bd06831ba11a6191a"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiPasswordChangeRequest.java",
+    "same": true,
+    "original_sha": "df54ab8683d234674ccf195cbdd7fe352616ee661b2eac9ef60775a56ab13429",
+    "copy_sha": "df54ab8683d234674ccf195cbdd7fe352616ee661b2eac9ef60775a56ab13429"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiPredictionUsageResponse.java",
+    "same": true,
+    "original_sha": "59c6f439481b235b25a29065d503d5844b4f0144ff65b8b688d6a1937da46382",
+    "copy_sha": "59c6f439481b235b25a29065d503d5844b4f0144ff65b8b688d6a1937da46382"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiProfileUpdateRequest.java",
+    "same": true,
+    "original_sha": "621ae55470436811d4ab856523b8915f36bc1ca6574f244f83ddcfdcb11b516c",
+    "copy_sha": "621ae55470436811d4ab856523b8915f36bc1ca6574f244f83ddcfdcb11b516c"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiProfileUpdateResponse.java",
+    "same": true,
+    "original_sha": "0c54416457618f016bce73d2d553990b875ec6fad1d4a7ab45d4b5ea98a419dd",
+    "copy_sha": "0c54416457618f016bce73d2d553990b875ec6fad1d4a7ab45d4b5ea98a419dd"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiRecentActivityResponse.java",
+    "same": true,
+    "original_sha": "e5a9902c2f610180975a567a9054ba5b7b1dd6907d9beb7bf6e2da1669d26b83",
+    "copy_sha": "e5a9902c2f610180975a567a9054ba5b7b1dd6907d9beb7bf6e2da1669d26b83"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiRegisterRequest.java",
+    "same": true,
+    "original_sha": "5dcdf19232e4f3f9592aabec6eda5914b3f55a1654d386abcaec4324dd03a19b",
+    "copy_sha": "5dcdf19232e4f3f9592aabec6eda5914b3f55a1654d386abcaec4324dd03a19b"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiRegisterResponse.java",
+    "same": true,
+    "original_sha": "43231c59e8b27faa0dbe49a6761f37dc707b294022cd92ada37c3e0792927f83",
+    "copy_sha": "43231c59e8b27faa0dbe49a6761f37dc707b294022cd92ada37c3e0792927f83"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\dto\\ApiUserResponse.java",
+    "same": true,
+    "original_sha": "9beece74f2c30bf9cd5c1caa6ff69091313559615bc8cb50dd253257d023969a",
+    "copy_sha": "9beece74f2c30bf9cd5c1caa6ff69091313559615bc8cb50dd253257d023969a"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\error\\ApiAuthenticationException.java",
+    "same": true,
+    "original_sha": "ef0a3ed428741bb37717f83cae1d6d5241a6d437244d79fe87536996ff212d20",
+    "copy_sha": "ef0a3ed428741bb37717f83cae1d6d5241a6d437244d79fe87536996ff212d20"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\error\\ApiValidationException.java",
+    "same": true,
+    "original_sha": "a0ccde43d6b4d4ec0e5428ca139937aa78e83ad6f530f8507c788107266b39fa",
+    "copy_sha": "a0ccde43d6b4d4ec0e5428ca139937aa78e83ad6f530f8507c788107266b39fa"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\security\\ApiAccessDeniedHandler.java",
+    "same": true,
+    "original_sha": "f7d9f615ba5b5e74ee1d64880cfa77fb2a3af5f40a33843fce3120b704a68fcf",
+    "copy_sha": "f7d9f615ba5b5e74ee1d64880cfa77fb2a3af5f40a33843fce3120b704a68fcf"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\security\\ApiAuthenticationEntryPoint.java",
+    "same": true,
+    "original_sha": "817e92e6001509792ef7102b107afb57cac02e245a1ce6aa18a5d26429415998",
+    "copy_sha": "817e92e6001509792ef7102b107afb57cac02e245a1ce6aa18a5d26429415998"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\api\\security\\ApiErrorWriter.java",
+    "same": true,
+    "original_sha": "bd765b150708ea83e80cd97922f556262a14659eac38b19fcbe122a6bc851d50",
+    "copy_sha": "bd765b150708ea83e80cd97922f556262a14659eac38b19fcbe122a6bc851d50"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\export\\ComparisonMetadataExport.java",
+    "same": true,
+    "original_sha": "0b31b135fe254ae771923f3dc2b6689b1409c3ba7ac9084c0a68dd16f0662156",
+    "copy_sha": "0b31b135fe254ae771923f3dc2b6689b1409c3ba7ac9084c0a68dd16f0662156"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\export\\DiagnosisMetadataExport.java",
+    "same": true,
+    "original_sha": "4644fa2844d40bbdcee0ad1a857e9e39c47362eb43118666abce957d464c0801",
+    "copy_sha": "4644fa2844d40bbdcee0ad1a857e9e39c47362eb43118666abce957d464c0801"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\export\\ModelMetadataExport.java",
+    "same": true,
+    "original_sha": "f2dbba7aa9fc808394dc75adf9d546449c41f21b532b8d79d3e582b37514030a",
+    "copy_sha": "f2dbba7aa9fc808394dc75adf9d546449c41f21b532b8d79d3e582b37514030a"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\filter\\ComparisonHistoryFilter.java",
+    "same": true,
+    "original_sha": "60a219aab87a861c37fac10774dc304b4b9b1a8122b52f5c76fc25c64fc90dcf",
+    "copy_sha": "60a219aab87a861c37fac10774dc304b4b9b1a8122b52f5c76fc25c64fc90dcf"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\filter\\ComparisonSortOption.java",
+    "same": true,
+    "original_sha": "2a44667ad6806c33ea70fe74c417da69fc37f4894def7cbd2426db1ae9310e80",
+    "copy_sha": "2a44667ad6806c33ea70fe74c417da69fc37f4894def7cbd2426db1ae9310e80"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\filter\\DetectionFilterOption.java",
+    "same": true,
+    "original_sha": "c4ff42616b5afee7a4cd710304e2a80a121de1595679eac4976cdb56f0c2ca1e",
+    "copy_sha": "c4ff42616b5afee7a4cd710304e2a80a121de1595679eac4976cdb56f0c2ca1e"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\filter\\HistoryFilter.java",
+    "same": true,
+    "original_sha": "920fc55e2581e2b851ca9d505d4e0fc86b77b21e62c16003745e43983f17e83b",
+    "copy_sha": "920fc55e2581e2b851ca9d505d4e0fc86b77b21e62c16003745e43983f17e83b"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\filter\\HistorySortOption.java",
+    "same": true,
+    "original_sha": "42ba153b64d22a597b8e96fdc30f9a7af4448cc827535644ebc949b8119d0359",
+    "copy_sha": "42ba153b64d22a597b8e96fdc30f9a7af4448cc827535644ebc949b8119d0359"
+  },
+  {
+    "file": "src\\main\\java\\com\\polyp\\polypweb\\view\\filter\\ModelFilterOption.java",
+    "same": true,
+    "original_sha": "43f87b7199230fdc618ccb515ec91c3e36158f702f673f34d8924bc48998badf",
+    "copy_sha": "43f87b7199230fdc618ccb515ec91c3e36158f702f673f34d8924bc48998badf"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\about.html",
+    "same": true,
+    "original_sha": "34f615cede64e540b935c7ec4e46856ec245c44da1c430de73cf6f6daa49afd0",
+    "copy_sha": "34f615cede64e540b935c7ec4e46856ec245c44da1c430de73cf6f6daa49afd0"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\compare.html",
+    "same": true,
+    "original_sha": "d3b2fc1cb86e78cd8cf4eb77c324d2ae837f93c9b004dbc9cff752d361bc1521",
+    "copy_sha": "d3b2fc1cb86e78cd8cf4eb77c324d2ae837f93c9b004dbc9cff752d361bc1521"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\comparison-history.html",
+    "same": true,
+    "original_sha": "94e0850ecadb2454578a3103e2d4e0b171ca839051690fca042c5ca808b8da6d",
+    "copy_sha": "94e0850ecadb2454578a3103e2d4e0b171ca839051690fca042c5ca808b8da6d"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\comparison-result.html",
+    "same": true,
+    "original_sha": "c43472a2864611c354a3e36c33751b211aa79fac5c9b298a6ce6b096a2384a92",
+    "copy_sha": "c43472a2864611c354a3e36c33751b211aa79fac5c9b298a6ce6b096a2384a92"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\dashboard.html",
+    "same": true,
+    "original_sha": "f060d6b620f2c6b21bbcc0cdebd6d3775eb68a9246d208a9873260d5e5387bff",
+    "copy_sha": "f060d6b620f2c6b21bbcc0cdebd6d3775eb68a9246d208a9873260d5e5387bff"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\diagnose.html",
+    "same": true,
+    "original_sha": "0c7925105d58f024f99697591ef882acb4f9bde7744ef0b1f75ff84860c440ee",
+    "copy_sha": "0c7925105d58f024f99697591ef882acb4f9bde7744ef0b1f75ff84860c440ee"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\diagnosis-result.html",
+    "same": true,
+    "original_sha": "76b849708686d019e167152c108d7803cebf927acf74f8ff412c66515f61a42a",
+    "copy_sha": "76b849708686d019e167152c108d7803cebf927acf74f8ff412c66515f61a42a"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\history.html",
+    "same": true,
+    "original_sha": "e5c2f8e79ab5dbe6b814ec8569904fba1787e1feab520c598d009898a2c22eb2",
+    "copy_sha": "e5c2f8e79ab5dbe6b814ec8569904fba1787e1feab520c598d009898a2c22eb2"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\index.html",
+    "same": true,
+    "original_sha": "48a0c17a64651c15469483a754cbdc8b46d58084f23907e5aa82ddaa55e2fc68",
+    "copy_sha": "48a0c17a64651c15469483a754cbdc8b46d58084f23907e5aa82ddaa55e2fc68"
+  },
+  {
+    "file": "src\\main\\resources\\static\\css\\main.css",
+    "same": true,
+    "original_sha": "200d19aa4809c7e9d312e58a6867497415b15d4b949132cc8734b0cae35119df",
+    "copy_sha": "200d19aa4809c7e9d312e58a6867497415b15d4b949132cc8734b0cae35119df"
+  },
+  {
+    "file": "src\\main\\resources\\static\\js\\compare.js",
+    "same": true,
+    "original_sha": "e4eb10a2087d25e5ee73b7cba9524ef63d9c43f64aa079b12d0fc8b3349303c5",
+    "copy_sha": "e4eb10a2087d25e5ee73b7cba9524ef63d9c43f64aa079b12d0fc8b3349303c5"
+  },
+  {
+    "file": "src\\main\\resources\\static\\js\\diagnose.js",
+    "same": true,
+    "original_sha": "eb83c1224c4c6d3e7d40dee030fd478710d3185288ce951bf58533dc43b5967a",
+    "copy_sha": "eb83c1224c4c6d3e7d40dee030fd478710d3185288ce951bf58533dc43b5967a"
+  },
+  {
+    "file": "src\\main\\resources\\static\\js\\main.js",
+    "same": true,
+    "original_sha": "1acf47c13bbeab9d61f44bbb822b3a57449a8d248a7c20f5b2fc9adc6bb1611c",
+    "copy_sha": "1acf47c13bbeab9d61f44bbb822b3a57449a8d248a7c20f5b2fc9adc6bb1611c"
+  },
+  {
+    "file": "src\\main\\resources\\static\\js\\upload-utils.js",
+    "same": true,
+    "original_sha": "6ffd9d3f34dde41787271d9969f0780701bb60e2f7fdea6aa05cf71832e76d9d",
+    "copy_sha": "6ffd9d3f34dde41787271d9969f0780701bb60e2f7fdea6aa05cf71832e76d9d"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\admin\\dashboard.html",
+    "same": true,
+    "original_sha": "a99565b09dc55cb160c6d9cc8fa111311afa1cb05aeb71ecf74aaa7fa0496b04",
+    "copy_sha": "a99565b09dc55cb160c6d9cc8fa111311afa1cb05aeb71ecf74aaa7fa0496b04"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\admin\\users.html",
+    "same": true,
+    "original_sha": "80a22a6c133c705d2770a7e085d56d421bfa85233ef73af423773a52d6e3438e",
+    "copy_sha": "80a22a6c133c705d2770a7e085d56d421bfa85233ef73af423773a52d6e3438e"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\auth\\login.html",
+    "same": true,
+    "original_sha": "f9b296a814fcab1cdbc037affd86070b38826cf77820371a73d43e4bd5b4ebee",
+    "copy_sha": "f9b296a814fcab1cdbc037affd86070b38826cf77820371a73d43e4bd5b4ebee"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\auth\\register.html",
+    "same": true,
+    "original_sha": "50c4c89c64e74fafcff9c8c78922fb1f21ff764250e41a48374146d88d8e9132",
+    "copy_sha": "50c4c89c64e74fafcff9c8c78922fb1f21ff764250e41a48374146d88d8e9132"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\error\\400.html",
+    "same": true,
+    "original_sha": "6cf2869c3f24688991289c3cf5192fcfeec04d740f3bcccd28e8516d20a91755",
+    "copy_sha": "6cf2869c3f24688991289c3cf5192fcfeec04d740f3bcccd28e8516d20a91755"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\error\\403.html",
+    "same": true,
+    "original_sha": "1a406d611b01f8e43a8555d41bc2c2d7e9f7f63e13ef03210c7e877128ab6fae",
+    "copy_sha": "1a406d611b01f8e43a8555d41bc2c2d7e9f7f63e13ef03210c7e877128ab6fae"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\error\\404.html",
+    "same": true,
+    "original_sha": "9258caa3699b97d5af7c299ac52f0d7c35ff12db39c64d275d2eaf5323e8cc06",
+    "copy_sha": "9258caa3699b97d5af7c299ac52f0d7c35ff12db39c64d275d2eaf5323e8cc06"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\error\\413.html",
+    "same": true,
+    "original_sha": "52f16ccc53da3476372cbe33f96a9aca9cc599e8662ee7b1cfd809d9e0b6123c",
+    "copy_sha": "52f16ccc53da3476372cbe33f96a9aca9cc599e8662ee7b1cfd809d9e0b6123c"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\error\\415.html",
+    "same": true,
+    "original_sha": "6ba7d46d8916a82a8091e9279456e8e6d943e9c8c59204d25adf89744cfb61e5",
+    "copy_sha": "6ba7d46d8916a82a8091e9279456e8e6d943e9c8c59204d25adf89744cfb61e5"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\error\\422.html",
+    "same": true,
+    "original_sha": "ce551646128792b431c50b99ccb02eb786c304c625c34177522bbfddb2219b0a",
+    "copy_sha": "ce551646128792b431c50b99ccb02eb786c304c625c34177522bbfddb2219b0a"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\error\\500.html",
+    "same": true,
+    "original_sha": "e753ddada2af94537f7c26e1104fc5f0b78354a91ec4544e8e57c7257e62406b",
+    "copy_sha": "e753ddada2af94537f7c26e1104fc5f0b78354a91ec4544e8e57c7257e62406b"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\error\\503.html",
+    "same": true,
+    "original_sha": "e58aeff93b1304b4fccc7727efa842f4bce0a1636025458fff099caa2b5f83bd",
+    "copy_sha": "e58aeff93b1304b4fccc7727efa842f4bce0a1636025458fff099caa2b5f83bd"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\fragments\\footer.html",
+    "same": true,
+    "original_sha": "5e68941980aa6b0cd28156e3181c6712862fb13c674b8a549594f82f40975bac",
+    "copy_sha": "5e68941980aa6b0cd28156e3181c6712862fb13c674b8a549594f82f40975bac"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\fragments\\header.html",
+    "same": true,
+    "original_sha": "a36045ff7fa6bfe3c6cc4515c31e21676512e699995d3415506f5e0c168a8d1e",
+    "copy_sha": "a36045ff7fa6bfe3c6cc4515c31e21676512e699995d3415506f5e0c168a8d1e"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\fragments\\navbar.html",
+    "same": true,
+    "original_sha": "1c0bda90bed4831b4146b3d9c268daf7c5074584f21ead7f7a4547ef6681b921",
+    "copy_sha": "1c0bda90bed4831b4146b3d9c268daf7c5074584f21ead7f7a4547ef6681b921"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\legal\\disclaimer.html",
+    "same": true,
+    "original_sha": "d1a8292c82c7996595442daf912ba303033afa60c4c7c3f14a7a415a932b16ef",
+    "copy_sha": "d1a8292c82c7996595442daf912ba303033afa60c4c7c3f14a7a415a932b16ef"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\legal\\privacy.html",
+    "same": true,
+    "original_sha": "510ec3e98b5b82de1eaa78d54870549ed543e265d8ca05f6a460c79b0703fe8d",
+    "copy_sha": "510ec3e98b5b82de1eaa78d54870549ed543e265d8ca05f6a460c79b0703fe8d"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\legal\\terms.html",
+    "same": true,
+    "original_sha": "b8b30e87b954b9274ee0d77ade27f651d84708f5fc88e06a9581ee2a27460565",
+    "copy_sha": "b8b30e87b954b9274ee0d77ade27f651d84708f5fc88e06a9581ee2a27460565"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\profile\\change-password.html",
+    "same": true,
+    "original_sha": "1f4bb55121c662fc5bcab0fb8e9d1eb103394b595e90625765d0bacb9727e2e9",
+    "copy_sha": "1f4bb55121c662fc5bcab0fb8e9d1eb103394b595e90625765d0bacb9727e2e9"
+  },
+  {
+    "file": "src\\main\\resources\\templates\\profile\\index.html",
+    "same": true,
+    "original_sha": "75512f271230e8bf48a313440de40f50edf2971fcfa2f558c43807119ff496f1",
+    "copy_sha": "75512f271230e8bf48a313440de40f50edf2971fcfa2f558c43807119ff496f1"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\ApiAuthenticationIntegrationTests.java",
+    "same": true,
+    "original_sha": "53f2b230994730bcf1cf02ec18348f4283ad35cf2d841685752c6fe5b5077324",
+    "copy_sha": "53f2b230994730bcf1cf02ec18348f4283ad35cf2d841685752c6fe5b5077324"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\ApiComparisonIntegrationTests.java",
+    "same": true,
+    "original_sha": "bd5ef211b2ef98ad71d51c3e92a848b1e475e1a5fe990d8bc5ef912399c077d4",
+    "copy_sha": "bd5ef211b2ef98ad71d51c3e92a848b1e475e1a5fe990d8bc5ef912399c077d4"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\ApiDiagnosisIntegrationTests.java",
+    "same": true,
+    "original_sha": "a0a2cb30e3e00c4969d0249058fd1b30770b97e6a467f9969d3ca2205bc75eee",
+    "copy_sha": "a0a2cb30e3e00c4969d0249058fd1b30770b97e6a467f9969d3ca2205bc75eee"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\ApiUserFeaturesIntegrationTests.java",
+    "same": true,
+    "original_sha": "f6b83e7ce58bcb93aff63c40f0c580e5ba41f4a4ad2b4a9d450aad4af086b53a",
+    "copy_sha": "f6b83e7ce58bcb93aff63c40f0c580e5ba41f4a4ad2b4a9d450aad4af086b53a"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\PolypwebApplicationTests.java",
+    "same": true,
+    "original_sha": "03df1c180b0d123045a9449cf066353c3c0ed14cf55a21956eefeca9e3309f1f",
+    "copy_sha": "03df1c180b0d123045a9449cf066353c3c0ed14cf55a21956eefeca9e3309f1f"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\SecurityIntegrationTests.java",
+    "same": true,
+    "original_sha": "48202d0263c6829648b943d2abb2bf577c1f898db733714bbebe675b08cb7b21",
+    "copy_sha": "48202d0263c6829648b943d2abb2bf577c1f898db733714bbebe675b08cb7b21"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\config\\ConfigurationProfileTests.java",
+    "same": true,
+    "original_sha": "f574a36ceaf246b46bbf9ebd84fba0a7592c9be8363e0ea1d0671095f7cbc0b4",
+    "copy_sha": "f574a36ceaf246b46bbf9ebd84fba0a7592c9be8363e0ea1d0671095f7cbc0b4"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\controller\\NavigationAdviceTests.java",
+    "same": true,
+    "original_sha": "56b06e3890b2c9cad657edee5aefa7f4c0c3c89b07a42cf5c90a12da86e62460",
+    "copy_sha": "56b06e3890b2c9cad657edee5aefa7f4c0c3c89b07a42cf5c90a12da86e62460"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\health\\HealthIndicatorTests.java",
+    "same": true,
+    "original_sha": "e290ca46c06daf419e90d127ef6a76fcdcc2042694d6bc1dfc4863681e0f1122",
+    "copy_sha": "e290ca46c06daf419e90d127ef6a76fcdcc2042694d6bc1dfc4863681e0f1122"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\repository\\ComparisonHistorySearchRepositoryTests.java",
+    "same": true,
+    "original_sha": "dee8ec5b94fb2aae8d4ed8df10a5b67fb11cbb869c3996676683544f81f81691",
+    "copy_sha": "dee8ec5b94fb2aae8d4ed8df10a5b67fb11cbb869c3996676683544f81f81691"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\repository\\DashboardStatisticsRepositoryTests.java",
+    "same": true,
+    "original_sha": "a866f5f2534655356136ff4dfa7bc7dee06e5750c60d9452b668079a7304b974",
+    "copy_sha": "a866f5f2534655356136ff4dfa7bc7dee06e5750c60d9452b668079a7304b974"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\repository\\HistorySearchRepositoryTests.java",
+    "same": true,
+    "original_sha": "95db0d7be328ec251fac5fe581f87c9ab55279ed3951aba84950bf480f4afd9d",
+    "copy_sha": "95db0d7be328ec251fac5fe581f87c9ab55279ed3951aba84950bf480f4afd9d"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\service\\DashboardServiceTests.java",
+    "same": true,
+    "original_sha": "2d1759d06fdb3aff43ed8371f7e0cd9c93b867db86e48f8085dafe5f89b69adb",
+    "copy_sha": "2d1759d06fdb3aff43ed8371f7e0cd9c93b867db86e48f8085dafe5f89b69adb"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\service\\DiagnosisAnalysisServiceTests.java",
+    "same": true,
+    "original_sha": "331fbfcbd9cb8446a67e1ea2157d420ab27769d8be0c1e4d1fb83a61c692328c",
+    "copy_sha": "331fbfcbd9cb8446a67e1ea2157d420ab27769d8be0c1e4d1fb83a61c692328c"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\service\\FileStorageServiceTests.java",
+    "same": true,
+    "original_sha": "bc15f1b1dca02efd810a64a09b95b12f55825995ccd1ceaf2c08c0d51839a895",
+    "copy_sha": "bc15f1b1dca02efd810a64a09b95b12f55825995ccd1ceaf2c08c0d51839a895"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\service\\ModelComparisonServiceTests.java",
+    "same": true,
+    "original_sha": "00efcae79070cfb9525c3522e4a5d5faf5e9890cec9616308e65fbc52d0af48f",
+    "copy_sha": "00efcae79070cfb9525c3522e4a5d5faf5e9890cec9616308e65fbc52d0af48f"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\service\\OwnershipServiceTests.java",
+    "same": true,
+    "original_sha": "932c04ab456d6f07f170baae6f63964dd62145156efd77019462ade8abaf6bc6",
+    "copy_sha": "932c04ab456d6f07f170baae6f63964dd62145156efd77019462ade8abaf6bc6"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\service\\UserAccountServiceTests.java",
+    "same": true,
+    "original_sha": "1437ef882a96ecc1f88293e093dd935087d84a2085519996c9c29c4b4782d2b9",
+    "copy_sha": "1437ef882a96ecc1f88293e093dd935087d84a2085519996c9c29c4b4782d2b9"
+  },
+  {
+    "file": "src\\test\\java\\com\\polyp\\polypweb\\view\\filter\\HistoryFilterTests.java",
+    "same": true,
+    "original_sha": "c01d60c4f9977a12b00f58b41403902c8cb26a5ed71edb48b7d86b70c86d1b22",
+    "copy_sha": "c01d60c4f9977a12b00f58b41403902c8cb26a5ed71edb48b7d86b70c86d1b22"
+  }
+]

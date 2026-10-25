@@ -1,0 +1,35 @@
+{
+  "file": "ck2bxiswtxuw80838qkisqjwz",
+  "numpy": "2.2.6",
+  "opencv": "4.12.0",
+  "size": [
+    621,
+    520
+  ],
+  "same_text": false,
+  "stored_points": 30,
+  "replayed_points": 30,
+  "different_vertices": [
+    {
+      "vertex_zero_based": 19,
+      "stored": [
+        0.621578,
+        0.328846
+      ],
+      "replayed": [
+        0.616747,
+        0.334615
+      ],
+      "delta_pixels": [
+        -3.0000509999999494,
+        2.9998799999999837
+      ]
+    }
+  ],
+  "rasterization": "round(normalized coordinate * original dimensions); cv2.fillPoly",
+  "stored_area": 142983,
+  "replayed_area": 142978,
+  "different_pixels": 27,
+  "polygon_pair_iou": 0.9998111808887086,
+  "cause": "not established; version or implementation difference is a hypothesis, not proof"
+}

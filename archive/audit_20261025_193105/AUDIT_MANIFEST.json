@@ -1,0 +1,22 @@
+{
+  "status": "complete_with_documented_limitations",
+  "audit_started_date": "2026-10-25",
+  "departments": [
+    "A_numeric",
+    "B_visual",
+    "C_report",
+    "D_literature",
+    "E_application"
+  ],
+  "original_files_hash_verified": 5580,
+  "original_files_changed": 0,
+  "best_checkpoints_revalidated": 40,
+  "AP_flags_above_0_005": 0,
+  "findings_and_limitations_count": 22,
+  "local_report_links_checked": 15,
+  "report_sha256": "cf8017c5b061afbb84b1fba68a80da9b2ed8624215f1cd6217daa63e607217bd",
+  "issues_sha256": "b2aef1a562555cd059e5e584a6babef55332f4981db7e10f98ad799cd0822f89",
+  "source_edits_applied": false,
+  "mobile_executed": false,
+  "turnitin_assessed": false
+}

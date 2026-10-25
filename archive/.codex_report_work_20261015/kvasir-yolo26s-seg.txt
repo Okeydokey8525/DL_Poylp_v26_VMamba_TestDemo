@@ -1,0 +1,78 @@
+CELL 0 code
+# ============================================================
+# CELL 1: CÀI ULTRALYTICS ĐỒNG BỘ 8.4.127 + TẠO DATA_BG20.YAML
+# ============================================================
+!pip install -q ultralytics==8.4.127
+
+import os, glob, yaml, ultralytics
+print("✅ Phiên bản Ultralytics chuẩn:", ultralytics.__version__)
+
+DATASET_ROOT = "/kaggle/input/datasets/okeydokey0805/kvasir-yolo-seg-bg20/Kvasir_YOLO_SEG_BG20" 
+
+data_config = {
+    "path": DATASET_ROOT,
+    "train": "images/train",
+    "val": "images/val",
+    "nc": 1,
+    "names": {0: "polyp"}
+}
+
+DATA_YAML = "/kaggle/working/data_bg20.yaml"
+with open(DATA_YAML, "w", encoding="utf-8") as f:
+    yaml.safe_dump(data_config, f, sort_keys=False, allow_unicode=True)
+
+print("✅ Đã tạo data_bg20.yaml thành công!")
+
+CELL 1 code
+# ============================================================
+# CELL 2: KHÓA TẤT ĐỊNH & TRAIN BASELINE TRÊN TẬP BG20
+# ============================================================
+import os, random, numpy as np, torch
+from ultralytics import YOLO
+
+# 1. SIÊU THAM SỐ
+SEED = 10
+WORKERS = 2  
+EPOCHS = 100    
+
+# 2. KHÓA TẤT ĐỊNH HỆ THỐNG (GIỮ NGUYÊN)
+os.environ["PYTHONHASHSEED"] = str(SEED)
+os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
+random.seed(SEED)
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+if torch.cuda.is_available():
+    torch.cuda.manual_seed(SEED)
+    torch.cuda.manual_seed_all(SEED)
+
+torch.backends.cudnn.benchmark = False
+torch.backends.cudnn.deterministic = True
+torch.use_deterministic_algorithms(True, warn_only=False)
+
+# 3. HUẤN LUYỆN
+model = YOLO("yolo26s-seg.pt")
+
+results = model.train(
+    data="/kaggle/working/data_bg20.yaml",                
+    epochs=EPOCHS,
+    imgsz=640,
+    batch=8,
+    device=0,
+    workers=WORKERS,
+    cache=False,
+    amp=False,
+    optimizer="AdamW",
+    seed=SEED,
+    lr0=0.001,
+    warmup_epochs=5.0,
+    deterministic=True,
+    patience=100,
+    close_mosaic=10,
+    project="/kaggle/working/runs",
+    name=f"Kvasir_BG20_Baseline_YOLO26s_seg_s{SEED}_w{WORKERS}",  
+    exist_ok=True,
+    plots=True
+)
+
+CELL 2 code
+!zip -r /kaggle/working/runs.zip /kaggle/working/runs

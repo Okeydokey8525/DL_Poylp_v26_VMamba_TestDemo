@@ -1,0 +1,2795 @@
+[
+  {
+    "id": "V0001",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0001.png",
+    "text": "Prediction\n\npolyp\n\nbackground\n\nYOLO26s-seg: mean detection counts\n\n16.45\n16.45 N/A\npolyp background\n\nGround truth\n\n",
+    "confidence": 94
+  },
+  {
+    "id": "V0002",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0002.png",
+    "text": "Detection counts, not image counts\n\n100\n\n80\n\n60\n\n40\n\n20\n\nDetection TP, FN and FP: mean = SD (20 seeds)\n\nHE YOLO26s-seg\nBm TSVM FP32\n\n",
+    "confidence": 88
+  },
+  {
+    "id": "V0003",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0003.png",
+    "text": "Prediction\n\npolyp\n\nbackground\n\nTSVM FP32: mean detection counts\n\n15.75\n16.35 N/A\npolyp background\n\nGround truth\n\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0004",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0004.png",
+    "text": "Prediction\n\npolyp\n\nbackground\n\nYOLO26s-seg: ground-truth object column (%)\n\npolyp background\nGround truth\n",
+    "confidence": 90
+  },
+  {
+    "id": "V0005",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0005.png",
+    "text": "Prediction\n\npolyp\n\nbackground\n\nTSVM FP32: ground-truth object column (%)\n\npolyp background\nGround truth\n",
+    "confidence": 93
+  },
+  {
+    "id": "V0006",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0006.png",
+    "text": "Loss\n\nLoss\n\nval/seg_loss\n\n——— YOLO26s-seg\n——— TSVM FP32\n\n40 60 80 100\nEpoch\n\no4\nnN\no\n\nval/ll_loss\n\n—— YOLO26s-seg\n—— TSVM FP32\n\n1.6\n\n1.4\n\n1.2\n\nLoss\n\n1.0\n\n0.8\n\nval/box_loss\n\n= YOLO26s-seg\n~——— TSVM FP32\n\nEpoch\n\nval/sem_loss\n\n—— YOLO26s-seg\n——— TSVM FP32\n\nLogged zeros; inference N/A\n\nLoss\n\nval/cls_loss\n\n——— YOLO26s-seg\n——— TSVM FP32\n\n40 60 80 100\n",
+    "confidence": 80
+  },
+  {
+    "id": "V0007",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0007.png",
+    "text": "mAP50-95\n\n0.7\n\n0.6 4\n\n0.5\n\n0.4 4\n\n0.39\n\n—— YOLO26s-seg\n=~ TSVM FP32\n\nmetrics/mAP50-95(M)\n\nmAP50-95\n\n0.7\n\n—— YOLO26s-seg\n——— TSVM FP32\n\nmetrics/mAP50-95(B)\n\n40\n\nEpoch\n\n60\n\n80\n\n100\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0008",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0008.png",
+    "text": "Loss\n\nLoss\n\nval/seg_loss\n\nval/box_loss\n\n—— YOLO26s-seg —— YOLO26s-seg\n\n——— TSVM FP32 1.1 ~—— TSVM FP32\n\n20 40 60 80 100 20 40 60 80 100\nEpoch Epoch\nval/cls_loss val/l1l_loss\n1.24 —— YOLO26s-seg —— YOLO26s-seg\nnN — TSVMFP32 0.028 —— TSVM FP32\n0.026\n1.01\n0.024\n097 2 0.022\n80.\n0.8\n0.020\n0.71 0.018\n0.67 0.016\n- eT\n20 40 60 80 100 20 40 60 80 100\n\nEpoch\n",
+    "confidence": 82
+  },
+  {
+    "id": "V0009",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0009.png",
+    "text": "Loss\n\nLoss\n\n1.84\n\n1.6 A\n\ntrain/seg_loss\n\n—— YOLO26s-seg\n= TSVM FP32\n\n2.01\n\n1.54\n\n1.0 4\n\ntrain/cls_loss\n\nEpoch\n\n60\n\n80 100\n\n—— YOLO26s-seg\n—— TSVM FP32\n\n80 100\n\nLoss\n\n1.24\n1.14\n1.01\n0.91\n\nLoss\n\n0.8 4\n0.74\n0.6\n0.51\n\ntrain/box_loss\n\n—— YOLO26s-seg\n——— TSVM FP32\n\no 4\n\ntrain/lI1_loss\n\nEpoch\n\n80 100\n\n—— YOLO26s-seg\n—— TSVM FP32\n\n80 100\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0010",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0010.png",
+    "text": "Mask recall\n\nMask recall versus Mask precision\n\n0.90 0.92\nMask precision\n\n® YOLO26s-seg\n® TSVMFP32\n\n",
+    "confidence": 91
+  },
+  {
+    "id": "V0011",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0011.png",
+    "text": "Mask mAP50-95\n\n® YOLO26s-seg\n® TSVMFP32\n\nMask mAP50-95 versus Mask precision\n\n0.88 0.90 0.92\nMask precision\n\n0.94\n",
+    "confidence": 90
+  },
+  {
+    "id": "V0012",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0012.png",
+    "text": "Mask mAP50-95\n\n0.82\n\nMask mAP50-95 versus Mask recall\n\n0.86 0.88\nMask recall\n\n® YOLO26s-seg\n® TSVMFP32\n\n0.90\n",
+    "confidence": 90
+  },
+  {
+    "id": "V0013",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0013.png",
+    "text": "Mask mAP50-95\n\nYOLO26s-seg\n\nDistribution of mask mAP50-95\n\nTSVM FP32\n",
+    "confidence": 88
+  },
+  {
+    "id": "V0014",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0014.png",
+    "text": "Density\n\n0.68\n\n0.69\n\nMask mAP50-95 distribution (descriptive KDE)\n\n0.70 0.71 0.72 0.73\nMask mAP50-95\n\n—— YOLO26s-seg\n—— TSVM FP32\n\n0.74 0.75\n\n",
+    "confidence": 90
+  },
+  {
+    "id": "V0015",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0015.png",
+    "text": "Mean += sample SD, 20 seeds\n\n©\n[N)\n\n1.0\n\n©\n©\n\n©\no\n\n©\nIN\n\n0.0\n\nMask mAP50-95 across 20 seeds\n\nEE YOLO26s-seg\nmm TSVM FP32\n\nMask\nmAP50-95\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0016",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0016.png",
+    "text": "Mask mAP50 across 20 seeds\n\n1.0\n0.9069 0.9083 EEE YOLO26s-seg\n\n= TSVM FP32\n\n© © ©\nEY [@)] [e)\n\nMean += sample SD, 20 seeds\n\n©\n[N)\n\n0.0\n\nMask\nmAP50\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0017",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0017.png",
+    "text": "Mask precision and recall\n\n1.0\n0.9041 0.9145\n\n1\n\nwn 0.8\n\n©\n\n(J)\n\n[)\n\n[3]\n\no\n\noN\n\na 0.6\n\nwn\n\n[J]\n\nfey\n\n1S\n\n© 0.4\n\n+\n\n[en\n\n©\n\n[J]\n\n= 0.2\n\nEEE YOLO26s-seg\nTSVM FP32\n\n0.0\n\nMask Mask\nprecision recall\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0018",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0018.png",
+    "text": "Bounding-box metrics\n1.0\nEEE YOLO26s-seg 0.9006 0.9014 0.9006 0.9067\n\nTSVM FP32 T I 0.8501\n\n0.8522\n\nTI\n\n35 0.8 0.7228 0.7273\n0 I\nwn\no\n0.6\na) .\n0p)\n[)\nrey\nce\n& 0.4\n+\nCC\n©\n[)\n= 0.2\n\n0.0\n\nBox Box Box Box\nmAP50-95 mAP50 precision recall\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0019",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0019.png",
+    "text": "Validation segmentation loss (lower is better)\n\n=\n>\n\n1.2663\n\n12329 HEE YOLO26s-seg\nI TSVM FP32\n\nMean = sample SD, 20 seeds\n© © e o = =\nN) EN [e)] [oe] o N\n\n©\no\n\nVal\nsegmentation loss\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0020",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0020.png",
+    "text": "Mask mAP50-95\n\nMask mAP50-95 by paired seed\n\n—0— YOLO26s-seg\n—0— TSVM FP32\n\n6 7 8 9 10 11 12 13 14 15 16 17 18 19\nSeed\n",
+    "confidence": 88
+  },
+  {
+    "id": "V0021",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0021.png",
+    "text": "Box mAP50-95\n\n0.69\n\nBox mAP50-95 by paired seed\n\n—8— YOLO26s-seg\n—8— TSVM FP32\n\n6 7 8 9 10 11 12 13 14 15 16 17 18 19\nSeed\n",
+    "confidence": 88
+  },
+  {
+    "id": "V0022",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0022.png",
+    "text": "Mean + sample SD, 20 seeds\n\n©\nNS)\n\n1.0\n\n©\n©\n\n©\no\n\n©\nNn\n\n0.0\n\nEl YOLO26s-seg\nTSVM FP32\n\n0.7189 0.7232\nxX\n\nMask\nmAP50-95\n\nMain segmentation metrics\n\n0.9069 0.9083\n==\n\nMask\nmAP50\n\n0.9041 0.9145\n\n1\n\nMask\nprecision\n\n0.8594 0.8590\n\nMask\nrecall\n\nTI\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0023",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0023.png",
+    "text": "Mean = sample SD, 20 seeds\n\noe\n[N]\n\n1.0\n\noe\n[<9\n\ne\no\n\no\nES\n\n0.0\n\nOverall results: 20 paired seeds\n\n0.9041 0.9145\n\nEm YOLO26s-seg 0.9069 0.9083 0.9006 0.9014\n\n0.8594 0.8590\n\nI\n\n0.7189 0.7232 0.7228 0.7273\n== TL\n\n-—\n\nTSVM FP32 =\n\nMask Mask Mask Mask Box Box\nmAP50-95 mAP50 precision recall mAP50-95 mAP50\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0024",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0024.png",
+    "text": "Descriptive mean metrics; full 0-1 scale\n\nMask mAP50\n\nMask regall Mask|mAP50-95\n\nBox mAP50-¢€ Box mAP50\n\n—— YOLO26s-seg\n——— TSVM FP32\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0025",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0025.png",
+    "text": "Mask mAP50-95\n\nMask mAP50\n\nMask precision\n\nMask recall\n\nBox mAP50-95\n\nBox mAP50\n\nPaired differences: TSVM FP32 — baseline (95% Cl)\n\n0 1 2\nPercentage points; two-sided paired t confidence intervals\n",
+    "confidence": 92
+  },
+  {
+    "id": "V0026",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0026.png",
+    "text": "TSVM FP32 — baseline (percentage points)\n\n2.5\n\nPaired mask mAP50-95 difference by seed\n\n4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19\n\nPaired seed\n\n",
+    "confidence": 94
+  },
+  {
+    "id": "V0027",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0027.png",
+    "text": "Head-to-head mask mAP50-95: 20 paired seeds\n\nBaseline higher 7/20 (35%)\n\nTSVM FP32 higher 13/20 (65%)\n\n0.0 2.5 5.0 7.5 10.0 12.5 15.0 17.5 20.0\nNumber of paired seeds; ties = 0\n",
+    "confidence": 94
+  },
+  {
+    "id": "V0028",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0028.png",
+    "text": "600\n\n500\n\n100\n\nCPU FP32: mean latency x SD (100 iterations)\n\n577.4\nI Forward only\n\nIm Predict pipeline\n\nYOLO26s-seg TSVM FP32\n\n567.9\n",
+    "confidence": 85
+  },
+  {
+    "id": "V0029",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0029.png",
+    "text": "Latency (ms)\n\n600\n\n[]\no\no\n\n400\n\n300\n\n=\n\nYOLO26s-seg\n\nCPU latency distribution; timing repetitions are not training seeds\n\nForward only Predict pipeline\n650\n\nLatency (ms)\n\nw\n[vd\no\n\noO\n\n300\n\n250\n\nTSVM FP32 YOLO26s-seg\n\nTSVM FP32\n",
+    "confidence": 86
+  },
+  {
+    "id": "V0030",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0030.png",
+    "text": "Predict pipeline latency percentiles\n638.5\n\n611.7\n\nYOLO26s-seg TSVM FP32\n",
+    "confidence": 93
+  },
+  {
+    "id": "V0031",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0031.png",
+    "text": "—_\n\nms\n\nMean latency (\n\n500\n\n400\n\n300\n\n100\n\nMeasured Ultralytics pipeline stages\n\nI Preprocess\nForward\nI Postprocess\nOther pipeline overhead\n\nYOLO26s-seg\n\nTSVM FP32\n",
+    "confidence": 86
+  },
+  {
+    "id": "V0032",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0032.png",
+    "text": "Million\n\n14\n\nArchitecture parameters\n\n12.25\n\n11.43\n\nYOLO26s-seg TSVM FP32\n\nMiB\n\n50\n\n40\n\n30\n\n20\n\n10\n\nFP32 parameter storage\n\n46.75\n\n43.62\n\nYOLO26s-seg TSVM FP32\n\n",
+    "confidence": 93
+  },
+  {
+    "id": "V0033",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0033.png",
+    "text": "MiB (27°20 bytes)\n\n40\n\n30\n\n20\n\n10\n\nDisk checkpoint size and FP32 parameter memory\n47.37\n\nYOLO26s-seg\n\nIl Checkpoint file  FP32 parameters\n\n46.75\n\nTSVM FP32\n\n",
+    "confidence": 86
+  },
+  {
+    "id": "V0034",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0034.png",
+    "text": "Mask mAP50-95 (20-seed mean + SD)\n\n0.730\n\n0.725\n\n0.720\n\n0.715\n\n0.710\n\n300\n\nAccuracy and CPU cost use different observation units\n\n@® YOLO26s-seg\n@® TSVMFP32\n\n350 400 450 500 550\nSeed-0 predict pipeline mean latency (ms)\n",
+    "confidence": 91
+  },
+  {
+    "id": "V0035",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0035.png",
+    "text": "Serial images/s = 1000 / mean latency\n\n©\n[&]\n\nB=\no\n\nw\n[%]\n\nw\no\n\nN\n[6]\n\nN\no\n\n=\nul\n\n=\no\n\n©\no\n\nPredict pipeline serial throughput (CPU, batch 1)\n\nYOLO26s-seg TSVM FP32\n\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0036",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0036.png",
+    "text": "So Sanh Hiéu Nang Phan Poan 20 Seeds (Kvasir YOLO_SEG_BG20)\nMean = 1 Std (Baseline vs TSVM FP32)\n\n[EE Baseline YOLO26s-seg\n[0 TSVM (Topology-Shape)\n0.95\n0.9041 0.9145\n0.9069 (.9083\n\n~ 0.90\n[) 0.8594\no 0.8590\n1%}\na\n=)\n5 oss\n3\nO\nL-]\n0\n0\n£€ 0.80\n0\nQ\n\n0.75\n\n0.7189 0.7232\n0.70\n\nMask mAP@50-95 Mask mAP@50 Precision (Mask) Recall (Mask)\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0037",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0037.png",
+    "text": "Validation Segmentation Loss (Lower is better)\n\n1.40\n\n1.35\n\n1.30\n\n1.25\n\n1.20\n\n1.15\n\n1.10\n\n1.05\n\n1.00\n\nValidation Segmentation Loss (20 Seeds Mean x Std)\n\nEE Baseline\nEE TSVM\n\nval/seg_loss\n",
+    "confidence": 90
+  },
+  {
+    "id": "V0038",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0038.png",
+    "text": "Mask mAP@50-95\n\nDoi Chiéu Hiéu Nang Tung Cap Seed DPdc Lap (Seed 0 - Seed 19)\nMask mAP@50-95 trén tap Kvasir_YOLO_SEG_BG20 (Baseline vs TSVM FP32)\n\n0.76\n\n0.751\n\n0.74 1\n\no\nS\n@\n\no\n~\nN\n\no\n9\n=\n\n0.70 1\n\n0.69 1\n\n0.68\n\n2\na\n5\nS\n\n0.7301\n\n< < <\n2 2 q\nN I 8\n5 5 5\nS 3 S\n\n3\n5\nS\n\nn\na\n5\nS\n\n~\nH\n8\nS\n\n[EE Baseline YOLO26s-seg\n= TSVM (Topology-Shape)\n\nI ——\nSeed0 Seedl Seed2 Seed3 Seed4 Seed5 Seed6 Seed7 Seed8 Seed9 Seed 10 Seed 11 Seed 12 Seed 13 Seed 14 Seed 15 Seed 16 Seed 17 Seed 18 Seed 19\n\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0039",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0039.png",
+    "text": "Pudong Cong HSi Tu Cac Ham Mat Mat (Loss Convergence Curves)\nTrung Binh + 1 Std qua 20 Seeds (100 Epochs)\n\nValidation Seg Loss\n\nTraining Seg Loss\n\n141 —— Baseline YOLO26s-seg —— Baseline YOLO26s-seg\n—— TSVM (Topology-Shape) 18 —— TSVM (Topology-Shape)\n124 ’\n10 A 161\n8 1.4 4\n2\nS\n64 1.2\n44 1.04\n27 0.81\n01 T T T T T T T T T T T T\n0 20 40 60 80 100 0 20 40 60 80 100\nEpoch Epoch\nValidation Box Loss Validation Cis Loss\n—— Baseline YOLO26s-seg 3.51 —— Baseline YOLO26s-seg\n——— TSVM (Topology-Shape) ——— TSVM (Topology-Shape)\n1.6\n3.04\n1.4 251\n1.2 A 82.04\nS\n1.04 151\n1.0\n0.8 1\n0.5 1\n0 20 40 60 80 100 0 20 40 60 80 100\nEpoch Epoch\n\n",
+    "confidence": 83
+  },
+  {
+    "id": "V0040",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0040.png",
+    "text": "Score\n\nPong Thai Phat Trién D6 Chinh Xac Phan Poan Theo Epoch (20 Seeds)\n\nMask mAP@50-95 vs Epoch\n\nMask mAP@50 vs Epoch\n\n0.7 q\n\n0.6 1\n\n0.51\n\n0.41\n\n0.3\n\n0.29\n\n0.11\n\n—— Baseline YOLO26s-seg\n~—— TSVM (Topology-Shape)\n\nScore\n\n0.9\n\n0.8\n\n0.7 1\n\n0.6\n\n0.5\n\n0.4 4\n\n0.3\n\n0.2 1\n\n—— Baseline YOLO26s-seg\n~—— TSVM (Topology-Shape)\n\n20\n\n40 60\nEpoch (1 -> 100)\n\n80 100\n\n20\n\n40 60\nEpoch (1 -> 100)\n\n80 100\n\n",
+    "confidence": 84
+  },
+  {
+    "id": "V0041",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0041.png",
+    "text": "Ty Lé Thang Poi Pau Truc Dién (Head-to-Head Win Rate)\nTheo Mask mAP@50-95 Qua 20 Seeds Doc Lap\n\nBaseline Thang (7/20 Seeds)\n\nTSVM Thang (13/20 Seeds)\n",
+    "confidence": 89
+  },
+  {
+    "id": "V0042",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0042.png",
+    "text": "Mask mAP@50-95 Span\n\nBi€u D6 Mién Bao Phi D6 On Dinh (Stability Envelope Band)\nBién Pd Dao Pong Cuc Pai - Cuc Ti€u Giita 20 Seeds (Baseline vs TSVM)\n\n0.71\n\n0.6\n\n0.51\n\n0.44\n\n0.31\n\n0.14\n\nDai phan bd Baseline YOLO26s-seg [Min, Max]\n= Baseline YOLO26s-seg (Mean)\n\nDai phan bé TSVM (Topology-Shape) [Min, Max]\n= TSVM (Topology-Shape) (Mean)\n\n20\n\nT\n40 60 80 100\nEpoch Huan Luyén (1 -> 100)\n\n",
+    "confidence": 83
+  },
+  {
+    "id": "V0043",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0043.png",
+    "text": "Poi Chiéu Pa Chiéu Toan Dién (Multi-Metric Radar Comparison)\nBox Detection (Bén Trai) vs Mask Segmentation (Bén Phai) qua 20 Seeds\n\nBox mAP@50- Mask mAP@50-95\n\nBox mAP@50 Mask mAP@50\nBOX METRICS MASK METRICS\n(Phat Hién) (Phan Poan)\n\nBox Precisi h Mask Precision\n\nask Recall\n\n=== Baseline YOLO26s-seg === TSVM (Topology-Shape)\n",
+    "confidence": 85
+  },
+  {
+    "id": "V0044",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0044.png",
+    "text": "Mask mAP@50-95\n\n0.70\n\n0.69\n\nPhan B6 Po Chinh Xac Mask mAP@50-95 Qua 20 Seeds Pdc Lap\nKiém Ching Tinh On Dinh & Phuong Sai (Baseline vs TSVM FP32)\n\nMean: 0.7189 = 0.0118 Mean: 0.7232 = 0.0072\nMedian: 0.7170 Median: 0.7241\nMin-Max: [0.6941, 0.7366] Min-Max: [0.7065, 0.7339]\n\nBaseline YOLO26s-seg TSVM (Topology-Shape)\n",
+    "confidence": 88
+  },
+  {
+    "id": "V0045",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0045.png",
+    "text": "True Label\n\nMa Tran Nham Lan Trung Binh 20 Seeds (127 nhan polyp, 40 anh nén)\n\nTP, FN chia cho 127 nhan; FP chia cho téng du doan (TP + FP); 6 TN khong dugc Ultralytics dém\n\nBaseline YOLO26s-seg\n\n0.87\npolyp\n\nTP: 110.5 + 2.9\n\n0.129\n\nbackground\n\nFP: 16.4 + 3.4\ntrén téng dy doan polyp\n\npolyp\n\nbackground polyp\nPredicted Label\nChénh léch (TSVM - Baseline)\n+0.08 d% -0.08 d%\npolyp\nTP: +0.1 nhan FN: -0.1 nhén\n]\nE-]\nL]\n-\n[]\n2\n=\n-0.48 d% —\nbackground\n\nFN: 16.4 £2.9\n\nTN khéng xac dinh\n\n0.13\n\nTSVM (Topology-Shape) FP32\n\npolyp\n\nTrue Label\n\nbackground\n\n0.87\n\nTP: 110.7 £ 1.9\n\n0.124\n\nFP: -0.7 dy doan TN khong xac dinh\n\nr T\npolyp background\nPredicted Label\n\n0.13\n\nFN: 16.4 = 1.9\n\nFP: 15.8 + 3.0\ntrén téng dy doén polyp\n\nTN khéng xc dinh\n\nbackground\nPredicted Label\n\n1.0\n\n0.8\n\n[4\no\n\nI\nIS\n\nTy 1& (TP, FN: trén 127 nhéan;\nFP: trén tng dy don polyp)\n\n°\n[N)\n\n0.0\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0046",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0046.png",
+    "text": "Nhan du doan (Predicted)\n\nMa tran nham lan trung binh 20 seed\n\nYOLO26-SEG (Baseline)\nS6 dém trung binh + do léch chuan\n\n0 16.45\npolyp\np 9 FP: + 3.43\n16.45 =\nbackground -\nFN: + 2.95 TN khéng dugc dém\npolyp background\n\nNhan thuc té (True)\n\nNhan du doan (Predicted)\n\nYOLO26-SEG - TSVM\nS6 dém trung binh + do léch chuan\n\n15.75\npolyp\nTP: + 1.87 FP: + 3.02\n16.35 —\nbackground\nFN: + 1.87 TN khéng dugc dém\npolyp background\n\nNhan thuc té (True)\n\n120\n\n100\n\n80\n\n60\n\n40\n\n20\n\nS6 dém trung binh\n",
+    "confidence": 85
+  },
+  {
+    "id": "V0047",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0047_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0047",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0047_FP.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0047",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0047_FN.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0047",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0047_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0049",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0049_legend.png",
+    "text": "—— polyp 0.911\nm3 classes 0.911 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0050",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0050_legend.png",
+    "text": "—— polyp 0.913\nm3 classes 0.913 mMAP@0.5\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0053",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0053_legend.png",
+    "text": "—— polyp 0.911\nm3 classes 0.911 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0055",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0055_legend.png",
+    "text": "—— polyp 0.913\nm3 classes 0.913 mMAP@0.5\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0059",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0059_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0059",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0059_FP.png",
+    "text": "20\n",
+    "confidence": 97
+  },
+  {
+    "id": "V0059",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0059_FN.png",
+    "text": "20\n",
+    "confidence": 97
+  },
+  {
+    "id": "V0059",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0059_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0061",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0061_legend.png",
+    "text": "—— polyp 0.878\nm3 classes 0.878 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0062",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0062_legend.png",
+    "text": "—— polyp 0.895\nm3 classes 0.895 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0065",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0065_legend.png",
+    "text": "—— polyp 0.878\nm3 classes 0.878 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0067",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0067_legend.png",
+    "text": "—— polyp 0.895\nm3 classes 0.895 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0071",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0071_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0071",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0071_FP.png",
+    "text": "17\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0071",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0071_FN.png",
+    "text": "17\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0071",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0071_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0073",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0073_legend.png",
+    "text": "—— polyp 0.902\nm3 classes 0.902 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0074",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0074_legend.png",
+    "text": "—— polyp 0.907\nm3 classes 0.907 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0077",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0077_legend.png",
+    "text": "—— polyp 0.902\nm3 classes 0.902 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0079",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0079_legend.png",
+    "text": "—— polyp 0.907\nm3 classes 0.907 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0083",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0083_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0083",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0083_FP.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0083",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0083_FN.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0083",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0083_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0085",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0085_legend.png",
+    "text": "—— polyp 0.883\nm3 classes 0.883 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0086",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0086_legend.png",
+    "text": "—— polyp 0.893\nm3 classes 0.893 MAP@0.5\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0089",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0089_legend.png",
+    "text": "—— polyp 0.883\nm3 classes 0.883 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0091",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0091_legend.png",
+    "text": "—— polyp 0.893\nm3 classes 0.893 MAP@0.5\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0095",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0095_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0095",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0095_FP.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0095",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0095_FN.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0095",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0095_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0097",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0097_legend.png",
+    "text": "—— polyp 0.903\nm3 classes 0.903 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0098",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0098_legend.png",
+    "text": "—— polyp 0.902\nm3 classes 0.902 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0101",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0101_legend.png",
+    "text": "—— polyp 0.903\nm3 classes 0.903 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0103",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0103_legend.png",
+    "text": "—— polyp 0.902\nm3 classes 0.902 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0107",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0107_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0107",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0107_FP.png",
+    "text": "14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0107",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0107_FN.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0107",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0107_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0109",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0109_legend.png",
+    "text": "—— polyp 0.918\nm3 classes 0.918 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0110",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0110_legend.png",
+    "text": "—— polyp 0.926\nm3 classes 0.926 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0113",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0113_legend.png",
+    "text": "—— polyp 0.918\nm3 classes 0.918 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0115",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0115_legend.png",
+    "text": "—— polyp 0.926\nm3 classes 0.926 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0119",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0119_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0119",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0119_FP.png",
+    "text": "17\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0119",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0119_FN.png",
+    "text": "13\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0119",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0119_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0121",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0121_legend.png",
+    "text": "—— polyp 0.894\nm3 classes 0.894 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0122",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0122_legend.png",
+    "text": "—— polyp 0.902\nm3 classes 0.902 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0125",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0125_legend.png",
+    "text": "—— polyp 0.894\nm3 classes 0.894 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0127",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0127_legend.png",
+    "text": "—— polyp 0.902\nm3 classes 0.902 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0131",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0131_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0131",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0131_FP.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0131",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0131_FN.png",
+    "text": "20\n",
+    "confidence": 97
+  },
+  {
+    "id": "V0131",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0131_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0133",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0133_legend.png",
+    "text": "—— polyp 0.905\nm3 classes 0.905 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0134",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0134_legend.png",
+    "text": "—— polyp 0.919\nm3 classes 0.919 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0137",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0137_legend.png",
+    "text": "—— polyp 0.905\nm3 classes 0.905 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0139",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0139_legend.png",
+    "text": "—— polyp 0.919\nm3 classes 0.919 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0143",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0143_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0143",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0143_FP.png",
+    "text": "21\n",
+    "confidence": 94
+  },
+  {
+    "id": "V0143",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0143_FN.png",
+    "text": "12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0143",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0143_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0145",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0145_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0146",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0146_legend.png",
+    "text": "—— polyp 0.932\nm3 classes 0.932 mMAP@0.5\n",
+    "confidence": 70
+  },
+  {
+    "id": "V0149",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0149_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0151",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0151_legend.png",
+    "text": "—— polyp 0.932\nm3 classes 0.932 mMAP@0.5\n",
+    "confidence": 70
+  },
+  {
+    "id": "V0155",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0155_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0155",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0155_FP.png",
+    "text": "14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0155",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0155_FN.png",
+    "text": "23\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0155",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0155_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0157",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0157_legend.png",
+    "text": "—— polyp 0.898\nm3 classes 0.898 mMAP@0.5\n",
+    "confidence": 70
+  },
+  {
+    "id": "V0158",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0158_legend.png",
+    "text": "—— polyp 0.909\nm3 classes 0.909 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0161",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0161_legend.png",
+    "text": "—— polyp 0.898\nm3 classes 0.898 mMAP@0.5\n",
+    "confidence": 70
+  },
+  {
+    "id": "V0163",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0163_legend.png",
+    "text": "—— polyp 0.909\nm3 classes 0.909 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0167",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0167_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0167",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0167_FP.png",
+    "text": "22\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0167",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0167_FN.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0167",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0167_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0169",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0169_legend.png",
+    "text": "—— polyp 0.886\nm3 classes 0.886 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0170",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0170_legend.png",
+    "text": "—— polyp 0.886\nm3 classes 0.886 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0173",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0173_legend.png",
+    "text": "—— polyp 0.886\nm3 classes 0.886 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0175",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0175_legend.png",
+    "text": "—— polyp 0.886\nm3 classes 0.886 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0179",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0179_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0179",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0179_FP.png",
+    "text": "11\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0179",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0179_FN.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0179",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0179_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0181",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0181_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0182",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0182_legend.png",
+    "text": "—— polyp 0.910\nm3 classes 0.910 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0185",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0185_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0187",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0187_legend.png",
+    "text": "—— polyp 0.910\nm3 classes 0.910 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0191",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0191_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0191",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0191_FP.png",
+    "text": "14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0191",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0191_FN.png",
+    "text": "17\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0191",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0191_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0193",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0193_legend.png",
+    "text": "—— polyp 0.889\nm3 classes 0.889 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0194",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0194_legend.png",
+    "text": "—— polyp 0.882\nm3 classes 0.882 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0197",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0197_legend.png",
+    "text": "—— polyp 0.889\nm3 classes 0.889 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0199",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0199_legend.png",
+    "text": "—— polyp 0.882\nm3 classes 0.882 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0203",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0203_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0203",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0203_FP.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0203",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0203_FN.png",
+    "text": "14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0203",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0203_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0205",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0205_legend.png",
+    "text": "—— polyp 0.888\nm3 classes 0.888 mMAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0206",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0206_legend.png",
+    "text": "—— polyp 0.906\nm3 classes 0.906 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0209",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0209_legend.png",
+    "text": "—— polyp 0.888\nm3 classes 0.888 mMAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0211",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0211_legend.png",
+    "text": "—— polyp 0.906\nm3 classes 0.906 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0215",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0215_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0215",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0215_FP.png",
+    "text": "14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0215",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0215_FN.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0215",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0215_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0217",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0217_legend.png",
+    "text": "—— polyp 0.910\nm3 classes 0.910 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0218",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0218_legend.png",
+    "text": "—— polyp 0.907\nm3 classes 0.907 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0221",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0221_legend.png",
+    "text": "—— polyp 0.910\nm3 classes 0.910 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0223",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0223_legend.png",
+    "text": "—— polyp 0.907\nm3 classes 0.907 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0227",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0227_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0227",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0227_FP.png",
+    "text": "10\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0227",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0227_FN.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0227",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0227_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0229",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0229_legend.png",
+    "text": "—— polyp 0.899\nm3 classes 0.899 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0230",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0230_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0233",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0233_legend.png",
+    "text": "—— polyp 0.899\nm3 classes 0.899 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0235",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0235_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0239",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0239_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0239",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0239_FP.png",
+    "text": "13\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0239",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0239_FN.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0239",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0239_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0241",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0241_legend.png",
+    "text": "—— polyp 0.897\nm3 classes 0.897 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0242",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0242_legend.png",
+    "text": "—— polyp 0.896\nm3 classes 0.896 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0245",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0245_legend.png",
+    "text": "—— polyp 0.897\nm3 classes 0.897 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0247",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0247_legend.png",
+    "text": "—— polyp 0.896\nm3 classes 0.896 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0251",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0251_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0251",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0251_FP.png",
+    "text": "17\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0251",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0251_FN.png",
+    "text": "11\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0251",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0251_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0253",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0253_legend.png",
+    "text": "—— polyp 0.917\nm3 classes 0.917 MAP@0.5\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0254",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0254_legend.png",
+    "text": "—— polyp 0.923\nm3 classes 0.923 mMAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0257",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0257_legend.png",
+    "text": "—— polyp 0.917\nm3 classes 0.917 MAP@0.5\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0259",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0259_legend.png",
+    "text": "—— polyp 0.923\nm3 classes 0.923 mMAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0263",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0263_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0263",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0263_FP.png",
+    "text": "20\n",
+    "confidence": 97
+  },
+  {
+    "id": "V0263",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0263_FN.png",
+    "text": "20\n",
+    "confidence": 97
+  },
+  {
+    "id": "V0263",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0263_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0265",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0265_legend.png",
+    "text": "—— polyp 0.899\nm3 classes 0.899 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0266",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0266_legend.png",
+    "text": "—— polyp 0.888\nm3 classes 0.888 mMAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0269",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0269_legend.png",
+    "text": "—— polyp 0.899\nm3 classes 0.899 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0271",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0271_legend.png",
+    "text": "—— polyp 0.888\nm3 classes 0.888 mMAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0275",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0275_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0275",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0275_FP.png",
+    "text": "22\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0275",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0275_FN.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0275",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0275_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0277",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0277_legend.png",
+    "text": "—— polyp 0.891\nm3 classes 0.891 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0278",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0278_legend.png",
+    "text": "—— polyp 0.905\nm3 classes 0.905 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0281",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0281_legend.png",
+    "text": "—— polyp 0.891\nm3 classes 0.891 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0283",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0283_legend.png",
+    "text": "—— polyp 0.905\nm3 classes 0.905 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0287",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0287_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0287",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0287_FP.png",
+    "text": "14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0287",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0287_FN.png",
+    "text": "19\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0287",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0287_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0289",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0289_legend.png",
+    "text": "—— polyp 0.897\nm3 classes 0.897 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0290",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0290_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0293",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0293_legend.png",
+    "text": "—— polyp 0.897\nm3 classes 0.897 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0295",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0295_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0299",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0299_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0299",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0299_FP.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0299",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0299_FN.png",
+    "text": "13\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0299",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0299_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0301",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0301_legend.png",
+    "text": "—— polyp 0.911\nm3 classes 0.911 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0302",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0302_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0305",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0305_legend.png",
+    "text": "—— polyp 0.911\nm3 classes 0.911 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0307",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0307_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0311",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0311_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0311",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0311_FP.png",
+    "text": "13\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0311",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0311_FN.png",
+    "text": "17\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0311",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0311_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0313",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0313_legend.png",
+    "text": "—— polyp 0.905\nm3 classes 0.905 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0314",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0314_legend.png",
+    "text": "—— polyp 0.900\nm3 classes 0.900 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0317",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0317_legend.png",
+    "text": "—— polyp 0.905\nm3 classes 0.905 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0319",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0319_legend.png",
+    "text": "—— polyp 0.900\nm3 classes 0.900 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0323",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0323_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0323",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0323_FP.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0323",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0323_FN.png",
+    "text": "13\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0323",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0323_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0325",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0325_legend.png",
+    "text": "—— polyp 0.907\nm3 classes 0.907 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0326",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0326_legend.png",
+    "text": "—— polyp 0.916\nm3 classes 0.916 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0329",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0329_legend.png",
+    "text": "—— polyp 0.907\nm3 classes 0.907 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0331",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0331_legend.png",
+    "text": "—— polyp 0.916\nm3 classes 0.916 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0335",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0335_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0335",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0335_FP.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0335",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0335_FN.png",
+    "text": "14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0335",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0335_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0337",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0337_legend.png",
+    "text": "—— polyp 0.891\nm3 classes 0.891 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0338",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0338_legend.png",
+    "text": "—— polyp 0.902\nm3 classes 0.902 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0341",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0341_legend.png",
+    "text": "—— polyp 0.891\nm3 classes 0.891 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0343",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0343_legend.png",
+    "text": "—— polyp 0.902\nm3 classes 0.902 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0347",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0347_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0347",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0347_FP.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0347",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0347_FN.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0347",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0347_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0349",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0349_legend.png",
+    "text": "—— polyp 0.911\nm3 classes 0.911 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0350",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0350_legend.png",
+    "text": "—— polyp 0.910\nm3 classes 0.910 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0353",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0353_legend.png",
+    "text": "—— polyp 0.911\nm3 classes 0.911 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0355",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0355_legend.png",
+    "text": "—— polyp 0.910\nm3 classes 0.910 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0359",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0359_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0359",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0359_FP.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0359",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0359_FN.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0359",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0359_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0361",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0361_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0362",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0362_legend.png",
+    "text": "—— polyp 0.906\nm3 classes 0.906 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0365",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0365_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0367",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0367_legend.png",
+    "text": "—— polyp 0.906\nm3 classes 0.906 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0371",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0371_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0371",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0371_FP.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0371",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0371_FN.png",
+    "text": "19\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0371",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0371_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0373",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0373_legend.png",
+    "text": "—— polyp 0.885\nm3 classes 0.885 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0374",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0374_legend.png",
+    "text": "—— polyp 0.894\nm3 classes 0.894 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0377",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0377_legend.png",
+    "text": "—— polyp 0.885\nm3 classes 0.885 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0379",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0379_legend.png",
+    "text": "—— polyp 0.894\nm3 classes 0.894 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0383",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0383_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0383",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0383_FP.png",
+    "text": "12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0383",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0383_FN.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0383",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0383_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0385",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0385_legend.png",
+    "text": "—— polyp 0.907\nm3 classes 0.907 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0386",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0386_legend.png",
+    "text": "—— polyp 0.915\nm3 classes 0.915 MAP@0.5\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0389",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0389_legend.png",
+    "text": "—— polyp 0.907\nm3 classes 0.907 MAP@0.5\n",
+    "confidence": 77
+  },
+  {
+    "id": "V0391",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0391_legend.png",
+    "text": "—— polyp 0.915\nm3 classes 0.915 MAP@0.5\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0395",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0395_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0395",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0395_FP.png",
+    "text": "19\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0395",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0395_FN.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0395",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0395_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0397",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0397_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0398",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0398_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0401",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0401_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0403",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0403_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0407",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0407_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0407",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0407_FP.png",
+    "text": "12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0407",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0407_FN.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0407",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0407_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0409",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0409_legend.png",
+    "text": "—— polyp 0.899\nm3 classes 0.899 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0410",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0410_legend.png",
+    "text": "—— polyp 0.910\nm3 classes 0.910 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0413",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0413_legend.png",
+    "text": "—— polyp 0.899\nm3 classes 0.899 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0415",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0415_legend.png",
+    "text": "—— polyp 0.910\nm3 classes 0.910 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0419",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0419_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0419",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0419_FP.png",
+    "text": "14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0419",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0419_FN.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0419",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0419_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0421",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0421_legend.png",
+    "text": "—— polyp 0.906\nm3 classes 0.906 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0422",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0422_legend.png",
+    "text": "—— polyp 0.910\nm3 classes 0.910 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0425",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0425_legend.png",
+    "text": "—— polyp 0.906\nm3 classes 0.906 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0427",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0427_legend.png",
+    "text": "—— polyp 0.910\nm3 classes 0.910 mMAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0431",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0431_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0431",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0431_FP.png",
+    "text": "14\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0431",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0431_FN.png",
+    "text": "17\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0431",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0431_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0433",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0433_legend.png",
+    "text": "—— polyp 0.876\nm3 classes 0.876 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0434",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0434_legend.png",
+    "text": "—— polyp 0.895\nm3 classes 0.895 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0437",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0437_legend.png",
+    "text": "—— polyp 0.876\nm3 classes 0.876 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0439",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0439_legend.png",
+    "text": "—— polyp 0.895\nm3 classes 0.895 MAP@0.5\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0443",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0443_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0443",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0443_FP.png",
+    "text": "17\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0443",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0443_FN.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0443",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0443_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0445",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0445_legend.png",
+    "text": "—— polyp 0.915\nm3 classes 0.915 MAP@0.5\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0446",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0446_legend.png",
+    "text": "—— polyp 0.931\nm3 classes 0.931 mMAP@0.5\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0449",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0449_legend.png",
+    "text": "—— polyp 0.915\nm3 classes 0.915 MAP@0.5\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0451",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0451_legend.png",
+    "text": "—— polyp 0.931\nm3 classes 0.931 mMAP@0.5\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0455",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0455_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0455",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0455_FP.png",
+    "text": "19\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0455",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0455_FN.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0455",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0455_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0457",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0457_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0458",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0458_legend.png",
+    "text": "—— polyp 0.906\nm3 classes 0.906 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0461",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0461_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0463",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0463_legend.png",
+    "text": "—— polyp 0.906\nm3 classes 0.906 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0467",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0467_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0467",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0467_FP.png",
+    "text": "13\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0467",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0467_FN.png",
+    "text": "19\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0467",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0467_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0469",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0469_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0470",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0470_legend.png",
+    "text": "—— polyp 0.914\nm3 classes 0.914 MAP@0.5\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0473",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0473_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0475",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0475_legend.png",
+    "text": "—— polyp 0.914\nm3 classes 0.914 MAP@0.5\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0479",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0479_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0479",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0479_FP.png",
+    "text": "12\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0479",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0479_FN.png",
+    "text": "18\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0479",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0479_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0481",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0481_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0482",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0482_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0485",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0485_legend.png",
+    "text": "—— polyp 0.904\nm3 classes 0.904 MAP@0.5\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0487",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0487_legend.png",
+    "text": "—— polyp 0.912\nm3 classes 0.912 MAP@0.5\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0491",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0491_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0491",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0491_FP.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0491",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0491_FN.png",
+    "text": "15\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0491",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0491_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0493",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0493_legend.png",
+    "text": "—— polyp 0.917\nm3 classes 0.917 MAP@0.5\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0494",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0494_legend.png",
+    "text": "—— polyp 0.922\nm3 classes 0.922 mMAP@0.5\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0497",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0497_legend.png",
+    "text": "—— polyp 0.917\nm3 classes 0.917 MAP@0.5\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0499",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0499_legend.png",
+    "text": "—— polyp 0.922\nm3 classes 0.922 mMAP@0.5\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0503",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0503_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0503",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0503_FP.png",
+    "text": "24\n",
+    "confidence": 94
+  },
+  {
+    "id": "V0503",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0503_FN.png",
+    "text": "17\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0503",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0503_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0505",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0505_legend.png",
+    "text": "—— polyp 0.896\nm3 classes 0.896 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0506",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0506_legend.png",
+    "text": "—— polyp 0.894\nm3 classes 0.894 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0509",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0509_legend.png",
+    "text": "—— polyp 0.896\nm3 classes 0.896 MAP@0.5\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0511",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0511_legend.png",
+    "text": "—— polyp 0.894\nm3 classes 0.894 MAP@0.5\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0515",
+    "type": "TP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0515_TP.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0515",
+    "type": "FP",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0515_FP.png",
+    "text": "16\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0515",
+    "type": "FN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0515_FN.png",
+    "text": "17\n",
+    "confidence": 96
+  },
+  {
+    "id": "V0515",
+    "type": "TN",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0515_TN.png",
+    "text": "oo\n",
+    "confidence": 0
+  },
+  {
+    "id": "V0517",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0517_legend.png",
+    "text": "—— polyp 0.883\nm3 classes 0.883 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0518",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0518_legend.png",
+    "text": "—— polyp 0.897\nm3 classes 0.897 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0521",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0521_legend.png",
+    "text": "—— polyp 0.883\nm3 classes 0.883 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0523",
+    "type": "legend",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0523_legend.png",
+    "text": "—— polyp 0.897\nm3 classes 0.897 MAP@0.5\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0527",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0527.png",
+    "text": "",
+    "confidence": 95
+  },
+  {
+    "id": "V0528",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0528.png",
+    "text": "",
+    "confidence": 95
+  },
+  {
+    "id": "V0529",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0529.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0530",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0530.png",
+    "text": "SS2D bén huéng\n\nFM FMo (1 +G)\n\nConcat v6i S\nConv 1x1 - FFN\nx + YF\n\nPac trung x\n\nDW 3x3 va 5x5\nDW 1x5, 5x1, 3x3\nDap Ung cé hudng S\n\nConv 1x1\nSigmoid » G\n\n",
+    "confidence": 82
+  },
+  {
+    "id": "V0531",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0531.png",
+    "text": "Tl\n\n¢. Anh nén normal-cecum\n\na. Anh néi soi co polyp b. Mit na phan doan gc\n",
+    "confidence": 84
+  },
+  {
+    "id": "V0532",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0532.png",
+    "text": "b. Mit na gbe trude xu ly\n\n07/2012 5 i 07/2012\n339:33 > \\ [39:33\n\n\\ ’\n\n¢. Pudong bao ban dau: 377 diém d. Pa gic don gian hoa: 21 diém\n",
+    "confidence": 67
+  },
+  {
+    "id": "V0533",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0533.png",
+    "text": "0.0.6\n11/09/2015\n\n[CTT IO%\nERAT Cm\n\nComment:\n\n. Anh gc 1920 x 1072 pixel b. Sau LetterBox 640 x 640 pixel\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0534",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0534.png",
+    "text": "PTT \\ \\ V.\n\nd. Dich chuyén va thu nho e. Mosaic bon anh f. Két hop nhiéu phép\n\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0535",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0535.png",
+    "text": "Chudn bi true hudn luyén\n\nKhi nap dir liéu\n\nKvasir-SEG Kuvasir, 16p normal-cecum\n1.000 anh polyp va mat na 1.000 anh khong c6 polyp\n\nChuyén mat na thanh da gic Chon ngau nhién 200 anh, seed 42\nOtsu — phép déng — duong bao Chia 160 huén luyén / 40 kiém dinh\n— don gian héa — chuan hoa toa do Tao tép nhin rong\n\nBo dit lisu BG20 dinh dang YOLO\nHuén luyén 1.040 anh, kiém dinh 160 anh\n\nNhénh huén luyén Nhénh kiém dinh\nDi kich thude — ting cudng dit ligu Dai kich thuée — LetterBox\n— dinh dang va chudn héa — dinh dang va chudn héa\n\nMb hinh YOLO26-seg + TSVM\n",
+    "confidence": 81
+  },
+  {
+    "id": "V0536",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0536.png",
+    "text": "",
+    "confidence": 0
+  },
+  {
+    "id": "V0537",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0537.png",
+    "text": "Pudong bao nhan YOLO\n\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0538",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0538.png",
+    "text": "Mean += sample SD, 20 seeds\n\n©\n[N)\n\n1.0\n\n©\n©\n\n©\no\n\n©\nIN\n\n0.0\n\nMask mAP50-95 across 20 seeds\n\nEE YOLO26s-seg\nmm TSVM FP32\n\nMask\nmAP50-95\n",
+    "confidence": 75
+  },
+  {
+    "id": "V0539",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0539.png",
+    "text": "Mask mAP50 across 20 seeds\n\n1.0\n0.9069 0.9083 EEE YOLO26s-seg\n\n= TSVM FP32\n\n© © ©\nEY [@)] [e)\n\nMean += sample SD, 20 seeds\n\n©\n[N)\n\n0.0\n\nMask\nmAP50\n",
+    "confidence": 74
+  },
+  {
+    "id": "V0540",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0540.png",
+    "text": "Mask precision and recall\n\n1.0\n0.9041 0.9145\n\n1\n\nwn 0.8\n\n©\n\n(J)\n\n[)\n\n[3]\n\no\n\noN\n\na 0.6\n\nwn\n\n[J]\n\nfey\n\n1S\n\n© 0.4\n\n+\n\n[en\n\n©\n\n[J]\n\n= 0.2\n\nEEE YOLO26s-seg\nTSVM FP32\n\n0.0\n\nMask Mask\nprecision recall\n",
+    "confidence": 72
+  },
+  {
+    "id": "V0541",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0541.png",
+    "text": "Bounding-box metrics\n1.0\nEEE YOLO26s-seg 0.9006 0.9014 0.9006 0.9067\n\nTSVM FP32 T I 0.8501\n\n0.8522\n\nTI\n\n35 0.8 0.7228 0.7273\n0 I\nwn\no\n0.6\na) .\n0p)\n[)\nrey\nce\n& 0.4\n+\nCC\n©\n[)\n= 0.2\n\n0.0\n\nBox Box Box Box\nmAP50-95 mAP50 precision recall\n",
+    "confidence": 71
+  },
+  {
+    "id": "V0542",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0542.png",
+    "text": "0.73\n\n0.72\n\n0.71\n\n0.70\n\nMask mAP50-95\n\nMask Precision\n\n[2 [Y [ J\n°\n° $ 2\n° 9 0.94 ° °\n° °\n[J 8 4\n° i o\n|\n°\n[4 ° 0.92 ° 3\n* H\nH °\nd 0.90 H o\n°\n° ° °\n°\n0.88\n$ °\n°\n®\n0.86 ° °\n® ™\nYOLO26s-seg TSVM FP32 YOLO26s-seg TSVM FP32\n",
+    "confidence": 59
+  },
+  {
+    "id": "V0543",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0543.png",
+    "text": "Mask mAP50-95\n\nMask mAP50\n\nMask Precision A\n\nMask Recall 4\n\nBox mAP50-95 +\n\nBox Recall +\n\nChénh léch TSVM — Baseline va KTC 95% (diém phan tram)\n",
+    "confidence": 79
+  },
+  {
+    "id": "V0544",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0544.png",
+    "text": "(wey ueyd walp) G6-0SdVW Sse V\n\n19\n\n18\n\nSeed\n",
+    "confidence": 67
+  },
+  {
+    "id": "V0545",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0545.png",
+    "text": "Mask mAP50-95\n\nMask mAP50-95 by paired seed\n\n—0— YOLO26s-seg\n—0— TSVM FP32\n\n6 7 8 9 10 11 12 13 14 15 16 17 18 19\nSeed\n",
+    "confidence": 88
+  },
+  {
+    "id": "V0546",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0546.png",
+    "text": "Mask mAP50-95\n\nYOLO26s-seg\n\nDistribution of mask mAP50-95\n\nTSVM FP32\n",
+    "confidence": 88
+  },
+  {
+    "id": "V0547",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0547.png",
+    "text": "Density\n\n0.68\n\n0.69\n\nMask mAP50-95 distribution (descriptive KDE)\n\n0.70 0.71 0.72 0.73\nMask mAP50-95\n\n—— YOLO26s-seg\n—— TSVM FP32\n\n0.74 0.75\n\n",
+    "confidence": 90
+  },
+  {
+    "id": "V0548",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0548.png",
+    "text": "mAP50-95\n\n0.7\n\n0.6 4\n\n0.5\n\n0.4 4\n\n0.39\n\n—— YOLO26s-seg\n=~ TSVM FP32\n\nmetrics/mAP50-95(M)\n\nmAP50-95\n\n0.7\n\n—— YOLO26s-seg\n——— TSVM FP32\n\nmetrics/mAP50-95(B)\n\n40\n\nEpoch\n\n60\n\n80\n\n100\n",
+    "confidence": 76
+  },
+  {
+    "id": "V0549",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0549.png",
+    "text": "Validation segmentation loss (lower is better)\n\n=\n>\n\n1.2663\n\n12329 HEE YOLO26s-seg\nI TSVM FP32\n\nMean = sample SD, 20 seeds\n© © e o = =\nN) EN [e)] [oe] o N\n\n©\no\n\nVal\nsegmentation loss\n",
+    "confidence": 73
+  },
+  {
+    "id": "V0550",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0550.png",
+    "text": "Loss\n\nLoss\n\nval/seg_loss\n\n——— YOLO26s-seg\n——— TSVM FP32\n\n40 60 80 100\nEpoch\n\no4\nnN\no\n\nval/ll_loss\n\n—— YOLO26s-seg\n—— TSVM FP32\n\n1.6\n\n1.4\n\n1.2\n\nLoss\n\n1.0\n\n0.8\n\nval/box_loss\n\n= YOLO26s-seg\n~——— TSVM FP32\n\nEpoch\n\nval/sem_loss\n\n—— YOLO26s-seg\n——— TSVM FP32\n\nLogged zeros; inference N/A\n\nLoss\n\nval/cls_loss\n\n——— YOLO26s-seg\n——— TSVM FP32\n\n40 60 80 100\n",
+    "confidence": 80
+  },
+  {
+    "id": "V0551",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0551.png",
+    "text": "Loss\n\nLoss\n\nval/seg_loss\n\nval/box_loss\n\n—— YOLO26s-seg —— YOLO26s-seg\n\n——— TSVM FP32 1.1 ~—— TSVM FP32\n\n20 40 60 80 100 20 40 60 80 100\nEpoch Epoch\nval/cls_loss val/l1l_loss\n1.24 —— YOLO26s-seg —— YOLO26s-seg\nnN — TSVMFP32 0.028 —— TSVM FP32\n0.026\n1.01\n0.024\n097 2 0.022\n80.\n0.8\n0.020\n0.71 0.018\n0.67 0.016\n- eT\n20 40 60 80 100 20 40 60 80 100\n\nEpoch\n",
+    "confidence": 82
+  },
+  {
+    "id": "V0552",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0552.png",
+    "text": "Loss\n\nLoss\n\n1.84\n\n1.6 A\n\ntrain/seg_loss\n\n—— YOLO26s-seg\n= TSVM FP32\n\n2.01\n\n1.54\n\n1.0 4\n\ntrain/cls_loss\n\nEpoch\n\n60\n\n80 100\n\n—— YOLO26s-seg\n—— TSVM FP32\n\n80 100\n\nLoss\n\n1.24\n1.14\n1.01\n0.91\n\nLoss\n\n0.8 4\n0.74\n0.6\n0.51\n\ntrain/box_loss\n\n—— YOLO26s-seg\n——— TSVM FP32\n\no 4\n\ntrain/lI1_loss\n\nEpoch\n\n80 100\n\n—— YOLO26s-seg\n—— TSVM FP32\n\n80 100\n",
+    "confidence": 78
+  },
+  {
+    "id": "V0553",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0553.png",
+    "text": "Detection counts, not image counts\n\n100\n\n80\n\n60\n\n40\n\n20\n\nDetection TP, FN and FP: mean = SD (20 seeds)\n\nHE YOLO26s-seg\nBm TSVM FP32\n\n",
+    "confidence": 88
+  },
+  {
+    "id": "V0554",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0554.png",
+    "text": "Prediction\n\npolyp\n\nbackground\n\nYOLO26s-seg: mean detection counts\n\n16.45\n16.45 N/A\npolyp background\n\nGround truth\n\n",
+    "confidence": 94
+  },
+  {
+    "id": "V0555",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0555.png",
+    "text": "Prediction\n\npolyp\n\nbackground\n\nTSVM FP32: mean detection counts\n\n15.75\n16.35 N/A\npolyp background\n\nGround truth\n\n",
+    "confidence": 95
+  },
+  {
+    "id": "V0556",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0556.png",
+    "text": "600\n\n500\n\n100\n\nCPU FP32: mean latency x SD (100 iterations)\n\n577.4\nI Forward only\n\nIm Predict pipeline\n\nYOLO26s-seg TSVM FP32\n\n567.9\n",
+    "confidence": 85
+  },
+  {
+    "id": "V0557",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0557.png",
+    "text": "Predict pipeline latency percentiles\n638.5\n\n611.7\n\nYOLO26s-seg TSVM FP32\n",
+    "confidence": 93
+  },
+  {
+    "id": "V0558",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0558.png",
+    "text": "—_\n\nms\n\nMean latency (\n\n500\n\n400\n\n300\n\n100\n\nMeasured Ultralytics pipeline stages\n\nI Preprocess\nForward\nI Postprocess\nOther pipeline overhead\n\nYOLO26s-seg\n\nTSVM FP32\n",
+    "confidence": 86
+  },
+  {
+    "id": "V0559",
+    "type": "full",
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\audit_20261025_193105\\B_visual\\ocr_input\\V0559.png",
+    "text": "MiB (27°20 bytes)\n\n40\n\n30\n\n20\n\n10\n\nDisk checkpoint size and FP32 parameter memory\n47.37\n\nYOLO26s-seg\n\nIl Checkpoint file  FP32 parameters\n\n46.75\n\nTSVM FP32\n\n",
+    "confidence": 86
+  }
+]

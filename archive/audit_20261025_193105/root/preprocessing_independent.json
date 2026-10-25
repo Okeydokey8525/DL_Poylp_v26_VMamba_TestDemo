@@ -1,0 +1,33 @@
+{
+  "opencv": "4.12.0",
+  "masks_checked": 1000,
+  "otsu_min": 5.0,
+  "otsu_max": 8.0,
+  "contours": 1206,
+  "removed_under_20": 143,
+  "kept": 1063,
+  "vertices_before_mean": 333.1552210724365,
+  "vertices_after_mean": 24.636876763875822,
+  "vertices_after_min": 10,
+  "vertices_after_max": 80,
+  "vertex_reduction_pct": 92.60498554260414,
+  "region_area_fraction_min": 0.0015454142074775557,
+  "region_area_fraction_max": 0.8098701384528962,
+  "region_area_fraction_median": 0.10270110304008609,
+  "labels_not_exact": [
+    "ck2bxiswtxuw80838qkisqjwz.jpg"
+  ],
+  "polyp_copy_byte_mismatches": [],
+  "background": {
+    "train": {
+      "selection_order_exact": true,
+      "missing_or_extra": [],
+      "copied_image_byte_mismatches": []
+    },
+    "val": {
+      "selection_order_exact": true,
+      "missing_or_extra": [],
+      "copied_image_byte_mismatches": []
+    }
+  }
+}
