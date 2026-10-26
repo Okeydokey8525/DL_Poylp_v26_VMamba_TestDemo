@@ -30,6 +30,12 @@ python tinh_lai_so_lieu.py --torch
 | `08_kien_truc_dung_lai.csv` | Dựng lại 2 mô hình: tham số, kích thước đầu ra từng tầng, tham số từng nhánh TSVM, phần nhận trọng số tiền huấn luyện | [03](03_KIEN_TRUC_BASELINE.md), [04](04_KIEN_TRUC_TSVM_FP32.md) |
 | `09_ma_tran_doc_tu_anh.csv` | TP/FP/FN đọc thủ công từ 40 ảnh `confusion_matrix.png` | [08](08_MA_TRAN_NHAM_LAN.md) |
 | `_log_chay.txt` | Toàn bộ đầu ra của lần chạy script | Mọi file |
+| `10_pixel_tung_anh.csv` | TP/FP/FN theo pixel của 4 mô hình × 20 seed × 160 ảnh (nhãn polygon và nhãn gốc Kvasir) | [10](10_SO_SANH_PRANET_UNET.md) |
+| `11_pixel_tung_seed.csv` | Dice/IoU/P/R (trung bình theo ảnh và gộp pixel), tỉ lệ báo nhầm ảnh nền, theo seed | [10](10_SO_SANH_PRANET_UNET.md) |
+| `12_pixel_thong_ke.csv` | Mean ± SD và so sánh ghép cặp TSVM với 3 mô hình còn lại | [10](10_SO_SANH_PRANET_UNET.md) |
+| `_log_danh_gia_pixel.txt` | Log lần chạy đánh giá theo pixel trên GPU | [10](10_SO_SANH_PRANET_UNET.md) |
+
+Các tệp `10`–`12` do script thứ hai, [`scripts/danh_gia_pixel.py`](scripts/danh_gia_pixel.py), sinh ra. Script này cần GPU và chạy bằng `C:\venv_kl_gpu\Scripts\python.exe`. Kiến trúc PraNet và U-Net được nạp trực tiếp từ notebook huấn luyện.
 
 `09_ma_tran_doc_tu_anh.csv` là tệp **duy nhất không do script sinh ra**. Các số trong đó được đọc bằng mắt từ ảnh ghép lưới, sau đó so với `06_ma_tran_nham_lan_tung_seed.csv` bằng code (khớp 40/40).
 

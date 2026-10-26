@@ -78,14 +78,17 @@ Chọn epoch theo mask mAP lớn nhất trên chính tập validation tạo ra t
 - Ở epoch 100, khoảng cách thu hẹp còn +0,0025. Khi đó SD hai mô hình gần bằng nhau (0,0132 và 0,0130). Như vậy **độ ổn định thấp hơn về SD chỉ đúng tại epoch tốt nhất**, không còn ở cuối huấn luyện.
 - Có 16/40 lượt mà epoch cực đại mask khác epoch fitness (Baseline 8, TSVM 8). Vậy giá trị trong bảng chính **không phải** là kết quả đánh giá file `best.pt`.
 
-## Hình minh họa có sẵn
+## Hình cũ (đã chuyển vào lưu trữ)
+
+Bộ hình mới vẽ lại từ CSV nằm ở `06_bao_cao/hinh/`. Các hình cũ dưới đây chỉ giữ để tham khảo.
+
 
 Gói phân tích đã có hình vẽ sẵn, tham khảo khi đưa vào báo cáo (bộ tài liệu này không vẽ lại):
 
-- [01_overall_benchmark_barchart.png](../04_phan_tich_20seed/figures/01_overall_benchmark_barchart.png)
-- [03_seed_by_seed_barchart.png](../04_phan_tich_20seed/figures/03_seed_by_seed_barchart.png)
-- [11_boxplot_variance_stability.png](../04_phan_tich_20seed/figures/11_boxplot_variance_stability.png)
-- [21_paired_mask_map_delta.png](../04_phan_tich_20seed/05_charts/summary/21_paired_mask_map_delta.png)
-- [20_delta_tsvm_vs_baseline.png](../04_phan_tich_20seed/05_charts/summary/20_delta_tsvm_vs_baseline.png)
+- [01_overall_benchmark_barchart.png](../99_luu_tru/hinh_cu/figures_20seed/01_overall_benchmark_barchart.png)
+- [03_seed_by_seed_barchart.png](../99_luu_tru/hinh_cu/figures_20seed/03_seed_by_seed_barchart.png)
+- [11_boxplot_variance_stability.png](../99_luu_tru/hinh_cu/figures_20seed/11_boxplot_variance_stability.png)
+- [21_paired_mask_map_delta.png](../99_luu_tru/hinh_cu/charts_20seed/summary/21_paired_mask_map_delta.png)
+- [20_delta_tsvm_vs_baseline.png](../99_luu_tru/hinh_cu/charts_20seed/summary/20_delta_tsvm_vs_baseline.png)
 
 Trước khi dùng hình nào trong báo cáo, cần đối chiếu số trên hình với bảng ở trên.

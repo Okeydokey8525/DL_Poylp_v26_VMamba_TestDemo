@@ -37,9 +37,12 @@ Nguồn: [bang/06_ma_tran_nham_lan_tung_seed.csv](bang/06_ma_tran_nham_lan_tung_
 - TP và FN của TSVM có SD nhỏ hơn. Điều này khớp với quan sát về độ ổn định ở [06](06_KET_QUA_20_SEED.md).
 - Tỉ lệ TP/127 ở đây là recall **tại ngưỡng của ma trận nhầm lẫn**, khác với Mask Recall ở bảng metric (Ultralytics chọn tại điểm F1 tốt nhất trên đường cong). Không trộn hai con số này.
 
-## Hình có sẵn
+## Hình cũ (đã chuyển vào lưu trữ)
 
-- [12_confusion_matrix_mean_comparison.png](../04_phan_tich_20seed/figures/12_confusion_matrix_mean_comparison.png)
-- [13_confusion_matrix_mean_ultralytics.png](../04_phan_tich_20seed/figures/13_confusion_matrix_mean_ultralytics.png)
+Bộ hình mới vẽ lại từ CSV nằm ở `06_bao_cao/hinh/`. Các hình cũ dưới đây chỉ giữ để tham khảo.
+
+
+- [12_confusion_matrix_mean_comparison.png](../99_luu_tru/hinh_cu/figures_20seed/12_confusion_matrix_mean_comparison.png)
+- [13_confusion_matrix_mean_ultralytics.png](../99_luu_tru/hinh_cu/figures_20seed/13_confusion_matrix_mean_ultralytics.png)
 
 Đã xem cả hai hình: ô nền/nền để "—" (TN không xác định), đúng với quy ước trên. Hình 12 đặt nhãn thật ở trục dọc, còn hình 13 theo kiểu Ultralytics (nhãn dự đoán ở trục dọc). Hình 12 làm tròn một chữ số thập phân nên ghi TP Baseline là 110,5 và FN TSVM là 16,4, trong khi giá trị chính xác là 110,55 và 16,35.

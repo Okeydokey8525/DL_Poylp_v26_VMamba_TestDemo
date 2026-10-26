@@ -13,12 +13,12 @@
 | "TSVM vượt trội có ý nghĩa thống kê" | p = 0,061 > 0,05 |
 | "Hai mô hình tương đương" | p > 0,05 không chứng minh tương đương |
 | "TSVM bảo toàn topology / hình dạng polyp tốt hơn" | Không có chỉ số topology (Betti, clDice), không có Hausdorff, không có ablation |
-| Dice, IoU theo pixel của YOLO | Chưa tính. AP không quy đổi được sang Dice |
+| Quy đổi AP sang Dice | Không quy đổi được. Dice/IoU theo pixel đã được tính riêng ([10](10_SO_SANH_PRANET_UNET.md)) |
 | Specificity, accuracy theo ảnh, TN = 40 − FP | TN không xác định ([08](08_MA_TRAN_NHAM_LAN.md)) |
 | Hiệu quả lâm sàng, khả năng tổng quát sang bệnh viện khác | Không có tập test ngoài, không tách theo bệnh nhân |
 | "TSVM ổn định hơn ở mọi epoch" | Có 34/100 epoch SD của TSVM lớn hơn ([07](07_HOI_TU_VA_LOSS.md)) |
 | GFLOPs, VRAM, FPS trên GPU | Chưa đo ([09](09_HIEU_NANG_TINH_TOAN.md)) |
-| Số liệu PraNet, U-Net | Chưa có ([10](10_SO_SANH_PRANET_UNET.md)) |
+| "TSVM vượt PraNet" | Dice ngang nhau. TSVM chỉ hơn ở IoU, còn PraNet hơn ở Recall ([10](10_SO_SANH_PRANET_UNET.md)) |
 
 ## Giới hạn của thiết kế thực nghiệm
 
@@ -33,7 +33,7 @@
 
 ## Hướng phát triển (theo thứ tự ưu tiên đề xuất)
 
-1. **Tính Dice/IoU theo pixel** cho Baseline, TSVM, PraNet và U-Net trên cùng tập validation và 20 seed. Đây là việc bắt buộc để so sánh với PraNet và U-Net ([10](10_SO_SANH_PRANET_UNET.md)).
+1. ~~Tính Dice/IoU theo pixel cho 4 mô hình~~: **đã làm ngày 26/10/2026** ([10](10_SO_SANH_PRANET_UNET.md)). Còn có thể làm thêm: huấn luyện PraNet/U-Net cùng cấu hình tăng cường dữ liệu với YOLO, và tối ưu ngưỡng cho từng mô hình.
 2. **Tập test độc lập hoặc đánh giá chéo dataset** (ví dụ CVC-ClinicDB, ETIS-Larib) để kiểm tra khả năng tổng quát.
 3. **Ablation 20 seed** cho 3 chế độ còn lại của TSVMamba.
 4. **Chỉ số hình dạng và biên** (Hausdorff 95, Boundary F1) và **chỉ số topology** (số thành phần liên thông, clDice) để kiểm chứng tên gọi "Topology-Shape".

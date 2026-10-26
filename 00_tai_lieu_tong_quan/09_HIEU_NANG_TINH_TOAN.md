@@ -43,8 +43,11 @@
 - VRAM không đo được vì phiên đo chạy trên CPU. Không ghi là 0.
 - Độ chính xác (20 seed, epoch cực đại mask) và độ trễ (một checkpoint seed 0) là hai đại lượng khác nguồn. Có thể đặt cạnh nhau để bàn về đánh đổi, nhưng không coi là một điểm Pareto đã kiểm định.
 
-## Hình có sẵn
+## Hình cũ (đã chuyển vào lưu trữ)
 
-- [fig01_latency_mean.png](../04_phan_tich_20seed/efficiency_benchmark/figures/fig01_latency_mean.png)
-- [fig07_accuracy_latency_tradeoff.png](../04_phan_tich_20seed/efficiency_benchmark/figures/fig07_accuracy_latency_tradeoff.png)
-- [fig05_parameters_fp32_memory.png](../04_phan_tich_20seed/efficiency_benchmark/figures/fig05_parameters_fp32_memory.png)
+Bộ hình mới vẽ lại từ CSV nằm ở `06_bao_cao/hinh/`. Các hình cũ dưới đây chỉ giữ để tham khảo.
+
+
+- [fig01_latency_mean.png](../99_luu_tru/hinh_cu/efficiency_benchmark_figures/fig01_latency_mean.png)
+- [fig07_accuracy_latency_tradeoff.png](../99_luu_tru/hinh_cu/efficiency_benchmark_figures/fig07_accuracy_latency_tradeoff.png)
+- [fig05_parameters_fp32_memory.png](../99_luu_tru/hinh_cu/efficiency_benchmark_figures/fig05_parameters_fp32_memory.png)
