@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "detected": true,
+  "label": "polyp",
+  "confidence": 0.883303165435791,
+  "processingTimeMs": 223.489,
+  "maskCount": 1,
+  "modelType": "YOLO26s-seg",
+  "originalFileName": "cju0s690hkp960855tjuaqvv0.jpg",
+  "message": "Inference completed"
+}

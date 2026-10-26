@@ -1,0 +1,185 @@
+
+======== 1. Dữ liệu BG20 ========
+split                             train      val
+images                             1040      160
+labels                             1040      160
+background_images                   160       40
+polyp_images                        880      120
+empty_labels                        160       40
+empty_labels_not_bg                   0        0
+polyp_instances                     936      127
+images_with_multiple_instances       41        7
+image_label_stem_match             True     True
+polygon_points_min                   10       14
+polygon_points_median              22.0     26.0
+polygon_points_max                   80       79
+distinct_image_sizes                305       58
+most_common_size                720x576  720x576
+most_common_size_count              160       57
+Ảnh trùng byte giữa train và val: 0
+  OK  train.txt (880) == ảnh polyp train
+  OK  val.txt (120) == ảnh polyp val
+  OK  train.txt giao val.txt rỗng
+  OK  danh sách nền train (160) == ảnh bg train
+  OK  danh sách nền val (40) == ảnh bg val
+  OK  nền train giao nền val rỗng
+
+======== 2. 40 lượt huấn luyện ========
+seed trong args.yaml == seed trong tên thư mục: True
+Số epoch ghi trong results.csv: [np.int64(100)] | đủ best.pt: True
+      tham_so                       Baseline                                            TSVM_FP32  giong_nhau
+        model                 yolo26s-seg.pt /kaggle/working/yolo26s-seg-TopologyShapeVMamba.yaml       False
+   pretrained                           True                                       yolo26s-seg.pt       False
+         data /kaggle/working/data_bg20.yaml                       /kaggle/working/data_bg20.yaml        True
+       epochs                            100                                                  100        True
+        imgsz                            640                                                  640        True
+        batch                              8                                                    8        True
+       device                              0                                                    0        True
+      workers                              2                                                    2        True
+    optimizer                          AdamW                                                AdamW        True
+          lr0                          0.001                                                0.001        True
+          lrf                           0.01                                                 0.01        True
+     momentum                          0.937                                                0.937        True
+ weight_decay                         0.0005                                               0.0005        True
+warmup_epochs                            5.0                                                  5.0        True
+       cos_lr                          False                                                False        True
+ close_mosaic                             10                                                   10        True
+          amp                          False                                                False        True
+deterministic                           True                                                 True        True
+     patience                            100                                                  100        True
+       mosaic                            1.0                                                  1.0        True
+        mixup                            0.0                                                  0.0        True
+       fliplr                            0.5                                                  0.5        True
+       flipud                            0.0                                                  0.0        True
+      degrees                            0.0                                                  0.0        True
+        scale                            0.5                                                  0.5        True
+    translate                            0.1                                                  0.1        True
+        hsv_h                          0.015                                                0.015        True
+        hsv_s                            0.7                                                  0.7        True
+        hsv_v                            0.4                                                  0.4        True
+ overlap_mask                           True                                                 True        True
+   mask_ratio                              4                                                    4        True
+          iou                            0.7                                                  0.7        True
+         conf                           None                                                 None        True
+      max_det                            300                                                  300        True
+         rect                          False                                                False        True
+        cache                          False                                                False        True
+        metric better  baseline_mean  baseline_sd  baseline_min  baseline_max  tsvm_mean  tsvm_sd  tsvm_min  tsvm_max     delta  ci95_low  ci95_high  paired_t_p  wilcoxon_p  cohen_dz  tsvm_better_seeds  sign_test_p
+ mask_map50_95 higher       0.718868     0.011768      0.694110      0.736630   0.723171 0.007197  0.706500  0.733850  0.004303 -0.000228   0.008834    0.061431    0.069580  0.444500          13.000000     0.263176
+    mask_map50 higher       0.906888     0.012468      0.881080      0.931880   0.908273 0.008569  0.890270  0.924960  0.001385 -0.005259   0.008029    0.667528    0.812355  0.097562          10.000000     1.000000
+mask_precision higher       0.904095     0.028748      0.853280      0.953520   0.914451 0.023323  0.859490  0.954170  0.010356 -0.008567   0.029280    0.266225    0.498009  0.256142          11.000000     0.823803
+   mask_recall higher       0.859366     0.024112      0.818900      0.913390   0.858979 0.017934  0.826770  0.890930 -0.000387 -0.012637   0.011862    0.947902    0.925634 -0.014805           9.000000     0.823803
+  box_map50_95 higher       0.722758     0.015941      0.690530      0.752260   0.727274 0.013429  0.693930  0.744070  0.004516 -0.003063   0.012095    0.227473    0.105398  0.278886          13.000000     0.263176
+     box_map50 higher       0.900609     0.011598      0.876050      0.918910   0.901444 0.008346  0.884580  0.917420  0.000835 -0.005266   0.006936    0.777627    1.000000  0.064054          11.000000     0.823803
+ box_precision higher       0.900635     0.026285      0.849230      0.953520   0.906741 0.023754  0.859490  0.943680  0.006106 -0.010159   0.022370    0.441746    0.474905  0.175683          11.000000     0.823803
+    box_recall higher       0.850120     0.029275      0.771650      0.901610   0.852220 0.014507  0.826770  0.877850  0.002100 -0.012779   0.016979    0.770891    0.956329  0.066054          10.000000     1.000000
+  val_seg_loss  lower       1.266294     0.084303      1.134930      1.450070   1.232862 0.041025  1.138570  1.302030 -0.033432 -0.080700   0.013835    0.155157    0.176853 -0.331029          14.000000     0.115318
+  val_box_loss  lower       0.730292     0.035467      0.665450      0.800780   0.724728 0.038944  0.675090  0.800290 -0.005564 -0.028253   0.017125    0.613671    0.388376 -0.114773          14.000000     0.115318
+  val_cls_loss  lower       0.586163     0.058730      0.495820      0.670320   0.608810 0.065538  0.533010  0.830940  0.022646 -0.013815   0.059107    0.209157    0.348810  0.290685           7.000000     0.263176
+   val_l1_loss  lower       0.016366     0.000994      0.014730      0.018540   0.016153 0.000920  0.014930  0.018400 -0.000214 -0.000810   0.000382    0.461457    0.474905 -0.168079          12.000000     0.503445
+  val_sem_loss  lower       0.000000     0.000000      0.000000      0.000000   0.000000 0.000000  0.000000  0.000000  0.000000       NaN        NaN         NaN         NaN       NaN                NaN          NaN
+Số lượt epoch cực đại mask khác epoch fitness (best.pt): 16 {'Baseline': 8, 'TSVM_FP32': 8}
+Thời gian huấn luyện (giờ) mean theo model: {'Baseline': 2.316, 'TSVM_FP32': 4.677}
+  Baseline: mask AP tại epoch fitness mean=0.717397, tại epoch 100 mean=0.709340, epoch cực đại mask: min=61 median=88.0 max=100
+  TSVM_FP32: mask AP tại epoch fitness mean=0.722199, tại epoch 100 mean=0.711855, epoch cực đại mask: min=47 median=92.0 max=100
+Power với d_z=0.445: n=20 -> 0.471; số cặp cần cho power 80%: 42 (0.803)
+                                     quy_tac  baseline_mean  baseline_sd  tsvm_mean  tsvm_sd    delta  paired_t_p  wilcoxon_p  tsvm_better_seeds
+epoch cực đại mask mAP50-95 (endpoint chính)       0.718868     0.011768   0.723171 0.007197 0.004303    0.061431    0.069580                 13
+  epoch fitness box+mask (epoch của best.pt)       0.717397     0.012877   0.722199 0.007527 0.004802    0.061898    0.075851                 14
+                 epoch 100 (cuối huấn luyện)       0.709340     0.013226   0.711855 0.012953 0.002514    0.456256    0.348810                 12
+    model  epoch  mask_map_mean  mask_map_sd  val_seg_mean  val_seg_sd  train_seg_mean  train_sem_mean  val_sem_absmax
+ Baseline      1         0.2001       0.1124        5.7467      3.7770          1.8654          2.5672               0
+ Baseline      5         0.5320       0.0427        1.6322      0.1406          1.5511          1.7846               0
+ Baseline     10         0.5687       0.0355        1.5705      0.1136          1.4466          1.5632               0
+ Baseline     20         0.6086       0.0293        1.4446      0.0951          1.3163          1.3205               0
+ Baseline     30         0.6349       0.0183        1.3603      0.0685          1.2383          1.1589               0
+ Baseline     50         0.6716       0.0208        1.2668      0.0757          1.0953          0.9107               0
+ Baseline     70         0.6890       0.0125        1.2767      0.0663          0.9855          0.7026               0
+ Baseline     90         0.7035       0.0152        1.2665      0.0808          0.8969          0.5594               0
+ Baseline    100         0.7093       0.0132        1.2893      0.0907          0.6905          0.2543               0
+TSVM_FP32      1         0.1861       0.0953        7.0170      6.8087          1.8611          2.5475               0
+TSVM_FP32      5         0.5076       0.0485        1.7330      0.2875          1.5523          1.7706               0
+TSVM_FP32     10         0.5606       0.0347        1.5345      0.0950          1.4373          1.5508               0
+TSVM_FP32     20         0.6186       0.0178        1.4025      0.0807          1.3107          1.3037               0
+TSVM_FP32     30         0.6320       0.0287        1.3827      0.0889          1.2345          1.1547               0
+TSVM_FP32     50         0.6709       0.0091        1.2788      0.0738          1.0937          0.9005               0
+TSVM_FP32     70         0.6931       0.0120        1.2658      0.0609          0.9889          0.7020               0
+TSVM_FP32     90         0.7084       0.0102        1.2236      0.0386          0.8958          0.5533               0
+TSVM_FP32    100         0.7119       0.0130        1.2482      0.0424          0.6915          0.2556               0
+Epoch (>=50) có mean mask mAP của TSVM <= Baseline: [50, 52, 53, 55, 57, 62, 65, 66, 67, 72, 81]
+Số epoch SD mask mAP của TSVM > Baseline: 34 / 100
+  Baseline: val seg loss trung bình nhỏ nhất tại epoch 59 = 1.2294; epoch 100 = 1.2893
+  TSVM_FP32: val seg loss trung bình nhỏ nhất tại epoch 90 = 1.2236; epoch 100 = 1.2482
+
+======== 3. Đối chiếu với KQ_Nen_DX_20seed_FP32 ========
+Ghép 40/40 dòng; số ô lệch so với raw CSV của gói: 0
+Sai số lớn nhất so với 06_reports/summary.csv: 0.00e+00
+
+======== 3b. TSVM cũ (checkpoint FP16) so với TSVM FP32, seed 0-19 ========
+Ô giống nhau: 44000; ô khác: 2000; cột khác: ['time']
+
+======== 4. Ma trận nhầm lẫn (TP/FP/FN đối tượng) ========
+TP+FN == 127 ở mọi dòng: True | số dòng: 40
+               TP                     FP                   FN              
+             mean   std  min  max   mean   std min max   mean   std min max
+model                                                                      
+Baseline   110.55  2.95  104  116  16.45  3.43  10  22  16.45  2.95  11  23
+TSVM_FP32  110.65  1.87  108  114  15.75  3.02  12  24  16.35  1.87  13  19
+  TP: Δ mean=+0.10, Wilcoxon p=1.0000
+  FP: Δ mean=-0.70, Wilcoxon p=0.6711
+  FN: Δ mean=-0.10, Wilcoxon p=1.0000
+
+======== 5. Checkpoint best.pt và dựng lại kiến trúc ========
+ultralytics nạp từ: C:\Users\leduc\AppData\Local\Temp\tsvm_fork_2cjjtg_s\ultralytics\__init__.py 8.4.127
+                    dtypes  finite      params    MiB    version
+model                                                           
+Baseline   [torch.float16]    True  [11434463]  22.27  [8.4.127]
+TSVM_FP32  [torch.float32]    True  [12254688]  47.37  [8.4.127]
+Giá trị epoch lưu trong best.pt: [np.int64(-1)]
+Overriding model.yaml nc=80 with nc=1
+Overriding model.yaml nc=80 with nc=1
+Overriding model.yaml nc=80 with nc=1
+model                            Baseline                            TSVM_FP32
+params                           11434463                             12254688
+layer10                             C2PSA                           C2TSVMamba
+layer10_params                     990976                              1811201
+out_layer0                     32x320x320                           32x320x320
+out_layer1                     64x160x160                           64x160x160
+out_layer2                    128x160x160                          128x160x160
+out_layer3                      128x80x80                            128x80x80
+out_layer4                      256x80x80                            256x80x80
+out_layer5                      256x40x40                            256x40x40
+out_layer6                      256x40x40                            256x40x40
+out_layer7                      512x20x20                            512x20x20
+out_layer8                      512x20x20                            512x20x20
+out_layer9                      512x20x20                            512x20x20
+out_layer10                     512x20x20                            512x20x20
+out_layer11                     512x40x40                            512x40x40
+out_layer12                     768x40x40                            768x40x40
+out_layer13                     256x40x40                            256x40x40
+out_layer14                     256x80x80                            256x80x80
+out_layer15                     512x80x80                            512x80x80
+out_layer16                     128x80x80                            128x80x80
+out_layer17                     128x40x40                            128x40x40
+out_layer18                     384x40x40                            384x40x40
+out_layer19                     256x40x40                            256x40x40
+out_layer20                     256x20x20                            256x20x20
+out_layer21                     768x20x20                            768x20x20
+out_layer22                     512x20x20                            512x20x20
+hidden_c                              256                                  256
+n_blocks                                1                                    1
+mode                                  NaN                topology_shape_vmamba
+gamma_init                            NaN                                0.001
+p_vmamba                              NaN                             281856.0
+p_shape_branch                        NaN                             141312.0
+p_directional_extractor               NaN                             400640.0
+p_gate                                NaN                              65792.0
+p_fuse                                NaN                             131584.0
+p_ffn                                 NaN                             263680.0
+p_cv1_cv2                             NaN                             526336.0
+ss2d_d_inner                          NaN                                256.0
+ss2d_d_state                          NaN                                 16.0
+ss2d_dt_rank                          NaN                                 16.0
+l10_param_tensors_pretrained          NaN                                12/58
+l10_params_pretrained                 NaN                             790016.0
+l10_pretrained_groups                 NaN  cv1.bn|cv1.conv|cv2.bn|cv2.conv|m.0

@@ -1,0 +1,13 @@
+{
+  "protected_files_checked": 4292,
+  "protected_files_changed": [],
+  "source_snapshot_files_checked": 176,
+  "source_snapshot_mismatches": [],
+  "word_sha256": "153294098c6d47b7d2aa01abc463c2006113b00f298e624134f89eb00713260f",
+  "word_alias_equal": true,
+  "word_changed_zip_members": [
+    "word/document.xml"
+  ],
+  "verified_render_pages": 97,
+  "page_2_same_as_first_render": true
+}

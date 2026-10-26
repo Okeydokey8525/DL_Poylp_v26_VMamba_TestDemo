@@ -1,0 +1,33 @@
+{
+  "items": [
+    {
+      "comparisonGroupId": "d99af7d8-1fdc-4863-86e8-6d29a1d86187",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "createdAt": "2026-10-26T07:35:51.168",
+      "originalImageUrl": "/api/v1/diagnoses/6adea067fef987272474f474/images/original",
+      "baseline": {
+        "id": "6adea067fef987272474f474",
+        "detected": true,
+        "confidence": 0.883303165435791,
+        "maskCount": 1,
+        "processingTimeMs": 228.052,
+        "resultImageUrl": "/api/v1/diagnoses/6adea067fef987272474f474/images/result"
+      },
+      "vmamba": {
+        "id": "6adea067fef987272474f475",
+        "detected": true,
+        "confidence": 0.5838399529457092,
+        "maskCount": 2,
+        "processingTimeMs": 577.219,
+        "resultImageUrl": "/api/v1/diagnoses/6adea067fef987272474f475/images/result"
+      },
+      "totalProcessingTimeMs": 805.2710000000001
+    }
+  ],
+  "page": 0,
+  "size": 10,
+  "totalItems": 1,
+  "totalPages": 1,
+  "hasNext": false,
+  "hasPrevious": false
+}

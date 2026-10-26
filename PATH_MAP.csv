@@ -1,0 +1,85 @@
+﻿cu,moi,so_file,bytes,trang_thai
+TaiLieu_TongQuan_Base_TSVM_FP32,00_tai_lieu_tong_quan,27,144933,OK
+archive/Ket_Qua_V2/Kvasir_YOLO_SEG_BG20,01_du_lieu/Kvasir_YOLO_SEG_BG20,2405,106469311,OK
+archive/train.txt,01_du_lieu/train.txt,1,22880,OK
+archive/val.txt,01_du_lieu/val.txt,1,3120,OK
+archive/data_bg20.yaml,01_du_lieu/data_bg20.yaml,1,450,OK
+archive/Ket_Qua_V2/Data Prosessing,01_du_lieu/tao_BG20,5003,340937064,OK
+archive/Kvasir_YOLO_SEG_BG20.rar,01_du_lieu/Kvasir_YOLO_SEG_BG20.rar,1,103008391,OK
+archive/ultralytics_Topology-Shape-aware_VMamba_FP32,02_ma_nguon/ultralytics_TSVM_FP32,366,4158657,OK
+archive/ultralytics_Topology-Shape-aware_VMamba_FP32.rar,02_ma_nguon/ultralytics_TSVM_FP32.rar,1,1332926,OK
+archive/Cell Kaggle,02_ma_nguon/notebook_kaggle,2,9584,OK
+archive/Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM_FP32,03_ket_qua_huan_luyen/TSVM_FP32,560,2116481816,OK
+archive/Ket_Qua_V2/KQ_Nen_DX_20seed_FP32,04_phan_tich_20seed,104,9572542,OK
+archive/Ket_Qua_V2/KQ_Model_Khac/PraNet,05_so_sanh_mo_hinh_khac/PraNet,20,1978776860,OK
+archive/Ket_Qua_V2/KQ_Model_Khac/Unet,05_so_sanh_mo_hinh_khac/UNet,20,622332100,OK
+archive/Bao_cao/md viet bao cao,06_bao_cao/luu_tru_cu/md_viet_bao_cao,11,183212,OK
+archive/Bao_cao/backup,06_bao_cao/luu_tru_cu/backup,2,8902970,OK
+archive/Bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong_Cu.docx,06_bao_cao/luu_tru_cu/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong_Cu.docx,1,380994,OK
+output/KhoaLuanMau.pdf,06_bao_cao/mau/KhoaLuanMau.pdf,1,30477898,OK
+archive/audit_20261025_193105,07_kiem_toan_va_sua/audit_20261025_193105,4464,559973879,OK
+archive/fix_20261026,07_kiem_toan_va_sua/fix_20261026,4048,736811314,OK
+archive/audit_runs_data.json,07_kiem_toan_va_sua/audit_runs_data.json,1,252105,OK
+archive/Ket_Qua_V2/KetQua_Nen/Kvasir_BG20_YOLO26s_seg_TSVM,99_luu_tru/ket_qua_cu/TSVM_cu_checkpoint_FP16_seed0-20,588,1186770485,OK
+archive/Ket_Qua_V2/KQ_Model_Khac/Kvasir_BG20_YOLO26s_seg_AV_FP32,99_luu_tru/thu_nghiem_ket_hop/AV_FP32,532,1928591768,OK
+archive/Ket_Qua_V2/KQ_Model_Khac/Kvasir_BG20_YOLO26s_seg_AVF_FP32,99_luu_tru/thu_nghiem_ket_hop/AVF_FP32,532,1955093804,OK
+archive/Ket_Qua_V2/KQ_Model_Khac/Kvasir_BG20_YOLO26s_seg_ITSVM_FP32,99_luu_tru/thu_nghiem_ket_hop/ITSVM_FP32,560,2113079766,OK
+archive/Ket_Qua_V2/KQ_Nen_DX_10seed,99_luu_tru/ket_qua_cu/KQ_Nen_DX_10seed,79,8104008,OK
+archive/Ket_Qua_V2/efficiency_benchmark,99_luu_tru/ket_qua_cu/efficiency_benchmark_TSVM_cu,20,1615492,OK
+archive/ultralytics_Topology-Shape-aware VMamba,99_luu_tru/ma_nguon_cu/ultralytics_TSVM_cu_FP16,491,6753137,OK
+archive/ultralytics,99_luu_tru/ma_nguon_cu/ultralytics_8.4.127_goc,495,6854325,OK
+archive/Kvasir_YOLO_SEG.rar,99_luu_tru/du_lieu_cu/Kvasir_YOLO_SEG.rar,1,74836412,OK
+archive/doc,99_luu_tru/tai_lieu_cu/archive_doc,53,14324108,OK
+README.md,99_luu_tru/tai_lieu_cu/README_goc_cu.md,1,5906,OK
+CURRENT_PROJECT_STATUS.md,99_luu_tru/tai_lieu_cu/CURRENT_PROJECT_STATUS_goc_cu.md,1,3346,OK
+BAO_CAO_DAC_TA_HUONG_NGHIEN_CUU.md,99_luu_tru/tai_lieu_cu/BAO_CAO_DAC_TA_HUONG_NGHIEN_CUU.md,1,5479,OK
+archive/Stracth,99_luu_tru/nhap/Stracth,142,14425909,OK
+archive/.codex_report_work_20261015,99_luu_tru/nhap/.codex_report_work_20261015,26138,2489872540,OK
+archive/.codex_revision_20261016,99_luu_tru/nhap/.codex_revision_20261016,690,186276087,OK
+archive/__pycache__,99_luu_tru/nhap/archive__pycache__,1,47728,OK
+archive/kvasir-yolo26s-seg-topology-shape-awar (1).log,99_luu_tru/log_kaggle_cu/kvasir-yolo26s-seg-topology-shape-awar (1).log,1,2490367,OK
+archive/kvasir-yolo26s-seg-topology-shape-awar (2).log,99_luu_tru/log_kaggle_cu/kvasir-yolo26s-seg-topology-shape-awar (2).log,1,2490367,OK
+archive/kvasir-yolo26s-seg-topology-shape-awar (3).log,99_luu_tru/log_kaggle_cu/kvasir-yolo26s-seg-topology-shape-awar (3).log,1,2498789,OK
+archive/seed0_log.txt,99_luu_tru/log_kaggle_cu/seed0_log.txt,1,2497377,OK
+data_prep,99_luu_tru/pipeline_semantic/data_prep,1,14324,OK
+datasets,99_luu_tru/pipeline_semantic/datasets,3057,250385951,OK
+tests,99_luu_tru/pipeline_semantic/tests,4,19479,OK
+analyze_runs.py,99_luu_tru/pipeline_semantic/analyze_runs.py,1,13154,OK
+analyze_runs_p1.py,99_luu_tru/pipeline_semantic/analyze_runs_p1.py,1,4291,OK
+smoke_test.py,99_luu_tru/pipeline_semantic/smoke_test.py,1,1000,OK
+implementation_plan.md,99_luu_tru/pipeline_semantic/implementation_plan.md,1,2097,OK
+task.md,99_luu_tru/pipeline_semantic/task.md,1,1843,OK
+walkthrough.md,99_luu_tru/pipeline_semantic/walkthrough.md,1,3796,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s0_w2,28,53171824,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s1_w2,28,53247274,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s2_w2,28,52579004,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s3_w2,28,53182265,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s4_w2,28,53211161,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s5_w2,28,53186238,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s6_w2,28,53075595,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s7_w2,28,53242188,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s8_w2,28,53171630,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s9_w2,28,53221167,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s10_w2,28,53156385,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s11_w2,28,53179923,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s12_w2,28,53151663,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s13_w2,28,53149257,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s14_w2,28,53161279,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2,28,53216667,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s16_w2,28,53295649,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s17_w2,28,53197892,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s18_w2,28,53381982,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2,03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s19_w2,28,53158601,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s20_w2,99_luu_tru/ket_qua_cu/Baseline_seed20-22/Kvasir_BG20_Baseline_YOLO26s_seg_s20_w2,28,53257168,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s21_w2,99_luu_tru/ket_qua_cu/Baseline_seed20-22/Kvasir_BG20_Baseline_YOLO26s_seg_s21_w2,28,53071436,OK
+archive/Ket_Qua_V2/KetQua_Nen/YOLOv26s-seg/Kvasir_BG20_Baseline_YOLO26s_seg_s22_w2,99_luu_tru/ket_qua_cu/Baseline_seed20-22/Kvasir_BG20_Baseline_YOLO26s_seg_s22_w2,28,53242543,OK
+archive/Bao_cao/Bieu mau do an_khoa luan. K.CNTT_HUIT_2025_V3.docx,06_bao_cao/Bieu mau do an_khoa luan. K.CNTT_HUIT_2025_V3.docx,1,446652,OK
+archive/Bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong.docx,06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong.docx,1,11490221,OK
+archive/Bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong_MoRong_FP32.docx,06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong_MoRong_FP32.docx,1,11490221,OK
+archive/Bao_cao/CNTT_KLCN182_LeDucLuong (2).docx,06_bao_cao/CNTT_KLCN182_LeDucLuong (2).docx,1,3528583,OK
+archive/Bao_cao/CNTT_KLCN182_LeDucLuong (2).pdf,06_bao_cao/CNTT_KLCN182_LeDucLuong (2).pdf,1,1525218,OK
+archive/Bao_cao/CNTT_KLCN182_LeDucLuong_13-10.docx,06_bao_cao/CNTT_KLCN182_LeDucLuong_13-10.docx,1,3528583,OK
+archive/Bao_cao/CNTT_KLCN182_LeDucLuong_13-10.pdf,06_bao_cao/CNTT_KLCN182_LeDucLuong_13-10.pdf,1,1525218,OK
+archive/Bao_cao/LUA_CHON_VA_BO_SUNG_TAI_LIEU_THAM_KHAO.md,06_bao_cao/LUA_CHON_VA_BO_SUNG_TAI_LIEU_THAM_KHAO.md,1,13193,OK
+archive/Bao_cao/RA_SOAT_BAN_THAO_MD_2026_10_12.md,06_bao_cao/RA_SOAT_BAN_THAO_MD_2026_10_12.md,1,25431,OK
+archive/Bao_cao/Tien_Xu_Ly_Du_Lieu.docx,06_bao_cao/Tien_Xu_Ly_Du_Lieu.docx,1,4705739,OK

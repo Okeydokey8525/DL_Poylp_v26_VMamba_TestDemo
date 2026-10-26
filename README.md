@@ -1,166 +1,41 @@
-# DL_Poylp_v26_VMamba_TestDemo
+# Khóa luận: Tích hợp VMamba vào YOLO26-seg để phân đoạn polyp
 
-> Khóa luận: Nghiên cứu phương pháp tích hợp VMamba vào YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng.  
-> Snapshot GitHub main được kiểm tra: 28/09/2026.
+**Đề tài:** Nghiên cứu phương pháp tích hợp VMamba vào YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng.
+**Trọng tâm hiện tại (26/10/2026):** so sánh YOLO26s-seg (Baseline) với YOLO26s-seg + C2TSVMamba (TSVM FP32), mỗi mô hình 20 seed, trên dữ liệu BG20.
 
-> [!IMPORTANT]
-> Repository chứa nhiều thế hệ thí nghiệm trong archive/. Không phải mọi kiến trúc, dataset và kết quả trong archive đều là trạng thái hiện tại.
->
-> Thứ tự ưu tiên: CURRENT_PROJECT_STATUS.md → raw CSV/artifact/config/source → tài liệu lịch sử.
->
-> Code mới chỉ tồn tại ở local/Kaggle nhưng chưa push lên GitHub phải được ghi là NOT VERIFIED IN REPOSITORY.
+## Bắt đầu đọc từ đây
 
-## 1. Trạng thái đã xác minh
+→ **[00_tai_lieu_tong_quan/00_README.md](00_tai_lieu_tong_quan/00_README.md)**: tóm tắt một trang và mục lục 13 chương. Mọi con số trong đó được tính lại từ dữ liệu gốc.
 
-### Dataset chính thức BG20
+## Kết quả chính
 
-Kvasir_YOLO_SEG_BG20:
+| | Baseline | TSVM FP32 |
+|---|---:|---:|
+| Mask mAP50–95 (20 seed) | 0,7189 ± 0,0118 | 0,7232 ± 0,0072 |
+| Δ, p | | +0,0043, paired t p = 0,061 (chưa có ý nghĩa thống kê ở α = 0,05) |
+| Tham số | 11,43 M | 12,25 M |
+| Độ trễ CPU (forward) | 270 ms | 577 ms |
 
-- 1.200 ảnh tổng.
-- Train: 1.040 = 880 polyp + 160 background.
-- Validation: 160 = 120 polyp + 40 background.
-- 120 ảnh polyp validation chứa 127 ground-truth instances.
-- 40 ảnh background dùng normal-cecum với label rỗng.
+## Cây thư mục
 
-Metadata và artifact chính nằm dưới archive/Ket_Qua_V2/.
+| Thư mục | Nội dung |
+|---|---|
+| [00_tai_lieu_tong_quan/](00_tai_lieu_tong_quan/00_README.md) | Bộ tài liệu tổng quan, script tính lại số liệu, bảng kết quả |
+| `01_du_lieu/` | Dữ liệu BG20 (1.200 ảnh), split 880/120, script tạo dữ liệu |
+| `02_ma_nguon/` | Fork Ultralytics 8.4.127 + TSVM + bản vá FP32, notebook Kaggle |
+| `03_ket_qua_huan_luyen/` | 40 lượt huấn luyện chính: Baseline và TSVM FP32, seed 0–19 |
+| `04_phan_tich_20seed/` | Gói phân tích 20 seed: CSV, thống kê, hình, benchmark hiệu năng |
+| `05_so_sanh_mo_hinh_khac/` | PraNet, U-Net (để so sánh, hiện mới có checkpoint) |
+| `06_bao_cao/` | Báo cáo Word/PDF khóa luận và biểu mẫu |
+| `07_kiem_toan_va_sua/` | Kiểm toán ngày 25/10 và sửa lỗi ngày 26/10 |
+| `99_luu_tru/` | Lịch sử và thử nghiệm không thuộc bộ chính (TSVM cũ, AV/AVF/ITSVM, 10 seed, tài liệu cũ…) |
 
-### Bộ 10 seed
+Chi tiết từng thư mục: [00_tai_lieu_tong_quan/13_BAN_DO_THU_MUC.md](00_tai_lieu_tong_quan/13_BAN_DO_THU_MUC.md).
 
-archive/Ket_Qua_V2/KQ_Nen_DX_10seed/ chứa bộ phân tích 10 seed cho:
+## Sắp xếp lại ngày 26/10/2026
 
-1. Baseline YOLO26s-seg
-2. TSVM
-3. P5 Attention-VMamba
-4. ITSMamba
+Repo trước đây để mọi thứ trong `archive/`. Ngày 26/10/2026 toàn bộ được chuyển sang cây trên, chỉ di chuyển và đổi tên, không xóa hay sửa nội dung. Muốn tra một đường dẫn cũ (ví dụ trong script hoặc tài liệu cũ) đã chuyển đi đâu, xem [PATH_MAP.md](PATH_MAP.md).
 
-IAVM chưa đủ 10 seed trong repository và không được trộn vào bộ 10-seed đầy đủ.
+## Lưu ý
 
-Nguồn raw ưu tiên:
-
-- 01_raw_analysis/raw_10seeds_extracted_metrics.csv
-- 01_raw_analysis/raw_10seeds_confusion_matrices.csv
-- 02_statistics/mean_std/full_comparison_mean_std.csv
-- 02_statistics/min_max/metrics_min_max_range.csv
-
-Mask mAP@50-95, Mean ± Sample Std:
-
-| Model | Value |
-|---|---:|
-| Baseline | 0.7210 ± 0.0129 |
-| TSVM | 0.7246 ± 0.0078 |
-
-Paired t-test: p = 0.3839. Không gọi khác biệt này là có ý nghĩa thống kê ở alpha = 0.05.
-
-## 2. Kiến trúc TSVM hiện có trên GitHub
-
-Source:
-archive/ultralytics_Topology-Shape-aware VMamba/
-
-Config:
-archive/ultralytics_Topology-Shape-aware VMamba/cfg/models/26/yolo26-seg-TopologyShapeVMamba.yaml
-
-Module:
-archive/ultralytics_Topology-Shape-aware VMamba/nn/modules/topology_shape_vmamba.py
-
-Đã xác minh:
-
-- C2TSVMamba tại Layer 10.
-- Layer 10 thuộc P5; với input 640x640, feature map là 20x20.
-- Source có SS2D, ShapeAwareBranch, DirectionalShapeExtractor, TopologyShapeGate và TSVMamba.
-- Segmentation head sử dụng feature P3/P4/P5.
-
-## 3. P3 VMamba mới — chưa đồng bộ
-
-Workspace/Kaggle có thể đang theo dõi hướng mới với C3k2VSS và yolo26-vmamba-p3-seg.yaml.
-
-Tuy nhiên tree GitHub main ngày 28/09/2026 không có các file/source này.
-
-Vì vậy hiện tại phải ghi:
-
-**P3/C3k2VSS = NOT VERIFIED IN REPOSITORY.**
-
-Không được cập nhật tài liệu thành “code hiện có” cho tới khi source/config được push lên GitHub.
-
-## 4. Cấu trúc repository thực tế
-
-DL_Poylp_v26_VMamba_TestDemo/
-- README.md
-- CURRENT_PROJECT_STATUS.md
-- BAO_CAO_DAC_TA_HUONG_NGHIEN_CUU.md
-- analyze_runs.py
-- analyze_runs_p1.py
-- implementation_plan.md
-- task.md
-- walkthrough.md
-- data_prep/
-- datasets/
-- tests/
-- archive/
-  - Ket_Qua_V1/
-  - Ket_Qua_V2/
-  - Kvasir-SEG/
-  - Cac_Dataset/
-  - Stracth/
-  - doc/
-  - ultralytics_Topology-Shape-aware VMamba/
-
-Các tên cũ như archive/Ket_Qua/, archive/KQ_Poylp/ và archive/Kvasir_YOLO_SEG/ không phải cấu trúc hiện tại của GitHub main.
-
-## 5. Knowledge Base
-
-Hai quy tắc bắt buộc:
-
-- archive/doc/AI_WORK_OPTIMIZATION_RULE.md
-- archive/doc/nguyen-tac-lam-viec-dai.md
-
-Tài liệu trạng thái:
-
-- CURRENT_PROJECT_STATUS.md
-- archive/doc/CURRENT_PROJECT_STATUS.md
-
-Knowledge Base:
-
-- archive/doc/README.md
-- archive/doc/LICHSU_CAP_NHAT.md
-- các hồ sơ kỹ thuật 00 đến 17 trong archive/doc/
-
-AI nên đọc theo thứ tự:
-1. AI_WORK_OPTIMIZATION_RULE.md
-2. nguyen-tac-lam-viec-dai.md
-3. CURRENT_PROJECT_STATUS.md
-4. README.md
-5. Chỉ đọc hồ sơ lịch sử liên quan task.
-
-## 6. Pipeline semantic phụ trợ
-
-Các file:
-
-- data_prep/prepare_kvasir_semantic.py
-- datasets/kvasir_semantic_dataset.py
-- tests/unit/
-- tests/integration/
-
-được giữ cho pipeline chuẩn bị Kvasir-SEG semantic segmentation phục vụ nghiên cứu như U-Net/PraNet.
-
-implementation_plan.md, task.md và walkthrough.md mô tả pipeline phụ trợ này; không được hiểu nhầm là pipeline huấn luyện chính BG20 YOLO26s.
-
-## 7. Quy tắc tài liệu và số liệu
-
-- Không sửa raw CSV để làm khớp báo cáo.
-- Không tự tạo số liệu.
-- Không gọi một kiến trúc là current nếu chưa có source/config/artifact xác minh.
-- Không gọi topology-aware đầy đủ chỉ dựa trên tên module.
-- Khi có xung đột, raw data và source thực tế được ưu tiên.
-- Tài liệu cũ được giữ để truy vết, nhưng phải phân biệt rõ Historical với Current/Verified.
-
-## 8. Luồng đồng bộ chuẩn
-
-Local/Kaggle code
-→ verify
-→ push source/config/artifact cần thiết
-→ update CURRENT_PROJECT_STATUS.md
-→ update README và tài liệu kỹ thuật liên quan.
-
-## 9. Disclaimer
-
-Dự án phục vụ học tập, nghiên cứu khoa học và khóa luận. Kết quả phân đoạn không thay thế chẩn đoán hoặc quyết định điều trị y khoa.
+Dự án phục vụ học tập và nghiên cứu. Kết quả phân đoạn không thay thế chẩn đoán y khoa.

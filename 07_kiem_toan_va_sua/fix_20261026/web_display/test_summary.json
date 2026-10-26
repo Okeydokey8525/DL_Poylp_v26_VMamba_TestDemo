@@ -1,0 +1,43 @@
+{
+  "suites": [
+    {
+      "class": "com.polyp.polypweb.SecurityIntegrationTests",
+      "tests": 48,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.polyp.polypweb.service.DiagnosisAnalysisServiceTests",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.polyp.polypweb.service.ImageMetadataRegressionTests",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.polyp.polypweb.service.ModelComparisonServiceTests",
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.polyp.polypweb.service.OwnershipServiceTests",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "tests": 88,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0
+}

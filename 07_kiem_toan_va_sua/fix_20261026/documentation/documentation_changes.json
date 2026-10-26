@@ -1,0 +1,245 @@
+[
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\historical\\snapshots_20261026\\README_SNAPSHOT.md",
+    "before_sha256": null,
+    "after_sha256": "9a71bec5546eea223635a784b84fafa140ba7a38e37f2de713bb70fe98adf33c"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\README.md",
+    "before_sha256": "1f1ecc0c46e1b61509d1ca3a9604c51e8350302f1add8614b116639c3dfe94c3",
+    "after_sha256": "eaed1b3fa56e83ee40879d86180d9f88a93ab51cbeac3caa06715f2e74bd315f"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\CURRENT_PROJECT_STATUS.md",
+    "before_sha256": "d0e4c5641dd3683cba976b085a1bba601e44deb992c6e82a1533146820374add",
+    "after_sha256": "007006e548dbc6b7ad2220796e9480be37223ab6a90e573df158fbda91241e0c"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\01_KIEN_TRUC_TSVM_TANG_10.md",
+    "before_sha256": "718195a67e9be671c3d1a26e13a0d27e87385ddb91a093b0973e8928ef971fec",
+    "after_sha256": "06fd776d89110321a8cb94df9123639bff06458129484719b7c765a215647cf4"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\28_HUONG_DAN_TAI_LAP_BG20_2026_10_26.md",
+    "before_sha256": null,
+    "after_sha256": "6db419ae092ea1f84f8e08812c3af3fa1aa1a8f53cb2f986cd3460cc9bbd2809"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\README.md",
+    "before_sha256": "9361646bb2a54654cd1b4fd0f777396b31e176aed33bfd7dc049b7e836be3b18",
+    "after_sha256": "c69f97d473cb440ff5546471adae39637a0e28f686db174052eaeb617d55e439"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\KQ_Nen_DX_20seed_FP32\\LEGACY_ARTIFACTS.md",
+    "before_sha256": null,
+    "after_sha256": "97e36da6564b1f84475b46bfac581084250ae4e9bf33a5fb248395a3fcef552b"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\00_TONG_QUAN_VA_TINH_HINH_DU_AN.md",
+    "before_sha256": "46f0fd7433f9cf28df36f2cd1c63d60e4f1538cd88727529217192639b2aa7a3",
+    "after_sha256": "a612dce5c42aa9f8b93bb83753a02e2988acd1e9d9c173fc9ab16b2dd8ee1040"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\03_CAU_TRUC_THU_MUC_VA_HUONG_DAN_TAI_LAP.md",
+    "before_sha256": "67c3811f0d207fbb30f09ee4f8bb710aac6071313d6eb0d35c6178b104403671",
+    "after_sha256": "d662edd7878ee8a9b3288d41d546633903d52510881aaa9124927a31812bee84"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\04_KET_QUA_LOSS_VA_HOI_TU.md",
+    "before_sha256": "dddae484506b11dd4f22565c4ed6db6767a136a25ef8611738dda95b37d46626",
+    "after_sha256": "7fa2ba7e7ddbf01997360ac622cfd5802fe37a6a822b786a38c26a53f27fb5a0"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\06_DANH_DOI_PRECISION_RECALL_VA_LAM_SANG.md",
+    "before_sha256": "e3fa9eaca910fc1f37e0dfc0e77b0dc5f3eb9d48325cbae53e707d97aabad569",
+    "after_sha256": "24bffa19ef1a865b157a835a0a5818c1f556aaef3e25b51ad9bdc1346b6c3646"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\07_MA_TRAN_NHAM_LAN_VA_CHI_SO_BENH_HOC.md",
+    "before_sha256": "735e9f01a68f6238543a790ba3d062e6f4b2a7602e76337fb528a71ac6365bb6",
+    "after_sha256": "4c55fda2008a94fdc094fe7dfdd58690ef82f511d4657aff52463e65398e09f1"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\08_CHI_PHI_TINH_TOAN_DO_TRE_VA_TRIEN_KHAI.md",
+    "before_sha256": "8e9dc7171373a9122a27c0ffce390adcd401c7e5a46ea296d89792f52da61966",
+    "after_sha256": "d6b6fffb84664964d508cebf4c0ef9999139dfc5b95d4741a1645a2fae3a5672"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\10_DANH_GIA_CHAT_LUONG_MAT_NA_VISUAL.md",
+    "before_sha256": "332a900dfb34ac7d34e49bb19fb81c0d65d9bc4eeba2c0f091efd8c92be2d5bf",
+    "after_sha256": "93f9a3dfa5f32c31a052943e89248049fedeafccac5221f090a30e323d67a546"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\16_THUC_NGHIEM_BO_SUNG_20_PHAN_TRAM_ANH_NEN_BG20.md",
+    "before_sha256": "5229dce0c47077380fe9a0b1eef4c2fa5159b20becf32536d4cfcf8f265cef44",
+    "after_sha256": "f6f27ae8ef6e57e69d018f3bdfd4d999245e243e17c772bd764ad19bc9b1c28d"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\17_SU_CO_FUSE_XUAT_ANH_KAGGLE_VA_PHUONG_AN_KHAC_PHUC.md",
+    "before_sha256": "0fdbf679bf2eccb1774ef678dcf3189a9b7a808f385222fd1bd210eece4629d8",
+    "after_sha256": "60850177f1370ed75160669e521012067f4cd87575696f96d3fcbd364b7a2eb4"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\18_ANH_XA_SCRIPT_VA_NGUON_GOC_KET_QUA_10SEED.md",
+    "before_sha256": "d5044593fe68042a8ea6dea227a47d1028f6842ec264750dcf7c8b1012c2952d",
+    "after_sha256": "4e3d036f969e598eaf2f6c9513cbc15dc1dd551d6428ec3209bd9bdfcc891cf9"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\20_KET_QUA_CHUAN_BASELINE_VS_TSVM_BG20_10SEED.md",
+    "before_sha256": "9ebb05e0b199ad35cb93695ac0a67d5511012d8cf7bfea5f2ce775fb04174e08",
+    "after_sha256": "200402d1b359a631a2e973debe991ebdfb63f8e7debdab164e31062b1b27ae2e"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\21_HUONG_DAN_BAN_GIAO_AI_MOI_VA_VIEC_CONG_TAI.md",
+    "before_sha256": "8227b8084c61a069e3a1ec1484125f3e55d36d805924aa8a430eaf12055b4123",
+    "after_sha256": "cdc885b82e5a4ac78fa15f5a1982dab380403d5469fc0752593ed3ca77576a7d"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\22_DANH_MUC_HINH_ANH_TOAN_BO.md",
+    "before_sha256": "05eef302b54cbda608c6b90e4b2230e036e2c11c0a4970863df48b47376b8e82",
+    "after_sha256": "a4fe15d24470135f93353fc9c4f3703db323db6922e793b1c64d972d0ca4a2cf"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\23_MOI_TRUONG_THIET_LAP_VA_TAI_CHAY.md",
+    "before_sha256": "8cb575f792b6116fa286b039bc4cf6a57b7ded272c333dd09fa45fc9255963c1",
+    "after_sha256": "c6c7b3691cb178fdb43daf2383dd5eec41afa1cc98c71c163b82abcfe84b56b0"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\24_DANH_SACH_DUONG_DAN_HONG.md",
+    "before_sha256": "cb3b6458896f54c37a83fcd99dfb9cd06e5a8534e035ca8f7a61b480b48c01da",
+    "after_sha256": "39b88d0646c28f221b16341b1a7b2c854a2109d506b755756879b1c2899b4c86"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\25_KICH_BAN_PHAN_BIEN_SU_CO_FUSE_VA_MA_TRAN_NHAM_LAN.md",
+    "before_sha256": "4663b801989b9da4d1fc7f9fd15d468b049bc9a99960c3d6105dc6116e2ea64b",
+    "after_sha256": "ab0214951b43dc59e6b1286349afa9fd0799df54fb24560ffff12795b824f7f6"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\26_KET_QUA_BASELINE_VS_TSVM_BG20_21SEED_0_20.md",
+    "before_sha256": "bf023ef46bf0daf7c5f2f0b48bafefd4562fdbe98f62809eb71a2859374f1e5b",
+    "after_sha256": "de931768146877624ca22ee66b2f67c7235b477d4145416848c83cb40f8388b8"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\27_SU_CO_FP16_CHECKPOINT_TSVM_VA_CACH_KHAC_PHUC.md",
+    "before_sha256": "d46987d506eceb33da591e2c09773a094b1b7ccbc86d015a6805d3facf890b2e",
+    "after_sha256": "609a402528b93221832fbb7262b8d5deed555b870561bb09f3837b4eaa6cb539"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\GIAI_THICH_SU_CO_FUSE_CHO_NGUOI_DOC.md",
+    "before_sha256": "e22df40458efbf609a9c49184ede564bc6103896996ed1fc389b10e97a4b56d3",
+    "after_sha256": "43b94f613bb704bcf7197e3cf21d00ef90ae0c4178d6a2ad61f5b8c632dbcf7f"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\training_results_audit.md",
+    "before_sha256": "551e89cfd307ddc2ec849fdb8da793329f318d0d8cd13e3d52c91b33153a8a0e",
+    "after_sha256": "dd5d7ffdb4b31a433818cd4ecd2b048b4092a3deb64a1d9a827db1688e7ea35c"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\WEEKLY_REPORT_Ket_Qua_V2.md",
+    "before_sha256": "1272f5fefe1b9ad8783c1c8f1fcdea0174836bf31e2eee83fccef9baf8a5367d",
+    "after_sha256": "9908233c4632e934aedc55189b5ba88190d500c3a5b54086e5e5c519cb723e20"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\00_TRANG_BIA_VA_DANH_MUC.md",
+    "before_sha256": "9d416a2ceb94b6a92397b9df78cb9d277b587efff853051c4161167494c04f11",
+    "after_sha256": "d1b2d80c5043232e2471f3201e6e70cd529350468131596da824dd85b16c41c7"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\01_PHAN_MO_DAU.md",
+    "before_sha256": "d009ff0491e782fdf100926680e404c2ef3f86f2f0ee2707744884ce5b706c93",
+    "after_sha256": "12c538c8d8cee157718d5323161c7cc2fe4a64b2ab0794088340f880edfac800"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\02_CHUONG_1_TONG_QUAN_VA_CO_SO_NGHIEN_CUU.md",
+    "before_sha256": "0667b48522509a8d8597b6f7388da92488cfbe6d7efa9a743f32974d5fc420e1",
+    "after_sha256": "92fd675a846b27deb118bb6f8d018d0ff1ca2770e5a389b67b50d43325e9345d"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\03_CHUONG_2_PHAN_TICH_VA_THIET_KE_MO_HINH_DE_XUAT.md",
+    "before_sha256": "51ee55094a444e6ef18741c2731e6cd9e14773219ea5eba1347fd002d3d38b46",
+    "after_sha256": "1850893303e6a3628df282ea062f4442879c678e8d4f301052802cbd0d4e97cd"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\04_CHUONG_3_XAY_DUNG_BO_DU_LIEU_VA_TIEN_XU_LY.md",
+    "before_sha256": "c20efa8c19ec1b3016fbe086362f2ea6803a979589fe6c57cc3384b9a4d36f41",
+    "after_sha256": "e99dad8b34752ae8af5f7c36ce33c63974e4064214aecd2ea8c4493ce1c50339"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\05_CHUONG_4_CAI_DAT_THUAT_TOAN_VA_UNG_DUNG_MINH_HOA.md",
+    "before_sha256": "215185e12d16812b36d6165383f0bda1e0b68262f5eb579384dd333d8edc6e1d",
+    "after_sha256": "770b041aba0f603a73f816faeee6feb7c3f4426ec57b3a614865afb10e05b164"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\06_CHUONG_5_THU_NGHIEM_VA_DANH_GIA_KET_QUA.md",
+    "before_sha256": "76cc8ba3e450d9a3eebacc2f4018d51a07d4411f63073704ffc43844d5f6954b",
+    "after_sha256": "4281133df9db4fe375c4fcb8984f415ff0754e7bc51df35f4440e747889e5784"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\07_KET_LUAN_VA_HUONG_PHAT_TRIEN.md",
+    "before_sha256": "4e52fef19ccae02379537e9fb72b34040712c5ab5ae82f467c8d6c8fbafeb394",
+    "after_sha256": "86c079c9eb338987fffd250756b22e6a2ccce96386f89008420f4b9b65335493"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\08_TAI_LIEU_THAM_KHAO.md",
+    "before_sha256": "6bc19ebeb3c8e6e7a1c96ea6a5b7fe852925763dfd1820324173b5a5385fddcc",
+    "after_sha256": "0ef5727920f2e9baf4e24b59e6180d7f2999773de4ff8943e24020d69059941a"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\09_PHU_LUC_A_B_C_D_SO_LIEU_THUC_NGHIEM.md",
+    "before_sha256": "e19d6dd14d6ec9b7c7296038bc2273b0b601e3439985e8546865470f6588854b",
+    "after_sha256": "cac2ccf9ecd34927d67e571cb63416effa4412c2b6573f370b4d22fe63c4711e"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Bao_cao\\md viet bao cao\\10_PHU_LUC_E_F_G_H_BENCHMARK_NOTEBOOK_UNG_DUNG.md",
+    "before_sha256": "866bb6a29db76ee3a464d67a74b0f88a2c4adfbc0d01f562a6acb94df980d595",
+    "after_sha256": "eea6122c79b4530204e2eadb9ebf26cf85a585b5248bb551aac83c9661289463"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\README.md",
+    "before_sha256": "929872943bb4ec8a13d2529abc5a8e9f52ab99ccb8091220c991d734c5ce7a6b",
+    "after_sha256": "2557cfc16f93d0ad1f41eda386e74aa874ed75981a1afe2f0e7938f26a467c6a"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\CURRENT_PROJECT_STATUS.md",
+    "before_sha256": "5d4910246d1f5f97607e87d74f292e8ce6c88dcae44de37818354a461ab41e2c",
+    "after_sha256": "78a33c7c49ecd079c993e226e742743ae6156e1ce464c779366daaa1cfc4aeef"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\LICHSU_CAP_NHAT.md",
+    "before_sha256": "4cf4515c95aa5889089b600fc3a3a29333cbf44ff9c3cb5cdec7436c945e4953",
+    "after_sha256": "0341202de407b8df4b4d3d820ba6a8df87629e617a6929a41c15e0c3a4cb4dea"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\data_bg20.yaml",
+    "before_sha256": "e6538e56b888263b6fa8f8e6aabb9db3acea441ffcaa3330d200de9c4b076a4e",
+    "after_sha256": "e5deef1f82053471639d3e93a819043735a14c26bc34513a55e9bd4264cf4830"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\Data Prosessing\\convert_kvasir_with_background_to_yolo_seg.py",
+    "before_sha256": "a5ceb714603e93170a9139067f4ce4063221ec6014ae9263d887723418ab7310",
+    "after_sha256": "e80b5d97be9065d81591b2e97dffa9771797b574fd3b3bb8bf3544a07828f96b"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Stracth\\Bao_Cao\\build_huit_final_report_from_md.py",
+    "before_sha256": "02d75149b0ca1432d6ec52c634aac1c41e77ed8591be4d373641ed13ff560f8a",
+    "after_sha256": "3b983b51aa09ff8d6b18ddbc0e32bfe69d89cb6efa454fc6bbd2cdea7d3aaa05"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\historical\\snapshots_20261026\\01_KIEN_TRUC_TSVM_TANG_10.md",
+    "before_sha256": null,
+    "after_sha256": "718195a67e9be671c3d1a26e13a0d27e87385ddb91a093b0973e8928ef971fec",
+    "role": "historical_snapshot_new_copy"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\historical\\snapshots_20261026\\CURRENT_PROJECT_STATUS.md",
+    "before_sha256": null,
+    "after_sha256": "d0e4c5641dd3683cba976b085a1bba601e44deb992c6e82a1533146820374add",
+    "role": "historical_snapshot_new_copy"
+  },
+  {
+    "path": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\doc\\historical\\snapshots_20261026\\README.md",
+    "before_sha256": null,
+    "after_sha256": "1f1ecc0c46e1b61509d1ca3a9604c51e8350302f1add8614b116639c3dfe94c3",
+    "role": "historical_snapshot_new_copy"
+  }
+]

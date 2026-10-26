@@ -1,0 +1,66 @@
+{
+  "diagnoses": [
+    {
+      "id": "6adea065fef987272474f472",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-seg",
+      "modelCategory": "BASELINE",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.883303165435791,
+      "maskCount": 1,
+      "processingTimeMs": 685.448,
+      "createdAt": "2026-10-26T07:35:49.1170648",
+      "originalImageUrl": "/api/v1/diagnoses/6adea065fef987272474f472/images/original",
+      "resultImageUrl": "/api/v1/diagnoses/6adea065fef987272474f472/images/result",
+      "metadataUrl": "/api/v1/diagnoses/6adea065fef987272474f472/metadata"
+    },
+    {
+      "id": "6adea066fef987272474f473",
+      "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+      "modelType": "YOLO26s-TSVM-FP32-seg",
+      "modelCategory": "VMAMBA",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.5838399529457092,
+      "maskCount": 2,
+      "processingTimeMs": 642.81,
+      "createdAt": "2026-10-26T07:35:50.0996452",
+      "originalImageUrl": "/api/v1/diagnoses/6adea066fef987272474f473/images/original",
+      "resultImageUrl": "/api/v1/diagnoses/6adea066fef987272474f473/images/result",
+      "metadataUrl": "/api/v1/diagnoses/6adea066fef987272474f473/metadata"
+    }
+  ],
+  "comparison": {
+    "comparisonGroupId": "d99af7d8-1fdc-4863-86e8-6d29a1d86187",
+    "fileName": "cju0s690hkp960855tjuaqvv0.jpg",
+    "createdAt": "2026-10-26T07:35:51.1680033",
+    "originalImageUrl": "/api/v1/diagnoses/6adea067fef987272474f474/images/original",
+    "baseline": {
+      "id": "6adea067fef987272474f474",
+      "modelType": "YOLO26s-seg",
+      "modelCategory": "BASELINE",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.883303165435791,
+      "maskCount": 1,
+      "processingTimeMs": 228.052,
+      "resultImageUrl": "/api/v1/diagnoses/6adea067fef987272474f474/images/result"
+    },
+    "vmamba": {
+      "id": "6adea067fef987272474f475",
+      "modelType": "YOLO26s-TSVM-FP32-seg",
+      "modelCategory": "VMAMBA",
+      "detected": true,
+      "label": "polyp",
+      "confidence": 0.5838399529457092,
+      "maskCount": 2,
+      "processingTimeMs": 577.219,
+      "resultImageUrl": "/api/v1/diagnoses/6adea067fef987272474f475/images/result"
+    },
+    "totalProcessingTimeMs": 805.2710000000001,
+    "metadataUrl": "/api/v1/comparisons/d99af7d8-1fdc-4863-86e8-6d29a1d86187/metadata"
+  },
+  "image": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\Kvasir_YOLO_SEG_BG20\\images\\val\\cju0s690hkp960855tjuaqvv0.jpg",
+  "image_sha256": "96696f7cbcdff52a62d26d51c2c4154ed7f6eebee43fe5ad4cf6c5fa55825476"
+}
