@@ -19,7 +19,7 @@ Bộ tài liệu được viết mới ngày 26/10/2026 cho phần trọng tâm 
 | Độ trễ CPU (forward) | 270 ms | 577 ms (khoảng 2,1 lần) |
 | Thời gian huấn luyện 100 epoch (Kaggle) | khoảng 2,3 giờ | khoảng 4,7 giờ |
 
-**Kết luận ngắn:** TSVM có xu hướng tăng nhẹ mask mAP và dao động ít hơn giữa các seed tại epoch tốt nhất, nhưng **chưa đạt ý nghĩa thống kê** (α = 0,05) và chạy chậm khoảng gấp đôi trên CPU. Chưa có Dice/IoU theo pixel, chưa có test ngoài, chưa có ablation.
+**Kết luận ngắn:** TSVM có xu hướng tăng nhẹ mask mAP và dao động ít hơn giữa các seed tại epoch tốt nhất, nhưng **chưa đạt ý nghĩa thống kê** (α = 0,05) và chạy chậm khoảng gấp đôi trên CPU. Theo pixel, TSVM đạt Dice 0,854 so với 0,849 của đối chứng (chưa có ý nghĩa thống kê), ngang PraNet (0,854) và hơn hẳn U-Net (0,710). Chưa có test ngoài, chưa có ablation.
 
 ## Mục lục (đọc theo thứ tự)
 
@@ -34,7 +34,7 @@ Bộ tài liệu được viết mới ngày 26/10/2026 cho phần trọng tâm 
 | 07 | [Hội tụ và loss](07_HOI_TU_VA_LOSS.md) | Đường cong theo epoch, close_mosaic, các thành phần loss |
 | 08 | [Ma trận nhầm lẫn](08_MA_TRAN_NHAM_LAN.md) | TP/FP/FN theo đối tượng, vì sao TN là N/A |
 | 09 | [Chi phí tính toán](09_HIEU_NANG_TINH_TOAN.md) | Tham số, độ trễ CPU, giới hạn của phép đo |
-| 10 | [So sánh PraNet, U-Net](10_SO_SANH_PRANET_UNET.md) | Hiện trạng: chưa có số liệu; cần làm gì |
+| 10 | [So sánh PraNet, U-Net](10_SO_SANH_PRANET_UNET.md) | Dice/IoU/P/R theo pixel của 4 mô hình × 20 seed, giao thức và giới hạn |
 | 11 | [Giới hạn và hướng phát triển](11_GIOI_HAN_VA_HUONG_PHAT_TRIEN.md) | Được viết gì, không được viết gì, việc tiếp theo |
 | 12 | [Truy vết số liệu](12_TRUY_VET_SO_LIEU.md) | Script, các bảng `bang/`, đối chiếu, các điểm cần lưu ý ở tài liệu cũ |
 | 13 | [Bản đồ thư mục](13_BAN_DO_THU_MUC.md) | File nào thuộc bộ chính, file nào là lịch sử |

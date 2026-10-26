@@ -72,3 +72,13 @@ Ngày 26/10/2026 cây thư mục được sắp xếp lại. Có **84 mục, 51.
 | `archive/Bao_cao/Tien_Xu_Ly_Du_Lieu.docx` | `06_bao_cao/Tien_Xu_Ly_Du_Lieu.docx` |
 
 Các thư mục cũ đã rỗng sau khi chuyển: `archive/Ket_Qua_V2/...`, `archive/Bao_cao`, `output/`. Chúng đã được xóa (riêng `archive/` có thể còn lại dưới dạng thư mục rỗng nếu đang bị chương trình khác mở).
+
+## Chuyển thêm (26/10/2026)
+
+| Đường dẫn cũ | Đường dẫn mới |
+|---|---|
+| `archive/Ket_Qua_V2/KQ_Nen_DX_20seed_FP32/figures` (sau là `04_phan_tich_20seed/figures`) | `99_luu_tru/hinh_cu/figures_20seed` |
+| `archive/Ket_Qua_V2/KQ_Nen_DX_20seed_FP32/05_charts` (sau là `04_phan_tich_20seed/05_charts`) | `99_luu_tru/hinh_cu/charts_20seed` |
+| `archive/Ket_Qua_V2/KQ_Nen_DX_20seed_FP32/efficiency_benchmark/figures` | `99_luu_tru/hinh_cu/efficiency_benchmark_figures` |
+
+Lý do: bộ hình được vẽ lại toàn bộ từ CSV, đặt ở `06_bao_cao/hinh/`.

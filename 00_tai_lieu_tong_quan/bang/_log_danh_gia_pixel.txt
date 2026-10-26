@@ -1,0 +1,127 @@
+GPU: NVIDIA GeForce RTX 5050 Laptop GPU | torch 2.13.0+cu130
+Validation: 160 ảnh (120 polyp, 40 nền)
+ultralytics: 8.4.127 C:\Users\leduc\AppData\Local\Temp\tsvm_fork_lvlhg07w\ultralytics\__init__.py
+  baseline seed  0:   8.0s
+  baseline seed  1:   7.2s
+  baseline seed  2:   6.0s
+  baseline seed  3:   7.3s
+  baseline seed  4:   5.7s
+  baseline seed  5:   7.4s
+  baseline seed  6:   5.8s
+  baseline seed  7:   7.2s
+  baseline seed  8:   6.1s
+  baseline seed  9:   5.2s
+  baseline seed 10:   5.7s
+  baseline seed 11:   6.5s
+  baseline seed 12:   6.4s
+  baseline seed 13:   6.6s
+  baseline seed 14:   5.7s
+  baseline seed 15:   6.8s
+  baseline seed 16:   5.9s
+  baseline seed 17:   6.5s
+  baseline seed 18:   5.7s
+  baseline seed 19:   5.7s
+  tsvm     seed  0:   8.1s
+  tsvm     seed  1:   7.4s
+  tsvm     seed  2:   8.1s
+  tsvm     seed  3:   7.5s
+  tsvm     seed  4:   7.4s
+  tsvm     seed  5:   9.6s
+  tsvm     seed  6:   8.4s
+  tsvm     seed  7:   7.7s
+  tsvm     seed  8:   9.2s
+  tsvm     seed  9:   8.5s
+  tsvm     seed 10:   7.8s
+  tsvm     seed 11:   9.8s
+  tsvm     seed 12:   8.2s
+  tsvm     seed 13:   8.4s
+  tsvm     seed 14:   9.2s
+  tsvm     seed 15:   7.8s
+  tsvm     seed 16:   8.0s
+  tsvm     seed 17:   9.9s
+  tsvm     seed 18:   9.6s
+  tsvm     seed 19:   7.8s
+  pranet   seed  0:   4.5s
+  pranet   seed  1:   5.0s
+  pranet   seed  2:   4.0s
+  pranet   seed  3:   3.7s
+  pranet   seed  4:   3.8s
+  pranet   seed  5:   3.4s
+  pranet   seed  6:   3.3s
+  pranet   seed  7:   3.5s
+  pranet   seed  8:   3.2s
+  pranet   seed  9:   3.2s
+  pranet   seed 10:   3.2s
+  pranet   seed 11:   3.2s
+  pranet   seed 12:   3.7s
+  pranet   seed 13:   3.4s
+  pranet   seed 14:   3.2s
+  pranet   seed 15:   6.1s
+  pranet   seed 16:   6.5s
+  pranet   seed 17:   7.2s
+  pranet   seed 18:   7.1s
+  pranet   seed 19:   7.8s
+  unet     seed  0:   2.5s
+  unet     seed  1:   2.3s
+  unet     seed  2:   2.2s
+  unet     seed  3:   2.2s
+  unet     seed  4:   2.2s
+  unet     seed  5:   2.2s
+  unet     seed  6:   2.5s
+  unet     seed  7:   2.5s
+  unet     seed  8:   2.4s
+  unet     seed  9:   2.2s
+  unet     seed 10:   2.2s
+  unet     seed 11:   2.7s
+  unet     seed 12:   2.5s
+  unet     seed 13:   2.5s
+  unet     seed 14:   2.2s
+  unet     seed 15:   2.4s
+  unet     seed 16:   2.5s
+  unet     seed 17:   2.3s
+  unet     seed 18:   2.6s
+  unet     seed 19:   2.4s
+Tổng thời gian suy luận: 7.2 phút
+           model              label           metric  n_seeds    mean     sd    min    max  paired_t_p  wilcoxon_p  tsvm_higher
+        baseline        YOLO26s-seg             dice       20  0.8486 0.0171 0.8223 0.8748         NaN         NaN          NaN
+        baseline        YOLO26s-seg              iou       20  0.7927 0.0170 0.7633 0.8176         NaN         NaN          NaN
+        baseline        YOLO26s-seg        precision       20  0.8585 0.0170 0.8260 0.8907         NaN         NaN          NaN
+        baseline        YOLO26s-seg           recall       20  0.8703 0.0193 0.8372 0.8966         NaN         NaN          NaN
+        baseline        YOLO26s-seg bg_fp_image_rate       20  0.0125 0.0190 0.0000 0.0500         NaN         NaN          NaN
+        baseline        YOLO26s-seg         raw_dice       20  0.8484 0.0170 0.8223 0.8747         NaN         NaN          NaN
+            tsvm YOLO26s-seg + TSVM             dice       20  0.8540 0.0129 0.8293 0.8715         NaN         NaN          NaN
+            tsvm YOLO26s-seg + TSVM              iou       20  0.7998 0.0129 0.7774 0.8179         NaN         NaN          NaN
+            tsvm YOLO26s-seg + TSVM        precision       20  0.8632 0.0173 0.8284 0.8955         NaN         NaN          NaN
+            tsvm YOLO26s-seg + TSVM           recall       20  0.8730 0.0112 0.8507 0.8884         NaN         NaN          NaN
+            tsvm YOLO26s-seg + TSVM bg_fp_image_rate       20  0.0150 0.0205 0.0000 0.0750         NaN         NaN          NaN
+            tsvm YOLO26s-seg + TSVM         raw_dice       20  0.8537 0.0130 0.8290 0.8712         NaN         NaN          NaN
+          pranet PraNet (ResNet-50)             dice       20  0.8541 0.0068 0.8372 0.8677         NaN         NaN          NaN
+          pranet PraNet (ResNet-50)              iou       20  0.7785 0.0063 0.7615 0.7894         NaN         NaN          NaN
+          pranet PraNet (ResNet-50)        precision       20  0.8687 0.0117 0.8460 0.8884         NaN         NaN          NaN
+          pranet PraNet (ResNet-50)           recall       20  0.8881 0.0145 0.8655 0.9190         NaN         NaN          NaN
+          pranet PraNet (ResNet-50) bg_fp_image_rate       20  0.0075 0.0118 0.0000 0.0250         NaN         NaN          NaN
+          pranet PraNet (ResNet-50)         raw_dice       20  0.8547 0.0067 0.8378 0.8683         NaN         NaN          NaN
+            unet              U-Net             dice       20  0.7097 0.0221 0.6696 0.7446         NaN         NaN          NaN
+            unet              U-Net              iou       20  0.6069 0.0221 0.5669 0.6392         NaN         NaN          NaN
+            unet              U-Net        precision       20  0.7964 0.0213 0.7654 0.8419         NaN         NaN          NaN
+            unet              U-Net           recall       20  0.7167 0.0327 0.6694 0.7926         NaN         NaN          NaN
+            unet              U-Net bg_fp_image_rate       20  0.2037 0.0640 0.1000 0.3000         NaN         NaN          NaN
+            unet              U-Net         raw_dice       20  0.7105 0.0220 0.6703 0.7452         NaN         NaN          NaN
+tsvm_vs_baseline                NaN             dice       20  0.0054 0.0208    NaN    NaN      0.2597      0.2455      13.0000
+tsvm_vs_baseline                NaN              iou       20  0.0071 0.0199    NaN    NaN      0.1296      0.1140      14.0000
+tsvm_vs_baseline                NaN        precision       20  0.0046 0.0210    NaN    NaN      0.3351      0.2774      12.0000
+tsvm_vs_baseline                NaN           recall       20  0.0027 0.0239    NaN    NaN      0.6190      0.7012      11.0000
+tsvm_vs_baseline                NaN bg_fp_image_rate       20  0.0025 0.0280    NaN    NaN      0.6939      0.7926       6.0000
+tsvm_vs_baseline                NaN         raw_dice       20  0.0054 0.0208    NaN    NaN      0.2618      0.2611      13.0000
+  tsvm_vs_pranet                NaN             dice       20 -0.0001 0.0155    NaN    NaN      0.9821      0.9273      12.0000
+  tsvm_vs_pranet                NaN              iou       20  0.0213 0.0154    NaN    NaN      0.0000      0.0000      19.0000
+  tsvm_vs_pranet                NaN        precision       20 -0.0055 0.0255    NaN    NaN      0.3496      0.4980       8.0000
+  tsvm_vs_pranet                NaN           recall       20 -0.0151 0.0188    NaN    NaN      0.0019      0.0014       5.0000
+  tsvm_vs_pranet                NaN bg_fp_image_rate       20  0.0075 0.0258    NaN    NaN      0.2088      0.2183       7.0000
+  tsvm_vs_pranet                NaN         raw_dice       20 -0.0009 0.0155    NaN    NaN      0.7904      0.9273      11.0000
+    tsvm_vs_unet                NaN             dice       20  0.1443 0.0249    NaN    NaN      0.0000      0.0000      20.0000
+    tsvm_vs_unet                NaN              iou       20  0.1929 0.0256    NaN    NaN      0.0000      0.0000      20.0000
+    tsvm_vs_unet                NaN        precision       20  0.0668 0.0293    NaN    NaN      0.0000      0.0000      20.0000
+    tsvm_vs_unet                NaN           recall       20  0.1563 0.0341    NaN    NaN      0.0000      0.0000      20.0000
+    tsvm_vs_unet                NaN bg_fp_image_rate       20 -0.1888 0.0656    NaN    NaN      0.0000      0.0001       0.0000
+    tsvm_vs_unet                NaN         raw_dice       20  0.1432 0.0250    NaN    NaN      0.0000      0.0000      20.0000
