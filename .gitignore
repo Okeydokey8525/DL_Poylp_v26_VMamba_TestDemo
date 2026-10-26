@@ -32,6 +32,15 @@ Thumbs.db
 runs/
 wandb/
 
+# Generated LibreOffice runtime files
+99_luu_tru/nhap/.codex_report_work_20261015/LibreOffice.msi
+99_luu_tru/nhap/.codex_report_work_20261015/lo-runtime/
+
+# MongoDB journals
+07_kiem_toan_va_sua/audit_20261025_193105/E_application/mongo_data/journal/
+07_kiem_toan_va_sua/fix_20261026/integration/mongo_data/journal/
+07_kiem_toan_va_sua/fix_20261026/web_query/db/journal/
+
 # Large Datasets
 99_luu_tru/pipeline_semantic/datasets/Kvasir_Semantic_880_120/train/
 99_luu_tru/pipeline_semantic/datasets/Kvasir_Semantic_880_120/val/
