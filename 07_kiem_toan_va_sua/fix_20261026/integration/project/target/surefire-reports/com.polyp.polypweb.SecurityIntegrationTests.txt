@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.polyp.polypweb.SecurityIntegrationTests
+-------------------------------------------------------------------------------
+Tests run: 48, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.15 s -- in com.polyp.polypweb.SecurityIntegrationTests

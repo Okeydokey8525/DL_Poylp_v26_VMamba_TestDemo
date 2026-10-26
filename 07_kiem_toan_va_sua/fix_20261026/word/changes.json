@@ -1,0 +1,61 @@
+{
+  "before_sha256": "2caaf8b42c299f3c73a0087654f8f7d3c2986a83b8878d713613e0c9e1ed0856",
+  "after_sha256": "153294098c6d47b7d2aa01abc463c2006113b00f298e624134f89eb00713260f",
+  "alias_sha256": "153294098c6d47b7d2aa01abc463c2006113b00f298e624134f89eb00713260f",
+  "unchanged_zip_members": 55,
+  "changes": [
+    {
+      "location": "P0363",
+      "old": "Ảnh polyp được chia theo danh sách có sẵn gồm 880 ảnh huấn luyện và 120 ảnh kiểm định do nhóm tác giả Kvasir-SEG cung cấp trong hai tệp train.txt và val.txt [3]. Việc dùng danh sách có sẵn thay vì tự chia ngẫu nhiên giúp kết quả của đề tài có thể so sánh với các nghiên cứu khác dùng cùng cách chia, đồng thời bảo đảm không có ảnh nào xuất hiện ở cả hai tập.",
+      "new": "Với dữ liệu Kvasir-SEG [1], [3], đề tài giữ cố định hai danh sách train.txt và val.txt gồm 880 ảnh huấn luyện và 120 ảnh kiểm định. Hai mô hình sử dụng cùng cách chia để phép đối chứng có cùng đầu vào. Các danh sách được lưu cùng dữ liệu của đề tài; nguồn phát hành riêng của hai tệp này chưa được xác minh. Kiểm tra tên tệp và SHA-256 không phát hiện ảnh trùng hoàn toàn giữa hai tập.",
+      "old_characters": 358,
+      "new_characters": 385
+    },
+    {
+      "location": "P0447",
+      "old": "Bên cạnh đó, đề tài thực hiện thêm một lượt kiểm tra độc lập trên bộ dữ liệu đã dùng để huấn luyện. Kết quả cho thấy mỗi ảnh có đúng một tệp nhãn và không có tệp nhãn nào thiếu ảnh. Toàn bộ 1.063 dòng nhãn đều có chỉ số lớp 0, có ít nhất ba đỉnh và mọi tọa độ đều nằm trong đoạn từ 0 đến 1. Không có ảnh nào trùng tên hoặc trùng hoàn toàn nội dung giữa tập huấn luyện và tập kiểm định, được xác định bằng cách so sánh mã băm SHA-256 của từng tệp ảnh. Khi chạy lại chương trình chuyển đổi trên 1.000 mặt nạ gốc, cả 1.000 tệp nhãn thu được đều trùng khớp từng ký tự với nhãn đang sử dụng. Bước chọn ngẫu nhiên ảnh nền với seed bằng 42 cũng cho ra đúng danh sách 200 ảnh đã lưu. Như vậy, bộ dữ liệu có thể được tái tạo đầy đủ từ dữ liệu gốc.",
+      "new": "Kiểm tra độc lập trên bộ dữ liệu đang sử dụng cho thấy mỗi ảnh có đúng một tệp nhãn và không có nhãn thiếu ảnh. Toàn bộ 1.063 dòng nhãn thuộc lớp 0, có ít nhất ba đỉnh và tọa độ trong [0,1]. So sánh SHA-256 không phát hiện ảnh trùng hoàn toàn giữa tập huấn luyện và kiểm định. Khi tái chạy chuyển đổi trên 1.000 mặt nạ với OpenCV 4.12.0 và NumPy 2.2.6, có 999 tệp nhãn khớp từng ký tự; tệp còn lại khác một đỉnh 3 pixel trên mỗi trục, chưa xác định nguyên nhân. Các nhãn hiện hành được giữ nguyên. Việc chọn ảnh nền với seed 42 tái tạo đúng danh sách 200 ảnh. Kết quả xác nhận quy mô và cấu trúc dữ liệu; mức khớp tuyệt đối cần được kiểm tra cùng phiên bản môi trường.",
+      "old_characters": 738,
+      "new_characters": 668
+    },
+    {
+      "location": "P0515",
+      "old": "Hai checkpoint seed 0 đã được nạp với đúng task segment và lớp polyp; các tensor dấu phẩy động trong mô hình sau tải là float32 và hữu hạn. Kiểm tra thực hiện dự đoán trên cùng một ảnh có polyp và một ảnh normal-cecum cho cả hai mô hình, với ngưỡng confidence 0,25. Cả hai mô hình trả một mặt nạ trên ảnh polyp và không trả mặt nạ trên ảnh nền trong hai ví dụ này.",
+      "new": "Hai checkpoint seed 0 đã được nạp với đúng task segment và lớp polyp; các tensor dấu phẩy động trong mô hình sau tải là float32 và hữu hạn. Kiểm tra thực hiện dự đoán trên cùng một ảnh có polyp và một ảnh normal-cecum cho cả hai mô hình, với ngưỡng confidence 0,25. Trên ảnh polyp, Baseline trả một mặt nạ và TSVM FP32 trả hai mặt nạ. Cả hai không trả mặt nạ trên ảnh nền. Số mặt nạ không tự xác định dự đoán đúng hoặc sai khi chưa ghép với nhãn chuẩn.",
+      "old_characters": 364,
+      "new_characters": 452
+    },
+    {
+      "location": "P0766",
+      "old": "Tiền xử lý: Stracth/Du_Lieu/convert_kvasir_to_yolo_seg.py và Bao_cao/Tien_Xu_Ly_Du_Lieu.docx.",
+      "new": "BG20: Ket_Qua_V2/Data Prosessing/convert_kvasir_with_background_to_yolo_seg.py. Hướng dẫn tái lập: doc/28_HUONG_DAN_TAI_LAP_BG20_2026_10_26.md.",
+      "old_characters": 93,
+      "new_characters": 143
+    },
+    {
+      "location": "Bảng 2.1 / Backbone P4 / Channels",
+      "old": "512",
+      "new": "256"
+    },
+    {
+      "location": "Bảng 4.3 / Spring Boot / Phạm vi",
+      "old": "Dịch vụ, controller, phân quyền, hợp đồng API",
+      "new": "Unit/MockMvc, API, phân quyền và MongoDB thật"
+    },
+    {
+      "location": "Bảng 4.3 / Spring Boot / Kết quả",
+      "old": "261 kiểm thử đạt",
+      "new": "274 kiểm thử đạt"
+    },
+    {
+      "location": "Bảng 4.3 / Flutter / Kết quả",
+      "old": "498 kiểm thử đạt",
+      "new": "498 đạt (log cũ)"
+    },
+    {
+      "location": "P0514 / thời điểm và phạm vi kiểm thử",
+      "old": "",
+      "new": "Ngày 26/10/2026: FastAPI 51 và Web 274 kiểm thử đạt, gồm 4 test MongoDB thật. Flutter dùng log cũ, chưa chạy lại."
+    }
+  ]
+}

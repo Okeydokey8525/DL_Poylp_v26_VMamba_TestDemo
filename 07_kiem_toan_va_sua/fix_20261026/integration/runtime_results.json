@@ -1,0 +1,275 @@
+[
+  {
+    "case": "AI health",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "home",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "home contains current S keys",
+    "actual": true,
+    "expected": true,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "home no Nano copy",
+    "actual": false,
+    "expected": false,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "register_Fix Primary",
+    "actual": 201,
+    "expected": 201,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "login_Fix Primary",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "register_Fix Other",
+    "actual": 201,
+    "expected": 201,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "login_Fix Other",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "empty comparison history HTML",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "empty comparison history API",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "create YOLO26s-seg",
+    "actual": 201,
+    "expected": 201,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "result HTML YOLO26s-seg",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "badge YOLO26s-seg",
+    "actual": "Baseline",
+    "expected": "Baseline",
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "actual dimensions YOLO26s-seg",
+    "actual": true,
+    "expected": true,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "no hardcoded dimensions YOLO26s-seg",
+    "actual": false,
+    "expected": false,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "other user cannot read YOLO26s-seg",
+    "actual": 403,
+    "expected": 403,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "download original YOLO26s-seg",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "download result YOLO26s-seg",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "create YOLO26s-TSVM-FP32-seg",
+    "actual": 201,
+    "expected": 201,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "result HTML YOLO26s-TSVM-FP32-seg",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "badge YOLO26s-TSVM-FP32-seg",
+    "actual": "VMamba",
+    "expected": "VMamba",
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "actual dimensions YOLO26s-TSVM-FP32-seg",
+    "actual": true,
+    "expected": true,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "no hardcoded dimensions YOLO26s-TSVM-FP32-seg",
+    "actual": false,
+    "expected": false,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "other user cannot read YOLO26s-TSVM-FP32-seg",
+    "actual": 403,
+    "expected": 403,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "download original YOLO26s-TSVM-FP32-seg",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "download result YOLO26s-TSVM-FP32-seg",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "create comparison",
+    "actual": 201,
+    "expected": 201,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "populated comparison history HTML",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "group rendered in history",
+    "actual": true,
+    "expected": true,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "populated comparison history API",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "group returned in API",
+    "actual": true,
+    "expected": true,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "comparison detail HTML",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "nonowner comparison forbidden",
+    "actual": 403,
+    "expected": 403,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "owner comparison export",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "other user history isolation",
+    "actual": false,
+    "expected": false,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "true inference YOLO26s-seg",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "mask count YOLO26s-seg",
+    "actual": 1,
+    "expected": 1,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "true inference YOLO26s-TSVM-FP32-seg",
+    "actual": 200,
+    "expected": 200,
+    "pass": true,
+    "details": null
+  },
+  {
+    "case": "mask count YOLO26s-TSVM-FP32-seg",
+    "actual": 2,
+    "expected": 2,
+    "pass": true,
+    "details": null
+  }
+]

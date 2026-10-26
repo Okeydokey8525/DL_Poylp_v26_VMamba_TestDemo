@@ -1,0 +1,9 @@
+{
+  "trung_byte_train_val": 0,
+  "train.txt (880) == ảnh polyp train": true,
+  "val.txt (120) == ảnh polyp val": true,
+  "train.txt giao val.txt rỗng": true,
+  "danh sách nền train (160) == ảnh bg train": true,
+  "danh sách nền val (40) == ảnh bg val": true,
+  "nền train giao nền val rỗng": true
+}

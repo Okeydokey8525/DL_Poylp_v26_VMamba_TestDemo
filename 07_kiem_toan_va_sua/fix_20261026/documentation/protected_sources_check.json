@@ -1,0 +1,24 @@
+{
+  "protected_original_files_checked": 2494,
+  "changed_or_missing": [],
+  "guard_exit_codes": {
+    "ExistingOutputExit": 2,
+    "CanonicalOutputExit": 2,
+    "CurrentWordExit": 2
+  },
+  "historical_headers_checked": [
+    "doc\\20_KET_QUA_CHUAN_BASELINE_VS_TSVM_BG20_10SEED.md",
+    "doc\\26_KET_QUA_BASELINE_VS_TSVM_BG20_21SEED_0_20.md",
+    "Bao_cao\\md viet bao cao\\00_TRANG_BIA_VA_DANH_MUC.md",
+    "Bao_cao\\md viet bao cao\\01_PHAN_MO_DAU.md",
+    "Bao_cao\\md viet bao cao\\02_CHUONG_1_TONG_QUAN_VA_CO_SO_NGHIEN_CUU.md",
+    "Bao_cao\\md viet bao cao\\03_CHUONG_2_PHAN_TICH_VA_THIET_KE_MO_HINH_DE_XUAT.md",
+    "Bao_cao\\md viet bao cao\\04_CHUONG_3_XAY_DUNG_BO_DU_LIEU_VA_TIEN_XU_LY.md",
+    "Bao_cao\\md viet bao cao\\05_CHUONG_4_CAI_DAT_THUAT_TOAN_VA_UNG_DUNG_MINH_HOA.md",
+    "Bao_cao\\md viet bao cao\\06_CHUONG_5_THU_NGHIEM_VA_DANH_GIA_KET_QUA.md",
+    "Bao_cao\\md viet bao cao\\07_KET_LUAN_VA_HUONG_PHAT_TRIEN.md",
+    "Bao_cao\\md viet bao cao\\08_TAI_LIEU_THAM_KHAO.md",
+    "Bao_cao\\md viet bao cao\\09_PHU_LUC_A_B_C_D_SO_LIEU_THUC_NGHIEM.md",
+    "Bao_cao\\md viet bao cao\\10_PHU_LUC_E_F_G_H_BENCHMARK_NOTEBOOK_UNG_DUNG.md"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "python": "3.12.14",
+  "opencv": "4.12.0",
+  "numpy": "2.2.6",
+  "seed_background": 42,
+  "min_area": 20.0,
+  "epsilon_ratio": 0.002,
+  "train_list_sha256": "49992c7c6c80abf02032050d4ae754236da3ba1041f609659ad0043ff6d1795c",
+  "val_list_sha256": "d9b48bd3d980324edb39df97764fdbb5489b2583f088fb49c659b76f6d20876b",
+  "source_root": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\Ket_Qua_V2\\Data Prosessing",
+  "output_directory": "C:\\LeDucLuong\\HK VII\\LuanCuNhan\\DeepLearning\\Test_Mau\\archive\\fix_20261026\\documentation\\reproduced_bg20",
+  "active_yaml_modified": false,
+  "label_reproduction_note": "Byte-identical labels depend on verified inputs and tested implementation/environment; compare before use."
+}

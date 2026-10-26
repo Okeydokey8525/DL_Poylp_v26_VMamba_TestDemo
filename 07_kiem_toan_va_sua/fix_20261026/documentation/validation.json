@@ -1,0 +1,29 @@
+{
+  "active_documents": 6,
+  "missing_active_doc_links": [],
+  "historical_drafts": 11,
+  "reproduction": {
+    "train": {
+      "images": 1040,
+      "labels": 1040,
+      "empty": 160,
+      "instances": 936
+    },
+    "val": {
+      "images": 160,
+      "labels": 160,
+      "empty": 40,
+      "instances": 127
+    },
+    "nonempty_labels": 1000,
+    "label_byte_mismatches": [
+      "labels\\val\\ck2bxiswtxuw80838qkisqjwz.txt"
+    ],
+    "image_byte_mismatches": [],
+    "background_lists_exact": {
+      "train": true,
+      "val": true
+    }
+  },
+  "builder_has_recursive_delete": false
+}

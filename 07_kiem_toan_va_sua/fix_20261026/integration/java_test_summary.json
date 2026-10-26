@@ -1,0 +1,18 @@
+{
+  "suites": 21,
+  "totals": {
+    "tests": 274,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "real_mongo_suites": [
+    {
+      "name": "com.polyp.polypweb.repository.ComparisonHistoryMongoIntegrationTests",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ]
+}

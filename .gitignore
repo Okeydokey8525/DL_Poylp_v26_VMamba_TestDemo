@@ -33,6 +33,6 @@ runs/
 wandb/
 
 # Large Datasets
-datasets/Kvasir_Semantic_880_120/train/
-datasets/Kvasir_Semantic_880_120/val/
-datasets/Kvasir_Semantic_880_120/qa/previews/
+99_luu_tru/pipeline_semantic/datasets/Kvasir_Semantic_880_120/train/
+99_luu_tru/pipeline_semantic/datasets/Kvasir_Semantic_880_120/val/
+99_luu_tru/pipeline_semantic/datasets/Kvasir_Semantic_880_120/qa/previews/
