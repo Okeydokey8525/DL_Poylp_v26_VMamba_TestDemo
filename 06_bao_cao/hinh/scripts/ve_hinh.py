@@ -410,12 +410,12 @@ def m01_tham_so_tang10(lang, st):
     a = pd.read_csv(BANG / "08_kien_truc_dung_lai.csv", header=None, index_col=0, encoding="utf-8-sig")
     t = a[2]
     parts = [("p_cv1_cv2", L("cv1 + cv2 (khung C2)", "cv1 + cv2 (C2 wrapper)", lang)),
-             ("p_directional_extractor", L("Nhánh hướng", "Directional branch", lang)),
+             ("p_directional_extractor", "DirectionalShapeExtractor"),
              ("p_vmamba", L("SS2D (VMamba)", "SS2D (VMamba)", lang)),
              ("p_ffn", "FFN"),
-             ("p_shape_branch", L("Nhánh hình dạng", "Shape branch", lang)),
-             ("p_fuse", L("Hợp nhất 1×1", "1×1 fusion", lang)),
-             ("p_gate", L("Cổng điều biến", "Guidance gate", lang))]
+             ("p_shape_branch", "ShapeAwareBranch"),
+             ("p_fuse", L("fuse 1×1", "fuse 1×1", lang)),
+             ("p_gate", L("Cổng (Gate)", "Gate", lang))]
     vals = [float(t[k]) / 1e3 for k, _ in parts]
     fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.5))
     y = np.arange(len(parts))[::-1]

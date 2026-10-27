@@ -56,15 +56,13 @@ Trong Hình 4.1, ảnh a và mặt nạ b có cùng kích thước, vùng trắn
 
 ## 4.2. Xây dựng và phân chia bộ dữ liệu BG20
 
-~~Ảnh polyp được chia theo danh sách có sẵn gồm 880 ảnh huấn luyện và 120 ảnh kiểm định do nhóm tác giả Kvasir-SEG cung cấp trong hai tệp train.txt và val.txt [3].~~ ~~Việc dùng danh sách có sẵn thay vì tự chia ngẫu nhiên giúp kết quả của đề tài có thể so sánh với các nghiên cứu khác dùng cùng cách chia, đồng thời bảo đảm không có ảnh nào xuất hiện ở cả hai tập.~~
+Ảnh polyp được chia theo danh sách có sẵn gồm 880 ảnh huấn luyện và 120 ảnh kiểm định do nhóm tác giả Kvasir-SEG cung cấp trong hai tệp train.txt và val.txt [3]. Việc dùng danh sách có sẵn thay vì tự chia ngẫu nhiên giúp kết quả của đề tài có thể so sánh với các nghiên cứu khác dùng cùng cách chia, đồng thời bảo đảm không có ảnh nào xuất hiện ở cả hai tập.
 
-> ❌ **SAI**: Bộ Kvasir-SEG tải từ Kaggle [3] chỉ gồm **1.000 ảnh và mặt nạ, không kèm sẵn cách chia tập**. Theo xác nhận của chủ đề tài (27/10/2026), **nhóm tự chia** 1.000 ảnh thành 880/120 trong lúc tiền xử lý. Vì vậy hai câu bị gạch ở trên không đúng.
+> ✅ **ĐÚNG** (kiểm lại 27/10/2026, gỡ nhận xét ❌ trước đó): Bản Kvasir-SEG do D. Jha (tác giả đầu của Kvasir-SEG) đăng trên Kaggle [3] có sẵn `train.txt`, `val.txt` và tệp README ghi *"We have provided train-val split for the fair comparison of the model"*. Ở máy nhóm, ba tệp này nằm trong `DeepLearning/Dataset/Kvasir-SEG_data/`, ngày tệp 22/02/2024. `01_du_lieu/train.txt` và `val.txt` trùng từng byte với hai tệp này (cùng md5). Script tiền xử lý chỉ **đọc** hai danh sách (`train_txt_path = base_dir / "train.txt"`), không tự chia. Nhận xét ❌ trước đây sai vì chỉ xem thư mục con `Kvasir-SEG/` (images, masks, bbox) và trang Simula, không xem thư mục ngoài chứa tệp chia.
 >
-> **Đề xuất sửa:** "Bộ Kvasir-SEG tải từ Kaggle [3] gồm 1.000 ảnh polyp và mặt nạ, không kèm sẵn cách chia tập. Nhóm đề tài chia 1.000 ảnh này thành 880 ảnh huấn luyện và 120 ảnh kiểm định, lưu thành hai tệp `train.txt` và `val.txt`. Hai danh sách không có ảnh chung, được kiểm tra bằng tên tệp và mã băm SHA-256 (mục 4.7)."
+> **Gợi ý nhỏ (không bắt buộc):** có thể thêm một câu nguồn: "Hai danh sách được phân phối kèm bản Kvasir-SEG trên Kaggle của tác giả [3]; trang chính thức của Simula chỉ cung cấp ảnh và mặt nạ."
 >
-> ❓ **CẦN XÁC NHẬN**: bạn phụ trách phần này bổ sung giúp **cách chia** (chia ngẫu nhiên hay theo tiêu chí nào? dùng seed bao nhiêu? bằng công cụ/mã nào?). Repo hiện không lưu đoạn mã đã dùng để chia.
->
-> 🔎 *Bằng chứng:* `01_du_lieu/train.txt` (880 dòng), `01_du_lieu/val.txt` (120 dòng), không giao nhau (`00_tai_lieu_tong_quan/bang/00_kiem_tra_du_lieu.json`).
+> 🔎 *Bằng chứng:* `01_du_lieu/train.txt` (880 dòng), `01_du_lieu/val.txt` (120 dòng), không giao nhau (`00_tai_lieu_tong_quan/bang/00_kiem_tra_du_lieu.json`); md5 `train.txt` = `ebf7ac9d90bda36353f12366a095007b` ở cả `Dataset/Kvasir-SEG_data/` và `01_du_lieu/`.
 
 Đối với ảnh nền, chương trình sắp xếp 1.000 tên tệp normal-cecum theo thứ tự, cố định hạt giống ngẫu nhiên seed bằng 42 rồi chọn ngẫu nhiên 200 ảnh. Trong đó, 160 ảnh đầu tiên được đưa vào tập huấn luyện và 40 ảnh còn lại được đưa vào tập kiểm định. Nhờ sắp xếp danh sách trước khi chọn và cố định seed, mỗi lần chạy lại chương trình đều cho ra đúng 200 ảnh như nhau. Danh sách ảnh được chọn cũng được lưu lại thành hai tệp văn bản để đối chiếu về sau.
 
@@ -360,9 +358,9 @@ Cần lưu ý rằng khối TSVM là một thành phần bên trong mô hình, x
 
 | Kết luận | Số nhận định |
 |---|---:|
-| Đúng | 79 |
+| Đúng | 80 (gồm nguồn chia tập 880/120, kiểm lại 27/10/2026) |
 | Đúng một phần (⚠️) | 9 |
-| Sai (❌) | 2 — khung kiểm định 640 → 672; nguồn chia tập 880/120 (đã được chủ đề tài xác nhận là nhóm tự chia) |
+| Sai (❌) | 1 — khung kiểm định 640 → 672 |
 | Chưa kiểm được (❓) | 4 |
 | **Tổng** | **94** |
 
@@ -382,5 +380,5 @@ Một số con số đã đo lại và trùng khớp: 333 kích thước ảnh; 
 ### Câu hỏi gửi tác giả chương
 
 1. **Khung kiểm định (mục 4.4):** bạn dựa vào nguồn nào để ghi cạnh dài 640? Mã Ultralytics 8.4.127 cho thấy khi kiểm định trong lúc huấn luyện, ảnh được gom lô theo tỉ lệ khung (`rect=True`) và cộng nửa bước đệm (`pad=0.5`), nên khung có cạnh dài 672 (bằng chứng ở ô ❌ mục 4.4). Nếu bạn đang mô tả bước suy luận chứ không phải kiểm định thì ghi rõ là bước nào.
-2. **Chia tập 880/120 (mục 4.2):** nhóm đã chia bằng cách nào (ngẫu nhiên hay theo tiêu chí, seed bao nhiêu, bằng công cụ/mã nào)? Nếu còn đoạn mã, gửi lại để lưu vào repo.
+2. ~~Chia tập 880/120 (mục 4.2)~~: đã giải quyết, danh sách do tác giả Kvasir-SEG cung cấp kèm bản Kaggle [3].
 3. **Hình 4.4:** các hệ số tăng cường dùng để vẽ hình là bao nhiêu?
