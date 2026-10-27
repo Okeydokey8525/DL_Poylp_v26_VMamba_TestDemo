@@ -62,6 +62,6 @@ Thuật toán chuyển mặt nạ sang polygon (hàm `convert_mask_to_yolo_polyg
 
 - **Không có tập test riêng.** Tập validation 160 ảnh vừa dùng để chọn epoch vừa dùng để báo cáo kết quả (xem [11](11_GIOI_HAN_VA_HUONG_PHAT_TRIEN.md)).
 - Chưa có bằng chứng về việc tách theo bệnh nhân. Kiểm tra trùng byte không loại trừ được ảnh gần trùng.
-- Repo không ghi lại nguồn gốc của hai danh sách 880/120. Không nên ghi rằng tác giả Kvasir-SEG cung cấp chúng.
+- Hai danh sách 880/120 do tác giả Kvasir-SEG cung cấp: chúng đi kèm bản Kaggle debeshjha1/kvasirseg (README: "We have provided train-val split for the fair comparison"), bản gốc ở `DeepLearning/Dataset/Kvasir-SEG_data/`, trùng md5 với `01_du_lieu/train.txt`, `val.txt` (kiểm 27/10/2026).
 - Theo [hướng dẫn tái lập trong tài liệu cũ](../99_luu_tru/tai_lieu_cu/archive_doc/28_HUONG_DAN_TAI_LAP_BG20_2026_10_26.md), chạy lại script trên OpenCV 4.12.0 và NumPy 2.2.6 cho 999/1.000 nhãn trùng từng ký tự. Bộ tài liệu này **không chạy lại** bước đó.
 - Ở bản gốc, `data_bg20.yaml` trỏ tới đường dẫn tuyệt đối trên máy local. Trên Kaggle, notebook tự tạo `data_bg20.yaml` riêng với `nc: 1` ([05](05_CAU_HINH_HUAN_LUYEN.md)).

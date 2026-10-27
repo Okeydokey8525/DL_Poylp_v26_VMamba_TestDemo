@@ -25,7 +25,7 @@ Có bốn báo cáo chi tiết trong thư mục này. Các phát hiện quan tr�
 ## Chương 4 (bạn cùng nhóm): các điểm sai hoặc chưa có bằng chứng
 
 - **Sai:** mục 3.4 ghi khung kiểm định 640; đúng là cạnh dài 672 (xem điểm 4 ở trên).
-- **Chưa có bằng chứng:** "split 880/120 do tác giả Kvasir-SEG cung cấp".
+- **Đã có bằng chứng (27/10/2026):** "split 880/120 do tác giả Kvasir-SEG cung cấp" — `train.txt`/`val.txt` và README đi kèm bản Kaggle của D. Jha, trùng md5 với `01_du_lieu/`.
 - **Thiếu môi trường chạy:** "tái tạo 1.000/1.000 nhãn" (OpenCV 5.0 cho 1.000/1.000; OpenCV 4.12 chỉ cho 999/1.000).
 - **Đúng một phần:**
   - "một nửa số vùng ≤ 10%": thực tế 48,3%;

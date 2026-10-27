@@ -473,6 +473,11 @@ Chương này dùng lại [49], [54] và [55]. Các mục mới:
 - [70]* J. Cohen, *Statistical Power Analysis for the Behavioral Sciences*, 2nd ed. Hillsdale, NJ, USA: Lawrence Erlbaum Associates, 1988, doi: 10.4324/9780203771587.
 - [71]* B. Wong, "Points of view: Color blindness," *Nat. Methods*, vol. 8, no. 6, p. 441, 2011, doi: 10.1038/nmeth.1618.
 
+**Bổ sung khi viết Chương 3 (27/10/2026), số tạm, sẽ đánh lại khi chốt danh mục:**
+
+- [72] W. D. Hillis and G. L. Steele Jr., "Data parallel algorithms," *Commun. ACM*, vol. 29, no. 12, pp. 1170–1183, Dec. 1986, doi: 10.1145/7902.7903.
+  - Xác minh: DBLP và AcaWiki (sub-agent phản biện Ch.3). Dùng ở: Ch3 mục 3.4.2 (biến thể quét song song trong mã). Theo thứ tự xuất hiện, mục này đứng ngay sau [48].
+
 **Tổng kết danh mục:**
 - Tổng cộng **71 mục**, gồm 24 mục cũ và 47 mục mới.
 - 10 mục không bắt buộc (*): [3], [28], [32], [41], [42], [45], [46], [57], [70], [71].

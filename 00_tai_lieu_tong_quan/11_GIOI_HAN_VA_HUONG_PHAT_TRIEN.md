@@ -29,7 +29,7 @@
 5. Chưa có **ablation 20 seed** cho các chế độ `vmamba_only`, `shape_only`, `shape_vmamba_no_guidance`. Vì vậy chưa biết thành phần nào tạo ra khác biệt.
 6. Một phần tầng 10 của TSVM nhận trọng số của `C2PSA`; phần mới khởi tạo ngẫu nhiên ([04](04_KIEN_TRUC_TSVM_FP32.md#khởi-tạo-trọng-số)). Kết quả có thể phụ thuộc vào cách khởi tạo này.
 7. Repo **không lưu notebook đúng phiên bản** đã chạy các lượt TSVM FP32, và không có log Kaggle gắn với 40 lượt chính ([05](05_CAU_HINH_HUAN_LUYEN.md)).
-8. Chưa có tài liệu chứng thực nguồn gốc hai danh sách split 880/120.
+8. ~~Chưa có tài liệu chứng thực nguồn gốc hai danh sách split 880/120.~~ Đã giải quyết 27/10/2026: hai danh sách đi kèm bản Kaggle của tác giả Kvasir-SEG (xem `02_DU_LIEU_BG20.md`).
 
 ## Hướng phát triển (theo thứ tự ưu tiên đề xuất)
 
