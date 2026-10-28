@@ -1,5 +1,7 @@
 # 07. Hội tụ và loss
 
+> **Cập nhật 28/10/2026:** số trong file này tính trên **20 seed** và là **bộ số dùng trong báo cáo**. Bộ 10 seed (chỉ đối chiếu) ở [06b_KET_QUA_10_SEED.md](06b_KET_QUA_10_SEED.md).
+
 Nguồn: [bang/05_duong_cong_theo_epoch.csv](bang/05_duong_cong_theo_epoch.csv), là trung bình và SD theo từng epoch trên 20 seed, tính từ `results.csv`.
 
 ## Mask mAP50–95 trên validation theo epoch (mean ± SD, 20 seed)

@@ -14,6 +14,8 @@ Giao thức (đã thống nhất với chủ dự án):
 - Kiến trúc PraNet và U-Net được nạp trực tiếp từ notebook huấn luyện trong 99_luu_tru/log_kaggle_cu/.
 
 Chạy (cần GPU):  C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_pixel.py [--seeds 0 1] [--models pranet unet]
+Chỉ tổng hợp lại từ bang/10_pixel_tung_anh.csv cho một nhóm seed (không suy luận, không cần GPU):
+    ... danh_gia_pixel.py --tu-bang --seeds 0 1 2 3 4 5 6 7 8 9 --out ../bang/10seed
 """
 from __future__ import annotations
 
@@ -176,9 +178,16 @@ def main():
     ap.add_argument("--seeds", nargs="*", type=int, default=list(range(20)))
     ap.add_argument("--models", nargs="*", default=list(MODELS))
     ap.add_argument("--tag", default="", help="hậu tố tên file kết quả (dùng khi chạy thử)")
+    ap.add_argument("--tu-bang", action="store_true", help="không suy luận; lọc bang/10_pixel_tung_anh.csv theo --seeds rồi tổng hợp")
+    ap.add_argument("--out", type=Path, default=OUT, help="thư mục ghi 10–12_*.csv")
     args = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
+    if args.tu_bang:
+        df = pd.read_csv(OUT / "10_pixel_tung_anh.csv", encoding="utf-8-sig")
+        df = df[df.seed.isin(args.seeds) & df.model.isin(args.models)]
+        tong_hop(df, args.out, args.tag)
+        return
     assert torch.cuda.is_available(), "Cần GPU (chạy bằng C:\\venv_kl_gpu\\Scripts\\python.exe)"
     dev = "cuda:0"
     torch.backends.cudnn.benchmark = False
@@ -227,9 +236,13 @@ def main():
         cleanup()
     print(f"Tổng thời gian suy luận: {(time.time() - t0) / 60:.1f} phút")
 
-    df = pd.DataFrame(rows)
-    OUT.mkdir(exist_ok=True)
-    df.to_csv(OUT / f"10_pixel_tung_anh{args.tag}.csv", index=False, encoding="utf-8-sig")
+    tong_hop(pd.DataFrame(rows), args.out, args.tag)
+
+
+def tong_hop(df: pd.DataFrame, out: Path, tag: str) -> None:
+    """Ghi 10_ (từng ảnh), 11_ (từng seed), 12_ (thống kê) vào thư mục out."""
+    out.mkdir(parents=True, exist_ok=True)
+    df.to_csv(out / f"10_pixel_tung_anh{tag}.csv", index=False, encoding="utf-8-sig")
 
     # --- tổng hợp theo seed
     seed_rows = []
@@ -247,7 +260,7 @@ def main():
         r["bg_fp_area_mean"] = float((bg.pred_px / bg.img_px).mean())
         seed_rows.append(r)
     sd = pd.DataFrame(seed_rows)
-    sd.to_csv(OUT / f"11_pixel_tung_seed{args.tag}.csv", index=False, encoding="utf-8-sig")
+    sd.to_csv(out / f"11_pixel_tung_seed{tag}.csv", index=False, encoding="utf-8-sig")
 
     # --- thống kê: mean ± SD và so sánh ghép cặp TSVM với từng mô hình
     metrics = ["dice", "iou", "precision", "recall", "dice_micro", "iou_micro", "bg_fp_image_rate",
@@ -274,7 +287,7 @@ def main():
                                 "wilcoxon_p": stats.wilcoxon(t.loc[common, m], o.loc[common, m]).pvalue if ok else np.nan,
                                 "tsvm_higher": int((d > 0).sum())})
     stt = pd.DataFrame(st_rows)
-    stt.to_csv(OUT / f"12_pixel_thong_ke{args.tag}.csv", index=False, encoding="utf-8-sig")
+    stt.to_csv(out / f"12_pixel_thong_ke{tag}.csv", index=False, encoding="utf-8-sig")
     with pd.option_context("display.float_format", "{:.4f}".format, "display.width", 220, "display.max_rows", 200):
         print(stt[stt.metric.isin(["dice", "iou", "precision", "recall", "bg_fp_image_rate", "raw_dice"])].to_string(index=False))
 

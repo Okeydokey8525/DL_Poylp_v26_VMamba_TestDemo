@@ -1,5 +1,7 @@
 # 08. Ma trận nhầm lẫn
 
+> **Cập nhật 28/10/2026:** số trong file này tính trên **20 seed** và là **bộ số dùng trong báo cáo**. Bộ 10 seed (chỉ đối chiếu) ở [06b_KET_QUA_10_SEED.md](06b_KET_QUA_10_SEED.md).
+
 ## Nguồn và cách kiểm tra
 
 - Mỗi lượt có ảnh `confusion_matrix.png`, do Ultralytics vẽ khi đánh giá `best.pt` lúc kết thúc huấn luyện. Ảnh này **không** tương ứng với epoch cực đại mask dùng ở [06](06_KET_QUA_20_SEED.md).
