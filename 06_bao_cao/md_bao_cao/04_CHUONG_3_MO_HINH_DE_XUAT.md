@@ -11,7 +11,7 @@ Chương lần lượt trình bày các nội dung sau:
 - quy trình suy luận và huấn luyện;
 - ưu điểm và hạn chế của thiết kế.
 
-Thông số trong chương được đọc từ mã nguồn đã dùng để huấn luyện: bản fork Ultralytics 8.4.127 [55] cùng mô-đun `topology_shape_vmamba.py`. Mọi thông số đều được kiểm tra lại bằng cách dựng mô hình rồi đếm tham số. Con số nào là ước tính tính tay thì có ghi rõ ngay tại chỗ.
+Thông số trong chương được đọc từ mã nguồn đã dùng để huấn luyện: bản fork Ultralytics 8.4.127 [51] cùng mô-đun `topology_shape_vmamba.py`. Mọi thông số đều được kiểm tra lại bằng cách dựng mô hình rồi đếm tham số. Con số nào là ước tính tính tay thì có ghi rõ ngay tại chỗ.
 
 **Quy ước thuật ngữ trong chương:**
 
@@ -38,9 +38,9 @@ Vì vậy, để khoanh đúng vùng polyp, mô hình cần hai loại thông ti
 - **Ngữ cảnh rộng:** cho biết vùng đang xét là một khối lồi lên khỏi thành ruột, hay chỉ là vệt phản quang hoặc nếp gấp niêm mạc.
 - **Hình dạng của vùng:** vùng đó trải theo hướng nào và có đường bao ra sao.
 
-Trong YOLO26-seg, ngữ cảnh rộng ở cuối backbone do khối C2PSA đảm nhận. Khối này dùng attention [43] trên bản đồ đặc trưng P5 kích thước 20×20. Attention so khớp mọi cặp vị trí với nhau, nên nắm được quan hệ xa. Thông tin không gian cục bộ của khối này chỉ đến từ một tích chập theo chiều sâu 3×3 trên nhánh giá trị, đóng vai trò mã hóa vị trí. Ngoài tích chập đó, khối không có thành phần nào thiết kế riêng cho hình dạng.
+Trong YOLO26-seg, ngữ cảnh rộng ở cuối backbone do khối C2PSA đảm nhận. Khối này dùng attention [52] trên bản đồ đặc trưng P5 kích thước 20×20. Attention so khớp mọi cặp vị trí với nhau, nên nắm được quan hệ xa. Thông tin không gian cục bộ của khối này chỉ đến từ một tích chập theo chiều sâu 3×3 trên nhánh giá trị, đóng vai trò mã hóa vị trí. Ngoài tích chập đó, khối không có thành phần nào thiết kế riêng cho hình dạng.
 
-Các công trình gần đây về phân đoạn polyp cho thấy thông tin biên và hình dạng là manh mối có ích [24], [26], [27]. Cùng thời gian đó, Mamba [19] và VMamba [7] đưa ra một cách khác để thu ngữ cảnh toàn cục:
+Các công trình gần đây về phân đoạn polyp cho thấy thông tin biên và hình dạng là manh mối có ích [32], [34], [35]. Cùng thời gian đó, Mamba [26] và VMamba [7] đưa ra một cách khác để thu ngữ cảnh toàn cục:
 - trải bản đồ đặc trưng thành chuỗi;
 - cập nhật một trạng thái ẩn có chọn lọc theo nội dung của từng vị trí.
 
@@ -68,7 +68,7 @@ Khối mới được đặt đúng vào vị trí của C2PSA ở tầng 10, v�
 
 Các thành phần dùng trong khối mới đều đã có từ trước:
 - SS2D là ý tưởng của VMamba [7];
-- cơ chế quét chọn lọc đến từ Mamba [19];
+- cơ chế quét chọn lọc đến từ Mamba [26];
 - tích chập theo chiều sâu, cổng sigmoid và nối tắt có hệ số là các kỹ thuật quen thuộc.
 
 Đề tài không nhận mình là tác giả của các thành phần trên. Đóng góp của đề tài gồm bốn phần:
@@ -78,16 +78,16 @@ Các thành phần dùng trong khối mới đều đã có từ trước:
 4. Đánh giá lặp lại trên 20 seed (seed 0–19), có kiểm định thống kê (Chương 6).
 
 Hai công trình gần nhất, đã so sánh chi tiết ở Chương 1:
-- **MambaPSA [30]** cũng thay C2PSA của YOLO26 bằng một khối Mamba. Tuy vậy, bài này giải bài toán phát hiện vật thể trên PASCAL VOC, nhắm tới giảm chi phí, và thêm khối BiViM vào neck. Đề tài này giải bài toán phân đoạn polyp và bổ sung nhánh hình dạng.
-- **Mamba YOLO [29]** thay nhiều khối của YOLO bằng khối SSM, chứ không chỉ thay ở một vị trí.
+- **MambaPSA [38]** cũng thay C2PSA của YOLO26 bằng một khối Mamba. Tuy vậy, bài này giải bài toán phát hiện vật thể trên PASCAL VOC, nhắm tới giảm chi phí, và thêm khối BiViM vào neck. Đề tài này giải bài toán phân đoạn polyp và bổ sung nhánh hình dạng.
+- **Mamba YOLO [37]** thay nhiều khối của YOLO bằng khối SSM, chứ không chỉ thay ở một vị trí.
 
 ## 3.2. Kiến trúc tổng thể
 
 Hình 3.1 vẽ toàn bộ mô hình, gồm ba phần.
 
 - **Backbone (tầng 0 đến 10):** năm lần tích chập bước 2, xen giữa là các khối C3k2, giảm độ phân giải từ 640×640 xuống 20×20. Tầng 9 là SPPF. Tầng 10 là vị trí thay đổi.
-- **Neck (tầng 11 đến 22):** một nhánh đi từ trên xuống theo kiểu FPN [33] và một nhánh đi từ dưới lên theo kiểu PAN [34]. Neck cho ra ba bản đồ đặc trưng: P3 (80×80), P4 (40×40) và P5 (20×20).
-- **Đầu Segment26 (tầng 23):** nhận cả ba mức để dự đoán hộp, điểm lớp và hệ số mặt nạ. Đầu này cũng sinh 32 mặt nạ mẫu (prototype) kích thước 160×160, theo cơ chế của YOLACT [37].
+- **Neck (tầng 11 đến 22):** một nhánh đi từ trên xuống theo kiểu FPN [42] và một nhánh đi từ dưới lên theo kiểu PAN [43]. Neck cho ra ba bản đồ đặc trưng: P3 (80×80), P4 (40×40) và P5 (20×20).
+- **Đầu Segment26 (tầng 23):** nhận cả ba mức để dự đoán hộp, điểm lớp và hệ số mặt nạ. Đầu này cũng sinh 32 mặt nạ mẫu (prototype) kích thước 160×160, theo cơ chế của YOLACT [22].
 
 ![Hình 3.1](../hinh/chung/vi/a01_kien_truc_tong_the.png)
 
@@ -113,7 +113,7 @@ Khi suy luận, YOLO26 chạy ở chế độ end-to-end:
 - lấy tối đa 300 đối tượng có điểm cao nhất rồi lọc theo ngưỡng tin cậy;
 - không qua bước loại bỏ trùng lặp NMS.
 
-Cơ chế này kế thừa từ YOLOv10 [38] và giữ nguyên ở cả hai mô hình.
+Cơ chế này kế thừa từ YOLOv10 [23] và giữ nguyên ở cả hai mô hình.
 
 ## 3.3. Khối C2TSVMamba
 
@@ -129,7 +129,7 @@ $$ [a,\ b] = \mathrm{split}\big(\mathrm{Conv}_{1\times1}^{\,cv1}(x)\big), \qquad
 
 Trong đó $[\cdot\,\|\,\cdot]$ là phép ghép theo kênh. Tệp cấu hình ghi 2 khối lặp, nhưng với quy mô s, hệ số độ sâu 0,5 làm số khối thực tế còn $\max(\mathrm{round}(2\times0{,}5),1) = 1$.
 
-Cách chia đôi này giống thiết kế CSP dùng trong họ YOLO từ YOLOv4 [61]. Một nửa số kênh không đi qua phần tính toán nặng, nhờ đó giảm chi phí và giữ đường truyền gradient ngắn.
+Cách chia đôi này giống thiết kế CSP dùng trong họ YOLO từ YOLOv4 [46]. Một nửa số kênh không đi qua phần tính toán nặng, nhờ đó giảm chi phí và giữ đường truyền gradient ngắn.
 
 Hình 3.2 vẽ cấu trúc bên trong khối TSVMamba:
 1. Đặc trưng $b$ được đưa đồng thời vào nhánh SS2D và nhánh hình dạng.
@@ -167,7 +167,7 @@ Hình 3.4 tóm tắt các bước tính của SS2D trong mã. Các ký hiệu d�
 - $U$ là nội dung sẽ được quét;
 - $Z$ được giữ lại để làm cổng ở bước cuối.
 
-**Bước 2. Trộn cục bộ.** $U$ đi qua một tích chập theo chiều sâu 3×3 và hàm SiLU, cho ra $\tilde U$. Bước này cho mỗi vị trí nhận một ít thông tin từ lân cận trước khi quét. Mamba cũng đặt một tích chập ngắn trước SSM theo cách tương tự [19].
+**Bước 2. Trộn cục bộ.** $U$ đi qua một tích chập theo chiều sâu 3×3 và hàm SiLU, cho ra $\tilde U$. Bước này cho mỗi vị trí nhận một ít thông tin từ lân cận trước khi quét. Mamba cũng đặt một tích chập ngắn trước SSM theo cách tương tự [26].
 
 **Bước 3. Trải phẳng theo bốn hướng.** Lưới 20×20 được trải thành bốn chuỗi, mỗi chuỗi dài 400:
 1. theo hàng, từ đầu đến cuối;
@@ -184,9 +184,9 @@ $$ \Delta^{(k)}_t = \mathrm{softplus}\big(W^{(k)}_{\Delta}\, W^{(k)}_{x,\Delta}\
 Một vài điểm về công thức (3.2):
 - $\Delta$ được sinh qua một phép chiếu hạng thấp (hạng 16), rồi mở rộng lên 256 kênh.
 - Hàm softplus bảo đảm $\Delta_t > 0$.
-- Đây là cơ chế chọn lọc của Mamba [19]. Vì $\Delta$, $B$, $C$ phụ thuộc nội dung tại từng vị trí, mô hình tự quyết định giữ lại thông tin cũ hay ghi đè bằng thông tin mới.
+- Đây là cơ chế chọn lọc của Mamba [26]. Vì $\Delta$, $B$, $C$ phụ thuộc nội dung tại từng vị trí, mô hình tự quyết định giữ lại thông tin cũ hay ghi đè bằng thông tin mới.
 
-**Bước 5. Rời rạc hóa, quét và đọc ra.** Ma trận trạng thái được tham số hóa dạng chéo và luôn âm, $A^{(k)} = -\exp(A^{(k)}_{\log}) \in \mathbb{R}^{D\times N}$, theo cách của S4D [47]. Hệ số chuyển trạng thái, phương trình truy hồi và đầu ra lần lượt là:
+**Bước 5. Rời rạc hóa, quét và đọc ra.** Ma trận trạng thái được tham số hóa dạng chéo và luôn âm, $A^{(k)} = -\exp(A^{(k)}_{\log}) \in \mathbb{R}^{D\times N}$, theo cách của S4D [55]. Hệ số chuyển trạng thái, phương trình truy hồi và đầu ra lần lượt là:
 
 $$ \bar A^{(k)}_{t,d,n} = \exp\!\Big(\mathrm{clip}\big(\Delta^{(k)}_{t,d}\, A^{(k)}_{d,n},\ -50,\ 0\big)\Big) \tag{3.3} $$
 
@@ -196,7 +196,7 @@ $$ y^{(k)}_{t,d} = \sum_{n=1}^{N} C^{(k)}_{t,n}\, h^{(k)}_{t,d,n} \tag{3.5} $$
 
 Giải thích các công thức (3.3)–(3.5):
 - Vì $\Delta A \le 0$ nên $\bar A \in (0, 1]$. Trạng thái cũ luôn mờ dần, và tốc độ mờ do $\Delta$ quyết định.
-- Số hạng đầu vào dùng xấp xỉ bậc một $\bar B \approx \Delta B$, thay cho công thức rời rạc hóa giữ bậc không (ZOH) đầy đủ. Mamba cũng dùng xấp xỉ này khi cài đặt [19].
+- Số hạng đầu vào dùng xấp xỉ bậc một $\bar B \approx \Delta B$, thay cho công thức rời rạc hóa giữ bậc không (ZOH) đầy đủ. Mamba cũng dùng xấp xỉ này khi cài đặt [26].
 - Phép cắt $\mathrm{clip}$ ở (3.3) chỉ có trong bản cài đặt này, nhằm tránh lấy $\exp$ của số âm quá lớn.
 - Phương trình (3.4) không được giải bằng vòng lặp qua từng vị trí, mà bằng thuật toán quét song song ở mục 3.4.
 
@@ -212,7 +212,7 @@ So với VMamba gốc [7], bản cài đặt này có năm điểm khác:
 - Không có hạng tử nhảy $D\cdot u$ bên trong SSM. Đường tắt được thay bằng nối tắt có hệ số $\gamma$ ở ngoài khối (mục 3.3.5).
 - Không có lớp chuẩn hóa LayerNorm sau khi gộp bốn hướng.
 - Vẫn giữ cổng nhân $\mathrm{SiLU}(Z)$, trong khi khối VSS cải tiến của VMamba đã bỏ nhánh này.
-- Phép chiếu $\Delta$ dùng khởi tạo mặc định của PyTorch. Mamba thì khởi tạo sao cho $\Delta$ nằm trong khoảng [0,001; 0,1] [19].
+- Phép chiếu $\Delta$ dùng khởi tạo mặc định của PyTorch. Mamba thì khởi tạo sao cho $\Delta$ nằm trong khoảng [0,001; 0,1] [26].
 - Phép quét chạy bằng các phép toán tensor của PyTorch, không dùng kernel CUDA tối ưu.
 
 ### 3.3.3. Nhánh hình dạng
@@ -240,7 +240,7 @@ $$ S_h = \mathrm{DW}_{1\times5}(S_{\text{shape}}),\quad S_v = \mathrm{DW}_{5\tim
 
 $$ S_{topo} = \mathrm{Conv}_{1\times1}\big([S_h \,\|\, S_v \,\|\, S_{loc} \,\|\, S_{grad}]\big), \qquad S = \mathrm{Conv}_{1\times1}\big([S_{\text{shape}} \,\|\, S_{topo}]\big) \tag{3.9} $$
 
-Công thức của $S_{grad}$ có dạng giống độ lớn gradient trong xử lý ảnh [58]. Tuy vậy, $S_h$ và $S_v$ là đáp ứng của các nhân học được, đã qua chuẩn hóa lô và SiLU. Vì thế $S_{grad}$ không phải gradient ảnh như bộ lọc Sobel. Nó là độ lớn tổng hợp của hai đáp ứng ngang và dọc, cho mạng thêm một đặc trưng ít phụ thuộc vào hướng cụ thể. Đầu ra $S$ có kích thước 256×20×20.
+Công thức của $S_{grad}$ có dạng giống độ lớn gradient trong xử lý ảnh [66]. Tuy vậy, $S_h$ và $S_v$ là đáp ứng của các nhân học được, đã qua chuẩn hóa lô và SiLU. Vì thế $S_{grad}$ không phải gradient ảnh như bộ lọc Sobel. Nó là độ lớn tổng hợp của hai đáp ứng ngang và dọc, cho mạng thêm một đặc trưng ít phụ thuộc vào hướng cụ thể. Đầu ra $S$ có kích thước 256×20×20.
 
 ### 3.3.4. Cổng
 
@@ -337,11 +337,11 @@ Có thể kiểm tra trực tiếp rằng toán tử này có tính kết hợp:
 
 $$ \big((a_1,b_1)\circ(a_2,b_2)\big)\circ(a_3,b_3) = (a_3a_2a_1,\ a_3a_2b_1 + a_3b_2 + b_3) = (a_1,b_1)\circ\big((a_2,b_2)\circ(a_3,b_3)\big) $$
 
-Nhờ tính kết hợp, $h_t$ chính là thành phần thứ hai của tích tiền tố $(a_1,b_1)\circ\cdots\circ(a_t,b_t)$. Mọi tích tiền tố có thể tính bằng thuật toán quét song song (parallel prefix scan) [48].
+Nhờ tính kết hợp, $h_t$ chính là thành phần thứ hai của tích tiền tố $(a_1,b_1)\circ\cdots\circ(a_t,b_t)$. Mọi tích tiền tố có thể tính bằng thuật toán quét song song (parallel prefix scan) [56].
 
 ### 3.4.2. Thuật toán trong mã
 
-Mã của đề tài dùng biến thể quét song song của Hillis và Steele [72]. Thuật toán chạy qua nhiều vòng:
+Mã của đề tài dùng biến thể quét song song của Hillis và Steele [57]. Thuật toán chạy qua nhiều vòng:
 - Ở vòng thứ $j$, mỗi vị trí $t$ kết hợp kết quả hiện có của nó với kết quả của vị trí $t - 2^{j}$.
 - Sau $\lceil\log_2 L\rceil$ vòng, mỗi vị trí đã gom được toàn bộ các phần tử đứng trước nó.
 
@@ -409,8 +409,8 @@ phép kết hợp. Với $P = 512$ và $K = 9$:
 - Mỗi ảnh có 16.384 chuỗi, nên phép quét tốn khoảng 67 triệu phép kết hợp.
 - Mỗi phép kết hợp gồm hai phép nhân và một phép cộng (dòng 6 và 7 của Thuật toán 3.1).
 
-Tổng công việc của biến thể này là $O(L\log L)$. Vì vậy không thể gọi bản cài đặt của đề tài là có độ phức tạp tuyến tính, dù Mamba gốc được giới thiệu là tuyến tính theo độ dài chuỗi. Mamba đạt mức tuyến tính nhờ hai yếu tố [19]:
-- dùng biến thể quét hiệu quả về công việc của Blelloch [48], với tổng công việc $O(L)$;
+Tổng công việc của biến thể này là $O(L\log L)$. Vì vậy không thể gọi bản cài đặt của đề tài là có độ phức tạp tuyến tính, dù Mamba gốc được giới thiệu là tuyến tính theo độ dài chuỗi. Mamba đạt mức tuyến tính nhờ hai yếu tố [26]:
+- dùng biến thể quét hiệu quả về công việc của Blelloch [56], với tổng công việc $O(L)$;
 - dùng kernel CUDA gộp các phép toán, và tính lại giá trị trung gian thay vì lưu lại.
 
 Mã của đề tài không dùng các kỹ thuật này. Bù lại, bản cài đặt chỉ cần PyTorch, chạy được trên cả CPU lẫn GPU, và cho kết quả tất định.
@@ -445,7 +445,7 @@ Chi tiết đo trình bày ở Chương 6. Như vậy, số phép tính không g
 
 ## 3.5. Khởi tạo trọng số và học chuyển giao
 
-Cả hai mô hình đều xuất phát từ trọng số `yolo26s-seg.pt`, được tiền huấn luyện trên COCO [49].
+Cả hai mô hình đều xuất phát từ trọng số `yolo26s-seg.pt`, được tiền huấn luyện trên COCO [50].
 - **Mô hình đối chứng** nạp thẳng tệp này.
 - **Mô hình đề xuất** được dựng từ tệp cấu hình mới rồi mới nạp `yolo26s-seg.pt`. Ultralytics chỉ chép những tensor trùng cả tên lẫn kích thước.
 
@@ -457,7 +457,7 @@ Kết quả nạp trọng số ở mô hình đề xuất:
 FFN của TSVMamba nhận trọng số từ FFN của PSABlock chỉ vì trùng tên. Trong khối mới, đầu vào của FFN đã khác: đó là đầu ra của fuse, không còn là đầu ra của attention. Vì vậy đây là khởi tạo kế thừa theo tên, không phải tái sử dụng có chủ đích.
 
 Cách khởi tạo các tham số mới:
-- $A_{\log}$ đặt bằng $\log(1), \dots, \log(16)$ cho mọi kênh và mọi hướng, tức $A = -(1, 2, \dots, 16)$. Đây là cách khởi tạo S4D-Real [47] mà Mamba dùng.
+- $A_{\log}$ đặt bằng $\log(1), \dots, \log(16)$ cho mọi kênh và mọi hướng, tức $A = -(1, 2, \dots, 16)$. Đây là cách khởi tạo S4D-Real [55] mà Mamba dùng.
 - Các phép chiếu $\Delta$, tích chập và chuẩn hóa lô dùng khởi tạo mặc định.
 - $\gamma = 0{,}001$.
 
@@ -467,7 +467,7 @@ Vì $\gamma$ nhỏ, ở những bước đầu tầng 10 hoạt động gần nh
 
 Đề tài giữ nguyên hàm mất mát của YOLO26-seg. Hai mô hình dùng chung hàm mất mát, bộ siêu tham số và danh sách seed. Vì vậy, khác biệt có hệ thống giữa hai mô hình chỉ có thể quy cho tầng 10. Dao động ngẫu nhiên giữa các lượt huấn luyện (do khởi tạo, thứ tự dữ liệu và phần cứng được cấp) được xử lý bằng cách lặp lại trên 20 seed ghép cặp.
 
-**Hai đầu dự đoán và trọng số thay đổi theo epoch.** YOLO26 huấn luyện đồng thời hai đầu [6], [38]:
+**Hai đầu dự đoán và trọng số thay đổi theo epoch.** YOLO26 huấn luyện đồng thời hai đầu [6], [23]:
 - **Đầu một-nhiều:** mỗi đối tượng thật được gán nhiều điểm neo, giúp mô hình học nhanh.
 - **Đầu một-một:** mỗi đối tượng thật chỉ được gán một điểm neo. Đây là đầu dùng khi suy luận.
 
@@ -477,7 +477,7 @@ $$ \mathcal{L} = \alpha(e)\,\mathcal{L}_{\text{o2m}} + \big(1-\alpha(e)\big)\,\m
 
 Với $E = 100$ epoch, trọng số của đầu một-nhiều giảm tuyến tính từ 0,8 xuống 0,1. Như vậy, càng về cuối, mô hình càng tập trung vào đầu dùng khi suy luận. Đặc trưng đi vào đầu một-một được tách khỏi đồ thị tính gradient, nên gradient của đầu này không chảy ngược về backbone.
 
-**Gán nhãn.** Điểm neo dương được chọn theo độ đo căn chỉnh nhiệm vụ của TOOD [39]: $t = s^{0{,}5}\cdot u^{6}$, với $s$ là điểm lớp dự đoán và $u$ là IoU của hộp.
+**Gán nhãn.** Điểm neo dương được chọn theo độ đo căn chỉnh nhiệm vụ của TOOD [44]: $t = s^{0{,}5}\cdot u^{6}$, với $s$ là điểm lớp dự đoán và $u$ là IoU của hộp.
 - Đầu một-nhiều lấy 10 điểm neo tốt nhất cho mỗi đối tượng.
 - Đầu một-một chọn 7 ứng viên, rồi giữ lại 1 điểm neo tốt nhất.
 
@@ -489,7 +489,7 @@ YOLO26 bổ sung quy tắc STAL [6]: khi chọn ứng viên, đối tượng có
 
 | Thành phần | Nội dung | Hệ số |
 |---|---|---:|
-| Hộp (box) | $1 - \mathrm{CIoU}$ [40], có trọng số theo điểm căn chỉnh | 7,5 |
+| Hộp (box) | $1 - \mathrm{CIoU}$ [45], có trọng số theo điểm căn chỉnh | 7,5 |
 | L1 | Sai số tuyệt đối trên bốn khoảng cách tới biên hộp. Thay cho DFL vì `reg_max = 1` [6] | 1,5 |
 | Lớp (cls) | Entropy chéo nhị phân, dùng nhãn mềm từ bộ gán nhãn | 0,5 |
 | Mặt nạ (seg) | Entropy chéo nhị phân theo pixel giữa mặt nạ dự đoán và mặt nạ thật, chỉ tính trong hộp thật | 7,5 |
@@ -497,7 +497,7 @@ YOLO26 bổ sung quy tắc STAL [6]: khi chọn ứng viên, đối tượng có
 
 Mặt nạ của mỗi đối tượng là tổ hợp tuyến tính của 32 mặt nạ mẫu, dùng 32 hệ số riêng của đối tượng đó: $\hat M_i = \sigma\big(\sum_{k=1}^{32} c_{ik} P_k\big)$. Sau đó mặt nạ được cắt theo hộp. Vì nhánh ngữ nghĩa phụ chỉ chạy ở chế độ huấn luyện, cột `val/sem_loss` trong nhật ký luôn bằng 0. Đây là hành vi đúng của mã, không phải lỗi.
 
-**Bộ tối ưu và độ chính xác số.** Bài báo YOLO26 dùng bộ tối ưu MuSGD [6], còn đề tài dùng AdamW [54] cho cả hai mô hình. Cấu hình huấn luyện:
+**Bộ tối ưu và độ chính xác số.** Bài báo YOLO26 dùng bộ tối ưu MuSGD [6], còn đề tài dùng AdamW [47] cho cả hai mô hình. Cấu hình huấn luyện:
 - tốc độ học ban đầu 0,001; hệ số suy giảm trọng số 0,0005;
 - huấn luyện hoàn toàn ở độ chính xác FP32 (`amp=False`);
 - 100 epoch, lô 8 ảnh;
