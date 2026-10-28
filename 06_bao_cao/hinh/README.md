@@ -3,7 +3,7 @@
 Bộ hình được vẽ lại toàn bộ ngày 26/10/2026 từ CSV đã kiểm chứng. Hình cũ đã chuyển sang `99_luu_tru/hinh_cu/`.
 
 Thư mục (tổ chức lại 27/10/2026):
-- `chung/`: 12 hình không phụ thuộc nhóm seed (a01–a04, d01–d04, e02, e03, m01, q01).
+- `chung/`: 14 hình không phụ thuộc nhóm seed (a01–a04, d01–d04, e02, e03, m01, q01, s01, t01).
 - `ket_qua_20seed/`: 16 hình kết quả trên **seed 0–19**, **bộ dùng trong báo cáo** (chốt 28/10/2026).
 - `ket_qua_10seed/`: 16 hình kết quả trên seed 0–9, chỉ giữ để đối chiếu.
 - `chuong4/`: hình của Chương 4 do người viết chương cung cấp.
@@ -12,7 +12,7 @@ Trong mỗi thư mục trên:
 - `vi/`: bản tiếng Việt cho khóa luận, rộng 16 cm, dấu phẩy thập phân.
 - `en/`: bản tiếng Anh cho bài báo IEEE, rộng một cột 8,9 cm. Riêng `q01` rộng hai cột.
 - Mỗi hình có `.png` (300 dpi, chèn Word) và `.pdf` (vector, nộp tạp chí).
-- Script: `scripts/ve_hinh.py`. Chạy `python ve_hinh.py` để vẽ tất cả (kết quả dùng 20 seed, đọc `bang/`), `--seeds 10` để vẽ bộ 10 seed đối chiếu, `--chi r01 p01` để vẽ một số hình. Sơ đồ a01–a04: `scripts/ve_so_do.py`.
+- Script: `scripts/ve_hinh.py`. Chạy `python ve_hinh.py` để vẽ tất cả (kết quả dùng 20 seed, đọc `bang/`), `--seeds 10` để vẽ bộ 10 seed đối chiếu, `--chi r01 p01` để vẽ một số hình. Sơ đồ a01–a04 và s01: `scripts/ve_so_do.py`.
 - Quy cách:
   - phông mặc định của matplotlib;
   - màu Okabe–Ito: đối chứng `#0072B2`, TSVM `#D55E00`, PraNet `#009E73`, U-Net `#CC79A7`;
@@ -26,6 +26,8 @@ Số hình trong báo cáo (ví dụ Hình 6.3) sẽ được gán khi viết t�
 
 | Mã | Chương | Nội dung | Loại biểu đồ | Nguồn số liệu |
 |---|---|---|---|---|
+| t01_bon_kieu_dau_ra | 2 | Hình 2.1: phân loại, hộp bao, mặt nạ ngữ nghĩa, mặt nạ thực thể trên một ảnh val có hai polyp | Lưới ảnh | Nhãn đa giác BG20 |
+| s01_kien_truc_ung_dung | 5 | Hình 5.2: kiến trúc PolypVision (Web, Mobile, FastAPI, hai mô hình) | Sơ đồ | Mã nguồn `Ung_Dung/polypweb` |
 | m01_tham_so_tang10 | 3 | Số tham số từng thành phần của C2TSVMamba, so với C2PSA | Thanh ngang | `bang/08_kien_truc_dung_lai.csv` |
 | d01_thanh_phan_bg20 | 4 | Số ảnh polyp và ảnh nền trong train/val | Cột chồng | Đếm trực tiếp nhãn BG20 |
 | d02_so_polyp_moi_anh | 4 | Phân bố số polyp mỗi ảnh | Cột kép | Đếm trực tiếp nhãn BG20 |
@@ -50,6 +52,11 @@ Số hình trong báo cáo (ví dụ Hình 6.3) sẽ được gán khi viết t�
 | p02_diem_dice_tung_seed | 6 | Dice từng seed của 4 mô hình | Điểm (tán xạ) | như trên |
 | p03_bao_nham_anh_nen | 6 | Tỉ lệ ảnh nền bị báo nhầm | Cột | như trên |
 | q01_minh_hoa_dinh_tinh | 6 | Ảnh gốc, nhãn, dự đoán của 4 mô hình (seed 0, 3 ảnh) | Lưới ảnh | `bang/10_pixel_tung_anh.csv` và `du_lieu_dinh_tinh/` |
+| o01_anh_dung_topology | 6 | Tỉ lệ ảnh polyp có số mảnh và số lỗ khớp nhãn (lỗi Betti), 4 mô hình | Cột | `bang/14_topology_tung_seed.csv` (ngưỡng 20 pixel) |
+| o02_kieu_loi_topology | 6 | Ba kiểu lỗi topology: thừa mảnh, có lỗ, thiếu mảnh | Cột nhóm | như trên |
+| x01_dice_du_lieu_ngoai | 6 | Dice theo pixel của 4 mô hình trên CVC-ClinicDB, CVC-ColonDB, ETIS-Larib, PolypGen | Cột nhóm | `08_du_lieu_thuc_te/bang/<N>seed/01_ngoai_tung_seed.csv` |
+| x02_dice_polypgen_trung_tam | 6 | Dice theo pixel trên từng trung tâm C1–C6 của PolypGen | Cột nhóm | như trên |
+| x03_bao_nham_polypgen | 6 | Tỉ lệ ảnh không polyp của PolypGen (125 ảnh) bị báo nhầm | Cột | như trên |
 
 Tổng cộng 24 hình. Hai sơ đồ kiến trúc của chương 3 (toàn mô hình và khối TSVMamba) sẽ vẽ khi viết chương 3.
 

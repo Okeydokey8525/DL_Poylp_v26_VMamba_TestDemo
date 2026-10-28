@@ -11,7 +11,7 @@ Repo khóa luận (HUIT, CNTT_KLCN182): YOLO26s-seg (Baseline) so với YOLO26s-
 - Giao tiếp bằng tiếng Việt.
 - Chủ dự án nói "chưa chỉnh gì / đang hỏi đáp / đang thảo luận" → chỉ bàn và lập kế hoạch, không sửa file cho tới khi được xác nhận ("triển khai", "ok làm đi").
 - Không bịa số liệu. Mọi con số phải truy được về CSV trong `00_tai_lieu_tong_quan/bang/` hoặc script sinh ra nó; chưa có bằng chứng thì ghi "chưa xác minh".
-- Báo cáo dùng **20 seed (seed 0–19)** (chốt 28/10/2026): Δ mAP50–95 = +0,0043, CI 95% [−0,0002; 0,0088], p = 0,061, TSVM tốt hơn 13/20. **Không có ý nghĩa thống kê** ở α = 0,05: chỉ viết "xu hướng", không viết "vượt trội". Riêng độ ổn định: SD TSVM nhỏ hơn, Levene p = 0,026 (thăm dò). Bộ 10 seed (`bang/10seed/`, `hinh/ket_qua_10seed/`) chỉ giữ để đối chiếu. Số thập phân trong báo cáo dùng dấu phẩy. Không suy ra TN = 40 − FP, Dice/IoU từ mAP, hay lợi ích topology khi chưa có chỉ số topology và ablation.
+- Báo cáo dùng **20 seed (seed 0–19)** (chốt 28/10/2026): Δ mAP50–95 = +0,0043, CI 95% [−0,0002; 0,0088], p = 0,061, TSVM tốt hơn 13/20. **Không có ý nghĩa thống kê** ở α = 0,05: chỉ viết "xu hướng", không viết "vượt trội". Riêng độ ổn định: SD TSVM nhỏ hơn, Levene p = 0,026 (thăm dò). Bộ 10 seed (`bang/10seed/`, `hinh/ket_qua_10seed/`) chỉ giữ để đối chiếu. Số thập phân trong báo cáo dùng dấu phẩy. Không suy ra TN = 40 − FP, Dice/IoU từ mAP, hay lợi ích topology: chỉ số topology đã đo (`00_tai_lieu_tong_quan/14_CHI_SO_TOPOLOGY.md`), TSVM chỉ nhích hơn mô hình gốc, không có ý nghĩa thống kê, và kém PraNet rõ rệt.
 - Không sửa dữ liệu gốc (`01_du_lieu/`), checkpoint (`03_`, `05_`), hiện vật kiểm toán (`07_kiem_toan_va_sua/`) hay `99_luu_tru/`. Di chuyển thư mục thì ghi vào `PATH_MAP.md` / `PATH_MAP.csv`.
 - AV/AVF/ITSVM (trong `99_luu_tru/thu_nghiem_ket_hop/`) chỉ là thử nghiệm, không đưa vào báo cáo.
 - Commit lên nhánh `Okeydokey` khi được đồng ý; không push nếu chưa được yêu cầu.
@@ -28,6 +28,10 @@ python 00_tai_lieu_tong_quan/scripts/tinh_lai_so_lieu.py --torch   # thêm kiể
 
 # Đánh giá theo pixel (Dice/IoU/P/R) 4 mô hình × 20 seed -> bang/10–12_*.csv (cần GPU)
 C:\venv_kl_gpu\Scripts\python.exe 00_tai_lieu_tong_quan/scripts/danh_gia_pixel.py --seeds 0 1 --models pranet unet
+
+# Chỉ số topology (lỗi Betti) 4 mô hình × 20 seed -> bang/13–15_*.csv; FLOPs + độ trễ GPU -> bang/16_*.csv (cần GPU)
+C:\venv_kl_gpu\Scripts\python.exe 00_tai_lieu_tong_quan/scripts/danh_gia_topology.py
+C:\venv_kl_gpu\Scripts\python.exe 00_tai_lieu_tong_quan/scripts/do_flops_gpu.py
 
 # Bảng 10 seed (chỉ đối chiếu) -> 00_tai_lieu_tong_quan/bang/10seed/
 python 00_tai_lieu_tong_quan/scripts/tinh_lai_so_lieu.py --seeds 10

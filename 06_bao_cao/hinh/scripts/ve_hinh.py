@@ -773,6 +773,174 @@ def q01_minh_hoa_dinh_tinh(lang, st):
     save(fig, "q01_minh_hoa_dinh_tinh", lang)
 
 
+# ---------------------------------------------------------------- Chương 2: bốn kiểu đầu ra
+ANH_HAI_POLYP = "cju7eea9b2m0z0801ynqv1fqu"   # ảnh val có hai polyp tách rời, kích thước gần nhau
+
+
+def t01_bon_kieu_dau_ra(lang, st):
+    """Hình 2.1: cùng một ảnh, bốn kiểu đầu ra (phân loại, hộp bao, mặt nạ ngữ nghĩa, mặt nạ thực thể), vẽ từ nhãn."""
+    import cv2
+    img = cv2.cvtColor(cv2.imread(str(DATASET / "images" / "val" / f"{ANH_HAI_POLYP}.jpg")), cv2.COLOR_BGR2RGB)
+    h, w = img.shape[:2]
+    polys = [np.array(l.split()[1:], np.float32).reshape(-1, 2) * [w, h]
+             for l in (DATASET / "labels" / "val" / f"{ANH_HAI_POLYP}.txt").read_text().splitlines() if l.strip()]
+    inst_colors = [C_TSVM, C_PRANET]
+    titles = [L("(a) Phân loại\nảnh", "(a) Image\nclassification", lang),
+              L("(b) Phát hiện\nđối tượng", "(b) Object\ndetection", lang),
+              L("(c) Phân đoạn\nngữ nghĩa", "(c) Semantic\nsegmentation", lang),
+              L("(d) Phân đoạn\nthực thể", "(d) Instance\nsegmentation", lang)]
+    fig, axes = plt.subplots(1, 4, figsize=(st["width"] * (1.0 if lang == "vi" else 2.05),
+                                            st["width"] * (0.24 if lang == "vi" else 0.5)))
+    base = img.astype(float) / 255
+    for k, ax in enumerate(axes):
+        if k == 0:
+            ax.imshow(img)
+            ax.text(0.03, 0.05, L("có polyp: 0,97", "polyp: 0.97", lang), transform=ax.transAxes,
+                    fontsize=st["font"] - 2, color="white", bbox=dict(facecolor="black", alpha=0.6, pad=1.5, linewidth=0))
+        elif k == 1:
+            ax.imshow(img)
+            for c in polys:
+                x0, y0 = c.min(0)
+                x1, y1 = c.max(0)
+                ax.add_patch(matplotlib.patches.Rectangle((x0, y0), x1 - x0, y1 - y0, fill=False,
+                                                          edgecolor=C_BASE, linewidth=1.4))
+        else:
+            over = base.copy()
+            for i, c in enumerate(polys):
+                m = np.zeros((h, w), np.uint8)
+                cv2.fillPoly(m, [c.astype(np.int32)], 1)
+                col = np.array(matplotlib.colors.to_rgb(C_BASE if k == 2 else inst_colors[i % 2]))
+                over[m.astype(bool)] = 0.35 * over[m.astype(bool)] + 0.65 * col
+            ax.imshow(over)
+            if k == 3:
+                for i, c in enumerate(polys):
+                    cx, cy = c.mean(0)
+                    ax.text(cx, cy, f"#{i + 1}", ha="center", va="center", fontsize=st["font"] - 2, color="white",
+                            fontweight="bold")
+        ax.set_xticks([])
+        ax.set_yticks([])
+        ax.set_title(titles[k], fontsize=st["font"] - 2)
+    fig.subplots_adjust(wspace=0.04)
+    save(fig, "t01_bon_kieu_dau_ra", lang)
+
+
+# ---------------------------------------------------------------- Chương 6: chỉ số topology
+def _topo():
+    sd = pd.read_csv(BANG_SEED / "14_topology_tung_seed.csv", encoding="utf-8-sig")
+    return sd[sd.min_area == 20]   # ngưỡng chính: bỏ mảnh/lỗ < 20 pixel, như khi tạo nhãn
+
+
+def o01_anh_dung_topology(lang, st):
+    """Tỉ lệ ảnh polyp có số mảnh và số lỗ khớp nhãn, 4 mô hình, mean ± SD qua các seed."""
+    sd = _topo()
+    fig, ax = plt.subplots(figsize=(st["width"] * (0.8 if lang == "vi" else 1.0), st["width"] * 0.5))
+    for k, (key, c, lab) in enumerate(PIX_MODELS):
+        g = 100 * sd[sd.model == key]["topo_ok"]
+        ax.bar(k, g.mean(), 0.6, color=c, alpha=0.88, zorder=2)
+        ax.errorbar(k, g.mean(), yerr=g.std(ddof=1), fmt="none", ecolor="black", elinewidth=0.8, capsize=2.5, zorder=3)
+        ax.text(k, g.mean() + g.std(ddof=1) + 1.5, num(g.mean(), 1, lang), ha="center", fontsize=st["font"] - 2)
+    ax.set_xticks(range(4), [lab[lang].replace(" + ", "\n+ ").replace(" (", "\n(") for _, _, lab in PIX_MODELS],
+                  fontsize=st["font"] - 2)
+    ax.set_ylabel(L("Ảnh đúng topology (%)", "Topologically correct images (%)", lang))
+    ax.set_ylim(0, 105)
+    grid_y(ax)
+    save(fig, "o01_anh_dung_topology", lang)
+
+
+def o02_kieu_loi_topology(lang, st):
+    """Ba kiểu lỗi topology (thừa mảnh, có lỗ, thiếu mảnh) theo tỉ lệ ảnh polyp, mean ± SD qua các seed."""
+    sd = _topo()
+    kinds = [("frag_rate", L("Thừa mảnh", "Extra fragments", lang)), ("hole_rate", L("Có lỗ", "Holes", lang)),
+             ("miss_rate", L("Thiếu mảnh", "Missing parts", lang))]
+    fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.5))
+    x = np.arange(len(kinds))
+    w = 0.2
+    for k, (key, c, lab) in enumerate(PIX_MODELS):
+        g = sd[sd.model == key]
+        mu = [100 * g[m].mean() for m, _ in kinds]
+        s_ = [100 * g[m].std(ddof=1) for m, _ in kinds]
+        ax.bar(x + (k - 1.5) * w, mu, w * 0.92, color=c, alpha=0.88, label=lab[lang], zorder=2)
+        ax.errorbar(x + (k - 1.5) * w, mu, yerr=[np.minimum(s_, mu), s_], fmt="none", ecolor="black",
+                    elinewidth=0.7, capsize=1.6, zorder=3)
+    ax.set_xticks(x, [lab for _, lab in kinds])
+    ax.set_ylabel(L("Tỉ lệ ảnh polyp (%)", "Polyp images (%)", lang))
+    grid_y(ax)
+    legend_top(ax, ncol=2 if lang == "en" else 4)
+    save(fig, "o02_kieu_loi_topology", lang)
+
+
+# ---------------------------------------------------------------- Chương 6: dữ liệu ngoài
+NGOAI = REPO / "08_du_lieu_thuc_te" / "bang"
+NGOAI_SETS = [("clinicdb", "CVC-ClinicDB"), ("colondb", "CVC-ColonDB"), ("etis", "ETIS-Larib"),
+              ("polypgen", "PolypGen")]
+
+
+def _ngoai():
+    return pd.read_csv(NGOAI / f"{N_SEED}seed" / "01_ngoai_tung_seed.csv", encoding="utf-8-sig")
+
+
+def _cot_nhom(ax, sd, sets, metric, scale=1.0):
+    """Cột nhóm mean ± SD qua các seed: mỗi nhóm là một bộ dữ liệu, mỗi cột một mô hình."""
+    x = np.arange(len(sets))
+    w = 0.2
+    for k, (key, c, lab) in enumerate(PIX_MODELS):
+        g = sd[sd.model == key]
+        mu = [scale * g[g.dataset == d][metric].mean() for d, _ in sets]
+        s_ = [scale * g[g.dataset == d][metric].std(ddof=1) for d, _ in sets]
+        ax.bar(x + (k - 1.5) * w, mu, w * 0.92, color=c, alpha=0.88, label=key, zorder=2)
+        ax.errorbar(x + (k - 1.5) * w, mu, yerr=s_, fmt="none", ecolor="black", elinewidth=0.7, capsize=1.6, zorder=3)
+    ax.set_xticks(x, [lab for _, lab in sets])
+    grid_y(ax)
+
+
+def x01_dice_du_lieu_ngoai(lang, st):
+    """Dice theo pixel của 4 mô hình trên 4 bộ dữ liệu ngoài (mean ± SD qua các seed)."""
+    sd = _ngoai()
+    fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.5))
+    _cot_nhom(ax, sd, NGOAI_SETS, "dice")
+    h_, _l = ax.get_legend_handles_labels()
+    legend_top(ax, ncol=2 if lang == "en" else 4, handles=h_, labels=[lab[lang] for _, _, lab in PIX_MODELS])
+    ax.set_ylabel(L("Dice theo pixel", "Pixel Dice", lang))
+    ax.set_ylim(0, 1.0)
+    num_axis(ax, "y", 1, lang)
+    save(fig, "x01_dice_du_lieu_ngoai", lang)
+
+
+def x02_dice_polypgen_trung_tam(lang, st):
+    """Dice theo pixel của 4 mô hình trên từng trung tâm C1–C6 của PolypGen."""
+    sd = _ngoai()
+    sets = [(f"pg_c{i}", f"C{i}") for i in range(1, 7)]
+    fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.5))
+    _cot_nhom(ax, sd, sets, "dice")
+    h_, _l = ax.get_legend_handles_labels()
+    legend_top(ax, ncol=2 if lang == "en" else 4, handles=h_, labels=[lab[lang] for _, _, lab in PIX_MODELS])
+    ax.set_xlabel(L("Trung tâm thu ảnh của PolypGen", "PolypGen data centre", lang))
+    ax.set_ylabel(L("Dice theo pixel", "Pixel Dice", lang))
+    ax.set_ylim(0, 1.0)
+    num_axis(ax, "y", 1, lang)
+    save(fig, "x02_dice_polypgen_trung_tam", lang)
+
+
+def x03_bao_nham_polypgen(lang, st):
+    """Tỉ lệ ảnh không có polyp của PolypGen (125 ảnh) bị dự đoán có polyp, mean ± SD qua các seed."""
+    sd = _ngoai()
+    sd = sd[sd.dataset == "polypgen"]
+    fig, ax = plt.subplots(figsize=(st["width"] * (0.8 if lang == "vi" else 1.0), st["width"] * 0.5))
+    for k, (key, c, lab) in enumerate(PIX_MODELS):
+        g = 100 * sd[sd.model == key]["bg_fp_image_rate"]
+        lo = min(g.std(ddof=1), g.mean())
+        ax.bar(k, g.mean(), 0.6, color=c, alpha=0.88, zorder=2)
+        ax.errorbar(k, g.mean(), yerr=[[lo], [g.std(ddof=1)]], fmt="none", ecolor="black", elinewidth=0.8,
+                    capsize=2.5, zorder=3)
+        ax.text(k, g.mean() + g.std(ddof=1) + 1.5, num(g.mean(), 1, lang), ha="center", fontsize=st["font"] - 2)
+    ax.set_xticks(range(4), [lab[lang].replace(" + ", "\n+ ").replace(" (", "\n(") for _, _, lab in PIX_MODELS],
+                  fontsize=st["font"] - 2)
+    ax.set_ylabel(L("Ảnh không polyp bị báo nhầm (%)", "False-alarm polyp-free images (%)", lang))
+    ax.set_ylim(0, ax.get_ylim()[1] * 1.08)
+    grid_y(ax)
+    save(fig, "x03_bao_nham_polypgen", lang)
+
+
 FIGS_BO_SUNG = {
     "d01": d01_thanh_phan_bg20, "d02": d02_so_polyp_moi_anh, "d03": d03_so_dinh_polygon, "d04": d04_dien_tich_polyp,
     "m01": m01_tham_so_tang10,
@@ -782,6 +950,9 @@ FIGS_BO_SUNG = {
     "e01": e01_tp_fp_fn, "e02": e02_do_tre_cpu, "e03": e03_tham_so_dung_luong,
     "p01": p01_cot_kep_pixel, "p02": p02_diem_dice_tung_seed, "p03": p03_bao_nham_anh_nen,
     "q01": q01_minh_hoa_dinh_tinh,
+    "t01": t01_bon_kieu_dau_ra,
+    "o01": o01_anh_dung_topology, "o02": o02_kieu_loi_topology,
+    "x01": x01_dice_du_lieu_ngoai, "x02": x02_dice_polypgen_trung_tam, "x03": x03_bao_nham_polypgen,
 }
 
 
@@ -798,7 +969,7 @@ FIGS = {
 
 # Hình kết quả phụ thuộc nhóm seed; các hình còn lại ghi vào chung/.
 THEO_SEED = {"h01", "h01b", "h02", "h03", "h04", "r01", "r02", "r03", "r04", "r05", "c01", "c02", "e01",
-             "p01", "p02", "p03"}
+             "p01", "p02", "p03", "x01", "x02", "x03", "o01", "o02"}
 
 
 def main() -> None:

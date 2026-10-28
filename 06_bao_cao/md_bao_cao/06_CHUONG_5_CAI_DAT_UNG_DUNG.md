@@ -226,7 +226,7 @@ Ngoài ra, nhóm bổ sung: quản lý tài khoản và phân quyền, lịch s�
 |---|---|---|---|
 | Tải ảnh nội soi | Có | Có (chọn từ thư viện hoặc chụp) | JPG, JPEG, PNG; tối đa 10 MB |
 | Hiển thị mặt nạ phân đoạn | Có | Có | Ảnh chồng (overlay) mặt nạ lên ảnh gốc |
-| Hiển thị đường biên polyp | **Chưa có** | **Chưa có** | Ảnh overlay hiện do hàm `plot()` của Ultralytics vẽ, gồm mặt nạ tô màu và hộp bao, chưa có đường viền riêng. **[CẦN BỔ SUNG: vẽ đường viền mặt nạ bằng `cv2.findContours` và `cv2.drawContours` trong hàm tạo ảnh kết quả của dịch vụ suy luận, rồi chụp lại các hình]** |
+| Hiển thị đường biên polyp | Có | Có | Sau khi `plot()` của Ultralytics tô mặt nạ và vẽ hộp bao, hàm `draw_polyp_contours` trong dịch vụ suy luận vẽ thêm một đường viền khép kín màu vàng theo đa giác của từng mặt nạ (`masks.xy`), độ dày tỉ lệ với kích thước ảnh. Web và Mobile cùng nhận ảnh này nên không phải sửa phía giao diện |
 | Hiển thị độ tin cậy | Có (thanh tiến trình, %) | Có | Lấy độ tin cậy cao nhất trong các đối tượng phát hiện. Dịch vụ suy luận trả thang 0–1; Website đổi sang thang 0–100 trước khi lưu và hiển thị |
 | Lưu trữ kết quả | Có (MongoDB + tệp ảnh) | Không lưu | Mobile cố ý không lưu ảnh để bảo vệ quyền riêng tư |
 | So sánh hai mô hình | Có | Có | Chạy lần lượt hai mô hình trên cùng ảnh |
@@ -237,7 +237,9 @@ Hệ thống gồm ba thành phần. **Dịch vụ suy luận FastAPI** giữ ha
 - **Nhánh Web:** Trình duyệt → Spring Boot → FastAPI → mô hình. Spring Boot quản lý tài khoản, phiên đăng nhập, lịch sử, MongoDB và tệp ảnh.
 - **Nhánh Mobile:** Flutter → FastAPI → mô hình. Ứng dụng di động gọi thẳng dịch vụ suy luận, không có tài khoản và không lưu lịch sử.
 
-> **[HÌNH CẦN VẼ] Hình 5.2. Kiến trúc hệ thống PolypVision.** Sơ đồ khối: *Trình duyệt* → *Spring Boot Web* (nối xuống *MongoDB* và *Kho tệp ảnh*) → *FastAPI*; *Flutter Mobile* → *FastAPI*; *FastAPI* → hai khối *YOLO26s-seg* và *YOLO26s-TSVM-FP32-seg*. Có thể vẽ bằng draw.io hoặc dùng sơ đồ mermaid trong `Ung_Dung/polypweb/README.md` làm khung.
+![Hình 5.2](../hinh/chung/vi/s01_kien_truc_ung_dung.png)
+
+*Hình 5.2. Kiến trúc hệ thống PolypVision. Website (Spring Boot, cổng 8080) và ứng dụng di động (Flutter) là hai client độc lập của cùng dịch vụ suy luận FastAPI (cổng 8000). Chỉ nhánh Web có MongoDB và kho tệp ảnh.*
 
 Tách dịch vụ suy luận ra riêng có ba lợi ích:
 - Web và Mobile dùng chung một nơi nạp mô hình, tránh nạp hai lần;
@@ -455,7 +457,6 @@ Kết quả trên ứng dụng chỉ có tính minh họa. Kết luận về kh�
 
 - **Tốc độ.** Phép quét của SS2D viết bằng PyTorch thuần, không dùng kernel CUDA tối ưu. Trên CPU, mô hình tích hợp chậm khoảng gấp đôi mô hình gốc.
 - **Nhật ký môi trường.** Thông tin GPU và phiên bản PyTorch trên Kaggle chỉ có từ nhật ký lượt chạy thử, chưa có cho từng lượt chính.
-- **Đường biên polyp** chưa được vẽ riêng trên ảnh kết quả, trong khi đề cương yêu cầu hiển thị mặt nạ, đường biên và độ tin cậy **[CẦN BỔ SUNG TRƯỚC KHI NỘP]**.
 - **Ứng dụng di động** chưa có tài khoản, lịch sử và chưa chạy được khi không có mạng.
 - **Triển khai thực tế** chưa có HTTPS, chưa giới hạn tần suất gọi API; Website lưu ảnh trên đĩa cục bộ.
 - **Không phải thiết bị y tế.** Ứng dụng chỉ phục vụ nghiên cứu và minh họa; độ tin cậy hiển thị là điểm của mô hình, không phải xác suất mắc bệnh.
@@ -494,4 +495,4 @@ Chương 6 trình bày kết quả thực nghiệm: so sánh hai mô hình qua n
 | 5.19 | MongoDB Compass và thư mục `storage/` | **Có (minh chứng lưu trữ)** |
 | 5.20 | Thông báo lỗi khi tải tệp sai | Tùy chọn |
 
-Hình 5.2 (kiến trúc hệ thống) là hình vẽ, không phải ảnh chụp. Nếu bổ sung đường viền polyp, cần chụp lại 5.7, 5.8, 5.13, 5.14, 5.17, 5.18.
+Hình 5.2 (kiến trúc hệ thống) là hình vẽ, không phải ảnh chụp. Đường viền polyp đã được bổ sung ngày 28/10/2026, nên các hình 5.7, 5.8, 5.13, 5.14, 5.17, 5.18 phải chụp sau ngày này để thấy đường viền.

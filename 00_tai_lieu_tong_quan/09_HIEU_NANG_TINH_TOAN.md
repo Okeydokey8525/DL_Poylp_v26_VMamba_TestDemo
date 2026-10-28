@@ -39,9 +39,35 @@
 
 - Tham số chỉ tăng 7%, nhưng độ trễ trên CPU tăng **khoảng gấp đôi**. Nguyên nhân là SS2D quét 4 hướng trên chuỗi L = 400 vị trí, với tensor trung gian kích thước (B, 256, 16, 400) cho mỗi hướng. Phần quét song song cài bằng `torch.cat` trong vòng lặp Python (log₂ 512 = 9 bước), không dùng kernel CUDA/selective-scan tối ưu như Mamba gốc.
 - Đây là đo trên **một máy CPU, một seed, một thứ tự chạy**. 100 lần đo không phải 100 mẫu độc lập. **Không suy ra** tốc độ trên GPU hay hệ thống nội soi thời gian thực.
-- **Không báo GFLOPs.** THOP không đếm đúng phép quét song song tự viết, nên con số GFLOPs sẽ thiếu. Không chép GFLOPs từ tài liệu cũ.
+- **GFLOPs (cập nhật 28/10/2026):** đã đo bằng `FlopCounterMode` của PyTorch, xem mục bên dưới. Bộ đếm này không tính phép theo phần tử trong phép quét SS2D, nên GFLOPs của TSVM là **cận dưới**. Không chép GFLOPs từ tài liệu cũ.
 - VRAM không đo được vì phiên đo chạy trên CPU. Không ghi là 0.
 - Độ chính xác (20 seed, epoch cực đại mask) và độ trễ (một checkpoint seed 0) là hai đại lượng khác nguồn. Có thể đặt cạnh nhau để bàn về đánh đổi, nhưng không coi là một điểm Pareto đã kiểm định.
+
+## Bổ sung 28/10/2026: FLOPs và độ trễ GPU
+
+Script [`scripts/do_flops_gpu.py`](scripts/do_flops_gpu.py), kết quả [bang/16_flops_do_tre_gpu.csv](bang/16_flops_do_tre_gpu.csv) (tổng hợp) và [bang/16b_do_tre_gpu_tung_lan.csv](bang/16b_do_tre_gpu_tung_lan.csv) (1.800 lần đo). Checkpoint `best.pt` seed 0 trong `03_ket_qua_huan_luyen/` (cùng checkpoint với phép đo CPU).
+
+| | |
+|---|---|
+| Phần cứng | NVIDIA GeForce RTX 5050 Laptop GPU |
+| Phần mềm | PyTorch 2.13.0+cu130, Ultralytics 8.4.127 (fork TSVM FP32) |
+| Thiết lập | FP32, batch 1, đầu vào 1×3×640×640, đã gộp Conv-BN, chỉ forward (không tiền/hậu xử lý); 50 lần khởi động, 300 lần đo bằng CUDA event; 3 vòng xen kẽ hai mô hình |
+| FLOPs | `torch.utils.flop_counter.FlopCounterMode` (conv, matmul, bmm, einsum) và `get_flops` của Ultralytics để đối chiếu |
+
+| | Baseline | TSVM FP32 | Tỉ lệ |
+|---|---:|---:|---:|
+| GFLOPs (FlopCounterMode) | 34,29 | 34,82 | +1,5% |
+| GFLOPs (Ultralytics `get_flops`) | 37,32 | 37,86 | +1,4% |
+| Độ trễ GPU nhỏ nhất | 11,77 ms | 20,39 ms | 1,73 lần |
+| Độ trễ GPU phân vị 10% | 12,91 ms | 22,68 ms | 1,76 lần |
+| Độ trễ GPU trung vị vòng 1 (GPU chưa nóng) | 13,68 ms | 23,76 ms | 1,74 lần |
+| Độ trễ GPU trung vị cả 3 vòng | 15,80 ms | 39,06 ms | 2,47 lần |
+
+Diễn giải:
+- **FLOPs gần như không đổi (+1,5%) nhưng độ trễ tăng khoảng 1,7 lần trên GPU và 2,1 lần trên CPU.** Phần tính toán thêm của SS2D nhỏ; chi phí chủ yếu đến từ phép quét gồm nhiều bước nối tiếp (9 vòng Hillis–Steele cho L = 400), nhiều tensor trung gian và phép theo phần tử, vốn bị giới hạn bởi băng thông bộ nhớ và số lần gọi kernel chứ không bởi số phép nhân. Đây là lý do GFLOPs không phản ánh đúng tốc độ của khối Mamba viết bằng PyTorch thuần.
+- **GPU laptop hạ xung khi nóng:** trung vị của cả hai mô hình tăng dần qua 3 vòng (Baseline 13,7 → 16,6 → 29,5 ms; TSVM 23,8 → 44,4 → 42,7 ms). Vì vậy tỉ lệ 2,47 lần của trung vị cả 3 vòng bị nhiễu; nên dùng tỉ lệ khoảng **1,7 lần** từ độ trễ nhỏ nhất, phân vị 10% và vòng đầu, ba cách này cho kết quả gần nhau (1,73–1,76).
+- Vẫn là một máy, một seed. Không suy ra tốc độ trên GPU máy chủ hay hệ thống nội soi thật.
+- `get_flops` của Ultralytics cho số lớn hơn FlopCounterMode khoảng 3 GFLOPs ở cả hai mô hình (khác cách đếm); tỉ lệ giữa hai mô hình như nhau.
 
 ## Hình cũ (đã chuyển vào lưu trữ)
 
