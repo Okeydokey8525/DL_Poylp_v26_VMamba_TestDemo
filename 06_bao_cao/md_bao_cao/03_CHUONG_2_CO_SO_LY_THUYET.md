@@ -2,7 +2,6 @@
 
 > **Ghi chú soạn thảo (xóa khi nộp):**
 > - Số tài liệu tham khảo theo `TLTK/00_TONG_HOP_NOI_DUNG_71_TAI_LIEU.md`; [72] là Hillis–Steele (đã dùng ở Chương 3).
-> - Chỗ **[HÌNH CẦN VẼ]** là hình nhóm cần vẽ bằng script (quy cách ở `06_bao_cao/hinh/README.md`).
 > - Mọi ví dụ số trong chương là **ví dụ minh họa tự đặt**, không phải số liệu thực nghiệm. Các ví dụ đã được tính lại bằng Python.
 
 Chương này trình bày các kiến thức nền mà Chương 3 (mô hình đề xuất) và Chương 6 (đánh giá) sử dụng. Nội dung đi theo thứ tự:
@@ -33,7 +32,11 @@ Phân đoạn ảnh lại chia thành hai dạng:
 
 **Ví dụ minh họa.** Hình 2.1 đặt bốn kiểu đầu ra cạnh nhau cho cùng một ảnh Kvasir-SEG.
 
-> **[HÌNH CẦN VẼ] Hình 2.1.** Một ảnh polyp trong tập kiểm định, bốn ô cạnh nhau: (a) ảnh gốc kèm nhãn phân loại "có polyp"; (b) hộp bao từ nhãn; (c) mặt nạ ngữ nghĩa; (d) mặt nạ thực thể, mỗi polyp một màu. Nên chọn một ảnh có **hai polyp** để thấy rõ khác biệt giữa (c) và (d). Dữ liệu: `01_du_lieu/Kvasir_YOLO_SEG_BG20/images/val` và nhãn đa giác tương ứng.
+![Hình 2.1](../hinh/chung/vi/t01_bon_kieu_dau_ra.png)
+
+*Hình 2.1. Bốn kiểu đầu ra trên cùng một ảnh tập kiểm định có hai polyp: (a) phân loại ảnh, (b) phát hiện đối tượng bằng hộp bao, (c) phân đoạn ngữ nghĩa (hai polyp chung một mặt nạ), (d) phân đoạn thực thể (mỗi polyp một mặt nạ riêng). Hộp bao và mặt nạ vẽ từ nhãn đa giác của ảnh; xác suất ở ô (a) là số minh họa, không phải đầu ra mô hình.*
+
+*Nguồn: ảnh từ Kvasir-SEG [4]; hình do nhóm vẽ.*
 
 Ba bài toán xếp theo độ chi tiết tăng dần, đồng thời chi phí gán nhãn cũng tăng dần: nhãn phân loại chỉ cần một từ, nhãn hộp cần bốn tọa độ, còn nhãn mặt nạ cần vẽ đường biên từng điểm. Đề tài chọn phân đoạn thực thể vì đầu ra vừa có mặt nạ để quan sát đường biên, vừa có hộp bao và độ tin cậy để hiển thị trong ứng dụng.
 
@@ -235,7 +238,7 @@ Phép gộp (2.7) có tính kết hợp, nên có thể gộp từng cặp song 
 
 Ảnh hai chiều không có thứ tự tự nhiên. Nếu trải ảnh thành chuỗi theo một hướng, mỗi vị trí chỉ "thấy" được các vị trí đứng trước nó. Vision Mamba [46] quét hai chiều xuôi và ngược. VMamba [7] đề xuất mô-đun **SS2D** quét theo bốn hướng.
 
-> **[HÌNH CẦN VẼ hoặc dùng lại] Hình 2.2.** Bốn đường quét của SS2D trên lưới 4×4. Có thể dùng lại hình `a03_quet_bon_huong` (thư mục `hinh/chung/`) nếu Chương 3 không đặt hình này; nếu đã đặt ở Chương 3 thì ở đây chỉ dẫn chiếu.
+Bốn thứ tự quét này được minh họa ở Hình 3.3 (Chương 3), trên lưới 4×4.
 
 **Các bước của SS2D** (thuật toán VMamba) trên bản đồ đặc trưng $C \times H \times W$:
 1. **Chiếu vào.** Phép chiếu tuyến tính (tích chập 1×1) đưa $C$ kênh lên $2EC$ kênh rồi tách thành nhánh chính $U$ và nhánh cổng $Z$, mỗi nhánh $EC$ kênh; $E$ là hệ số mở rộng (VMamba thường dùng $E = 2$).

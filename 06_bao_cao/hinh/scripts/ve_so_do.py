@@ -391,7 +391,50 @@ def a03_quet_bon_huong(st: dict) -> None:
     save(fig, "a03_quet_bon_huong", st["lang"])
 
 
-FIGS = {"a01": a01_kien_truc_tong_the, "a02": a02_khoi_c2tsvmamba, "a03": a03_quet_bon_huong, "a04": a04_ss2d}
+# --------------------------------------------------------------------------- s01
+def s01_kien_truc_ung_dung(st: dict) -> None:
+    """Hình 5.2: kiến trúc hệ thống PolypVision (cổng và endpoint lấy từ mã nguồn Ung_Dung/polypweb)."""
+    vi = st["lang"] == "vi"
+    fs = st["fs"] + (0.8 if vi else 0.0)
+    W, H = (16.0 * CM, 6.4 * CM) if vi else (8.9 * CM, 4.6 * CM)
+    fig, ax = plt.subplots(figsize=(W, H))
+    ax.set_xlim(0, 12.6)
+    ax.set_ylim(-0.4, 5.0)
+    ax.axis("off")
+    t = (lambda a, b: a if vi else b)
+
+    br = box(ax, 1.2, 3.0, 2.0, 0.9, t("Trình duyệt\n(Web)", "Browser\n(Web)"), fs=fs)
+    sp = box(ax, 4.4, 3.0, 2.8, 0.9, t("Spring Boot Web\n(cổng 8080)", "Spring Boot Web\n(port 8080)"),
+             ec=C_BB, fc=F_BB, fs=fs, bold=True)
+    mg = box(ax, 3.4, 4.5, 1.8, 0.7, "MongoDB", fs=fs - 0.3)
+    st_ = box(ax, 5.5, 4.5, 2.0, 0.7, t("Kho tệp ảnh\n(storage/)", "Image storage\n(storage/)"), fs=fs - 0.3)
+    fl = box(ax, 1.2, 0.9, 2.0, 0.9, t("Flutter Mobile", "Flutter Mobile"), fs=fs)
+    ai = box(ax, 8.4, 1.95, 2.2, 3.1, t("FastAPI\ndịch vụ suy luận\n(cổng 8000)\n\nvẽ mặt nạ,\nhộp bao,\nđường viền",
+                                        "FastAPI\ninference service\n(port 8000)\n\nmask, box,\noutline"),
+             ec=C_TS, fc=F_TS, fs=fs, bold=False)
+    m1 = box(ax, 11.4, 2.8, 2.1, 0.8, "YOLO26s-seg", ec=C_NK, fc=F_NK, fs=fs - 0.2)
+    m2 = box(ax, 11.4, 1.1, 2.1, 0.8, "YOLO26s-seg\n+ TSVM (FP32)", ec=C_TS, fc=F_TS, fs=fs - 0.2)
+
+    hd = 8.0
+    arrow(ax, br["r"], sp["l"], head=hd)
+    arrow(ax, (sp["t"][0] - 0.6, sp["t"][1]), mg["b"], head=hd)
+    arrow(ax, (sp["t"][0] + 0.6, sp["t"][1]), st_["b"], head=hd)
+    arrow(ax, sp["r"], (ai["l"][0], sp["r"][1]), head=hd)
+    arrow(ax, fl["r"], (ai["l"][0], fl["r"][1]), head=hd)
+    arrow(ax, (ai["r"][0], m1["l"][1]), m1["l"], head=hd)
+    arrow(ax, (ai["r"][0], m2["l"][1]), m2["l"], head=hd)
+    lab = dict(ha="center", va="bottom", fontsize=fs - 1.2, color="#333333")
+    ax.text((sp["r"][0] + ai["l"][0]) / 2, sp["r"][1] + 0.08, "POST /predict", **lab)
+    ax.text((fl["r"][0] + ai["l"][0]) / 2, fl["r"][1] + 0.08, "POST /api/v1/inference, /comparison", **lab)
+    ax.text(1.2, 2.05, t("có tài khoản,\nlưu lịch sử", "accounts,\nhistory"), ha="center", va="center",
+            fontsize=fs - 1.2, color="#555555")
+    ax.text(1.2, -0.05, t("không tài khoản,\nkhông lưu ảnh", "no account,\nno storage"), ha="center", va="center",
+            fontsize=fs - 1.2, color="#555555")
+    save(fig, "s01_kien_truc_ung_dung", st["lang"])
+
+
+FIGS = {"a01": a01_kien_truc_tong_the, "a02": a02_khoi_c2tsvmamba, "a03": a03_quet_bon_huong, "a04": a04_ss2d,
+        "s01": s01_kien_truc_ung_dung}
 
 
 def main() -> None:

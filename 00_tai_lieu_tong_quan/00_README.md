@@ -43,6 +43,7 @@ Bộ 10 seed (chỉ đối chiếu): Δ = +0,0036, p = 0,384, 6/10 seed.
 | 09 | [Chi phí tính toán](09_HIEU_NANG_TINH_TOAN.md) | Tham số, độ trễ CPU, giới hạn của phép đo |
 | 10 | [So sánh PraNet, U-Net](10_SO_SANH_PRANET_UNET.md) | Dice/IoU/P/R theo pixel của 4 mô hình × 20 seed, giao thức và giới hạn |
 | 11 | [Giới hạn và hướng phát triển](11_GIOI_HAN_VA_HUONG_PHAT_TRIEN.md) | Được viết gì, không được viết gì, việc tiếp theo |
+| 14 | [Chỉ số topology](14_CHI_SO_TOPOLOGY.md) | Lỗi Betti (số mảnh, số lỗ) của 4 mô hình × 20 seed; TSVM không khác mô hình gốc có ý nghĩa |
 | 12 | [Truy vết số liệu](12_TRUY_VET_SO_LIEU.md) | Script, các bảng `bang/`, đối chiếu, các điểm cần lưu ý ở tài liệu cũ |
 | 13 | [Bản đồ thư mục](13_BAN_DO_THU_MUC.md) | File nào thuộc bộ chính, file nào là lịch sử |
 

@@ -575,7 +575,7 @@ Phần này đánh giá mô hình đề xuất so với mô hình đối chứng
 - **Phép quét chưa tối ưu.** Biến thể Hillis–Steele có tổng công việc $O(L\log L)$ và tạo nhiều tensor trung gian.
 - **Ở mức P5, lợi thế của SSM chưa thể hiện.** Với $L = 400$, attention vẫn rẻ, nên ưu điểm của SSM với chuỗi dài chưa có dịp phát huy.
 - **Khác bản VMamba gốc.** Mã thiếu hạng tử nhảy $D$, thiếu LayerNorm ở đầu ra, và khởi tạo $\Delta$ theo mặc định. Những điểm này có thể liên quan đến sự cố số học ở mục 3.8.
-- **Tên gọi chưa có bằng chứng đi kèm.** Chữ "topology" chỉ là ý đồ thiết kế; đề tài chưa đo chỉ số tô-pô hay chỉ số biên nào.
+- **Tên gọi chưa có bằng chứng đi kèm.** Chữ "topology" là ý đồ thiết kế. Khi đo lỗi Betti (số mảnh, số lỗ của mặt nạ) trên 20 seed, TSVM chỉ nhích hơn mô hình gốc và khác biệt không có ý nghĩa thống kê (Chương 6).
 - **Chưa tách được đóng góp của từng nhánh.** Mã có sẵn các chế độ để tách đóng góp (mục 3.10), nhưng đề tài chưa huấn luyện các chế độ này.
 
 ## 3.10. Các chế độ tách thành phần có sẵn trong mã
