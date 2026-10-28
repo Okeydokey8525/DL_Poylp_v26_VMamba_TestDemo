@@ -37,7 +37,8 @@ python tinh_lai_so_lieu.py --torch
 | `13_topology_tung_anh.csv` | Số mảnh (b0) và số lỗ (b1) của mặt nạ dự đoán và nhãn, 4 mô hình × 20 seed × 160 ảnh, ngưỡng diện tích 20 và 0 pixel | [10](10_SO_SANH_PRANET_UNET.md) |
 | `14_topology_tung_seed.csv` | Lỗi Betti, tỉ lệ ảnh đúng topology, vỡ mảnh, có lỗ, thiếu mảnh, theo seed | [10](10_SO_SANH_PRANET_UNET.md) |
 | `15_topology_thong_ke.csv` | Mean ± SD và so sánh ghép cặp TSVM với 3 mô hình còn lại | [10](10_SO_SANH_PRANET_UNET.md) |
-| `16_flops_do_tre_gpu.csv`, `16b_do_tre_gpu_tung_lan.csv` | FLOPs (FlopCounterMode) và độ trễ forward trên GPU, checkpoint seed 0 | [09](09_HIEU_NANG_TINH_TOAN.md) |
+| `16_flops_do_tre_gpu.csv`, `16b_do_tre_gpu_tung_lan.csv`, `16c_do_tre_gpu_nhiet_do.csv` | FLOPs (FlopCounterMode) và độ trễ forward trên GPU, checkpoint seed 0, lần đo 2 (có ghi nhiệt độ, xung nhịp) | [09](09_HIEU_NANG_TINH_TOAN.md) |
+| `16_lan1_*.csv`, `16b_lan1_*.csv`, `_log_flops_gpu_lan1.txt` | Lần đo 1, giữ để đối chiếu | [09](09_HIEU_NANG_TINH_TOAN.md) |
 
 Các tệp `13`–`15` do [`scripts/danh_gia_topology.py`](scripts/danh_gia_topology.py) sinh ra (dùng lại giao thức suy luận của `danh_gia_pixel.py`); tệp `16` do [`scripts/do_flops_gpu.py`](scripts/do_flops_gpu.py) sinh ra. Cả hai cần GPU.
 

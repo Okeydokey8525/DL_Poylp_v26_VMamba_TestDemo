@@ -78,7 +78,7 @@ Từ đó, đề tài đặt câu hỏi: **thay khối chú ý ở tầng sâu c
 |---|---|
 | Chất lượng phân đoạn theo đối tượng | mask mAP50–95 (độ đo chính), mask mAP50, Precision, Recall, F1 |
 | Chất lượng phân đoạn theo điểm ảnh | Dice, IoU, Precision, Recall theo điểm ảnh |
-| Chi phí | Số tham số, chi phí tính toán (FLOPs) **[CHỜ ĐO]**, thời gian suy luận trên CPU và GPU **[GPU: CHỜ ĐO]**, thời gian huấn luyện |
+| Chi phí | Số tham số, chi phí tính toán (FLOPs), thời gian suy luận trên CPU và GPU, thời gian huấn luyện |
 | Lỗi phát hiện | Số dương tính đúng (TP), dương tính giả (FP), âm tính giả (FN) |
 
 **Nghiên cứu ứng dụng:** xây dựng PolypVision, tích hợp hai checkpoint đã huấn luyện, cho phép tải ảnh, xem mặt nạ, độ tin cậy và so sánh hai mô hình trên cùng một ảnh.

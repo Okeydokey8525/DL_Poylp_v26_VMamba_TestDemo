@@ -45,27 +45,32 @@
 
 ## Bổ sung 28/10/2026: FLOPs và độ trễ GPU
 
-Script [`scripts/do_flops_gpu.py`](scripts/do_flops_gpu.py), kết quả [bang/16_flops_do_tre_gpu.csv](bang/16_flops_do_tre_gpu.csv) (tổng hợp) và [bang/16b_do_tre_gpu_tung_lan.csv](bang/16b_do_tre_gpu_tung_lan.csv) (1.800 lần đo). Checkpoint `best.pt` seed 0 trong `03_ket_qua_huan_luyen/` (cùng checkpoint với phép đo CPU).
+Script [`scripts/do_flops_gpu.py`](scripts/do_flops_gpu.py). Checkpoint `best.pt` seed 0 trong `03_ket_qua_huan_luyen/` (cùng checkpoint với phép đo CPU). Đã đo **hai lần** trong ngày 28/10/2026:
 
-| | |
-|---|---|
-| Phần cứng | NVIDIA GeForce RTX 5050 Laptop GPU |
-| Phần mềm | PyTorch 2.13.0+cu130, Ultralytics 8.4.127 (fork TSVM FP32) |
-| Thiết lập | FP32, batch 1, đầu vào 1×3×640×640, đã gộp Conv-BN, chỉ forward (không tiền/hậu xử lý); 50 lần khởi động, 300 lần đo bằng CUDA event; 3 vòng xen kẽ hai mô hình |
-| FLOPs | `torch.utils.flop_counter.FlopCounterMode` (conv, matmul, bmm, einsum) và `get_flops` của Ultralytics để đối chiếu |
+| | Lần 1 (chiều, ở trường) | Lần 2 (tối, **số dùng trong báo cáo**) |
+|---|---|---|
+| Thiết lập | 3 vòng × 300 lần đo, xen kẽ hai mô hình | 5 vòng × 200 lần đo, đảo thứ tự mỗi vòng; trước mỗi khối chờ GPU dưới 55 °C; ghi nhiệt độ và xung nhịp |
+| Kết quả | [bang/16_lan1_flops_do_tre_gpu.csv](bang/16_lan1_flops_do_tre_gpu.csv), [16b_lan1](bang/16b_lan1_do_tre_gpu_tung_lan.csv), [log](bang/_log_flops_gpu_lan1.txt) | [bang/16_flops_do_tre_gpu.csv](bang/16_flops_do_tre_gpu.csv), [16b](bang/16b_do_tre_gpu_tung_lan.csv) (2.000 lần đo), [16c](bang/16c_do_tre_gpu_nhiet_do.csv) (nhiệt độ, xung nhịp từng khối), [log](bang/_log_flops_gpu.txt) |
+
+Chung cho cả hai lần: NVIDIA GeForce RTX 5050 Laptop GPU, PyTorch 2.13.0+cu130, Ultralytics 8.4.127 (fork TSVM FP32); FP32, batch 1, đầu vào 1×3×640×640, đã gộp Conv-BN, chỉ forward (không tiền/hậu xử lý), 50 lần khởi động trước mỗi khối, đo bằng CUDA event. FLOPs: `torch.utils.flop_counter.FlopCounterMode` (conv, matmul, bmm, einsum) và `get_flops` của Ultralytics để đối chiếu.
 
 | | Baseline | TSVM FP32 | Tỉ lệ |
 |---|---:|---:|---:|
 | GFLOPs (FlopCounterMode) | 34,29 | 34,82 | +1,5% |
 | GFLOPs (Ultralytics `get_flops`) | 37,32 | 37,86 | +1,4% |
-| Độ trễ GPU nhỏ nhất | 11,77 ms | 20,39 ms | 1,73 lần |
-| Độ trễ GPU phân vị 10% | 12,91 ms | 22,68 ms | 1,76 lần |
-| Độ trễ GPU trung vị vòng 1 (GPU chưa nóng) | 13,68 ms | 23,76 ms | 1,74 lần |
-| Độ trễ GPU trung vị cả 3 vòng | 15,80 ms | 39,06 ms | 2,47 lần |
+| **Lần 2:** độ trễ trung vị (5 vòng) | 26,33 ms | 39,86 ms | **1,51 lần** |
+| Lần 2: trung bình ± SD | 26,99 ± 3,20 ms | 41,42 ± 6,82 ms | 1,53 lần |
+| Lần 2: nhỏ nhất | 20,79 ms | 29,80 ms | 1,43 lần |
+| Lần 2: phân vị 10% | 23,49 ms | 34,99 ms | 1,49 lần |
+| Lần 2: tỉ lệ trung vị theo từng vòng | | | 1,44–1,63 |
+| Lần 1: nhỏ nhất | 11,77 ms | 20,39 ms | 1,73 lần |
+| Lần 1: trung vị vòng đầu | 13,68 ms | 23,76 ms | 1,74 lần |
+| Lần 1: trung vị cả 3 vòng | 15,80 ms | 39,06 ms | 2,47 lần |
 
 Diễn giải:
-- **FLOPs gần như không đổi (+1,5%) nhưng độ trễ tăng khoảng 1,7 lần trên GPU và 2,1 lần trên CPU.** Phần tính toán thêm của SS2D nhỏ; chi phí chủ yếu đến từ phép quét gồm nhiều bước nối tiếp (9 vòng Hillis–Steele cho L = 400), nhiều tensor trung gian và phép theo phần tử, vốn bị giới hạn bởi băng thông bộ nhớ và số lần gọi kernel chứ không bởi số phép nhân. Đây là lý do GFLOPs không phản ánh đúng tốc độ của khối Mamba viết bằng PyTorch thuần.
-- **GPU laptop hạ xung khi nóng:** trung vị của cả hai mô hình tăng dần qua 3 vòng (Baseline 13,7 → 16,6 → 29,5 ms; TSVM 23,8 → 44,4 → 42,7 ms). Vì vậy tỉ lệ 2,47 lần của trung vị cả 3 vòng bị nhiễu; nên dùng tỉ lệ khoảng **1,7 lần** từ độ trễ nhỏ nhất, phân vị 10% và vòng đầu, ba cách này cho kết quả gần nhau (1,73–1,76).
+- **FLOPs gần như không đổi (+1,5%) nhưng độ trễ tăng khoảng 1,5–1,7 lần trên GPU và 2,1 lần trên CPU.** Phần tính toán thêm của SS2D nhỏ; chi phí chủ yếu đến từ phép quét gồm nhiều bước nối tiếp (9 vòng Hillis–Steele cho L = 400), nhiều tensor trung gian và phép theo phần tử, vốn bị giới hạn bởi băng thông bộ nhớ và số lần gọi kernel chứ không bởi số phép nhân. Đây là lý do GFLOPs không phản ánh đúng tốc độ của khối Mamba viết bằng PyTorch thuần.
+- **Lần 2 được kiểm soát nhiệt:** GPU ở 41–51 °C, xung nhịp SM 2.842–2.850 MHz ở mọi khối đo, không phải chờ nguội lần nào. Tỉ lệ giữa hai mô hình ổn định qua 5 vòng (1,44–1,63). Vì vậy báo cáo dùng **lần 2**.
+- **Độ trễ tuyệt đối không ổn định giữa hai phiên:** lần 2 chậm hơn lần 1 khoảng 1,5–2 lần ở cả hai mô hình dù GPU không nóng và chạy ở xung tối đa. Nguyên nhân chưa xác minh; giả thuyết là với batch 1, thời gian bị chi phối bởi phía CPU (gọi kernel, chế độ nguồn của máy) hơn là bởi GPU. Ở lần 1, độ trễ tăng dần qua các vòng (Baseline 13,7 → 16,6 → 29,5 ms) nên trước đây được giải thích là do GPU nóng; lần 2 cho thấy cách giải thích này chưa chắc chắn. **Chỉ nên báo cáo tỉ lệ giữa hai mô hình, không báo cáo số ms như một hằng số của máy.**
 - Vẫn là một máy, một seed. Không suy ra tốc độ trên GPU máy chủ hay hệ thống nội soi thật.
 - `get_flops` của Ultralytics cho số lớn hơn FlopCounterMode khoảng 3 GFLOPs ở cả hai mô hình (khác cách đếm); tỉ lệ giữa hai mô hình như nhau.
 
