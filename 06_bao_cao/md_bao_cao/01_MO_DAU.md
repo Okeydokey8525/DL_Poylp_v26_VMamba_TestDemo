@@ -3,20 +3,20 @@
 > **Ghi chú soạn thảo (xóa khi nộp):**
 > - Thông tin đề tài, nhóm, GVHD và mục tiêu lấy theo đề cương đã duyệt (`CNTT_KLCN182-Phung The Bao.pdf`) và bản báo cáo cũ `CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong_MoRong_FP32.docx`. Lời văn được viết lại để tránh trùng lặp khi kiểm tra Turnitin.
 > - Chỗ ghi **[ĐIỀN]** là ô nhóm tự điền.
-> - Số tài liệu tham khảo theo danh mục 71 tài liệu trong `TLTK/00_TONG_HOP_NOI_DUNG_71_TAI_LIEU.md`. Khi chốt báo cáo phải **đánh số lại theo thứ tự trích dẫn đầu tiên** (chuẩn IEEE); hiện một số số chưa tăng dần (ví dụ [6], [7] đứng trước [5]).
+> - Số tài liệu tham khảo đã đánh lại theo thứ tự trích dẫn lần đầu (IEEE) ngày 28/10/2026; danh mục ở `08_TAI_LIEU_THAM_KHAO.md`, bảng số cũ → mới ở `_KIEM_TRA/F_bang_doi_so_tai_lieu.csv`.
 
 ## 1. Lý do chọn đề tài
 
-Ung thư đại trực tràng là một trong những bệnh ung thư phổ biến và gây tử vong nhiều nhất. Theo ước tính GLOBOCAN năm 2022, bệnh này chiếm 9,6% số ca ung thư mới, đứng thứ ba, và 9,3% số ca tử vong do ung thư, đứng thứ hai [1]. Phần lớn các ca bệnh phát triển từ polyp ở niêm mạc ruột, nên phát hiện và cắt bỏ polyp sớm qua nội soi là cách phòng bệnh quan trọng [77].
+Ung thư đại trực tràng là một trong những bệnh ung thư phổ biến và gây tử vong nhiều nhất. Theo ước tính GLOBOCAN năm 2022, bệnh này chiếm 9,6% số ca ung thư mới, đứng thứ ba, và 9,3% số ca tử vong do ung thư, đứng thứ hai [1]. Phần lớn các ca bệnh phát triển từ polyp ở niêm mạc ruột, nên phát hiện và cắt bỏ polyp sớm qua nội soi là cách phòng bệnh quan trọng [2].
 
-Tuy vậy, kết quả nội soi phụ thuộc nhiều vào người thực hiện, và polyp vẫn bị bỏ sót với tỉ lệ đáng kể [2]. Phát hiện được nhiều u tuyến hơn gắn với nguy cơ ung thư thấp hơn [3]. Chương 1 trình bày chi tiết các số liệu này. Chúng cho thấy một công cụ tự động khoanh vùng polyp trên ảnh có giá trị hỗ trợ thực tế.
+Tuy vậy, kết quả nội soi phụ thuộc nhiều vào người thực hiện, và polyp vẫn bị bỏ sót với tỉ lệ đáng kể [3]. Phát hiện được nhiều u tuyến hơn gắn với nguy cơ ung thư thấp hơn [4]. Chương 1 trình bày chi tiết các số liệu này. Chúng cho thấy một công cụ tự động khoanh vùng polyp trên ảnh có giá trị hỗ trợ thực tế.
 
 Bài toán đặt ra là **phân đoạn polyp**: xác định chính xác những điểm ảnh thuộc polyp, chứ không chỉ đánh dấu một hộp bao quanh. Đây là bài toán khó vì:
 - màu và kết cấu của polyp thường gần giống niêm mạc xung quanh, đường biên mờ;
 - ảnh có vùng phản quang, nếp gấp, bọt hoặc dịch che khuất;
 - kích thước polyp thay đổi lớn, từ rất nhỏ đến chiếm gần hết khung hình.
 
-Các bộ dữ liệu công khai như Kvasir-SEG [4] cho phép nghiên cứu bài toán này theo một quy trình có thể kiểm tra lại.
+Các bộ dữ liệu công khai như Kvasir-SEG [5] cho phép nghiên cứu bài toán này theo một quy trình có thể kiểm tra lại.
 
 Về phương pháp, YOLO26-seg [6] (công bố năm 2026, bản tiền ấn phẩm) phát hiện và phân đoạn từng đối tượng trong một lần suy luận, không cần bước lọc trùng NMS, nên phù hợp với yêu cầu xử lý nhanh. Ngữ cảnh toàn cục của mô hình chủ yếu đến từ các khối chú ý (attention) đặt ở mức đặc trưng sâu nhất; phần lớn các khối còn lại là tích chập, chỉ nhìn vùng lân cận nhỏ. Mô hình không gian trạng thái thị giác VMamba [7] là một cách khác để lấy ngữ cảnh toàn cục: mô-đun SS2D quét bản đồ đặc trưng theo bốn hướng, nhờ đó mỗi vị trí nhận thông tin từ cả bốn phía. Đề tài kết hợp cơ chế quét này với một nhánh trích đặc trưng hình dạng và đường biên, vốn là manh mối quan trọng với polyp. Việc thay thế không nhằm làm mô hình nhẹ hơn: ở tầng 10, bản đồ đặc trưng chỉ có 20×20 vị trí, và khối mới thực tế làm tăng số tham số cũng như thời gian suy luận. Chi phí tăng thêm là một câu hỏi cần đo (CH3).
 
@@ -46,7 +46,7 @@ Từ đó, đề tài đặt câu hỏi: **thay khối chú ý ở tầng sâu c
 - Khối VMamba, cụ thể là mô-đun quét chọn lọc hai chiều SS2D.
 
 **Phạm vi dữ liệu:**
-- Bộ dữ liệu thực nghiệm BG20 gồm 1.200 ảnh: 1.000 ảnh polyp của Kvasir-SEG [4] và 200 ảnh manh tràng bình thường (lớp *normal-cecum*) của Kvasir v2 [5] làm ảnh nền (không có polyp).
+- Bộ dữ liệu thực nghiệm BG20 gồm 1.200 ảnh: 1.000 ảnh polyp của Kvasir-SEG [5] và 200 ảnh manh tràng bình thường (lớp *normal-cecum*) của Kvasir v2 [8] làm ảnh nền (không có polyp).
 - Dữ liệu chia thành 1.040 ảnh huấn luyện và 160 ảnh kiểm định. Phần ảnh polyp dùng đúng danh sách chia 880/120 do nhóm tác giả bộ dữ liệu cung cấp.
 - Bộ dữ liệu không có tập kiểm tra (test) riêng. Mọi chỉ số định lượng chính được đo trên tập kiểm định, và epoch tốt nhất cũng được chọn trên chính tập này. Vì vậy số liệu tuyệt đối có thể lạc quan hơn thực tế. Hạn chế này áp dụng như nhau cho cả hai mô hình, nên không làm lệch phép so sánh giữa chúng.
 - Phần triển khai trên dữ liệu thực tế dùng thêm ảnh từ các bộ CVC-ClinicDB, CVC-ColonDB và ETIS-Larib **[CHỜ KẾT QUẢ]**.
@@ -55,7 +55,7 @@ Từ đó, đề tài đặt câu hỏi: **thay khối chú ý ở tầng sâu c
 - Chỉ có một lớp đối tượng là polyp.
 - Hai mô hình chỉ khác nhau ở tầng 10. Mọi siêu tham số khác giữ giống nhau.
 - Mỗi mô hình được huấn luyện 100 epoch, ảnh vào 640×640, với 20 seed (seed 0–19).
-- PraNet [13] và U-Net [11] được huấn luyện trên cùng dữ liệu, chỉ để đối chiếu chỉ số theo điểm ảnh.
+- PraNet [9] và U-Net [10] được huấn luyện trên cùng dữ liệu, chỉ để đối chiếu chỉ số theo điểm ảnh.
 
 **Phạm vi ứng dụng:**
 - Ứng dụng PolypVision gồm dịch vụ suy luận (FastAPI), website (Spring Boot) và ứng dụng di động (Flutter).

@@ -36,7 +36,7 @@ Sau khi huấn luyện, các tệp kết quả được tải về máy cá nhâ
 | Thành phần | Giá trị | Dùng cho |
 |---|---|---|
 | CPU | AMD Ryzen 7 250 (8 lõi, 16 luồng), RAM 15,3 GiB | Đo độ trễ trên CPU, chạy dịch vụ suy luận |
-| GPU | NVIDIA GeForce RTX 5050 Laptop | Đánh giá theo điểm ảnh (Dice, IoU), đo tốc độ trên GPU **[CHỜ KẾT QUẢ]** |
+| GPU | NVIDIA GeForce RTX 5050 Laptop | Đánh giá theo điểm ảnh (Dice, IoU), đo tốc độ trên GPU (mục 6.5) |
 | Hệ điều hành | Windows 11 | |
 | Môi trường Python có GPU | Python, PyTorch 2.13.0 + CUDA 13.0 | Script đánh giá theo điểm ảnh |
 | Môi trường của dịch vụ suy luận | Python 3.12, PyTorch 2.6.0 (CPU), Ultralytics 8.4.127 theo `requirements.txt` **[CẦN KIỂM TRA: môi trường ảo hiện cài 8.4.103, nên cài lại cho khớp]** | Ứng dụng PolypVision |
@@ -49,8 +49,8 @@ Sau khi huấn luyện, các tệp kết quả được tải về máy cá nhâ
 
 | Hạng mục | Lựa chọn | Lý do |
 |---|---|---|
-| Học sâu | Python, PyTorch [63], Ultralytics [55] | YOLO26 được cài đặt chính thức trên Ultralytics; PyTorch cho phép viết khối SS2D tùy biến mà không cần biên dịch kernel riêng |
-| Xử lý dữ liệu, thống kê | NumPy, pandas, OpenCV, SciPy [68], Matplotlib | Chuyển nhãn, tính chỉ số, kiểm định thống kê, vẽ hình |
+| Học sâu | Python, PyTorch [74], Ultralytics [51] | YOLO26 được cài đặt chính thức trên Ultralytics; PyTorch cho phép viết khối SS2D tùy biến mà không cần biên dịch kernel riêng |
+| Xử lý dữ liệu, thống kê | NumPy, pandas, OpenCV, SciPy [75], Matplotlib | Chuyển nhãn, tính chỉ số, kiểm định thống kê, vẽ hình |
 | Dịch vụ suy luận | Python, FastAPI, Uvicorn | Cùng ngôn ngữ với mô hình nên nạp checkpoint trực tiếp; FastAPI nhẹ và tự sinh tài liệu API |
 | Web | Java 17, Spring Boot 4.1, Thymeleaf, Spring Security, Bootstrap 5 | Theo yêu cầu đề cương; Spring Boot có sẵn bảo mật, phiên đăng nhập, kết nối MongoDB |
 | Cơ sở dữ liệu | MongoDB | Lưu tài khoản và lịch sử phân tích dạng tài liệu, dễ mở rộng trường |
@@ -59,7 +59,7 @@ Sau khi huấn luyện, các tệp kết quả được tải về máy cá nhâ
 
 ## 5.2. Cài đặt mô hình gốc YOLO26s-seg
 
-Mô hình gốc dùng nguyên bản Ultralytics 8.4.127, cài bằng `pip`. Trọng số khởi tạo là `yolo26s-seg.pt`, đã được huấn luyện sẵn trên COCO [49]. Lớp đầu ra được đổi từ 80 lớp của COCO sang 1 lớp `polyp`.
+Mô hình gốc dùng nguyên bản Ultralytics 8.4.127, cài bằng `pip`. Trọng số khởi tạo là `yolo26s-seg.pt`, đã được huấn luyện sẵn trên COCO [50]. Lớp đầu ra được đổi từ 80 lớp của COCO sang 1 lớp `polyp`.
 
 Tệp mô tả dữ liệu `data_bg20.yaml`:
 
@@ -86,9 +86,9 @@ model.train(data="data_bg20.yaml", epochs=100, imgsz=640, batch=8,
 | Nhóm | Tham số |
 |---|---|
 | Dữ liệu | Ảnh vào 640×640; không lưu đệm ảnh (`cache=False`) |
-| Tối ưu | AdamW [54]; tốc độ học ban đầu 0,001, cuối 0,01 × ban đầu; momentum 0,937; suy giảm trọng số 0,0005; khởi động 5 epoch |
+| Tối ưu | AdamW [47]; tốc độ học ban đầu 0,001, cuối 0,01 × ban đầu; momentum 0,937; suy giảm trọng số 0,0005; khởi động 5 epoch |
 | Lịch | 100 epoch; lô 8 ảnh; không dừng sớm (`patience=100`); tắt Mosaic ở 10 epoch cuối |
-| Tăng cường | Mosaic [61] 1,0; lật ngang 0,5; co giãn 0,5; dịch 0,1; đổi màu HSV (0,015; 0,7; 0,4); không xoay, không lật dọc, không MixUp |
+| Tăng cường | Mosaic [46] 1,0; lật ngang 0,5; co giãn 0,5; dịch 0,1; đổi màu HSV (0,015; 0,7; 0,4); không xoay, không lật dọc, không MixUp |
 | Mặt nạ | Tỉ lệ thu nhỏ mặt nạ 4 (mặt nạ 160×160) |
 | Độ chính xác số | FP32 hoàn toàn (`amp=False`) |
 | Tất định | `deterministic=True`, 2 luồng nạp dữ liệu, seed cố định cho từng lượt |
@@ -162,7 +162,7 @@ Mã TSVMamba có tham số `mode` để bật hoặc tắt từng nhánh. Thí n
 | `shape_only` | Nhánh hình dạng | SS2D, cổng, fuse | 1.331.969 |
 | `shape_vmamba_no_guidance` | SS2D và nhánh hình dạng | Cổng $(1+G)$ | 1.745.409 |
 
-Mỗi chế độ chạy với seed 0–4, tổng cộng 15 lượt, chia cho 6 tài khoản Kaggle. Kết quả ở Chương 6 **[CHỜ KẾT QUẢ]**.
+Mỗi chế độ chạy với seed 0–4, tổng cộng 15 lượt, chia cho 6 tài khoản Kaggle. Kết quả ở mục 6.6.
 
 ## 5.4. Quy trình huấn luyện và tổ chức lưu trữ kết quả thực nghiệm
 
@@ -193,7 +193,7 @@ Mỗi lượt huấn luyện lưu riêng một thư mục, tên có dạng `Kvas
 │       └── weights/best.pt  # trọng số tốt nhất
 ├── TSVM_FP32/
 │   └── Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/ …
-└── Ablation_TSVM/           # thí nghiệm tách thành phần [CHỜ KẾT QUẢ]
+└── Vmamba_only/, Shape_only/, …   # thí nghiệm tách thành phần (mục 6.6)
 ```
 
 Từ các tệp này, script `tinh_lai_so_lieu.py` tính lại mọi số liệu và ghi ra các bảng CSV. Script `danh_gia_pixel.py` suy luận lại trên tập kiểm định để tính Dice và IoU theo điểm ảnh cho bốn mô hình. Script `ve_hinh.py` đọc các bảng để vẽ hình. Mọi con số trong Chương 6 đều truy được về bảng và script tương ứng.
@@ -440,10 +440,10 @@ Ngoài ra, nhóm đã kiểm thử thủ công trên điện thoại Android th�
 
 ## 5.9. Triển khai trên dữ liệu thực tế
 
-Để kiểm tra mô hình trên ảnh **khác nguồn** với dữ liệu huấn luyện, nhóm dùng ba bộ dữ liệu công khai gồm các khung hình cắt từ video nội soi: CVC-ClinicDB (612 ảnh), CVC-ColonDB (380 ảnh) và ETIS-Larib (196 ảnh). Các ảnh này không tham gia huấn luyện.
+Để kiểm tra mô hình trên ảnh **khác nguồn** với dữ liệu huấn luyện, nhóm dùng bốn bộ dữ liệu công khai: CVC-ClinicDB (612 ảnh), CVC-ColonDB (380 ảnh), ETIS-Larib (196 ảnh) và phần ảnh đơn của PolypGen (1.537 ảnh từ 6 trung tâm). Các ảnh này không tham gia huấn luyện.
 
 Việc triển khai gồm hai phần:
-1. **Đánh giá định lượng:** chạy các checkpoint của hai mô hình trên toàn bộ ba bộ dữ liệu, tính Dice, IoU, Precision, Recall theo điểm ảnh như trên tập kiểm định. Kết quả ở Chương 6 **[CHỜ KẾT QUẢ]**.
+1. **Đánh giá định lượng:** chạy checkpoint 20 seed của bốn mô hình (hai mô hình YOLO, PraNet, U-Net) trên toàn bộ bốn bộ dữ liệu, tính Dice, IoU, Precision, Recall theo điểm ảnh như trên tập kiểm định. Kết quả ở mục 6.7.
 2. **Minh họa trên ứng dụng:** tải một số ảnh của ba bộ dữ liệu lên PolypVision, dùng chức năng so sánh để xem hai mô hình hoạt động trên ảnh lạ.
 
 > **[CHỤP HÌNH 5.17] So sánh hai mô hình trên ảnh CVC-ClinicDB.**
@@ -451,7 +451,7 @@ Việc triển khai gồm hai phần:
 > - **Thao tác:** dùng trang *So sánh* của Website. Mỗi bộ chọn 1–2 ảnh: một ảnh polyp rõ và một ảnh khó (polyp nhỏ hoặc phản quang). Nên chọn ảnh sau khi có kết quả định lượng, để ảnh minh họa đại diện cho xu hướng chung chứ không phải trường hợp hiếm.
 > - **Cần thấy:** ảnh overlay và độ tin cậy của hai mô hình. Chú thích ghi rõ tên bộ dữ liệu và tên tệp ảnh.
 
-Kết quả trên ứng dụng chỉ có tính minh họa. Kết luận về khả năng tổng quát hóa dựa trên đánh giá định lượng ở Chương 6. Ba bộ dữ liệu này là ảnh công khai khác nguồn, không phải dữ liệu lâm sàng thu tại bệnh viện.
+Kết quả trên ứng dụng chỉ có tính minh họa. Kết luận về khả năng tổng quát hóa dựa trên đánh giá định lượng ở Chương 6. Bốn bộ dữ liệu này là ảnh công khai khác nguồn, không phải dữ liệu lâm sàng thu tại bệnh viện.
 
 ## 5.10. Hạn chế của phần cài đặt
 
