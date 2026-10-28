@@ -339,23 +339,25 @@ Bộ đếm `FlopCounterMode` của PyTorch [74] chỉ đếm các phép tích c
 |---|---|---:|---:|---:|
 | CPU AMD Ryzen 7 250, 4 luồng | Chỉ lan truyền xuôi, trung bình 100 lần | 269,56 ± 18,71 | 577,36 ± 24,40 | 2,14 lần |
 | | Cả quy trình dự đoán (tiền xử lý, lan truyền xuôi, hậu xử lý), 20 ảnh | 286,56 ± 20,09 | 567,86 ± 24,45 | 1,98 lần |
-| GPU RTX 5050 Laptop | Chỉ lan truyền xuôi, nhỏ nhất | 11,77 | 20,39 | 1,73 lần |
-| | Phân vị 10% | 12,91 | 22,68 | 1,76 lần |
-| | Trung vị vòng đo đầu tiên | 13,68 | 23,76 | 1,74 lần |
+| GPU RTX 5050 Laptop | Chỉ lan truyền xuôi, trung vị 1.000 lần | 26,33 | 39,86 | 1,51 lần |
+| | Trung bình ± độ lệch chuẩn | 26,99 ± 3,20 | 41,42 ± 6,82 | 1,53 lần |
+| | Nhỏ nhất | 20,79 | 29,80 | 1,43 lần |
 
-*Nguồn: CPU: `04_phan_tich_20seed/efficiency_benchmark/tables/efficiency_summary.csv`; GPU: `bang/16_flops_do_tre_gpu.csv`, `bang/16b_do_tre_gpu_tung_lan.csv` (1.800 lần đo). Môi trường CPU: PyTorch 2.6.0. Môi trường GPU: PyTorch 2.13.0, CUDA 13.0.*
+*Nguồn: CPU: `04_phan_tich_20seed/efficiency_benchmark/tables/efficiency_summary.csv`; GPU: `bang/16_flops_do_tre_gpu.csv`, `bang/16b_do_tre_gpu_tung_lan.csv` (2.000 lần đo), `bang/16c_do_tre_gpu_nhiet_do.csv`. Môi trường CPU: PyTorch 2.6.0. Môi trường GPU: PyTorch 2.13.0, CUDA 13.0.*
 
 ![Hình 6.15](../hinh/chung/vi/e02_do_tre_cpu.png)
 
 *Hình 6.15. Độ trễ trên CPU của hai mô hình ở hai chế độ đo. Thanh lỗi là ±1 độ lệch chuẩn qua 100 lần đo.*
 
-Trên GPU, mỗi mô hình được đo 3 vòng, mỗi vòng 300 lần sau 50 lần chạy khởi động, xen kẽ hai mô hình. GPU của máy tính xách tay tự hạ xung nhịp khi nóng, làm độ trễ của cả hai mô hình tăng dần qua các vòng. Nếu lấy trung vị của cả 3 vòng, tỉ lệ lên tới 2,47 lần, nhưng con số này bị nhiễu bởi nhiệt độ. Vì vậy Bảng 6.11 dùng ba cách đo ít bị ảnh hưởng nhất: giá trị nhỏ nhất, phân vị 10% và trung vị của vòng đầu. Ba cách cho tỉ lệ gần nhau, khoảng **1,7 lần**.
+Trên GPU, mỗi mô hình được đo 5 vòng, mỗi vòng 200 lần sau 50 lần chạy khởi động, xen kẽ hai mô hình và đảo thứ tự mỗi vòng. Trước mỗi khối đo, chương trình chờ GPU nguội dưới 55 °C và ghi lại nhiệt độ, xung nhịp. Trong cả lần đo, GPU ở 41–51 °C và chạy ở xung nhịp tối đa, nên kết quả không bị ảnh hưởng bởi việc hạ xung do nóng. Tỉ lệ độ trễ giữa hai mô hình ổn định qua các vòng, từ 1,44 đến 1,63 lần.
+
+Một lần đo trước đó trên cùng máy, không kiểm soát nhiệt, cho độ trễ tuyệt đối nhỏ hơn khoảng 1,5–2 lần (mô hình gốc 11,8 ms, TSVM 20,4 ms ở giá trị nhỏ nhất) nhưng tỉ lệ tương tự, khoảng 1,7 lần. Như vậy số mili giây trên máy tính xách tay thay đổi theo trạng thái của máy, còn **tỉ lệ khoảng 1,5–1,7 lần là kết quả đáng tin hơn**.
 
 ### 6.5.3. Nhận xét
 
-Số phép tính chỉ tăng khoảng 1,5%, nhưng độ trễ tăng khoảng 1,7 lần trên GPU và 2,1 lần trên CPU. Như vậy GFLOPs không phản ánh đúng tốc độ của khối Mamba viết bằng PyTorch thuần. Nguyên nhân chính là phép quét song song (mục 3.4): với chuỗi dài 400 vị trí, phép quét chạy 9 vòng nối tiếp, mỗi vòng tạo các tensor trung gian và nhiều phép tính theo từng phần tử. Các phép này bị giới hạn bởi băng thông bộ nhớ và số lần gọi kernel, chứ không bởi số phép nhân. Bản Mamba gốc tránh được chi phí này nhờ kernel CUDA viết riêng [26].
+Số phép tính chỉ tăng khoảng 1,5%, nhưng độ trễ tăng khoảng 1,5 lần trên GPU và 2,1 lần trên CPU. Như vậy GFLOPs không phản ánh đúng tốc độ của khối Mamba viết bằng PyTorch thuần. Nguyên nhân chính là phép quét song song (mục 3.4): với chuỗi dài 400 vị trí, phép quét chạy 9 vòng nối tiếp, mỗi vòng tạo các tensor trung gian và nhiều phép tính theo từng phần tử. Các phép này bị giới hạn bởi băng thông bộ nhớ và số lần gọi kernel, chứ không bởi số phép nhân. Bản Mamba gốc tránh được chi phí này nhờ kernel CUDA viết riêng [26].
 
-Đặt cạnh kết quả ở mục 6.2, mô hình đề xuất **tốn thêm khoảng 70–110% thời gian suy luận để đổi lấy mức tăng mAP50–95 khoảng 0,004 chưa có ý nghĩa thống kê**. Ở độ trễ khoảng 20 ms trên GPU, mô hình vẫn xử lý được khoảng 50 ảnh mỗi giây khi chỉ tính lan truyền xuôi. Tuy vậy, đây là đo trên một máy, một checkpoint, nên không suy ra tốc độ trên hệ thống nội soi thật.
+Đặt cạnh kết quả ở mục 6.2, mô hình đề xuất **tốn thêm khoảng 50–110% thời gian suy luận để đổi lấy mức tăng mAP50–95 khoảng 0,004 chưa có ý nghĩa thống kê**. Ở độ trễ khoảng 40 ms trên GPU, mô hình vẫn xử lý được khoảng 25 ảnh mỗi giây khi chỉ tính lan truyền xuôi. Tuy vậy, đây là đo trên một máy, một checkpoint, nên không suy ra tốc độ trên hệ thống nội soi thật.
 
 ## 6.6. Thí nghiệm tách thành phần
 
@@ -492,7 +494,7 @@ Trên 125 ảnh không có polyp của PolypGen, tỉ lệ báo nhầm là 13,3%
 
 **Mô hình đề xuất có ổn định hơn không?** Trên tập kiểm định, độ lệch chuẩn giữa các seed nhỏ hơn khoảng 39% (Levene $p = 0{,}026$, thăm dò). Nhưng dấu hiệu này chỉ có ở epoch tốt nhất và không còn trên dữ liệu ngoài.
 
-**Chi phí tăng bao nhiêu?** Tham số tăng 7,2%, GFLOPs tăng 1,5%, nhưng độ trễ tăng khoảng 1,7 lần trên GPU và 2,1 lần trên CPU, thời gian huấn luyện tăng khoảng 2 lần.
+**Chi phí tăng bao nhiêu?** Tham số tăng 7,2%, GFLOPs tăng 1,5%, nhưng độ trễ tăng khoảng 1,5 lần trên GPU và 2,1 lần trên CPU, thời gian huấn luyện tăng khoảng 2 lần.
 
 ### 6.8.2. Vì sao mức cải thiện nhỏ
 
@@ -509,7 +511,7 @@ Giả thuyết khởi tạo cũng có thể giải thích kết quả trên dữ
 - **Một bộ dữ liệu huấn luyện.** Mọi mô hình chỉ học từ Kvasir-SEG cộng 200 ảnh nền của một lớp Kvasir.
 - **Thiết lập so sánh khác nhau.** PraNet và U-Net được huấn luyện ở độ phân giải khác và không tăng cường dữ liệu.
 - **Nhiều phép so sánh không hiệu chỉnh.** Ngoài chỉ số chính, các kết quả có $p < 0{,}05$ ở chỉ số phụ hoặc ở từng trung tâm của PolypGen chỉ nên coi là gợi ý.
-- **Độ trễ đo trên một máy, một checkpoint.** GPU máy tính xách tay bị hạ xung khi nóng. Phép quét chưa được tối ưu bằng kernel CUDA.
+- **Độ trễ đo trên một máy, một checkpoint.** Số mili giây trên máy tính xách tay thay đổi giữa các phiên đo, chỉ tỉ lệ giữa hai mô hình là ổn định. Phép quét chưa được tối ưu bằng kernel CUDA.
 - **Tách thành phần chỉ có 5 seed** (mục 6.6).
 - **Topology** chỉ đo trên tập kiểm định, nhãn đa giác vốn không có lỗ.
 
@@ -519,7 +521,7 @@ Chương 6 đã so sánh mô hình YOLO26s-seg gốc với mô hình tích hợp
 - Mask mAP50–95 tăng 0,0043 (0,7189 lên 0,7232), cao hơn ở 13/20 seed, nhưng **chưa có ý nghĩa thống kê** ($p = 0{,}061$).
 - Độ lệch chuẩn giữa các seed nhỏ hơn khoảng 39% (Levene $p = 0{,}026$, thăm dò), chỉ đúng ở epoch tốt nhất.
 - Theo pixel, TSVM có Dice ngang PraNet (0,854) và IoU cao hơn PraNet, nhưng topology kém PraNet rõ rệt. Cả ba mô hình đều hơn U-Net rất xa.
-- Số phép tính gần như không đổi, nhưng độ trễ tăng khoảng 1,7 lần trên GPU và 2,1 lần trên CPU.
+- Số phép tính gần như không đổi, nhưng độ trễ tăng khoảng 1,5 lần trên GPU và 2,1 lần trên CPU.
 - Trên dữ liệu ngoài, TSVM không tốt hơn mô hình gốc và thấp hơn có ý nghĩa ở CVC-ClinicDB và CVC-ColonDB. Hai mô hình YOLO vẫn tốt hơn PraNet và U-Net.
 - Thí nghiệm tách thành phần: **[CHỜ KẾT QUẢ]**.
 

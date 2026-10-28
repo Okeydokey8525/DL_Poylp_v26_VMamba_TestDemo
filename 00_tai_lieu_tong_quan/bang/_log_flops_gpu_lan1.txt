@@ -1,0 +1,7 @@
+baseline: 11,434,463 tham số, FlopCounter 34.29 GFLOPs, Ultralytics 37.3221376 GFLOPs
+tsvm: 12,254,688 tham số, FlopCounter 34.82 GFLOPs, Ultralytics 37.8564608 GFLOPs
+            params  gflops_flopcounter  gflops_ultralytics  gpu_ms_median  gpu_ms_mean  gpu_ms_sd  gpu_ms_p95                                 gpu         torch
+model                                                                                                                                                          
+baseline  11434463              34.292              37.322         15.803       19.903      9.294      40.980  NVIDIA GeForce RTX 5050 Laptop GPU  2.13.0+cu130
+tsvm      12254688              34.822              37.856         39.062       37.756     12.325      59.245  NVIDIA GeForce RTX 5050 Laptop GPU  2.13.0+cu130
+Tỉ lệ độ trễ GPU (TSVM / đối chứng, trung vị): 2.47

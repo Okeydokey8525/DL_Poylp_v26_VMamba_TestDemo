@@ -1,7 +1,18 @@
+W1028 23:06:30.365000 48136 Lib\site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting will not work for triton kernels
 baseline: 11,434,463 tham số, FlopCounter 34.29 GFLOPs, Ultralytics 37.3221376 GFLOPs
 tsvm: 12,254,688 tham số, FlopCounter 34.82 GFLOPs, Ultralytics 37.8564608 GFLOPs
-            params  gflops_flopcounter  gflops_ultralytics  gpu_ms_median  gpu_ms_mean  gpu_ms_sd  gpu_ms_p95                                 gpu         torch
-model                                                                                                                                                          
-baseline  11434463              34.292              37.322         15.803       19.903      9.294      40.980  NVIDIA GeForce RTX 5050 Laptop GPU  2.13.0+cu130
-tsvm      12254688              34.822              37.856         39.062       37.756     12.325      59.245  NVIDIA GeForce RTX 5050 Laptop GPU  2.13.0+cu130
-Tỉ lệ độ trễ GPU (TSVM / đối chứng, trung vị): 2.47
+vòng 0 baseline: chờ 0s, 41→46°C, xung 1747→2850 MHz, trung vị 25.61 ms
+vòng 0 tsvm: chờ 0s, 46→50°C, xung 2850→2850 MHz, trung vị 41.78 ms
+vòng 1 tsvm: chờ 0s, 50→51°C, xung 2850→2842 MHz, trung vị 39.04 ms
+vòng 1 baseline: chờ 0s, 51→49°C, xung 2842→2850 MHz, trung vị 27.12 ms
+vòng 2 baseline: chờ 0s, 49→49°C, xung 2850→2850 MHz, trung vị 27.71 ms
+vòng 2 tsvm: chờ 0s, 49→51°C, xung 2850→2842 MHz, trung vị 41.08 ms
+vòng 3 tsvm: chờ 0s, 51→51°C, xung 2842→2842 MHz, trung vị 40.18 ms
+vòng 3 baseline: chờ 0s, 51→51°C, xung 2842→2850 MHz, trung vị 25.68 ms
+vòng 4 baseline: chờ 0s, 51→50°C, xung 2850→2850 MHz, trung vị 25.75 ms
+vòng 4 tsvm: chờ 0s, 50→51°C, xung 2850→2842 MHz, trung vị 38.07 ms
+            params  gflops_flopcounter  gflops_ultralytics  gpu_ms_median  gpu_ms_mean  gpu_ms_sd  gpu_ms_p95  gpu_ms_min  gpu_ms_p10  gpu_ms_median_vong0                                 gpu         torch
+model                                                                                                                                                                                                       
+baseline  11434463              34.292              37.322         26.330       26.987      3.202      33.200      20.793      23.489               25.612  NVIDIA GeForce RTX 5050 Laptop GPU  2.13.0+cu130
+tsvm      12254688              34.822              37.856         39.860       41.417      6.823      52.589      29.801      34.991               41.775  NVIDIA GeForce RTX 5050 Laptop GPU  2.13.0+cu130
+Tỉ lệ độ trễ GPU (TSVM / đối chứng, trung vị): 1.51

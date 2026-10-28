@@ -19,7 +19,7 @@
 | Specificity, accuracy theo ảnh, TN = 40 − FP | TN không xác định ([08](08_MA_TRAN_NHAM_LAN.md)) |
 | Hiệu quả lâm sàng, khả năng tổng quát sang bệnh viện khác | Không có tập test ngoài, không tách theo bệnh nhân |
 | "TSVM ổn định hơn ở mọi epoch" | Có 34/100 epoch SD của TSVM lớn hơn ([07](07_HOI_TU_VA_LOSS.md)) |
-| GFLOPs, VRAM, FPS trên GPU | Chưa đo ([09](09_HIEU_NANG_TINH_TOAN.md)) |
+| VRAM trên GPU; độ trễ GPU như một con số tuyệt đối | VRAM chưa đo. GFLOPs và độ trễ GPU đã đo, nhưng số ms thay đổi 1,5–2 lần giữa hai phiên đo, chỉ tỉ lệ giữa hai mô hình là ổn định ([09](09_HIEU_NANG_TINH_TOAN.md)) |
 | "TSVM vượt PraNet" | Dice ngang nhau. TSVM chỉ hơn ở IoU, còn PraNet hơn ở Recall ([10](10_SO_SANH_PRANET_UNET.md)) |
 
 ## Giới hạn của thiết kế thực nghiệm

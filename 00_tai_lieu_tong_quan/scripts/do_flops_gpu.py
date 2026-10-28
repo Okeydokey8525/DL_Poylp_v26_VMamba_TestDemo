@@ -4,8 +4,10 @@
   như khi suy luận). Bộ đếm này tính các phép conv, matmul/bmm/einsum; các phép theo phần tử (nhân, cộng, exp
   trong phép quét SS2D) không được tính, nên FLOPs của TSVM là cận dưới. Ghi kèm GFLOPs do Ultralytics báo
   (model.info, dùng thop nếu có) để đối chiếu.
-- Độ trễ GPU: chỉ forward, batch 1, FP32, cudnn.benchmark tắt; khởi động 50 lần, đo 300 lần bằng CUDA event.
-  Không gồm tiền xử lý và hậu xử lý. Đo xen kẽ hai mô hình 3 vòng để giảm ảnh hưởng nhiệt độ/xung nhịp GPU.
+- Độ trễ GPU: chỉ forward, batch 1, FP32, cudnn.benchmark tắt; khởi động 50 lần, đo 200 lần bằng CUDA event.
+  Không gồm tiền xử lý và hậu xử lý. Đo xen kẽ hai mô hình 5 vòng. Trước mỗi khối đo, chờ GPU nguội xuống
+  dưới COOL_C (tối đa COOL_MAX_S giây) và ghi nhiệt độ, xung nhịp trước/sau khối (nvidia-smi), vì GPU laptop
+  hạ xung khi nóng (lần đo 28/10/2026 lúc máy không có quạt tản nhiệt bị ảnh hưởng rõ).
 
 Kết quả: ../bang/16_flops_do_tre_gpu.csv (tổng hợp) và ../bang/16b_do_tre_gpu_tung_lan.csv (từng lần đo).
 
@@ -14,7 +16,9 @@ Kết quả: ../bang/16_flops_do_tre_gpu.csv (tổng hợp) và ../bang/16b_do_t
 from __future__ import annotations
 
 import platform
+import subprocess
 import sys
+import time
 
 import numpy as np
 import pandas as pd
@@ -23,7 +27,26 @@ from torch.utils.flop_counter import FlopCounterMode
 
 import danh_gia_pixel as dg
 
-WARMUP, ITERS, ROUNDS = 50, 300, 3
+WARMUP, ITERS, ROUNDS = 50, 200, 5
+COOL_C, COOL_MAX_S = 55, 180
+
+
+def gpu_state():
+    """(nhiệt độ °C, xung nhịp SM MHz) từ nvidia-smi; (nan, nan) nếu không đọc được."""
+    try:
+        out = subprocess.run(["nvidia-smi", "--query-gpu=temperature.gpu,clocks.sm", "--format=csv,noheader,nounits"],
+                             capture_output=True, text=True, timeout=10).stdout.split(",")
+        return float(out[0]), float(out[1])
+    except Exception:
+        return np.nan, np.nan
+
+
+def cho_nguoi():
+    """Chờ GPU nguội xuống dưới COOL_C, tối đa COOL_MAX_S giây. Trả về số giây đã chờ."""
+    t0 = time.time()
+    while time.time() - t0 < COOL_MAX_S and not gpu_state()[0] < COOL_C:
+        time.sleep(5)
+    return time.time() - t0
 
 
 def main():
@@ -53,10 +76,14 @@ def main():
                   f"Ultralytics {ul_gflops} GFLOPs")
 
         x = torch.zeros(1, 3, 640, 640, device="cuda")
-        rows = []
+        rows, blocks = [], []
         with torch.inference_mode():
             for r in range(ROUNDS):
-                for key, net in nets.items():
+                # đổi thứ tự mỗi vòng để mô hình nào cũng có lúc được đo trước
+                for key in (list(nets) if r % 2 == 0 else list(nets)[::-1]):
+                    net = nets[key]
+                    waited = cho_nguoi()
+                    temp0, clk0 = gpu_state()
                     for _ in range(WARMUP):
                         net(x)
                     torch.cuda.synchronize()
@@ -67,7 +94,14 @@ def main():
                         e.record()
                         torch.cuda.synchronize()
                         rows.append({"model": key, "round": r, "iteration": i, "latency_ms": s.elapsed_time(e)})
+                    temp1, clk1 = gpu_state()
+                    med = np.median([q["latency_ms"] for q in rows[-ITERS:]])
+                    blocks.append({"model": key, "round": r, "cho_nguoi_s": round(waited), "nhiet_truoc": temp0,
+                                   "nhiet_sau": temp1, "xung_truoc_mhz": clk0, "xung_sau_mhz": clk1, "median_ms": med})
+                    print(f"vòng {r} {key}: chờ {waited:.0f}s, {temp0:.0f}→{temp1:.0f}°C, "
+                          f"xung {clk0:.0f}→{clk1:.0f} MHz, trung vị {med:.2f} ms", flush=True)
         lat = pd.DataFrame(rows)
+        pd.DataFrame(blocks).to_csv(dg.OUT / "16c_do_tre_gpu_nhiet_do.csv", index=False, encoding="utf-8-sig")
         dg.OUT.mkdir(exist_ok=True)
         lat.to_csv(dg.OUT / "16b_do_tre_gpu_tung_lan.csv", index=False, encoding="utf-8-sig")
         g = lat.groupby("model").latency_ms
