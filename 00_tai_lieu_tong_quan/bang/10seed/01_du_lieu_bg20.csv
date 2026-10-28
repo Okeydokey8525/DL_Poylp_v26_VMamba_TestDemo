@@ -1,0 +1,3 @@
+﻿split,images,labels,background_images,polyp_images,empty_labels,empty_labels_not_bg,polyp_instances,images_with_multiple_instances,image_label_stem_match,polygon_points_min,polygon_points_median,polygon_points_max,distinct_image_sizes,most_common_size,most_common_size_count
+train,1040,1040,160,880,160,0,936,41,True,10,22.0,80,305,720x576,160
+val,160,160,40,120,40,0,127,7,True,14,26.0,79,58,720x576,57

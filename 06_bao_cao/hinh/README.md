@@ -2,15 +2,22 @@
 
 Bộ hình được vẽ lại toàn bộ ngày 26/10/2026 từ CSV đã kiểm chứng. Hình cũ đã chuyển sang `99_luu_tru/hinh_cu/`.
 
+Thư mục (tổ chức lại 27/10/2026):
+- `chung/`: 12 hình không phụ thuộc nhóm seed (a01–a04, d01–d04, e02, e03, m01, q01).
+- `ket_qua_20seed/`: 16 hình kết quả trên **seed 0–19**, **bộ dùng trong báo cáo** (chốt 28/10/2026).
+- `ket_qua_10seed/`: 16 hình kết quả trên seed 0–9, chỉ giữ để đối chiếu.
+- `chuong4/`: hình của Chương 4 do người viết chương cung cấp.
+
+Trong mỗi thư mục trên:
 - `vi/`: bản tiếng Việt cho khóa luận, rộng 16 cm, dấu phẩy thập phân.
 - `en/`: bản tiếng Anh cho bài báo IEEE, rộng một cột 8,9 cm. Riêng `q01` rộng hai cột.
 - Mỗi hình có `.png` (300 dpi, chèn Word) và `.pdf` (vector, nộp tạp chí).
-- Script: `scripts/ve_hinh.py`. Chạy `python ve_hinh.py` để vẽ tất cả, hoặc `python ve_hinh.py --chi r01 p01` để vẽ một số hình.
+- Script: `scripts/ve_hinh.py`. Chạy `python ve_hinh.py` để vẽ tất cả (kết quả dùng 20 seed, đọc `bang/`), `--seeds 10` để vẽ bộ 10 seed đối chiếu, `--chi r01 p01` để vẽ một số hình. Sơ đồ a01–a04: `scripts/ve_so_do.py`.
 - Quy cách:
   - phông mặc định của matplotlib;
   - màu Okabe–Ito: đối chứng `#0072B2`, TSVM `#D55E00`, PraNet `#009E73`, U-Net `#CC79A7`;
   - mỗi hình một biểu đồ, tối đa hai;
-  - thanh lỗi là **±1 SD qua 20 seed**, trừ khi có ghi chú khác.
+  - thanh lỗi là **±1 SD qua các seed** (10 hoặc 20 tùy thư mục), trừ khi có ghi chú khác.
 - `du_lieu_dinh_tinh/`: mặt nạ dự đoán seed 0 của 4 mô hình (nén `npz`), do `00_tai_lieu_tong_quan/scripts/danh_gia_pixel.py` tạo, dùng cho hình `q01`.
 
 ## Danh mục
@@ -28,7 +35,7 @@ Số hình trong báo cáo (ví dụ Hình 6.3) sẽ được gán khi viết t�
 | h01b_diem_tung_seed_chi_so_mask | 6 | Giá trị từng seed của 5 chỉ số trên | Điểm (tán xạ) | như trên |
 | h02_ghep_cap_tung_seed | 6 | mAP50–95 nối cặp theo seed (13 tăng / 7 giảm) | Tán xạ nối cặp | như trên |
 | r01_delta_tung_seed | 6 | Δ mAP50–95 từng seed, sắp xếp | Thanh | như trên |
-| r02_hop_phan_bo | 6 | Phân bố mAP50–95 của 20 seed | Hộp | như trên |
+| r02_hop_phan_bo | 6 | Phân bố mAP50–95 theo seed | Hộp | như trên |
 | r03_histogram_delta | 6 | Phân bố 20 hiệu số ghép cặp | Histogram | như trên |
 | r04_do_nhay_quy_tac_epoch | 6 | mAP theo 3 quy tắc chọn epoch, kèm p | Điểm + thanh SD | `bang/04b_do_nhay_quy_tac_epoch.csv` |
 | r05_precision_recall | 6 | Precision và Recall từng seed | Tán xạ | `bang/02_ket_qua_tung_seed.csv` |

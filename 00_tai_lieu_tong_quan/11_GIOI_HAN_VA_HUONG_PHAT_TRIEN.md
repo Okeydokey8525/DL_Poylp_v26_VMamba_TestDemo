@@ -1,5 +1,7 @@
 # 11. Giới hạn và hướng phát triển
 
+> **Cập nhật 28/10/2026:** số trong file này tính trên **20 seed** và là **bộ số dùng trong báo cáo**. Bộ 10 seed (chỉ đối chiếu) ở [06b_KET_QUA_10_SEED.md](06b_KET_QUA_10_SEED.md).
+
 ## Kết luận được phép viết
 
 1. Thay `C2PSA` bằng `C2TSVMamba` ở tầng 10 làm mask mAP50–95 trung bình tăng **+0,0043** (0,7189 → 0,7232). TSVM tốt hơn ở 13/20 seed. Tuy nhiên p = 0,061 và CI 95% chứa 0, nên **chưa đạt ý nghĩa thống kê** ở α = 0,05.

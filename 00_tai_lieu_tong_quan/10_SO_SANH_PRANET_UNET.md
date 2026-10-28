@@ -1,5 +1,7 @@
 # 10. So sánh với PraNet và U-Net (đánh giá theo pixel)
 
+> **Cập nhật 28/10/2026:** số trong file này tính trên **20 seed** và là **bộ số dùng trong báo cáo**. Bộ 10 seed (chỉ đối chiếu) ở [06b_KET_QUA_10_SEED.md](06b_KET_QUA_10_SEED.md).
+
 Cập nhật 26/10/2026. Số liệu do [scripts/danh_gia_pixel.py](scripts/danh_gia_pixel.py) tính, chạy trên GPU RTX 5050 trong 7,2 phút. Kết quả nằm ở:
 - [bang/10_pixel_tung_anh.csv](bang/10_pixel_tung_anh.csv): 12.800 dòng (4 mô hình × 20 seed × 160 ảnh);
 - [bang/11_pixel_tung_seed.csv](bang/11_pixel_tung_seed.csv);

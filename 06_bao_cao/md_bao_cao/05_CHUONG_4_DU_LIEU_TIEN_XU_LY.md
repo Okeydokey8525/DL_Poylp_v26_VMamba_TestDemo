@@ -18,8 +18,6 @@ Chất lượng của dữ liệu đầu vào ảnh hưởng trực tiếp đế
 
 Quá trình tiền xử lý được chia thành hai giai đoạn. Giai đoạn thứ nhất chỉ thực hiện một lần trước khi huấn luyện, gồm chọn ảnh, chia tập dữ liệu và chuyển mặt nạ phân đoạn thành nhãn đa giác. Giai đoạn thứ hai diễn ra mỗi khi ảnh được nạp vào mô hình, gồm đổi kích thước, tăng cường dữ liệu và chuẩn hóa giá trị đầu vào. Các thao tác và thông số trong chương đều được đối chiếu với mã nguồn, tệp cấu hình huấn luyện và dữ liệu thực tế của đề tài.
 
-> ⚠️ **CHƯA CHÍNH XÁC**: Câu này chỉ đúng sau khi sửa lỗi khung kiểm định ở mục 4.4 (640 → 672). Các thông số khác đã được đối chiếu và khớp.
-
 ## 4.1. Nguồn dữ liệu
 
 ### 4.1.1. Bộ dữ liệu Kvasir-SEG
@@ -163,23 +161,15 @@ $$
 
 Trong đó, *W* và *H* là kích thước ảnh gốc, *r* là hệ số thu phóng, *W*′ và *H*′ là kích thước sau khi thu phóng, được làm tròn lên thành số nguyên. Ảnh lúc này có cạnh dài bằng 640 nhưng cạnh ngắn vẫn nhỏ hơn 640.
 
-Ở nhánh kiểm định, đề tài dùng kỹ thuật LetterBox để đưa ảnh về khung kích thước cố định. LetterBox thêm các dải viền màu xám có giá trị 114 vào hai phía của cạnh ngắn, giống như các dải đen trên màn hình khi xem phim có tỷ lệ khung hình khác. Phần viền được chia đều cho hai phía:
-
-> ⚠️ **CHƯA CHÍNH XÁC**: Ở nhánh kiểm định, ảnh đã được thu về cạnh dài 640 trước đó, nên LetterBox **không thu phóng thêm** (`scaleup=False`), chỉ thêm viền xám 114. Trong chế độ gom lô thực tế (xem ô ❌ ngay dưới), viền có thể được thêm ở **cả hai chiều**, không chỉ ở cạnh ngắn. **Đề xuất:** "Ở nhánh kiểm định, ảnh đã thu phóng được đặt vào giữa khung đích và phần thiếu được tô màu xám 114, chia đều cho hai phía."
->
-> 🔎 *Bằng chứng:* `02_ma_nguon/ultralytics_TSVM_FP32/data/dataset.py` dòng 319 (`LetterBox(..., scaleup=False)`).
+Ở nhánh kiểm định, đề tài dùng kỹ thuật LetterBox để đưa ảnh về khung đích. Ảnh đã thu phóng ở trên không bị phóng to thêm mà được đặt vào giữa khung đích; phần còn thiếu được tô màu xám có giá trị 114, giống như các dải đen trên màn hình khi xem phim có tỷ lệ khung hình khác. Phần viền được chia đều cho hai phía:
 
 $$
-{p}_{x}=\frac{640-{W}^{'}}{2},  {p}_{y}=\frac{640-{H}^{'}}{2} \tag{4.8}
+{p}_{x}=\frac{{S}_{W}-{W}^{'}}{2},  {p}_{y}=\frac{{S}_{H}-{H}^{'}}{2} \tag{4.8}
 $$
 
-Trong đó, *p*<sub>x</sub> là độ rộng viền thêm vào mỗi bên trái và phải, *p*<sub>y</sub> là độ rộng viền thêm vào mỗi phía trên và dưới. Tọa độ đa giác cũng được nhân với *r* và cộng thêm *p*<sub>x</sub>, *p*<sub>y</sub>, nhờ đó nhãn luôn trùng với vị trí polyp trên ảnh mới. ~~Trong quá trình kiểm định thực tế, các ảnh có tỷ lệ khung hình gần nhau được gom vào cùng một lô, và khung đích được tính theo từng lô nên có thể là hình chữ nhật với cạnh dài 640 pixel; cách làm này giúp giảm phần viền thừa.~~ Ở nhánh huấn luyện, việc đưa ảnh vào khung 640 × 640 được thực hiện cùng với các phép tăng cường dữ liệu ở mục 4.5, phần trống cũng được tô màu xám 114.
+Trong đó, *S*<sub>W</sub> × *S*<sub>H</sub> là kích thước khung đích, *p*<sub>x</sub> là độ rộng viền thêm vào mỗi bên trái và phải, *p*<sub>y</sub> là độ rộng viền thêm vào mỗi phía trên và dưới. Tọa độ đa giác cũng được nhân với *r* và cộng thêm *p*<sub>x</sub>, *p*<sub>y</sub>, nhờ đó nhãn luôn trùng với vị trí polyp trên ảnh mới.
 
-> ❌ **SAI**: Khi kiểm định trong lúc huấn luyện, Ultralytics gom ảnh theo tỉ lệ khung (`rect=True`), lô 16 ảnh, và cộng thêm nửa bước đệm (`pad=0.5`, stride 32). Khung của mỗi lô vì vậy có **cạnh dài 672 pixel**, cạnh ngắn từ 544 đến 672. Tính trên 160 ảnh val: 10 lô có khung 544×672 (3 lô), 576×672 (5), 608×672 (1), 672×672 (1).
->
-> **Đề xuất sửa:** "Trong quá trình kiểm định thực tế, các ảnh có tỷ lệ khung hình gần nhau được gom thành lô 16 ảnh. Khung đích của mỗi lô được làm tròn lên bội số của 32 và cộng thêm nửa bước, nên có cạnh dài 672 pixel và cạnh ngắn từ 544 đến 672 pixel; ảnh vẫn giữ cạnh dài 640 và được viền xám ở hai phía. Cách làm này giúp giảm phần viền thừa so với khung vuông."
->
-> 🔎 *Bằng chứng:* `models/yolo/detect/train.py` dòng 76 (`rect=mode == "val"`); `data/build.py` dòng 310 (`pad=0.0 if mode == "train" else 0.5`); `data/base.py` dòng 408 (công thức `batch_shapes`); `engine/trainer.py` dòng 298 (lô val = 2 × batch = 16). Các đường dẫn tính từ `02_ma_nguon/ultralytics_TSVM_FP32/`.
+Trong quá trình kiểm định thực tế, các ảnh có tỷ lệ khung hình gần nhau được gom thành lô 16 ảnh. Khung đích của mỗi lô được làm tròn lên bội số của 32 và cộng thêm nửa bước, nên có cạnh dài 672 pixel và cạnh ngắn từ 544 đến 672 pixel; ảnh vẫn giữ cạnh dài 640 và được viền xám ở hai phía. Với 160 ảnh kiểm định, 10 lô có các khung 544 × 672 (3 lô), 576 × 672 (5 lô), 608 × 672 (1 lô) và 672 × 672 (1 lô). Cách làm này giúp giảm phần viền thừa so với khung vuông. Ở nhánh huấn luyện, việc đưa ảnh vào khung 640 × 640 được thực hiện cùng với các phép tăng cường dữ liệu ở mục 4.5, phần trống cũng được tô màu xám 114.
 
 Hình 4.3 minh họa kết quả trước và sau công đoạn đổi kích thước trên một ảnh của tập kiểm định có kích thước lớn nhất trong bộ dữ liệu, với khung đích 640 × 640 pixel.
 
@@ -189,7 +179,7 @@ Hình 4.3 minh họa kết quả trước và sau công đoạn đổi kích th�
 
 *Nguồn: ảnh a từ bộ dữ liệu Kvasir-SEG [1]; ảnh b do đề tài tạo theo cách xử lý LetterBox trong mã nguồn Ultralytics.*
 
-Ảnh gốc có kích thước 1.920 × 1.072 pixel nên hệ số thu phóng là 1/3, ảnh sau thu nhỏ có kích thước 640 × 358 pixel. LetterBox bổ sung hai dải xám, mỗi dải cao 141 pixel, ở phía trên và phía dưới để tạo thành khung 640 × 640 pixel. Có thể thấy polyp không bị méo và đường bao màu xanh vẫn nằm đúng vị trí sau khi đổi kích thước.
+Ảnh gốc có kích thước 1.920 × 1.072 pixel nên hệ số thu phóng là 1/3, ảnh sau thu nhỏ có kích thước 640 × 358 pixel. LetterBox bổ sung hai dải xám, mỗi dải cao 141 pixel, ở phía trên và phía dưới để tạo thành khung 640 × 640 pixel. Có thể thấy polyp không bị méo và đường bao màu xanh vẫn nằm đúng vị trí sau khi đổi kích thước. Hình 4.3 dùng khung vuông 640 × 640 để minh họa; khi kiểm định thực tế, ảnh này thuộc lô có khung 544 × 672, nên viền trên và dưới mỗi phía 93 pixel, viền trái và phải mỗi phía 16 pixel.
 
 ## 4.5. Tăng cường dữ liệu
 
@@ -360,7 +350,7 @@ Cần lưu ý rằng khối TSVM là một thành phần bên trong mô hình, x
 |---|---:|
 | Đúng | 80 (gồm nguồn chia tập 880/120, kiểm lại 27/10/2026) |
 | Đúng một phần (⚠️) | 9 |
-| Sai (❌) | 1 — khung kiểm định 640 → 672 |
+| Sai (❌) | 1 — khung kiểm định 640 → 672 (**đã sửa trong mục 4.4 ngày 28/10/2026**, cùng ô ⚠️ về LetterBox) |
 | Chưa kiểm được (❓) | 4 |
 | **Tổng** | **94** |
 
@@ -379,6 +369,6 @@ Một số con số đã đo lại và trùng khớp: 333 kích thước ảnh; 
 
 ### Câu hỏi gửi tác giả chương
 
-1. **Khung kiểm định (mục 4.4):** bạn dựa vào nguồn nào để ghi cạnh dài 640? Mã Ultralytics 8.4.127 cho thấy khi kiểm định trong lúc huấn luyện, ảnh được gom lô theo tỉ lệ khung (`rect=True`) và cộng nửa bước đệm (`pad=0.5`), nên khung có cạnh dài 672 (bằng chứng ở ô ❌ mục 4.4). Nếu bạn đang mô tả bước suy luận chứ không phải kiểm định thì ghi rõ là bước nào.
+1. **[ĐÃ SỬA 28/10/2026] Khung kiểm định (mục 4.4):** bạn dựa vào nguồn nào để ghi cạnh dài 640? Mã Ultralytics 8.4.127 cho thấy khi kiểm định trong lúc huấn luyện, ảnh được gom lô theo tỉ lệ khung (`rect=True`) và cộng nửa bước đệm (`pad=0.5`), nên khung có cạnh dài 672 (bằng chứng ở ô ❌ mục 4.4). Nếu bạn đang mô tả bước suy luận chứ không phải kiểm định thì ghi rõ là bước nào.
 2. ~~Chia tập 880/120 (mục 4.2)~~: đã giải quyết, danh sách do tác giả Kvasir-SEG cung cấp kèm bản Kaggle [3].
 3. **Hình 4.4:** các hệ số tăng cường dùng để vẽ hình là bao nhiêu?

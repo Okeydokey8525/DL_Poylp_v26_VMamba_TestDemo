@@ -6,6 +6,7 @@ Không huấn luyện, không suy luận, không sửa file nào ngoài ../bang/
 Chạy:
     python tinh_lai_so_lieu.py            # phần dữ liệu + kết quả huấn luyện (cần numpy, pandas, scipy, pyyaml, pillow)
     python tinh_lai_so_lieu.py --torch    # thêm kiểm tra checkpoint và dựng lại mô hình (cần torch)
+    python tinh_lai_so_lieu.py --seeds 10 # chỉ dùng seed 0..9, ghi vào ../bang/10seed/ (bảng 20 seed giữ nguyên)
 """
 from __future__ import annotations
 
@@ -141,7 +142,7 @@ def dataset_audit() -> dict:
 
 # ---------------------------------------------------------------- 2. Kết quả huấn luyện
 def training_audit() -> pd.DataFrame:
-    section("2. 40 lượt huấn luyện")
+    section(f"2. {2 * len(SEEDS)} lượt huấn luyện (seed 0–{len(SEEDS) - 1})")
     rows, args_rows, curves = [], [], []
     for model, pat in RUNS.items():
         for s in SEEDS:
@@ -225,7 +226,7 @@ def training_audit() -> pd.DataFrame:
         return 1 - stats.nct.cdf(tc, n - 1, nc) + stats.nct.cdf(-tc, n - 1, nc)
 
     n80 = next(n for n in range(3, 1000) if power(n) >= 0.8)
-    print(f"Power với d_z={dz:.3f}: n=20 -> {power(20):.3f}; số cặp cần cho power 80%: {n80} ({power(n80):.3f})")
+    print(f"Power với d_z={dz:.3f}: n={len(SEEDS)} -> {power(len(SEEDS)):.3f}; số cặp cần cho power 80%: {n80} ({power(n80):.3f})")
 
     # Phân tích độ nhạy: cùng phép so sánh nhưng đổi quy tắc chọn epoch
     sens = []
@@ -285,7 +286,7 @@ def compare_package(per: pd.DataFrame) -> None:
 
 
 def lineage_check() -> None:
-    section("3b. TSVM cũ (checkpoint FP16) so với TSVM FP32, seed 0-19")
+    section(f"3b. TSVM cũ (checkpoint FP16) so với TSVM FP32, seed 0-{len(SEEDS) - 1}")
     old = OLD_TSVM / "Kvasir_BG20_YOLO26s_seg_TSVM_s{}_w2"
     same = diff = 0
     cols = set()
@@ -306,6 +307,7 @@ def confusion_audit() -> None:
     section("4. Ma trận nhầm lẫn (TP/FP/FN đối tượng)")
     cm = pd.read_csv(PKG / "01_raw_analysis" / "raw_20seeds_confusion_matrices.csv", encoding="utf-8-sig")
     cm["model"] = cm["model"].replace({"TSVM": "TSVM_FP32"})
+    cm = cm[cm.seed.isin(SEEDS)]
     print("TP+FN == 127 ở mọi dòng:", bool(((cm.TP + cm.FN) == 127).all()), "| số dòng:", len(cm))
     g = cm.groupby("model")[["TP", "FP", "FN"]].agg(["mean", "std", "min", "max"])
     print(g.round(2).to_string())
@@ -417,13 +419,19 @@ def torch_audit() -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--torch", action="store_true", help="kiểm tra best.pt và dựng lại mô hình (cần torch)")
+    ap.add_argument("--seeds", type=int, default=20, help="số seed đầu tiên dùng (0..N-1); khác 20 thì ghi vào bang/<N>seed/")
     args = ap.parse_args()
+    global SEEDS, OUT
+    SEEDS = range(args.seeds)
+    if args.seeds != 20:
+        OUT = OUT / f"{args.seeds}seed"
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     OUT.mkdir(exist_ok=True)
     ds = dataset_audit()
     per = training_audit()
-    compare_package(per)
+    if len(SEEDS) == 20:  # gói 04_phan_tich_20seed chỉ có thống kê cho đủ 20 seed
+        compare_package(per)
     lineage_check()
     confusion_audit()
     if args.torch:

@@ -82,3 +82,23 @@ Các thư mục cũ đã rỗng sau khi chuyển: `archive/Ket_Qua_V2/...`, `arc
 | `archive/Ket_Qua_V2/KQ_Nen_DX_20seed_FP32/efficiency_benchmark/figures` | `99_luu_tru/hinh_cu/efficiency_benchmark_figures` |
 
 Lý do: bộ hình được vẽ lại toàn bộ từ CSV, đặt ở `06_bao_cao/hinh/`.
+
+## Tổ chức lại thư mục hình (27/10/2026)
+
+Chuyển bằng `os.rename`, không sửa nội dung: 112 file (56 trong `vi/`, 56 trong `en/`).
+
+| Đường dẫn cũ | Đường dẫn mới |
+|---|---|
+| `06_bao_cao/hinh/{vi,en}/` các hình a01–a04, d01–d04, e02, e03, m01, q01 | `06_bao_cao/hinh/chung/{vi,en}/` |
+| `06_bao_cao/hinh/{vi,en}/` các hình h01, h01b, h02, h03, h04, r01–r05, c01, c02, e01, p01–p03 (20 seed) | `06_bao_cao/hinh/ket_qua_20seed/{vi,en}/` |
+
+Thư mục mới `06_bao_cao/hinh/ket_qua_10seed/{vi,en}/` chứa bộ hình vẽ lại trên seed 0–9. Bảng tương ứng ở `00_tai_lieu_tong_quan/bang/10seed/`.
+
+## Giải nén kết quả ablation (28/10/2026)
+
+Sáu file zip tải từ Kaggle nằm ở thư mục gốc repo được giải nén (đã `unzip -t`, không lỗi). Bản zip gốc được giữ nguyên, chuyển vào `03_ket_qua_huan_luyen/_zip_goc_ablation/`.
+
+| Đường dẫn cũ (zip) | Thư mục kết quả mới |
+|---|---|
+| `runs_Kvasir_BG20_YOLO26s_seg_ABL_shape_only_s{0,1}_w2.zip` | `03_ket_qua_huan_luyen/Shape_only/Kvasir_BG20_YOLO26s_seg_ABL_shape_only_s{0,1}_w2/` |
+| `runs_Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s{0,1,2,3}_w2.zip` | `03_ket_qua_huan_luyen/Vmamba_only/Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s{0,1,2,3}_w2/` |

@@ -1,10 +1,13 @@
 """Vẽ bộ hình kết quả cho khóa luận (tiếng Việt) và bài báo IEEE (tiếng Anh).
 
 Đọc trực tiếp các bảng trong 00_tai_lieu_tong_quan/bang/ (đã đối chiếu với results.csv gốc).
-Mỗi hình xuất PNG 300 dpi và PDF vector vào ../vi/ và ../en/.
+Mỗi hình xuất PNG 300 dpi và PDF vector vào <thư mục>/vi/ và <thư mục>/en/:
+  - hình không phụ thuộc số seed (a, d, e02, e03, m01, q01) -> ../chung/
+  - hình kết quả theo seed (h, r, c, e01, p)                -> ../ket_qua_<N>seed/, đọc bang/ (N = 20) hoặc bang/<N>seed/
 
-    python ve_hinh.py              # vẽ tất cả hình đã khai báo
-    python ve_hinh.py --chi h01 h03  # chỉ vẽ một số hình
+    python ve_hinh.py                  # vẽ tất cả, kết quả dùng 20 seed (seed 0–19, bộ dùng trong báo cáo)
+    python ve_hinh.py --seeds 10       # kết quả dùng 10 seed (chỉ đối chiếu)
+    python ve_hinh.py --chi h01 h03    # chỉ vẽ một số hình
 """
 from __future__ import annotations
 
@@ -22,6 +25,9 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE.parent
 REPO = OUT.parents[1]
 BANG = REPO / "00_tai_lieu_tong_quan" / "bang"
+BANG_SEED = BANG              # bảng cho các hình kết quả; main() đặt lại theo --seeds
+N_SEED = 20
+DICH = OUT / "chung"          # thư mục ghi của hình đang vẽ; main() đặt lại cho từng hình
 
 # Bảng màu Okabe–Ito (Wong, Nature Methods 2011), an toàn cho người mù màu.
 C_BASE = "#0072B2"   # xanh dương
@@ -99,7 +105,7 @@ def num_axis(ax, which: str, nd: int, lang: str) -> None:
 
 
 def save(fig, name: str, lang: str) -> None:
-    d = OUT / lang
+    d = DICH / lang
     d.mkdir(parents=True, exist_ok=True)
     fig.savefig(d / f"{name}.png")
     fig.savefig(d / f"{name}.pdf")
@@ -107,7 +113,7 @@ def save(fig, name: str, lang: str) -> None:
 
 
 def load_seeds() -> pd.DataFrame:
-    df = pd.read_csv(BANG / "02_ket_qua_tung_seed.csv", encoding="utf-8-sig")
+    df = pd.read_csv(BANG_SEED / "02_ket_qua_tung_seed.csv", encoding="utf-8-sig")
     p, r = df["mask_precision"], df["mask_recall"]
     df["mask_f1"] = 2 * p * r / (p + r)   # F1 tính lại từ P và R của cùng dòng epoch
     return df
@@ -115,7 +121,7 @@ def load_seeds() -> pd.DataFrame:
 
 # --------------------------------------------------------------------------- hình
 def h01_cot_kep_chi_so_mask(lang: str, st: dict) -> None:
-    """Cột kép mean ± SD (20 seed) cho các chỉ số mặt nạ. Điểm từng seed vẽ riêng ở h01b."""
+    """Cột kép mean ± SD (N_SEED seed) cho các chỉ số mặt nạ. Điểm từng seed vẽ riêng ở h01b."""
     df = load_seeds()
     metrics = ["mask_map50_95", "mask_map50", "mask_precision", "mask_recall", "mask_f1"]
     fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.55))
@@ -139,7 +145,7 @@ def h01_cot_kep_chi_so_mask(lang: str, st: dict) -> None:
 
 
 def h01b_diem_tung_seed_chi_so_mask(lang: str, st: dict) -> None:
-    """Điểm của từng seed (20 seed/mô hình) cho các chỉ số mặt nạ; vạch đen là trung bình."""
+    """Điểm của từng seed (N_SEED seed/mô hình) cho các chỉ số mặt nạ; vạch đen là trung bình."""
     df = load_seeds()
     metrics = ["mask_map50_95", "mask_map50", "mask_precision", "mask_recall", "mask_f1"]
     fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.55))
@@ -164,7 +170,7 @@ def h01b_diem_tung_seed_chi_so_mask(lang: str, st: dict) -> None:
     from matplotlib.lines import Line2D
     handles, labels = ax.get_legend_handles_labels()
     handles.append(Line2D([], [], color="black", lw=1.2))
-    labels.append({"vi": "Trung bình 20 seed", "en": "Mean of 20 seeds"}[lang])
+    labels.append({"vi": f"Trung bình {N_SEED} seed", "en": f"Mean of {N_SEED} seeds"}[lang])
     ax.legend(handles, labels, loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3,
               handlelength=1.2, columnspacing=1.0)
     save(fig, "h01b_diem_tung_seed_chi_so_mask", lang)
@@ -192,16 +198,17 @@ def h02_ghep_cap_tung_seed(lang: str, st: dict) -> None:
     ax.set_axisbelow(True)
     from matplotlib.lines import Line2D
     n_up = int((t > b).sum())
-    lab_up = {"vi": f"TSVM cao hơn ({n_up}/20)", "en": f"TSVM higher ({n_up}/20)"}[lang]
-    lab_dn = {"vi": f"TSVM thấp hơn ({20 - n_up}/20)", "en": f"TSVM lower ({20 - n_up}/20)"}[lang]
+    n = len(b)
+    lab_up = {"vi": f"TSVM cao hơn ({n_up}/{n})", "en": f"TSVM higher ({n_up}/{n})"}[lang]
+    lab_dn = {"vi": f"TSVM thấp hơn ({n - n_up}/{n})", "en": f"TSVM lower ({n - n_up}/{n})"}[lang]
     ax.legend(handles=[Line2D([], [], color=C_UP, lw=1, label=lab_up), Line2D([], [], color=C_DOWN, lw=1, label=lab_dn)],
               loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=1)
     save(fig, "h02_ghep_cap_tung_seed", lang)
 
 
 def h03_duong_mien_mask_map_theo_epoch(lang: str, st: dict) -> None:
-    """Đường trung bình và miền ±1 SD (20 seed) của mask mAP@50–95 theo epoch."""
-    cv = pd.read_csv(BANG / "05_duong_cong_theo_epoch.csv", encoding="utf-8-sig")
+    """Đường trung bình và miền ±1 SD (N_SEED seed) của mask mAP@50–95 theo epoch."""
+    cv = pd.read_csv(BANG_SEED / "05_duong_cong_theo_epoch.csv", encoding="utf-8-sig")
     fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.55))
     for model, color, key in [("Baseline", C_BASE, "baseline"), ("TSVM_FP32", C_TSVM, "tsvm")]:
         g = cv[cv.model == model]
@@ -237,8 +244,8 @@ def h03_duong_mien_mask_map_theo_epoch(lang: str, st: dict) -> None:
 
 
 def h04_ma_tran_nham_lan(lang: str, st: dict) -> None:
-    """Ma trận nhầm lẫn trung bình 20 seed (đơn vị: đối tượng), hai mô hình cạnh nhau."""
-    cm = pd.read_csv(BANG / "06_ma_tran_nham_lan_tung_seed.csv", encoding="utf-8-sig")
+    """Ma trận nhầm lẫn trung bình N_SEED seed (đơn vị: đối tượng), hai mô hình cạnh nhau."""
+    cm = pd.read_csv(BANG_SEED / "06_ma_tran_nham_lan_tung_seed.csv", encoding="utf-8-sig")
     # Giá trị đã in trong ô nên không cần thanh màu; hai ô dùng chung trục dự đoán.
     fig, axes = plt.subplots(1, 2, figsize=(st["width"], st["width"] * 0.50), sharey=True,
                              gridspec_kw={"wspace": 0.08})
@@ -447,7 +454,8 @@ def r01_delta_tung_seed(lang, st):
     ax.bar(x, d.values * 100, 0.75, color=[C_UP if v > 0 else C_DOWN for v in d.values], zorder=2)
     ax.axhline(0, color="black", linewidth=0.7)
     ax.axhline(d.mean() * 100, color=C_TSVM, linestyle="--", linewidth=0.9)
-    ax.text(-0.4, d.mean() * 100 + 0.08, L(f"trung bình = +{num(d.mean() * 100, 2, lang)}", f"mean = +{d.mean() * 100:.2f}", lang),
+    sg = "+" if d.mean() >= 0 else ""
+    ax.text(-0.4, d.mean() * 100 + 0.08, L(f"trung bình = {sg}{num(d.mean() * 100, 2, lang)}", f"mean = {sg}{d.mean() * 100:.2f}", lang),
             va="bottom", ha="left", fontsize=st["font"] - 1, color=C_TSVM)
     ax.set_xticks(x, [str(s) for s in d.index], fontsize=st["font"] - 2)
     ax.set_xlabel(L("Seed (sắp xếp theo Δ)", "Seed (sorted by Δ)", lang))
@@ -458,7 +466,7 @@ def r01_delta_tung_seed(lang, st):
 
 
 def r02_hop_phan_bo(lang, st):
-    """Hộp: phân bố mask mAP@50–95 của 20 seed cho mỗi mô hình."""
+    """Hộp: phân bố mask mAP@50–95 của N_SEED seed cho mỗi mô hình."""
     df = load_seeds()
     data = [df[df.model == m]["mask_map50_95"].values for m, _, _ in MODELS2]
     fig, ax = plt.subplots(figsize=(st["width"] * (0.55 if lang == "vi" else 1.0), st["width"] * 0.6))
@@ -480,13 +488,13 @@ def r02_hop_phan_bo(lang, st):
 
 
 def r03_histogram_delta(lang, st):
-    """Histogram của 20 hiệu số ghép cặp Δ (TSVM − đối chứng)."""
+    """Histogram của N_SEED hiệu số ghép cặp Δ (TSVM − đối chứng)."""
     df = load_seeds()
     b = df[df.model == "Baseline"].set_index("seed")["mask_map50_95"]
     t = df[df.model == "TSVM_FP32"].set_index("seed")["mask_map50_95"]
     d = (t - b) * 100
     fig, ax = plt.subplots(figsize=(st["width"] * (0.7 if lang == "vi" else 1.0), st["width"] * 0.5))
-    ax.hist(d, bins=np.arange(-1.5, 3.01, 0.5), color=C_TSVM, alpha=0.85, edgecolor="white", zorder=2)
+    ax.hist(d, bins=np.arange(min(-1.5, np.floor(d.min() * 2) / 2), max(3.0, np.ceil(d.max() * 2) / 2) + 0.01, 0.5), color=C_TSVM, alpha=0.85, edgecolor="white", zorder=2)
     ax.axvline(0, color="black", linewidth=0.8)
     ax.axvline(d.mean(), color="black", linestyle="--", linewidth=0.8)
     ax.set_ylim(0, ax.get_ylim()[1] * 1.15)
@@ -494,14 +502,16 @@ def r03_histogram_delta(lang, st):
             va="top", fontsize=st["font"] - 1, bbox=dict(facecolor="white", edgecolor="none", pad=1))
     ax.set_xlabel(L("Δ mask mAP@50–95 (điểm %)", "Δ mask mAP50–95 (pp)", lang))
     ax.set_ylabel(L("Số seed", "Seeds", lang))
+    from matplotlib.ticker import MaxNLocator
+    ax.yaxis.set_major_locator(MaxNLocator(integer=True))   # số seed là số nguyên
     num_axis(ax, "x", 1, lang)
     grid_y(ax)
     save(fig, "r03_histogram_delta", lang)
 
 
 def r04_do_nhay_quy_tac_epoch(lang, st):
-    """Điểm mean ± SD (20 seed) của mask mAP@50–95 theo ba quy tắc chọn epoch, kèm p ghép cặp."""
-    s = pd.read_csv(BANG / "04b_do_nhay_quy_tac_epoch.csv", encoding="utf-8-sig")
+    """Điểm mean ± SD (N_SEED seed) của mask mAP@50–95 theo ba quy tắc chọn epoch, kèm p ghép cặp."""
+    s = pd.read_csv(BANG_SEED / "04b_do_nhay_quy_tac_epoch.csv", encoding="utf-8-sig")
     labels = [L("Cực đại mask mAP\n(endpoint chính)", "Max mask mAP\n(primary)", lang),
               L("Fitness box+mask\n(best.pt)", "Box+mask fitness\n(best.pt)", lang),
               L("Epoch 100", "Epoch 100", lang)]
@@ -548,7 +558,7 @@ def r05_precision_recall(lang, st):
 # ---------------------------------------------------------------- Chương 6: hội tụ
 def c01_val_seg_loss(lang, st):
     """Đường và miền ±1 SD: val segmentation loss theo epoch (bỏ 2 epoch đầu để thang đo đọc được)."""
-    cv = pd.read_csv(BANG / "05_duong_cong_theo_epoch.csv", encoding="utf-8-sig")
+    cv = pd.read_csv(BANG_SEED / "05_duong_cong_theo_epoch.csv", encoding="utf-8-sig")
     fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.5))
     for m, c, key in MODELS2:
         g = cv[(cv.model == m) & (cv.epoch >= 3)]
@@ -568,8 +578,8 @@ def c01_val_seg_loss(lang, st):
 
 
 def c02_train_seg_loss(lang, st):
-    """Đường: train segmentation loss trung bình 20 seed; đánh dấu thời điểm tắt mosaic."""
-    cv = pd.read_csv(BANG / "05_duong_cong_theo_epoch.csv", encoding="utf-8-sig")
+    """Đường: train segmentation loss trung bình N_SEED seed; đánh dấu thời điểm tắt mosaic."""
+    cv = pd.read_csv(BANG_SEED / "05_duong_cong_theo_epoch.csv", encoding="utf-8-sig")
     fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.45))
     for m, c, key in MODELS2:
         g = cv[cv.model == m]
@@ -588,8 +598,8 @@ def c02_train_seg_loss(lang, st):
 
 # ---------------------------------------------------------------- Chương 6: sai số và hiệu năng
 def e01_tp_fp_fn(lang, st):
-    """Cột kép mean ± SD của TP, FP, FN (đối tượng) trên 20 seed."""
-    cm = pd.read_csv(BANG / "06_ma_tran_nham_lan_tung_seed.csv", encoding="utf-8-sig")
+    """Cột kép mean ± SD của TP, FP, FN (đối tượng) trên N_SEED seed."""
+    cm = pd.read_csv(BANG_SEED / "06_ma_tran_nham_lan_tung_seed.csv", encoding="utf-8-sig")
     keys = ["TP", "FP", "FN"]
     fig, ax = plt.subplots(figsize=(st["width"] * (0.7 if lang == "vi" else 1.0), st["width"] * 0.5))
     x = np.arange(3)
@@ -656,11 +666,11 @@ def e03_tham_so_dung_luong(lang, st):
 
 # ---------------------------------------------------------------- Chương 6: so sánh 4 mô hình theo pixel
 def _pix():
-    return pd.read_csv(BANG / "11_pixel_tung_seed.csv", encoding="utf-8-sig")
+    return pd.read_csv(BANG_SEED / "11_pixel_tung_seed.csv", encoding="utf-8-sig")
 
 
 def p01_cot_kep_pixel(lang, st):
-    """Cột mean ± SD (20 seed) của Dice, IoU, Precision, Recall theo pixel cho 4 mô hình."""
+    """Cột mean ± SD (N_SEED seed) của Dice, IoU, Precision, Recall theo pixel cho 4 mô hình."""
     sd = _pix()
     metrics = [("dice", "Dice"), ("iou", "IoU"), ("precision", "Precision"), ("recall", "Recall")]
     fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.55))
@@ -712,6 +722,7 @@ def p03_bao_nham_anh_nen(lang, st):
     ax.set_xticks(range(4), [lab[lang].replace(" + ", "\n+ ").replace(" (", "\n(") for _, _, lab in PIX_MODELS],
                   fontsize=st["font"] - 2)
     ax.set_ylabel(L("Ảnh nền bị báo nhầm (%)", "False-alarm background images (%)", lang))
+    ax.set_ylim(0, ax.get_ylim()[1] * 1.08)   # chừa chỗ cho nhãn số trên thanh cao nhất
     grid_y(ax)
     save(fig, "p03_bao_nham_anh_nen", lang)
 
@@ -785,16 +796,27 @@ FIGS = {
 }
 
 
+# Hình kết quả phụ thuộc nhóm seed; các hình còn lại ghi vào chung/.
+THEO_SEED = {"h01", "h01b", "h02", "h03", "h04", "r01", "r02", "r03", "r04", "r05", "c01", "c02", "e01",
+             "p01", "p02", "p03"}
+
+
 def main() -> None:
+    global BANG_SEED, N_SEED, DICH
     ap = argparse.ArgumentParser()
     ap.add_argument("--chi", nargs="*", help="chỉ vẽ các hình có mã này, ví dụ h01 h03")
+    ap.add_argument("--seeds", type=int, default=20, help="số seed (0..N-1) cho hình kết quả; mặc định 20")
     args = ap.parse_args()
+    N_SEED = args.seeds
+    BANG_SEED = BANG if N_SEED == 20 else BANG / f"{N_SEED}seed"
+    assert (BANG_SEED / "02_ket_qua_tung_seed.csv").is_file(), f"Chưa có bảng {BANG_SEED}; chạy tinh_lai_so_lieu.py --seeds {N_SEED}"
     keys = args.chi or list(FIGS)
     for lang, st in STYLE.items():
         setup(st)
         for k in keys:
+            DICH = OUT / (f"ket_qua_{N_SEED}seed" if k in THEO_SEED else "chung")
             FIGS[k](lang, st)
-            print(f"{lang}: {k}")
+            print(f"{lang}: {k} -> {DICH.name}")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,7 @@
 # 06. Kết quả 20 seed
 
+> **Cập nhật 28/10/2026:** số trong file này tính trên **20 seed** và là **bộ số dùng trong báo cáo**. Bộ 10 seed (chỉ đối chiếu) ở [06b_KET_QUA_10_SEED.md](06b_KET_QUA_10_SEED.md).
+
 Số liệu được tính lại từ 40 file `results.csv` gốc bằng [scripts/tinh_lai_so_lieu.py](scripts/tinh_lai_so_lieu.py). Kết quả nằm ở [bang/02_ket_qua_tung_seed.csv](bang/02_ket_qua_tung_seed.csv), [bang/04_thong_ke_ghep_cap.csv](bang/04_thong_ke_ghep_cap.csv) và [bang/04b_do_nhay_quy_tac_epoch.csv](bang/04b_do_nhay_quy_tac_epoch.csv). Bộ số này **trùng khớp hoàn toàn** với gói phân tích `04_phan_tich_20seed/`: 0 ô lệch so với raw CSV, sai số 0 so với `06_reports/summary.csv`.
 
 ## Quy tắc trích số

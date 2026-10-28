@@ -78,7 +78,7 @@ def poly_arrow(ax, pts, **kw):
 
 
 def save(fig, name: str, lang: str) -> None:
-    d = OUT / lang
+    d = OUT / "chung" / lang
     d.mkdir(parents=True, exist_ok=True)
     for ext in ("png", "pdf"):
         fig.savefig(d / f"{name}.{ext}")

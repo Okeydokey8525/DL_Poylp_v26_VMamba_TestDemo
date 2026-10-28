@@ -75,7 +75,7 @@ Các thành phần dùng trong khối mới đều đã có từ trước:
 1. Thiết kế khối C2TSVMamba: ghép các thành phần trên theo một cách cụ thể, trong đó có cổng để nhánh hình dạng điều biến nhánh SS2D.
 2. Cài đặt lại SS2D bằng PyTorch thuần, không cần kernel CUDA riêng, để gắn được vào Ultralytics.
 3. Tích hợp khối mới vào YOLO26s-seg cho bài toán phân đoạn polyp.
-4. Đánh giá lặp lại trên 20 seed, có kiểm định thống kê (Chương 6).
+4. Đánh giá lặp lại trên 20 seed (seed 0–19), có kiểm định thống kê (Chương 6).
 
 Hai công trình gần nhất, đã so sánh chi tiết ở Chương 1:
 - **MambaPSA [30]** cũng thay C2PSA của YOLO26 bằng một khối Mamba. Tuy vậy, bài này giải bài toán phát hiện vật thể trên PASCAL VOC, nhắm tới giảm chi phí, và thêm khối BiViM vào neck. Đề tài này giải bài toán phân đoạn polyp và bổ sung nhánh hình dạng.
@@ -89,7 +89,7 @@ Hình 3.1 vẽ toàn bộ mô hình, gồm ba phần.
 - **Neck (tầng 11 đến 22):** một nhánh đi từ trên xuống theo kiểu FPN [33] và một nhánh đi từ dưới lên theo kiểu PAN [34]. Neck cho ra ba bản đồ đặc trưng: P3 (80×80), P4 (40×40) và P5 (20×20).
 - **Đầu Segment26 (tầng 23):** nhận cả ba mức để dự đoán hộp, điểm lớp và hệ số mặt nạ. Đầu này cũng sinh 32 mặt nạ mẫu (prototype) kích thước 160×160, theo cơ chế của YOLACT [37].
 
-![Hình 3.1](../hinh/vi/a01_kien_truc_tong_the.png)
+![Hình 3.1](../hinh/chung/vi/a01_kien_truc_tong_the.png)
 
 *Hình 3.1. Kiến trúc YOLO26s-seg và vị trí khối C2TSVMamba (tầng 10). Kích thước tensor ghi theo dạng C×H×W, tính cho ảnh vào 640×640 với hệ số quy mô s. Tầng 22 (C3k2, attn=True) có PSABlock ở cả hai mô hình.*
 
@@ -137,7 +137,7 @@ Hình 3.2 vẽ cấu trúc bên trong khối TSVMamba:
 3. Hai nhánh được hợp nhất, rồi tinh chỉnh qua một mạng truyền thẳng (FFN).
 4. Kết quả được nhân với hệ số $\gamma$ rồi cộng trở lại vào $b$.
 
-![Hình 3.2](../hinh/vi/a02_khoi_c2tsvmamba.png)
+![Hình 3.2](../hinh/chung/vi/a02_khoi_c2tsvmamba.png)
 
 *Hình 3.2. Cấu trúc khối C2TSVMamba. Khung nét đứt là khối TSVMamba. Đặc trưng bên trong khối có kích thước 256×20×20. Chi tiết nhánh SS2D ở Hình 3.4.*
 
@@ -150,7 +150,7 @@ Nhánh này cài đặt lại mô-đun quét chọn lọc hai chiều (SS2D) c�
 
 Nếu chỉ duyệt một lần theo hàng, mỗi vị trí chỉ nhận được thông tin từ các vị trí đứng trước nó trong thứ tự duyệt. Vì vậy SS2D duyệt theo bốn thứ tự khác nhau, để mỗi vị trí nhận thông tin từ mọi phía (Hình 3.3).
 
-![Hình 3.3](../hinh/vi/a03_quet_bon_huong.png)
+![Hình 3.3](../hinh/chung/vi/a03_quet_bon_huong.png)
 
 *Hình 3.3. Bốn thứ tự duyệt của SS2D, minh họa trên lưới 4×4 (thực tế là 20×20, L = 400). Chấm tròn đánh dấu vị trí đầu chuỗi, ô vuông đánh dấu vị trí cuối chuỗi.*
 
@@ -159,7 +159,7 @@ Hình 3.4 tóm tắt các bước tính của SS2D trong mã. Các ký hiệu d�
 - $N = 16$: số chiều trạng thái;
 - $L = H\times W = 400$: độ dài chuỗi.
 
-![Hình 3.4](../hinh/vi/a04_ss2d.png)
+![Hình 3.4](../hinh/chung/vi/a04_ss2d.png)
 
 *Hình 3.4. Các bước bên trong nhánh SS2D như được cài đặt. Bước ③ đến ⑤ được thực hiện riêng cho từng hướng.*
 
@@ -313,7 +313,7 @@ Bảng 3.3 liệt kê số tham số của từng phần trong tầng 10. Các s
 
 Nhánh hình dạng (ShapeAwareBranch và DirectionalShapeExtractor) cộng với cổng chiếm khoảng 33,5% số tham số của tầng, nhiều hơn chính nhánh SS2D. Phần lớn tham số của DirectionalShapeExtractor nằm ở tích chập 1×1 trộn 1.024 kênh (262.656 tham số). Như vậy, phần tham số tăng thêm so với C2PSA (820.225) không chỉ đến từ SS2D. Hình 3.5 thể hiện cơ cấu này.
 
-![Hình 3.5](../hinh/vi/m01_tham_so_tang10.png)
+![Hình 3.5](../hinh/chung/vi/m01_tham_so_tang10.png)
 
 *Hình 3.5. Số tham số của từng thành phần trong khối C2TSVMamba. Tiêu đề hình ghi tổng của C2TSVMamba và của C2PSA để so sánh.*
 
@@ -465,7 +465,7 @@ Vì $\gamma$ nhỏ, ở những bước đầu tầng 10 hoạt động gần nh
 
 ## 3.6. Hàm mất mát và chiến lược huấn luyện
 
-Đề tài giữ nguyên hàm mất mát của YOLO26-seg. Hai mô hình dùng chung hàm mất mát, bộ siêu tham số và danh sách seed. Vì vậy, khác biệt có hệ thống giữa hai mô hình chỉ có thể quy cho tầng 10. Dao động ngẫu nhiên giữa các lượt huấn luyện (do khởi tạo, thứ tự dữ liệu và phần cứng được cấp) được xử lý bằng cách lặp lại trên 20 seed.
+Đề tài giữ nguyên hàm mất mát của YOLO26-seg. Hai mô hình dùng chung hàm mất mát, bộ siêu tham số và danh sách seed. Vì vậy, khác biệt có hệ thống giữa hai mô hình chỉ có thể quy cho tầng 10. Dao động ngẫu nhiên giữa các lượt huấn luyện (do khởi tạo, thứ tự dữ liệu và phần cứng được cấp) được xử lý bằng cách lặp lại trên 20 seed ghép cặp.
 
 **Hai đầu dự đoán và trọng số thay đổi theo epoch.** YOLO26 huấn luyện đồng thời hai đầu [6], [38]:
 - **Đầu một-nhiều:** mỗi đối tượng thật được gán nhiều điểm neo, giúp mô hình học nhanh.
@@ -545,7 +545,7 @@ MỘT BƯỚC HUẤN LUYỆN (lô ảnh đã tăng cường, epoch e)
 - Khi lưu checkpoint (ở hàm lưu mô hình, ở MultiTrainer và ở hàm `strip_optimizer`), mô hình được giữ ở FP32 bằng `.float()` thay cho `.half()`.
 - Mã gốc có xử lý tensor không hữu hạn trong bản EMA: thay bằng tensor tương ứng của mô hình đang huấn luyện, rồi gọi `nan_to_num_`. Mã sau khi sửa bỏ cách xử lý này. Nếu bản EMA còn giá trị NaN hoặc vô cùng, hàm lưu mô hình và hàm `strip_optimizer` sẽ báo lỗi ngay.
 
-**Kiểm tra lại.** Toàn bộ 20 seed được huấn luyện lại bằng mã đã sửa. So sánh tệp `results.csv` của hai lần chạy:
+**Kiểm tra lại.** Các lượt TSVM được huấn luyện lại bằng mã đã sửa. So sánh tệp `results.csv` của hai lần chạy trên 20 seed (seed 0–19):
 - 44.000 ô số liệu giống hệt nhau;
 - 2.000 ô khác nhau, tất cả đều thuộc cột thời gian.
 
@@ -591,8 +591,8 @@ Mô-đun TSVMamba có tham số `mode` để bật hoặc tắt từng nhánh. B
 | `shape_only` | $b + \gamma\cdot\mathrm{FFN}(S)$, bỏ SS2D | 1.331.969 |
 | `vmamba_only` | $b + \gamma\cdot\mathrm{FFN}(\mathrm{SS2D}(b))$, bỏ nhánh hình dạng | 1.071.873 |
 
-Cả 40 lượt huấn luyện chính (20 seed × 2 mô hình) đều dùng chế độ đầy đủ. Các chế độ còn lại là nền tảng có sẵn cho thí nghiệm tách thành phần (ablation). Khi thực hiện thí nghiệm này, nên:
-- chạy cùng 20 seed;
+Mọi lượt huấn luyện chính của TSVM đều dùng chế độ đầy đủ. Các chế độ còn lại là nền tảng có sẵn cho thí nghiệm tách thành phần (ablation). Khi thực hiện thí nghiệm này, nên:
+- chạy cùng các seed đã dùng cho mô hình chính để so sánh ghép cặp;
 - thêm một mô hình đối chứng có số tham số tương đương, vì các chế độ chênh nhau tới khoảng 740 nghìn tham số.
 
 ## 3.11. Kết chương

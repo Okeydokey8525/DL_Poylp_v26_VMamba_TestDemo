@@ -24,8 +24,16 @@ Cập nhật: 26/10/2026. Đọc file này trước, sau đó đọc [README.md]
   - **Không có tập test riêng.**
 - **Huấn luyện:** 2 mô hình × 20 seed (0–19) × 100 epoch trên Kaggle. Cấu hình: imgsz 640, batch 8, AdamW, lr0 0,001, close_mosaic 10, `deterministic=True`. Hai mô hình chỉ khác nhau ở tầng 10.
 - **Endpoint chính:** mask mAP50–95, lấy tại epoch đạt cực đại của từng lượt.
+- **Báo cáo dùng 20 seed (seed 0–19), chốt ngày 28/10/2026.** Thay cho quyết định tạm 10 seed ngày 27/10. Bộ 10 seed giữ lại để đối chiếu (`00_tai_lieu_tong_quan/06b_KET_QUA_10_SEED.md`). Số thập phân trong báo cáo dùng dấu phẩy; có bổ sung chỉ số topology (lỗi Betti).
 
-| | Baseline | TSVM FP32 |
+| 10 seed (đối chiếu) | Baseline | TSVM FP32 |
+|---|---:|---:|
+| Mask mAP50–95 | 0,7210 ± 0,0129 | 0,7246 ± 0,0078 |
+| Δ, CI 95%, p | | +0,0036, [−0,0052; 0,0123], paired t p = 0,384 (Wilcoxon 0,432) |
+| Số seed TSVM cao hơn | | 6/10 |
+| Mask mAP50 | 0,9119 | 0,9062 (TSVM thấp hơn, p = 0,227) |
+
+| **20 seed (dùng trong báo cáo)** | Baseline | TSVM FP32 |
 |---|---:|---:|
 | Mask mAP50–95 | 0,718868 ± 0,011768 | 0,723171 ± 0,007197 |
 | Δ, CI 95%, p | | +0,004303, [−0,000228; 0,008834], paired t p = 0,061431 (Wilcoxon 0,0696) |
