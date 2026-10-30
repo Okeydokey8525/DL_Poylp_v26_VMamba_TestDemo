@@ -43,14 +43,14 @@ Sau khi huấn luyện, các tệp kết quả được tải về máy cá nhâ
 
 ### 5.1.3. Ngôn ngữ và công cụ
 
-Đề cương quy định Python cho phần mô hình và API, Java cho phần Web. Nhóm bổ sung Dart/Flutter cho ứng dụng di động.
+Đề cương quy định Python cho phần mô hình và API, Java cho phần Web. Nhóm bổ sung Dart/Flutter cho ứng dụng di động. Đề cương có nêu cả PyTorch và TensorFlow; đề tài chỉ dùng PyTorch, vì Ultralytics YOLO26 và các bản cài đặt Mamba đều viết trên PyTorch. Dùng một framework giúp khối C2TSVMamba ghép thẳng vào mô hình gốc mà không phải chuyển đổi trọng số.
 
 *Bảng 5.3. Ngôn ngữ, framework và lý do lựa chọn*
 
 | Hạng mục | Lựa chọn | Lý do |
 |---|---|---|
-| Học sâu | Python, PyTorch [74], Ultralytics [51] | YOLO26 được cài đặt chính thức trên Ultralytics; PyTorch cho phép viết khối SS2D tùy biến mà không cần biên dịch kernel riêng |
-| Xử lý dữ liệu, thống kê | NumPy, pandas, OpenCV, SciPy [75], Matplotlib | Chuyển nhãn, tính chỉ số, kiểm định thống kê, vẽ hình |
+| Học sâu | Python, PyTorch [78], Ultralytics [55] | YOLO26 được cài đặt chính thức trên Ultralytics; PyTorch cho phép viết khối SS2D tùy biến mà không cần biên dịch kernel riêng |
+| Xử lý dữ liệu, thống kê | NumPy, pandas, OpenCV, SciPy [79], Matplotlib | Chuyển nhãn, tính chỉ số, kiểm định thống kê, vẽ hình |
 | Dịch vụ suy luận | Python, FastAPI, Uvicorn | Cùng ngôn ngữ với mô hình nên nạp checkpoint trực tiếp; FastAPI nhẹ và tự sinh tài liệu API |
 | Web | Java 17, Spring Boot 4.1, Thymeleaf, Spring Security, Bootstrap 5 | Theo yêu cầu đề cương; Spring Boot có sẵn bảo mật, phiên đăng nhập, kết nối MongoDB |
 | Cơ sở dữ liệu | MongoDB | Lưu tài khoản và lịch sử phân tích dạng tài liệu, dễ mở rộng trường |
@@ -59,7 +59,7 @@ Sau khi huấn luyện, các tệp kết quả được tải về máy cá nhâ
 
 ## 5.2. Cài đặt mô hình gốc YOLO26s-seg
 
-Mô hình gốc dùng nguyên bản Ultralytics 8.4.127, cài bằng `pip`. Trọng số khởi tạo là `yolo26s-seg.pt`, đã được huấn luyện sẵn trên COCO [50]. Lớp đầu ra được đổi từ 80 lớp của COCO sang 1 lớp `polyp`.
+Mô hình gốc dùng nguyên bản Ultralytics 8.4.127, cài bằng `pip`. Trọng số khởi tạo là `yolo26s-seg.pt`, đã được huấn luyện sẵn trên COCO [54]. Lớp đầu ra được đổi từ 80 lớp của COCO sang 1 lớp `polyp`.
 
 Tệp mô tả dữ liệu `data_bg20.yaml`:
 
@@ -86,9 +86,9 @@ model.train(data="data_bg20.yaml", epochs=100, imgsz=640, batch=8,
 | Nhóm | Tham số |
 |---|---|
 | Dữ liệu | Ảnh vào 640×640; không lưu đệm ảnh (`cache=False`) |
-| Tối ưu | AdamW [47]; tốc độ học ban đầu 0,001, cuối 0,01 × ban đầu; momentum 0,937; suy giảm trọng số 0,0005; khởi động 5 epoch |
+| Tối ưu | AdamW [51]; tốc độ học ban đầu 0,001, cuối 0,01 × ban đầu; momentum 0,937; suy giảm trọng số 0,0005; khởi động 5 epoch |
 | Lịch | 100 epoch; lô 8 ảnh; không dừng sớm (`patience=100`); tắt Mosaic ở 10 epoch cuối |
-| Tăng cường | Mosaic [46] 1,0; lật ngang 0,5; co giãn 0,5; dịch 0,1; đổi màu HSV (0,015; 0,7; 0,4); không xoay, không lật dọc, không MixUp |
+| Tăng cường | Mosaic [50] 1,0; lật ngang 0,5; co giãn 0,5; dịch 0,1; đổi màu HSV (0,015; 0,7; 0,4); không xoay, không lật dọc, không MixUp |
 | Mặt nạ | Tỉ lệ thu nhỏ mặt nạ 4 (mặt nạ 160×160) |
 | Độ chính xác số | FP32 hoàn toàn (`amp=False`) |
 | Tất định | `deterministic=True`, 2 luồng nạp dữ liệu, seed cố định cho từng lượt |
@@ -193,7 +193,7 @@ Mỗi lượt huấn luyện lưu riêng một thư mục, tên có dạng `Kvas
 │       └── weights/best.pt  # trọng số tốt nhất
 ├── TSVM_FP32/
 │   └── Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s0_w2/ …
-└── Vmamba_only/, Shape_only/, …   # thí nghiệm tách thành phần (mục 6.6)
+└── Vmamba_only/, Shape_only/, No_guidance/   # thí nghiệm tách thành phần, seed 0–4 (mục 6.6)
 ```
 
 Từ các tệp này, script `tinh_lai_so_lieu.py` tính lại mọi số liệu và ghi ra các bảng CSV. Script `danh_gia_pixel.py` suy luận lại trên tập kiểm định để tính Dice và IoU theo điểm ảnh cho bốn mô hình. Script `ve_hinh.py` đọc các bảng để vẽ hình. Mọi con số trong Chương 6 đều truy được về bảng và script tương ứng.

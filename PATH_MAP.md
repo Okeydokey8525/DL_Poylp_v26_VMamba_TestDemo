@@ -102,3 +102,23 @@ Sáu file zip tải từ Kaggle nằm ở thư mục gốc repo được giải 
 |---|---|
 | `runs_Kvasir_BG20_YOLO26s_seg_ABL_shape_only_s{0,1}_w2.zip` | `03_ket_qua_huan_luyen/Shape_only/Kvasir_BG20_YOLO26s_seg_ABL_shape_only_s{0,1}_w2/` |
 | `runs_Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s{0,1,2,3}_w2.zip` | `03_ket_qua_huan_luyen/Vmamba_only/Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s{0,1,2,3}_w2/` |
+
+## Giải nén kết quả ablation đợt 2 (29/10/2026)
+
+Có tám file zip ở thư mục gốc repo. Cả tám đều qua kiểm tra `unzip -t`, không lỗi. Sau khi giải nén, bản zip gốc được chuyển vào `03_ket_qua_huan_luyen/_zip_goc_ablation/`. Tên thư mục, `seed` và `model` trong `args.yaml` khớp nhau ở cả 15 lượt ablation.
+
+| Đường dẫn cũ (zip) | Thư mục kết quả mới |
+|---|---|
+| `runs_Kvasir_BG20_YOLO26s_seg_ABL_shape_only_s{2,3}_w2.zip` | `03_ket_qua_huan_luyen/Shape_only/Kvasir_BG20_YOLO26s_seg_ABL_shape_only_s{2,3}_w2/` |
+| `runs_Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s4_w2.zip` | `03_ket_qua_huan_luyen/Vmamba_only/Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s4_w2/` |
+| `runs_Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s{0..4}_w2.zip` | `03_ket_qua_huan_luyen/No_guidance/Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s{0..4}_w2/` (thư mục `No_guidance/` mới) |
+
+Ghi chú về `shape_only` seed 3:
+- Thư mục cũ chỉ có `results.csv` mà không có `weights/`. Nó được chuyển sang `03_ket_qua_huan_luyen/_zip_goc_ablation/_ban_cu_truoc_khi_giai_nen/` và thay bằng bản trong zip, có đủ `best.pt`/`last.pt`.
+- Hai bản `results.csv` giống hệt nhau ở mọi cột chỉ số; chỉ khác cột `time`. Mask mAP50–95 cực đại của cả hai đều là 0,72962.
+
+Bổ sung cùng ngày, `shape_only` seed 4:
+- File `runs_Kvasir_BG20_YOLO26s_seg_ABL_shape_only_s4_w2.zip` qua kiểm tra `unzip -t`, không lỗi. Nội dung được giải nén vào `03_ket_qua_huan_luyen/Shape_only/Kvasir_BG20_YOLO26s_seg_ABL_shape_only_s4_w2/`, zip gốc chuyển vào `_zip_goc_ablation/`.
+- Thư mục cũ (không có `weights/`) được chuyển vào `_zip_goc_ablation/_ban_cu_truoc_khi_giai_nen/`.
+- Như ở seed 3, hai bản `results.csv` chỉ khác cột `time`; `args.yaml` giống nhau. Mask mAP50–95 cực đại của cả hai là 0,70953.
+- Kết quả: đủ 15/15 lượt ablation, lượt nào cũng có `best.pt` và `last.pt`.

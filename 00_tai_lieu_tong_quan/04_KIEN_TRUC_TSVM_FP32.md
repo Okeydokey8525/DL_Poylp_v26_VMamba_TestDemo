@@ -67,7 +67,7 @@ Toàn bộ mức tăng tham số nằm ở tầng 10. Các tầng khác giống 
 
 - Mã nguồn chỉ có các phép tích chập theo hướng và độ lớn gradient trên đặc trưng. **Không có** loss hay ràng buộc topology nào (Betti, clDice, persistent homology…). Loss huấn luyện vẫn là loss chuẩn của YOLO26-seg.
 - Vì vậy "topology/shape" là **định hướng thiết kế** của module. Chưa có thực nghiệm nào chứng minh mô hình bảo toàn topology của mặt nạ ([11](11_GIOI_HAN_VA_HUONG_PHAT_TRIEN.md)).
-- Module hỗ trợ 4 chế độ ablation: `topology_shape_vmamba`, `vmamba_only`, `shape_only`, `shape_vmamba_no_guidance`. Cả 40 lượt của bộ chính đều dùng chế độ đầy đủ `topology_shape_vmamba`. **Chưa có bộ ablation 20 seed.**
+- Module hỗ trợ 4 chế độ ablation: `topology_shape_vmamba`, `vmamba_only`, `shape_only`, `shape_vmamba_no_guidance`. Cả 40 lượt của bộ chính đều dùng chế độ đầy đủ `topology_shape_vmamba`. Ablation 3 chế độ còn lại chạy trên seed 0–4 (`03_ket_qua_huan_luyen/{Vmamba_only, Shape_only, No_guidance}/`). Kết quả ở `bang/17_*.csv` và Chương 6 mục 6.6: cả ba biến thể thấp hơn bản đầy đủ, không có ý nghĩa thống kê với 5 seed.
 
 ## Khởi tạo trọng số
 

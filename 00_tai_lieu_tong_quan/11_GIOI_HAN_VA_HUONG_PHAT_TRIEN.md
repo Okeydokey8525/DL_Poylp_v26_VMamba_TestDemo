@@ -14,10 +14,11 @@
 |---|---|
 | "TSVM vượt trội có ý nghĩa thống kê" | p = 0,061 > 0,05 |
 | "Hai mô hình tương đương" | p > 0,05 không chứng minh tương đương |
-| "TSVM bảo toàn topology / hình dạng polyp tốt hơn" | Không có chỉ số topology (Betti, clDice), không có Hausdorff, không có ablation |
+| "TSVM bảo toàn topology / hình dạng polyp tốt hơn" | Lỗi Betti đã đo ([14](14_CHI_SO_TOPOLOGY.md)): TSVM chỉ nhích hơn mô hình gốc, không có ý nghĩa thống kê, kém PraNet rõ rệt. Chưa có Hausdorff/clDice |
+| "Nhánh hình dạng / cổng chắc chắn cần thiết" | Ablation chỉ 5 seed, không chênh lệch nào có ý nghĩa thống kê; chỉ viết "xu hướng" |
 | Quy đổi AP sang Dice | Không quy đổi được. Dice/IoU theo pixel đã được tính riêng ([10](10_SO_SANH_PRANET_UNET.md)) |
 | Specificity, accuracy theo ảnh, TN = 40 − FP | TN không xác định ([08](08_MA_TRAN_NHAM_LAN.md)) |
-| Hiệu quả lâm sàng, khả năng tổng quát sang bệnh viện khác | Không có tập test ngoài, không tách theo bệnh nhân |
+| Hiệu quả lâm sàng; "TSVM tổng quát tốt hơn" | Dữ liệu ngoài (`08_du_lieu_thuc_te/`) là bộ công khai, không phải dữ liệu lâm sàng, không tách theo bệnh nhân. Trên đó TSVM không hơn đối chứng về Dice (kém có ý nghĩa ở ClinicDB, ColonDB) |
 | "TSVM ổn định hơn ở mọi epoch" | Có 34/100 epoch SD của TSVM lớn hơn ([07](07_HOI_TU_VA_LOSS.md)) |
 | VRAM trên GPU; độ trễ GPU như một con số tuyệt đối | VRAM chưa đo. GFLOPs và độ trễ GPU đã đo, nhưng số ms thay đổi 1,5–2 lần giữa hai phiên đo, chỉ tỉ lệ giữa hai mô hình là ổn định ([09](09_HIEU_NANG_TINH_TOAN.md)) |
 | "TSVM vượt PraNet" | Dice ngang nhau. TSVM chỉ hơn ở IoU, còn PraNet hơn ở Recall ([10](10_SO_SANH_PRANET_UNET.md)) |
@@ -28,7 +29,7 @@
 2. **Tập validation nhỏ:** 127 đối tượng polyp. Chỉ vài đối tượng phát hiện đúng hay sai cũng làm AP thay đổi đáng kể.
 3. **20 seed chỉ phản ánh biến thiên do huấn luyện**, không phải biến thiên do dữ liệu. Không có cross-validation.
 4. **Một kiến trúc, một vị trí:** chỉ thử ở tầng 10, scale s, đầu vào 640.
-5. Chưa có **ablation 20 seed** cho các chế độ `vmamba_only`, `shape_only`, `shape_vmamba_no_guidance`. Vì vậy chưa biết thành phần nào tạo ra khác biệt.
+5. **Ablation chỉ có seed 0–4** cho các chế độ `vmamba_only`, `shape_only`, `shape_vmamba_no_guidance` (`bang/17_*.csv`, Chương 6 mục 6.6). Cả ba đều có trung bình thấp hơn bản đầy đủ (−0,0068 / −0,0110 / −0,0036), nhưng không chênh lệch nào có ý nghĩa thống kê (paired t p = 0,22 / 0,10 / 0,08). Với 5 seed, kết quả chỉ mang tính thăm dò. Các biến thể có số tham số khác nhau, nên không tách được phần do cấu trúc với phần do thêm tham số.
 6. Một phần tầng 10 của TSVM nhận trọng số của `C2PSA`; phần mới khởi tạo ngẫu nhiên ([04](04_KIEN_TRUC_TSVM_FP32.md#khởi-tạo-trọng-số)). Kết quả có thể phụ thuộc vào cách khởi tạo này.
 7. Repo **không lưu notebook đúng phiên bản** đã chạy các lượt TSVM FP32, và không có log Kaggle gắn với 40 lượt chính ([05](05_CAU_HINH_HUAN_LUYEN.md)).
 8. ~~Chưa có tài liệu chứng thực nguồn gốc hai danh sách split 880/120.~~ Đã giải quyết 27/10/2026: hai danh sách đi kèm bản Kaggle của tác giả Kvasir-SEG (xem `02_DU_LIEU_BG20.md`).
@@ -36,8 +37,8 @@
 ## Hướng phát triển (theo thứ tự ưu tiên đề xuất)
 
 1. ~~Tính Dice/IoU theo pixel cho 4 mô hình~~: **đã làm ngày 26/10/2026** ([10](10_SO_SANH_PRANET_UNET.md)). Còn có thể làm thêm: huấn luyện PraNet/U-Net cùng cấu hình tăng cường dữ liệu với YOLO, và tối ưu ngưỡng cho từng mô hình.
-2. **Tập test độc lập hoặc đánh giá chéo dataset** (ví dụ CVC-ClinicDB, ETIS-Larib) để kiểm tra khả năng tổng quát.
-3. **Ablation 20 seed** cho 3 chế độ còn lại của TSVMamba.
-4. **Chỉ số hình dạng và biên** (Hausdorff 95, Boundary F1) và **chỉ số topology** (số thành phần liên thông, clDice) để kiểm chứng tên gọi "Topology-Shape".
-5. **Tối ưu tốc độ:** dùng kernel selective-scan, đo trên GPU và đếm FLOPs đúng cho phép quét.
+2. ~~Đánh giá chéo dataset~~: **đã làm ngày 28/10/2026** trên CVC-ClinicDB, CVC-ColonDB, ETIS, PolypGen (`08_du_lieu_thuc_te/`). Còn thiếu: tập test độc lập tách theo bệnh nhân, dữ liệu lâm sàng thật.
+3. **Ablation** cho 3 chế độ còn lại của TSVMamba: đã chạy xong seed 0–4; nên mở rộng lên 20 seed.
+4. ~~Chỉ số topology (lỗi Betti)~~: **đã đo ngày 28/10/2026** ([14](14_CHI_SO_TOPOLOGY.md)). Còn có thể làm thêm: chỉ số hình dạng và biên (Hausdorff 95, Boundary F1), clDice.
+5. **Tối ưu tốc độ:** dùng kernel selective-scan, đếm FLOPs đúng cho phép quét. GFLOPs và độ trễ GPU đã đo ([09](09_HIEU_NANG_TINH_TOAN.md)); FLOPs của TSVM vẫn là cận dưới.
 6. **Thêm seed hoặc cross-validation** để tăng độ mạnh thống kê. Giả sử hiệu ứng thật đúng bằng d_z = 0,445 quan sát được, paired t-test hai phía (α = 0,05) với 20 cặp chỉ có power khoảng **0,47**. Cần **42 cặp** để đạt power 80%. Con số này tính từ phân phối t không trung tâm và nằm trong log của script. Đây là ước lượng dựa trên chính dữ liệu hiện có, nên chỉ dùng để định hướng.

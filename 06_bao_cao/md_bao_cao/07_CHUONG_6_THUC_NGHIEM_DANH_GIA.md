@@ -2,7 +2,7 @@
 
 > **Ghi chú cho người biên tập (xóa khi ghép Word):**
 > - Mọi con số trong chương lấy từ `00_tai_lieu_tong_quan/bang/*.csv` và `08_du_lieu_thuc_te/bang/20seed/*.csv`. Nguồn từng bảng ghi ngay dưới bảng.
-> - Mục 6.6 (thí nghiệm tách thành phần) để trống các ô **[CHỜ KẾT QUẢ]**. Khi có kết quả Kaggle chỉ cần điền số vào Bảng 6.12, chèn Hình 6.16 và viết đoạn nhận xét; các mục khác không phải sửa.
+> - Mục 6.6 (thí nghiệm tách thành phần) đã điền ngày 29/10/2026 từ 15 lượt Kaggle (seed 0–4), số liệu ở `bang/17_*.csv`.
 > - Số tài liệu tham khảo đã đánh lại theo thứ tự trích dẫn (IEEE) ngày 28/10/2026, danh mục ở `08_TAI_LIEU_THAM_KHAO.md`.
 
 Chương 3 đã giới thiệu mô hình YOLO26s-seg tích hợp khối C2TSVMamba, gọi tắt là **mô hình đề xuất** hay **TSVM**. Chương 5 đã mô tả cách huấn luyện. Chương này trả lời câu hỏi: khi thay khối C2PSA ở tầng 10 bằng C2TSVMamba, chất lượng phân đoạn thay đổi thế nào, và chi phí tính toán tăng bao nhiêu.
@@ -51,16 +51,16 @@ Với mỗi lượt huấn luyện, đề tài lấy **epoch có mask mAP50–95
 ### 6.1.4. Kiểm định thống kê
 
 Với mỗi chỉ số, đề tài tính hiệu ghép cặp $d_i = x_i^{\text{TSVM}} - x_i^{\text{gốc}}$ cho 20 seed, rồi dùng:
-- **kiểm định t ghép cặp** [61] (mục 2.8.2) để kiểm tra trung bình của $d_i$ có khác 0 không, kèm khoảng tin cậy 95% (CI 95%);
-- **kiểm định Wilcoxon dấu–hạng** [62] (mục 2.8.3) để đối chiếu, vì kiểm định này không cần giả định phân phối chuẩn;
-- **cỡ hiệu ứng Cohen $d_z$** [64] để biết chênh lệch lớn hay nhỏ so với dao động;
+- **kiểm định t ghép cặp** [65] (mục 2.8.2) để kiểm tra trung bình của $d_i$ có khác 0 không, kèm khoảng tin cậy 95% (CI 95%);
+- **kiểm định Wilcoxon dấu–hạng** [66] (mục 2.8.3) để đối chiếu, vì kiểm định này không cần giả định phân phối chuẩn;
+- **cỡ hiệu ứng Cohen $d_z$** [68] để biết chênh lệch lớn hay nhỏ so với dao động;
 - số seed mà TSVM tốt hơn.
 
-Mức ý nghĩa là $\alpha = 0{,}05$. Đề tài kiểm định nhiều chỉ số nhưng không hiệu chỉnh đa kiểm định, nên chỉ kết luận chắc chắn trên chỉ số chính. Các chỉ số phụ chỉ dùng để mô tả xu hướng [63].
+Mức ý nghĩa là $\alpha = 0{,}05$. Đề tài kiểm định nhiều chỉ số nhưng không hiệu chỉnh đa kiểm định, nên chỉ kết luận chắc chắn trên chỉ số chính. Các chỉ số phụ chỉ dùng để mô tả xu hướng [67].
 
-Để so sánh độ dao động giữa các seed của hai mô hình, đề tài dùng **kiểm định Levene dạng trung vị** (còn gọi là kiểm định Brown–Forsythe) [76]. Kiểm định này coi hai nhóm 20 seed là độc lập, không tận dụng cấu trúc ghép cặp, nên kết quả chỉ mang tính thăm dò.
+Để so sánh độ dao động giữa các seed của hai mô hình, đề tài dùng **kiểm định Levene dạng trung vị** (còn gọi là kiểm định Brown–Forsythe) [80]. Kiểm định này coi hai nhóm 20 seed là độc lập, không tận dụng cấu trúc ghép cặp, nên kết quả chỉ mang tính thăm dò.
 
-Các phép tính dùng thư viện SciPy [75].
+Các phép tính dùng thư viện SciPy [79].
 
 ### 6.1.5. Đánh giá theo pixel
 
@@ -95,7 +95,7 @@ Trong toàn chương, mọi giá trị được ghi dưới dạng **trung bình
 
 *Hình 6.1. Trung bình các chỉ số mặt nạ của hai mô hình trên 20 seed. Thanh lỗi là ±1 độ lệch chuẩn qua các seed.*
 
-Trên chỉ số chính, mô hình đề xuất đạt 0,7232, cao hơn mô hình gốc 0,0043, tức khoảng 0,6% tương đối. TSVM cao hơn ở 13/20 seed. Tuy vậy, khoảng tin cậy 95% của hiệu số vẫn chứa 0, kiểm định t cho $p = 0{,}061$ và Wilcoxon cho $p = 0{,}070$. Cỡ hiệu ứng $d_z = 0{,}44$, ở mức nhỏ đến vừa theo quy ước của Cohen [65]. **Như vậy, ở mức ý nghĩa 0,05, chưa đủ bằng chứng để khẳng định TSVM tốt hơn mô hình gốc.** Kết quả chỉ cho thấy một xu hướng tăng nhỏ.
+Trên chỉ số chính, mô hình đề xuất đạt 0,7232, cao hơn mô hình gốc 0,0043, tức khoảng 0,6% tương đối. TSVM cao hơn ở 13/20 seed. Tuy vậy, khoảng tin cậy 95% của hiệu số vẫn chứa 0, kiểm định t cho $p = 0{,}061$ và Wilcoxon cho $p = 0{,}070$. Cỡ hiệu ứng $d_z = 0{,}44$, ở mức nhỏ đến vừa theo quy ước của Cohen [69]. **Như vậy, ở mức ý nghĩa 0,05, chưa đủ bằng chứng để khẳng định TSVM tốt hơn mô hình gốc.** Kết quả chỉ cho thấy một xu hướng tăng nhỏ.
 
 Cần lưu ý chiều ngược lại: $p > 0{,}05$ cũng không chứng minh hai mô hình tương đương. Khoảng tin cậy cho thấy hiệu số thật có thể nằm trong khoảng từ gần 0 đến khoảng +0,009.
 
@@ -327,7 +327,7 @@ PraNet có topology tốt nhất rõ rệt: 91% ảnh đúng so với 81% của 
 
 *Nguồn: `bang/08_kien_truc_dung_lai.csv`, `bang/16_flops_do_tre_gpu.csv`, `bang/07_checkpoint_best_pt.csv`. FLOPs đo trên một ảnh 640 × 640 sau khi gộp tích chập với chuẩn hóa lô.*
 
-Bộ đếm `FlopCounterMode` của PyTorch [74] chỉ đếm các phép tích chập và nhân ma trận. Các phép theo từng phần tử trong phép quét SS2D không được đếm, nên số GFLOPs của TSVM là **cận dưới**. Bộ đếm của Ultralytics cho số lớn hơn khoảng 3 GFLOPs ở cả hai mô hình do khác cách đếm, nhưng tỉ lệ giữa hai mô hình như nhau. Tệp `best.pt` của TSVM lớn gấp khoảng hai lần chủ yếu vì được lưu ở FP32 (mục 3.8), không phải vì số tham số.
+Bộ đếm `FlopCounterMode` của PyTorch [78] chỉ đếm các phép tích chập và nhân ma trận. Các phép theo từng phần tử trong phép quét SS2D không được đếm, nên số GFLOPs của TSVM là **cận dưới**. Bộ đếm của Ultralytics cho số lớn hơn khoảng 3 GFLOPs ở cả hai mô hình do khác cách đếm, nhưng tỉ lệ giữa hai mô hình như nhau. Tệp `best.pt` của TSVM lớn gấp khoảng hai lần chủ yếu vì được lưu ở FP32 (mục 3.8), không phải vì số tham số.
 
 ### 6.5.2. Độ trễ suy luận
 
@@ -374,22 +374,31 @@ Mọi thiết lập khác giữ nguyên như mô hình đầy đủ. Do giới h
 
 *Bảng 6.12. Kết quả thí nghiệm tách thành phần (mask mAP50–95, seed 0–4)*
 
-| Cấu hình | SS2D | Nhánh hình dạng | Cổng | Tham số tầng 10 | Mask mAP50–95 | Δ so với gốc | Δ so với đầy đủ |
-|---|:---:|:---:|:---:|---:|---:|---:|---:|
-| YOLO26s-seg (C2PSA) | | | | 990.976 | 0,7177 ± 0,0160 | – | −0,0061 |
-| TSVM đầy đủ | ✓ | ✓ | ✓ | 1.811.201 | 0,7238 ± 0,0032 | +0,0061 | – |
-| `vmamba_only` | ✓ | | | 1.071.873 | **[CHỜ KẾT QUẢ]** | **[CHỜ]** | **[CHỜ]** |
-| `shape_only` | | ✓ | | 1.331.969 | **[CHỜ KẾT QUẢ]** | **[CHỜ]** | **[CHỜ]** |
-| `shape_vmamba_no_guidance` | ✓ | ✓ | | 1.745.409 | **[CHỜ KẾT QUẢ]** | **[CHỜ]** | **[CHỜ]** |
+| Cấu hình | SS2D | Nhánh hình dạng | Cổng | Tham số tầng 10 | Mask mAP50–95 | Δ so với gốc | Δ so với đầy đủ | Số seed cao hơn bản đầy đủ |
+|---|:---:|:---:|:---:|---:|---:|---:|---:|---:|
+| YOLO26s-seg (C2PSA) | | | | 990.976 | 0,7177 ± 0,0160 | – | −0,0061 | 2/5 |
+| TSVM đầy đủ | ✓ | ✓ | ✓ | 1.811.201 | **0,7238 ± 0,0032** | +0,0061 | – | – |
+| `vmamba_only` | ✓ | | | 1.071.873 | 0,7170 ± 0,0128 | −0,0007 | −0,0068 | 1/5 |
+| `shape_only` | | ✓ | | 1.331.969 | 0,7128 ± 0,0097 | −0,0049 | −0,0110 | 1/5 |
+| `shape_vmamba_no_guidance` | ✓ | ✓ | | 1.745.409 | 0,7201 ± 0,0045 | +0,0025 | −0,0036 | 1/5 |
 
-*Nguồn: hai dòng đầu từ `bang/02_ket_qua_tung_seed.csv` (seed 0–4 của các lượt chính); ba dòng sau từ `03_ket_qua_huan_luyen/{Vmamba_only, Shape_only, No_guidance}/` **[CHỜ KẾT QUẢ]**. Số tham số tầng 10 của ba biến thể là ước tính ở Bảng 3.7.*
+*Nguồn: `00_tai_lieu_tong_quan/bang/17_ablation_tung_seed.csv` và `17b_ablation_tong_hop.csv`, sinh bằng `scripts/tinh_ablation.py`. Hai dòng đầu là seed 0–4 của các lượt chính, khớp với `bang/02_ket_qua_tung_seed.csv`. Số tham số tầng 10 đếm trực tiếp từ `best.pt` của từng lượt, trùng với số tính ở Bảng 3.7. Giá trị là trung bình ± độ lệch chuẩn qua 5 seed, lấy tại epoch đạt cực đại mask mAP50–95 của từng lượt.*
 
-> **[CHỜ KẾT QUẢ] Hình 6.16.** Mask mAP50–95 từng seed (0–4) của năm cấu hình, dạng điểm nối cặp theo seed. Vẽ bằng `ve_hinh.py` khi đủ 15 lượt.
+Trước khi so sánh, đề tài kiểm tra tệp `args.yaml` của 15 lượt tách thành phần. Mọi tham số huấn luyện đều trùng với lượt TSVM chính cùng seed. Chỉ khác tệp cấu hình mô hình và cách ghi đường dẫn đến cùng một tệp trọng số khởi tạo (`bang/18_ablation_cau_hinh_args.csv`).
 
-**[CHỜ KẾT QUẢ: đoạn nhận xét.]** Khi viết, trả lời ba câu hỏi theo thứ tự:
-1. Bỏ nhánh hình dạng (`vmamba_only`) thì mAP thay đổi thế nào so với mô hình đầy đủ?
-2. Bỏ SS2D (`shape_only`) thì sao?
-3. Bỏ cổng (`shape_vmamba_no_guidance`) thì sao? Cổng có thực sự cần không?
+![Hình 6.16](../hinh/chung/vi/k01_ablation_tung_seed.png)
+
+*Hình 6.16. Mask mAP50–95 từng seed (0–4) của năm cấu hình. Đường xám nối kết quả của cùng một seed; vạch ngang đậm là trung bình, thanh dọc là ±1 độ lệch chuẩn qua 5 seed.*
+
+So với mô hình đầy đủ, cả ba biến thể đều có mask mAP50–95 trung bình thấp hơn. Mỗi biến thể chỉ cao hơn bản đầy đủ ở 1 trong 5 seed. Trả lời lần lượt ba câu hỏi đặt ra ở mục 6.6.1:
+
+1. **Bỏ nhánh hình dạng (`vmamba_only`):** trung bình giảm 0,0068 so với bản đầy đủ và gần bằng mô hình gốc (−0,0007). Độ lệch chuẩn tăng lên 0,0128, gấp khoảng bốn lần bản đầy đủ. Seed 1 của biến thể này đạt 0,7390, cao nhất trong cả 25 lượt, trong khi bốn seed còn lại đều thấp hơn bản đầy đủ. Như vậy, chỉ thay attention bằng phép quét SS2D chưa cho thấy lợi ích.
+2. **Bỏ SS2D (`shape_only`):** đây là cấu hình có trung bình thấp nhất, kém bản đầy đủ 0,0110 và kém cả mô hình gốc 0,0049. Nhánh hình dạng dùng riêng không thay được vai trò của khối ngữ cảnh toàn cục.
+3. **Bỏ cổng (`shape_vmamba_no_guidance`):** trung bình giảm ít nhất (−0,0036), độ lệch chuẩn vẫn nhỏ (0,0045). Biến thể này đứng thứ hai, sau bản đầy đủ. Điều này gợi ý rằng phần lớn khác biệt đến từ việc dùng cùng lúc hai nhánh; cổng $(1+G)$ góp thêm một phần nhỏ, theo cùng chiều ở 4/5 seed.
+
+Ba kết quả trên cho thấy một **xu hướng**: hai nhánh bổ sung cho nhau, và bản đầy đủ vừa có trung bình cao nhất vừa dao động ít nhất giữa các seed. Tuy nhiên, không biến thể nào khác bản đầy đủ có ý nghĩa thống kê. Kiểm định t ghép cặp cho $p = 0{,}218$ (`vmamba_only`), $p = 0{,}101$ (`shape_only`) và $p = 0{,}085$ (bỏ cổng). Với 5 cặp, kiểm định Wilcoxon hai phía không thể cho $p$ nhỏ hơn 0,0625.
+
+Thời gian huấn luyện cũng tách được theo thành phần. Một lượt 100 epoch của `shape_only` mất khoảng 2,4 giờ, gần bằng mô hình gốc (2,3 giờ). Một lượt `vmamba_only` mất khoảng 4,6 giờ, bằng bản đầy đủ. Như vậy, gần như toàn bộ chi phí thời gian tăng thêm nằm ở SS2D, khớp với nhận xét về phép quét ở mục 6.5.3.
 
 ### 6.6.3. Cách đọc kết quả
 
@@ -412,7 +421,7 @@ Ngoài ra, các biến thể có số tham số tầng 10 chênh nhau tới kho�
 | ETIS-Larib [16] | 196 | 1.225 × 966 | Nhiều polyp nhỏ, khó |
 | PolypGen [13] | 1.537 (1.412 có polyp, 125 không polyp) | Tới 1.920 × 1.080 | Ảnh đơn từ 6 trung tâm (C1–C6) |
 
-*Nguồn: đề tài thống kê. Riêng PolypGen chỉ dùng phần ảnh đơn, không dùng phần chuỗi video.*
+*Nguồn: đề tài thống kê. Riêng PolypGen chỉ dùng phần ảnh đơn, không dùng phần chuỗi video. CVC-ColonDB dùng bản 380 ảnh phổ biến trong các benchmark phân đoạn polyp kể từ PraNet [9]; bài công bố gốc [15] mô tả 300 ảnh từ 15 polyp.*
 
 Ba bộ CVC-ClinicDB, CVC-ColonDB và ETIS-Larib chỉ có ảnh có polyp. PolypGen có 125 ảnh mà mặt nạ rỗng. Các ảnh này không tính vào Dice và IoU, mà dùng để đo tỉ lệ báo nhầm. Giao thức suy luận và cách tính chỉ số giống hệt mục 6.1.5, với cả bốn mô hình và 20 seed.
 
@@ -494,7 +503,9 @@ Trên 125 ảnh không có polyp của PolypGen, tỉ lệ báo nhầm là 13,3%
 
 **Mô hình đề xuất có ổn định hơn không?** Trên tập kiểm định, độ lệch chuẩn giữa các seed nhỏ hơn khoảng 39% (Levene $p = 0{,}026$, thăm dò). Nhưng dấu hiệu này chỉ có ở epoch tốt nhất và không còn trên dữ liệu ngoài.
 
-**Chi phí tăng bao nhiêu?** Tham số tăng 7,2%, GFLOPs tăng 1,5%, nhưng độ trễ tăng khoảng 1,5 lần trên GPU và 2,1 lần trên CPU, thời gian huấn luyện tăng khoảng 2 lần.
+**Thành phần nào đóng góp?** Trên 5 seed, bỏ bất kỳ thành phần nào cũng làm trung bình thấp hơn bản đầy đủ. Bỏ cổng giảm ít nhất (−0,0036), chỉ giữ nhánh hình dạng giảm nhiều nhất (−0,0110). Như vậy, theo xu hướng, hai nhánh bổ sung cho nhau và cổng góp thêm một phần nhỏ. Không chênh lệch nào có ý nghĩa thống kê.
+
+**Chi phí tăng bao nhiêu?** Tham số tăng 7,2%, GFLOPs tăng 1,5%, nhưng độ trễ tăng khoảng 1,5 lần trên GPU và 2,1 lần trên CPU, thời gian huấn luyện tăng khoảng 2 lần. Thí nghiệm tách thành phần cho thấy phần thời gian tăng thêm này gần như hoàn toàn do nhánh SS2D.
 
 ### 6.8.2. Vì sao mức cải thiện nhỏ
 
@@ -523,6 +534,6 @@ Chương 6 đã so sánh mô hình YOLO26s-seg gốc với mô hình tích hợp
 - Theo pixel, TSVM có Dice ngang PraNet (0,854) và IoU cao hơn PraNet, nhưng topology kém PraNet rõ rệt. Cả ba mô hình đều hơn U-Net rất xa.
 - Số phép tính gần như không đổi, nhưng độ trễ tăng khoảng 1,5 lần trên GPU và 2,1 lần trên CPU.
 - Trên dữ liệu ngoài, TSVM không tốt hơn mô hình gốc và thấp hơn có ý nghĩa ở CVC-ClinicDB và CVC-ColonDB. Hai mô hình YOLO vẫn tốt hơn PraNet và U-Net.
-- Thí nghiệm tách thành phần: **[CHỜ KẾT QUẢ]**.
+- Thí nghiệm tách thành phần (5 seed): cả ba biến thể bỏ bớt một thành phần đều có trung bình thấp hơn bản đầy đủ. Bỏ cổng giảm ít nhất, chỉ giữ nhánh hình dạng giảm nhiều nhất. Đây là xu hướng; không chênh lệch nào có ý nghĩa thống kê.
 
 Như vậy, với cách tích hợp và dữ liệu hiện có, khối C2TSVMamba chưa mang lại cải thiện chất lượng đủ rõ để bù cho chi phí suy luận tăng thêm. Phần Kết luận tổng hợp lại các kết quả này và đề xuất hướng phát triển.

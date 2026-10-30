@@ -46,12 +46,12 @@ Những khó khăn này giải thích vì sao một mô hình phân đoạn poly
 | Kvasir-SEG [5] | 1.000 | Ảnh polyp kèm mặt nạ do bác sĩ vẽ và chuyên gia duyệt; độ phân giải khác nhau | Nguồn ảnh polyp chính |
 | Kvasir [8] | Bản v2: 8 lớp, mỗi lớp 1.000 ảnh | Ảnh nội soi tiêu hóa phân loại theo mốc giải phẫu, tổn thương, thủ thuật | Lấy 200 ảnh lớp *normal-cecum* làm ảnh nền |
 | CVC-ClinicDB [14] | 612 | Khung hình cắt từ video nội soi, kèm mặt nạ | Dữ liệu ngoài, kiểm tra trên dữ liệu thực tế |
-| CVC-ColonDB [15] | 380 | Khung hình cắt từ video nội soi | Dữ liệu ngoài |
+| CVC-ColonDB [15] | 380 (bản dùng trong các benchmark phân đoạn từ PraNet [9]; bài gốc mô tả 300 ảnh) | Khung hình cắt từ 15 đoạn video nội soi | Dữ liệu ngoài |
 | ETIS-Larib [16] | 196 | Nhiều polyp nhỏ, khó phát hiện | Dữ liệu ngoài |
 | Bộ chuẩn CVC (EndoScene) [12] | Gộp từ các bộ CVC | Nhãn cho polyp, lòng ruột và vùng phản quang | Tham khảo |
 | PolypGen [13] | 1.537 ảnh đơn từ 6 trung tâm (1.412 có polyp, 125 không polyp) | Thu ở nhiều bệnh viện và thiết bị, dùng để đánh giá khả năng tổng quát hóa | Dữ liệu ngoài, đánh giá theo từng trung tâm |
 
-Trong đề tài, Kvasir-SEG được chọn làm dữ liệu huấn luyện vì có mặt nạ chất lượng, được dùng phổ biến và có sẵn danh sách chia huấn luyện/kiểm định do nhóm tác giả cung cấp. Ba bộ CVC-ClinicDB, CVC-ColonDB và ETIS-Larib là ảnh cắt từ video, khác nguồn với Kvasir-SEG. Đề tài dùng chúng để kiểm tra mô hình trên dữ liệu chưa thấy khi huấn luyện **[CHỜ KẾT QUẢ, xem Chương 6]**.
+Trong đề tài, Kvasir-SEG được chọn làm dữ liệu huấn luyện vì có mặt nạ chất lượng, được dùng phổ biến và có sẵn danh sách chia huấn luyện/kiểm định do nhóm tác giả cung cấp. Ba bộ CVC-ClinicDB, CVC-ColonDB và ETIS-Larib là ảnh cắt từ video, khác nguồn với Kvasir-SEG. Cùng với PolypGen, chúng được dùng để kiểm tra mô hình trên dữ liệu chưa thấy khi huấn luyện. Kết quả trình bày ở mục 6.7.
 
 ## 1.4. Các hướng nghiên cứu phân đoạn polyp
 
@@ -144,7 +144,7 @@ Hai công trình gần nhất với đề tài là:
 | Dữ liệu | COCO, VOC | PASCAL VOC | Ảnh polyp | **Ảnh polyp (Kvasir-SEG + ảnh nền)** |
 | Phạm vi thay đổi | Thay phần lớn backbone | Thay C2PSA, thêm khối ở neck | Thêm bản đồ chú ý tô-pô | **Chỉ thay C2PSA ở tầng 10** |
 | Khối Mamba | Khối SSM riêng | Mamba nhẹ, BiViM hai chiều | VMamba | **SS2D bốn hướng + nhánh hình dạng có hướng + cổng** |
-| Cách đánh giá | Một lần chạy **[CẦN KIỂM TRA]** | Một seed (tác giả tự nêu là hạn chế) | 5 seed, lấy trung bình | **20 seed ghép cặp, có kiểm định thống kê** |
+| Cách đánh giá | Báo một kết quả, không nêu số lần chạy hay độ lệch chuẩn | Một seed (tác giả tự nêu là hạn chế) | 5 seed, lấy trung bình | **20 seed ghép cặp, có kiểm định thống kê** |
 
 Từ các bảng trên, khoảng trống mà đề tài hướng tới gồm ba điểm:
 1. Theo khảo sát của nhóm đến tháng 10/2026, chưa thấy công trình nào đưa khối VMamba vào **YOLO26-seg** cho **phân đoạn thực thể polyp**.
@@ -157,7 +157,16 @@ Cũng cần nói rõ một khác biệt với MambaPSA. Khối đề xuất tron
 
 ## 1.6. Tình hình nghiên cứu trong nước
 
-Trong nước, ngoài ColonFormer [19] đã nêu ở mục 1.4.2, có thể kể thêm NeoUNet và bộ dữ liệu BKAI-IGH NeoPolyp của nhóm Đại học Bách khoa Hà Nội **[CẦN XÁC MINH VÀ THÊM TLTK]**. **[ĐIỀN: nếu nhóm tìm được thêm công trình trong nước về phân đoạn polyp hoặc ứng dụng YOLO trong nội soi, ví dụ luận văn, bài hội thảo FAIR, RIVF, tạp chí khoa học của các trường, thì bổ sung tại đây; nếu không, giữ đoạn này ngắn.]** Theo khảo sát của nhóm, chưa thấy công trình trong nước nào tích hợp Mamba vào YOLO cho bài toán polyp **[CẦN XÁC NHẬN]**.
+Ở trong nước, nhóm nghiên cứu của Trường Đại học Bách khoa Hà Nội phối hợp với Viện Nghiên cứu và Đào tạo Tiêu hóa, Gan mật có nhiều công trình về polyp:
+- **ColonFormer** [19], đã nêu ở mục 1.4.2.
+- **NeoUNet** [40] mở rộng bài toán thành vừa phân đoạn polyp vừa phân biệt polyp tân sinh với polyp không tân sinh, kèm bộ dữ liệu NeoPolyp. Phần công khai của bộ này, BKAI-IGH NeoPolyp-Small, có 1.200 ảnh nội soi chụp bằng ánh sáng trắng và FICE.
+- **BlazeNeo** [41] của cùng nhóm hướng tới tốc độ, chạy được trên thiết bị biên.
+
+Về họ YOLO, Đào Việt Hằng và cộng sự [42] đánh giá YOLOv8 phát hiện polyp trên 30 video nội soi thu tại Hà Nội. Mô hình phát hiện được 65/68 polyp, nhưng còn nhiều báo nhầm khi xét theo từng khung hình (Precision 0,48 ở ngưỡng IoU 0,5). Công trình này dừng ở mức phát hiện bằng hộp bao, không phân đoạn.
+
+Về Mamba, PolyPVT-MambaNet [43] kết hợp CNN, Transformer và khối Mamba trong một mô hình dạng mã hóa–giải mã cho phân đoạn polyp, thử nghiệm trên Kvasir-SEG và CVC-ClinicDB.
+
+Trong phạm vi khảo sát của nhóm (arXiv, Crossref và kho tài liệu của một số trường), chưa thấy công trình trong nước nào đưa khối Mamba vào mô hình họ YOLO cho bài toán polyp.
 
 ## 1.7. Kết chương
 

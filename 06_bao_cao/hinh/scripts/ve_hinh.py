@@ -941,7 +941,72 @@ def x03_bao_nham_polypgen(lang, st):
     save(fig, "x03_bao_nham_polypgen", lang)
 
 
+# ---------------------------------------------------------------- Chương 6: tách thành phần (seed 0–4)
+ABL = [  # (mã cấu hình trong bang/17_*, màu, nhãn vi, nhãn en)
+    ("Baseline", C_BASE, "Đối chứng\n(C2PSA)", "Baseline\n(C2PSA)"),
+    ("TSVM_day_du", C_TSVM, "TSVM\nđầy đủ", "Full\nTSVM"),
+    ("vmamba_only", "#E69F00", "Chỉ SS2D", "SS2D\nonly"),
+    ("shape_only", "#56B4E9", "Chỉ nhánh\nhình dạng", "Shape\nonly"),
+    ("shape_vmamba_no_guidance", "#F0E442", "Bỏ cổng", "No\ngate"),
+]
+
+
+def _abl():
+    return pd.read_csv(BANG / "17_ablation_tung_seed.csv", encoding="utf-8-sig")
+
+
+def k01_ablation_tung_seed(lang, st):
+    """Mask mAP@50–95 từng seed (0–4) của 5 cấu hình. Điểm, đường nối cùng seed, vạch trung bình và thanh ±1 SD
+    đều nằm trên cùng một trục dọc của mỗi cấu hình (không dịch ngang)."""
+    df = _abl()
+    fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.55))
+    wide = df.pivot(index="seed", columns="cau_hinh", values="mask_map50_95")[[k for k, *_ in ABL]]
+    x = np.arange(len(ABL))
+    for s in wide.index:
+        ax.plot(x, wide.loc[s].values, color=C_DOWN, linewidth=0.6, alpha=0.6, zorder=1)
+    for k, (key, c, *_l) in enumerate(ABL):
+        v = wide[key]
+        ax.errorbar(k, v.mean(), yerr=v.std(ddof=1), fmt="none", ecolor="black", elinewidth=0.9, capsize=4, zorder=2)
+        ax.hlines(v.mean(), k - 0.2, k + 0.2, color="black", linewidth=1.6, zorder=2)
+        ax.scatter(np.full(len(v), k), v, s=22, color=c, edgecolor="black", linewidth=0.4, zorder=3)
+    from matplotlib.lines import Line2D
+    legend_top(ax, ncol=2, handles=[Line2D([], [], color="black", lw=1.6),
+                                    Line2D([], [], color=C_DOWN, lw=0.8)],
+               labels=[L("Trung bình ± 1 SD", "Mean ± 1 SD", lang), L("Cùng một seed", "Same seed", lang)])
+    ax.set_xticks(x, [lab_vi if lang == "vi" else lab_en for _k, _c, lab_vi, lab_en in ABL], fontsize=st["font"] - 2)
+    ax.set_xlim(-0.5, len(ABL) - 0.5)
+    ax.set_ylabel(T["mask_map"][lang])
+    num_axis(ax, "y", 2, lang)
+    grid_y(ax)
+    save(fig, "k01_ablation_tung_seed", lang)
+
+
+def k02_ablation_delta(lang, st):
+    """Δ mask mAP@50–95 của từng biến thể so với TSVM đầy đủ (ghép cặp theo seed), cột mean ± SD và điểm từng seed."""
+    df = _abl()
+    wide = df.pivot(index="seed", columns="cau_hinh", values="mask_map50_95")
+    var = ABL[2:]
+    fig, ax = plt.subplots(figsize=(st["width"] * (0.7 if lang == "vi" else 1.0), st["width"] * 0.5))
+    for k, (key, c, *_l) in enumerate(var):
+        d = 100 * (wide[key] - wide["TSVM_day_du"])
+        ax.bar(k, d.mean(), 0.55, color=c, edgecolor="black", linewidth=0.4, zorder=2)
+        ax.errorbar(k, d.mean(), yerr=d.std(ddof=1), fmt="none", ecolor="black", elinewidth=0.8, capsize=4, zorder=3)
+        ax.scatter(np.full(len(d), k), d, s=18, color="white", edgecolor="black", linewidth=0.7, zorder=4)
+    from matplotlib.lines import Line2D
+    legend_top(ax, ncol=2, handles=[Line2D([], [], color="black", lw=0.8),
+                                    Line2D([], [], ls="none", marker="o", mfc="white", mec="black", ms=4)],
+               labels=[L("Trung bình ± 1 SD", "Mean ± 1 SD", lang), L("Từng seed", "Each seed", lang)])
+    ax.axhline(0, color="black", linewidth=0.7)
+    ax.set_xticks(range(len(var)), [lab_vi if lang == "vi" else lab_en for _k, _c, lab_vi, lab_en in var],
+                  fontsize=st["font"] - 2)
+    ax.set_ylabel(L("Δ so với TSVM đầy đủ (điểm %)", "Δ vs full TSVM (pp)", lang))
+    num_axis(ax, "y", 1, lang)
+    grid_y(ax)
+    save(fig, "k02_ablation_delta", lang)
+
+
 FIGS_BO_SUNG = {
+    "k01": k01_ablation_tung_seed, "k02": k02_ablation_delta,
     "d01": d01_thanh_phan_bg20, "d02": d02_so_polyp_moi_anh, "d03": d03_so_dinh_polygon, "d04": d04_dien_tich_polyp,
     "m01": m01_tham_so_tang10,
     "r01": r01_delta_tung_seed, "r02": r02_hop_phan_bo, "r03": r03_histogram_delta,
