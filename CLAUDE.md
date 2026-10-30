@@ -4,7 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Repo khóa luận (HUIT, CNTT_KLCN182): YOLO26s-seg (Baseline) so với YOLO26s-seg + C2TSVMamba (TSVM FP32) cho phân đoạn polyp. Đây là repo **nghiên cứu + báo cáo**, không phải ứng dụng: không có build, lint hay bộ test. Việc thường làm là tính lại số liệu, vẽ hình và viết các chương báo cáo markdown.
 
-**Đọc trước:** [NGU_CANH_DU_AN.md](NGU_CANH_DU_AN.md) (ngữ cảnh, kết quả đã xác minh, kế hoạch đang làm, quy tắc làm việc), sau đó [00_tai_lieu_tong_quan/00_README.md](00_tai_lieu_tong_quan/00_README.md).
+**Đọc trước:**
+1. [NGU_CANH_DU_AN.md](NGU_CANH_DU_AN.md): ngữ cảnh, kết quả đã xác minh, trạng thái và việc còn lại.
+2. [00_tai_lieu_tong_quan/00_README.md](00_tai_lieu_tong_quan/00_README.md).
+3. [HUONG_DAN_LAM_VIEC_VOI_CLAUDE.md](HUONG_DAN_LAM_VIEC_VOI_CLAUDE.md): cách chủ dự án làm việc và lịch sử công việc.
+
+Hạn nộp: 08/11/2026.
 
 ## Quy tắc bắt buộc
 
@@ -62,5 +67,7 @@ Benchmark hiệu năng CPU: `04_phan_tich_20seed/efficiency_benchmark/scripts/` 
 
 ## Báo cáo và hình
 
-- Chương báo cáo: một file markdown mỗi chương trong `06_bao_cao/md_bao_cao/`; ghi chú điều tra/phản biện trong `_KIEM_TRA/`. Viết mới (Turnitin < 30%), không chép từ md/Word cũ. Ch.4 giữ nguyên nội dung `Tien_Xu_Ly_Du_Lieu.docx` (chỉ đổi số 3.x → 4.x). Tài liệu tham khảo kiểu IEEE.
+- Chương báo cáo: một file markdown mỗi chương trong `06_bao_cao/md_bao_cao/`; ghi chú điều tra/phản biện trong `_KIEM_TRA/`. Viết mới (Turnitin < 30%), không chép từ md/Word cũ. Ch.4 lấy theo bản rút gọn `Tien_Xu_Ly_Du_Lieu_v3.docx` của bạn cùng nhóm: chỉ đổi số 3.x → 4.x và sửa lỗi sự thật, có ghi chú cho người biên tập. Tài liệu tham khảo kiểu IEEE, đánh số theo lần trích đầu tiên (80 mục từ 29/10/2026, `08_TAI_LIEU_THAM_KHAO.md`; bảng đối số ở `_KIEM_TRA/F_bang_doi_so_tai_lieu.csv`, cột `so_ngay_29_10` là số hiện tại). Thêm tài liệu mới thì phải dời số mọi tài liệu trích sau nó, bỏ qua khối code, dòng ghi chú `>` và đoạn trong dấu backtick; sau đó kiểm tra thứ tự lần trích đầu là 1→N.
+- Mục ablation (6.6) để ô **[CHỜ KẾT QUẢ]**. Kết quả ablation nằm ở `03_ket_qua_huan_luyen/{Vmamba_only, Shape_only, No_guidance}/`, seed 0–4; chỉ điền số khi đủ lượt chạy.
+- Slide bảo vệ làm trên Canva (thiết kế `DAHPtP9XqEY`), theo kế hoạch `06_bao_cao/slide/KE_HOACH_SLIDE.md`. Mỗi lần sửa phải cho xem trước; chủ dự án duyệt mới commit giao dịch Canva. MCP không xóa hay nhân bản được trang.
 - Quy cách hình (chi tiết và danh mục mã hình ở `06_bao_cao/hinh/README.md`): phông mặc định matplotlib; màu Okabe–Ito (đối chứng `#0072B2`, TSVM `#D55E00`, PraNet `#009E73`, U-Net `#CC79A7`); mỗi hình một biểu đồ, tối đa hai; không biểu đồ tròn/rada; không lưới 2×2; điểm từng seed vẽ thành hình riêng; thanh lỗi ±1 SD qua các seed (20 seed); bản `vi/` dùng dấu phẩy thập phân.

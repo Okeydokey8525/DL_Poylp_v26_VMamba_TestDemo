@@ -49,7 +49,7 @@ Từ đó, đề tài đặt câu hỏi: **thay khối chú ý ở tầng sâu c
 - Bộ dữ liệu thực nghiệm BG20 gồm 1.200 ảnh: 1.000 ảnh polyp của Kvasir-SEG [5] và 200 ảnh manh tràng bình thường (lớp *normal-cecum*) của Kvasir v2 [8] làm ảnh nền (không có polyp).
 - Dữ liệu chia thành 1.040 ảnh huấn luyện và 160 ảnh kiểm định. Phần ảnh polyp dùng đúng danh sách chia 880/120 do nhóm tác giả bộ dữ liệu cung cấp.
 - Bộ dữ liệu không có tập kiểm tra (test) riêng. Mọi chỉ số định lượng chính được đo trên tập kiểm định, và epoch tốt nhất cũng được chọn trên chính tập này. Vì vậy số liệu tuyệt đối có thể lạc quan hơn thực tế. Hạn chế này áp dụng như nhau cho cả hai mô hình, nên không làm lệch phép so sánh giữa chúng.
-- Phần triển khai trên dữ liệu thực tế dùng thêm ảnh từ các bộ CVC-ClinicDB, CVC-ColonDB và ETIS-Larib **[CHỜ KẾT QUẢ]**.
+- Phần triển khai trên dữ liệu thực tế dùng bốn bộ dữ liệu công khai khác nguồn: CVC-ClinicDB (612 ảnh), CVC-ColonDB (380 ảnh), ETIS-Larib (196 ảnh) và phần ảnh đơn của PolypGen (1.537 ảnh từ 6 trung tâm, trong đó 125 ảnh không có polyp). Các checkpoint được dùng nguyên, không huấn luyện lại. Đây là dữ liệu công khai, không phải dữ liệu thu tại bệnh viện.
 
 **Phạm vi mô hình và thực nghiệm:**
 - Chỉ có một lớp đối tượng là polyp.
@@ -87,7 +87,11 @@ Từ đó, đề tài đặt câu hỏi: **thay khối chú ý ở tầng sâu c
 
 - **Về mô hình:** thiết kế và cài đặt khối C2TSVMamba thay khối C2PSA ở tầng 10 của YOLO26s-seg. Khối này kết hợp nhánh SS2D quét bốn hướng với nhánh trích đặc trưng hình dạng đa tỉ lệ và có hướng, nối với nhau qua một cổng điều khiển. Bản cài đặt chỉ dùng PyTorch, không cần biên dịch kernel CUDA riêng.
 - **Về kỹ thuật:** khi lưu checkpoint ở dạng FP16 (mặc định của Ultralytics), một thống kê của lớp chuẩn hóa lô trong khối mới vượt giới hạn của FP16 và bị tràn số. Đề tài phát hiện vấn đề này và chuyển sang lưu FP32, nhờ đó trọng số của khối mới được lưu và nạp lại đúng.
-- **Về đánh giá:** so sánh hai mô hình trên nhiều seed ghép cặp, có kiểm định thống kê, khoảng tin cậy và cỡ hiệu ứng, thay vì chỉ báo cáo một lần chạy tốt nhất. Mọi con số đều truy được về tệp kết quả gốc và script tính lại.
+- **Về đánh giá:**
+  - So sánh hai mô hình trên nhiều seed ghép cặp, có kiểm định thống kê, khoảng tin cậy và cỡ hiệu ứng, thay vì chỉ báo cáo một lần chạy tốt nhất.
+  - Bổ sung thí nghiệm tách thành phần để xem đóng góp của từng nhánh trong khối đề xuất.
+  - Đánh giá trên bốn bộ dữ liệu ngoài để kiểm tra khả năng tổng quát hóa.
+  - Mọi con số đều truy được về tệp kết quả gốc và script tính lại.
 - **Về ứng dụng:** xây dựng PolypVision gồm dịch vụ suy luận dùng chung cho Web và Mobile, có chức năng so sánh hai mô hình trên cùng ảnh.
 
 Đề tài không khẳng định mô hình đề xuất tốt hơn mô hình gốc khi chưa có bằng chứng thống kê. Kết quả cụ thể và mức độ tin cậy được trình bày ở Chương 6.
@@ -164,3 +168,5 @@ Ngoài phần Mở đầu và Kết luận, báo cáo gồm sáu chương:
 - **Chương 4. Dữ liệu và tiền xử lý:** nguồn dữ liệu, cách xây dựng bộ BG20, chuyển mặt nạ sang nhãn đa giác và các bước tiền xử lý.
 - **Chương 5. Cài đặt và ứng dụng:** môi trường thực nghiệm, cài đặt hai mô hình, quy trình huấn luyện trên Kaggle và ứng dụng PolypVision.
 - **Chương 6. Thực nghiệm và đánh giá:** kết quả so sánh nhiều seed, thí nghiệm tách thành phần, chi phí tính toán, so sánh với PraNet và U-Net, kết quả trên dữ liệu ngoài.
+
+Phần **Kết luận** trả lời bốn câu hỏi nghiên cứu, nêu hạn chế và hướng phát triển. **Phụ lục** gồm kết quả từng seed, cấu hình huấn luyện, tổ chức mã nguồn và hướng dẫn chạy lại.

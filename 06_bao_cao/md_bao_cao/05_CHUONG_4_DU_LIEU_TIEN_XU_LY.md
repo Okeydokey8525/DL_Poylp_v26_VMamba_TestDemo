@@ -2,12 +2,12 @@
 
 > **Ghi chú cho người biên tập (xóa khi ghép Word):**
 > - Nội dung chương lấy từ `06_bao_cao/Tien_Xu_Ly_Du_Lieu_v3.docx` (bản rút gọn của bạn cùng nhóm, 28/10/2026). Chỉ đổi số mục, hình, bảng, công thức 3.x → 4.x và đổi số tài liệu tham khảo riêng của chương sang số chung của báo cáo. Bản cũ dài hơn nằm trong lịch sử git.
-> - Bảng đổi số tài liệu: [1] → [5] Kvasir-SEG; [2] → [8] Kvasir; [3] → [67] trang Kaggle; [4] → [68] tài liệu Ultralytics về nhãn phân đoạn; [5] → [69] OpenCV; [6] → [70] Otsu; [7] → [66] Gonzalez–Woods; [8] → [71] Suzuki–Abe; [9] → [72] Douglas–Peucker; [10] → [46] YOLOv4; [11] → [73] tài liệu Ultralytics về tăng cường dữ liệu (số chung của báo cáo, đã đánh lại theo IEEE ngày 28/10/2026).
+> - Bảng đổi số tài liệu: [1] → [5] Kvasir-SEG; [2] → [8] Kvasir; [3] → [71] trang Kaggle; [4] → [72] tài liệu Ultralytics về nhãn phân đoạn; [5] → [73] OpenCV; [6] → [74] Otsu; [7] → [70] Gonzalez–Woods; [8] → [75] Suzuki–Abe; [9] → [76] Douglas–Peucker; [10] → [50] YOLOv4; [11] → [77] tài liệu Ultralytics về tăng cường dữ liệu (số chung của báo cáo, đã đánh lại theo IEEE ngày 28/10/2026).
 > - Ba chỗ sửa so với v3, cần báo người viết chương:
 >   1. **Mục 4.2:** v3 viết "bộ tải từ Kaggle không kèm sẵn cách chia tập, nhóm đề tài chia…". Câu này **sai**: bản Kaggle của D. Jha có sẵn `train.txt`, `val.txt` và README ghi "We have provided train-val split for the fair comparison"; tệp của nhóm trùng md5 với bản gốc (kiểm 27/10/2026). Đã viết lại theo hướng danh sách do nhóm tác giả cung cấp.
 >   2. **Mục 4.1.2:** thêm "phiên bản 2" cho Kvasir (8 lớp × 1.000 ảnh là của Kvasir v2; bản đầu [8] có 500 ảnh mỗi lớp).
 >   3. **Mục 4.8:** câu cuối "chương thực nghiệm" đổi thành "Chương 6".
-> - **Hình 4.5 cần vẽ lại một ô:** khối cuối vẫn ghi "Mô hình YOLO26-seg + TSVM", trong khi quy trình dùng chung cho cả hai mô hình. Nên sửa thành "YOLO26s-seg (gốc) / YOLO26s-seg + TSVM".
+> - **Hình 4.5 đã sửa ô cuối (29/10/2026):** khối cuối trước ghi "Mô hình YOLO26-seg + TSVM", trong khi quy trình dùng chung cho cả hai mô hình. Nay ghi "Mô hình YOLO26s-seg (gốc) và YOLO26s-seg + TSVM", cùng phông và cỡ chữ với các ô khác. Bản gốc giữ ở `../hinh/chuong4/h4_5_ban_goc.png`. Nếu nhóm còn tệp nguồn của hình (draw.io…), nên sửa cả ở đó.
 
 Chất lượng dữ liệu đầu vào ảnh hưởng trực tiếp đến khả năng học của mô hình phân đoạn. Chương này trình bày cách đề tài xây dựng bộ dữ liệu BG20 từ hai nguồn ảnh nội soi công khai và các bước đưa ảnh cùng nhãn về dạng mà mô hình YOLO26-seg tích hợp khối TSVM sử dụng được. Quá trình gồm hai giai đoạn. Giai đoạn chuẩn bị chỉ thực hiện một lần trước khi huấn luyện, gồm chọn ảnh, chia tập và chuyển mặt nạ thành nhãn đa giác. Giai đoạn nạp dữ liệu diễn ra mỗi khi ảnh được đưa vào mô hình, gồm đổi kích thước, tăng cường dữ liệu và chuẩn hóa.
 
@@ -31,7 +31,7 @@ Bộ dữ liệu Kvasir phiên bản 2 gồm 8 lớp ảnh, mỗi lớp 1.000 �
 
 ## 4.2. Xây dựng và phân chia bộ dữ liệu BG20
 
-Ảnh polyp được chia theo danh sách có sẵn gồm 880 ảnh huấn luyện và 120 ảnh kiểm định, do nhóm tác giả Kvasir-SEG cung cấp kèm bản phát hành trên Kaggle trong hai tệp train.txt và val.txt [67]. Dùng danh sách có sẵn giúp kết quả của đề tài so sánh được với các nghiên cứu dùng cùng cách chia. Với ảnh nền, chương trình sắp xếp 1.000 tên tệp normal-cecum, cố định seed bằng 42 rồi chọn ngẫu nhiên 200 ảnh, gồm 160 ảnh cho tập huấn luyện và 40 ảnh cho tập kiểm định. Nhờ cố định seed, mỗi lần chạy lại đều cho đúng 200 ảnh như nhau.
+Ảnh polyp được chia theo danh sách có sẵn gồm 880 ảnh huấn luyện và 120 ảnh kiểm định, do nhóm tác giả Kvasir-SEG cung cấp kèm bản phát hành trên Kaggle trong hai tệp train.txt và val.txt [71]. Dùng danh sách có sẵn giúp kết quả của đề tài so sánh được với các nghiên cứu dùng cùng cách chia. Với ảnh nền, chương trình sắp xếp 1.000 tên tệp normal-cecum, cố định seed bằng 42 rồi chọn ngẫu nhiên 200 ảnh, gồm 160 ảnh cho tập huấn luyện và 40 ảnh cho tập kiểm định. Nhờ cố định seed, mỗi lần chạy lại đều cho đúng 200 ảnh như nhau.
 
 Tên BG20 thể hiện số ảnh nền bằng 20% số ảnh polyp. Tính trên toàn bộ 1.200 ảnh, ảnh nền chiếm 16,67%. Phân bố bộ dữ liệu được tổng hợp trong Bảng 4.1.
 
@@ -50,11 +50,11 @@ Số vùng polyp lớn hơn số ảnh polyp vì một ảnh có thể chứa nh
 
 ## 4.3. Chuyển mặt nạ phân đoạn thành nhãn đa giác
 
-Mặt nạ của Kvasir-SEG là ảnh, trong khi YOLO26-seg yêu cầu nhãn dạng văn bản. Mỗi dòng nhãn gồm chỉ số lớp và tọa độ các đỉnh của đa giác bao quanh đối tượng, chuẩn hóa về đoạn từ 0 đến 1 [68]. Đề tài chuyển mỗi mặt nạ thành nhãn đa giác qua năm bước dưới đây bằng thư viện OpenCV [69], còn ảnh nội soi được giữ nguyên.
+Mặt nạ của Kvasir-SEG là ảnh, trong khi YOLO26-seg yêu cầu nhãn dạng văn bản. Mỗi dòng nhãn gồm chỉ số lớp và tọa độ các đỉnh của đa giác bao quanh đối tượng, chuẩn hóa về đoạn từ 0 đến 1 [72]. Đề tài chuyển mỗi mặt nạ thành nhãn đa giác qua năm bước dưới đây bằng thư viện OpenCV [73], còn ảnh nội soi được giữ nguyên.
 
 ### 4.3.1. Nhị phân hóa mặt nạ bằng phương pháp Otsu
 
-Mặt nạ được đọc thành ảnh xám có giá trị từ 0 đến 255. Do nén JPEG, mặt nạ có thêm các mức xám trung gian, ví dụ mặt nạ trong Hình 4.2 có 15 mức xám. Nhị phân hóa là chọn một ngưỡng $t$, pixel lớn hơn $t$ được gán 255 và thuộc polyp, các pixel còn lại được gán 0. Phương pháp Otsu [70] chọn $t$ tự động bằng cách thử mọi ngưỡng và giữ lại ngưỡng làm phương sai giữa nhóm tối và nhóm sáng lớn nhất:
+Mặt nạ được đọc thành ảnh xám có giá trị từ 0 đến 255. Do nén JPEG, mặt nạ có thêm các mức xám trung gian, ví dụ mặt nạ trong Hình 4.2 có 15 mức xám. Nhị phân hóa là chọn một ngưỡng $t$, pixel lớn hơn $t$ được gán 255 và thuộc polyp, các pixel còn lại được gán 0. Phương pháp Otsu [74] chọn $t$ tự động bằng cách thử mọi ngưỡng và giữ lại ngưỡng làm phương sai giữa nhóm tối và nhóm sáng lớn nhất:
 
 $$\sigma_B^2(t) = \omega_0(t)\,\omega_1(t)\,\left[\mu_0(t) - \mu_1(t)\right]^2 \tag{4.1}$$
 
@@ -64,7 +64,7 @@ Trong đó, $\omega_0$ và $\omega_1$ là tỷ lệ số pixel của nhóm tối
 
 ### 4.3.2. Làm liền vùng polyp bằng phép đóng hình thái học
 
-Sau khi nhị phân hóa, mặt nạ có thể còn lỗ nhỏ bên trong vùng polyp hoặc khe hở mảnh trên đường biên. Đề tài dùng phép đóng (Closing) của hình thái học [66] để làm liền các chỗ này:
+Sau khi nhị phân hóa, mặt nạ có thể còn lỗ nhỏ bên trong vùng polyp hoặc khe hở mảnh trên đường biên. Đề tài dùng phép đóng (Closing) của hình thái học [70] để làm liền các chỗ này:
 
 $$A \bullet B = (A \oplus B) \ominus B \tag{4.3}$$
 
@@ -72,11 +72,11 @@ Trong đó, $A$ là tập pixel trắng của mặt nạ, $B$ là phần tử c�
 
 ### 4.3.3. Tìm đường bao và loại bỏ vùng nhiễu nhỏ
 
-OpenCV tìm đường bao bằng thuật toán dò biên của Suzuki và Abe [71]. Đề tài chỉ lấy đường bao ngoài cùng của mỗi vùng, vì nhãn YOLO mô tả mỗi đối tượng bằng một đa giác khép kín. Các đường bao có diện tích nhỏ hơn 20 pixel vuông bị loại vì thường là đốm nhiễu. Trên 1.000 mặt nạ, chương trình tìm được 1.206 đường bao, loại 143 và còn đúng 1.063 vùng polyp như trong Bảng 4.1.
+OpenCV tìm đường bao bằng thuật toán dò biên của Suzuki và Abe [75]. Đề tài chỉ lấy đường bao ngoài cùng của mỗi vùng, vì nhãn YOLO mô tả mỗi đối tượng bằng một đa giác khép kín. Các đường bao có diện tích nhỏ hơn 20 pixel vuông bị loại vì thường là đốm nhiễu. Trên 1.000 mặt nạ, chương trình tìm được 1.206 đường bao, loại 143 và còn đúng 1.063 vùng polyp như trong Bảng 4.1.
 
 ### 4.3.4. Đơn giản hóa đường bao
 
-Đường bao bám theo từng pixel trên biên nên trung bình có khoảng 333 điểm cho mỗi polyp. Để nhãn gọn hơn, đề tài dùng thuật toán Douglas–Peucker [72]. Thuật toán chỉ giữ lại những điểm lệch khỏi đoạn thẳng nối hai đầu đường cong nhiều hơn ngưỡng sai số $\varepsilon$, với $\varepsilon$ được tính theo chu vi đường bao:
+Đường bao bám theo từng pixel trên biên nên trung bình có khoảng 333 điểm cho mỗi polyp. Để nhãn gọn hơn, đề tài dùng thuật toán Douglas–Peucker [76]. Thuật toán chỉ giữ lại những điểm lệch khỏi đoạn thẳng nối hai đầu đường cong nhiều hơn ngưỡng sai số $\varepsilon$, với $\varepsilon$ được tính theo chu vi đường bao:
 
 $$\varepsilon = 0{,}002 \cdot L \tag{4.4}$$
 
@@ -126,7 +126,7 @@ Trong đó, $p_x$ là độ rộng viền thêm vào mỗi bên trái và phải
 
 Tập huấn luyện chỉ có 1.040 ảnh, khá ít đối với một mô hình học sâu, nên mô hình dễ ghi nhớ từng ảnh thay vì học đặc điểm chung của polyp. Tăng cường dữ liệu tạo ra một biến thể ngẫu nhiên khác nhau mỗi lần ảnh được nạp và chỉ áp dụng cho tập huấn luyện. Các phép biến đổi chia thành hai nhóm. Nhóm hình học làm thay đổi vị trí pixel nên đa giác nhãn được biến đổi theo. Nhóm màu chỉ đổi giá trị màu nên nhãn giữ nguyên. Thông số của từng phép được lấy từ tệp cấu hình huấn luyện và tổng hợp trong Bảng 4.2.
 
-Mosaic [46] ghép bốn ảnh huấn luyện vào bốn góc quanh một tâm ngẫu nhiên rồi cắt về 640 × 640 pixel. Ảnh thu được chứa polyp ở nhiều vị trí và kích thước, ảnh nền cũng có thể được ghép chung với ảnh polyp. Vì ảnh ghép không giống ảnh nội soi thật, Mosaic được tắt trong 10 epoch cuối [73]. Khi đó, mô hình học trên từng ảnh đơn lẻ nhưng vẫn kèm các phép biến đổi khác.
+Mosaic [50] ghép bốn ảnh huấn luyện vào bốn góc quanh một tâm ngẫu nhiên rồi cắt về 640 × 640 pixel. Ảnh thu được chứa polyp ở nhiều vị trí và kích thước, ảnh nền cũng có thể được ghép chung với ảnh polyp. Vì ảnh ghép không giống ảnh nội soi thật, Mosaic được tắt trong 10 epoch cuối [77]. Khi đó, mô hình học trên từng ảnh đơn lẻ nhưng vẫn kèm các phép biến đổi khác.
 
 Phép biến đổi affine dịch tâm ảnh lệch tối đa 10% khung và thu phóng với hệ số từ 0,5 đến 1,5, giúp mô hình nhận ra polyp ở nhiều khoảng cách và vị trí khác nhau. Phần ảnh ra ngoài khung bị cắt, phần trống được tô màu xám 114. Phép biến đổi màu trong không gian HSV gần như giữ nguyên sắc độ để màu niêm mạc không trở nên phi thực tế, nhưng thay đổi mạnh độ bão hòa và độ sáng để mô phỏng các điều kiện chiếu sáng khác nhau. Cuối cùng, mỗi ảnh có xác suất 0,5 bị lật ngang. Các phép lật dọc, xoay, cắt xiên và trộn ảnh không được sử dụng.
 

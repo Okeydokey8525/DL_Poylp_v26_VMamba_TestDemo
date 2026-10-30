@@ -11,11 +11,12 @@ Test_Mau/
 ├── 00_tai_lieu_tong_quan/       bộ tài liệu này (14 file .md, scripts/, bang/)
 ├── 01_du_lieu/                  BG20, split, script tạo dữ liệu
 ├── 02_ma_nguon/                 fork TSVM FP32, notebook Kaggle
-├── 03_ket_qua_huan_luyen/       40 lượt chính (Baseline + TSVM FP32, seed 0–19)
+├── 03_ket_qua_huan_luyen/       40 lượt chính (Baseline + TSVM FP32, seed 0–19); ablation Vmamba_only/, Shape_only/, No_guidance/ (seed 0–4)
 ├── 04_phan_tich_20seed/         gói phân tích 20 seed (CSV, hình, benchmark)
 ├── 05_so_sanh_mo_hinh_khac/     PraNet, U-Net
-├── 06_bao_cao/                  Word/PDF khóa luận
+├── 06_bao_cao/                  md_bao_cao/ (chương markdown), hinh/, slide/, Word/PDF khóa luận
 ├── 07_kiem_toan_va_sua/         kiểm toán 25/10 và sửa lỗi 26/10
+├── 08_du_lieu_thuc_te/          đánh giá trên 4 bộ dữ liệu ngoài
 └── 99_luu_tru/                  lịch sử và thử nghiệm, không dùng cho bảng chính
 ```
 
@@ -33,6 +34,11 @@ Test_Mau/
 | Notebook Kaggle | `02_ma_nguon/notebook_kaggle/` (bản TSVM là bản trước khi vá FP32) |
 | **Baseline, seed 0–19** | `03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s{0..19}_w2/` |
 | **TSVM FP32, seed 0–19** | `03_ket_qua_huan_luyen/TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s{0..19}_w2/` |
+| Ablation (seed 0–4, đủ 15 lượt) | `03_ket_qua_huan_luyen/Vmamba_only/`, `Shape_only/`, `No_guidance/` (zip gốc và bản cũ: `_zip_goc_ablation/`); notebook `02_ma_nguon/notebook_kaggle/ablation/` |
+| Chương báo cáo markdown | `06_bao_cao/md_bao_cao/` (ghi chú phản biện trong `_KIEM_TRA/`) |
+| Hình báo cáo | `06_bao_cao/hinh/` (`chung/`, `ket_qua_20seed/`, `chuong4/`; script ở `scripts/`) |
+| Kế hoạch slide bảo vệ | `06_bao_cao/slide/KE_HOACH_SLIDE.md` |
+| Dữ liệu ngoài | `08_du_lieu_thuc_te/` (script, bảng, ảnh định tính) |
 | Gói phân tích 20 seed | `04_phan_tich_20seed/` (cấu trúc con 01–07, `figures/`, `efficiency_benchmark/` giữ nguyên) |
 | Báo cáo Word chính | `06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong.docx` |
 | Báo cáo bản mở rộng FP32 | `06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong_MoRong_FP32.docx` |

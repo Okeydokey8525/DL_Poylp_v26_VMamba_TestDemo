@@ -21,9 +21,10 @@ Bộ tài liệu được viết mới ngày 26/10/2026 cho phần trọng tâm 
 | Mask Precision / Recall | 0,904 / 0,859 | 0,914 / 0,859 |
 | TP / FP / FN (trên 127 polyp) | 110,55 / 16,45 / 16,45 | 110,65 / 15,75 / 16,35 |
 | Độ trễ CPU (forward) | 270 ms | 577 ms (khoảng 2,1 lần) |
+| Độ trễ GPU (forward, lần đo 2, trung vị) | 26,33 ms | 39,86 ms (tỉ lệ khoảng 1,5–1,7 lần; chỉ dùng tỉ lệ) |
 | Thời gian huấn luyện 100 epoch (Kaggle) | khoảng 2,3 giờ | khoảng 4,6 giờ |
 
-**Kết luận ngắn:** Trên 20 seed, TSVM có mask mAP50–95 trung bình cao hơn 0,0043 nhưng **chưa có ý nghĩa thống kê** (p = 0,061). TSVM dao động ít hơn giữa các seed (Levene p = 0,026, thăm dò). TSVM chạy chậm khoảng gấp đôi trên CPU. Theo pixel, Dice của TSVM là 0,854 so với 0,849 của đối chứng (p = 0,26), ngang PraNet (0,854) và hơn hẳn U-Net (0,710). Dữ liệu ngoài ở `08_du_lieu_thuc_te/`; ablation đang chạy.
+**Kết luận ngắn:** Trên 20 seed, TSVM có mask mAP50–95 trung bình cao hơn 0,0043 nhưng **chưa có ý nghĩa thống kê** (p = 0,061). TSVM dao động ít hơn giữa các seed (Levene p = 0,026, thăm dò). TSVM chạy chậm khoảng gấp đôi trên CPU. Theo pixel, Dice của TSVM là 0,854 so với 0,849 của đối chứng (p = 0,26), ngang PraNet (0,854) và hơn hẳn U-Net (0,710). Trên dữ liệu ngoài (`08_du_lieu_thuc_te/`), TSVM không tốt hơn đối chứng về Dice: kém hơn có ý nghĩa thống kê trên ClinicDB và ColonDB, không khác biệt có ý nghĩa trên ETIS và PolypGen. TSVM báo nhầm ít hơn trên ảnh không có polyp của PolypGen. Ablation (seed 0–4, `bang/17_*.csv`): cả ba biến thể bỏ bớt một thành phần đều thấp hơn bản đầy đủ (bỏ cổng −0,0036, chỉ SS2D −0,0068, chỉ nhánh hình dạng −0,0110), không chênh lệch nào có ý nghĩa thống kê.
 
 Bộ 10 seed (chỉ đối chiếu): Δ = +0,0036, p = 0,384, 6/10 seed.
 
@@ -51,8 +52,9 @@ Bộ 10 seed (chỉ đối chiếu): Δ = +0,0036, p = 0,384, 6/10 seed.
 
 ```
 00_tai_lieu_tong_quan/
-├── 00_99_luu_tru/tai_lieu_cu/README_goc_cu.md … 13_BAN_DO_THU_MUC.md
-├── scripts/tinh_lai_so_lieu.py     # chỉ đọc 01–04 và 99_luu_tru/, ghi vào bang/
+├── 00_README.md … 14_CHI_SO_TOPOLOGY.md
+├── scripts/                        # tinh_lai_so_lieu.py, danh_gia_pixel.py, danh_gia_topology.py, do_flops_gpu.py
+│                                   # chỉ đọc dữ liệu gốc, ghi vào bang/
 └── bang/                           # CSV/JSON kết quả và log chạy
 ```
 

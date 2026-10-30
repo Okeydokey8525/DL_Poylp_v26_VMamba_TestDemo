@@ -39,6 +39,9 @@ python tinh_lai_so_lieu.py --torch
 | `15_topology_thong_ke.csv` | Mean ± SD và so sánh ghép cặp TSVM với 3 mô hình còn lại | [10](10_SO_SANH_PRANET_UNET.md) |
 | `16_flops_do_tre_gpu.csv`, `16b_do_tre_gpu_tung_lan.csv`, `16c_do_tre_gpu_nhiet_do.csv` | FLOPs (FlopCounterMode) và độ trễ forward trên GPU, checkpoint seed 0, lần đo 2 (có ghi nhiệt độ, xung nhịp) | [09](09_HIEU_NANG_TINH_TOAN.md) |
 | `16_lan1_*.csv`, `16b_lan1_*.csv`, `_log_flops_gpu_lan1.txt` | Lần đo 1, giữ để đối chiếu | [09](09_HIEU_NANG_TINH_TOAN.md) |
+| `17_ablation_tung_seed.csv` | Tách thành phần: 5 cấu hình × seed 0–4. Mask mAP50–95/mAP50/P/R tại epoch đầu tiên đạt cực đại, số tham số toàn mô hình và tầng 10 đếm từ `best.pt`. Sinh bằng `scripts/tinh_ablation.py --torch` (cần GPU venv); log ở `_log_ablation.txt` | Chương 6, mục 6.6 |
+| `17b_ablation_tong_hop.csv` | Mean ± SD từng cấu hình; Δ, CI 95%, paired t, Wilcoxon so với đối chứng và với TSVM đầy đủ (5 cặp, chỉ tham khảo) | Chương 6, mục 6.6 |
+| `18_ablation_cau_hinh_args.csv` | Tham số huấn luyện khác lượt TSVM chính cùng seed (rỗng: không có khác biệt ngoài tên, tệp YAML mô hình, đường dẫn) | Chương 6, mục 6.6 |
 
 Các tệp `13`–`15` do [`scripts/danh_gia_topology.py`](scripts/danh_gia_topology.py) sinh ra (dùng lại giao thức suy luận của `danh_gia_pixel.py`); tệp `16` do [`scripts/do_flops_gpu.py`](scripts/do_flops_gpu.py) sinh ra. Cả hai cần GPU.
 

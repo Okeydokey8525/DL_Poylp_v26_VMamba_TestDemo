@@ -57,8 +57,10 @@ Số hình trong báo cáo (ví dụ Hình 6.3) sẽ được gán khi viết t�
 | x01_dice_du_lieu_ngoai | 6 | Dice theo pixel của 4 mô hình trên CVC-ClinicDB, CVC-ColonDB, ETIS-Larib, PolypGen | Cột nhóm | `08_du_lieu_thuc_te/bang/<N>seed/01_ngoai_tung_seed.csv` |
 | x02_dice_polypgen_trung_tam | 6 | Dice theo pixel trên từng trung tâm C1–C6 của PolypGen | Cột nhóm | như trên |
 | x03_bao_nham_polypgen | 6 | Tỉ lệ ảnh không polyp của PolypGen (125 ảnh) bị báo nhầm | Cột | như trên |
+| k01_ablation_tung_seed | 6 | Tách thành phần: mask mAP50–95 từng seed (0–4) của 5 cấu hình; điểm, đường nối seed, vạch trung bình và ±1 SD cùng một trục (ghi vào `chung/`) | Điểm nối cặp | `bang/17_ablation_tung_seed.csv` |
+| k02_ablation_delta | 6 / slide | Δ của 3 biến thể so với TSVM đầy đủ, cột ± 1 SD và điểm từng seed (ghi vào `chung/`) | Cột + điểm | như trên |
 
-Tổng cộng 24 hình. Hai sơ đồ kiến trúc của chương 3 (toàn mô hình và khối TSVMamba) sẽ vẽ khi viết chương 3.
+Tổng cộng 26 hình. Hai sơ đồ kiến trúc của chương 3 (toàn mô hình và khối TSVMamba) sẽ vẽ khi viết chương 3.
 
 ## Ghi chú khi dùng
 
