@@ -67,29 +67,29 @@ Hai biến thể được dùng nhiều trong đề tài:
 
 - **Chuẩn hóa theo lô (Batch Normalization, BN)** đưa đầu ra mỗi kênh về trung bình 0, phương sai 1 trên một lô, rồi co giãn bằng hai tham số học được. BN giúp huấn luyện ổn định hơn.
 - **Hàm kích hoạt SiLU**, $\mathrm{SiLU}(x) = x\cdot\sigma(x)$, tạo tính phi tuyến. Trong YOLO, khối cơ bản `Conv` gồm tích chập, BN và SiLU.
-- **Kết nối tắt dạng cộng (residual)** [44] cộng đầu vào vào đầu ra của một khối: $y = x + F(x)$. Nhờ đó gradient đi qua mạng sâu dễ hơn. Khối đề xuất dùng biến thể $y = x + \gamma F(x)$ với $\gamma$ nhỏ (Chương 3).
+- **Kết nối tắt dạng cộng (residual)** cộng đầu vào vào đầu ra của một khối: $y = x + F(x)$. Nhờ đó gradient đi qua mạng sâu dễ hơn. Khối đề xuất dùng biến thể $y = x + \gamma F(x)$ với $\gamma$ nhỏ (Chương 3).
 - **Trường tiếp nhận (receptive field)** là vùng ảnh đầu vào ảnh hưởng tới một điểm đầu ra. Xếp chồng tích chập 3×3 chỉ mở rộng vùng này dần dần. Đây là lý do CNN thuần khó nắm ngữ cảnh toàn ảnh, và là động cơ để thêm attention hoặc SSM vào mạng.
 
 ## 2.3. Họ mô hình YOLO
 
 ### 2.3.1. Ý tưởng phát hiện một giai đoạn
 
-Các mô hình hai giai đoạn như Mask R-CNN [45] trước hết đề xuất các vùng có thể chứa đối tượng, sau đó phân loại và tinh chỉnh từng vùng. YOLO [21] gộp hai bước thành một: ảnh đi qua mạng một lần, và mỗi ô trên bản đồ đặc trưng dự đoán trực tiếp hộp bao, lớp và độ tin cậy. Nhờ vậy YOLO nhanh, phù hợp xử lý thời gian thực.
+Các mô hình hai giai đoạn như Mask R-CNN [34] trước hết đề xuất các vùng có thể chứa đối tượng, sau đó phân loại và tinh chỉnh từng vùng. YOLO [18] gộp hai bước thành một: ảnh đi qua mạng một lần, và mỗi ô trên bản đồ đặc trưng dự đoán trực tiếp hộp bao, lớp và độ tin cậy. Nhờ vậy YOLO nhanh, phù hợp xử lý thời gian thực.
 
 Một mô hình YOLO hiện đại gồm ba phần:
 - **Backbone:** trích đặc trưng, giảm dần kích thước qua các mức P1 đến P5. Mức P$k$ có kích thước bằng $1/2^k$ ảnh vào; với ảnh 640×640, P5 có kích thước 20×20.
-- **Neck:** trộn đặc trưng giữa các mức. FPN [46] truyền thông tin ngữ nghĩa từ mức sâu xuống mức nông; PAN [47] truyền chi tiết vị trí từ mức nông lên mức sâu.
+- **Neck:** trộn đặc trưng giữa các mức. FPN [35] truyền thông tin ngữ nghĩa từ mức sâu xuống mức nông; PAN [36] truyền chi tiết vị trí từ mức nông lên mức sâu.
 - **Head:** dự đoán đầu ra tại ba mức P3, P4, P5, tương ứng với đối tượng nhỏ, vừa và lớn.
 
 ### 2.3.2. Gán nhãn và hàm mất mát
 
-Khi huấn luyện, mô hình phải biết điểm dự đoán nào chịu trách nhiệm cho đối tượng thật nào. YOLO26 dùng bộ gán nhãn căn chỉnh nhiệm vụ của TOOD [48]: một điểm được chọn khi vừa có điểm lớp cao, vừa có hộp dự đoán trùng tốt với hộp thật.
+Khi huấn luyện, mô hình phải biết điểm dự đoán nào chịu trách nhiệm cho đối tượng thật nào. YOLO26 dùng bộ gán nhãn căn chỉnh nhiệm vụ của TOOD [37]: một điểm được chọn khi vừa có điểm lớp cao, vừa có hộp dự đoán trùng tốt với hộp thật.
 
-Hộp bao được học bằng mất mát CIoU [49]. CIoU mở rộng IoU (mục 2.7) bằng hai hạng tử phạt: khoảng cách giữa hai tâm hộp và độ lệch tỉ lệ khung. Nhờ vậy, ngay cả khi hai hộp chưa chồng nhau, mô hình vẫn có tín hiệu để kéo hộp dự đoán về đúng chỗ.
+Hộp bao được học bằng mất mát CIoU [38]. CIoU mở rộng IoU (mục 2.7) bằng hai hạng tử phạt: khoảng cách giữa hai tâm hộp và độ lệch tỉ lệ khung. Nhờ vậy, ngay cả khi hai hộp chưa chồng nhau, mô hình vẫn có tín hiệu để kéo hộp dự đoán về đúng chỗ.
 
 ### 2.3.3. Bỏ bước lọc trùng NMS
 
-Các YOLO trước đây dự đoán nhiều hộp cho cùng một đối tượng, rồi dùng thuật toán loại bỏ không cực đại (NMS) để giữ hộp tốt nhất. NMS chạy sau mạng, có ngưỡng phải chỉnh tay và làm thời gian suy luận khó dự đoán. YOLOv10 [23] đề xuất huấn luyện hai đầu song song:
+Các YOLO trước đây dự đoán nhiều hộp cho cùng một đối tượng, rồi dùng thuật toán loại bỏ không cực đại (NMS) để giữ hộp tốt nhất. NMS chạy sau mạng, có ngưỡng phải chỉnh tay và làm thời gian suy luận khó dự đoán. YOLOv10 [20] đề xuất huấn luyện hai đầu song song:
 - **đầu một-nhiều** gán mỗi đối tượng cho nhiều điểm dự đoán, cho nhiều tín hiệu học;
 - **đầu một-một** gán mỗi đối tượng cho đúng một điểm dự đoán, nên đầu ra không bị trùng và không cần NMS.
 
@@ -97,7 +97,7 @@ Khi suy luận chỉ dùng đầu một-một. YOLO26 kế thừa cơ chế này
 
 ### 2.3.4. Phân đoạn thực thể bằng mặt nạ mẫu
 
-YOLACT [22] đề xuất cách tạo mặt nạ nhanh, được YOLO-seg dùng lại:
+YOLACT [19] đề xuất cách tạo mặt nạ nhanh, được YOLO-seg dùng lại:
 1. Một nhánh riêng (Proto) sinh $K$ **mặt nạ mẫu** $P_1, \dots, P_K$ dùng chung cho cả ảnh.
 2. Với mỗi đối tượng, đầu dự đoán sinh thêm $K$ **hệ số** $c_1, \dots, c_K$.
 3. Mặt nạ của đối tượng là tổ hợp tuyến tính, đưa qua hàm sigmoid rồi cắt theo hộp bao:
@@ -133,7 +133,7 @@ YOLO26 [6] là phiên bản YOLO được Ultralytics công bố năm 2026 (bả
 Một số khối cần giải thích thêm:
 - **C3k2** là khối tích chập có kết nối tắt kiểu CSP: chia kênh làm hai phần, chỉ một phần đi qua các khối nút cổ chai, rồi ghép lại. Cách làm này giảm tính toán mà vẫn giữ luồng gradient.
 - **SPPF** áp dụng max-pooling 5×5 ba lần nối tiếp và ghép các kết quả, tương đương nhìn đặc trưng ở ba kích thước vùng khác nhau.
-- **C2PSA** cũng có khuôn tách–xử lý–ghép. Phần xử lý là khối PSA (partial self-attention) [23] gồm attention đa đầu và mạng truyền thẳng. Ở cỡ *s*, C2PSA có 990.976 tham số. Mục 2.5 giải thích attention.
+- **C2PSA** cũng có khuôn tách–xử lý–ghép. Phần xử lý là khối PSA (partial self-attention) [20] gồm attention đa đầu và mạng truyền thẳng. Ở cỡ *s*, C2PSA có 990.976 tham số. Mục 2.5 giải thích attention.
 
 ### 2.4.2. Các bước của thuật toán YOLO26-seg
 
@@ -147,14 +147,14 @@ Một số khối cần giải thích thêm:
 7. **Trả kết quả.** Danh sách gồm hộp bao, độ tin cậy và mặt nạ của từng đối tượng.
 
 **Huấn luyện** mỗi lô ảnh gồm các bước:
-1. **Tăng cường dữ liệu**, gồm ghép bốn ảnh (Mosaic) [50], lật, co giãn và đổi màu. Mosaic được tắt ở 10 epoch cuối.
+1. **Tăng cường dữ liệu**, gồm ghép bốn ảnh (Mosaic) [39], lật, co giãn và đổi màu. Mosaic được tắt ở 10 epoch cuối.
 2. **Lan truyền xuôi** qua cả hai đầu một-nhiều và một-một. Đặc trưng đi vào đầu một-một được tách khỏi đồ thị gradient (detach), nên đầu này không cập nhật ngược vào backbone.
 3. **Gán nhãn** cho từng đầu bằng bộ gán nhãn căn chỉnh nhiệm vụ: đầu một-nhiều lấy 10 điểm tốt nhất cho mỗi đối tượng, đầu một-một giữ 1 điểm. YOLO26 thêm quy tắc STAL nới kích thước vật rất nhỏ khi chọn ứng viên [6].
 4. **Tính mất mát** của từng đầu, gồm mất mát hộp (CIoU và L1), mất mát lớp, mất mát mặt nạ và mất mát ngữ nghĩa phụ. Tổng mất mát là tổ hợp có trọng số của hai đầu; trọng số của đầu một-nhiều giảm tuyến tính từ 0,8 xuống 0,1 trong quá trình huấn luyện. Chi tiết hệ số ở Bảng 3.6 và công thức (3.16).
-5. **Lan truyền ngược và cập nhật trọng số** bằng bộ tối ưu. Đề tài dùng AdamW [51], là biến thể của Adam [52] tách phần suy giảm trọng số khỏi bước cập nhật theo gradient.
+5. **Lan truyền ngược và cập nhật trọng số** bằng bộ tối ưu. Đề tài dùng AdamW [40], là biến thể của Adam tách phần suy giảm trọng số khỏi bước cập nhật theo gradient.
 6. **Cập nhật bản trung bình động (EMA)** của trọng số sau mỗi bước. Cuối mỗi epoch, đánh giá trên tập kiểm định bằng trọng số EMA và lưu trọng số tốt nhất.
 
-YOLO26 bỏ thành phần DFL [53] vốn dùng ở các phiên bản trước để biểu diễn tọa độ hộp dưới dạng phân phối. Thay vào đó, mô hình hồi quy trực tiếp bốn khoảng cách, kèm mất mát L1.
+YOLO26 bỏ thành phần DFL vốn dùng ở các phiên bản trước để biểu diễn tọa độ hộp dưới dạng phân phối [6]. Thay vào đó, mô hình hồi quy trực tiếp bốn khoảng cách, kèm mất mát L1.
 
 **Ví dụ giải mã hộp bao.** Xét một điểm dự đoán ở ô (cột 10, hàng 12) của mức P3. Mức P3 có bước (stride) 8 pixel, nên tâm ô trên ảnh vào là $\big((10 + 0{,}5)\times 8,\ (12 + 0{,}5)\times 8\big) = (84,\ 100)$. Giả sử đầu dự đoán trả về bốn khoảng cách tới cạnh trái, trên, phải, dưới là $(2,\ 1,\ 3,\ 4)$ đơn vị ô. Nhân với bước 8 được $(16,\ 8,\ 24,\ 32)$ pixel. Hộp bao là:
 
@@ -170,19 +170,19 @@ Hộp này rộng 40 và cao 40 pixel. Nếu điểm lớp sau sigmoid là 0,91 
 |---|---|
 | Một lần suy luận cho cả hộp bao, độ tin cậy và mặt nạ | Mặt nạ mẫu chỉ có độ phân giải 160×160, có thể làm mất chi tiết biên của polyp nhỏ |
 | Không cần NMS nên thời gian suy luận ổn định, dễ triển khai | Thiết kế cho dữ liệu tổng quát (COCO), chưa có thành phần riêng cho biên mờ |
-| Có trọng số tiền huấn luyện trên COCO [54], giúp học nhanh với dữ liệu nhỏ | Attention chỉ có ở mức P5 (C2PSA ở tầng 10 và khối PSA trong tầng 22); các mức P3, P4 chỉ có tích chập |
-| Thư viện Ultralytics [55] hoàn chỉnh: huấn luyện, đánh giá, xuất mô hình | Bài báo YOLO26 là bản tiền ấn phẩm, một số chi tiết chỉ có trong mã nguồn |
+| Có trọng số tiền huấn luyện trên COCO [41], giúp học nhanh với dữ liệu nhỏ | Attention chỉ có ở mức P5 (C2PSA ở tầng 10 và khối PSA trong tầng 22); các mức P3, P4 chỉ có tích chập |
+| Thư viện Ultralytics [42] hoàn chỉnh: huấn luyện, đánh giá, xuất mô hình | Bài báo YOLO26 là bản tiền ấn phẩm, một số chi tiết chỉ có trong mã nguồn |
 | Có nhiều cỡ mô hình (n, s, m, l, x) để cân đối tốc độ và độ chính xác | Mặt nạ bị cắt theo hộp, nên hộp sai thì mặt nạ cũng sai |
 
 ## 2.5. Cơ chế chú ý và chi phí tính toán
 
 ### 2.5.1. Tự chú ý
 
-Cơ chế tự chú ý (self-attention) của Transformer [56] cho mỗi vị trí "hỏi" mọi vị trí khác. Với chuỗi đầu vào $X$ gồm $N$ vị trí, mô hình tính ba ma trận truy vấn $Q$, khóa $K$ và giá trị $V$ bằng các phép chiếu tuyến tính, rồi:
+Cơ chế tự chú ý (self-attention) của Transformer [43] cho mỗi vị trí "hỏi" mọi vị trí khác. Với chuỗi đầu vào $X$ gồm $N$ vị trí, mô hình tính ba ma trận truy vấn $Q$, khóa $K$ và giá trị $V$ bằng các phép chiếu tuyến tính, rồi:
 
 $$ \mathrm{Attention}(Q, K, V) = \mathrm{softmax}\Big(\frac{QK^\top}{\sqrt{d}}\Big) V \tag{2.3} $$
 
-Ma trận $QK^\top$ có kích thước $N \times N$: phần tử $(i, j)$ cho biết vị trí $i$ chú ý đến vị trí $j$ bao nhiêu. Đầu ra của mỗi vị trí là trung bình có trọng số của mọi giá trị. ViT [57] áp dụng cơ chế này cho ảnh bằng cách chia ảnh thành các mảnh và coi mỗi mảnh là một vị trí.
+Ma trận $QK^\top$ có kích thước $N \times N$: phần tử $(i, j)$ cho biết vị trí $i$ chú ý đến vị trí $j$ bao nhiêu. Đầu ra của mỗi vị trí là trung bình có trọng số của mọi giá trị.
 
 ### 2.5.2. Chi phí bậc hai
 
@@ -190,7 +190,7 @@ Vì phải tính $N^2$ cặp, chi phí tính toán và bộ nhớ của attentio
 - ở mức P5 (20×20, $N = 400$): $N^2 = 160.000$ cặp, vẫn chấp nhận được;
 - ở mức P3 (80×80, $N = 6.400$): $N^2 \approx 41$ triệu cặp, gấp 256 lần.
 
-Đây là lý do YOLO chỉ đặt attention ở mức P5. Các mô hình như Swin Transformer [58] giảm chi phí bằng cách chỉ tính attention trong từng cửa sổ cục bộ, đổi lại mất một phần tính toàn cục. Mô hình không gian trạng thái là một hướng khác: giữ tính toàn cục nhưng chi phí tăng chậm hơn.
+Đây là lý do YOLO chỉ đặt attention ở mức P5. Mô hình không gian trạng thái là một hướng giảm chi phí: giữ tính toàn cục nhưng chi phí tăng chậm hơn.
 
 ## 2.6. Mô hình không gian trạng thái, Mamba và VMamba
 
@@ -200,7 +200,7 @@ Mô hình không gian trạng thái (SSM) mô tả một hệ có trạng thái 
 
 $$ h'(t) = A\,h(t) + B\,x(t), \qquad y(t) = C\,h(t) \tag{2.4} $$
 
-Trong đó $A$ quyết định trạng thái "nhớ" và "quên" thế nào, $B$ quyết định đầu vào ghi vào trạng thái ra sao, $C$ quyết định đọc đầu ra từ trạng thái thế nào. S4 [25] dùng ma trận $A$ dạng chéo cộng hạng thấp; biến thể S4D [59] đơn giản hóa thành ma trận chéo với các phần tử âm. Khi đó trạng thái tự suy giảm theo thời gian nếu không có đầu vào mới. Mamba và VMamba dùng dạng chéo này.
+Trong đó $A$ quyết định trạng thái "nhớ" và "quên" thế nào, $B$ quyết định đầu vào ghi vào trạng thái ra sao, $C$ quyết định đọc đầu ra từ trạng thái thế nào. S4 [22] dùng ma trận $A$ dạng chéo cộng hạng thấp; biến thể S4D [44] đơn giản hóa thành ma trận chéo với các phần tử âm. Khi đó trạng thái tự suy giảm theo thời gian nếu không có đầu vào mới. Mamba và VMamba dùng dạng chéo này.
 
 ### 2.6.2. Rời rạc hóa
 
@@ -210,7 +210,7 @@ $$ \bar A = \exp(\Delta A), \qquad \bar B = (\Delta A)^{-1}\big(\exp(\Delta A) -
 
 $$ h_t = \bar A\, h_{t-1} + \bar B\, x_t, \qquad y_t = C\, h_t \tag{2.6} $$
 
-Xấp xỉ $\bar B \approx \Delta B$ (phương pháp Euler) chỉ chính xác khi $|\Delta A|$ nhỏ; Mamba [26] và bản cài đặt trong đề tài (Chương 3) đều dùng xấp xỉ này. Công thức (2.6) là một phép truy hồi: trạng thái mới bằng trạng thái cũ nhân hệ số suy giảm $\bar A$ cộng phần đầu vào mới. Vì $A$ âm nên $0 < \bar A < 1$. $\Delta$ lớn thì $\bar A$ nhỏ, nghĩa là quên nhanh quá khứ và chú ý nhiều hơn đến đầu vào hiện tại.
+Xấp xỉ $\bar B \approx \Delta B$ (phương pháp Euler) chỉ chính xác khi $|\Delta A|$ nhỏ; Mamba [23] và bản cài đặt trong đề tài (Chương 3) đều dùng xấp xỉ này. Công thức (2.6) là một phép truy hồi: trạng thái mới bằng trạng thái cũ nhân hệ số suy giảm $\bar A$ cộng phần đầu vào mới. Vì $A$ âm nên $0 < \bar A < 1$. $\Delta$ lớn thì $\bar A$ nhỏ, nghĩa là quên nhanh quá khứ và chú ý nhiều hơn đến đầu vào hiện tại.
 
 **Ví dụ (một chiều).** Lấy $A = -1$, $B = C = 1$, $\Delta = 0{,}5$, chuỗi vào $x = (1,\ 0,\ 2)$, $h_0 = 0$. Khi đó $\bar A = e^{-0{,}5} \approx 0{,}607$ và, theo xấp xỉ Euler như trong mã, $\bar B \approx \Delta B = 0{,}5$. (Nếu dùng công thức ZOH đầy đủ, $\bar B = 1 - e^{-0{,}5} \approx 0{,}393$; các con số dưới đây đổi theo nhưng xu hướng giữ nguyên.)
 
@@ -224,19 +224,19 @@ Xấp xỉ $\bar B \approx \Delta B$ (phương pháp Euler) chỉ chính xác kh
 
 ### 2.6.3. Mamba: SSM có chọn lọc
 
-Ở S4, $\Delta$, $B$, $C$ cố định cho mọi vị trí. Mamba [26] cho ba đại lượng này **phụ thuộc vào đầu vào**: chúng được tính từ $x_t$ qua các phép chiếu tuyến tính, với $\Delta_t = \mathrm{softplus}(\cdot) > 0$. Nhờ vậy mô hình tự quyết định ở từng vị trí nên giữ hay bỏ thông tin.
+Ở S4, $\Delta$, $B$, $C$ cố định cho mọi vị trí. Mamba [23] cho ba đại lượng này **phụ thuộc vào đầu vào**: chúng được tính từ $x_t$ qua các phép chiếu tuyến tính, với $\Delta_t = \mathrm{softplus}(\cdot) > 0$. Nhờ vậy mô hình tự quyết định ở từng vị trí nên giữ hay bỏ thông tin.
 
 Tiếp ví dụ trên: nếu ở bước 3 mô hình chọn $\Delta_3 = 2$, thì $\bar A_3 = e^{-2} \approx 0{,}135$ và $\bar B_3 \approx 2$. Khi đó $h_3 = 0{,}135 \times 0{,}303 + 2 \times 2 \approx 4{,}04$. Phần thông tin cũ gần như bị xóa, còn đầu vào mới được ghi mạnh hơn. Với $\Delta = 2$, xấp xỉ Euler đã khá thô: công thức ZOH cho $\bar B_3 = 1 - e^{-2} \approx 0{,}865$ và $h_3 \approx 1{,}76$, nhưng kết luận không đổi: trọng số của đầu vào mới (0,865) lớn hơn hẳn trường hợp $\Delta = 0{,}5$ (0,393), còn phần quá khứ bị giảm mạnh. Mô hình đã "chọn" tập trung vào đầu vào hiện tại.
 
-Sau khi $\Delta, B, C$ phụ thuộc đầu vào, không thể tính SSM bằng một phép tích chập cố định như S4 nữa. Phép truy hồi (2.6) phải tính tuần tự hoặc bằng **thuật toán quét song song** [60], [61]. Ý tưởng là mỗi bước có dạng $h_t = a_t h_{t-1} + b_t$, và hai bước liên tiếp có thể gộp thành một bước cùng dạng:
+Sau khi $\Delta, B, C$ phụ thuộc đầu vào, không thể tính SSM bằng một phép tích chập cố định như S4 nữa. Phép truy hồi (2.6) phải tính tuần tự hoặc bằng **thuật toán quét song song** [45], [46]. Ý tưởng là mỗi bước có dạng $h_t = a_t h_{t-1} + b_t$, và hai bước liên tiếp có thể gộp thành một bước cùng dạng:
 
 $$ (a_2, b_2) \circ (a_1, b_1) = (a_2 a_1,\ a_2 b_1 + b_2) \tag{2.7} $$
 
-Phép gộp (2.7) có tính kết hợp, nên có thể gộp từng cặp song song theo cây, cần khoảng $\log_2 L$ vòng thay vì $L$ bước. Bản Mamba gốc có kernel CUDA tối ưu, chi phí tăng tuyến tính theo độ dài chuỗi. Bản cài đặt trong đề tài dùng biến thể Hillis–Steele [61] viết bằng PyTorch thuần, tổng công việc là $O(L \log L)$ (Chương 3).
+Phép gộp (2.7) có tính kết hợp, nên có thể gộp từng cặp song song theo cây, cần khoảng $\log_2 L$ vòng thay vì $L$ bước. Bản Mamba gốc có kernel CUDA tối ưu, chi phí tăng tuyến tính theo độ dài chuỗi. Bản cài đặt trong đề tài dùng biến thể Hillis–Steele [46] viết bằng PyTorch thuần, tổng công việc là $O(L \log L)$ (Chương 3).
 
 ### 2.6.4. Đưa Mamba vào ảnh: VMamba và SS2D
 
-Ảnh hai chiều không có thứ tự tự nhiên. Nếu trải ảnh thành chuỗi theo một hướng, mỗi vị trí chỉ "thấy" được các vị trí đứng trước nó. Vision Mamba [27] quét hai chiều xuôi và ngược. VMamba [7] đề xuất mô-đun **SS2D** quét theo bốn hướng.
+Ảnh hai chiều không có thứ tự tự nhiên. Nếu trải ảnh thành chuỗi theo một hướng, mỗi vị trí chỉ "thấy" được các vị trí đứng trước nó. VMamba [7] đề xuất mô-đun **SS2D** quét theo bốn hướng.
 
 Bốn thứ tự quét này được minh họa ở Hình 3.3 (Chương 3), trên lưới 4×4.
 
@@ -269,7 +269,7 @@ Sau bước 5, mỗi vị trí đã nhận thông tin từ cả bốn phía, t�
 | Mỗi vị trí nhận thông tin toàn ảnh sau một khối | Thứ tự quét cố định, không tự nhiên với ảnh; hai điểm gần nhau theo chiều dọc có thể cách xa nhau trong chuỗi quét hàng |
 | Chi phí tăng gần tuyến tính theo số vị trí (với kernel tối ưu), rẻ hơn attention khi ảnh lớn | Ở bản đồ nhỏ như P5 ($L = 400$), lợi thế chi phí so với attention chưa rõ |
 | Cơ chế chọn lọc cho phép giữ hay quên thông tin theo nội dung | Kernel tối ưu cần CUDA; bản PyTorch thuần chậm hơn nhiều |
-| Có nhiều kết quả tốt trên ảnh y tế [28]–[31] | Huấn luyện từ đầu khó hơn; trọng số tiền huấn luyện ảnh hưởng lớn [30] |
+| Có nhiều kết quả tốt trên ảnh y tế [24]–[26] | Huấn luyện từ đầu khó hơn; trọng số tiền huấn luyện ảnh hưởng lớn [25] |
 | Không có ma trận $N \times N$ nên tiết kiệm bộ nhớ | Một số chi tiết (khởi tạo $\Delta$, chuẩn hóa đầu ra) nhạy với độ ổn định số |
 
 ## 2.7. Các độ đo đánh giá
@@ -298,7 +298,7 @@ Với $G$ là tập điểm ảnh của nhãn thật và $P$ là tập điểm �
 
 $$ \text{IoU} = \frac{|P \cap G|}{|P \cup G|} = \frac{TP}{TP + FP + FN}, \qquad \text{Dice} = \frac{2|P \cap G|}{|P| + |G|} = \frac{2\,TP}{2\,TP + FP + FN} \tag{2.9} $$
 
-IoU còn gọi là chỉ số Jaccard [62]; Dice có nguồn gốc từ hệ số tương đồng của Dice [63]. Hai chỉ số liên hệ với nhau qua $\text{Dice} = 2\,\text{IoU}/(1 + \text{IoU})$, nên Dice luôn lớn hơn hoặc bằng IoU. Ở mức điểm ảnh, Dice trùng với F1.
+IoU còn gọi là chỉ số Jaccard; Dice còn gọi là hệ số Sørensen–Dice. Hai chỉ số liên hệ với nhau qua $\text{Dice} = 2\,\text{IoU}/(1 + \text{IoU})$, nên Dice luôn lớn hơn hoặc bằng IoU. Ở mức điểm ảnh, Dice trùng với F1.
 
 **Ví dụ trên lưới 4×4** (1 là polyp):
 
@@ -324,7 +324,7 @@ Hai cách cho kết quả khác nhau khi kích thước polyp chênh lệch lớ
 
 ### 2.7.3. AP, mAP50 và mAP50–95
 
-Ở mức đối tượng, mỗi dự đoán có một độ tin cậy. Sắp xếp các dự đoán theo độ tin cậy giảm dần, rồi tính Precision và Recall tích lũy sau mỗi dự đoán, ta được đường Precision–Recall. **AP** (Average Precision) là diện tích dưới đường này, sau khi làm đường đơn điệu bằng cách lấy Precision lớn nhất về phía Recall cao hơn [64].
+Ở mức đối tượng, mỗi dự đoán có một độ tin cậy. Sắp xếp các dự đoán theo độ tin cậy giảm dần, rồi tính Precision và Recall tích lũy sau mỗi dự đoán, ta được đường Precision–Recall. **AP** (Average Precision) là diện tích dưới đường này, sau khi làm đường đơn điệu bằng cách lấy Precision lớn nhất về phía Recall cao hơn [47].
 
 **Ví dụ.** Tập ảnh có 3 polyp. Mô hình cho 4 dự đoán; ở ngưỡng IoU 0,5, kết quả như sau:
 
@@ -339,11 +339,11 @@ Sau khi làm đơn điệu, Precision bằng 1,0 trên đoạn Recall từ 0 đ�
 
 $$ AP = \tfrac{1}{3}\times 1{,}0 + \tfrac{2}{3}\times 0{,}75 \approx 0{,}833 $$
 
-Đây là cách nội suy mọi điểm. COCO [54] và Ultralytics lấy mẫu đường đơn điệu tại 101 mức Recall cách đều (0; 0,01; …; 1); với ví dụ này cách đó cũng cho AP khoảng 0,83.
+Đây là cách nội suy mọi điểm. COCO [41] và Ultralytics lấy mẫu đường đơn điệu tại 101 mức Recall cách đều (0; 0,01; …; 1); với ví dụ này cách đó cũng cho AP khoảng 0,83.
 
 Từ AP có các chỉ số:
 - **mAP50:** AP tại ngưỡng IoU 0,5, lấy trung bình qua các lớp. Đề tài chỉ có một lớp nên mAP50 bằng AP50.
-- **mAP50–95:** trung bình AP tại 10 ngưỡng IoU từ 0,50 đến 0,95, bước 0,05 [54]. Ở ngưỡng cao như 0,9, chỉ những mặt nạ bám rất sát đường biên mới được tính là đúng. Vì vậy mAP50–95 phản ánh độ chính xác của đường biên tốt hơn mAP50.
+- **mAP50–95:** trung bình AP tại 10 ngưỡng IoU từ 0,50 đến 0,95, bước 0,05 [41]. Ở ngưỡng cao như 0,9, chỉ những mặt nạ bám rất sát đường biên mới được tính là đúng. Vì vậy mAP50–95 phản ánh độ chính xác của đường biên tốt hơn mAP50.
 
 Với phân đoạn thực thể, IoU trong các chỉ số trên được tính giữa **mặt nạ** dự đoán và mặt nạ thật, ký hiệu *mask* mAP. Nếu tính giữa hai hộp bao thì gọi là *box* mAP. Đề tài lấy **mask mAP50–95** làm độ đo chính.
 
@@ -359,7 +359,7 @@ FLOPs và số tham số không phản ánh đầy đủ tốc độ thực tế
 
 ### 2.8.1. Vì sao cần nhiều seed
 
-Huấn luyện mạng nơ-ron có nhiều yếu tố ngẫu nhiên: khởi tạo trọng số, thứ tự đưa ảnh vào, các phép tăng cường dữ liệu. Các yếu tố này được điều khiển bằng một số nguyên gọi là **seed**. Cùng một mô hình, đổi seed có thể cho kết quả khác nhau đáng kể [39]. Nếu chỉ chạy mỗi mô hình một lần, chênh lệch quan sát được có thể chỉ do may rủi.
+Huấn luyện mạng nơ-ron có nhiều yếu tố ngẫu nhiên: khởi tạo trọng số, thứ tự đưa ảnh vào, các phép tăng cường dữ liệu. Các yếu tố này được điều khiển bằng một số nguyên gọi là **seed**. Cùng một mô hình, đổi seed có thể cho kết quả khác nhau đáng kể [31]. Nếu chỉ chạy mỗi mô hình một lần, chênh lệch quan sát được có thể chỉ do may rủi.
 
 Vì vậy, đề tài huấn luyện mỗi mô hình với 20 seed (seed 0–19). Hai mô hình dùng **cùng danh sách seed**, nên kết quả được **ghép cặp** theo seed. Với mỗi seed $i$, tính chênh lệch $d_i = \text{TSVM}_i - \text{Baseline}_i$. Phép so sánh ghép cặp loại bỏ được phần dao động chung của hai mô hình ở cùng seed.
 
@@ -369,7 +369,7 @@ Với $n$ chênh lệch $d_1, \dots, d_n$, có trung bình $\bar d$ và độ l�
 
 $$ t = \frac{\bar d}{s_d / \sqrt{n}} \tag{2.10} $$
 
-Dưới giả thuyết không ($H_0$: hai mô hình như nhau, kỳ vọng của $d$ bằng 0), $t$ có phân phối Student với $n-1$ bậc tự do [65]. Giá trị $p$ là xác suất gặp $|t|$ lớn như vậy hoặc hơn khi $H_0$ đúng. Nếu $p < 0{,}05$, ta nói chênh lệch có ý nghĩa thống kê ở mức 5%.
+Dưới giả thuyết không ($H_0$: hai mô hình như nhau, kỳ vọng của $d$ bằng 0), $t$ có phân phối Student với $n-1$ bậc tự do [48]. Giá trị $p$ là xác suất gặp $|t|$ lớn như vậy hoặc hơn khi $H_0$ đúng. Nếu $p < 0{,}05$, ta nói chênh lệch có ý nghĩa thống kê ở mức 5%.
 
 Khoảng tin cậy 95% của chênh lệch trung bình là:
 
@@ -379,13 +379,13 @@ Nếu khoảng này chứa 0, dữ liệu chưa đủ để khẳng định mô 
 
 ### 2.8.3. Kiểm định Wilcoxon và cỡ hiệu ứng
 
-Kiểm định t giả định chênh lệch có phân phối gần chuẩn. Với ít seed, giả định này khó kiểm tra. **Kiểm định Wilcoxon dấu–hạng** [66] chỉ dùng thứ hạng của $|d_i|$ và dấu của chúng, không cần giả định phân phối. Demšar [67] khuyến nghị dùng kiểm định này khi so sánh hai mô hình học máy. Đề tài báo cáo cả hai kiểm định.
+Kiểm định t giả định chênh lệch có phân phối gần chuẩn. Với ít seed, giả định này khó kiểm tra. **Kiểm định Wilcoxon dấu–hạng** [49] chỉ dùng thứ hạng của $|d_i|$ và dấu của chúng, không cần giả định phân phối. Demšar [50] khuyến nghị dùng kiểm định này khi so sánh hai mô hình học máy. Đề tài báo cáo cả hai kiểm định.
 
-Giá trị $p$ chỉ cho biết chênh lệch có đáng tin hay không, không cho biết chênh lệch lớn hay nhỏ. **Cỡ hiệu ứng** Cohen $d_z$ cho dữ liệu ghép cặp [68] đo độ lớn này:
+Giá trị $p$ chỉ cho biết chênh lệch có đáng tin hay không, không cho biết chênh lệch lớn hay nhỏ. **Cỡ hiệu ứng** Cohen $d_z$ cho dữ liệu ghép cặp [51] đo độ lớn này:
 
 $$ d_z = \frac{\bar d}{s_d} \tag{2.12} $$
 
-Theo quy ước của Cohen [69], được Lakens [68] trình bày lại, $d_z$ khoảng 0,2 là nhỏ, 0,5 là vừa, 0,8 là lớn.
+Theo quy ước của Cohen, được Lakens [51] trình bày lại, $d_z$ khoảng 0,2 là nhỏ, 0,5 là vừa, 0,8 là lớn.
 
 **Ví dụ minh họa (số tự đặt).** Năm seed cho chênh lệch mAP lần lượt $0{,}010;\ -0{,}004;\ 0{,}006;\ 0{,}002;\ 0{,}008$.
 - $\bar d = 0{,}0044$; $s_d \approx 0{,}0055$; sai số chuẩn $s_d/\sqrt 5 \approx 0{,}0025$.

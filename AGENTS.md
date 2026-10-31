@@ -51,7 +51,7 @@ Notes on these commands:
 - Keep figure IDs such as `h01`; see `06_bao_cao/hinh/README.md` for export conventions.
 - Report text:
   - decimal comma (`0,7189`);
-  - IEEE references numbered by first citation (80 entries in `08_TAI_LIEU_THAM_KHAO.md`; adding a reference means renumbering every later one).
+  - IEEE references numbered by first citation (57 entries in `08_TAI_LIEU_THAM_KHAO.md` since the 30/10/2026 trim from 80; adding a reference means renumbering every later one).
 
 ## Testing Guidelines
 The fork uses `unittest`, with `test_*.py` files and `test_*` methods. No coverage threshold is configured.

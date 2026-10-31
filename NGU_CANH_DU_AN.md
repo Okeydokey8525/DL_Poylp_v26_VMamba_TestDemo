@@ -114,11 +114,11 @@ Ngoài repo:
 |---|---|
 | `00_TRANG_DAU.md` | Thông tin bìa, Lời cảm ơn (bản nháp, nhóm sửa), danh mục chữ viết tắt và ký hiệu (29/10) |
 | `01_MO_DAU.md` | Đã viết; phạm vi dữ liệu ngoài và đóng góp đã cập nhật. Còn các ô [ĐIỀN] ở §6 (kế hoạch, phân công) do nhóm điền sau khi ghép Word |
-| `02`–`04` (Ch.1–3) | Đã viết, tài liệu tham khảo đã đánh số lại. Mục 1.6 viết lại 29/10 (4 tài liệu trong nước); ô cách đánh giá của Mamba YOLO ở Bảng 1.3 đã xác minh 30/10 |
+| `02`–`04` (Ch.1–3) | Đã viết, tài liệu tham khảo đã đánh số lại. Mục 1.6 trong nước: ColonFormer, NeoUNet, nghiên cứu YOLOv8 tại Hà Nội; ô cách đánh giá của Mamba YOLO ở Bảng 1.3 đã xác minh 30/10 |
 | `05_CHUONG_4_DU_LIEU_TIEN_XU_LY.md` | Chuyển từ bản v3; đã sửa nguồn split, 640 → 672, ô cuối Hình 4.5 |
 | `06_CHUONG_5_CAI_DAT_UNG_DUNG.md` | Đã viết. Còn `[CHỤP HÌNH]` chờ chụp màn hình ứng dụng, và vài ô [CẦN KIỂM TRA] (môi trường Kaggle, số ca kiểm thử tự động) |
 | `07_CHUONG_6_THUC_NGHIEM_DANH_GIA.md` | Đã viết đủ 6.1–6.9, kể cả 6.6 ablation (Bảng 6.12, Hình 6.16 = k01, nhận xét) điền ngày 29/10 |
-| `08_TAI_LIEU_THAM_KHAO.md` | 80 tài liệu, chuẩn IEEE (29/10 thêm 4 tài liệu trong nước ở mục 1.6 là [40]–[43], các tài liệu cũ từ [40] dời thành [44]–[80]); đã kiểm tra: cả 80 đều được trích, thứ tự lần trích đầu đúng |
+| `08_TAI_LIEU_THAM_KHAO.md` | 57 tài liệu, chuẩn IEEE. Ngày 30/10 rút gọn từ 80 (bỏ 23 mục chỉ kể tên, trùng vai trò, arXiv ít trích dẫn, trích phần mềm), có subagent kiểm tra chéo; cả 57 đều được trích, thứ tự lần trích đầu đúng 1→57. 50/57 có PDF trong `TLTK/` (`TLTK/DOI_CHIEU_57_TAI_LIEU.md`) |
 | `09_KET_LUAN.md`, `10_PHU_LUC.md` | Đã viết ngày 29/10 (Kết luận trả lời CH1–CH4; Phụ lục có bảng từng seed sinh từ CSV) |
 | `_KIEM_TRA/G_doi_chieu_thang_diem.md` | Đối chiếu từng tiêu chí của đề cương với mục trong báo cáo (29/10) |
 
