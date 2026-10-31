@@ -203,6 +203,8 @@ Mỗi khối dưới đây có thể dán thành một skill. Một số skill �
 | 28/10 | **Viết Chương 6** đầy đủ (mục ablation để trống). Chuyển Ch.4 sang bản v3 rút gọn. **Đánh số lại 76 tài liệu tham khảo** theo IEEE. |
 | 28/10 | **Đo lại độ trễ GPU** có kiểm soát nhiệt độ (lần 2). Cập nhật `09_HIEU_NANG_TINH_TOAN.md` và Chương 6. |
 | 28/10 | Lập kế hoạch slide bảo vệ (khoảng 62 slide). **Làm và lưu 3 slide mẫu trên Canva**: bìa, nội dung trình bày, lý do chọn đề tài, kèm ghi chú lời nói. |
+| 29/10 | Ablation đủ 15 lượt, tính bảng 17/18, vẽ k01/k02, điền mục 6.6. Viết Kết luận, Phụ lục, trang đầu. Đối chiếu thang điểm. Mục 1.6 trong nước. |
+| 30/10 | Đối chiếu PDF trong `TLTK/`, đối chứng 6 bài thu phí qua tóm tắt. **Ghép Word theo Biểu mẫu V3** bằng `06_bao_cao/ghep_word/ghep_word.py` (pandoc + docxcompose + Word). **Rút gọn tài liệu tham khảo 80 → 57**, có subagent kiểm tra chéo trước và sau khi sửa. |
 
 Các commit gần nhất trên `Okeydokey` (chưa push):
 - `17691da4`: chốt 20 seed.

@@ -32,7 +32,7 @@ Nội dung chương gồm:
 
 *Nguồn: đề tài tổng hợp.*
 
-Hai mô hình YOLO dùng chung mọi thiết lập: dữ liệu BG20 (Chương 4), ảnh vào 640 pixel, 100 epoch, lô 8 ảnh, bộ tối ưu AdamW, khởi tạo từ trọng số COCO và cùng các phép tăng cường dữ liệu. Mỗi mô hình được huấn luyện 20 lần với seed 0 đến 19. Lượt của mô hình gốc và mô hình đề xuất có cùng seed tạo thành một **cặp**. Nhờ ghép cặp, phần dao động do seed gây ra (khởi tạo, thứ tự ảnh, phép tăng cường) được trừ bớt khi so sánh [39].
+Hai mô hình YOLO dùng chung mọi thiết lập: dữ liệu BG20 (Chương 4), ảnh vào 640 pixel, 100 epoch, lô 8 ảnh, bộ tối ưu AdamW, khởi tạo từ trọng số COCO và cùng các phép tăng cường dữ liệu. Mỗi mô hình được huấn luyện 20 lần với seed 0 đến 19. Lượt của mô hình gốc và mô hình đề xuất có cùng seed tạo thành một **cặp**. Nhờ ghép cặp, phần dao động do seed gây ra (khởi tạo, thứ tự ảnh, phép tăng cường) được trừ bớt khi so sánh [31].
 
 Trên Kaggle, một lượt 100 epoch của mô hình gốc mất trung bình khoảng 2,3 giờ, của mô hình đề xuất khoảng 4,7 giờ (theo cột `train_time_s` của 40 lượt).
 
@@ -51,16 +51,16 @@ Với mỗi lượt huấn luyện, đề tài lấy **epoch có mask mAP50–95
 ### 6.1.4. Kiểm định thống kê
 
 Với mỗi chỉ số, đề tài tính hiệu ghép cặp $d_i = x_i^{\text{TSVM}} - x_i^{\text{gốc}}$ cho 20 seed, rồi dùng:
-- **kiểm định t ghép cặp** [65] (mục 2.8.2) để kiểm tra trung bình của $d_i$ có khác 0 không, kèm khoảng tin cậy 95% (CI 95%);
-- **kiểm định Wilcoxon dấu–hạng** [66] (mục 2.8.3) để đối chiếu, vì kiểm định này không cần giả định phân phối chuẩn;
-- **cỡ hiệu ứng Cohen $d_z$** [68] để biết chênh lệch lớn hay nhỏ so với dao động;
+- **kiểm định t ghép cặp** [48] (mục 2.8.2) để kiểm tra trung bình của $d_i$ có khác 0 không, kèm khoảng tin cậy 95% (CI 95%);
+- **kiểm định Wilcoxon dấu–hạng** [49] (mục 2.8.3) để đối chiếu, vì kiểm định này không cần giả định phân phối chuẩn;
+- **cỡ hiệu ứng Cohen $d_z$** [51] để biết chênh lệch lớn hay nhỏ so với dao động;
 - số seed mà TSVM tốt hơn.
 
-Mức ý nghĩa là $\alpha = 0{,}05$. Đề tài kiểm định nhiều chỉ số nhưng không hiệu chỉnh đa kiểm định, nên chỉ kết luận chắc chắn trên chỉ số chính. Các chỉ số phụ chỉ dùng để mô tả xu hướng [67].
+Mức ý nghĩa là $\alpha = 0{,}05$. Đề tài kiểm định nhiều chỉ số nhưng không hiệu chỉnh đa kiểm định, nên chỉ kết luận chắc chắn trên chỉ số chính. Các chỉ số phụ chỉ dùng để mô tả xu hướng [50].
 
-Để so sánh độ dao động giữa các seed của hai mô hình, đề tài dùng **kiểm định Levene dạng trung vị** (còn gọi là kiểm định Brown–Forsythe) [80]. Kiểm định này coi hai nhóm 20 seed là độc lập, không tận dụng cấu trúc ghép cặp, nên kết quả chỉ mang tính thăm dò.
+Để so sánh độ dao động giữa các seed của hai mô hình, đề tài dùng **kiểm định Levene dạng trung vị** (còn gọi là kiểm định Brown–Forsythe) [57]. Kiểm định này coi hai nhóm 20 seed là độc lập, không tận dụng cấu trúc ghép cặp, nên kết quả chỉ mang tính thăm dò.
 
-Các phép tính dùng thư viện SciPy [79].
+Các phép tính dùng thư viện SciPy.
 
 ### 6.1.5. Đánh giá theo pixel
 
@@ -95,7 +95,7 @@ Trong toàn chương, mọi giá trị được ghi dưới dạng **trung bình
 
 *Hình 6.1. Trung bình các chỉ số mặt nạ của hai mô hình trên 20 seed. Thanh lỗi là ±1 độ lệch chuẩn qua các seed.*
 
-Trên chỉ số chính, mô hình đề xuất đạt 0,7232, cao hơn mô hình gốc 0,0043, tức khoảng 0,6% tương đối. TSVM cao hơn ở 13/20 seed. Tuy vậy, khoảng tin cậy 95% của hiệu số vẫn chứa 0, kiểm định t cho $p = 0{,}061$ và Wilcoxon cho $p = 0{,}070$. Cỡ hiệu ứng $d_z = 0{,}44$, ở mức nhỏ đến vừa theo quy ước của Cohen [69]. **Như vậy, ở mức ý nghĩa 0,05, chưa đủ bằng chứng để khẳng định TSVM tốt hơn mô hình gốc.** Kết quả chỉ cho thấy một xu hướng tăng nhỏ.
+Trên chỉ số chính, mô hình đề xuất đạt 0,7232, cao hơn mô hình gốc 0,0043, tức khoảng 0,6% tương đối. TSVM cao hơn ở 13/20 seed. Tuy vậy, khoảng tin cậy 95% của hiệu số vẫn chứa 0, kiểm định t cho $p = 0{,}061$ và Wilcoxon cho $p = 0{,}070$. Cỡ hiệu ứng $d_z = 0{,}44$, ở mức nhỏ đến vừa theo quy ước của Cohen (được Lakens [51] trình bày lại). **Như vậy, ở mức ý nghĩa 0,05, chưa đủ bằng chứng để khẳng định TSVM tốt hơn mô hình gốc.** Kết quả chỉ cho thấy một xu hướng tăng nhỏ.
 
 Cần lưu ý chiều ngược lại: $p > 0{,}05$ cũng không chứng minh hai mô hình tương đương. Khoảng tin cậy cho thấy hiệu số thật có thể nằm trong khoảng từ gần 0 đến khoảng +0,009.
 
@@ -327,7 +327,7 @@ PraNet có topology tốt nhất rõ rệt: 91% ảnh đúng so với 81% của 
 
 *Nguồn: `bang/08_kien_truc_dung_lai.csv`, `bang/16_flops_do_tre_gpu.csv`, `bang/07_checkpoint_best_pt.csv`. FLOPs đo trên một ảnh 640 × 640 sau khi gộp tích chập với chuẩn hóa lô.*
 
-Bộ đếm `FlopCounterMode` của PyTorch [78] chỉ đếm các phép tích chập và nhân ma trận. Các phép theo từng phần tử trong phép quét SS2D không được đếm, nên số GFLOPs của TSVM là **cận dưới**. Bộ đếm của Ultralytics cho số lớn hơn khoảng 3 GFLOPs ở cả hai mô hình do khác cách đếm, nhưng tỉ lệ giữa hai mô hình như nhau. Tệp `best.pt` của TSVM lớn gấp khoảng hai lần chủ yếu vì được lưu ở FP32 (mục 3.8), không phải vì số tham số.
+Bộ đếm `FlopCounterMode` của PyTorch chỉ đếm các phép tích chập và nhân ma trận. Các phép theo từng phần tử trong phép quét SS2D không được đếm, nên số GFLOPs của TSVM là **cận dưới**. Bộ đếm của Ultralytics cho số lớn hơn khoảng 3 GFLOPs ở cả hai mô hình do khác cách đếm, nhưng tỉ lệ giữa hai mô hình như nhau. Tệp `best.pt` của TSVM lớn gấp khoảng hai lần chủ yếu vì được lưu ở FP32 (mục 3.8), không phải vì số tham số.
 
 ### 6.5.2. Độ trễ suy luận
 
@@ -355,7 +355,7 @@ Một lần đo trước đó trên cùng máy, không kiểm soát nhiệt, cho
 
 ### 6.5.3. Nhận xét
 
-Số phép tính chỉ tăng khoảng 1,5%, nhưng độ trễ tăng khoảng 1,5 lần trên GPU và 2,1 lần trên CPU. Như vậy GFLOPs không phản ánh đúng tốc độ của khối Mamba viết bằng PyTorch thuần. Nguyên nhân chính là phép quét song song (mục 3.4): với chuỗi dài 400 vị trí, phép quét chạy 9 vòng nối tiếp, mỗi vòng tạo các tensor trung gian và nhiều phép tính theo từng phần tử. Các phép này bị giới hạn bởi băng thông bộ nhớ và số lần gọi kernel, chứ không bởi số phép nhân. Bản Mamba gốc tránh được chi phí này nhờ kernel CUDA viết riêng [26].
+Số phép tính chỉ tăng khoảng 1,5%, nhưng độ trễ tăng khoảng 1,5 lần trên GPU và 2,1 lần trên CPU. Như vậy GFLOPs không phản ánh đúng tốc độ của khối Mamba viết bằng PyTorch thuần. Nguyên nhân chính là phép quét song song (mục 3.4): với chuỗi dài 400 vị trí, phép quét chạy 9 vòng nối tiếp, mỗi vòng tạo các tensor trung gian và nhiều phép tính theo từng phần tử. Các phép này bị giới hạn bởi băng thông bộ nhớ và số lần gọi kernel, chứ không bởi số phép nhân. Bản Mamba gốc tránh được chi phí này nhờ kernel CUDA viết riêng [23].
 
 Đặt cạnh kết quả ở mục 6.2, mô hình đề xuất **tốn thêm khoảng 50–110% thời gian suy luận để đổi lấy mức tăng mAP50–95 khoảng 0,004 chưa có ý nghĩa thống kê**. Ở độ trễ khoảng 40 ms trên GPU, mô hình vẫn xử lý được khoảng 25 ảnh mỗi giây khi chỉ tính lan truyền xuôi. Tuy vậy, đây là đo trên một máy, một checkpoint, nên không suy ra tốc độ trên hệ thống nội soi thật.
 
@@ -416,12 +416,12 @@ Ngoài ra, các biến thể có số tham số tầng 10 chênh nhau tới kho�
 
 | Bộ dữ liệu | Số ảnh dùng | Kích thước ảnh | Đặc điểm |
 |---|---:|---|---|
-| CVC-ClinicDB [14] | 612 | 384 × 288 | Khung hình từ video nội soi |
-| CVC-ColonDB [15] | 380 | 574 × 500 | Khung hình từ video nội soi |
-| ETIS-Larib [16] | 196 | 1.225 × 966 | Nhiều polyp nhỏ, khó |
-| PolypGen [13] | 1.537 (1.412 có polyp, 125 không polyp) | Tới 1.920 × 1.080 | Ảnh đơn từ 6 trung tâm (C1–C6) |
+| CVC-ClinicDB [13] | 612 | 384 × 288 | Khung hình từ video nội soi |
+| CVC-ColonDB [14] | 380 | 574 × 500 | Khung hình từ video nội soi |
+| ETIS-Larib [15] | 196 | 1.225 × 966 | Nhiều polyp nhỏ, khó |
+| PolypGen [12] | 1.537 (1.412 có polyp, 125 không polyp) | Tới 1.920 × 1.080 | Ảnh đơn từ 6 trung tâm (C1–C6) |
 
-*Nguồn: đề tài thống kê. Riêng PolypGen chỉ dùng phần ảnh đơn, không dùng phần chuỗi video. CVC-ColonDB dùng bản 380 ảnh phổ biến trong các benchmark phân đoạn polyp kể từ PraNet [9]; bài công bố gốc [15] mô tả 300 ảnh từ 15 polyp.*
+*Nguồn: đề tài thống kê. Riêng PolypGen chỉ dùng phần ảnh đơn, không dùng phần chuỗi video. CVC-ColonDB dùng bản 380 ảnh phổ biến trong các benchmark phân đoạn polyp kể từ PraNet [9]; bài công bố gốc [14] mô tả 300 ảnh từ 15 polyp.*
 
 Ba bộ CVC-ClinicDB, CVC-ColonDB và ETIS-Larib chỉ có ảnh có polyp. PolypGen có 125 ảnh mà mặt nạ rỗng. Các ảnh này không tính vào Dice và IoU, mà dùng để đo tỉ lệ báo nhầm. Giao thức suy luận và cách tính chỉ số giống hệt mục 6.1.5, với cả bốn mô hình và 20 seed.
 

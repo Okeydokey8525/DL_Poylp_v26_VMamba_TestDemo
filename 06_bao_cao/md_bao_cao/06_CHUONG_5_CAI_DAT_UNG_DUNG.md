@@ -49,8 +49,8 @@ Sau khi huấn luyện, các tệp kết quả được tải về máy cá nhâ
 
 | Hạng mục | Lựa chọn | Lý do |
 |---|---|---|
-| Học sâu | Python, PyTorch [78], Ultralytics [55] | YOLO26 được cài đặt chính thức trên Ultralytics; PyTorch cho phép viết khối SS2D tùy biến mà không cần biên dịch kernel riêng |
-| Xử lý dữ liệu, thống kê | NumPy, pandas, OpenCV, SciPy [79], Matplotlib | Chuyển nhãn, tính chỉ số, kiểm định thống kê, vẽ hình |
+| Học sâu | Python, PyTorch, Ultralytics [42] | YOLO26 được cài đặt chính thức trên Ultralytics; PyTorch cho phép viết khối SS2D tùy biến mà không cần biên dịch kernel riêng |
+| Xử lý dữ liệu, thống kê | NumPy, pandas, OpenCV, SciPy, Matplotlib | Chuyển nhãn, tính chỉ số, kiểm định thống kê, vẽ hình |
 | Dịch vụ suy luận | Python, FastAPI, Uvicorn | Cùng ngôn ngữ với mô hình nên nạp checkpoint trực tiếp; FastAPI nhẹ và tự sinh tài liệu API |
 | Web | Java 17, Spring Boot 4.1, Thymeleaf, Spring Security, Bootstrap 5 | Theo yêu cầu đề cương; Spring Boot có sẵn bảo mật, phiên đăng nhập, kết nối MongoDB |
 | Cơ sở dữ liệu | MongoDB | Lưu tài khoản và lịch sử phân tích dạng tài liệu, dễ mở rộng trường |
@@ -59,7 +59,7 @@ Sau khi huấn luyện, các tệp kết quả được tải về máy cá nhâ
 
 ## 5.2. Cài đặt mô hình gốc YOLO26s-seg
 
-Mô hình gốc dùng nguyên bản Ultralytics 8.4.127, cài bằng `pip`. Trọng số khởi tạo là `yolo26s-seg.pt`, đã được huấn luyện sẵn trên COCO [54]. Lớp đầu ra được đổi từ 80 lớp của COCO sang 1 lớp `polyp`.
+Mô hình gốc dùng nguyên bản Ultralytics 8.4.127, cài bằng `pip`. Trọng số khởi tạo là `yolo26s-seg.pt`, đã được huấn luyện sẵn trên COCO [41]. Lớp đầu ra được đổi từ 80 lớp của COCO sang 1 lớp `polyp`.
 
 Tệp mô tả dữ liệu `data_bg20.yaml`:
 
@@ -86,9 +86,9 @@ model.train(data="data_bg20.yaml", epochs=100, imgsz=640, batch=8,
 | Nhóm | Tham số |
 |---|---|
 | Dữ liệu | Ảnh vào 640×640; không lưu đệm ảnh (`cache=False`) |
-| Tối ưu | AdamW [51]; tốc độ học ban đầu 0,001, cuối 0,01 × ban đầu; momentum 0,937; suy giảm trọng số 0,0005; khởi động 5 epoch |
+| Tối ưu | AdamW [40]; tốc độ học ban đầu 0,001, cuối 0,01 × ban đầu; momentum 0,937; suy giảm trọng số 0,0005; khởi động 5 epoch |
 | Lịch | 100 epoch; lô 8 ảnh; không dừng sớm (`patience=100`); tắt Mosaic ở 10 epoch cuối |
-| Tăng cường | Mosaic [50] 1,0; lật ngang 0,5; co giãn 0,5; dịch 0,1; đổi màu HSV (0,015; 0,7; 0,4); không xoay, không lật dọc, không MixUp |
+| Tăng cường | Mosaic [39] 1,0; lật ngang 0,5; co giãn 0,5; dịch 0,1; đổi màu HSV (0,015; 0,7; 0,4); không xoay, không lật dọc, không MixUp |
 | Mặt nạ | Tỉ lệ thu nhỏ mặt nạ 4 (mặt nạ 160×160) |
 | Độ chính xác số | FP32 hoàn toàn (`amp=False`) |
 | Tất định | `deterministic=True`, 2 luồng nạp dữ liệu, seed cố định cho từng lượt |
