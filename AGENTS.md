@@ -19,7 +19,9 @@ This research repository compares YOLO26s-seg (Baseline) with YOLO26s-seg + C2TS
 - `04_phan_tich_20seed/`: older statistical package and CPU benchmarks.
 - `05_so_sanh_mo_hinh_khac/`: PraNet and U-Net checkpoints (20 seeds each).
 - `06_bao_cao/`: thesis material.
-  - `md_bao_cao/`: one markdown file per chapter (Mở đầu, Ch.1–6, references); `_KIEM_TRA/` holds review notes.
+  - `md_bao_cao/`: one markdown file per chapter (Mở đầu, Ch.1–6, references); `_KIEM_TRA/` holds review notes. Full version, 147 pages, git tag `ban_day_du_147`.
+  - `md_bao_cao_rut_gon/`: compressed version (body about 70 pages, 109 pages total), same figures and numbers; detail moved to appendices E–H.
+  - `ghep_word/ghep_word.py`: builds the Word/PDF per the faculty template V3 (`--md <folder> --ra <day_du|rut_gon>`).
   - `hinh/`: figures and the scripts that draw them.
   - `slide/`: defense slide plan.
   - Word templates.

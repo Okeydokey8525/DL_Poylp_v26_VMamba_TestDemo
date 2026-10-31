@@ -1,6 +1,32 @@
 # J. Kế hoạch làm bản rút gọn (phần thân khoảng 70 trang)
 
-Ngày lập: 31/10/2026. **Chưa triển khai**, chờ chủ dự án duyệt.
+Ngày lập: 31/10/2026. Đã duyệt và **triển khai xong đợt 0–7 ngày 31/10/2026** (đợt 8: cập nhật ngữ cảnh xong, chờ commit).
+
+**Kết quả đo (PDF ghép từ Word):**
+
+| Phần | Bản đầy đủ | Bản rút gọn | Mục tiêu |
+|---|---:|---:|---:|
+| Trang đầu | 16 | 15 | 15 |
+| Mở đầu | 8 | 6 | 5 |
+| Ch.1 | 9 | 6 | 7 |
+| Ch.2 | 17 | 10 | 11 |
+| Ch.3 | 24 | 12 | 12 |
+| Ch.4 | 10 | 8 | 7 |
+| Ch.5 | 18 | 9 (chưa chèn 7 ảnh chụp, dự kiến thêm 3–4) | 11 |
+| Ch.6 | 28 | 16 | 16 |
+| Kết luận | 5 | 3 | 3 |
+| **Thân** | **119** | **70** | **khoảng 72** |
+| Tài liệu tham khảo | 7 | 7 | 6–7 |
+| Phụ lục | 5 | 17 | 8–10 |
+| **Cả quyển** | **147** | **109** | **khoảng 100** |
+
+Phụ lục mới đặt tên theo thứ tự xuất hiện: **E** phân công theo hạng mục (Bảng 0.3 cũ), **F** chi tiết Ch.3 (truy vết tensor, ví dụ quét, ước tính chi phí, hình cơ cấu tham số), **G** API và MongoDB của ứng dụng, **H** 11 hình và 3 bảng phụ của Ch.6. Phụ lục dài hơn dự kiến vì giữ đủ hình phụ; nếu cần sát 100 trang, có thể bỏ bớt hình ở Phụ lục H.
+
+**Kiểm tra bằng script** (`ghep_word/kiem_tra_rut_gon.py`, chạy `python3.13 ghep_word/kiem_tra_rut_gon.py .` trong `06_bao_cao/`, ngày 31/10): hình, bảng, công thức đánh số liên tục; mọi chỗ nhắc Bảng/Hình/(x.y)/mục trỏ đúng; 57 tài liệu, thứ tự lần trích đầu 1→57; mọi con số trong bản rút gọn đều có trong bản đầy đủ (ngoài số mục và tham số YAML).
+
+**Phản biện (subagent, 31/10):** không thấy chỗ sai nghĩa kết quả chính; đã sửa 8 điểm: ví dụ mặt nạ mẫu thiếu giá trị P₁, P₂; thêm lại ví dụ Δ₃ = 2 (Mamba chọn lọc) và ví dụ giải mã hộp ở Ch.2; Thuật toán 3.2 cũ chuyển thành Thuật toán PL.1 (Phụ lục F.4); Levene "chỉ đúng ở epoch tốt nhất" ở Kết luận; ghi rõ 11,8/20,4 ms của mô hình nào; MambaPSA "tăng tốc trên CPU"; "chỉ 5 seed" ở mục 3.7; thống nhất thứ tự toán hạng (2.7) với (3.14) ở cả hai bản.
+
+**Sửa kèm ở bản đầy đủ:** mục 3.9–3.10 còn ghi "chưa huấn luyện các chế độ tách thành phần", "số tham số ước tính", nay sửa theo thực tế (ablation đã chạy, số tham số đếm từ checkpoint, khớp); năm dòng chèn hình Ch.4 đổi sang dạng `![Hình 4.x](...)` để vào danh mục hình. Script ghép Word nhận thêm `Hình PL.x` và gợi ý cỡ `{width=..cm}`.
 
 ## 1. Hai bản báo cáo song song
 

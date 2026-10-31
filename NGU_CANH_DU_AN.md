@@ -95,7 +95,7 @@ Cách chủ dự án làm việc và lịch sử công việc: [HUONG_DAN_LAM_VI
 | `03_ket_qua_huan_luyen/` | 40 lượt chính `Baseline_YOLO26s_seg/`, `TSVM_FP32/` (seed 0–19). Ablation: `Vmamba_only/`, `Shape_only/` (có hướng dẫn `HUONG_DAN_KIEM_TRA_KAGGLE.md`); zip gốc ở `_zip_goc_ablation/` |
 | `04_phan_tich_20seed/` | Gói phân tích cũ (đã đối chiếu khớp) và benchmark CPU |
 | `05_so_sanh_mo_hinh_khac/` | `PraNet/`, `UNet/`: file `.pth` của 20 seed |
-| `06_bao_cao/` | `md_bao_cao/` (các chương), `hinh/` (hình kèm script `ve_hinh.py`, `ve_so_do.py`), `slide/` (kế hoạch slide), `Tien_Xu_Ly_Du_Lieu_v3.docx`, biểu mẫu V3, Word cũ |
+| `06_bao_cao/` | `md_bao_cao/` (các chương, bản đầy đủ 147 trang), `md_bao_cao_rut_gon/` (bản rút gọn, thân khoảng 70 trang), `ghep_word/` (script ghép Word theo Biểu mẫu V3), `hinh/` (hình kèm script `ve_hinh.py`, `ve_so_do.py`), `slide/` (kế hoạch slide), `Tien_Xu_Ly_Du_Lieu_v3.docx`, biểu mẫu V3, Word cũ |
 | `07_kiem_toan_va_sua/` | Kiểm toán 25/10 và nhật ký sửa 26/10. Chỉ đọc |
 | `08_du_lieu_thuc_te/` | Đánh giá trên 4 bộ dữ liệu ngoài (script, bảng, ảnh định tính) |
 | `99_luu_tru/` | Lịch sử: TSVM cũ FP16, AV/AVF/ITSVM (**không đưa vào báo cáo**), tài liệu cũ, notebook PraNet/U-Net |
@@ -108,7 +108,9 @@ Ngoài repo:
 
 ## 4. Trạng thái báo cáo và việc còn lại (29/10/2026)
 
-**Các chương markdown** trong `06_bao_cao/md_bao_cao/`:
+**Hai bản báo cáo (31/10/2026).** Bản đầy đủ `md_bao_cao/` (Word/PDF `_V3_day_du`, 147 trang, tag `ban_day_du_147`) và bản rút gọn `md_bao_cao_rut_gon/` (Word/PDF `_V3_rut_gon`, 109 trang: trang đầu 15, thân 70, tài liệu tham khảo 7, phụ lục 17). Bản rút gọn giữ mọi bảng số chính, đủ 57 tài liệu đúng thứ tự, không có số liệu mới (kiểm bằng script); chi tiết Ch.3, API Ch.5, hình phụ Ch.6 chuyển xuống Phụ lục E–H; Ch.5 còn 7 khung ảnh chụp. Kế hoạch và tiến độ ở `_KIEM_TRA/J_ke_hoach_ban_rut_gon_70.md`.
+
+**Các chương markdown** trong `06_bao_cao/md_bao_cao/` (bản đầy đủ):
 
 | File | Trạng thái |
 |---|---|

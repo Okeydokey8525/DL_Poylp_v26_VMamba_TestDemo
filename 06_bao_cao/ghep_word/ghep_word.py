@@ -60,14 +60,14 @@ TNR = "Times New Roman"
 RONG_CHU, CAO_TOI_DA = 15.0, 12.5   # cm: khổ chữ (21 − 3,5 − 2,5) và chiều cao tối đa của một hình
 
 
-def kich_thuoc_hinh(path: Path) -> str:
+def kich_thuoc_hinh(path: Path, rong: float | None = None) -> str:
     """Giữ kích thước thật của hình (PNG 300 dpi do ve_hinh.py vẽ đúng cỡ in), chỉ thu nhỏ khi vượt khổ chữ
-    hoặc quá cao; không phóng to hình nhỏ."""
+    hoặc quá cao; không phóng to hình nhỏ. `rong` (cm, ghi trong md dạng {width=..cm}) thu nhỏ thêm."""
     from PIL import Image
     with Image.open(path) as im:
         dpi = (im.info.get("dpi") or (300, 300))[0] or 300
         w, h = im.size[0] / dpi * 2.54, im.size[1] / dpi * 2.54
-    k = min(1.0, RONG_CHU / w, CAO_TOI_DA / h)
+    k = min(1.0, (rong or RONG_CHU) / w, CAO_TOI_DA / h)
     return f"{{width={w * k:.2f}cm}}"
 
 
@@ -97,17 +97,18 @@ def tien_xu_ly(text: str) -> str:
         # Tiêu đề chương: "CHƯƠNG 1. TỔNG QUAN" -> "CHƯƠNG 1: TỔNG QUAN" như biểu mẫu
         l = re.sub(r"^# (CHƯƠNG \d+)\. ", r"# \1: ", l)
         # Hình: ![Hình x](đường dẫn) + dòng chú thích *Hình x. ...* -> một hình có chú thích
-        m = re.match(r"^!\[(Hình [\d.]+)\]\(([^)]+)\)\s*$", l)
+        m = re.match(r"^!\[(Hình (?:PL\.)?[\d.]+)\]\(([^)]+)\)(?:\{width=([\d.]+)cm\})?\s*$", l)
         if m:
             j = i + 1
             while j < len(lines) and not lines[j].strip():
                 j += 1
             cap = m.group(1)
-            if j < len(lines) and re.match(r"^\*Hình [\d.]+\.", lines[j]):
+            if j < len(lines) and re.match(r"^\*Hình (?:PL\.)?[\d.]+\.", lines[j]):
                 cap = lines[j].strip().strip("*")
                 i = j
-            cap = re.sub(r"^(Hình [\d.]+)\.\s*", r"\1: ", cap)
-            out.append(f"![{cap}]({m.group(2)}){kich_thuoc_hinh(MD / m.group(2))}")
+            cap = re.sub(r"^(Hình (?:PL\.)?[\d.]+)\.\s*", r"\1: ", cap)
+            rong = float(m.group(3)) if m.group(3) else None
+            out.append(f"![{cap}]({m.group(2)}){kich_thuoc_hinh(MD / m.group(2), rong)}")
             i += 1
             continue
         # Chú thích bảng *Bảng x. ...* (đứng trước bảng) -> "Table: ..." của pandoc
@@ -470,7 +471,7 @@ def dien_bia(d) -> None:
         paras[k]._p.getparent().remove(paras[k]._p)
 
 
-def ghep(chi: list[str] | None, dung_word: bool) -> Path:
+def ghep(chi: list[str] | None, dung_word: bool, ra: str = "") -> Path:
     tao_reference()
     files = [f for f in THAN if not chi or any(f.startswith(c) for c in chi)]
     md = trang_dau() + "\n\n" + "\n\n".join(tien_xu_ly((MD / f).read_text(encoding="utf-8")) for f in files)
@@ -549,7 +550,7 @@ def ghep(chi: list[str] | None, dung_word: bool) -> Path:
             r0.text = re.sub(r"^(\[\d+\]) ", "\\1\t", r0.text)
     bullet(d)
     n_vang = to_vang(d)
-    ten = "CNTT_KLCN182_BaoCaoKhoaLuan_V3" + ("_ghep_thu" if chi else "") + ".docx"
+    ten = "CNTT_KLCN182_BaoCaoKhoaLuan_V3" + (f"_{ra}" if ra else "") + ("_ghep_thu" if chi else "") + ".docx"
     out = BAO_CAO / ten
     d.save(str(out))
     print(f"Đã ghi {out.name}: {len(files)} file md, {n_ct} công thức có số, {len(d.tables)} bảng, {n_vang} chỗ tô vàng")
@@ -580,5 +581,8 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--chi", nargs="*", help="tiền tố tên file md cần ghép, ví dụ 01 02")
     ap.add_argument("--khong-word", action="store_true")
+    ap.add_argument("--md", default="md_bao_cao", help="thư mục markdown trong 06_bao_cao (md_bao_cao hoặc md_bao_cao_rut_gon)")
+    ap.add_argument("--ra", default="", help="hậu tố tên file ra, ví dụ day_du, rut_gon")
     a = ap.parse_args()
-    ghep(a.chi, not a.khong_word)
+    MD = BAO_CAO / a.md
+    ghep(a.chi, not a.khong_word, a.ra)
