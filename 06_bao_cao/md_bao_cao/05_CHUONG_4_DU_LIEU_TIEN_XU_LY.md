@@ -7,6 +7,7 @@
 >   1. **Mục 4.2:** v3 viết "bộ tải từ Kaggle không kèm sẵn cách chia tập, nhóm đề tài chia…". Câu này **sai**: bản Kaggle của D. Jha có sẵn `train.txt`, `val.txt` và README ghi "We have provided train-val split for the fair comparison"; tệp của nhóm trùng md5 với bản gốc (kiểm 27/10/2026). Đã viết lại theo hướng danh sách do nhóm tác giả cung cấp.
 >   2. **Mục 4.1.2:** thêm "phiên bản 2" cho Kvasir (8 lớp × 1.000 ảnh là của Kvasir v2; bản đầu [8] có 500 ảnh mỗi lớp).
 >   3. **Mục 4.8:** câu cuối "chương thực nghiệm" đổi thành "Chương 6".
+> - **31/10/2026:** năm dòng chèn hình đổi từ `![](...)` sang `![Hình 4.x](...)` để script ghép Word nhận chú thích (đưa vào danh mục hình) và giới hạn cỡ hình trong khổ chữ. Nội dung không đổi.
 > - **Hình 4.5 đã sửa ô cuối (29/10/2026):** khối cuối trước ghi "Mô hình YOLO26-seg + TSVM", trong khi quy trình dùng chung cho cả hai mô hình. Nay ghi "Mô hình YOLO26s-seg (gốc) và YOLO26s-seg + TSVM", cùng phông và cỡ chữ với các ô khác. Bản gốc giữ ở `../hinh/chuong4/h4_5_ban_goc.png`. Nếu nhóm còn tệp nguồn của hình (draw.io…), nên sửa cả ở đó.
 
 Chất lượng dữ liệu đầu vào ảnh hưởng trực tiếp đến khả năng học của mô hình phân đoạn. Chương này trình bày cách đề tài xây dựng bộ dữ liệu BG20 từ hai nguồn ảnh nội soi công khai và các bước đưa ảnh cùng nhãn về dạng mà mô hình YOLO26-seg tích hợp khối TSVM sử dụng được. Quá trình gồm hai giai đoạn. Giai đoạn chuẩn bị chỉ thực hiện một lần trước khi huấn luyện, gồm chọn ảnh, chia tập và chuyển mặt nạ thành nhãn đa giác. Giai đoạn nạp dữ liệu diễn ra mỗi khi ảnh được đưa vào mô hình, gồm đổi kích thước, tăng cường dữ liệu và chuẩn hóa.
@@ -23,7 +24,7 @@ Dữ liệu có ba đặc điểm cần xử lý. Thứ nhất, kích thước �
 
 Bộ dữ liệu Kvasir phiên bản 2 gồm 8 lớp ảnh, mỗi lớp 1.000 ảnh [5], [8]. Đề tài dùng lớp normal-cecum, tức ảnh manh tràng bình thường có kích thước 720 × 576 pixel, làm ảnh nền. Ảnh nền là mẫu âm tính, không chứa polyp. Nếu chỉ học trên ảnh có polyp, mô hình dễ cho rằng ảnh nào cũng có polyp và khoanh nhầm các nếp gấp hay vùng phản quang. Việc bổ sung ảnh nền nhằm giúp mô hình học được trường hợp không có đối tượng cần phân đoạn. Hình 4.1 minh họa hai nguồn dữ liệu này.
 
-![](../hinh/chuong4/h4_1.png)
+![Hình 4.1](../hinh/chuong4/h4_1.png)
 
 *Hình 4.1. Ví dụ ảnh có polyp, mặt nạ phân đoạn gốc và ảnh nền trong bộ dữ liệu BG20*
 
@@ -90,7 +91,7 @@ $$\hat{x} = \frac{x}{W}, \qquad \hat{y} = \frac{y}{H} \tag{4.5}$$
 
 Giá trị sau chuẩn hóa được làm tròn đến 6 chữ số thập phân. Mỗi polyp được ghi thành một dòng gồm chỉ số lớp, tiếp theo là các cặp tọa độ $\hat{x}$ và $\hat{y}$ của từng đỉnh. Nhờ chuẩn hóa, nhãn không phụ thuộc kích thước ảnh, nên khi ảnh được thu phóng ở các bước sau, đa giác vẫn khớp đúng vị trí polyp. Hình 4.2 minh họa toàn bộ công đoạn chuyển đổi trên một ảnh của tập huấn luyện.
 
-![](../hinh/chuong4/h4_2.png)
+![Hình 4.2](../hinh/chuong4/h4_2.png)
 
 *Hình 4.2. Trước và sau khi chuyển mặt nạ phân đoạn thành nhãn đa giác*
 
@@ -114,7 +115,7 @@ $$p_x = \frac{640 - W'}{2}, \qquad p_y = \frac{640 - H'}{2} \tag{4.8}$$
 
 Trong đó, $p_x$ là độ rộng viền thêm vào mỗi bên trái và phải, $p_y$ là độ rộng viền thêm vào mỗi phía trên và dưới. Tọa độ đa giác cũng được nhân với $r$ và cộng thêm $p_x$, $p_y$, nhờ đó nhãn luôn trùng với vị trí polyp trên ảnh mới. Ở nhánh huấn luyện, khung đích là 640 × 640. Ở nhánh kiểm định, các ảnh có tỷ lệ khung hình gần nhau được gom thành lô 16 ảnh, khung của mỗi lô được làm tròn lên bội số của 32 và cộng thêm nửa bước, nên có cạnh dài 672 pixel. Hình 4.3 minh họa công đoạn này với khung 640 × 640.
 
-![](../hinh/chuong4/h4_3.png)
+![Hình 4.3](../hinh/chuong4/h4_3.png)
 
 *Hình 4.3. Trước và sau khi đổi kích thước ảnh bằng thu phóng giữ tỷ lệ và LetterBox*
 
@@ -149,7 +150,7 @@ Phép biến đổi affine dịch tâm ảnh lệch tối đa 10% khung và thu 
 
 Hình 4.4 minh họa tác động của từng phép tăng cường lên cùng một ảnh huấn luyện. Để dễ quan sát, các hệ số trong hình được chọn cố định trong phạm vi của Bảng 4.2.
 
-![](../hinh/chuong4/h4_4.png)
+![Hình 4.4](../hinh/chuong4/h4_4.png)
 
 *Hình 4.4. Ảnh huấn luyện trước và sau các phép tăng cường dữ liệu*
 
@@ -171,7 +172,7 @@ Lượt kiểm tra này vẫn có giới hạn. Dữ liệu không có thông ti
 
 Hình 4.5 tóm tắt toàn bộ quy trình đã trình bày trong chương.
 
-![](../hinh/chuong4/h4_5.png)
+![Hình 4.5](../hinh/chuong4/h4_5.png)
 
 *Hình 4.5. Quy trình xây dựng bộ dữ liệu BG20 và tiền xử lý dữ liệu*
 

@@ -230,7 +230,7 @@ Tiếp ví dụ trên: nếu ở bước 3 mô hình chọn $\Delta_3 = 2$, thì
 
 Sau khi $\Delta, B, C$ phụ thuộc đầu vào, không thể tính SSM bằng một phép tích chập cố định như S4 nữa. Phép truy hồi (2.6) phải tính tuần tự hoặc bằng **thuật toán quét song song** [45], [46]. Ý tưởng là mỗi bước có dạng $h_t = a_t h_{t-1} + b_t$, và hai bước liên tiếp có thể gộp thành một bước cùng dạng:
 
-$$ (a_2, b_2) \circ (a_1, b_1) = (a_2 a_1,\ a_2 b_1 + b_2) \tag{2.7} $$
+$$ (a_1, b_1) \circ (a_2, b_2) = (a_2 a_1,\ a_2 b_1 + b_2) \tag{2.7} $$
 
 Phép gộp (2.7) có tính kết hợp, nên có thể gộp từng cặp song song theo cây, cần khoảng $\log_2 L$ vòng thay vì $L$ bước. Bản Mamba gốc có kernel CUDA tối ưu, chi phí tăng tuyến tính theo độ dài chuỗi. Bản cài đặt trong đề tài dùng biến thể Hillis–Steele [46] viết bằng PyTorch thuần, tổng công việc là $O(L \log L)$ (Chương 3).
 

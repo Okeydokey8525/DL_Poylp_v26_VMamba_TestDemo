@@ -205,6 +205,7 @@ Mỗi khối dưới đây có thể dán thành một skill. Một số skill �
 | 28/10 | Lập kế hoạch slide bảo vệ (khoảng 62 slide). **Làm và lưu 3 slide mẫu trên Canva**: bìa, nội dung trình bày, lý do chọn đề tài, kèm ghi chú lời nói. |
 | 29/10 | Ablation đủ 15 lượt, tính bảng 17/18, vẽ k01/k02, điền mục 6.6. Viết Kết luận, Phụ lục, trang đầu. Đối chiếu thang điểm. Mục 1.6 trong nước. |
 | 30/10 | Đối chiếu PDF trong `TLTK/`, đối chứng 6 bài thu phí qua tóm tắt. **Ghép Word theo Biểu mẫu V3** bằng `06_bao_cao/ghep_word/ghep_word.py` (pandoc + docxcompose + Word). **Rút gọn tài liệu tham khảo 80 → 57**, có subagent kiểm tra chéo trước và sau khi sửa. |
+| 31/10 | **Tách hai bản báo cáo:** bản đầy đủ 147 trang (tag `ban_day_du_147`) và bản rút gọn `md_bao_cao_rut_gon/` (thân 70 trang, 109 trang cả quyển, Phụ lục E–H). Làm mẫu Mở đầu, Ch.1, Kết luận cho chủ dự án duyệt trước, rồi nén Ch.2–6; script kiểm đánh số, tham chiếu, trích dẫn và số liệu; subagent phản biện. Sửa ở bản đầy đủ: mục 3.9–3.10 (ablation đã chạy), cú pháp 5 hình Ch.4. |
 
 Các commit gần nhất trên `Okeydokey` (chưa push):
 - `17691da4`: chốt 20 seed.
@@ -283,7 +284,9 @@ Báo nhầm trên ảnh không có polyp của PolypGen: 13,3% / 10,8% / 22,6% /
 |---|---|
 | `CLAUDE.md`, `NGU_CANH_DU_AN.md` | Ngữ cảnh và quy tắc; đọc đầu tiên |
 | `00_tai_lieu_tong_quan/` | Nguồn sự thật: 14 md, `bang/*.csv`, `scripts/` |
-| `06_bao_cao/md_bao_cao/01…08_*.md` | Các chương báo cáo |
+| `06_bao_cao/md_bao_cao/01…10_*.md` | Các chương báo cáo, bản đầy đủ |
+| `06_bao_cao/md_bao_cao_rut_gon/` | Bản rút gọn (thân khoảng 70 trang) |
+| `06_bao_cao/ghep_word/ghep_word.py` | Ghép Word/PDF theo Biểu mẫu V3 |
 | `06_bao_cao/md_bao_cao/_KIEM_TRA/` | Ghi chú điều tra và phản biện, bảng đối số tài liệu tham khảo |
 | `06_bao_cao/hinh/scripts/ve_hinh.py`, `ve_so_do.py` | Vẽ hình và sơ đồ |
 | `06_bao_cao/slide/KE_HOACH_SLIDE.md` | Kế hoạch slide bảo vệ |

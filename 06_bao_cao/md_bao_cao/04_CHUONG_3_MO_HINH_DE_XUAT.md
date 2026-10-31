@@ -576,24 +576,22 @@ Phần này đánh giá mô hình đề xuất so với mô hình đối chứng
 - **Ở mức P5, lợi thế của SSM chưa thể hiện.** Với $L = 400$, attention vẫn rẻ, nên ưu điểm của SSM với chuỗi dài chưa có dịp phát huy.
 - **Khác bản VMamba gốc.** Mã thiếu hạng tử nhảy $D$, thiếu LayerNorm ở đầu ra, và khởi tạo $\Delta$ theo mặc định. Những điểm này có thể liên quan đến sự cố số học ở mục 3.8.
 - **Tên gọi chưa có bằng chứng đi kèm.** Chữ "topology" là ý đồ thiết kế. Khi đo lỗi Betti (số mảnh, số lỗ của mặt nạ) trên 20 seed, TSVM chỉ nhích hơn mô hình gốc và khác biệt không có ý nghĩa thống kê (Chương 6).
-- **Chưa tách được đóng góp của từng nhánh.** Mã có sẵn các chế độ để tách đóng góp (mục 3.10), nhưng đề tài chưa huấn luyện các chế độ này.
+- **Đóng góp của từng nhánh mới ở mức thăm dò.** Thí nghiệm tách thành phần (mục 3.10, kết quả ở mục 6.6) chỉ có 5 seed và các chế độ khác nhau về số tham số.
 
 ## 3.10. Các chế độ tách thành phần có sẵn trong mã
 
-Mô-đun TSVMamba có tham số `mode` để bật hoặc tắt từng nhánh. Bảng 3.7 liệt kê bốn chế độ và số tham số tương ứng của tầng 10. Số tham số của ba chế độ rút gọn được tính bằng cách cộng trừ các thành phần ở Bảng 3.3, chưa dựng mô hình để đo.
+Mô-đun TSVMamba có tham số `mode` để bật hoặc tắt từng nhánh. Bảng 3.7 liệt kê bốn chế độ và số tham số tương ứng của tầng 10. Số tham số của ba chế độ rút gọn được tính bằng cách cộng trừ các thành phần ở Bảng 3.3, rồi đếm lại từ checkpoint của các lượt tách thành phần; hai cách cho cùng kết quả.
 
 *Bảng 3.7. Bốn chế độ của khối TSVMamba*
 
-| Chế độ | Công thức khối | Tham số tầng 10 (ước tính) |
+| Chế độ | Công thức khối | Tham số tầng 10 |
 |---|---|---:|
 | `topology_shape_vmamba` (đầy đủ, dùng trong đề tài) | (3.12) | 1.811.201 |
 | `shape_vmamba_no_guidance` | $b + \gamma\cdot\mathrm{FFN}(\mathrm{fuse}([\mathrm{SS2D}(b) \,\|\, S]))$, bỏ cổng | 1.745.409 |
 | `shape_only` | $b + \gamma\cdot\mathrm{FFN}(S)$, bỏ SS2D | 1.331.969 |
 | `vmamba_only` | $b + \gamma\cdot\mathrm{FFN}(\mathrm{SS2D}(b))$, bỏ nhánh hình dạng | 1.071.873 |
 
-Mọi lượt huấn luyện chính của TSVM đều dùng chế độ đầy đủ. Các chế độ còn lại là nền tảng có sẵn cho thí nghiệm tách thành phần (ablation). Khi thực hiện thí nghiệm này, nên:
-- chạy cùng các seed đã dùng cho mô hình chính để so sánh ghép cặp;
-- thêm một mô hình đối chứng có số tham số tương đương, vì các chế độ chênh nhau tới khoảng 740 nghìn tham số.
+Mọi lượt huấn luyện chính của TSVM đều dùng chế độ đầy đủ. Ba chế độ còn lại được huấn luyện với seed 0–4, cùng seed với mô hình chính để so sánh ghép cặp; kết quả ở mục 6.6. Vì các chế độ chênh nhau tới khoảng 740 nghìn tham số, so sánh này chưa tách được phần do cấu trúc với phần do thêm tham số; muốn tách cần thêm một mô hình đối chứng có số tham số tương đương.
 
 ## 3.11. Kết chương
 
