@@ -433,8 +433,241 @@ def s01_kien_truc_ung_dung(st: dict) -> None:
     save(fig, "s01_kien_truc_ung_dung", st["lang"])
 
 
+# --------------------------------------------------------------------------- a05–a08: hình cho slide (khổ 16:9)
+SLIDE = (16.0 * CM, 9.0 * CM)
+
+
+def _luoi(ax, x0, y0, o, n, to, mau, nhan, fs):
+    """Lưới n×n ô cạnh o, tô các ô trong `to` (hàng, cột) bằng `mau`; nhãn ở dưới."""
+    for i in range(n):
+        for j in range(n):
+            fc = mau if (i, j) in to else "white"
+            ax.add_patch(FancyBboxPatch((x0 + j * o, y0 + (n - 1 - i) * o), o, o, boxstyle="square,pad=0",
+                                        linewidth=0.5, edgecolor="#AAAAAA", facecolor=fc, zorder=2))
+    ax.text(x0 + n * o / 2, y0 - 0.2, nhan, ha="center", va="top", fontsize=fs)
+
+
+def a05_nhanh_hinh_dang(st: dict) -> None:
+    """Slide: nhân có hướng của nhánh hình dạng, luồng tính S và cổng (1 + G)."""
+    vi = st["lang"] == "vi"
+    t = (lambda a, b: a if vi else b)
+    fs = 8.0
+    fig, ax = plt.subplots(figsize=SLIDE)
+    ax.set_xlim(0, 16)
+    ax.set_ylim(0, 9)
+    ax.axis("off")
+
+    # hàng 1: các nhân tích chập theo chiều sâu, minh họa trên vùng 5×5
+    ax.text(0.2, 8.75, t("① Các nhân tích chập theo chiều sâu (vùng 5×5 quanh một vị trí)",
+                         "① Depthwise kernels (5×5 neighbourhood of one position)"),
+            fontsize=fs + 0.5, fontweight="bold", va="top")
+    o, y0 = 0.32, 5.85
+    tam = [(2, j) for j in range(5)]
+    _luoi(ax, 0.6, y0, o, 5, {(i, j) for i in range(1, 4) for j in range(1, 4)}, F_GR, "3×3", fs)
+    _luoi(ax, 2.9, y0, o, 5, {(i, j) for i in range(5) for j in range(5)}, F_SH, "5×5", fs)
+    _luoi(ax, 5.8, y0, o, 5, set(tam), "#F5C77E", t("1×5: ngang", "1×5: horizontal"), fs)
+    _luoi(ax, 8.1, y0, o, 5, {(i, 2) for i in range(5)}, "#9CC8E6", t("5×1: dọc", "5×1: vertical"), fs)
+    ax.text(1.9, 8.05, "ShapeAware", ha="center", fontsize=fs, color="#9A6A00", fontweight="bold")
+    ax.text(7.75, 8.05, "Directional", ha="center", fontsize=fs, color="#9A6A00", fontweight="bold")
+    ax.text(10.3, 6.65, t("Ở mức P5 (bước 32), nhân 1×5\nphủ khoảng 160 pixel ảnh gốc:\n"
+                          "hình dạng ở mức vùng,\nkhông phải biên từng pixel.",
+                          "At P5 (stride 32) a 1×5 kernel\ncovers about 160 input pixels:\n"
+                          "region-level shape,\nnot pixel-level boundary."),
+            fontsize=fs - 0.5, va="center", color="#444444",
+            bbox=dict(boxstyle="round,pad=0.35", fc="#FAFAFA", ec="#BBBBBB", lw=0.6))
+
+    # hàng 2: luồng tính S
+    ax.text(0.2, 5.05, t("② Luồng tính đặc trưng hình dạng S", "② Computing the shape feature S"),
+            fontsize=fs + 0.5, fontweight="bold", va="top")
+    yr, f2 = 4.0, fs - 1.5
+    b = box(ax, 0.55, yr, 0.85, 0.8, "b\n256", fs=f2)
+    s1 = box(ax, 2.65, yr, 2.9, 1.0, "DW 3×3 ‖ DW 5×5\n→ 1×1 → $S_{shape}$", ec=C_SH, fc=F_SH, fs=f2)
+    s2 = box(ax, 6.9, yr, 5.1, 1.0, "$S_h$ (1×5),  $S_v$ (5×1),  $S_{loc}$ (3×3)\n"
+             "$S_{grad}=\\sqrt{S_h^2+S_v^2}$", ec=C_SH, fc=F_SH, fs=f2)
+    s3 = box(ax, 11.3, yr, 3.2, 1.0, t("ghép 4 → 1×1,\nghép với $S_{shape}$ → 1×1", "concat 4 → 1×1,\n"
+                                      "concat $S_{shape}$ → 1×1"), ec=C_SH, fc=F_SH, fs=f2)
+    s = box(ax, 13.7, yr, 0.8, 0.8, "S", ec=C_SH, fc="white", fs=fs + 2, bold=True)
+    for p, q in ((b, s1), (s1, s2), (s2, s3), (s3, s)):
+        arrow(ax, p["r"], q["l"], head=6)
+
+    # hàng 3: cổng (G đặt ngay dưới S)
+    ax.text(0.2, 2.95, t("③ Cổng: nhánh hình dạng điều biến đầu ra SS2D (một chiều)",
+                         "③ Gate: the shape branch modulates SS2D (one-way)"),
+            fontsize=fs + 0.5, fontweight="bold", va="top")
+    yg = 1.75
+    fm = box(ax, 1.4, yg, 2.2, 0.75, "$F_M$ (SS2D)", ec=C_TS, fc=F_TS, fs=f2)
+    mul = box(ax, 5.6, yg, 3.4, 0.8, "$F'_M = F_M\\odot(1+G)$", ec=C_TS, fc="white", fs=fs)
+    g = box(ax, 13.7, yg, 4.4, 0.9, "$G=\\sigma(W_g * S + b_g)$\n$G\\in(0,1)$", ec=C_SH, fc=F_SH, fs=f2)
+    arrow(ax, s["b"], g["t"], color="#9A6A00", head=6)
+    arrow(ax, fm["r"], mul["l"], head=6)
+    arrow(ax, g["l"], mul["r"], color="#9A6A00", head=6)
+    # trục hệ số 1 + G: nhãn ở trên, vạch số ở dưới
+    x1, x2, ya = 5.0, 11.0, 0.55
+    ax.plot([x1 - 0.8, x2 + 0.5], [ya, ya], color="#999999", lw=0.8)
+    ax.add_patch(FancyBboxPatch((x1, ya - 0.12), x2 - x1, 0.24, boxstyle="round,pad=0,rounding_size=0.11",
+                                linewidth=0, facecolor="#F5C77E", zorder=2))
+    for xv, lab in ((x1 - 0.8, "0"), (x1, "1"), (x2, "2")):
+        ax.plot([xv, xv], [ya - 0.18, ya + 0.18], color="#555555", lw=0.8)
+        ax.text(xv, ya - 0.22, lab, ha="center", va="top", fontsize=f2)
+    ax.text((x1 + x2) / 2, ya + 0.25, t("1 + G ∈ (1, 2): chỉ khuếch đại, không tắt hẳn vị trí nào",
+                                        "1 + G ∈ (1, 2): only amplifies, never switches a position off"),
+            ha="center", va="bottom", fontsize=f2, color="#9A6A00", fontweight="bold")
+    save(fig, "a05_nhanh_hinh_dang_cong", st["lang"])
+
+
+def a06_quet_song_song(st: dict) -> None:
+    """Slide: ví dụ quét kết hợp song song Hillis–Steele trên chuỗi L = 4 (số liệu như Bảng PL.9)."""
+    vi = st["lang"] == "vi"
+    t = (lambda a, b: a if vi else b)
+    fs = 8.0
+    fig, ax = plt.subplots(figsize=SLIDE)
+    ax.set_xlim(0, 16)
+    ax.set_ylim(0, 9)
+    ax.axis("off")
+    ax.text(0.2, 8.8, t("Truy hồi  $h_t = a_t\\,h_{t-1} + b_t$   →   ghép hai bước:  "
+                        "$(a_1,b_1)\\circ(a_2,b_2) = (a_2a_1,\\ a_2b_1 + b_2)$",
+                        "Recurrence  $h_t = a_t\\,h_{t-1} + b_t$   →   combine two steps:  "
+                        "$(a_1,b_1)\\circ(a_2,b_2) = (a_2a_1,\\ a_2b_1 + b_2)$"),
+            fontsize=fs + 0.5, va="top")
+    rows = [
+        (t("Ban đầu", "Start"), ["0,5; 1", "0,8; 2", "0,5; 0", "0,9; 1"] if vi else ["0.5; 1", "0.8; 2", "0.5; 0", "0.9; 1"]),
+        (t("Vòng 1\nstep = 1", "Round 1\nstep = 1"), ["0,5; 1", "0,4; 2,8", "0,4; 1", "0,45; 1"] if vi else
+         ["0.5; 1", "0.4; 2.8", "0.4; 1", "0.45; 1"]),
+        (t("Vòng 2\nstep = 2", "Round 2\nstep = 2"), ["0,5; 1", "0,4; 2,8", "0,2; 1,4", "0,18; 2,26"] if vi else
+         ["0.5; 1", "0.4; 2.8", "0.2; 1.4", "0.18; 2.26"]),
+    ]
+    xs = [2.95, 4.85, 6.75, 8.65]
+    ys = [6.9, 4.6, 2.3]
+    for k, x in enumerate(xs):
+        ax.text(x, 7.85, t(f"vị trí {k + 1}", f"position {k + 1}"), ha="center", fontsize=fs, color="#555555")
+    bx = {}
+    for r, ((lab, vals), y) in enumerate(zip(rows, ys)):
+        ax.text(0.15, y, lab, ha="left", va="center", fontsize=fs - 0.5, fontweight="bold")
+        for k, (x, v) in enumerate(zip(xs, vals)):
+            done = (r == 1 and k == 1) or r == 2
+            bx[r, k] = box(ax, x, y, 1.8, 0.75, f"({v})", ec=C_TS if done else C_GR,
+                           fc=F_TS if done else F_GR, fs=fs - 1.3)
+    # mũi tên: vòng 1 từ t−1, vòng 2 từ t−2; mũi tên thẳng là giữ giá trị của chính nó
+    for r, step in ((1, 1), (2, 2)):
+        for k in range(4):
+            arrow(ax, bx[r - 1, k]["b"], bx[r, k]["t"], color="#AAAAAA", head=5)
+            if k - step >= 0:
+                arrow(ax, (bx[r - 1, k - step]["b"][0] + 0.3, bx[r - 1, k - step]["b"][1]),
+                      (bx[r, k]["t"][0] - 0.3, bx[r, k]["t"][1]), color=C_TS, lw=0.9, head=5)
+    ax.text(5.6, 1.3, t("$h$ = (1; 2,8; 1,4; 2,26): trùng với tính tuần tự",
+                        "$h$ = (1; 2.8; 1.4; 2.26): same as sequential"),
+            ha="center", fontsize=fs - 0.8, color=C_TS, fontweight="bold")
+    ax.text(5.8, 0.7, t("mũi tên cam: kết hợp với vị trí t − step\nô cam: đã gom đủ các phần tử đứng trước",
+                        "orange arrow: combine with position t − step\norange box: prefix complete"),
+            ha="center", va="center", fontsize=fs - 1.0, color="#555555")
+    # khung so sánh với chuỗi thật L = 400
+    ax.add_patch(FancyBboxPatch((10.3, 1.0), 5.4, 6.9, boxstyle="round,pad=0,rounding_size=0.15",
+                                linewidth=0.8, edgecolor="#BBBBBB", facecolor="#FAFAFA", zorder=0))
+    ax.text(13.0, 7.45, t("Tầng 10: L = 400\n(đệm lên 512)", "Layer 10: L = 400\n(padded to 512)"),
+            ha="center", va="center", fontsize=fs, fontweight="bold")
+    big = dict(ha="center", fontsize=fs + 9, fontweight="bold")
+    ax.text(11.75, 5.75, "399", color=C_GR, **big)
+    ax.text(14.25, 5.75, "9", color=C_TS, **big)
+    ax.text(11.75, 5.2, t("bước nối tiếp\n(tuần tự)", "serial steps\n(sequential)"), ha="center", va="top", fontsize=fs)
+    ax.text(14.25, 5.2, t("vòng\n(song song)", "rounds\n(parallel)"), ha="center", va="top", fontsize=fs)
+    ax.text(11.75, 2.95, "399", color=C_GR, ha="center", fontsize=fs + 5, fontweight="bold")
+    ax.text(14.25, 2.95, "4.097" if vi else "4,097", color=C_TS, ha="center", fontsize=fs + 5, fontweight="bold")
+    ax.text(13.0, 2.55, t("phép kết hợp mỗi chuỗi\n→ tổng công việc O(L log L),\nkhoảng 67 triệu phép mỗi ảnh",
+                          "combines per sequence\n→ total work O(L log L),\nabout 67 million per image"),
+            ha="center", va="top", fontsize=fs - 0.3)
+    save(fig, "a06_quet_song_song", st["lang"])
+
+
+def a07_che_do_tach_thanh_phan(st: dict) -> None:
+    """Slide: bốn chế độ của khối TSVMamba; thành phần bị bỏ vẽ nét đứt, màu xám."""
+    vi = st["lang"] == "vi"
+    t = (lambda a, b: a if vi else b)
+    fs = 7.6
+    fig, axes = plt.subplots(1, 4, figsize=SLIDE)
+    modes = [
+        (t("Đầy đủ", "Full"), "topology_shape_vmamba", (1, 1, 1), "1.811.201" if vi else "1,811,201"),
+        (t("Bỏ cổng", "No gate"), "shape_vmamba_no_guidance", (1, 1, 0), "1.745.409" if vi else "1,745,409"),
+        (t("Chỉ SS2D", "SS2D only"), "vmamba_only", (1, 0, 0), "1.071.873" if vi else "1,071,873"),
+        (t("Chỉ hình dạng", "Shape only"), "shape_only", (0, 1, 0), "1.331.969" if vi else "1,331,969"),
+    ]
+    off = dict(ec="#BBBBBB", fc="white", ls="--", color="#AAAAAA")
+    for ax, (ten, ma, (ss, sh, cg), ts) in zip(axes, modes):
+        ax.set_xlim(0, 4)
+        ax.set_ylim(0, 9)
+        ax.axis("off")
+        ax.text(2, 8.7, ten, ha="center", va="top", fontsize=fs + 2, fontweight="bold")
+        ax.text(2, 8.0, ma, ha="center", va="top", fontsize=fs - 1.6, family="monospace", color="#555555")
+        b = box(ax, 2, 7.0, 1.0, 0.6, "b", fs=fs)
+        kw_ss = dict(ec=C_TS, fc=F_TS) if ss else off
+        kw_sh = dict(ec=C_SH, fc=F_SH) if sh else off
+        kw_cg = dict(ec=C_SH, fc="white") if cg else off
+        bss = box(ax, 1.0, 5.6, 1.6, 0.8, "SS2D", fs=fs, **kw_ss)
+        bsh = box(ax, 3.0, 5.6, 1.6, 0.8, t("Hình dạng", "Shape"), fs=fs, **kw_sh)
+        bcg = box(ax, 2.0, 4.3, 1.6, 0.7, t("Cổng 1+G", "Gate 1+G"), fs=fs, **kw_cg)
+        fuse_on = ss and sh
+        bfu = box(ax, 2.0, 3.0, 1.6, 0.7, "fuse 1×1", fs=fs, **(dict() if fuse_on else off))
+        bff = box(ax, 2.0, 1.85, 1.6, 0.7, "FFN · γ", fs=fs)
+        for p, on in ((bss, ss), (bsh, sh)):
+            arrow(ax, b["b"], p["t"], color=C_ARROW if on else "#CCCCCC", ls="-" if on else "--", head=5)
+        if cg:
+            arrow(ax, bsh["b"], bcg["r"], color="#9A6A00", head=5)
+            arrow(ax, (bsh["b"][0] + 0.5, bsh["b"][1]), bfu["r"], cs="arc3,rad=-0.2", color="#9A6A00", head=5)
+            arrow(ax, bss["b"], bcg["l"], color=C_TS, head=5)
+            arrow(ax, bcg["b"], bfu["t"], head=5)
+        elif fuse_on:
+            arrow(ax, bss["b"], bfu["l"], cs="arc3,rad=0.25", head=5)
+            arrow(ax, bsh["b"], bfu["r"], cs="arc3,rad=-0.25", head=5)
+        else:
+            src = bss if ss else bsh
+            arrow(ax, src["b"], bff["t"], cs="arc3,rad=0.2" if ss else "arc3,rad=-0.2", head=5)
+        if fuse_on:
+            arrow(ax, bfu["b"], bff["t"], head=5)
+        ax.text(2, 0.95, t("Tham số tầng 10", "Layer-10 params"), ha="center", va="center", fontsize=fs - 0.8,
+                color="#555555")
+        ax.text(2, 0.4, ts, ha="center", va="center", fontsize=fs + 1.5, fontweight="bold",
+                color=C_TS if ma == "topology_shape_vmamba" else "#222222")
+    fig.subplots_adjust(wspace=0.08, left=0.01, right=0.99)
+    save(fig, "a07_che_do_tach_thanh_phan", st["lang"])
+
+
+def a08_uu_nhuoc_diem(st: dict) -> None:
+    """Slide: ưu và nhược điểm của mô hình đề xuất (nội dung mục 3.6), dạng thẻ."""
+    vi = st["lang"] == "vi"
+    t = (lambda a, b: a if vi else b)
+    fs = 8.0
+    fig, ax = plt.subplots(figsize=SLIDE)
+    ax.set_xlim(0, 16)
+    ax.set_ylim(0, 9)
+    ax.axis("off")
+    uu = [
+        t("Chỉ thay 1 tầng,\ngiao diện 512×20×20 giữ nguyên", "Only one layer changed,\n512×20×20 interface kept"),
+        t("Ngữ cảnh toàn cục có chọn lọc:\nquét 4 hướng", "Selective global context:\n4-direction scan"),
+        t("Kênh riêng cho thông tin hình dạng\n(nhân 1×5, 5×1 và cổng)", "Dedicated shape path\n(1×5, 5×1 kernels and gate)"),
+        t("Khởi đầu ổn định: γ = 0,001,\nkế thừa cv1, cv2, FFN từ C2PSA", "Stable start: γ = 0.001,\ninherits cv1, cv2, FFN"),
+        t("Chỉ cần PyTorch:\nchạy CPU/GPU, kết quả tất định", "PyTorch only:\nCPU/GPU, deterministic"),
+    ]
+    nh = [
+        t("Tham số +7,17%;\ncheckpoint FP32 lớn hơn", "Parameters +7.17%;\nlarger FP32 checkpoint"),
+        t("Độ trễ CPU khoảng 2,1 lần", "CPU latency about 2.1×"),
+        t("Huấn luyện khoảng 2,3 → 4,7 giờ\nmỗi lượt", "Training about 2.3 → 4.7 h\nper run"),
+        t("Quét O(L log L),\nnhiều tensor trung gian", "O(L log L) scan,\nmany intermediate tensors"),
+        t("Ở P5 (L = 400),\nlợi thế của SSM chưa thể hiện", "At P5 (L = 400),\nthe SSM advantage does not show"),
+    ]
+    for x0, tieu_de, ds, ec, fc, ky in ((0.3, t("Ưu điểm", "Strengths"), uu, C_NK, F_NK, "✓"),
+                                        (8.2, t("Hạn chế", "Limitations"), nh, C_TS, F_TS, "✗")):
+        ax.text(x0 + 3.75, 8.6, tieu_de, ha="center", va="top", fontsize=fs + 4, fontweight="bold", color=ec)
+        for k, s in enumerate(ds):
+            y = 7.0 - k * 1.45
+            ax.add_patch(FancyBboxPatch((x0, y - 0.55), 7.5, 1.1, boxstyle="round,pad=0,rounding_size=0.15",
+                                        linewidth=0.9, edgecolor=ec, facecolor=fc, zorder=1))
+            ax.text(x0 + 0.5, y, ky, ha="center", va="center", fontsize=fs + 6, color=ec, fontweight="bold")
+            ax.text(x0 + 1.0, y, s, ha="left", va="center", fontsize=fs)
+    save(fig, "a08_uu_nhuoc_diem", st["lang"])
+
+
 FIGS = {"a01": a01_kien_truc_tong_the, "a02": a02_khoi_c2tsvmamba, "a03": a03_quet_bon_huong, "a04": a04_ss2d,
-        "s01": s01_kien_truc_ung_dung}
+        "s01": s01_kien_truc_ung_dung, "a05": a05_nhanh_hinh_dang, "a06": a06_quet_song_song,
+        "a07": a07_che_do_tach_thanh_phan, "a08": a08_uu_nhuoc_diem}
 
 
 def main() -> None:

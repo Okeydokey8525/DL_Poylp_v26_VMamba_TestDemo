@@ -3,7 +3,7 @@
 Bộ hình được vẽ lại toàn bộ ngày 26/10/2026 từ CSV đã kiểm chứng. Hình cũ đã chuyển sang `99_luu_tru/hinh_cu/`.
 
 Thư mục (tổ chức lại 27/10/2026):
-- `chung/`: 14 hình không phụ thuộc nhóm seed (a01–a04, d01–d04, e02, e03, m01, q01, s01, t01).
+- `chung/`: các hình không phụ thuộc nhóm seed (a01–a08, d01–d04, e02, e03, k01, k02, m01, q01, s01, t01). a05–a08 là hình khổ 16:9 vẽ riêng cho slide bảo vệ (01/11/2026).
 - `ket_qua_20seed/`: 16 hình kết quả trên **seed 0–19**, **bộ dùng trong báo cáo** (chốt 28/10/2026).
 - `ket_qua_10seed/`: 16 hình kết quả trên seed 0–9, chỉ giữ để đối chiếu.
 - `chuong4/`: hình của Chương 4 do người viết chương cung cấp.
@@ -12,7 +12,7 @@ Trong mỗi thư mục trên:
 - `vi/`: bản tiếng Việt cho khóa luận, rộng 16 cm, dấu phẩy thập phân.
 - `en/`: bản tiếng Anh cho bài báo IEEE, rộng một cột 8,9 cm. Riêng `q01` rộng hai cột.
 - Mỗi hình có `.png` (300 dpi, chèn Word) và `.pdf` (vector, nộp tạp chí).
-- Script: `scripts/ve_hinh.py`. Chạy `python ve_hinh.py` để vẽ tất cả (kết quả dùng 20 seed, đọc `bang/`), `--seeds 10` để vẽ bộ 10 seed đối chiếu, `--chi r01 p01` để vẽ một số hình. Sơ đồ a01–a04 và s01: `scripts/ve_so_do.py`.
+- Script: `scripts/ve_hinh.py`. Chạy `python ve_hinh.py` để vẽ tất cả (kết quả dùng 20 seed, đọc `bang/`), `--seeds 10` để vẽ bộ 10 seed đối chiếu, `--chi r01 p01` để vẽ một số hình. Sơ đồ a01–a08 và s01: `scripts/ve_so_do.py`.
 - Quy cách:
   - phông mặc định của matplotlib;
   - màu Okabe–Ito: đối chứng `#0072B2`, TSVM `#D55E00`, PraNet `#009E73`, U-Net `#CC79A7`;
@@ -28,6 +28,10 @@ Số hình trong báo cáo (ví dụ Hình 6.3) sẽ được gán khi viết t�
 |---|---|---|---|---|
 | t01_bon_kieu_dau_ra | 2 | Hình 2.1: phân loại, hộp bao, mặt nạ ngữ nghĩa, mặt nạ thực thể trên một ảnh val có hai polyp | Lưới ảnh | Nhãn đa giác BG20 |
 | s01_kien_truc_ung_dung | 5 | Hình 5.2: kiến trúc PolypVision (Web, Mobile, FastAPI, hai mô hình) | Sơ đồ | Mã nguồn `Ung_Dung/polypweb` |
+| a05_nhanh_hinh_dang_cong | slide (Ch.3) | Nhân tích chập có hướng, luồng tính S và cổng 1 + G ∈ (1, 2) | Sơ đồ 16:9 | Mã `topology_shape_vmamba.py`, mục 3.3.3–3.3.4 |
+| a06_quet_song_song | slide (Ch.3) | Quét song song Hillis–Steele trên chuỗi L = 4; 399 bước so với 9 vòng, 4.097 phép kết hợp | Sơ đồ 16:9 | Bảng PL.9, mục 3.4 |
+| a07_che_do_tach_thanh_phan | slide (Ch.3/6) | Bốn chế độ của TSVMamba, thành phần bị bỏ vẽ nét đứt, kèm tham số tầng 10 | Sơ đồ 16:9 | Bảng 3.4, `bang/17_ablation_tung_seed.csv` |
+| a08_uu_nhuoc_diem | slide (Ch.3) | Ưu và hạn chế của mô hình đề xuất dạng thẻ | Thẻ chữ 16:9 | Mục 3.6 |
 | m01_tham_so_tang10 | 3 | Số tham số từng thành phần của C2TSVMamba, so với C2PSA | Thanh ngang | `bang/08_kien_truc_dung_lai.csv` |
 | d01_thanh_phan_bg20 | 4 | Số ảnh polyp và ảnh nền trong train/val | Cột chồng | Đếm trực tiếp nhãn BG20 |
 | d02_so_polyp_moi_anh | 4 | Phân bố số polyp mỗi ảnh | Cột kép | Đếm trực tiếp nhãn BG20 |
@@ -60,7 +64,7 @@ Số hình trong báo cáo (ví dụ Hình 6.3) sẽ được gán khi viết t�
 | k01_ablation_tung_seed | 6 | Tách thành phần: mask mAP50–95 từng seed (0–4) của 5 cấu hình; điểm, đường nối seed, vạch trung bình và ±1 SD cùng một trục (ghi vào `chung/`) | Điểm nối cặp | `bang/17_ablation_tung_seed.csv` |
 | k02_ablation_delta | 6 / slide | Δ của 3 biến thể so với TSVM đầy đủ, cột ± 1 SD và điểm từng seed (ghi vào `chung/`) | Cột + điểm | như trên |
 
-Tổng cộng 26 hình. Hai sơ đồ kiến trúc của chương 3 (toàn mô hình và khối TSVMamba) sẽ vẽ khi viết chương 3.
+Tổng cộng 30 hình (26 hình báo cáo và 4 hình slide a05–a08).
 
 ## Ghi chú khi dùng
 
