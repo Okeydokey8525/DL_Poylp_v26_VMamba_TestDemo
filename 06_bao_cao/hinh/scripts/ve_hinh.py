@@ -951,12 +951,16 @@ ABL = [  # (mã cấu hình trong bang/17_*, màu, nhãn vi, nhãn en)
 ]
 
 
+N_ABL = 5  # số seed ablation; main() đặt lại theo --ablation-seeds (10 -> bang/ablation_10seed/, hinh/ablation_10seed/)
+
+
 def _abl():
-    return pd.read_csv(BANG / "17_ablation_tung_seed.csv", encoding="utf-8-sig")
+    b = BANG if N_ABL == 5 else BANG / f"ablation_{N_ABL}seed"
+    return pd.read_csv(b / "17_ablation_tung_seed.csv", encoding="utf-8-sig")
 
 
 def k01_ablation_tung_seed(lang, st):
-    """Mask mAP@50–95 từng seed (0–4) của 5 cấu hình. Điểm, đường nối cùng seed, vạch trung bình và thanh ±1 SD
+    """Mask mAP@50–95 từng seed (0–4, hoặc 0–9 với --ablation-seeds 10) của 5 cấu hình. Điểm, đường nối cùng seed, vạch trung bình và thanh ±1 SD
     đều nằm trên cùng một trục dọc của mỗi cấu hình (không dịch ngang)."""
     df = _abl()
     fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.55))
@@ -1038,11 +1042,22 @@ THEO_SEED = {"h01", "h01b", "h02", "h03", "h04", "r01", "r02", "r03", "r04", "r0
 
 
 def main() -> None:
-    global BANG_SEED, N_SEED, DICH
+    global BANG_SEED, N_SEED, DICH, N_ABL
     ap = argparse.ArgumentParser()
     ap.add_argument("--chi", nargs="*", help="chỉ vẽ các hình có mã này, ví dụ h01 h03")
     ap.add_argument("--seeds", type=int, default=20, help="số seed (0..N-1) cho hình kết quả; mặc định 20")
+    ap.add_argument("--ablation-seeds", type=int, default=5, choices=(5, 10),
+                    help="số seed cho k01/k02; 10 -> chỉ vẽ k01 k02 vào hinh/ablation_10seed/")
     args = ap.parse_args()
+    N_ABL = args.ablation_seeds
+    if N_ABL != 5:
+        for lang, st in STYLE.items():
+            setup(st)
+            for k in ("k01", "k02"):
+                DICH = OUT / f"ablation_{N_ABL}seed"
+                FIGS[k](lang, st)
+                print(f"{lang}: {k} -> {DICH.name}")
+        return
     N_SEED = args.seeds
     BANG_SEED = BANG if N_SEED == 20 else BANG / f"{N_SEED}seed"
     assert (BANG_SEED / "02_ket_qua_tung_seed.csv").is_file(), f"Chưa có bảng {BANG_SEED}; chạy tinh_lai_so_lieu.py --seeds {N_SEED}"

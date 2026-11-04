@@ -6,7 +6,9 @@ Thư mục (tổ chức lại 27/10/2026):
 - `chung/`: các hình không phụ thuộc nhóm seed (a01–a08, d01–d04, e02, e03, k01, k02, m01, q01, s01, t01). a05–a08 là hình khổ 16:9 vẽ riêng cho slide bảo vệ (01/11/2026).
 - `ket_qua_20seed/`: 16 hình kết quả trên **seed 0–19**, **bộ dùng trong báo cáo** (chốt 28/10/2026).
 - `ket_qua_10seed/`: 16 hình kết quả trên seed 0–9, chỉ giữ để đối chiếu.
+- `ablation_10seed/`: k01, k02 vẽ trên ablation seed 0–9 (04/11/2026), đọc `bang/ablation_10seed/`; bản 5 seed vẫn ở `chung/`. Vẽ lại: `python ve_hinh.py --ablation-seeds 10`.
 - `chuong4/`: hình của Chương 4 do người viết chương cung cấp.
+- `chuong2/`: 4 hình lấy từ bài báo gốc cho Chương 2 bản 70 trang (03/11/2026), do người viết Ch.2 cung cấp, ghi nguồn dưới hình: `yolact_mat_na_mau` [YOLACT], `yolo26_kien_truc` và `yolo26_cac_khoi` [YOLO26], `vmamba_ss2d` [VMamba]. Không có bản `vi/`, `en/`.
 
 Trong mỗi thư mục trên:
 - `vi/`: bản tiếng Việt cho khóa luận, rộng 16 cm, dấu phẩy thập phân.
