@@ -6,14 +6,15 @@ tách hai nguyên nhân báo nhầm trên PolypGen: ảnh chưa thấy (cùng v�
 
 Giao thức giống hệt 00_tai_lieu_tong_quan/scripts/danh_gia_pixel.py (dùng lại hàm của script đó):
 - YOLO: imgsz 640, conf 0,25, iou 0,7, retina_masks=True, half=False; best.pt của từng seed.
-- PraNet/U-Net: resize 352×352, ngưỡng 0,5.
+- PraNet/U-Net: kéo về 352×352 (bản `pranet`/`unet`) hoặc 640×640 (bản `pranet640`/`unet640`), ngưỡng 0,5.
 - Một ảnh bị báo nhầm nếu có ít nhất 1 điểm ảnh bị dự đoán là polyp (như bg_fp_image_rate).
 
 Kiểm tra gần trùng: Kvasir v2 có nhiều khung hình liên tiếp từ cùng video, nên với mỗi ảnh trong 800 ảnh,
 tính tương quan ảnh xám 64×64 (sau khi cắt viền đen) lớn nhất với 160 ảnh nền huấn luyện; >= 0,95 coi là gần trùng
 (cùng ngưỡng với kiem_tra_trung_polypgen.py). Kết quả báo cáo cho cả 800 ảnh và riêng nhóm không gần trùng.
 
-Chỉ đọc 01_du_lieu/, 03_, 05_; chỉ ghi vào ../bang/nen_cecum/ và ../bang/20seed/06–07_*.csv.
+Chỉ đọc 01_du_lieu/, 03_, 05_; chỉ ghi vào ../bang/nen_cecum/ và ../bang/20seed/06–07_*.csv
+(hoặc <--out>/06–07_*.csv khi chạy bản riêng).
 
 Chạy (cần GPU):
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_nen_cecum.py --kiem-tra         # kiểm tra đủ GPU/dữ liệu/checkpoint
@@ -21,6 +22,12 @@ Chạy (cần GPU):
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_nen_cecum.py --seeds 0          # chạy thử
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_nen_cecum.py                    # 4 mô hình × 20 seed
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_nen_cecum.py --chi-tong-hop
+    # PraNet/U-Net 640 (nhận xét II.4): tổng hợp kèm baseline/tsvm đã có, ghi riêng, không đè bang/20seed/06–07
+    C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_nen_cecum.py --models pranet640 unet640 \\
+        --out ../../00_tai_lieu_tong_quan/bang/pixel_640/nen_cecum
+
+Phần tổng hợp chỉ lấy các mô hình được chọn (mặc định bộ chính: baseline, tsvm, pranet, unet), nên lượt 640
+trong tung_luot/ không lẫn vào bang/20seed/06–07.
 """
 from __future__ import annotations
 
@@ -130,10 +137,13 @@ def run(args, con_lai):
     print(f"Tổng thời gian: {(time.time() - t0) / 60:.1f} phút")
 
 
-def tong_hop(dup):
+def tong_hop(dup, models, out_root=None):
+    """Tổng hợp các mô hình `models`. out_root=None: bộ chính, ghi bang/20seed/06–07; ngược lại ghi vào out_root."""
     files = sorted(LUOT.glob("cecum800_*.csv"))
     assert files, "Chưa có kết quả"
     df = pd.concat([pd.read_csv(f, encoding="utf-8-sig") for f in files], ignore_index=True)
+    df = df[df.model.isin(models)]
+    assert set(df.model) == set(models), f"Thiếu kết quả của: {sorted(set(models) - set(df.model))}"
     df = df.merge(dup[["image", "gan_trung"]], on="image", how="left")
     assert df.gan_trung.notna().all()
     rows = []
@@ -169,7 +179,13 @@ def tong_hop(dup):
                            "wilcoxon_p": stats.wilcoxon(t.loc[c, k], o.loc[c, k]).pvalue if ok else np.nan,
                            "tsvm_higher": int((d > 0).sum())})
     st = pd.DataFrame(st)
-    if tag == "20seed":
+    if out_root is not None:
+        out_root.mkdir(parents=True, exist_ok=True)
+        pre = "" if tag == "20seed" else f"{tag}_"
+        sd.to_csv(out_root / f"{pre}06_nen_cecum_tung_seed.csv", index=False, encoding="utf-8-sig")
+        st.to_csv(out_root / f"{pre}07_nen_cecum_thong_ke.csv", index=False, encoding="utf-8-sig")
+        print("Đã ghi:", out_root)
+    elif tag == "20seed":
         sd.to_csv(OUT20 / "06_nen_cecum_tung_seed.csv", index=False, encoding="utf-8-sig")
         st.to_csv(OUT20 / "07_nen_cecum_thong_ke.csv", index=False, encoding="utf-8-sig")
     else:
@@ -196,7 +212,8 @@ def kiem_tra(args):
         print(f"Ảnh cecum chưa dùng: {len(con_lai)}")
     except Exception as e:  # noqa: BLE001
         thieu.append(f"dữ liệu normal-cecum hoặc danh sách BG20 ({e!r})")
-    for p in (dg.FORK, dg.NB / "pranet-new.ipynb", dg.NB / "unet-new.ipynb"):
+    for p in (dg.FORK, dg.NB / "pranet-new.ipynb", dg.NB / "unet-new.ipynb",
+              dg.NB_640 / "pranet-new.ipynb", dg.NB_640 / "unet-new.ipynb"):
         if not p.exists():
             thieu.append(str(p))
     n_ck = 0
@@ -236,11 +253,13 @@ def doi_chieu():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--models", nargs="*", default=list(dg.MODELS), choices=list(dg.MODELS))
+    ap.add_argument("--models", nargs="*", default=dg.DEFAULT_MODELS, choices=list(dg.MODELS))
     ap.add_argument("--seeds", nargs="*", type=int, default=list(range(20)))
     ap.add_argument("--chi-tong-hop", action="store_true")
     ap.add_argument("--kiem-tra", action="store_true", help="chỉ kiểm tra GPU, dữ liệu, checkpoint")
     ap.add_argument("--doi-chieu", action="store_true", help="đối chiếu môi trường trên 40 ảnh nền kiểm định")
+    ap.add_argument("--out", type=Path, default=None,
+                    help="thư mục ghi bảng tổng hợp bản riêng (mặc định: bang/20seed/06–07, chỉ bộ chính)")
     args = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -255,7 +274,11 @@ def main():
     dup = gan_trung(con_lai, tr)
     if not args.chi_tong_hop:
         run(args, con_lai)
-    tong_hop(dup)
+    if args.out is None:
+        models = dg.DEFAULT_MODELS   # bộ chính của báo cáo, giữ nguyên bang/20seed/06–07
+    else:                            # bản riêng: mô hình đã chọn + baseline, tsvm để so sánh ghép cặp
+        models = list(dict.fromkeys(["baseline", "tsvm", *args.models]))
+    tong_hop(dup, models, args.out)
 
 
 if __name__ == "__main__":

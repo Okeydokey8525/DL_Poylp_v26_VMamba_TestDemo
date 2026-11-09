@@ -1,0 +1,61 @@
+GPU: NVIDIA GeForce RTX 5050 Laptop GPU | torch 2.13.0+cu130
+Đã nạp 800 ảnh
+  pranet640 seed  0:   21.4s
+  pranet640 seed  1:   19.0s
+  pranet640 seed  2:   18.7s
+  pranet640 seed  3:   18.8s
+  pranet640 seed  4:   18.7s
+  pranet640 seed  5:   18.6s
+  pranet640 seed  6:   20.2s
+  pranet640 seed  7:   23.9s
+  pranet640 seed  8:   18.8s
+  pranet640 seed  9:   18.7s
+  pranet640 seed 10:   19.1s
+  pranet640 seed 11:   19.6s
+  pranet640 seed 12:   18.7s
+  pranet640 seed 13:   18.7s
+  pranet640 seed 14:   18.6s
+  pranet640 seed 15:   18.8s
+  pranet640 seed 16:   19.1s
+  pranet640 seed 17:   18.8s
+  pranet640 seed 18:   18.7s
+  pranet640 seed 19:   18.8s
+  unet640  seed  0:   22.8s
+  unet640  seed  1:   22.7s
+  unet640  seed  2:   22.6s
+  unet640  seed  3:   23.0s
+  unet640  seed  4:   24.0s
+  unet640  seed  5:   23.0s
+  unet640  seed  6:   22.4s
+  unet640  seed  7:   22.4s
+  unet640  seed  8:   22.4s
+  unet640  seed  9:   23.0s
+  unet640  seed 10:   24.9s
+  unet640  seed 11:   22.6s
+  unet640  seed 12:   22.5s
+  unet640  seed 13:   22.4s
+  unet640  seed 14:   22.4s
+  unet640  seed 15:   22.5s
+  unet640  seed 16:   22.4s
+  unet640  seed 17:   22.4s
+  unet640  seed 18:   22.4s
+  unet640  seed 19:   22.8s
+Tổng thời gian: 14.1 phút
+Số seed đã có: {'baseline': 20, 'pranet640': 20, 'tsvm': 20, 'unet640': 20}
+Đã ghi: 00_tai_lieu_tong_quan\bang\pixel_640\nen_cecum
+Gần trùng với 160 ảnh nền train (corr64 >= 0.95): 0/800
+            model                        metric  n_seeds    mean     sd    min    max  paired_t_p  wilcoxon_p  tsvm_higher
+         baseline                 fp_image_rate       20  0.0131 0.0048 0.0037 0.0200         NaN         NaN          NaN
+         baseline fp_image_rate_khong_gan_trung       20  0.0131 0.0048 0.0037 0.0200         NaN         NaN          NaN
+        pranet640                 fp_image_rate       20  0.0385 0.0095 0.0225 0.0550         NaN         NaN          NaN
+        pranet640 fp_image_rate_khong_gan_trung       20  0.0385 0.0095 0.0225 0.0550         NaN         NaN          NaN
+             tsvm                 fp_image_rate       20  0.0136 0.0048 0.0037 0.0200         NaN         NaN          NaN
+             tsvm fp_image_rate_khong_gan_trung       20  0.0136 0.0048 0.0037 0.0200         NaN         NaN          NaN
+          unet640                 fp_image_rate       20  0.6107 0.0624 0.5112 0.7262         NaN         NaN          NaN
+          unet640 fp_image_rate_khong_gan_trung       20  0.6107 0.0624 0.5112 0.7262         NaN         NaN          NaN
+ tsvm_vs_baseline                 fp_image_rate       20  0.0005 0.0073    NaN    NaN      0.7618      0.8105       9.0000
+ tsvm_vs_baseline fp_image_rate_khong_gan_trung       20  0.0005 0.0073    NaN    NaN      0.7618      0.8105       9.0000
+tsvm_vs_pranet640                 fp_image_rate       20 -0.0249 0.0094    NaN    NaN      0.0000      0.0001       0.0000
+tsvm_vs_pranet640 fp_image_rate_khong_gan_trung       20 -0.0249 0.0094    NaN    NaN      0.0000      0.0001       0.0000
+  tsvm_vs_unet640                 fp_image_rate       20 -0.5971 0.0615    NaN    NaN      0.0000      0.0001       0.0000
+  tsvm_vs_unet640 fp_image_rate_khong_gan_trung       20 -0.5971 0.0615    NaN    NaN      0.0000      0.0001       0.0000
