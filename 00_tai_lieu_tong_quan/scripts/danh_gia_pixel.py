@@ -1,17 +1,24 @@
 """Đánh giá theo pixel (Dice, IoU, Precision, Recall) cho 4 mô hình × 20 seed trên 160 ảnh validation BG20.
 
 Mô hình: YOLO26s-seg (đối chứng), YOLO26s-seg + TSVM FP32, PraNet (biến thể ResNet-50), U-Net.
-Chỉ suy luận, không huấn luyện, không sửa checkpoint. Kết quả ghi vào ../bang/10–12_*.csv.
+PraNet và U-Net có hai bản: `pranet`/`unet` (ảnh 352, bộ cũ) và `pranet640`/`unet640` (ảnh 640, cùng tăng
+cường với YOLO, theo nhận xét phản biện II.4). Bản 352 giữ nguyên để số cũ vẫn tái lập được.
+Chỉ suy luận, không huấn luyện, không sửa checkpoint. Kết quả ghi vào ../bang/10–12_*.csv (hoặc --out).
 
 Giao thức (đã thống nhất với chủ dự án):
 - Nhãn chuẩn chính: mặt nạ vẽ từ polygon YOLO ở độ phân giải gốc (cv2.fillPoly, giống notebook PraNet/U-Net).
   Nhãn chuẩn phụ: mặt nạ gốc của Kvasir-SEG (ngưỡng > 127), chỉ có cho 120 ảnh polyp.
 - Mọi dự đoán được đưa về kích thước ảnh gốc trước khi so sánh.
-- PraNet/U-Net: tiền xử lý đúng như notebook (resize 352×352, chuẩn hóa ImageNet với PraNet, chia 255 với U-Net),
-  lấy nhánh lateral_map_s2 của PraNet, phóng song tuyến về kích thước gốc, ngưỡng xác suất 0,5.
+- PraNet/U-Net: tiền xử lý đúng như notebook huấn luyện (kéo thẳng về hình vuông 352×352 hoặc 640×640, không
+  letterbox; chuẩn hóa ImageNet với PraNet, chia 255 với U-Net), lấy đầu ra thứ nhất của PraNet (nhánh
+  lateral_map_s2, đúng đầu ra notebook dùng để chọn checkpoint), phóng song tuyến về kích thước gốc, ngưỡng 0,5.
 - YOLO: dự đoán imgsz 640, conf 0,25, iou 0,7, retina_masks=True, half=False; gộp mọi mặt nạ của ảnh thành một.
 - Chỉ số tính trên 120 ảnh polyp; 40 ảnh nền tính tỉ lệ ảnh có ít nhất một pixel bị dự đoán là polyp.
-- Kiến trúc PraNet và U-Net được nạp trực tiếp từ notebook huấn luyện trong 99_luu_tru/log_kaggle_cu/.
+- Kiến trúc được nạp trực tiếp từ notebook huấn luyện: bản 352 từ 99_luu_tru/log_kaggle_cu/ (cell 1), bản 640 từ
+  02_ma_nguon/notebook_kaggle/ (cell 2). Checkpoint nạp bằng load_state_dict(strict=True).
+
+Bản 640 (II.4), ghi riêng để không đè bảng 10–12 đang dùng trong báo cáo:
+    ... danh_gia_pixel.py --models baseline tsvm pranet640 unet640 --out ../bang/pixel_640
 
 Chạy (cần GPU):  C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_pixel.py [--seeds 0 1] [--models pranet unet]
 Chỉ tổng hợp lại từ bang/10_pixel_tung_anh.csv cho một nhóm seed (không suy luận, không cần GPU):
@@ -45,7 +52,8 @@ RAW_MASKS = REPO / "01_du_lieu" / "tao_BG20" / "Kvasir-SEG" / "masks"
 FORK = REPO / "02_ma_nguon" / "ultralytics_TSVM_FP32"
 RUNS = REPO / "03_ket_qua_huan_luyen"
 OTHER = REPO / "05_so_sanh_mo_hinh_khac"
-NB = REPO / "99_luu_tru" / "log_kaggle_cu"
+NB = REPO / "99_luu_tru" / "log_kaggle_cu"          # notebook PraNet/U-Net 352
+NB_640 = REPO / "02_ma_nguon" / "notebook_kaggle"   # notebook PraNet/U-Net 640
 QUAL = REPO / "06_bao_cao" / "hinh" / "du_lieu_dinh_tinh"
 
 MODELS = {
@@ -53,7 +61,11 @@ MODELS = {
     "tsvm": ("YOLO26s-seg + TSVM", lambda s: RUNS / "TSVM_FP32" / f"Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s{s}_w2" / "weights" / "best.pt"),
     "pranet": ("PraNet (ResNet-50)", lambda s: OTHER / "PraNet" / f"pranet_best_s{s}.pth"),
     "unet": ("U-Net", lambda s: OTHER / "UNet" / f"best_unet_s{s}.pth"),
+    "pranet640": ("PraNet (ResNet-50) 640", lambda s: OTHER / "PraNet_640" / f"PraNet_640_aug_s{s}" / f"pranet_best_s{s}.pth"),
+    "unet640": ("U-Net 640", lambda s: OTHER / "UNet_640" / f"UNet_640_aug_s{s}" / f"best_unet_s{s}.pth"),
 }
+DEFAULT_MODELS = ["baseline", "tsvm", "pranet", "unet"]  # bộ chính của bảng 10–12; bản 640 phải ghi rõ --models
+SEMANTIC_SIZE = {"pranet": 352, "unet": 352, "pranet640": 640, "unet640": 640}  # cạnh ảnh vuông đưa vào mạng
 MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
 STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
@@ -87,15 +99,23 @@ def load_val():
 
 # ------------------------------------------------------------------ mô hình
 def notebook_classes():
+    """Hàm dựng mạng cho từng khóa, lấy đúng mã lớp trong notebook huấn luyện của bản đó."""
     out = {}
-    for key, f, cut in [("pranet", "pranet-new.ipynb", "# 5. HÀM LOSS"), ("unet", "unet-new.ipynb", "# 4. HÀM LOSS")]:
-        nb = json.loads((NB / f).read_text(encoding="utf-8"))
-        code = "".join(nb["cells"][1]["source"]).split(cut)[0]
+    for key, folder, f, cell, cut in [
+        ("pranet", NB, "pranet-new.ipynb", 1, "# 5. HÀM LOSS"),
+        ("unet", NB, "unet-new.ipynb", 1, "# 4. HÀM LOSS"),
+        ("pranet640", NB_640, "pranet-new.ipynb", 2, "# 5. HÀM LOSS"),
+        ("unet640", NB_640, "unet-new.ipynb", 2, "# 4. HÀM LOSS"),
+    ]:
+        nb = json.loads((folder / f).read_text(encoding="utf-8"))
+        code = "".join(nb["cells"][cell]["source"])
+        assert cut in code, (folder / f, cell, cut)
+        code = code.split(cut)[0]
         code = re.sub(r"(?s)# 1\. SIÊU THAM SỐ.*?# 3\.", "# 3.", code)  # bỏ phần seed/thiết bị của huấn luyện
         code = code.replace("weights=models.ResNet50_Weights.DEFAULT", "weights=None")  # trọng số nạp từ .pth
         ns: dict = {}
         exec(code, ns)
-        out[key] = ns["PraNet"] if key == "pranet" else (lambda ns=ns: ns["UNet"](3, 1))
+        out[key] = ns["PraNet"] if key.startswith("pranet") else (lambda ns=ns: ns["UNet"](3, 1))
     return out
 
 
@@ -128,8 +148,9 @@ def predict_semantic(net, items, kind, dev):
         for it in items:
             h, w = it["gt"].shape
             rgb = cv2.cvtColor(it["bgr"], cv2.COLOR_BGR2RGB)
-            x = cv2.resize(rgb, (352, 352), interpolation=cv2.INTER_LINEAR).astype(np.float32) / 255.0
-            if kind == "pranet":
+            size = SEMANTIC_SIZE[kind]
+            x = cv2.resize(rgb, (size, size), interpolation=cv2.INTER_LINEAR).astype(np.float32) / 255.0
+            if kind.startswith("pranet"):
                 x = (x - MEAN) / STD
             t = torch.from_numpy(x).permute(2, 0, 1)[None].to(dev)
             out = net(t)
@@ -176,7 +197,7 @@ def per_image_metrics(tp, fp, fn):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--seeds", nargs="*", type=int, default=list(range(20)))
-    ap.add_argument("--models", nargs="*", default=list(MODELS))
+    ap.add_argument("--models", nargs="*", default=DEFAULT_MODELS, choices=list(MODELS))
     ap.add_argument("--tag", default="", help="hậu tố tên file kết quả (dùng khi chạy thử)")
     ap.add_argument("--tu-bang", action="store_true", help="không suy luận; lọc bang/10_pixel_tung_anh.csv theo --seeds rồi tổng hợp")
     ap.add_argument("--out", type=Path, default=OUT, help="thư mục ghi 10–12_*.csv")
@@ -200,7 +221,9 @@ def main():
     import ultralytics
     print("ultralytics:", ultralytics.__version__, ultralytics.__file__)
     nbc = notebook_classes()
-    QUAL.mkdir(parents=True, exist_ok=True)
+    # Mặt nạ seed 0 cho hình định tính: ghi vào QUAL khi chạy bộ chính, vào <out>/du_lieu_dinh_tinh khi --out khác.
+    qual = QUAL if args.out.resolve() == OUT.resolve() else args.out / "du_lieu_dinh_tinh"
+    qual.mkdir(parents=True, exist_ok=True)
 
     rows = []
     t0 = time.time()
@@ -228,7 +251,7 @@ def main():
                         row.update(raw_tp=rtp, raw_fp=rfp, raw_fn=rfn)
                     rows.append(row)
                 if s == 0:   # lưu mặt nạ seed 0 cho hình định tính
-                    np.savez_compressed(QUAL / f"pred_seed0_{key}.npz",
+                    np.savez_compressed(qual / f"pred_seed0_{key}.npz",
                                         **{it["name"]: np.packbits(pr) for it, pr in zip(items, preds)},
                                         **{f"__shape__{it['name']}": np.array(pr.shape) for it, pr in zip(items, preds)})
                 print(f"  {key:8s} seed {s:2d}: {time.time() - t1:5.1f}s")

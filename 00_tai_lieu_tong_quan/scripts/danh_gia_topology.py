@@ -1,7 +1,8 @@
 """Chỉ số topology (lỗi Betti) cho 4 mô hình × 20 seed trên 160 ảnh validation BG20.
 
 Dùng lại đúng giao thức suy luận của danh_gia_pixel.py (nhãn polygon ở độ phân giải gốc; YOLO imgsz 640,
-conf 0,25, iou 0,7, retina_masks; PraNet/U-Net resize 352, ngưỡng 0,5). Chỉ suy luận, không sửa checkpoint.
+conf 0,25, iou 0,7, retina_masks; PraNet/U-Net kéo về 352 hoặc 640 theo bản, ngưỡng 0,5). Chỉ suy luận,
+không sửa checkpoint.
 
 Với mỗi ảnh, đếm trên mặt nạ dự đoán và mặt nạ nhãn:
 - b0: số thành phần liên thông của vùng polyp (8-liên thông) = số "mảnh";
@@ -22,6 +23,8 @@ Kết quả: ../bang/13_topology_tung_anh.csv, 14_topology_tung_seed.csv, 15_top
 
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_topology.py                 # 4 mô hình × 20 seed (cần GPU)
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_topology.py --tu-bang       # chỉ tổng hợp lại từ bảng 13
+    # Bản 640 (nhận xét II.4), ghi riêng, không đè bảng 13–15 của báo cáo:
+    C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_topology.py --models baseline tsvm pranet640 unet640 --out ../bang/pixel_640
 """
 from __future__ import annotations
 
@@ -102,14 +105,15 @@ def tong_hop(df: pd.DataFrame, out: Path) -> None:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--seeds", nargs="*", type=int, default=list(range(20)))
-    ap.add_argument("--models", nargs="*", default=list(dg.MODELS))
-    ap.add_argument("--tu-bang", action="store_true", help="không suy luận; tổng hợp lại từ bang/13_topology_tung_anh.csv")
+    ap.add_argument("--models", nargs="*", default=dg.DEFAULT_MODELS, choices=list(dg.MODELS))
+    ap.add_argument("--tu-bang", action="store_true", help="không suy luận; tổng hợp lại từ <out>/13_topology_tung_anh.csv")
+    ap.add_argument("--out", type=Path, default=dg.OUT, help="thư mục ghi 13–15_*.csv (mặc định ../bang)")
     args = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
 
     if args.tu_bang:
-        df = pd.read_csv(dg.OUT / "13_topology_tung_anh.csv", encoding="utf-8-sig")
+        df = pd.read_csv(args.out / "13_topology_tung_anh.csv", encoding="utf-8-sig")
     else:
         assert torch.cuda.is_available(), "Cần GPU (chạy bằng C:\\venv_kl_gpu\\Scripts\\python.exe)"
         dev = "cuda:0"
@@ -144,8 +148,9 @@ def main():
         print(f"Tổng thời gian suy luận: {(time.time() - t0) / 60:.1f} phút")
         df = pd.DataFrame(rows)
 
-    tong_hop(df, dg.OUT)
-    tong_hop(df[df.seed < 10], dg.OUT / "10seed")
+    tong_hop(df, args.out)
+    if args.out.resolve() == dg.OUT.resolve():   # bản 10 seed chỉ để đối chiếu với bộ chính
+        tong_hop(df[df.seed < 10], dg.OUT / "10seed")
 
 
 if __name__ == "__main__":
