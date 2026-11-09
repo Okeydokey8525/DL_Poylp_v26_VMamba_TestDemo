@@ -1,0 +1,5 @@
+﻿nhan,thiet_bi,mo_hinh,so_yeu_cau,client_ms_trung_vi,client_ms_p95,client_ms_tb,decode_ms_trung_vi,decode_ms_p95,decode_ms_tb,infer_ms_trung_vi,infer_ms_p95,infer_ms_tb,render_ms_trung_vi,render_ms_p95,render_ms_tb,total_ms_trung_vi,total_ms_p95,total_ms_tb,ti_le_client_tsvm_tren_goc,may,ngay_do
+cpu,cpu,YOLO26s-seg,160,198.94,243.53,200.83,2.7,5.89,3.41,163.95,195.55,166.29,15.5,23.67,15.19,183.22,224.59,186.08,,"AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD | Windows 11",2026-11-09 06:57
+cpu,cpu,YOLO26s-TSVM-FP32-seg,160,422.14,466.52,424.66,2.62,5.35,3.29,388.29,422.89,388.63,15.5,20.93,14.6,408.35,449.99,407.7,2.122,"AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD | Windows 11",2026-11-09 06:57
+gpu,cuda:0,YOLO26s-seg,160,45.79,71.55,46.11,1.68,3.33,2.03,17.36,31.49,20.2,3.98,7.17,4.87,24.14,49.36,28.45,,"AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD | Windows 11",2026-11-09 07:05
+gpu,cuda:0,YOLO26s-TSVM-FP32-seg,160,49.52,63.74,51.76,1.65,3.47,2.05,26.9,30.22,27.26,4.09,5.36,4.13,33.8,37.7,34.58,1.081,"AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD | Windows 11",2026-11-09 07:05
