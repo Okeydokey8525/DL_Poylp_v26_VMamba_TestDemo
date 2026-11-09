@@ -7,6 +7,8 @@ Thư mục (tổ chức lại 27/10/2026):
 - `ket_qua_20seed/`: 16 hình kết quả trên **seed 0–19**, **bộ dùng trong báo cáo** (chốt 28/10/2026).
 - `ket_qua_10seed/`: 16 hình kết quả trên seed 0–9, chỉ giữ để đối chiếu.
 - `ablation_10seed/`: k01, k02 vẽ trên ablation seed 0–9 (04/11/2026), đọc `bang/ablation_10seed/`; bản 5 seed vẫn ở `chung/`. Vẽ lại: `python ve_hinh.py --ablation-seeds 10`.
+- `ablation_20seed/` (09/11/2026): k01, k02 trên ablation seed 0–19 (`bang/ablation_20seed/17_*`) và k03 (C2PSA mở rộng, `bang/ablation_20seed/19_*`). Vẽ lại: `python ve_hinh.py --ablation-seeds 20`.
+- `ket_qua_20seed_640/` (09/11/2026, nhận xét phản biện II.4): 11 hình có 4 mô hình (p01–p05, q01, o01, o02, x01–x03), PraNet/U-Net dùng **bản ảnh 640** (đọc `bang/pixel_640/`). Nhãn trên hình vẫn ghi "PraNet (ResNet-50)", "U-Net"; ghi "ảnh 640×640" ở chú thích hình. Bản 352 cũ vẫn ở `ket_qua_20seed/` để đối chiếu. Vẽ lại: `python ve_hinh.py --ban-640`.
 - `chuong4/`: hình của Chương 4 do người viết chương cung cấp.
 - `chuong2/`: 4 hình lấy từ bài báo gốc cho Chương 2 bản 70 trang (03/11/2026), do người viết Ch.2 cung cấp, ghi nguồn dưới hình: `yolact_mat_na_mau` [YOLACT], `yolo26_kien_truc` và `yolo26_cac_khoi` [YOLO26], `vmamba_ss2d` [VMamba]. Không có bản `vi/`, `en/`.
 
@@ -66,7 +68,11 @@ Số hình trong báo cáo (ví dụ Hình 6.3) sẽ được gán khi viết t�
 | k01_ablation_tung_seed | 6 | Tách thành phần: mask mAP50–95 từng seed (0–4) của 5 cấu hình; điểm, đường nối seed, vạch trung bình và ±1 SD cùng một trục (ghi vào `chung/`) | Điểm nối cặp | `bang/17_ablation_tung_seed.csv` |
 | k02_ablation_delta | 6 / slide | Δ của 3 biến thể so với TSVM đầy đủ, cột ± 1 SD và điểm từng seed (ghi vào `chung/`) | Cột + điểm | như trên |
 
-Tổng cộng 30 hình (26 hình báo cáo và 4 hình slide a05–a08).
+| p04_bao_nham_cecum | 6 | Tỉ lệ 800 ảnh normal-cecum chưa dùng bị báo nhầm, 4 mô hình | Cột | `08_du_lieu_thuc_te/bang/20seed/06_nen_cecum_tung_seed.csv` (bản 640: `bang/pixel_640/nen_cecum/06_*`) |
+| p05_loi_cap_anh | 6 | Lỗi theo ảnh trên 160 ảnh val: ảnh polyp bị bỏ sót cả ảnh (FN/120), ảnh nền bị báo nhầm (FP/40) | Cột nhóm | `bang/20_ma_tran_anh_tung_seed.csv` (bản 640: `bang/pixel_640/20_*`), script `tinh_ma_tran_anh.py` |
+| k03_c2psa_rong | 6 / slide | Đối chứng cùng cỡ tham số: mAP50–95 từng seed (0–19) của đối chứng, C2PSA mở rộng, TSVM; điểm nối cặp ± 1 SD (ghi vào `ablation_20seed/`) | Điểm nối cặp | `bang/ablation_20seed/19_c2psa_rong_tung_seed.csv`, script `tinh_c2psa_rong.py` |
+
+Tổng cộng 33 hình (29 hình báo cáo và 4 hình slide a05–a08).
 
 ## Ghi chú khi dùng
 
