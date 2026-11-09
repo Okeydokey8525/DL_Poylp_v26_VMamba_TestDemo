@@ -72,23 +72,37 @@ Nếu thiếu thì chép lại từ hai đường dẫn trên và đổi tên ch
 
 ### Bước 1: chạy AI service (cửa sổ PowerShell thứ nhất)
 
-Lần đầu, tạo môi trường và cài thư viện:
+Có hai môi trường Python, chọn một:
+
+| Môi trường | Đường dẫn | Chạy trên |
+|---|---|---|
+| **GPU (khuyến nghị, máy này đã cài sẵn)** | `C:\venv_polyp_ai` | GPU NVIDIA (PyTorch 2.13 + CUDA 13.0) |
+| CPU | `ai-service\.venv` | CPU (PyTorch 2.6 bản CPU) |
+
+Môi trường GPU phải đặt ở đường dẫn ngắn `C:\venv_polyp_ai`: gói PyTorch CUDA có tên file rất dài, cài vào `ai-service\.venv` sẽ vượt giới hạn 260 ký tự của Windows và báo lỗi `WinError 206`.
+
+Lần đầu trên máy khác, tạo môi trường GPU (cần Python 3.12):
 
 ```powershell
 cd "..\Ung_Dung\polypweb\polypweb\ai-service"
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install --upgrade pip
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+python -m venv C:\venv_polyp_ai
+C:\venv_polyp_ai\Scripts\python.exe -m pip install --upgrade pip
+C:\venv_polyp_ai\Scripts\python.exe -m pip install -r requirements-gpu.txt
+C:\venv_polyp_ai\Scripts\python.exe -m pip install fastapi==0.139.2 uvicorn==0.51.0 python-multipart==0.0.32 numpy==2.2.6 pillow==11.3.0 opencv-python==4.12.0.88 ultralytics==8.4.127
 ```
+
+Máy không có GPU thì tạo `.venv` và cài `requirements.txt` như cũ.
 
 Các lần sau chỉ cần chạy:
 
 ```powershell
 cd "..\Ung_Dung\polypweb\polypweb\ai-service"
-.\.venv\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000
+C:\venv_polyp_ai\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000
 ```
 
-Kiểm tra: mở <http://127.0.0.1:8000/health>, cả hai mô hình phải ở trạng thái sẵn sàng.
+Chạy bằng CPU thì thay `C:\venv_polyp_ai\Scripts\python.exe` bằng `.\.venv\Scripts\python.exe`.
+
+Kiểm tra: mở <http://127.0.0.1:8000/health>, cả hai mô hình phải ở trạng thái sẵn sàng. Trường `device` cho biết đang chạy `cuda:0` (GPU) hay `cpu`.
 
 ### Bước 2: chạy web (cửa sổ PowerShell thứ hai)
 
@@ -106,7 +120,8 @@ Mở <http://localhost:8080>. Lần đầu bấm **Đăng ký** để tạo tài
 |---|---|
 | Chẩn đoán | Tải một ảnh nội soi, chọn mô hình, xem mặt nạ polyp. Có thể kèm mặt nạ thật (ground truth) để tính Dice, IoU, Precision, Recall |
 | So sánh | Chạy cùng một ảnh qua cả hai mô hình, đặt kết quả cạnh nhau |
-| Video | Tải video nội soi, phân tích theo khung hình, xuất video có mặt nạ và các đoạn có polyp |
+| Video | Tải video nội soi, chọn phân tích 2, 5, 10 khung/giây hoặc tất cả khung (cần GPU). Video kết quả giữ đủ khung và tốc độ của video gốc; khung không được phân tích dùng lại mặt nạ của khung phân tích gần nhất. Kèm dòng thời gian và các đoạn có polyp |
+| Video, chế độ mô phỏng thời gian thực | Phát lại video đã quay đúng tốc độ gốc, mặt nạ hiện ngay trên từng khung, kèm tốc độ so với thời gian thực và đèn báo polyp; phát xong tự lưu vào lịch sử. Là mô phỏng, chưa phải hệ thống gắn vào máy nội soi |
 | Lịch sử | Xem lại, xóa các lần phân tích ảnh và so sánh |
 | Chỉ số (`/metrics`, không cần đăng nhập) | Kết quả 20 seed của hai mô hình, đọc từ bảng CSV trong `00_tai_lieu_tong_quan/bang/` |
 
@@ -129,6 +144,8 @@ Script ghi đè `..\Ung_Dung\polypweb\polypweb\src\main\resources\research\resea
 | Web báo không kết nối được AI service | Chạy bước 1 trước, kiểm tra cổng 8000 |
 | Web không khởi động, lỗi MongoDB | Bật MongoDB (`services.msc` → MongoDB Server → Start) |
 | AI service báo không tìm thấy checkpoint | Chép lại hai file `.pt` vào `ai-service\models\` theo bảng ở trên |
+| `/health` báo `device: cpu` dù máy có GPU | Đang chạy bằng `.venv` (bản CPU); chạy lại bằng `C:\venv_polyp_ai\Scripts\python.exe` |
+| Chọn "Tất cả khung" bị báo cần GPU | Như dòng trên |
 | Cổng 8080 hoặc 8000 đã bị chiếm | Tắt cửa sổ đang chạy bản cũ rồi chạy lại |
 
 Hướng dẫn đầy đủ (biến môi trường, chạy production, ứng dụng Android): `..\Ung_Dung\polypweb\README.md` và `..\Ung_Dung\polypweb\polypweb\README.md`.
