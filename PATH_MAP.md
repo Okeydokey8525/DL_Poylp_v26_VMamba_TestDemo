@@ -138,3 +138,7 @@ Dọn thư mục để nộp. Các mục dưới đây được **chuyển** (kh
 | `06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong_MoRong_FP32.docx` | Trùng từng byte với `CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong.docx` |
 | `06_bao_cao/CNTT_KLCN182_LeDucLuong (2).docx`, `06_bao_cao/luu_tru_cu/CNTT_KLCN182_LeDucLuong (2).docx/.pdf` | Trùng từng byte với bản `_13-10` |
 | `.pytest_cache/`, `01_du_lieu/tao_BG20/__pycache__/`, `archive/` (rỗng) | Bộ nhớ đệm, thư mục rỗng |
+
+## Giải nén No_guidance seed 14 và 15 (09/11/2026)
+
+Hai file `runs_Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s{14,15}_w2.zip` ở thư mục gốc qua kiểm tra `unzip -t`, không lỗi. Nội dung được giải nén vào `03_ket_qua_huan_luyen/No_guidance/Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s{14,15}_w2/`; mỗi lượt có `best.pt` và `last.pt`. `args.yaml` khớp seed 13 ở mọi khóa trừ `seed`, `name`. Zip gốc được chuyển sang `../_Luu_Tru_Ngoai/Test_Mau/03_ket_qua_huan_luyen/_zip_goc_ablation/`. No_guidance đủ 20/20 seed.

@@ -15,6 +15,7 @@ Script CHỈ ĐỌC 03_ket_qua_huan_luyen/ và ghi vào ../bang/:
     python tinh_ablation.py                                        # chỉ số từ results.csv
     C:\\venv_kl_gpu\\Scripts\\python.exe tinh_ablation.py --torch  # thêm số tham số đếm từ best.pt
     C:\\venv_kl_gpu\\Scripts\\python.exe tinh_ablation.py --torch --seeds 10  # seed 0–9
+    C:\\venv_kl_gpu\\Scripts\\python.exe tinh_ablation.py --torch --seeds 20  # seed 0–19 -> ../bang/ablation_20seed/
 """
 from __future__ import annotations
 
@@ -90,7 +91,7 @@ def main():
         sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
     ap.add_argument("--torch", action="store_true", help="đếm tham số từ best.pt")
-    ap.add_argument("--seeds", type=int, default=5, choices=(5, 10), help="số seed (0..n-1)")
+    ap.add_argument("--seeds", type=int, default=5, choices=(5, 10, 20), help="số seed (0..n-1)")
     a = ap.parse_args()
     global SEEDS, OUT
     SEEDS = range(a.seeds)
