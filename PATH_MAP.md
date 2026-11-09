@@ -122,3 +122,19 @@ Bổ sung cùng ngày, `shape_only` seed 4:
 - Thư mục cũ (không có `weights/`) được chuyển vào `_zip_goc_ablation/_ban_cu_truoc_khi_giai_nen/`.
 - Như ở seed 3, hai bản `results.csv` chỉ khác cột `time`; `args.yaml` giống nhau. Mask mAP50–95 cực đại của cả hai là 0,70953.
 - Kết quả: đủ 15/15 lượt ablation, lượt nào cũng có `best.pt` và `last.pt`.
+
+## Chuyển file nén và file trùng ra ngoài repo (09/11/2026)
+
+Dọn thư mục để nộp. Các mục dưới đây được **chuyển** (không xóa) sang `../_Luu_Tru_Ngoai/Test_Mau/`, giữ nguyên đường dẫn con. Danh sách đầy đủ, kèm dung lượng và lý do, nằm ở `../_Luu_Tru_Ngoai/DANH_SACH_DA_CHUYEN.csv`. Muốn trả lại thì chuyển ngược về đúng đường dẫn cũ.
+
+| Đường dẫn cũ | Ghi chú |
+|---|---|
+| `03_ket_qua_huan_luyen/_zip_goc_ablation/` (gồm `_ban_chay_lai/`, `_ban_cu_truoc_khi_giai_nen/`) | Zip gốc Kaggle, đã giải nén vào `03_` |
+| `03_ket_qua_huan_luyen/_zip_goc_C2PSA_rong/` | Zip gốc Kaggle, đã giải nén vào `03_` |
+| `05_so_sanh_mo_hinh_khac/_zip_goc_640/` (gồm `_ban_trung/`) | Zip gốc PraNet/U-Net 640, đã giải nén vào `05_` |
+| `01_du_lieu/Kvasir_YOLO_SEG_BG20.rar` | Bản nén của thư mục dữ liệu (thư mục vẫn còn) |
+| `02_ma_nguon/*.rar` | Bản nén để tải lên Kaggle (thư mục nguồn vẫn còn) |
+| `02_ma_nguon/ultralytics_MambaPSA/`, `02_ma_nguon/notebook_kaggle/mambapsa/` | MambaPSA đã bỏ |
+| `06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong_MoRong_FP32.docx` | Trùng từng byte với `CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong.docx` |
+| `06_bao_cao/CNTT_KLCN182_LeDucLuong (2).docx`, `06_bao_cao/luu_tru_cu/CNTT_KLCN182_LeDucLuong (2).docx/.pdf` | Trùng từng byte với bản `_13-10` |
+| `.pytest_cache/`, `01_du_lieu/tao_BG20/__pycache__/`, `archive/` (rỗng) | Bộ nhớ đệm, thư mục rỗng |

@@ -43,6 +43,96 @@ Trên dữ liệu ngoài (CVC-ClinicDB, CVC-ColonDB, ETIS, PolypGen), TSVM khôn
 
 Chi tiết từng thư mục: [00_tai_lieu_tong_quan/13_BAN_DO_THU_MUC.md](00_tai_lieu_tong_quan/13_BAN_DO_THU_MUC.md).
 
+## Chạy ứng dụng web PolypVision
+
+Ứng dụng nằm ở repo riêng, cạnh thư mục này: `..\Ung_Dung\polypweb\` (GitHub: <https://github.com/Okeydokey8525/UngDung_Poylp>). Gồm hai phần chạy song song:
+
+| Phần | Thư mục | Cổng | Vai trò |
+|---|---|---|---|
+| AI service (FastAPI, Python) | `..\Ung_Dung\polypweb\polypweb\ai-service\` | 8000 | Nạp hai mô hình, nhận ảnh hoặc video, trả mặt nạ phân đoạn |
+| Web (Spring Boot, Java) | `..\Ung_Dung\polypweb\polypweb\` | 8080 | Giao diện, tài khoản, lịch sử; lưu dữ liệu vào MongoDB |
+
+### Cần cài sẵn
+
+- Java 17 (Maven đã có sẵn qua `mvnw.cmd`, không cần cài).
+- Python 3.12.
+- MongoDB chạy ở `mongodb://localhost:27017` (cài dạng Windows service thì tự chạy khi bật máy).
+- GPU không bắt buộc; chạy CPU vẫn được nhưng chậm hơn.
+
+### Trọng số mô hình
+
+Web dùng `best.pt` của **seed 15** cho cả hai mô hình (seed có chênh lệch mAP50–95 gần trung vị 20 seed nhất). Hai file đã có sẵn trong `ai-service\models\`:
+
+| File trong `models\` | Lấy từ |
+|---|---|
+| `yolo26s-seg-best.pt` | `03_ket_qua_huan_luyen/Baseline_YOLO26s_seg/Kvasir_BG20_Baseline_YOLO26s_seg_s15_w2/weights/best.pt` |
+| `yolo26s-tsvm-fp32-best.pt` | `03_ket_qua_huan_luyen/TSVM_FP32/Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s15_w2/weights/best.pt` |
+
+Nếu thiếu thì chép lại từ hai đường dẫn trên và đổi tên cho đúng. Mã băm để đối chiếu nằm trong `models\experiment_manifest.json`.
+
+### Bước 1: chạy AI service (cửa sổ PowerShell thứ nhất)
+
+Lần đầu, tạo môi trường và cài thư viện:
+
+```powershell
+cd "..\Ung_Dung\polypweb\polypweb\ai-service"
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Các lần sau chỉ cần chạy:
+
+```powershell
+cd "..\Ung_Dung\polypweb\polypweb\ai-service"
+.\.venv\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000
+```
+
+Kiểm tra: mở <http://127.0.0.1:8000/health>, cả hai mô hình phải ở trạng thái sẵn sàng.
+
+### Bước 2: chạy web (cửa sổ PowerShell thứ hai)
+
+```powershell
+cd "..\Ung_Dung\polypweb\polypweb"
+$env:SPRING_PROFILES_ACTIVE="dev"
+.\mvnw.cmd spring-boot:run
+```
+
+Mở <http://localhost:8080>. Lần đầu bấm **Đăng ký** để tạo tài khoản, rồi đăng nhập.
+
+### Các chức năng chính
+
+| Trang | Chức năng |
+|---|---|
+| Chẩn đoán | Tải một ảnh nội soi, chọn mô hình, xem mặt nạ polyp. Có thể kèm mặt nạ thật (ground truth) để tính Dice, IoU, Precision, Recall |
+| So sánh | Chạy cùng một ảnh qua cả hai mô hình, đặt kết quả cạnh nhau |
+| Video | Tải video nội soi, phân tích theo khung hình, xuất video có mặt nạ và các đoạn có polyp |
+| Lịch sử | Xem lại, xóa các lần phân tích ảnh và so sánh |
+| Chỉ số (`/metrics`, không cần đăng nhập) | Kết quả 20 seed của hai mô hình, đọc từ bảng CSV trong `00_tai_lieu_tong_quan/bang/` |
+
+Ảnh và video được lưu trong `..\Ung_Dung\polypweb\polypweb\storage\`; MongoDB chỉ lưu chỉ số và đường dẫn file.
+
+### Cập nhật số liệu trang Chỉ số
+
+Khi bảng CSV trong `00_tai_lieu_tong_quan/bang/` thay đổi, chạy lại script dưới đây rồi khởi động lại web:
+
+```powershell
+python 00_tai_lieu_tong_quan/scripts/xuat_chi_so_web.py
+```
+
+Script ghi đè `..\Ung_Dung\polypweb\polypweb\src\main\resources\research\research-metrics.json`.
+
+### Lỗi thường gặp
+
+| Hiện tượng | Cách xử lý |
+|---|---|
+| Web báo không kết nối được AI service | Chạy bước 1 trước, kiểm tra cổng 8000 |
+| Web không khởi động, lỗi MongoDB | Bật MongoDB (`services.msc` → MongoDB Server → Start) |
+| AI service báo không tìm thấy checkpoint | Chép lại hai file `.pt` vào `ai-service\models\` theo bảng ở trên |
+| Cổng 8080 hoặc 8000 đã bị chiếm | Tắt cửa sổ đang chạy bản cũ rồi chạy lại |
+
+Hướng dẫn đầy đủ (biến môi trường, chạy production, ứng dụng Android): `..\Ung_Dung\polypweb\README.md` và `..\Ung_Dung\polypweb\polypweb\README.md`.
+
 ## Sắp xếp lại ngày 26/10/2026
 
 Repo trước đây để mọi thứ trong `archive/`. Ngày 26/10/2026 toàn bộ được chuyển sang cây thư mục trên. Việc này chỉ di chuyển và đổi tên, không xóa hay sửa nội dung. Muốn tra một đường dẫn cũ đã chuyển đi đâu, xem [PATH_MAP.md](PATH_MAP.md).

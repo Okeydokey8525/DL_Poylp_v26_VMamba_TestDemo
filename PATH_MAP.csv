@@ -89,3 +89,16 @@ runs_Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s0_w2.zip,03_ket_qua_huan_luyen/Vma
 runs_Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s1_w2.zip,03_ket_qua_huan_luyen/Vmamba_only/Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s1_w2,unzip,,OK
 runs_Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s2_w2.zip,03_ket_qua_huan_luyen/Vmamba_only/Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s2_w2,unzip,,OK
 runs_Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s3_w2.zip,03_ket_qua_huan_luyen/Vmamba_only/Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s3_w2,unzip,,OK
+03_ket_qua_huan_luyen/_zip_goc_ablation,../_Luu_Tru_Ngoai/Test_Mau/03_ket_qua_huan_luyen/_zip_goc_ablation,,,CHUYEN_RA_NGOAI_09_11
+03_ket_qua_huan_luyen/_zip_goc_C2PSA_rong,../_Luu_Tru_Ngoai/Test_Mau/03_ket_qua_huan_luyen/_zip_goc_C2PSA_rong,,,CHUYEN_RA_NGOAI_09_11
+05_so_sanh_mo_hinh_khac/_zip_goc_640,../_Luu_Tru_Ngoai/Test_Mau/05_so_sanh_mo_hinh_khac/_zip_goc_640,,,CHUYEN_RA_NGOAI_09_11
+01_du_lieu/Kvasir_YOLO_SEG_BG20.rar,../_Luu_Tru_Ngoai/Test_Mau/01_du_lieu/Kvasir_YOLO_SEG_BG20.rar,1,,CHUYEN_RA_NGOAI_09_11
+02_ma_nguon/ultralytics_TSVM_FP32.rar,../_Luu_Tru_Ngoai/Test_Mau/02_ma_nguon/ultralytics_TSVM_FP32.rar,1,,CHUYEN_RA_NGOAI_09_11
+02_ma_nguon/ultralytics_C2PSA_rong.rar,../_Luu_Tru_Ngoai/Test_Mau/02_ma_nguon/ultralytics_C2PSA_rong.rar,1,,CHUYEN_RA_NGOAI_09_11
+02_ma_nguon/ultralytics_MambaPSA.rar,../_Luu_Tru_Ngoai/Test_Mau/02_ma_nguon/ultralytics_MambaPSA.rar,1,,CHUYEN_RA_NGOAI_09_11
+02_ma_nguon/ultralytics_MambaPSA,../_Luu_Tru_Ngoai/Test_Mau/02_ma_nguon/ultralytics_MambaPSA,,,CHUYEN_RA_NGOAI_09_11
+02_ma_nguon/notebook_kaggle/mambapsa,../_Luu_Tru_Ngoai/Test_Mau/02_ma_nguon/notebook_kaggle/mambapsa,,,CHUYEN_RA_NGOAI_09_11
+06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong_MoRong_FP32.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong_MoRong_FP32.docx,1,,CHUYEN_RA_NGOAI_09_11
+06_bao_cao/CNTT_KLCN182_LeDucLuong (2).docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_LeDucLuong (2).docx,1,,CHUYEN_RA_NGOAI_09_11
+06_bao_cao/luu_tru_cu/CNTT_KLCN182_LeDucLuong (2).docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/luu_tru_cu/CNTT_KLCN182_LeDucLuong (2).docx,1,,CHUYEN_RA_NGOAI_09_11
+06_bao_cao/luu_tru_cu/CNTT_KLCN182_LeDucLuong (2).pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/luu_tru_cu/CNTT_KLCN182_LeDucLuong (2).pdf,1,,CHUYEN_RA_NGOAI_09_11
