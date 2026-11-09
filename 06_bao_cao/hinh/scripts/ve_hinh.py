@@ -8,6 +8,8 @@ Mỗi hình xuất PNG 300 dpi và PDF vector vào <thư mục>/vi/ và <thư m�
     python ve_hinh.py                  # vẽ tất cả, kết quả dùng 20 seed (seed 0–19, bộ dùng trong báo cáo)
     python ve_hinh.py --seeds 10       # kết quả dùng 10 seed (chỉ đối chiếu)
     python ve_hinh.py --chi h01 h03    # chỉ vẽ một số hình
+    python ve_hinh.py --ban-640        # PraNet/U-Net 640 (nhận xét II.4): các hình 4 mô hình -> ../ket_qua_20seed_640/
+    python ve_hinh.py --ablation-seeds 20   # k01, k02, k03 với 20 seed -> ../ablation_20seed/
 """
 from __future__ import annotations
 
@@ -665,8 +667,20 @@ def e03_tham_so_dung_luong(lang, st):
 
 
 # ---------------------------------------------------------------- Chương 6: so sánh 4 mô hình theo pixel
+BAN_640 = False   # main() bật khi --ban-640: PraNet/U-Net lấy bản 640 từ bang/pixel_640/
+P640 = BANG / "pixel_640"
+NEN_CECUM = REPO / "08_du_lieu_thuc_te" / "bang" / "20seed" / "06_nen_cecum_tung_seed.csv"
+# Các hình có PraNet/U-Net, vẽ lại được với bản 640
+HINH_4_MO_HINH = ["p01", "p02", "p03", "p04", "p05", "q01", "o01", "o02", "x01", "x02", "x03"]
+
+
+def _bang_pix():
+    """Thư mục chứa bảng 10–15 (pixel, topology) và 20 (ma trận theo ảnh) của 4 mô hình."""
+    return P640 if BAN_640 else BANG_SEED
+
+
 def _pix():
-    return pd.read_csv(BANG_SEED / "11_pixel_tung_seed.csv", encoding="utf-8-sig")
+    return pd.read_csv(_bang_pix() / "11_pixel_tung_seed.csv", encoding="utf-8-sig")
 
 
 def p01_cot_kep_pixel(lang, st):
@@ -727,15 +741,64 @@ def p03_bao_nham_anh_nen(lang, st):
     save(fig, "p03_bao_nham_anh_nen", lang)
 
 
+def _cot_ti_le(ax, st, lang, values_by_key, y_text_pad):
+    """Một cột mean ± SD (%) cho mỗi mô hình, thanh lỗi dưới cắt tại 0, ghi số trên đầu cột."""
+    for k, (key, c, lab) in enumerate(PIX_MODELS):
+        g = 100 * values_by_key(key)
+        lo = min(g.std(ddof=1), g.mean())
+        ax.bar(k, g.mean(), 0.6, color=c, alpha=0.88, zorder=2)
+        ax.errorbar(k, g.mean(), yerr=[[lo], [g.std(ddof=1)]], fmt="none", ecolor="black", elinewidth=0.8,
+                    capsize=2.5, zorder=3)
+        ax.text(k, g.mean() + g.std(ddof=1) + y_text_pad, num(g.mean(), 1, lang), ha="center", fontsize=st["font"] - 2)
+    ax.set_xticks(range(4), [lab[lang].replace(" + ", "\n+ ").replace(" (", "\n(") for _, _, lab in PIX_MODELS],
+                  fontsize=st["font"] - 2)
+
+
+def p04_bao_nham_cecum(lang, st):
+    """Tỉ lệ 800 ảnh normal-cecum chưa dùng (Kvasir v2) bị báo nhầm, 4 mô hình, mean ± SD qua 20 seed."""
+    f = P640 / "nen_cecum" / "06_nen_cecum_tung_seed.csv" if BAN_640 else NEN_CECUM
+    sd = pd.read_csv(f, encoding="utf-8-sig")
+    fig, ax = plt.subplots(figsize=(st["width"] * (0.8 if lang == "vi" else 1.0), st["width"] * 0.5))
+    _cot_ti_le(ax, st, lang, lambda key: sd[sd.model == key]["fp_image_rate"], 1.5)
+    ax.set_ylabel(L("Ảnh cecum bị báo nhầm (%)", "False-alarm cecum images (%)", lang))
+    ax.set_ylim(0, ax.get_ylim()[1] * 1.08)
+    grid_y(ax)
+    save(fig, "p04_bao_nham_cecum", lang)
+
+
+def p05_loi_cap_anh(lang, st):
+    """Lỗi theo ảnh trên 160 ảnh val (ma trận nhầm lẫn theo ảnh, bảng 20_*): tỉ lệ ảnh polyp bị bỏ sót cả ảnh
+    (FN/120) và ảnh nền bị báo nhầm (FP/40), mean ± SD qua 20 seed."""
+    sd = pd.read_csv(_bang_pix() / "20_ma_tran_anh_tung_seed.csv", encoding="utf-8-sig")
+    kinds = [("FN", "n_polyp", L("Ảnh polyp bị bỏ sót", "Missed polyp images", lang)),
+             ("FP", "n_nen", L("Ảnh nền bị báo nhầm", "False-alarm background images", lang))]
+    fig, ax = plt.subplots(figsize=(st["width"], st["width"] * 0.5))
+    x = np.arange(len(kinds))
+    w = 0.2
+    for k, (key, c, lab) in enumerate(PIX_MODELS):
+        g = sd[sd.model == key]
+        r = [100 * g[a] / g[n] for a, n, _ in kinds]
+        mu = np.array([v.mean() for v in r])
+        s_ = np.array([v.std(ddof=1) for v in r])
+        ax.bar(x + (k - 1.5) * w, mu, w * 0.92, color=c, alpha=0.88, label=lab[lang], zorder=2)
+        ax.errorbar(x + (k - 1.5) * w, mu, yerr=[np.minimum(s_, mu), s_], fmt="none", ecolor="black",
+                    elinewidth=0.7, capsize=1.6, zorder=3)
+    ax.set_xticks(x, [lab for *_, lab in kinds])
+    ax.set_ylabel(L("Tỉ lệ ảnh (%)", "Images (%)", lang))
+    grid_y(ax)
+    legend_top(ax, ncol=2 if lang == "en" else 4)
+    save(fig, "p05_loi_cap_anh", lang)
+
+
 def q01_minh_hoa_dinh_tinh(lang, st):
     """Ảnh minh họa: ảnh gốc, nhãn và dự đoán seed 0 của 4 mô hình trên 3 ảnh validation."""
     import cv2
-    pix = pd.read_csv(BANG / "10_pixel_tung_anh.csv", encoding="utf-8-sig")
+    pix = pd.read_csv((P640 if BAN_640 else BANG) / "10_pixel_tung_anh.csv", encoding="utf-8-sig")
     pol = pix[(pix.seed == 0) & ~pix.is_bg]
     dice = pol.assign(d=2 * pol.tp / (2 * pol.tp + pol.fp + pol.fn)).pivot(index="image", columns="model", values="d")
     # chọn ảnh: một ảnh cả 4 đều tốt, một ảnh TSVM tốt hơn đối chứng nhiều nhất, một ảnh khó (trung bình thấp)
     picks = [dice.mean(axis=1).idxmax(), (dice.tsvm - dice.baseline).idxmax(), dice.mean(axis=1).idxmin()]
-    Q = REPO / "06_bao_cao" / "hinh" / "du_lieu_dinh_tinh"
+    Q = P640 / "du_lieu_dinh_tinh" if BAN_640 else REPO / "06_bao_cao" / "hinh" / "du_lieu_dinh_tinh"
     preds = {k: np.load(Q / f"pred_seed0_{k}.npz") for k, _, _ in PIX_MODELS}
     cols = [L("Ảnh gốc", "Image", lang), L("Nhãn", "Ground truth", lang), "YOLO26s-seg",
             "YOLO26s-seg\n+ TSVM", "PraNet\n(ResNet-50)", "U-Net"]
@@ -826,7 +889,7 @@ def t01_bon_kieu_dau_ra(lang, st):
 
 # ---------------------------------------------------------------- Chương 6: chỉ số topology
 def _topo():
-    sd = pd.read_csv(BANG_SEED / "14_topology_tung_seed.csv", encoding="utf-8-sig")
+    sd = pd.read_csv(_bang_pix() / "14_topology_tung_seed.csv", encoding="utf-8-sig")
     return sd[sd.min_area == 20]   # ngưỡng chính: bỏ mảnh/lỗ < 20 pixel, như khi tạo nhãn
 
 
@@ -876,7 +939,8 @@ NGOAI_SETS = [("clinicdb", "CVC-ClinicDB"), ("colondb", "CVC-ColonDB"), ("etis",
 
 
 def _ngoai():
-    return pd.read_csv(NGOAI / f"{N_SEED}seed" / "01_ngoai_tung_seed.csv", encoding="utf-8-sig")
+    goc = P640 / "du_lieu_ngoai" if BAN_640 else NGOAI
+    return pd.read_csv(goc / f"{N_SEED}seed" / "01_ngoai_tung_seed.csv", encoding="utf-8-sig")
 
 
 def _cot_nhom(ax, sd, sets, metric, scale=1.0):
@@ -1009,8 +1073,39 @@ def k02_ablation_delta(lang, st):
     save(fig, "k02_ablation_delta", lang)
 
 
+C_C2PSA_RONG = "#56B4E9"   # xanh da trời (Okabe–Ito)
+
+
+def k03_c2psa_rong(lang, st):
+    """Đối chứng cùng cỡ tham số: mask mAP@50–95 từng seed (0–19) của mô hình gốc, C2PSA mở rộng và TSVM;
+    điểm, đường nối cùng seed, vạch trung bình và ±1 SD (bang/ablation_20seed/19_*)."""
+    df = pd.read_csv(BANG / "ablation_20seed" / "19_c2psa_rong_tung_seed.csv", encoding="utf-8-sig")
+    cfg = [("Baseline", C_BASE, "Đối chứng\n(C2PSA)", "Baseline\n(C2PSA)"),
+           ("C2PSA_rong", C_C2PSA_RONG, "C2PSA mở rộng\n(cùng cỡ tham số)", "Widened C2PSA\n(matched params)"),
+           ("TSVM_day_du", C_TSVM, "TSVM\nđầy đủ", "Full\nTSVM")]
+    wide = df.pivot(index="seed", columns="cau_hinh", values="mask_map50_95")[[k for k, *_ in cfg]]
+    x = np.arange(len(cfg))
+    fig, ax = plt.subplots(figsize=(st["width"] * (0.75 if lang == "vi" else 1.0), st["width"] * 0.55))
+    for s in wide.index:
+        ax.plot(x, wide.loc[s].values, color=C_DOWN, linewidth=0.6, alpha=0.6, zorder=1)
+    for k, (key, c, *_l) in enumerate(cfg):
+        v = wide[key]
+        ax.errorbar(k, v.mean(), yerr=v.std(ddof=1), fmt="none", ecolor="black", elinewidth=0.9, capsize=4, zorder=2)
+        ax.hlines(v.mean(), k - 0.2, k + 0.2, color="black", linewidth=1.6, zorder=2)
+        ax.scatter(np.full(len(v), k), v, s=18, color=c, edgecolor="black", linewidth=0.4, zorder=3)
+    from matplotlib.lines import Line2D
+    legend_top(ax, ncol=2, handles=[Line2D([], [], color="black", lw=1.6), Line2D([], [], color=C_DOWN, lw=0.8)],
+               labels=[L("Trung bình ± 1 SD", "Mean ± 1 SD", lang), L("Cùng một seed", "Same seed", lang)])
+    ax.set_xticks(x, [lab_vi if lang == "vi" else lab_en for _k, _c, lab_vi, lab_en in cfg], fontsize=st["font"] - 2)
+    ax.set_xlim(-0.5, len(cfg) - 0.5)
+    ax.set_ylabel(T["mask_map"][lang])
+    num_axis(ax, "y", 2, lang)
+    grid_y(ax)
+    save(fig, "k03_c2psa_rong", lang)
+
+
 FIGS_BO_SUNG = {
-    "k01": k01_ablation_tung_seed, "k02": k02_ablation_delta,
+    "k01": k01_ablation_tung_seed, "k02": k02_ablation_delta, "k03": k03_c2psa_rong,
     "d01": d01_thanh_phan_bg20, "d02": d02_so_polyp_moi_anh, "d03": d03_so_dinh_polygon, "d04": d04_dien_tich_polyp,
     "m01": m01_tham_so_tang10,
     "r01": r01_delta_tung_seed, "r02": r02_hop_phan_bo, "r03": r03_histogram_delta,
@@ -1018,6 +1113,7 @@ FIGS_BO_SUNG = {
     "c01": c01_val_seg_loss, "c02": c02_train_seg_loss,
     "e01": e01_tp_fp_fn, "e02": e02_do_tre_cpu, "e03": e03_tham_so_dung_luong,
     "p01": p01_cot_kep_pixel, "p02": p02_diem_dice_tung_seed, "p03": p03_bao_nham_anh_nen,
+    "p04": p04_bao_nham_cecum, "p05": p05_loi_cap_anh,
     "q01": q01_minh_hoa_dinh_tinh,
     "t01": t01_bon_kieu_dau_ra,
     "o01": o01_anh_dung_topology, "o02": o02_kieu_loi_topology,
@@ -1038,22 +1134,24 @@ FIGS = {
 
 # Hình kết quả phụ thuộc nhóm seed; các hình còn lại ghi vào chung/.
 THEO_SEED = {"h01", "h01b", "h02", "h03", "h04", "r01", "r02", "r03", "r04", "r05", "c01", "c02", "e01",
-             "p01", "p02", "p03", "x01", "x02", "x03", "o01", "o02"}
+             "p01", "p02", "p03", "p04", "p05", "x01", "x02", "x03", "o01", "o02"}
 
 
 def main() -> None:
-    global BANG_SEED, N_SEED, DICH, N_ABL
+    global BANG_SEED, N_SEED, DICH, N_ABL, BAN_640, PIX_MODELS
     ap = argparse.ArgumentParser()
     ap.add_argument("--chi", nargs="*", help="chỉ vẽ các hình có mã này, ví dụ h01 h03")
     ap.add_argument("--seeds", type=int, default=20, help="số seed (0..N-1) cho hình kết quả; mặc định 20")
-    ap.add_argument("--ablation-seeds", type=int, default=5, choices=(5, 10),
-                    help="số seed cho k01/k02; 10 -> chỉ vẽ k01 k02 vào hinh/ablation_10seed/")
+    ap.add_argument("--ablation-seeds", type=int, default=5, choices=(5, 10, 20),
+                    help="số seed cho k01/k02; 10/20 -> chỉ vẽ k01 k02 (20: thêm k03) vào hinh/ablation_<N>seed/")
+    ap.add_argument("--ban-640", action="store_true",
+                    help="PraNet/U-Net bản 640 (bang/pixel_640/); chỉ vẽ các hình 4 mô hình vào hinh/ket_qua_20seed_640/")
     args = ap.parse_args()
     N_ABL = args.ablation_seeds
     if N_ABL != 5:
         for lang, st in STYLE.items():
             setup(st)
-            for k in ("k01", "k02"):
+            for k in ("k01", "k02", "k03") if N_ABL == 20 else ("k01", "k02"):
                 DICH = OUT / f"ablation_{N_ABL}seed"
                 FIGS[k](lang, st)
                 print(f"{lang}: {k} -> {DICH.name}")
@@ -1062,6 +1160,18 @@ def main() -> None:
     BANG_SEED = BANG if N_SEED == 20 else BANG / f"{N_SEED}seed"
     assert (BANG_SEED / "02_ket_qua_tung_seed.csv").is_file(), f"Chưa có bảng {BANG_SEED}; chạy tinh_lai_so_lieu.py --seeds {N_SEED}"
     keys = args.chi or list(FIGS)
+    if args.ban_640:
+        assert N_SEED == 20, "Bản 640 chỉ có 20 seed"
+        BAN_640 = True
+        PIX_MODELS = [({"pranet": "pranet640", "unet": "unet640"}.get(k, k), c, lab) for k, c, lab in PIX_MODELS]
+        keys = [k for k in keys if k in HINH_4_MO_HINH]
+        for lang, st in STYLE.items():
+            setup(st)
+            for k in keys:
+                DICH = OUT / "ket_qua_20seed_640"
+                FIGS[k](lang, st)
+                print(f"{lang}: {k} -> {DICH.name}")
+        return
     for lang, st in STYLE.items():
         setup(st)
         for k in keys:
