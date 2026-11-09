@@ -66,6 +66,41 @@ Nguồn: `pixel_640/du_lieu_ngoai/20seed/02_ngoai_thong_ke.csv`. Các thống k�
 | PolypGen C5 | 0,4738 | 0,4718 | 0,4948 | 0,3334 |
 | PolypGen C6 | 0,7203 | 0,6992 | 0,6821 | 0,5158 |
 
+## 3b. Báo nhầm trên 800 ảnh normal-cecum chưa dùng (bổ sung, mục 4.7.4)
+
+**Hash commit:** `091a9c7b66a4090eb69e96084c7b1ceb1570cc03` (`091a9c7b`), đã push lên `Okeydokey`.
+
+- Script `08_du_lieu_thuc_te/scripts/danh_gia_nen_cecum.py`:
+  - Thêm `--out` và lọc mô hình khi tổng hợp.
+  - Đổi mặc định `--models` về bộ chính (baseline, tsvm, pranet, unet), nên chạy mặc định không còn ghi đè hay lẫn bản 640.
+- Kết quả tổng hợp: `00_tai_lieu_tong_quan/bang/pixel_640/nen_cecum/06_nen_cecum_tung_seed.csv`, `07_nen_cecum_thong_ke.csv` (đủ 4 mô hình).
+- Từng lượt: 40 file `08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_{pranet640,unet640}_s0..s19.csv`, mỗi file 800 dòng.
+- Thời gian chạy: 14,1 phút cho 40 lượt. Không có lỗi; `--kiem-tra` báo "Checkpoint có: 40/40" và "KIỂM TRA: ĐỦ".
+- Kiểm tra:
+  - Dòng baseline/tsvm trong bảng mới trùng `bang/20seed/06_nen_cecum_tung_seed.csv`.
+  - `bang/20seed/06_`, `07_` giống từng byte với bản trước khi chạy.
+
+Tỉ lệ ảnh bị báo nhầm (trung bình ± SD qua 20 seed):
+
+| Mô hình | Tỉ lệ báo nhầm | Min – Max |
+|---|---|---|
+| YOLO26s-seg (Baseline) | 1,31% ± 0,48% | 0,38% – 2,00% |
+| YOLO26s-seg + TSVM | 1,36% ± 0,48% | 0,38% – 2,00% |
+| PraNet 640 | 3,85% ± 0,95% | 2,25% – 5,50% |
+| U-Net 640 | 61,07% ± 6,24% | 51,13% – 72,63% |
+
+So sánh ghép cặp (nguồn `07_nen_cecum_thong_ke.csv`):
+
+| Cặp so sánh | Chênh lệch | p (t ghép cặp) | Số seed TSVM cao hơn |
+|---|---|---|---|
+| TSVM − Baseline | +0,05 điểm % | 0,76 | 9/20 |
+| TSVM − PraNet 640 | −2,49 điểm % | 3,5·10⁻¹⁰ | 0/20 |
+| TSVM − U-Net 640 | −59,71 điểm % | 1,8·10⁻²⁰ | 0/20 |
+
+Bản 352 cũ để đối chiếu: PraNet 3,37% ± 1,44%; U-Net 30,41% ± 6,25%.
+
+Không có ảnh nào trong 800 ảnh gần trùng với 160 ảnh nền huấn luyện (corr64 ≥ 0,95: 0/800), nên tỉ lệ trên nhóm "không gần trùng" bằng tỉ lệ trên cả 800 ảnh.
+
 ## 4. Thời gian chạy và lỗi
 
 - **Máy:** NVIDIA GeForce RTX 5050 Laptop, torch 2.13.0+cu130, Ultralytics 8.4.127 (fork TSVM).
