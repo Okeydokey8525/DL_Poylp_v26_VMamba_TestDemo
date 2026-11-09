@@ -5,6 +5,13 @@ tỉ lệ bỏ sót polyp của từng biến thể trên CVC-ClinicDB và CVC-C
 - Vmamba_only: chỉ nhánh SS2D, không có nhánh hình dạng.
 - Shape_only: chỉ nhánh hình dạng, không có SS2D.
 - No_guidance: cả hai nhánh, bỏ cổng.
+- C2PSA_rong (thêm 09/11/2026): đối chứng cùng cỡ tham số. Giữ khối C2PSA của mô hình gốc nhưng nới rộng
+  ([-1, 2, C2PSA, [1024, 0.75]]): không có SS2D, không có nhánh hình dạng, nhưng tầng 10 cũng học từ đầu như TSVM.
+  Fork ultralytics_C2PSA_rong sao nguyên từ fork TSVM, nên dg.import_fork() nạp được checkpoint này.
+
+Lần 07/11/2026 chạy 3 biến thể × seed 0–9. Lần 09/11/2026 chạy thêm seed 10–19 của 3 biến thể và C2PSA_rong seed
+0–19 (truyền --seeds rõ ràng; mặc định vẫn là seed 0–9 để lệnh cũ không đổi nghĩa). Khi nạp checkpoint đầu tiên
+của mỗi biến thể, script assert số tham số tầng 10 (xem LAYER10_PARAMS).
 
 Giao thức giống hệt danh_gia_du_lieu_ngoai.py (dùng lại hàm của script đó và của danh_gia_pixel.py):
 imgsz 640, conf 0,25, iou 0,7, retina_masks=True, half=False; gộp mọi mặt nạ của ảnh thành một.
@@ -42,7 +49,11 @@ VARIANTS = {
     "abl_shape_only": (["Shape_only"], "Kvasir_BG20_YOLO26s_seg_ABL_shape_only_s{s}_w2"),
     "abl_no_guidance": (["No_guidance", "Shape_VMamba_no_guidance"],
                         "Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s{s}_w2"),
+    "c2psa_rong": (["C2PSA_rong"], "Kvasir_BG20_YOLO26s_seg_C2PSA_rong_s{s}_w2"),
 }
+# Số tham số tầng 10 (model.model[10]) phải đúng như sau; kiểm ở checkpoint đầu tiên của mỗi biến thể.
+LAYER10_PARAMS = {"abl_vmamba_only": 1_071_873, "abl_shape_only": 1_331_969, "abl_no_guidance": 1_745_409,
+                  "c2psa_rong": 1_830_016}
 
 
 def weights(variant, s):
@@ -89,8 +100,21 @@ def doi_chieu(dev):
           f"ảnh không dự đoán: cũ {int((old == 0).sum())}, mới {int((new == 0).sum())}")
 
 
+def kiem_tham_so_tang10(args):
+    """Assert số tham số tầng 10 ở seed đầu tiên của mỗi biến thể (cần fork đã nạp)."""
+    for v in args.variants:
+        s = args.seeds[0]
+        ck = torch.load(weights(v, s), map_location="cpu", weights_only=False)
+        m = ck.get("ema") or ck["model"]
+        n = sum(p.numel() for p in m.model[10].parameters())
+        print(f"Tầng 10 {v} seed {s}: {type(m.model[10]).__name__}, {n:,} tham số")
+        assert n == LAYER10_PARAMS[v], f"{v}: tầng 10 có {n} tham số, cần {LAYER10_PARAMS[v]}"
+        del ck, m
+
+
 def run(args, dev):
     OUT.mkdir(parents=True, exist_ok=True)
+    kiem_tham_so_tang10(args)
     t0 = time.time()
     for key in args.sets:
         items = None
