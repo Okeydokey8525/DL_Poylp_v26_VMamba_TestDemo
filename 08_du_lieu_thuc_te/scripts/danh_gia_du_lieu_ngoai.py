@@ -4,7 +4,8 @@ Bốn mô hình (YOLO26s-seg, YOLO26s-seg + TSVM FP32, PraNet, U-Net) đã huấ
 được chạy thẳng trên ảnh của ba bộ dữ liệu khác nguồn, không huấn luyện lại, không tinh chỉnh.
 Giao thức giống hệt 00_tai_lieu_tong_quan/scripts/danh_gia_pixel.py (dùng lại các hàm của script đó):
 - YOLO: imgsz 640, conf 0,25, iou 0,7, retina_masks=True, half=False; gộp mọi mặt nạ của ảnh thành một.
-- PraNet/U-Net: resize 352×352, ngưỡng xác suất 0,5, phóng song tuyến về kích thước gốc.
+- PraNet/U-Net: kéo về 352×352 (bản cũ) hoặc 640×640 (bản `pranet640`/`unet640`), ngưỡng xác suất 0,5,
+  phóng song tuyến về kích thước gốc.
 - Nhãn chuẩn: mặt nạ gốc của từng bộ dữ liệu, nhị phân hóa ở ngưỡng > 127. Mọi ảnh đều có polyp.
 
 Chỉ đọc dữ liệu ở DeepLearning/Dataset/ và checkpoint ở 03_, 05_; chỉ ghi vào ../bang/ và ../du_lieu_dinh_tinh/.
@@ -14,6 +15,11 @@ Chạy (cần GPU):
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py                 # 4 mô hình × seed 0–9 × 3 bộ
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py --seeds 0 --sets etis   # chạy thử
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py --chi-tong-hop          # chỉ tổng hợp lại
+    # PraNet/U-Net 640 (nhận xét II.4): tổng hợp kèm baseline/tsvm đã có, ghi riêng vào bang/pixel_640/<n>seed/
+    C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py --models pranet640 unet640 --seeds 0 1 ... 19 --out ../bang/pixel_640
+
+Phần tổng hợp chỉ lấy các mô hình được chọn (bộ chính: baseline, tsvm, pranet, unet), nên lượt 640 trong
+tung_luot/ không lẫn vào bang/10seed/, bang/20seed/.
 """
 from __future__ import annotations
 
@@ -121,12 +127,12 @@ def run(args):
     print(f"Tổng thời gian: {(time.time() - t0) / 60:.1f} phút")
 
 
-def summarize(n_seed):
-    """Tổng hợp seed 0..n_seed-1 vào bang/<n_seed>seed/ (chỉ khi đã đủ lượt)."""
+def summarize(n_seed, models, out_root=BANG):
+    """Tổng hợp seed 0..n_seed-1 của các mô hình `models` vào <out_root>/<n_seed>seed/ (chỉ khi đã đủ lượt)."""
     files = sorted(LUOT.glob("*.csv"))
     assert files, "Chưa có kết quả trong bang/tung_luot/"
     df = pd.concat([pd.read_csv(f, encoding="utf-8-sig") for f in files], ignore_index=True)
-    df = df[df.seed < n_seed]
+    df = df[(df.seed < n_seed) & df.model.isin(models)]
     pgall = df[df.dataset.str.startswith("pg_")].assign(dataset="polypgen")   # gộp 6 trung tâm
     df = pd.concat([df, pgall], ignore_index=True)
     have = df.groupby(["dataset", "model"]).seed.nunique()
@@ -134,8 +140,8 @@ def summarize(n_seed):
         print(f"Bỏ qua tổng hợp {n_seed} seed: còn thiếu lượt")
         print(have[have < n_seed])
         return
-    out = BANG / f"{n_seed}seed"
-    out.mkdir(exist_ok=True)
+    out = out_root / f"{n_seed}seed"
+    out.mkdir(parents=True, exist_ok=True)
     rows = []
     for (key, model, s), g_all in df.groupby(["dataset", "model", "seed"], sort=False):
         # Ảnh có mặt nạ rỗng (PolypGen có 125 ảnh không polyp) không tính vào chỉ số phân đoạn;
@@ -186,16 +192,22 @@ def summarize(n_seed):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sets", nargs="*", default=list(SETS), choices=list(SETS))
-    ap.add_argument("--models", nargs="*", default=list(dg.MODELS), choices=list(dg.MODELS))
+    ap.add_argument("--models", nargs="*", default=dg.DEFAULT_MODELS, choices=list(dg.MODELS))
     ap.add_argument("--seeds", nargs="*", type=int, default=list(range(10)))
     ap.add_argument("--chi-tong-hop", action="store_true", help="không suy luận, chỉ tổng hợp bang/tung_luot/")
+    ap.add_argument("--out", type=Path, default=BANG,
+                    help="thư mục gốc của bảng tổng hợp (mặc định ../bang -> bang/10seed, bang/20seed)")
     args = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     if not args.chi_tong_hop:
         run(args)
-    for n in (10, 20):   # bảng tổng hợp ghi riêng vào bang/10seed/ và bang/20seed/
-        summarize(n)
+    if args.out.resolve() == BANG.resolve():
+        models = dg.DEFAULT_MODELS   # bộ chính của báo cáo, giữ nguyên bang/10seed/ và bang/20seed/
+    else:                            # bản riêng: mô hình đã chọn + baseline, tsvm để so sánh ghép cặp
+        models = list(dict.fromkeys(["baseline", "tsvm", *args.models]))
+    for n in (10, 20):
+        summarize(n, models, args.out)
 
 
 if __name__ == "__main__":
