@@ -1,4 +1,0 @@
-Hai zip Vmamba_only s14, s15 tải ngày 09/11/2026 là lượt CHẠY LẠI (đã có bản gốc ở 03_ket_qua_huan_luyen/Vmamba_only/).
-Có lẽ notebook chọn nhầm biến thể (cần No_guidance s14, s15). Không dùng thay bản gốc.
-So với bản gốc: args.yaml giống hệt; best.pt khác byte.
-max mask mAP50-95: s14 0,71165 (bằng bản gốc 0,71165); s15 0,71814 (bản gốc 0,70783).
