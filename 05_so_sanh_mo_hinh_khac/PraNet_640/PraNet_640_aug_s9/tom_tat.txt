@@ -1,0 +1,2 @@
+model=PraNet seed=9 img_size=640 epochs=100 aug={'hsv_h': 0.015, 'hsv_s': 0.7, 'hsv_v': 0.4, 'translate': 0.1, 'scale': 0.5, 'fliplr': 0.5, 'mosaic': 1.0}
+best_epoch=72 best_val_dice=0.914048 train_time_s=13397.0

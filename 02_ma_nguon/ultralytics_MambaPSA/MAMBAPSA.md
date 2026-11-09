@@ -1,5 +1,7 @@
 # Ultralytics cho mô hình YOLO26s-seg + MambaPSA (tái hiện)
 
+> **KHÔNG DÙNG TRONG BÁO CÁO (chốt 07/11/2026).** MambaPSA chưa có mã nguồn và trọng số công bố, bài báo không nêu đủ siêu tham số, nên bản tái hiện không đối chứng được. Nhóm không tái hiện MambaPSA. Thay vào đó dùng Polyp-PVT (có mã gốc) làm mốc Transformer, và biến thể Chỉ SS2D trong ablation để xem tác động của việc thay C2PSA bằng khối SSM thuần. Thư mục này chỉ giữ làm tư liệu.
+
 Tạo ngày 06/11/2026, theo nhận xét của GVHD (nội dung 4: thiếu tái hiện MambaPSA, công trình gần nhất).
 
 - **Nguồn:** sao nguyên `../ultralytics_TSVM_FP32/` (Ultralytics 8.4.127, TSVM, bản vá lưu checkpoint FP32).
