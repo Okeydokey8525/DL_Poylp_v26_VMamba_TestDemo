@@ -104,3 +104,550 @@ runs_Kvasir_BG20_YOLO26s_seg_ABL_vmamba_only_s3_w2.zip,03_ket_qua_huan_luyen/Vma
 06_bao_cao/luu_tru_cu/CNTT_KLCN182_LeDucLuong (2).pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/luu_tru_cu/CNTT_KLCN182_LeDucLuong (2).pdf,1,,CHUYEN_RA_NGOAI_09_11
 runs_Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s14_w2.zip,03_ket_qua_huan_luyen/No_guidance/Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s14_w2,unzip,,OK_09_11_zip_o_Luu_Tru_Ngoai
 runs_Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s15_w2.zip,03_ket_qua_huan_luyen/No_guidance/Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s15_w2,unzip,,OK_09_11_zip_o_Luu_Tru_Ngoai
+00_tai_lieu_tong_quan/bang/10_pixel_tung_anh.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/10_pixel_tung_anh.csv,1,1225914,CHUYEN_RA_NGOAI_10_11: PraNet/U-Net 352 (thay bằng bang/pixel_640/)
+00_tai_lieu_tong_quan/bang/11_pixel_tung_seed.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/11_pixel_tung_seed.csv,1,20719,CHUYEN_RA_NGOAI_10_11: PraNet/U-Net 352 (thay bằng bang/pixel_640/)
+00_tai_lieu_tong_quan/bang/12_pixel_thong_ke.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/12_pixel_thong_ke.csv,1,8869,CHUYEN_RA_NGOAI_10_11: PraNet/U-Net 352 (thay bằng bang/pixel_640/)
+00_tai_lieu_tong_quan/bang/13_topology_tung_anh.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/13_topology_tung_anh.csv,1,1657635,CHUYEN_RA_NGOAI_10_11: PraNet/U-Net 352 (thay bằng bang/pixel_640/)
+00_tai_lieu_tong_quan/bang/14_topology_tung_seed.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/14_topology_tung_seed.csv,1,16719,CHUYEN_RA_NGOAI_10_11: PraNet/U-Net 352 (thay bằng bang/pixel_640/)
+00_tai_lieu_tong_quan/bang/15_topology_thong_ke.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/15_topology_thong_ke.csv,1,10110,CHUYEN_RA_NGOAI_10_11: PraNet/U-Net 352 (thay bằng bang/pixel_640/)
+00_tai_lieu_tong_quan/bang/20_ma_tran_anh_tung_seed.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/20_ma_tran_anh_tung_seed.csv,1,4488,CHUYEN_RA_NGOAI_10_11: PraNet/U-Net 352 (thay bằng bang/pixel_640/)
+00_tai_lieu_tong_quan/bang/20b_ma_tran_anh_tong_hop.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/20b_ma_tran_anh_tong_hop.csv,1,1073,CHUYEN_RA_NGOAI_10_11: PraNet/U-Net 352 (thay bằng bang/pixel_640/)
+00_tai_lieu_tong_quan/bang/_log_danh_gia_pixel.txt,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/_log_danh_gia_pixel.txt,1,7908,CHUYEN_RA_NGOAI_10_11: log bản 352
+00_tai_lieu_tong_quan/bang/_log_topology.txt,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/_log_topology.txt,1,584560,CHUYEN_RA_NGOAI_10_11: log bản 352
+00_tai_lieu_tong_quan/bang/17_ablation_tung_seed.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/17_ablation_tung_seed.csv,1,2721,CHUYEN_RA_NGOAI_10_11: ablation 5 seed (thay bằng ablation_20seed/)
+00_tai_lieu_tong_quan/bang/17b_ablation_tong_hop.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/17b_ablation_tong_hop.csv,1,2361,CHUYEN_RA_NGOAI_10_11: ablation 5 seed (thay bằng ablation_20seed/)
+00_tai_lieu_tong_quan/bang/18_ablation_cau_hinh_args.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/18_ablation_cau_hinh_args.csv,1,46,CHUYEN_RA_NGOAI_10_11: ablation 5 seed (thay bằng ablation_20seed/)
+00_tai_lieu_tong_quan/bang/_log_ablation.txt,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/_log_ablation.txt,1,8220,CHUYEN_RA_NGOAI_10_11: log ablation 5 seed
+00_tai_lieu_tong_quan/bang/ablation_10seed,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/ablation_10seed,3,7762,CHUYEN_RA_NGOAI_10_11: ablation 10 seed (thay bằng ablation_20seed/)
+00_tai_lieu_tong_quan/bang/10seed,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/10seed,15,1513903,"CHUYEN_RA_NGOAI_10_11: bộ 10 seed, chỉ đối chiếu"
+00_tai_lieu_tong_quan/bang/16_lan1_flops_do_tre_gpu.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/16_lan1_flops_do_tre_gpu.csv,1,644,CHUYEN_RA_NGOAI_10_11: lần đo GPU thứ nhất (bản dùng: 16_)
+00_tai_lieu_tong_quan/bang/16b_lan1_do_tre_gpu_tung_lan.csv,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/16b_lan1_do_tre_gpu_tung_lan.csv,1,56067,CHUYEN_RA_NGOAI_10_11: lần đo GPU thứ nhất (bản dùng: 16b_)
+00_tai_lieu_tong_quan/bang/_log_flops_gpu_lan1.txt,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/_log_flops_gpu_lan1.txt,1,880,CHUYEN_RA_NGOAI_10_11: lần đo GPU thứ nhất
+00_tai_lieu_tong_quan/06b_KET_QUA_10_SEED.md,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/06b_KET_QUA_10_SEED.md,1,6249,CHUYEN_RA_NGOAI_10_11: tài liệu bộ 10 seed
+05_so_sanh_mo_hinh_khac/PraNet,../_Luu_Tru_Ngoai/Test_Mau/05_so_sanh_mo_hinh_khac/PraNet,20,1978776860,CHUYEN_RA_NGOAI_10_11: checkpoint PraNet 352 (bản dùng: PraNet_640)
+05_so_sanh_mo_hinh_khac/UNet,../_Luu_Tru_Ngoai/Test_Mau/05_so_sanh_mo_hinh_khac/UNet,20,622332100,CHUYEN_RA_NGOAI_10_11: checkpoint U-Net 352 (bản dùng: UNet_640)
+05_so_sanh_mo_hinh_khac/PHAN_HOI_CHECKPOINT_640.md,../_Luu_Tru_Ngoai/Test_Mau/05_so_sanh_mo_hinh_khac/PHAN_HOI_CHECKPOINT_640.md,1,10998,CHUYEN_RA_NGOAI_10_11: ghi chú làm việc
+06_bao_cao/hinh/ket_qua_10seed,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_10seed,84,3258144,CHUYEN_RA_NGOAI_10_11: hình 10 seed
+06_bao_cao/hinh/ablation_10seed,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ablation_10seed,8,463741,CHUYEN_RA_NGOAI_10_11: hình ablation 10 seed
+06_bao_cao/hinh/du_lieu_dinh_tinh,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/du_lieu_dinh_tinh,4,933335,CHUYEN_RA_NGOAI_10_11: mặt nạ định tính PraNet/U-Net 352
+06_bao_cao/hinh/chung/en/q01_minh_hoa_dinh_tinh.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/en/q01_minh_hoa_dinh_tinh.pdf,1,1502402,CHUYEN_RA_NGOAI_10_11: hình định tính PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/chung/en/q01_minh_hoa_dinh_tinh.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/en/q01_minh_hoa_dinh_tinh.png,1,1560006,CHUYEN_RA_NGOAI_10_11: hình định tính PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/chung/vi/q01_minh_hoa_dinh_tinh.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/vi/q01_minh_hoa_dinh_tinh.pdf,1,1226087,CHUYEN_RA_NGOAI_10_11: hình định tính PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/chung/vi/q01_minh_hoa_dinh_tinh.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/vi/q01_minh_hoa_dinh_tinh.png,1,1262151,CHUYEN_RA_NGOAI_10_11: hình định tính PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/chung/en/k01_ablation_tung_seed.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/en/k01_ablation_tung_seed.pdf,1,15873,CHUYEN_RA_NGOAI_10_11: hình ablation 5 seed (bản dùng: ablation_20seed/)
+06_bao_cao/hinh/chung/en/k01_ablation_tung_seed.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/en/k01_ablation_tung_seed.png,1,80230,CHUYEN_RA_NGOAI_10_11: hình ablation 5 seed (bản dùng: ablation_20seed/)
+06_bao_cao/hinh/chung/vi/k01_ablation_tung_seed.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/vi/k01_ablation_tung_seed.pdf,1,17824,CHUYEN_RA_NGOAI_10_11: hình ablation 5 seed (bản dùng: ablation_20seed/)
+06_bao_cao/hinh/chung/vi/k01_ablation_tung_seed.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/vi/k01_ablation_tung_seed.png,1,139475,CHUYEN_RA_NGOAI_10_11: hình ablation 5 seed (bản dùng: ablation_20seed/)
+06_bao_cao/hinh/chung/en/k02_ablation_delta.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/en/k02_ablation_delta.pdf,1,13319,CHUYEN_RA_NGOAI_10_11: hình ablation 5 seed (bản dùng: ablation_20seed/)
+06_bao_cao/hinh/chung/en/k02_ablation_delta.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/en/k02_ablation_delta.png,1,36486,CHUYEN_RA_NGOAI_10_11: hình ablation 5 seed (bản dùng: ablation_20seed/)
+06_bao_cao/hinh/chung/vi/k02_ablation_delta.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/vi/k02_ablation_delta.pdf,1,15290,CHUYEN_RA_NGOAI_10_11: hình ablation 5 seed (bản dùng: ablation_20seed/)
+06_bao_cao/hinh/chung/vi/k02_ablation_delta.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/chung/vi/k02_ablation_delta.png,1,61342,CHUYEN_RA_NGOAI_10_11: hình ablation 5 seed (bản dùng: ablation_20seed/)
+06_bao_cao/hinh/ket_qua_20seed/en/p01_cot_kep_pixel.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/p01_cot_kep_pixel.pdf,1,13838,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/p01_cot_kep_pixel.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/p01_cot_kep_pixel.png,1,39798,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/p02_diem_dice_tung_seed.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/p02_diem_dice_tung_seed.pdf,1,15676,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/p02_diem_dice_tung_seed.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/p02_diem_dice_tung_seed.png,1,53976,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/p03_bao_nham_anh_nen.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/p03_bao_nham_anh_nen.pdf,1,13186,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/p03_bao_nham_anh_nen.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/p03_bao_nham_anh_nen.png,1,39347,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/p04_bao_nham_cecum.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/p04_bao_nham_cecum.pdf,1,12340,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/p04_bao_nham_cecum.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/p04_bao_nham_cecum.png,1,37512,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/p05_loi_cap_anh.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/p05_loi_cap_anh.pdf,1,13678,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/p05_loi_cap_anh.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/p05_loi_cap_anh.png,1,39436,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/p01_cot_kep_pixel.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/p01_cot_kep_pixel.pdf,1,14326,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/p01_cot_kep_pixel.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/p01_cot_kep_pixel.png,1,57370,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/p02_diem_dice_tung_seed.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/p02_diem_dice_tung_seed.pdf,1,15688,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/p02_diem_dice_tung_seed.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/p02_diem_dice_tung_seed.png,1,72750,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/p03_bao_nham_anh_nen.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/p03_bao_nham_anh_nen.pdf,1,13556,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/p03_bao_nham_anh_nen.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/p03_bao_nham_anh_nen.png,1,51996,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/p04_bao_nham_cecum.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/p04_bao_nham_cecum.pdf,1,13627,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/p04_bao_nham_cecum.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/p04_bao_nham_cecum.png,1,55577,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/p05_loi_cap_anh.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/p05_loi_cap_anh.pdf,1,14418,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/p05_loi_cap_anh.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/p05_loi_cap_anh.png,1,52409,CHUYEN_RA_NGOAI_10_11: hình PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/o01_anh_dung_topology.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/o01_anh_dung_topology.pdf,1,13231,CHUYEN_RA_NGOAI_10_11: hình topology PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/o01_anh_dung_topology.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/o01_anh_dung_topology.png,1,41705,CHUYEN_RA_NGOAI_10_11: hình topology PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/o02_kieu_loi_topology.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/o02_kieu_loi_topology.pdf,1,14373,CHUYEN_RA_NGOAI_10_11: hình topology PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/o02_kieu_loi_topology.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/o02_kieu_loi_topology.png,1,38029,CHUYEN_RA_NGOAI_10_11: hình topology PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/o01_anh_dung_topology.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/o01_anh_dung_topology.pdf,1,13731,CHUYEN_RA_NGOAI_10_11: hình topology PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/o01_anh_dung_topology.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/o01_anh_dung_topology.png,1,54881,CHUYEN_RA_NGOAI_10_11: hình topology PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/o02_kieu_loi_topology.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/o02_kieu_loi_topology.pdf,1,15470,CHUYEN_RA_NGOAI_10_11: hình topology PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/o02_kieu_loi_topology.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/o02_kieu_loi_topology.png,1,59135,CHUYEN_RA_NGOAI_10_11: hình topology PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/x01_dice_du_lieu_ngoai.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/x01_dice_du_lieu_ngoai.pdf,1,14806,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/x01_dice_du_lieu_ngoai.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/x01_dice_du_lieu_ngoai.png,1,39319,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/x02_dice_polypgen_trung_tam.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/x02_dice_polypgen_trung_tam.pdf,1,15257,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/x02_dice_polypgen_trung_tam.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/x02_dice_polypgen_trung_tam.png,1,41885,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/x03_bao_nham_polypgen.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/x03_bao_nham_polypgen.pdf,1,13931,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/en/x03_bao_nham_polypgen.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/en/x03_bao_nham_polypgen.png,1,40983,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/x01_dice_du_lieu_ngoai.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/x01_dice_du_lieu_ngoai.pdf,1,14906,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/x01_dice_du_lieu_ngoai.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/x01_dice_du_lieu_ngoai.png,1,61063,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/x02_dice_polypgen_trung_tam.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/x02_dice_polypgen_trung_tam.pdf,1,16021,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/x02_dice_polypgen_trung_tam.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/x02_dice_polypgen_trung_tam.png,1,65956,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/x03_bao_nham_polypgen.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/x03_bao_nham_polypgen.pdf,1,14785,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/hinh/ket_qua_20seed/vi/x03_bao_nham_polypgen.png,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/hinh/ket_qua_20seed/vi/x03_bao_nham_polypgen.png,1,62994,CHUYEN_RA_NGOAI_10_11: hình dữ liệu ngoài PraNet/U-Net 352 (bản dùng: ket_qua_20seed_640/)
+06_bao_cao/BaoCaoKhoaLuan_CNTT_KLCN182 (3)_sua_phan_bien_4_10.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/BaoCaoKhoaLuan_CNTT_KLCN182 (3)_sua_phan_bien_4_10.docx,1,6006042,CHUYEN_RA_NGOAI_10_11: bản Word cũ
+06_bao_cao/BaoCaoKhoaLuan_CNTT_KLCN182.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/BaoCaoKhoaLuan_CNTT_KLCN182.docx,1,5982455,CHUYEN_RA_NGOAI_10_11: bản Word cũ
+06_bao_cao/CHUONG_1_TONG_QUAN.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CHUONG_1_TONG_QUAN.docx,1,22002,CHUYEN_RA_NGOAI_10_11: bản Word cũ
+06_bao_cao/CNTT_KLCN182-Phung The Bao.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182-Phung The Bao.pdf,1,667672,CHUYEN_RA_NGOAI_10_11: PDF bản cũ (không phải bản Word cuối)
+06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_LeDucLuong.docx,1,11490221,CHUYEN_RA_NGOAI_10_11: bản Word cũ
+06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_V3_day_du.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_V3_day_du.docx,1,9170140,CHUYEN_RA_NGOAI_10_11: bản V3 cũ (số PraNet/U-Net 352)
+06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_V3_day_du.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_V3_day_du.pdf,1,8576165,CHUYEN_RA_NGOAI_10_11: bản V3 cũ (số PraNet/U-Net 352)
+06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_V3_rut_gon.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_V3_rut_gon.docx,1,9119085,CHUYEN_RA_NGOAI_10_11: bản V3 cũ (số PraNet/U-Net 352)
+06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_V3_rut_gon.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_BaoCaoKhoaLuan_V3_rut_gon.pdf,1,7940159,CHUYEN_RA_NGOAI_10_11: bản V3 cũ (số PraNet/U-Net 352)
+06_bao_cao/CNTT_KLCN182_BaoCaoTuan_10seed.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_BaoCaoTuan_10seed.docx,1,1256322,CHUYEN_RA_NGOAI_10_11: báo cáo tuần
+06_bao_cao/CNTT_KLCN182_BaoCaoTuan_20seed.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_BaoCaoTuan_20seed.docx,1,1288305,CHUYEN_RA_NGOAI_10_11: báo cáo tuần
+06_bao_cao/CNTT_KLCN182_BaoCaoTuan_20seed_ablation.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_BaoCaoTuan_20seed_ablation.docx,1,1478595,CHUYEN_RA_NGOAI_10_11: báo cáo tuần
+06_bao_cao/CNTT_KLCN182_BaoCaoTuan_20seed_ablation.pdf,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_BaoCaoTuan_20seed_ablation.pdf,1,1251367,CHUYEN_RA_NGOAI_10_11: báo cáo tuần
+06_bao_cao/CNTT_KLCN182_ChiSo_Chuong4.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_ChiSo_Chuong4.docx,1,159498,CHUYEN_RA_NGOAI_10_11: bản nháp
+06_bao_cao/CNTT_KLCN182_LeDucLuong_Ablation_02-11.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/CNTT_KLCN182_LeDucLuong_Ablation_02-11.docx,1,3721536,CHUYEN_RA_NGOAI_10_11: báo cáo ablation cũ
+06_bao_cao/KHOA_LUAN_CHUONG_1_2.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/KHOA_LUAN_CHUONG_1_2.docx,1,2006139,CHUYEN_RA_NGOAI_10_11: bản Word cũ
+06_bao_cao/TienXuLy_yolo26.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/TienXuLy_yolo26.docx,1,2162819,CHUYEN_RA_NGOAI_10_11: bản nháp chương tiền xử lý
+06_bao_cao/Tien_Xu_Ly_Du_Lieu.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/Tien_Xu_Ly_Du_Lieu.docx,1,4705739,CHUYEN_RA_NGOAI_10_11: bản nháp chương tiền xử lý
+06_bao_cao/Tien_Xu_Ly_Du_Lieu_v3.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/Tien_Xu_Ly_Du_Lieu_v3.docx,1,4699449,CHUYEN_RA_NGOAI_10_11: bản nháp chương tiền xử lý
+06_bao_cao/HUONG_DAN_LUONG_CHAY_ABLATION_NGOAI.md,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/HUONG_DAN_LUONG_CHAY_ABLATION_NGOAI.md,1,4849,CHUYEN_RA_NGOAI_10_11: hướng dẫn chạy (làm việc)
+06_bao_cao/HUONG_DAN_LUONG_CHAY_NEN_CECUM.md,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/HUONG_DAN_LUONG_CHAY_NEN_CECUM.md,1,5025,CHUYEN_RA_NGOAI_10_11: hướng dẫn chạy (làm việc)
+06_bao_cao/danh_gia_nen_cecum.py,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/danh_gia_nen_cecum.py,1,12102,CHUYEN_RA_NGOAI_10_11: bản trùng của 08_du_lieu_thuc_te/scripts/
+06_bao_cao/new_bao_cao,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/new_bao_cao,2,8929053,CHUYEN_RA_NGOAI_10_11: bản nháp cũ
+06_bao_cao/luu_tru_cu,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/luu_tru_cu,20,19613402,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ
+06_bao_cao/mau,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/mau,1,30477898,CHUYEN_RA_NGOAI_10_11: mẫu tham khảo
+06_bao_cao/ghep_word,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/ghep_word,5,871971,CHUYEN_RA_NGOAI_10_11: công cụ ghép Word từ md (bản V3)
+06_bao_cao/md_bao_cao,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/md_bao_cao,24,602745,CHUYEN_RA_NGOAI_10_11: chương md bản V3 (số cũ)
+06_bao_cao/md_bao_cao_70,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/md_bao_cao_70,6,2717378,CHUYEN_RA_NGOAI_10_11: chương md bản V3 (số cũ)
+06_bao_cao/md_bao_cao_rut_gon,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/md_bao_cao_rut_gon,11,199280,CHUYEN_RA_NGOAI_10_11: chương md bản V3 (số cũ)
+06_bao_cao/chinhsua,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/chinhsua,1,11063,CHUYEN_RA_NGOAI_10_11: ghi chú sửa (làm việc)
+06_bao_cao/sua_theo_nhan_xet,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/sua_theo_nhan_xet,5,33247,CHUYEN_RA_NGOAI_10_11: ghi chú sửa theo nhận xét (làm việc)
+06_bao_cao/slide,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/slide,1,5199,CHUYEN_RA_NGOAI_10_11: kế hoạch slide (làm việc)
+07_kiem_toan_va_sua,../_Luu_Tru_Ngoai/Test_Mau/07_kiem_toan_va_sua,8513,1297037298,CHUYEN_RA_NGOAI_10_11: hiện vật kiểm toán (làm việc)
+08_du_lieu_thuc_te/bang/10seed,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/10seed,2,124665,"CHUYEN_RA_NGOAI_10_11: bộ 10 seed, PraNet/U-Net 352"
+08_du_lieu_thuc_te/bang/20seed,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/20seed,4,197130,CHUYEN_RA_NGOAI_10_11: bảng PraNet/U-Net 352 (bản dùng: 00_tai_lieu_tong_quan/bang/pixel_640/)
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s0.csv,1,30650,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s1.csv,1,30729,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s10.csv,1,31004,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s11.csv,1,31426,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s12.csv,1,31477,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s13.csv,1,31699,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s14.csv,1,31175,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s15.csv,1,31362,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s16.csv,1,31389,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s17.csv,1,31299,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s18.csv,1,31328,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s19.csv,1,31384,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s2.csv,1,30915,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s3.csv,1,30473,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s4.csv,1,30783,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s5.csv,1,30653,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s6.csv,1,30941,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s7.csv,1,30638,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s8.csv,1,30774,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_pranet_s9.csv,1,30830,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s0.csv,1,18381,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s1.csv,1,18444,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s10.csv,1,18613,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s11.csv,1,18822,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s12.csv,1,18969,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s13.csv,1,19281,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s14.csv,1,18743,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s15.csv,1,18626,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s16.csv,1,18790,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s17.csv,1,18612,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s18.csv,1,18901,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s19.csv,1,18985,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s2.csv,1,18442,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s3.csv,1,18199,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s4.csv,1,18461,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s5.csv,1,18401,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s6.csv,1,18599,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s7.csv,1,18296,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s8.csv,1,18288,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_pranet_s9.csv,1,18582,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s0.csv,1,9204,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s1.csv,1,9149,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s10.csv,1,9323,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s11.csv,1,9339,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s12.csv,1,9406,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s13.csv,1,9494,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s14.csv,1,9265,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s15.csv,1,9264,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s16.csv,1,9234,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s17.csv,1,9082,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s18.csv,1,9338,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s19.csv,1,9332,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s2.csv,1,9133,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s3.csv,1,8957,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s4.csv,1,9085,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s5.csv,1,8966,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s6.csv,1,9109,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s7.csv,1,8972,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s8.csv,1,9032,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_pranet_s9.csv,1,9115,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s0.csv,1,16696,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s1.csv,1,16781,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s10.csv,1,16997,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s11.csv,1,16943,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s12.csv,1,17076,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s13.csv,1,17223,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s14.csv,1,17023,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s15.csv,1,16929,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s16.csv,1,16951,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s17.csv,1,16884,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s18.csv,1,17129,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s19.csv,1,17017,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s2.csv,1,16813,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s3.csv,1,16686,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s4.csv,1,16733,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s5.csv,1,16745,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s6.csv,1,16735,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s7.csv,1,16637,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s8.csv,1,16733,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_pranet_s9.csv,1,16801,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s0.csv,1,19612,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s1.csv,1,19689,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s10.csv,1,19890,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s11.csv,1,20026,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s12.csv,1,20046,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s13.csv,1,20126,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s14.csv,1,19863,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s15.csv,1,19921,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s16.csv,1,19857,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s17.csv,1,19850,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s18.csv,1,20038,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s19.csv,1,20024,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s2.csv,1,19719,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s3.csv,1,19599,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s4.csv,1,19728,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s5.csv,1,19653,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s6.csv,1,19758,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s7.csv,1,19568,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s8.csv,1,19552,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_pranet_s9.csv,1,19740,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s0.csv,1,31226,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s1.csv,1,31187,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s10.csv,1,31607,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s11.csv,1,31732,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s12.csv,1,31814,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s13.csv,1,31843,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s14.csv,1,31645,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s15.csv,1,31561,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s16.csv,1,31643,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s17.csv,1,31536,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s18.csv,1,31820,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s19.csv,1,31743,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s2.csv,1,31339,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s3.csv,1,31128,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s4.csv,1,31200,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s5.csv,1,31196,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s6.csv,1,31314,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s7.csv,1,31171,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s8.csv,1,31247,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_pranet_s9.csv,1,31156,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s0.csv,1,15297,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s1.csv,1,15475,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s10.csv,1,15577,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s11.csv,1,15612,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s12.csv,1,16051,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s13.csv,1,16218,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s14.csv,1,15687,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s15.csv,1,15639,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s16.csv,1,15321,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s17.csv,1,15554,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s18.csv,1,15730,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s19.csv,1,15983,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s2.csv,1,15700,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s3.csv,1,15296,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s4.csv,1,15337,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s5.csv,1,15315,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s6.csv,1,15614,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s7.csv,1,15451,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s8.csv,1,15361,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_pranet_s9.csv,1,15517,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s0.csv,1,14043,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s1.csv,1,14324,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s10.csv,1,14252,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s11.csv,1,14368,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s12.csv,1,14477,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s13.csv,1,14810,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s14.csv,1,14341,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s15.csv,1,14280,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s16.csv,1,14048,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s17.csv,1,14362,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s18.csv,1,14488,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s19.csv,1,14537,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s2.csv,1,14295,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s3.csv,1,14058,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s4.csv,1,13971,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s5.csv,1,14179,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s6.csv,1,14205,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s7.csv,1,14156,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s8.csv,1,14203,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_pranet_s9.csv,1,14199,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s0.csv,1,6076,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s1.csv,1,6164,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s10.csv,1,6211,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s11.csv,1,6210,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s12.csv,1,6275,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s13.csv,1,6326,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s14.csv,1,6217,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s15.csv,1,6211,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s16.csv,1,6161,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s17.csv,1,6172,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s18.csv,1,6202,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s19.csv,1,6251,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s2.csv,1,6135,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s3.csv,1,6111,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s4.csv,1,6116,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s5.csv,1,6116,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s6.csv,1,6172,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s7.csv,1,6086,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s8.csv,1,6080,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_pranet_s9.csv,1,6176,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s0.csv,1,29532,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s1.csv,1,29863,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s10.csv,1,30291,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s11.csv,1,30567,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s12.csv,1,30265,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s13.csv,1,30486,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s14.csv,1,30478,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s15.csv,1,29981,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s16.csv,1,30278,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s17.csv,1,30599,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s18.csv,1,30146,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s19.csv,1,30196,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s2.csv,1,30100,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s3.csv,1,29362,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s4.csv,1,29233,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s5.csv,1,30062,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s6.csv,1,29693,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s7.csv,1,29562,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s8.csv,1,29397,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/clinicdb_unet_s9.csv,1,29785,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s0.csv,1,18014,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s1.csv,1,17951,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s10.csv,1,18163,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s11.csv,1,18376,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s12.csv,1,18066,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s13.csv,1,18158,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s14.csv,1,18048,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s15.csv,1,17951,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s16.csv,1,17967,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s17.csv,1,17991,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s18.csv,1,18005,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s19.csv,1,17854,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s2.csv,1,17729,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s3.csv,1,17631,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s4.csv,1,17175,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s5.csv,1,17553,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s6.csv,1,17972,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s7.csv,1,17764,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s8.csv,1,17403,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/colondb_unet_s9.csv,1,17723,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s0.csv,1,8950,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s1.csv,1,9166,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s10.csv,1,9036,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s11.csv,1,9192,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s12.csv,1,8973,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s13.csv,1,9076,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s14.csv,1,9188,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s15.csv,1,8943,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s16.csv,1,8975,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s17.csv,1,9271,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s18.csv,1,9041,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s19.csv,1,9297,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s2.csv,1,9177,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s3.csv,1,8764,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s4.csv,1,8770,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s5.csv,1,8943,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s6.csv,1,9061,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s7.csv,1,8893,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s8.csv,1,8954,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/etis_unet_s9.csv,1,8811,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s0.csv,1,16244,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s1.csv,1,16215,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s10.csv,1,16550,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s11.csv,1,16612,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s12.csv,1,16447,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s13.csv,1,16573,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s14.csv,1,16636,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s15.csv,1,16539,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s16.csv,1,16476,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s17.csv,1,16463,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s18.csv,1,16464,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s19.csv,1,16466,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s2.csv,1,16404,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s3.csv,1,16235,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s4.csv,1,16086,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s5.csv,1,16198,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s6.csv,1,16312,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s7.csv,1,16339,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s8.csv,1,16036,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c1_unet_s9.csv,1,16281,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s0.csv,1,19153,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s1.csv,1,19291,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s10.csv,1,19452,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s11.csv,1,19667,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s12.csv,1,19283,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s13.csv,1,19468,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s14.csv,1,19670,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s15.csv,1,19319,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s16.csv,1,19461,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s17.csv,1,19530,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s18.csv,1,19233,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s19.csv,1,19555,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s2.csv,1,19363,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s3.csv,1,19103,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s4.csv,1,18946,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s5.csv,1,19186,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s6.csv,1,19262,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s7.csv,1,19219,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s8.csv,1,19107,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c2_unet_s9.csv,1,19108,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s0.csv,1,30155,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s1.csv,1,30357,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s10.csv,1,30747,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s11.csv,1,30803,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s12.csv,1,30540,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s13.csv,1,30696,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s14.csv,1,30979,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s15.csv,1,30620,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s16.csv,1,30624,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s17.csv,1,30599,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s18.csv,1,30584,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s19.csv,1,30586,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s2.csv,1,30558,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s3.csv,1,29982,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s4.csv,1,30099,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s5.csv,1,30510,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s6.csv,1,30355,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s7.csv,1,30186,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s8.csv,1,29850,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c3_unet_s9.csv,1,30444,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s0.csv,1,15464,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s1.csv,1,15424,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s10.csv,1,15711,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s11.csv,1,15710,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s12.csv,1,15570,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s13.csv,1,15783,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s14.csv,1,15895,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s15.csv,1,15481,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s16.csv,1,15584,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s17.csv,1,15628,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s18.csv,1,15486,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s19.csv,1,15679,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s2.csv,1,15734,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s3.csv,1,15262,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s4.csv,1,15312,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s5.csv,1,15415,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s6.csv,1,15700,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s7.csv,1,15530,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s8.csv,1,15121,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c4_unet_s9.csv,1,15563,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s0.csv,1,13923,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s1.csv,1,14100,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s10.csv,1,14161,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s11.csv,1,14285,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s12.csv,1,14262,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s13.csv,1,14301,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s14.csv,1,14450,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s15.csv,1,14145,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s16.csv,1,14336,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s17.csv,1,14391,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s18.csv,1,14153,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s19.csv,1,14333,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s2.csv,1,14276,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s3.csv,1,14033,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s4.csv,1,13939,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s5.csv,1,14221,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s6.csv,1,14248,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s7.csv,1,14008,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s8.csv,1,13844,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c5_unet_s9.csv,1,14172,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s0.csv,1,5964,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s1.csv,1,6047,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s10.csv,1,6064,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s11.csv,1,6077,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s12.csv,1,6020,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s13.csv,1,6047,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s14.csv,1,6102,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s15.csv,1,5977,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s16.csv,1,6044,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s17.csv,1,6058,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s18.csv,1,6075,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s19.csv,1,6088,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s2.csv,1,6029,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s3.csv,1,5928,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s4.csv,1,5908,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s5.csv,1,6023,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s6.csv,1,6048,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s7.csv,1,6021,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s8.csv,1,5924,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot/pg_c6_unet_s9.csv,1,5997,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s0.csv,1,42469,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s1.csv,1,42506,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s10.csv,1,43279,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s11.csv,1,43362,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s12.csv,1,43358,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s13.csv,1,43379,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s14.csv,1,43286,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s15.csv,1,43326,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s16.csv,1,43262,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s17.csv,1,43289,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s18.csv,1,43319,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s19.csv,1,43365,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s2.csv,1,42565,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s3.csv,1,42496,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s4.csv,1,42495,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s5.csv,1,42500,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s6.csv,1,42515,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s7.csv,1,42506,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s8.csv,1,42484,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_pranet_s9.csv,1,42495,CHUYEN_RA_NGOAI_10_11: lượt PraNet 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s0.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s0.csv,1,41312,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s1.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s1.csv,1,41428,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s10.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s10.csv,1,42277,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s11.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s11.csv,1,42340,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s12.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s12.csv,1,42107,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s13.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s13.csv,1,42249,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s14.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s14.csv,1,42323,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s15.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s15.csv,1,42320,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s16.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s16.csv,1,42432,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s17.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s17.csv,1,42071,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s18.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s18.csv,1,42096,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s19.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s19.csv,1,42110,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s2.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s2.csv,1,41588,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s3.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s3.csv,1,41385,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s4.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s4.csv,1,41388,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s5.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s5.csv,1,41254,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s6.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s6.csv,1,41380,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s7.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s7.csv,1,41624,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s8.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s8.csv,1,41233,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s9.csv,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum/tung_luot/cecum800_unet_s9.csv,1,41472,CHUYEN_RA_NGOAI_10_11: lượt U-Net 352
+08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_clinicdb_pranet.npz,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_clinicdb_pranet.npz,1,323725,CHUYEN_RA_NGOAI_10_11: mặt nạ PraNet 352
+08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_colondb_pranet.npz,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_colondb_pranet.npz,1,250149,CHUYEN_RA_NGOAI_10_11: mặt nạ PraNet 352
+08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_etis_pranet.npz,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_etis_pranet.npz,1,248868,CHUYEN_RA_NGOAI_10_11: mặt nạ PraNet 352
+08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_clinicdb_unet.npz,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_clinicdb_unet.npz,1,349375,CHUYEN_RA_NGOAI_10_11: mặt nạ U-Net 352
+08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_colondb_unet.npz,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_colondb_unet.npz,1,294677,CHUYEN_RA_NGOAI_10_11: mặt nạ U-Net 352
+08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_etis_unet.npz,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/du_lieu_dinh_tinh/pred_seed0_etis_unet.npz,1,346949,CHUYEN_RA_NGOAI_10_11: mặt nạ U-Net 352
+08_du_lieu_thuc_te/bang/nen_cecum.zip,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/nen_cecum.zip,1,1519454,CHUYEN_RA_NGOAI_10_11: file nén nhận từ bạn cùng nhóm (đã giải nén)
+08_du_lieu_thuc_te/bang/tung_luot_ablation.zip,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/tung_luot_ablation.zip,1,450275,CHUYEN_RA_NGOAI_10_11: file nén nhận từ bạn cùng nhóm (đã giải nén)
+08_du_lieu_thuc_te/bang/_log_chay.txt,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/_log_chay.txt,1,16508,CHUYEN_RA_NGOAI_10_11: log bản 352
+08_du_lieu_thuc_te/bang/_log_chay_seed10-19.txt,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/_log_chay_seed10-19.txt,1,29060,CHUYEN_RA_NGOAI_10_11: log bản 352
+08_du_lieu_thuc_te/bang/_log_chay_polypgen.txt,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/_log_chay_polypgen.txt,1,99455,CHUYEN_RA_NGOAI_10_11: log bản 352
+08_du_lieu_thuc_te/bang/KET_QUA_CHAY_ABLATION_NGOAI.md,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/KET_QUA_CHAY_ABLATION_NGOAI.md,1,1327,CHUYEN_RA_NGOAI_10_11: ghi chú chạy (làm việc)
+08_du_lieu_thuc_te/bang/KET_QUA_CHAY_NEN_CECUM.md,../_Luu_Tru_Ngoai/Test_Mau/08_du_lieu_thuc_te/bang/KET_QUA_CHAY_NEN_CECUM.md,1,1406,CHUYEN_RA_NGOAI_10_11: ghi chú chạy (làm việc)
+99_luu_tru/du_lieu_cu,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/du_lieu_cu,1,74836412,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ
+99_luu_tru/hinh_cu,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/hinh_cu,41,8806527,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ
+99_luu_tru/log_kaggle_cu,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/log_kaggle_cu,6,10001985,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ (notebook PraNet/U-Net 352)
+99_luu_tru/ma_nguon_cu,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/ma_nguon_cu,986,13607462,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ
+99_luu_tru/nhap,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/nhap,26971,2709724020,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ
+99_luu_tru/pipeline_semantic,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/pipeline_semantic,3068,250445935,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ
+99_luu_tru/tai_lieu_cu,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/tai_lieu_cu,56,14338839,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ
+99_luu_tru/thu_nghiem_ket_hop,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/thu_nghiem_ket_hop,1682,6388756670,"CHUYEN_RA_NGOAI_10_11: thử nghiệm AV/AVF/ITSVM, không đưa vào báo cáo"
+99_luu_tru/ket_qua_cu/Baseline_seed20-22,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/ket_qua_cu/Baseline_seed20-22,84,159571147,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ
+99_luu_tru/ket_qua_cu/KQ_Nen_DX_10seed,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/ket_qua_cu/KQ_Nen_DX_10seed,79,8104008,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ
+99_luu_tru/ket_qua_cu/efficiency_benchmark_TSVM_cu,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru/ket_qua_cu/efficiency_benchmark_TSVM_cu,20,1615492,CHUYEN_RA_NGOAI_10_11: lưu trữ cũ
+AGENTS.md,../_Luu_Tru_Ngoai/Test_Mau/AGENTS.md,1,6178,CHUYEN_RA_NGOAI_10_11: ghi chú làm việc với AI
+CHUYEN_GIAO_CODEX.md,../_Luu_Tru_Ngoai/Test_Mau/CHUYEN_GIAO_CODEX.md,1,11633,CHUYEN_RA_NGOAI_10_11: ghi chú làm việc với AI
+HUONG_DAN_LAM_VIEC_VOI_CLAUDE.md,../_Luu_Tru_Ngoai/Test_Mau/HUONG_DAN_LAM_VIEC_VOI_CLAUDE.md,1,22267,CHUYEN_RA_NGOAI_10_11: ghi chú làm việc với AI
+KE_HOACH_HOAN_THIEN_NOP_BAI.md,../_Luu_Tru_Ngoai/Test_Mau/KE_HOACH_HOAN_THIEN_NOP_BAI.md,1,10622,CHUYEN_RA_NGOAI_10_11: kế hoạch làm việc
+NGU_CANH_DU_AN.md,../_Luu_Tru_Ngoai/Test_Mau/NGU_CANH_DU_AN.md,1,13334,CHUYEN_RA_NGOAI_10_11: ghi chú ngữ cảnh làm việc với AI
+.vscode,../_Luu_Tru_Ngoai/Test_Mau/.vscode,1,68,CHUYEN_RA_NGOAI_10_11: cấu hình máy cá nhân
+02_ma_nguon/notebook_kaggle/polyp_pvt,../_Luu_Tru_Ngoai/Test_Mau/02_ma_nguon/notebook_kaggle/polyp_pvt,1,22529,"CHUYEN_RA_NGOAI_10_11: notebook Polyp-PVT (đã bỏ, chưa chạy, chỉ nêu ở hướng phát triển)"
+02_ma_nguon/notebook_kaggle/vm_unet,../_Luu_Tru_Ngoai/Test_Mau/02_ma_nguon/notebook_kaggle/vm_unet,1,20404,"CHUYEN_RA_NGOAI_10_11: notebook VM-UNet (đã bỏ, chưa chạy, chỉ nêu ở hướng phát triển)"
+03_ket_qua_huan_luyen/Shape_only/HUONG_DAN_KIEM_TRA_KAGGLE.md,../_Luu_Tru_Ngoai/Test_Mau/03_ket_qua_huan_luyen/Shape_only/HUONG_DAN_KIEM_TRA_KAGGLE.md,1,4484,CHUYEN_RA_NGOAI_10_11: ghi chú làm việc (quy trình tải Kaggle)
+Test_Mau (thư mục dự án),CNTT_KLCN182_PhungTheBao,,,DOI_TEN_10_11 (làm sau cùng)

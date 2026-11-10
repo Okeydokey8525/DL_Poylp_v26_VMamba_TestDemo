@@ -4,7 +4,7 @@ Bốn mô hình (YOLO26s-seg, YOLO26s-seg + TSVM FP32, PraNet, U-Net) đã huấ
 được chạy thẳng trên ảnh của ba bộ dữ liệu khác nguồn, không huấn luyện lại, không tinh chỉnh.
 Giao thức giống hệt 00_tai_lieu_tong_quan/scripts/danh_gia_pixel.py (dùng lại các hàm của script đó):
 - YOLO: imgsz 640, conf 0,25, iou 0,7, retina_masks=True, half=False; gộp mọi mặt nạ của ảnh thành một.
-- PraNet/U-Net: kéo về 352×352 (bản cũ) hoặc 640×640 (bản `pranet640`/`unet640`), ngưỡng xác suất 0,5,
+- PraNet/U-Net: bản `pranet640`/`unet640`, kéo về 640×640, ngưỡng xác suất 0,5,
   phóng song tuyến về kích thước gốc.
 - Nhãn chuẩn: mặt nạ gốc của từng bộ dữ liệu, nhị phân hóa ở ngưỡng > 127. Mọi ảnh đều có polyp.
 
@@ -12,14 +12,11 @@ Chỉ đọc dữ liệu ở DeepLearning/Dataset/ và checkpoint ở 03_, 05_; 
 Mỗi lượt (bộ dữ liệu, mô hình, seed) ghi một tệp riêng trong ../bang/tung_luot/, chạy lại sẽ bỏ qua lượt đã có.
 
 Chạy (cần GPU):
-    C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py                 # 4 mô hình × seed 0–9 × 3 bộ
+    C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py                 # 4 mô hình × seed 0–19
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py --seeds 0 --sets etis   # chạy thử
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py --chi-tong-hop          # chỉ tổng hợp lại
-    # PraNet/U-Net 640 (nhận xét II.4): tổng hợp kèm baseline/tsvm đã có, ghi riêng vào bang/pixel_640/<n>seed/
-    C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py --models pranet640 unet640 --seeds 0 1 ... 19 --out ../bang/pixel_640
-
-Phần tổng hợp chỉ lấy các mô hình được chọn (bộ chính: baseline, tsvm, pranet, unet), nên lượt 640 trong
-tung_luot/ không lẫn vào bang/10seed/, bang/20seed/.
+Bảng tổng hợp 20 seed (baseline, tsvm, pranet640, unet640) ghi vào
+00_tai_lieu_tong_quan/bang/pixel_640/du_lieu_ngoai/20seed/. Bản 352 cũ đã chuyển ra lưu trữ ngoài.
 """
 from __future__ import annotations
 
@@ -53,6 +50,7 @@ for _c, _n in zip(range(1, 7), (256, 301, 457, 227, 208, 88)):
     SETS[f"pg_c{_c}"] = (f"PolypGen C{_c}", PG / f"data_C{_c}" / f"images_C{_c}", PG / f"data_C{_c}" / f"masks_C{_c}", _n)
 BANG = ROOT / "bang"
 LUOT = BANG / "tung_luot"
+OUT_640 = ROOT.parent / "00_tai_lieu_tong_quan" / "bang" / "pixel_640" / "du_lieu_ngoai"
 QUAL = ROOT / "du_lieu_dinh_tinh"
 METRICS = ["dice", "iou", "precision", "recall", "dice_micro", "iou_micro", "no_pred_rate", "bg_fp_image_rate"]
 
@@ -193,21 +191,17 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sets", nargs="*", default=list(SETS), choices=list(SETS))
     ap.add_argument("--models", nargs="*", default=dg.DEFAULT_MODELS, choices=list(dg.MODELS))
-    ap.add_argument("--seeds", nargs="*", type=int, default=list(range(10)))
+    ap.add_argument("--seeds", nargs="*", type=int, default=list(range(20)))
     ap.add_argument("--chi-tong-hop", action="store_true", help="không suy luận, chỉ tổng hợp bang/tung_luot/")
-    ap.add_argument("--out", type=Path, default=BANG,
-                    help="thư mục gốc của bảng tổng hợp (mặc định ../bang -> bang/10seed, bang/20seed)")
+    ap.add_argument("--out", type=Path, default=OUT_640,
+                    help="thư mục gốc của bảng tổng hợp (mặc định 00_tai_lieu_tong_quan/bang/pixel_640/du_lieu_ngoai)")
     args = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     if not args.chi_tong_hop:
         run(args)
-    if args.out.resolve() == BANG.resolve():
-        models = dg.DEFAULT_MODELS   # bộ chính của báo cáo, giữ nguyên bang/10seed/ và bang/20seed/
-    else:                            # bản riêng: mô hình đã chọn + baseline, tsvm để so sánh ghép cặp
-        models = list(dict.fromkeys(["baseline", "tsvm", *args.models]))
-    for n in (10, 20):
-        summarize(n, models, args.out)
+    models = list(dict.fromkeys(["baseline", "tsvm", *args.models]))   # luôn kèm baseline, tsvm để so ghép cặp
+    summarize(20, models, args.out)
 
 
 if __name__ == "__main__":

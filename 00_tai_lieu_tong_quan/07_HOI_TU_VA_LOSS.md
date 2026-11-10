@@ -1,6 +1,6 @@
 # 07. Hội tụ và loss
 
-> **Cập nhật 28/10/2026:** số trong file này tính trên **20 seed** và là **bộ số dùng trong báo cáo**. Bộ 10 seed (chỉ đối chiếu) ở [06b_KET_QUA_10_SEED.md](06b_KET_QUA_10_SEED.md).
+> Số trong file này tính trên **20 seed (seed 0–19)**, là bộ số dùng trong báo cáo.
 
 Nguồn: [bang/05_duong_cong_theo_epoch.csv](bang/05_duong_cong_theo_epoch.csv), là trung bình và SD theo từng epoch trên 20 seed, tính từ `results.csv`.
 
@@ -50,11 +50,6 @@ Từ epoch 91, mosaic bị tắt. Train seg loss trung bình giảm đột ngộ
 | `l1_loss` | L1 trên tọa độ hộp | YOLO26 dùng `reg_max: 1` nên **không có DFL**. Không gọi cột này là `dfl_loss` |
 | `sem_loss` | Loss phân đoạn ngữ nghĩa phụ | Có giá trị ở train (khoảng 2,55 ở epoch 1, khoảng 0,25 ở epoch 100) nhưng **`val/sem_loss` bằng 0 ở mọi epoch của cả 40 lượt**. Đây là giá trị không được tính trên validation, không có nghĩa là lỗi bằng 0. Không đưa vào kiểm định |
 
-## Hình cũ (đã chuyển vào lưu trữ)
+## Hình
 
-Bộ hình mới vẽ lại từ CSV nằm ở `06_bao_cao/hinh/`. Các hình cũ dưới đây chỉ giữ để tham khảo.
-
-
-- [23_map_curves_mean_sd.png](../99_luu_tru/hinh_cu/charts_20seed/convergence/23_map_curves_mean_sd.png)
-- [22_validation_losses_mean_sd.png](../99_luu_tru/hinh_cu/charts_20seed/convergence/22_validation_losses_mean_sd.png)
-- [25_val_losses_mean_sd_epoch11_100.png](../99_luu_tru/hinh_cu/charts_20seed/convergence/25_val_losses_mean_sd_epoch11_100.png): bỏ 10 epoch đầu để thang đo dễ đọc hơn.
+`06_bao_cao/hinh/ket_qua_20seed/{vi,en}/`: `h03_duong_mien_mask_map_theo_epoch`, `c01_val_seg_loss`, `c02_train_seg_loss`.

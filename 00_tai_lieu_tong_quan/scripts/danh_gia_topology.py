@@ -1,7 +1,7 @@
 """Chỉ số topology (lỗi Betti) cho 4 mô hình × 20 seed trên 160 ảnh validation BG20.
 
 Dùng lại đúng giao thức suy luận của danh_gia_pixel.py (nhãn polygon ở độ phân giải gốc; YOLO imgsz 640,
-conf 0,25, iou 0,7, retina_masks; PraNet/U-Net kéo về 352 hoặc 640 theo bản, ngưỡng 0,5). Chỉ suy luận,
+conf 0,25, iou 0,7, retina_masks; PraNet/U-Net kéo về 640×640, ngưỡng 0,5). Chỉ suy luận,
 không sửa checkpoint.
 
 Với mỗi ảnh, đếm trên mặt nạ dự đoán và mặt nạ nhãn:
@@ -18,13 +18,10 @@ Chỉ số theo seed (trên 120 ảnh polyp):
 - miss_rate: tỉ lệ ảnh dự đoán ít mảnh hơn nhãn (sót polyp hoặc hai polyp dính thành một).
 Trên 40 ảnh nền: bg_b0 = số mảnh thừa trung bình.
 
-Kết quả: ../bang/13_topology_tung_anh.csv, 14_topology_tung_seed.csv, 15_topology_thong_ke.csv
-(và bản 10 seed trong ../bang/10seed/ để đối chiếu).
+Kết quả: ../bang/pixel_640/13_topology_tung_anh.csv, 14_topology_tung_seed.csv, 15_topology_thong_ke.csv
 
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_topology.py                 # 4 mô hình × 20 seed (cần GPU)
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_topology.py --tu-bang       # chỉ tổng hợp lại từ bảng 13
-    # Bản 640 (nhận xét II.4), ghi riêng, không đè bảng 13–15 của báo cáo:
-    C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_topology.py --models baseline tsvm pranet640 unet640 --out ../bang/pixel_640
 """
 from __future__ import annotations
 
@@ -107,7 +104,7 @@ def main():
     ap.add_argument("--seeds", nargs="*", type=int, default=list(range(20)))
     ap.add_argument("--models", nargs="*", default=dg.DEFAULT_MODELS, choices=list(dg.MODELS))
     ap.add_argument("--tu-bang", action="store_true", help="không suy luận; tổng hợp lại từ <out>/13_topology_tung_anh.csv")
-    ap.add_argument("--out", type=Path, default=dg.OUT, help="thư mục ghi 13–15_*.csv (mặc định ../bang)")
+    ap.add_argument("--out", type=Path, default=dg.OUT_PIX, help="thư mục ghi 13–15_*.csv (mặc định ../bang/pixel_640)")
     args = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -149,8 +146,6 @@ def main():
         df = pd.DataFrame(rows)
 
     tong_hop(df, args.out)
-    if args.out.resolve() == dg.OUT.resolve():   # bản 10 seed chỉ để đối chiếu với bộ chính
-        tong_hop(df[df.seed < 10], dg.OUT / "10seed")
 
 
 if __name__ == "__main__":

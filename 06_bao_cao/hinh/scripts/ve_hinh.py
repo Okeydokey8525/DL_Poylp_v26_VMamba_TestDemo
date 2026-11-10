@@ -2,14 +2,13 @@
 
 Đọc trực tiếp các bảng trong 00_tai_lieu_tong_quan/bang/ (đã đối chiếu với results.csv gốc).
 Mỗi hình xuất PNG 300 dpi và PDF vector vào <thư mục>/vi/ và <thư mục>/en/:
-  - hình không phụ thuộc số seed (a, d, e02, e03, m01, q01) -> ../chung/
-  - hình kết quả theo seed (h, r, c, e01, p)                -> ../ket_qua_<N>seed/, đọc bang/ (N = 20) hoặc bang/<N>seed/
+  - hình không phụ thuộc số seed (a, d, e02, e03, m01, s01, t01)      -> ../chung/
+  - hình kết quả 20 seed của hai mô hình YOLO (h, r, c, e01)          -> ../ket_qua_20seed/, đọc bang/
+  - hình có 4 mô hình (p, q01, o, x), PraNet/U-Net ảnh 640×640        -> ../ket_qua_20seed_640/, đọc bang/pixel_640/
+  - hình ablation 20 seed và C2PSA rộng (k01, k02, k03)               -> ../ablation_20seed/, đọc bang/ablation_20seed/
 
-    python ve_hinh.py                  # vẽ tất cả, kết quả dùng 20 seed (seed 0–19, bộ dùng trong báo cáo)
-    python ve_hinh.py --seeds 10       # kết quả dùng 10 seed (chỉ đối chiếu)
-    python ve_hinh.py --chi h01 h03    # chỉ vẽ một số hình
-    python ve_hinh.py --ban-640        # PraNet/U-Net 640 (nhận xét II.4): các hình 4 mô hình -> ../ket_qua_20seed_640/
-    python ve_hinh.py --ablation-seeds 20   # k01, k02, k03 với 20 seed -> ../ablation_20seed/
+    python ve_hinh.py                  # vẽ tất cả (seed 0–19, bộ dùng trong báo cáo)
+    python ve_hinh.py --chi h01 p01    # chỉ vẽ một số hình
 """
 from __future__ import annotations
 
@@ -667,9 +666,9 @@ def e03_tham_so_dung_luong(lang, st):
 
 
 # ---------------------------------------------------------------- Chương 6: so sánh 4 mô hình theo pixel
-BAN_640 = False   # main() bật khi --ban-640: PraNet/U-Net lấy bản 640 từ bang/pixel_640/
+BAN_640 = True    # PraNet/U-Net bản 640 (bang/pixel_640/); bản 352 cũ đã chuyển ra lưu trữ ngoài
 P640 = BANG / "pixel_640"
-NEN_CECUM = REPO / "08_du_lieu_thuc_te" / "bang" / "20seed" / "06_nen_cecum_tung_seed.csv"
+NEN_CECUM = BANG / "pixel_640" / "nen_cecum" / "06_nen_cecum_tung_seed.csv"
 # Các hình có PraNet/U-Net, vẽ lại được với bản 640
 HINH_4_MO_HINH = ["p01", "p02", "p03", "p04", "p05", "q01", "o01", "o02", "x01", "x02", "x03"]
 
@@ -1015,7 +1014,7 @@ ABL = [  # (mã cấu hình trong bang/17_*, màu, nhãn vi, nhãn en)
 ]
 
 
-N_ABL = 5  # số seed ablation; main() đặt lại theo --ablation-seeds (10 -> bang/ablation_10seed/, hinh/ablation_10seed/)
+N_ABL = 20  # ablation 20 seed (bang/ablation_20seed/)
 
 
 def _abl():
@@ -1138,44 +1137,24 @@ THEO_SEED = {"h01", "h01b", "h02", "h03", "h04", "r01", "r02", "r03", "r04", "r0
 
 
 def main() -> None:
-    global BANG_SEED, N_SEED, DICH, N_ABL, BAN_640, PIX_MODELS
+    global DICH, PIX_MODELS
     ap = argparse.ArgumentParser()
-    ap.add_argument("--chi", nargs="*", help="chỉ vẽ các hình có mã này, ví dụ h01 h03")
-    ap.add_argument("--seeds", type=int, default=20, help="số seed (0..N-1) cho hình kết quả; mặc định 20")
-    ap.add_argument("--ablation-seeds", type=int, default=5, choices=(5, 10, 20),
-                    help="số seed cho k01/k02; 10/20 -> chỉ vẽ k01 k02 (20: thêm k03) vào hinh/ablation_<N>seed/")
-    ap.add_argument("--ban-640", action="store_true",
-                    help="PraNet/U-Net bản 640 (bang/pixel_640/); chỉ vẽ các hình 4 mô hình vào hinh/ket_qua_20seed_640/")
+    ap.add_argument("--chi", nargs="*", help="chỉ vẽ các hình có mã này, ví dụ h01 p01")
     args = ap.parse_args()
-    N_ABL = args.ablation_seeds
-    if N_ABL != 5:
-        for lang, st in STYLE.items():
-            setup(st)
-            for k in ("k01", "k02", "k03") if N_ABL == 20 else ("k01", "k02"):
-                DICH = OUT / f"ablation_{N_ABL}seed"
-                FIGS[k](lang, st)
-                print(f"{lang}: {k} -> {DICH.name}")
-        return
-    N_SEED = args.seeds
-    BANG_SEED = BANG if N_SEED == 20 else BANG / f"{N_SEED}seed"
-    assert (BANG_SEED / "02_ket_qua_tung_seed.csv").is_file(), f"Chưa có bảng {BANG_SEED}; chạy tinh_lai_so_lieu.py --seeds {N_SEED}"
+    assert (BANG_SEED / "02_ket_qua_tung_seed.csv").is_file(), "Thiếu bang/02_ket_qua_tung_seed.csv; chạy tinh_lai_so_lieu.py"
+    PIX_MODELS = [({"pranet": "pranet640", "unet": "unet640"}.get(k, k), c, lab) for k, c, lab in PIX_MODELS]
     keys = args.chi or list(FIGS)
-    if args.ban_640:
-        assert N_SEED == 20, "Bản 640 chỉ có 20 seed"
-        BAN_640 = True
-        PIX_MODELS = [({"pranet": "pranet640", "unet": "unet640"}.get(k, k), c, lab) for k, c, lab in PIX_MODELS]
-        keys = [k for k in keys if k in HINH_4_MO_HINH]
-        for lang, st in STYLE.items():
-            setup(st)
-            for k in keys:
-                DICH = OUT / "ket_qua_20seed_640"
-                FIGS[k](lang, st)
-                print(f"{lang}: {k} -> {DICH.name}")
-        return
     for lang, st in STYLE.items():
         setup(st)
         for k in keys:
-            DICH = OUT / (f"ket_qua_{N_SEED}seed" if k in THEO_SEED else "chung")
+            if k in HINH_4_MO_HINH:
+                DICH = OUT / "ket_qua_20seed_640"
+            elif k in ("k01", "k02", "k03"):
+                DICH = OUT / "ablation_20seed"
+            elif k in THEO_SEED:
+                DICH = OUT / "ket_qua_20seed"
+            else:
+                DICH = OUT / "chung"
             FIGS[k](lang, st)
             print(f"{lang}: {k} -> {DICH.name}")
 

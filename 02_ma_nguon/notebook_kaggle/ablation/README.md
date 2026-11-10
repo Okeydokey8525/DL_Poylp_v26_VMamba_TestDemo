@@ -1,5 +1,7 @@
 # Ablation C2TSVMamba tại tầng 10
 
+> **Cập nhật 10/11/2026:** ba chế độ đã chạy đủ **seed 0–19** (60 lượt), kết quả ở `03_ket_qua_huan_luyen/{Vmamba_only, Shape_only, No_guidance}/`, phân tích ở `00_tai_lieu_tong_quan/15_ABLATION_VA_C2PSA_RONG.md`. Lịch chạy và phần "Cách đọc kết quả" bên dưới là kế hoạch ban đầu cho 5 seed, giữ lại làm hướng dẫn chạy.
+
 Mục đích: tách đóng góp của từng thành phần trong TSVMamba. Mọi thứ khác giữ **giống hệt** 20 seed TSVM FP32: cùng repo fork FP32, cùng dữ liệu BG20, cùng siêu tham số và cùng seed.
 
 | Chế độ (`MODE`) | Giữ lại | Bỏ đi | Câu hỏi trả lời | Tham số tầng 10 |
@@ -19,7 +21,7 @@ Mã của 3 chế độ đã có sẵn trong `nn/modules/topology_shape_vmamba.p
 4. Ở **Cell 0**, sửa 2 dòng `MODE` và `SEED`.
 5. Chọn **Save Version → Save & Run All (Commit)** để chạy nền khoảng 4–5 giờ, không cần mở trình duyệt.
 6. Cell 3 tự kiểm tra cấu trúc: nếu `mode` hoặc số tham số tầng 10 sai, notebook dừng ngay, chưa tốn giờ GPU.
-7. Xong thì tải `runs_Kvasir_BG20_YOLO26s_seg_ABL_<MODE>_s<SEED>_w2.zip` ở tab Output và đặt vào `03_ket_qua_huan_luyen/Ablation_TSVM/`.
+7. Xong thì tải `runs_Kvasir_BG20_YOLO26s_seg_ABL_<MODE>_s<SEED>_w2.zip` ở tab Output và giải nén vào `03_ket_qua_huan_luyen/<Vmamba_only|Shape_only|No_guidance>/`.
 
 ## Lịch chạy đề xuất: 3 chế độ × seed 0–4 = 15 lượt (≈ 68 giờ GPU)
 
@@ -38,3 +40,4 @@ Mỗi tài khoản dùng tối đa khoảng 14 giờ, dưới hạn mức GPU kh
 
 - So **từng cặp cùng seed** với Baseline và TSVM đầy đủ (seed 0–4 đã có), dùng cùng chỉ số mask mAP50-95 lớn nhất mỗi lượt như phân tích 20 seed.
 - 5 seed chỉ đủ để thấy **xu hướng**, không đủ cho ý nghĩa thống kê, vì độ lệch giữa các seed (~0,01) lớn hơn mức chênh cần đo (~0,004). Báo cáo phải ghi rõ giới hạn này.
+- Bản 20 seed (dùng trong báo cáo): không biến thể nào khác bản đầy đủ có ý nghĩa thống kê ở α = 0,05; chỉ viết "xu hướng".

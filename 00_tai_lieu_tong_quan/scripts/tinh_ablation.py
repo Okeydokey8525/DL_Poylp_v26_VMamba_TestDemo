@@ -1,6 +1,6 @@
-"""Tổng hợp thí nghiệm tách thành phần (ablation) của C2TSVMamba, seed 0–4 (mặc định) hoặc 0–9 (--seeds 10).
+"""Tổng hợp thí nghiệm tách thành phần (ablation) của C2TSVMamba, mặc định seed 0–19 (--seeds 20).
 
-Với --seeds 10, ba file kết quả ghi riêng vào ../bang/ablation_10seed/; bản 5 seed ở ../bang/ giữ nguyên.
+Kết quả ghi vào ../bang/ablation_<N>seed/; bản dùng trong báo cáo là ablation_20seed/.
 
 Năm cấu hình: đối chứng (C2PSA), TSVM đầy đủ (hai cấu hình này lấy seed 0–4 của các lượt chính) và ba biến thể
 vmamba_only, shape_only, shape_vmamba_no_guidance. Endpoint giống bộ chính: mask mAP50–95 tại epoch đầu tiên đạt
@@ -91,13 +91,12 @@ def main():
         sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
     ap.add_argument("--torch", action="store_true", help="đếm tham số từ best.pt")
-    ap.add_argument("--seeds", type=int, default=5, choices=(5, 10, 20), help="số seed (0..n-1)")
+    ap.add_argument("--seeds", type=int, default=20, choices=(5, 10, 20), help="số seed (0..n-1), mặc định 20")
     a = ap.parse_args()
     global SEEDS, OUT
     SEEDS = range(a.seeds)
-    if a.seeds != 5:  # bản 5 seed giữ nguyên ở bang/, bản khác ghi riêng
-        OUT = OUT / f"ablation_{a.seeds}seed"
-        OUT.mkdir(exist_ok=True)
+    OUT = OUT / f"ablation_{a.seeds}seed"
+    OUT.mkdir(exist_ok=True)
 
     # 1. Cấu hình huấn luyện: so từng lượt với lượt TSVM chính cùng seed
     ref = {s: yaml.safe_load((Path(str(CONFIGS["TSVM_day_du"][0]).format(s)) / "args.yaml").read_text(encoding="utf-8"))

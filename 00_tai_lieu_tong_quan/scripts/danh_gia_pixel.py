@@ -1,9 +1,9 @@
 """Đánh giá theo pixel (Dice, IoU, Precision, Recall) cho 4 mô hình × 20 seed trên 160 ảnh validation BG20.
 
 Mô hình: YOLO26s-seg (đối chứng), YOLO26s-seg + TSVM FP32, PraNet (biến thể ResNet-50), U-Net.
-PraNet và U-Net có hai bản: `pranet`/`unet` (ảnh 352, bộ cũ) và `pranet640`/`unet640` (ảnh 640, cùng tăng
-cường với YOLO, theo nhận xét phản biện II.4). Bản 352 giữ nguyên để số cũ vẫn tái lập được.
-Chỉ suy luận, không huấn luyện, không sửa checkpoint. Kết quả ghi vào ../bang/10–12_*.csv (hoặc --out).
+PraNet và U-Net dùng bản `pranet640`/`unet640` (ảnh 640×640, cùng tăng cường với YOLO, theo nhận xét phản
+biện II.4). Bản 352 cũ (`pranet`/`unet`) đã chuyển ra lưu trữ ngoài; mã vẫn giữ hai khóa này để tái lập khi cần.
+Chỉ suy luận, không huấn luyện, không sửa checkpoint. Kết quả ghi vào ../bang/pixel_640/10–12_*.csv (hoặc --out).
 
 Giao thức (đã thống nhất với chủ dự án):
 - Nhãn chuẩn chính: mặt nạ vẽ từ polygon YOLO ở độ phân giải gốc (cv2.fillPoly, giống notebook PraNet/U-Net).
@@ -14,15 +14,11 @@ Giao thức (đã thống nhất với chủ dự án):
   lateral_map_s2, đúng đầu ra notebook dùng để chọn checkpoint), phóng song tuyến về kích thước gốc, ngưỡng 0,5.
 - YOLO: dự đoán imgsz 640, conf 0,25, iou 0,7, retina_masks=True, half=False; gộp mọi mặt nạ của ảnh thành một.
 - Chỉ số tính trên 120 ảnh polyp; 40 ảnh nền tính tỉ lệ ảnh có ít nhất một pixel bị dự đoán là polyp.
-- Kiến trúc được nạp trực tiếp từ notebook huấn luyện: bản 352 từ 99_luu_tru/log_kaggle_cu/ (cell 1), bản 640 từ
-  02_ma_nguon/notebook_kaggle/ (cell 2). Checkpoint nạp bằng load_state_dict(strict=True).
+- Kiến trúc được nạp trực tiếp từ notebook huấn luyện 02_ma_nguon/notebook_kaggle/ (cell 2).
+  Checkpoint nạp bằng load_state_dict(strict=True).
 
-Bản 640 (II.4), ghi riêng để không đè bảng 10–12 đang dùng trong báo cáo:
-    ... danh_gia_pixel.py --models baseline tsvm pranet640 unet640 --out ../bang/pixel_640
-
-Chạy (cần GPU):  C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_pixel.py [--seeds 0 1] [--models pranet unet]
-Chỉ tổng hợp lại từ bang/10_pixel_tung_anh.csv cho một nhóm seed (không suy luận, không cần GPU):
-    ... danh_gia_pixel.py --tu-bang --seeds 0 1 2 3 4 5 6 7 8 9 --out ../bang/10seed
+Chạy (cần GPU):  C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_pixel.py [--seeds 0 1] [--models pranet640 unet640]
+Chỉ tổng hợp lại từ <out>/10_pixel_tung_anh.csv (không suy luận, không cần GPU):  ... danh_gia_pixel.py --tu-bang
 """
 from __future__ import annotations
 
@@ -47,14 +43,15 @@ from scipy import stats
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
 OUT = HERE.parent / "bang"
+OUT_PIX = OUT / "pixel_640"                         # bảng 10–15, 20 của 4 mô hình (bản trong báo cáo)
 DATA = REPO / "01_du_lieu" / "Kvasir_YOLO_SEG_BG20"
 RAW_MASKS = REPO / "01_du_lieu" / "tao_BG20" / "Kvasir-SEG" / "masks"
 FORK = REPO / "02_ma_nguon" / "ultralytics_TSVM_FP32"
 RUNS = REPO / "03_ket_qua_huan_luyen"
 OTHER = REPO / "05_so_sanh_mo_hinh_khac"
-NB = REPO / "99_luu_tru" / "log_kaggle_cu"          # notebook PraNet/U-Net 352
+NB = REPO / "99_luu_tru" / "log_kaggle_cu"          # notebook PraNet/U-Net 352 (đã chuyển ra lưu trữ ngoài)
 NB_640 = REPO / "02_ma_nguon" / "notebook_kaggle"   # notebook PraNet/U-Net 640
-QUAL = REPO / "06_bao_cao" / "hinh" / "du_lieu_dinh_tinh"
+QUAL = OUT_PIX / "du_lieu_dinh_tinh"
 
 MODELS = {
     "baseline": ("YOLO26s-seg", lambda s: RUNS / "Baseline_YOLO26s_seg" / f"Kvasir_BG20_Baseline_YOLO26s_seg_s{s}_w2" / "weights" / "best.pt"),
@@ -64,7 +61,7 @@ MODELS = {
     "pranet640": ("PraNet (ResNet-50) 640", lambda s: OTHER / "PraNet_640" / f"PraNet_640_aug_s{s}" / f"pranet_best_s{s}.pth"),
     "unet640": ("U-Net 640", lambda s: OTHER / "UNet_640" / f"UNet_640_aug_s{s}" / f"best_unet_s{s}.pth"),
 }
-DEFAULT_MODELS = ["baseline", "tsvm", "pranet", "unet"]  # bộ chính của bảng 10–12; bản 640 phải ghi rõ --models
+DEFAULT_MODELS = ["baseline", "tsvm", "pranet640", "unet640"]  # bộ dùng trong báo cáo
 SEMANTIC_SIZE = {"pranet": 352, "unet": 352, "pranet640": 640, "unet640": 640}  # cạnh ảnh vuông đưa vào mạng
 MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
 STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)
@@ -107,6 +104,8 @@ def notebook_classes():
         ("pranet640", NB_640, "pranet-new.ipynb", 2, "# 5. HÀM LOSS"),
         ("unet640", NB_640, "unet-new.ipynb", 2, "# 4. HÀM LOSS"),
     ]:
+        if not (folder / f).is_file():   # notebook bản 352 đã chuyển ra lưu trữ ngoài
+            continue
         nb = json.loads((folder / f).read_text(encoding="utf-8"))
         code = "".join(nb["cells"][cell]["source"])
         assert cut in code, (folder / f, cell, cut)
@@ -199,13 +198,13 @@ def main():
     ap.add_argument("--seeds", nargs="*", type=int, default=list(range(20)))
     ap.add_argument("--models", nargs="*", default=DEFAULT_MODELS, choices=list(MODELS))
     ap.add_argument("--tag", default="", help="hậu tố tên file kết quả (dùng khi chạy thử)")
-    ap.add_argument("--tu-bang", action="store_true", help="không suy luận; lọc bang/10_pixel_tung_anh.csv theo --seeds rồi tổng hợp")
-    ap.add_argument("--out", type=Path, default=OUT, help="thư mục ghi 10–12_*.csv")
+    ap.add_argument("--tu-bang", action="store_true", help="không suy luận; lọc <out>/10_pixel_tung_anh.csv theo --seeds rồi tổng hợp")
+    ap.add_argument("--out", type=Path, default=OUT_PIX, help="thư mục ghi 10–12_*.csv (mặc định ../bang/pixel_640)")
     args = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     if args.tu_bang:
-        df = pd.read_csv(OUT / "10_pixel_tung_anh.csv", encoding="utf-8-sig")
+        df = pd.read_csv(args.out / "10_pixel_tung_anh.csv", encoding="utf-8-sig")
         df = df[df.seed.isin(args.seeds) & df.model.isin(args.models)]
         tong_hop(df, args.out, args.tag)
         return
@@ -222,7 +221,7 @@ def main():
     print("ultralytics:", ultralytics.__version__, ultralytics.__file__)
     nbc = notebook_classes()
     # Mặt nạ seed 0 cho hình định tính: ghi vào QUAL khi chạy bộ chính, vào <out>/du_lieu_dinh_tinh khi --out khác.
-    qual = QUAL if args.out.resolve() == OUT.resolve() else args.out / "du_lieu_dinh_tinh"
+    qual = args.out / "du_lieu_dinh_tinh"
     qual.mkdir(parents=True, exist_ok=True)
 
     rows = []

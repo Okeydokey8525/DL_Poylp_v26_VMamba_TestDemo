@@ -1,47 +1,46 @@
-# Khóa luận: Tích hợp VMamba vào YOLO26-seg để phân đoạn polyp
+# CNTT_KLCN182: Tích hợp VMamba vào YOLO26-seg để phân đoạn polyp
 
-**Đề tài:** Nghiên cứu phương pháp tích hợp VMamba vào YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng (HUIT, CNTT_KLCN182).
+**Đề tài:** Nghiên cứu phương pháp tích hợp VMamba vào YOLO26-seg trong phân đoạn polyp từ ảnh nội soi đại trực tràng (HUIT, mã khóa luận CNTT_KLCN182, GVHD: Phùng Thế Bảo).
 
-**Trọng tâm (cập nhật 29/10/2026):** so sánh YOLO26s-seg (Baseline) với YOLO26s-seg + C2TSVMamba (TSVM FP32) trên dữ liệu BG20. Báo cáo dùng **20 seed (0–19)** cho mỗi mô hình. PraNet và U-Net dùng để so sánh. Ablation dùng seed 0–4 (15 lượt, mục 6.6): bỏ bất kỳ thành phần nào cũng làm trung bình thấp hơn bản đầy đủ, nhưng không có ý nghĩa thống kê.
+**Báo cáo:** [06_bao_cao/CNTT_KLCN182-PhungTheBao.docx](06_bao_cao/CNTT_KLCN182-PhungTheBao.docx) (bản cuối). Mọi số liệu trong thư mục này khớp bản Word đó.
+
+**Trọng tâm:** so sánh YOLO26s-seg (mô hình gốc) với YOLO26s-seg + C2TSVMamba (TSVM FP32) trên dữ liệu BG20, 20 seed (0–19) mỗi mô hình. Kèm theo: PraNet và U-Net (ảnh 640×640, có tăng cường, 20 seed) làm mốc đối chiếu; ablation ba thành phần và đối chứng C2PSA rộng (20 seed); đánh giá trên bốn bộ dữ liệu khác nguồn; ứng dụng web PolypVision.
 
 ## Bắt đầu đọc từ đây
 
-- **[NGU_CANH_DU_AN.md](NGU_CANH_DU_AN.md):** ngữ cảnh, kết quả đã xác minh, trạng thái báo cáo và việc còn lại.
-- **[00_tai_lieu_tong_quan/00_README.md](00_tai_lieu_tong_quan/00_README.md):** tóm tắt một trang và mục lục các file tổng quan. Mọi con số trong đó được tính lại từ dữ liệu gốc.
-- Hướng dẫn cho AI:
-  - [CLAUDE.md](CLAUDE.md) (Claude Code);
-  - [AGENTS.md](AGENTS.md) (Codex và các agent khác);
-  - [HUONG_DAN_LAM_VIEC_VOI_CLAUDE.md](HUONG_DAN_LAM_VIEC_VOI_CLAUDE.md) (cách làm việc và lịch sử).
+- **[00_tai_lieu_tong_quan/00_README.md](00_tai_lieu_tong_quan/00_README.md):** tóm tắt một trang và mục lục 15 file tổng quan. Mọi con số trong đó được tính lại từ dữ liệu gốc bằng script trong `00_tai_lieu_tong_quan/scripts/`.
+- **[00_tai_lieu_tong_quan/13_BAN_DO_THU_MUC.md](00_tai_lieu_tong_quan/13_BAN_DO_THU_MUC.md):** thư mục nào chứa gì.
 
 ## Kết quả chính (20 seed)
 
-| | Baseline | TSVM FP32 |
+| | YOLO26s-seg | + TSVM FP32 |
 |---|---:|---:|
 | Mask mAP50–95 | 0,7189 ± 0,0118 | 0,7232 ± 0,0072 |
-| Δ, p | | +0,0043, paired t p = 0,061, 13/20 seed (chưa có ý nghĩa thống kê ở α = 0,05) |
-| Dice theo pixel | 0,849 | 0,854 (p = 0,26) |
+| Δ, p | | +0,0043, KTC 95% [−0,0002; 0,0088], paired t p = 0,061, 13/20 seed (**chỉ là xu hướng**, không có ý nghĩa thống kê ở α = 0,05) |
+| Dice theo pixel | 0,8486 | 0,8540 (p = 0,26) |
 | Tham số | 11,43 M | 12,25 M |
 | Độ trễ CPU (chỉ forward) | 270 ms | 577 ms |
-| Độ trễ GPU | | chậm hơn khoảng 1,5–1,7 lần |
+| Độ trễ GPU (forward) | 26,33 ms | 39,86 ms |
 
-Trên dữ liệu ngoài (CVC-ClinicDB, CVC-ColonDB, ETIS, PolypGen), TSVM không tốt hơn Baseline về Dice. Trên ClinicDB và ColonDB, TSVM kém hơn có ý nghĩa thống kê. Riêng trên ảnh không có polyp của PolypGen, TSVM báo nhầm ít hơn Baseline (p = 0,011). Chi tiết ở [08_du_lieu_thuc_te/](08_du_lieu_thuc_te/README.md).
+- **Ablation 20 seed:** ba biến thể bỏ bớt thành phần đều thấp hơn bản đầy đủ nhưng không có ý nghĩa thống kê. **C2PSA rộng** (cùng số tham số) thấp hơn TSVM 0,0070 (KTC 95% [0,0038; 0,0101], 17/20 seed) và không hơn mô hình gốc.
+- **PraNet 640** cao hơn cả hai mô hình YOLO ở mọi độ đo theo pixel (Dice 0,8856; hơn TSVM 0,0316, p < 0,001). U-Net 640 thấp nhất (Dice 0,6909).
+- **Dữ liệu khác nguồn:** TSVM không tốt hơn mô hình gốc về Dice: thấp hơn có ý nghĩa thống kê trên CVC-ClinicDB và CVC-ColonDB, ngang nhau trên ETIS-Larib và PolypGen. Trên ảnh không có polyp của PolypGen, TSVM báo nhầm ít hơn (10,8% so với 13,3%; p = 0,011). Chi tiết ở [08_du_lieu_thuc_te/](08_du_lieu_thuc_te/README.md).
 
 ## Cây thư mục
 
 | Thư mục | Nội dung |
 |---|---|
-| [00_tai_lieu_tong_quan/](00_tai_lieu_tong_quan/00_README.md) | Bộ tài liệu tổng quan, script tính lại số liệu, bảng kết quả |
+| [00_tai_lieu_tong_quan/](00_tai_lieu_tong_quan/00_README.md) | Tài liệu tổng quan, script tính lại số liệu, bảng kết quả (`bang/`) |
 | `01_du_lieu/` | Dữ liệu BG20 (1.200 ảnh), split 880/120 do tác giả Kvasir-SEG cung cấp, script tạo dữ liệu |
-| `02_ma_nguon/` | Fork Ultralytics 8.4.127 + TSVM + bản vá FP32, notebook Kaggle (kể cả ablation) |
-| `03_ket_qua_huan_luyen/` | 40 lượt chính (Baseline và TSVM FP32, seed 0–19) và các lượt ablation (`Vmamba_only/`, `Shape_only/`) |
-| `04_phan_tich_20seed/` | Gói phân tích 20 seed cũ và benchmark hiệu năng CPU |
-| `05_so_sanh_mo_hinh_khac/` | Checkpoint PraNet, U-Net (20 seed mỗi mô hình) |
-| `06_bao_cao/` | Chương báo cáo markdown (`md_bao_cao/`), hình (`hinh/`), kế hoạch slide (`slide/`), Word và biểu mẫu |
-| `07_kiem_toan_va_sua/` | Kiểm toán ngày 25/10 và sửa lỗi ngày 26/10 |
-| `08_du_lieu_thuc_te/` | Đánh giá trên 4 bộ dữ liệu ngoài |
-| `99_luu_tru/` | Lịch sử và thử nghiệm không thuộc bộ chính (TSVM cũ, AV/AVF/ITSVM, tài liệu cũ…) |
+| `02_ma_nguon/` | Fork Ultralytics 8.4.127 + TSVM + bản vá FP32, fork C2PSA rộng, notebook Kaggle |
+| `03_ket_qua_huan_luyen/` | Mô hình gốc, TSVM FP32, ba biến thể ablation, C2PSA rộng (mỗi loại seed 0–19) |
+| `04_phan_tich_20seed/` | Gói phân tích 20 seed cũ hơn (đã đối chiếu khớp) và benchmark CPU |
+| `05_so_sanh_mo_hinh_khac/` | PraNet 640, U-Net 640 (20 seed mỗi mô hình) |
+| `06_bao_cao/` | Bản Word cuối, nhận xét của GVHD, biểu mẫu, hình (`hinh/`) |
+| `08_du_lieu_thuc_te/` | Đánh giá trên CVC-ClinicDB, CVC-ColonDB, ETIS-Larib, PolypGen và 800 ảnh manh tràng |
+| `99_luu_tru/` | Chỉ còn lượt TSVM cũ (checkpoint FP16) để đối chiếu với bản FP32 |
 
-Chi tiết từng thư mục: [00_tai_lieu_tong_quan/13_BAN_DO_THU_MUC.md](00_tai_lieu_tong_quan/13_BAN_DO_THU_MUC.md).
+Các kết quả cũ không dùng trong báo cáo (PraNet/U-Net 352, bộ 10 seed, ablation 5 và 10 seed, bản nháp, ghi chú làm việc, kiểm toán) đã chuyển sang thư mục anh em `_Luu_Tru_Ngoai/`; tra đường dẫn trong [PATH_MAP.md](PATH_MAP.md).
 
 ## Chạy ứng dụng web PolypVision
 
@@ -123,7 +122,7 @@ Mở <http://localhost:8080>. Lần đầu bấm **Đăng ký** để tạo tài
 | Video | Tải video nội soi, chọn phân tích 2, 5, 10 khung/giây hoặc tất cả khung (cần GPU). Video kết quả giữ đủ khung và tốc độ của video gốc; khung không được phân tích dùng lại mặt nạ của khung phân tích gần nhất. Kèm dòng thời gian và các đoạn có polyp |
 | Video, chế độ mô phỏng thời gian thực | Phát lại video đã quay đúng tốc độ gốc, mặt nạ hiện ngay trên từng khung, kèm tốc độ so với thời gian thực và đèn báo polyp; phát xong tự lưu vào lịch sử. Là mô phỏng, chưa phải hệ thống gắn vào máy nội soi |
 | Lịch sử | Xem lại, xóa các lần phân tích ảnh và so sánh |
-| Chỉ số (`/metrics`, không cần đăng nhập) | Kết quả 20 seed của hai mô hình, đọc từ bảng CSV trong `00_tai_lieu_tong_quan/bang/` |
+| Chỉ số (`/metrics`, không cần đăng nhập) | Kết quả 20 seed của hai mô hình và mốc PraNet/U-Net 640, đọc từ bảng CSV trong `00_tai_lieu_tong_quan/bang/` (qua file JSON xuất sẵn) |
 
 Ảnh và video được lưu trong `..\Ung_Dung\polypweb\polypweb\storage\`; MongoDB chỉ lưu chỉ số và đường dẫn file.
 
@@ -132,7 +131,7 @@ Mở <http://localhost:8080>. Lần đầu bấm **Đăng ký** để tạo tài
 Khi bảng CSV trong `00_tai_lieu_tong_quan/bang/` thay đổi, chạy lại script dưới đây rồi khởi động lại web:
 
 ```powershell
-python 00_tai_lieu_tong_quan/scripts/xuat_chi_so_web.py
+C:\venv_kl_gpu\Scripts\python.exe 00_tai_lieu_tong_quan/scripts/xuat_chi_so_web.py
 ```
 
 Script ghi đè `..\Ung_Dung\polypweb\polypweb\src\main\resources\research\research-metrics.json`.
@@ -150,9 +149,12 @@ Script ghi đè `..\Ung_Dung\polypweb\polypweb\src\main\resources\research\resea
 
 Hướng dẫn đầy đủ (biến môi trường, chạy production, ứng dụng Android): `..\Ung_Dung\polypweb\README.md` và `..\Ung_Dung\polypweb\polypweb\README.md`.
 
-## Sắp xếp lại ngày 26/10/2026
+## Lịch sử sắp xếp
 
-Repo trước đây để mọi thứ trong `archive/`. Ngày 26/10/2026 toàn bộ được chuyển sang cây thư mục trên. Việc này chỉ di chuyển và đổi tên, không xóa hay sửa nội dung. Muốn tra một đường dẫn cũ đã chuyển đi đâu, xem [PATH_MAP.md](PATH_MAP.md).
+- 26/10/2026: chuyển mọi thứ từ `archive/` sang cây thư mục đánh số.
+- 10/11/2026: dọn cho bản nộp, chuyển kết quả cũ và ghi chú làm việc sang `_Luu_Tru_Ngoai/`; đổi tên thư mục dự án từ `Test_Mau` thành `CNTT_KLCN182_PhungTheBao`.
+
+Cả hai lần chỉ di chuyển và đổi tên, không xóa file. Tra đường dẫn cũ ở [PATH_MAP.md](PATH_MAP.md).
 
 ## Lưu ý
 
