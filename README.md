@@ -41,6 +41,8 @@
 
 Thư mục chỉ chứa các mô hình và kết quả có trong bản Word cuối.
 
+Repo GitHub không chứa checkpoint (`best.pt`, `*_best_*.pth` của 160 lượt huấn luyện, khoảng 7,9 GB) vì vượt giới hạn dung lượng của GitHub. Bản đầy đủ có checkpoint nằm trong bản nộp gửi GVHD.
+
 ## Chạy ứng dụng web PolypVision
 
 Ứng dụng nằm ở repo riêng, cạnh thư mục này: `..\Ung_Dung\polypweb\` (GitHub: <https://github.com/Okeydokey8525/UngDung_Poylp>). Gồm hai phần chạy song song:
