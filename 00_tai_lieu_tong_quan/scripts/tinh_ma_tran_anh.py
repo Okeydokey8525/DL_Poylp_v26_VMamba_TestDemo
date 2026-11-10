@@ -13,7 +13,6 @@ Chỉ đọc <thư mục>/10_pixel_tung_anh.csv, ghi vào cùng thư mục:
     20b_ma_tran_anh_tong_hop.csv   (trung bình ± SD qua seed của từng ô và các tỉ lệ)
 
     python tinh_ma_tran_anh.py                       # mặc định ../bang/pixel_640 (PraNet/U-Net 640)
-    python tinh_ma_tran_anh.py --dir ../bang         # bộ 352 cũ
 """
 from __future__ import annotations
 

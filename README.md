@@ -34,13 +34,12 @@
 | `01_du_lieu/` | Dữ liệu BG20 (1.200 ảnh), split 880/120 do tác giả Kvasir-SEG cung cấp, script tạo dữ liệu |
 | `02_ma_nguon/` | Fork Ultralytics 8.4.127 + TSVM + bản vá FP32, fork C2PSA rộng, notebook Kaggle |
 | `03_ket_qua_huan_luyen/` | Mô hình gốc, TSVM FP32, ba biến thể ablation, C2PSA rộng (mỗi loại seed 0–19) |
-| `04_phan_tich_20seed/` | Gói phân tích 20 seed cũ hơn (đã đối chiếu khớp) và benchmark CPU |
+| `04_phan_tich_20seed/` | Số liệu trích từ 40 lượt của hai mô hình chính (đối chiếu với bảng ở `bang/`), ma trận nhầm lẫn và benchmark độ trễ CPU |
 | `05_so_sanh_mo_hinh_khac/` | PraNet 640, U-Net 640 (20 seed mỗi mô hình) |
-| `06_bao_cao/` | Bản Word cuối, nhận xét của GVHD, biểu mẫu, hình (`hinh/`) |
+| `06_bao_cao/` | Bản Word cuối, hình (`hinh/`) |
 | `08_du_lieu_thuc_te/` | Đánh giá trên CVC-ClinicDB, CVC-ColonDB, ETIS-Larib, PolypGen và 800 ảnh manh tràng |
-| `99_luu_tru/` | Chỉ còn lượt TSVM cũ (checkpoint FP16) để đối chiếu với bản FP32 |
 
-Các kết quả cũ không dùng trong báo cáo (PraNet/U-Net 352, bộ 10 seed, ablation 5 và 10 seed, bản nháp, ghi chú làm việc, kiểm toán) đã chuyển sang thư mục anh em `_Luu_Tru_Ngoai/`; tra đường dẫn trong [PATH_MAP.md](PATH_MAP.md).
+Thư mục chỉ chứa các mô hình và kết quả có trong bản Word cuối.
 
 ## Chạy ứng dụng web PolypVision
 
@@ -148,13 +147,6 @@ Script ghi đè `..\Ung_Dung\polypweb\polypweb\src\main\resources\research\resea
 | Cổng 8080 hoặc 8000 đã bị chiếm | Tắt cửa sổ đang chạy bản cũ rồi chạy lại |
 
 Hướng dẫn đầy đủ (biến môi trường, chạy production, ứng dụng Android): `..\Ung_Dung\polypweb\README.md` và `..\Ung_Dung\polypweb\polypweb\README.md`.
-
-## Lịch sử sắp xếp
-
-- 26/10/2026: chuyển mọi thứ từ `archive/` sang cây thư mục đánh số.
-- 10/11/2026: dọn cho bản nộp, chuyển kết quả cũ và ghi chú làm việc sang `_Luu_Tru_Ngoai/`; đổi tên thư mục dự án từ `Test_Mau` thành `CNTT_KLCN182_PhungTheBao`.
-
-Cả hai lần chỉ di chuyển và đổi tên, không xóa file. Tra đường dẫn cũ ở [PATH_MAP.md](PATH_MAP.md).
 
 ## Lưu ý
 

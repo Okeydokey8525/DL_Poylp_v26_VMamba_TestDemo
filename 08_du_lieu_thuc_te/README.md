@@ -1,6 +1,6 @@
 # 08. Đánh giá trên dữ liệu khác nguồn
 
-> **Cập nhật 10/11/2026 (bản nộp):** PraNet và U-Net là bản **640×640 có tăng cường** (`pranet640`, `unet640`); kết quả **20 seed** (seed 0–19). Bảng tổng hợp nằm ở `00_tai_lieu_tong_quan/bang/pixel_640/du_lieu_ngoai/20seed/` và `pixel_640/nen_cecum/`. Bản 352 và bộ 10 seed trước đây đã chuyển ra lưu trữ ngoài. Số khớp Mục 4.7 của bản Word cuối.
+> **Cập nhật 10/11/2026 (bản nộp):** PraNet và U-Net là bản **640×640 có tăng cường** (`pranet640`, `unet640`); kết quả **20 seed** (seed 0–19). Bảng tổng hợp nằm ở `00_tai_lieu_tong_quan/bang/pixel_640/du_lieu_ngoai/20seed/` và `pixel_640/nen_cecum/`. Số khớp Mục 4.7 của bản Word cuối.
 
 Lấy các checkpoint đã huấn luyện trên BG20 (Kvasir-SEG + ảnh nền), chạy thẳng trên **bốn bộ dữ liệu khác nguồn**, không huấn luyện lại, không tinh chỉnh. Thêm một phép đo báo nhầm trên **800 ảnh manh tràng** cùng nguồn Kvasir nhưng chưa dùng khi huấn luyện.
 

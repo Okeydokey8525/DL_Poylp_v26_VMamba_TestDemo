@@ -1,6 +1,6 @@
 # 15. Thí nghiệm tách thành phần (ablation) và đối chứng C2PSA rộng, 20 seed
 
-Bổ sung 10/11/2026. Số khớp Bảng 4.7 của bản Word cuối. Thay cho bản 5 seed và 10 seed trước đây (đã chuyển ra lưu trữ ngoài).
+Bổ sung 10/11/2026. Số khớp Bảng 4.7 của bản Word cuối.
 
 **Nguồn:**
 - [scripts/tinh_ablation.py](scripts/tinh_ablation.py) → [bang/ablation_20seed/17_ablation_tung_seed.csv](bang/ablation_20seed/17_ablation_tung_seed.csv), [17b_ablation_tong_hop.csv](bang/ablation_20seed/17b_ablation_tong_hop.csv), [18_ablation_cau_hinh_args.csv](bang/ablation_20seed/18_ablation_cau_hinh_args.csv);

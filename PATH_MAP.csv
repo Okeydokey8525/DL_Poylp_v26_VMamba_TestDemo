@@ -650,4 +650,27 @@ NGU_CANH_DU_AN.md,../_Luu_Tru_Ngoai/Test_Mau/NGU_CANH_DU_AN.md,1,13334,CHUYEN_RA
 02_ma_nguon/notebook_kaggle/polyp_pvt,../_Luu_Tru_Ngoai/Test_Mau/02_ma_nguon/notebook_kaggle/polyp_pvt,1,22529,"CHUYEN_RA_NGOAI_10_11: notebook Polyp-PVT (đã bỏ, chưa chạy, chỉ nêu ở hướng phát triển)"
 02_ma_nguon/notebook_kaggle/vm_unet,../_Luu_Tru_Ngoai/Test_Mau/02_ma_nguon/notebook_kaggle/vm_unet,1,20404,"CHUYEN_RA_NGOAI_10_11: notebook VM-UNet (đã bỏ, chưa chạy, chỉ nêu ở hướng phát triển)"
 03_ket_qua_huan_luyen/Shape_only/HUONG_DAN_KIEM_TRA_KAGGLE.md,../_Luu_Tru_Ngoai/Test_Mau/03_ket_qua_huan_luyen/Shape_only/HUONG_DAN_KIEM_TRA_KAGGLE.md,1,4484,CHUYEN_RA_NGOAI_10_11: ghi chú làm việc (quy trình tải Kaggle)
+99_luu_tru,../_Luu_Tru_Ngoai/Test_Mau/99_luu_tru,567,661400000,"CHUYEN_RA_NGOAI_10_11b: Kết quả cũ: TSVM checkpoint FP16 (trước khi sửa lưu FP32), không thuộc kết quả báo cáo"
+04_phan_tich_20seed/02_statistics,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/02_statistics,4,20395,CHUYEN_RA_NGOAI_10_11b: Gói phân tích 20 seed đời đầu; số đã thay bằng 00_tai_lieu_tong_quan/bang
+04_phan_tich_20seed/03_metrics,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/03_metrics,4,6606,CHUYEN_RA_NGOAI_10_11b: như trên
+04_phan_tich_20seed/04_confusion_matrix,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/04_confusion_matrix,16,347085,CHUYEN_RA_NGOAI_10_11b: như trên
+04_phan_tich_20seed/07_audit,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/07_audit,7,69248,"CHUYEN_RA_NGOAI_10_11b: Manifest kiểm toán cũ, trỏ tới thư mục không còn"
+04_phan_tich_20seed/06_reports/chart_mapping.md,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/06_reports/chart_mapping.md,1,3585,CHUYEN_RA_NGOAI_10_11b: Diễn giải đời đầu
+04_phan_tich_20seed/06_reports/conclusions_reviewed.md,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/06_reports/conclusions_reviewed.md,1,5395,CHUYEN_RA_NGOAI_10_11b: Diễn giải đời đầu
+04_phan_tich_20seed/06_reports/recommended_figures_for_thesis.md,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/06_reports/recommended_figures_for_thesis.md,1,1252,CHUYEN_RA_NGOAI_10_11b: Diễn giải đời đầu
+04_phan_tich_20seed/06_reports/summary.md,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/06_reports/summary.md,1,5395,CHUYEN_RA_NGOAI_10_11b: Diễn giải đời đầu
+04_phan_tich_20seed/01_raw_analysis/epoch_selection_audit.csv,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/01_raw_analysis/epoch_selection_audit.csv,1,961,CHUYEN_RA_NGOAI_10_11b: Phân tích đời đầu
+04_phan_tich_20seed/01_raw_analysis/per_epoch_mean_sd.csv,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/01_raw_analysis/per_epoch_mean_sd.csv,1,129089,CHUYEN_RA_NGOAI_10_11b: như trên
+04_phan_tich_20seed/01_raw_analysis/raw_20seeds_confusion_matrices_original.csv,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/01_raw_analysis/raw_20seeds_confusion_matrices_original.csv,1,1187,CHUYEN_RA_NGOAI_10_11b: như trên
+04_phan_tich_20seed/01_raw_analysis/reextracted_20seeds_metrics.csv,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/01_raw_analysis/reextracted_20seeds_metrics.csv,1,8110,CHUYEN_RA_NGOAI_10_11b: như trên
+04_phan_tich_20seed/facts.json,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/facts.json,1,1079,CHUYEN_RA_NGOAI_10_11b: Hiện vật cũ có trường TN_reconstructed không hợp lệ
+04_phan_tich_20seed/raw_20seeds_confusion_matrices.csv,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/raw_20seeds_confusion_matrices.csv,1,1187,CHUYEN_RA_NGOAI_10_11b: như trên
+04_phan_tich_20seed/summary_20seeds_paired.csv,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/summary_20seeds_paired.csv,1,2174,"CHUYEN_RA_NGOAI_10_11b: Hiện vật cũ, trường tsvm_wins sai chiều"
+04_phan_tich_20seed/LEGACY_ARTIFACTS.md,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/LEGACY_ARTIFACTS.md,1,2450,CHUYEN_RA_NGOAI_10_11b: Ghi chú về hiện vật cũ đã chuyển
+04_phan_tich_20seed/README.md,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/README.md,1,2707,CHUYEN_RA_NGOAI_10_11b: README gói cũ (thay bằng README mới)
+04_phan_tich_20seed/raw_20seeds_extracted_metrics.csv,../_Luu_Tru_Ngoai/Test_Mau/04_phan_tich_20seed/raw_20seeds_extracted_metrics.csv,1,6951,"CHUYEN_RA_NGOAI_10_11b: Bản trích đời đầu ở gốc gói, đã có bản trong 01_raw_analysis"
+06_bao_cao/Nhan_xet_KLCN-CNTT-182.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/Nhan_xet_KLCN-CNTT-182.docx,1,16909,"CHUYEN_RA_NGOAI_10_11b: Nhận xét của GVHD, tài liệu làm việc, không nộp"
+06_bao_cao/Nhan_xet_KLCN-CNTT-182 (1).docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/Nhan_xet_KLCN-CNTT-182 (1).docx,1,18304,CHUYEN_RA_NGOAI_10_11b: như trên
+06_bao_cao/Bieu mau do an_khoa luan. K.CNTT_HUIT_2025_V3.docx,../_Luu_Tru_Ngoai/Test_Mau/06_bao_cao/Bieu mau do an_khoa luan. K.CNTT_HUIT_2025_V3.docx,1,446652,"CHUYEN_RA_NGOAI_10_11b: Biểu mẫu trống của khoa, không nộp"
+00_tai_lieu_tong_quan/bang/pixel_640/du_lieu_ngoai/10seed,../_Luu_Tru_Ngoai/Test_Mau/00_tai_lieu_tong_quan/bang/pixel_640/du_lieu_ngoai/10seed,2,125000,CHUYEN_RA_NGOAI_10_11b: bảng dữ liệu ngoài bản 10 seed (báo cáo dùng 20 seed)
 Test_Mau (thư mục dự án),CNTT_KLCN182_PhungTheBao,,,DOI_TEN_10_11 (làm sau cùng)

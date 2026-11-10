@@ -2,19 +2,17 @@
 
 Kết quả ghi vào ../bang/ablation_<N>seed/; bản dùng trong báo cáo là ablation_20seed/.
 
-Năm cấu hình: đối chứng (C2PSA), TSVM đầy đủ (hai cấu hình này lấy seed 0–4 của các lượt chính) và ba biến thể
-vmamba_only, shape_only, shape_vmamba_no_guidance. Endpoint giống bộ chính: mask mAP50–95 tại epoch đầu tiên đạt
-cực đại của từng lượt. So sánh ghép cặp theo seed. Với 5 cặp, Wilcoxon hai phía không thể có p < 0,0625, nên các
-giá trị p chỉ ghi để tham khảo.
+Năm cấu hình: đối chứng (C2PSA), TSVM đầy đủ (hai cấu hình này lấy các lượt chính cùng seed) và ba biến thể
+vmamba_only, shape_only, shape_vmamba_no_guidance, mỗi cấu hình seed 0–19. Endpoint giống bộ chính: mask mAP50–95
+tại epoch đầu tiên đạt cực đại của từng lượt. So sánh ghép cặp theo seed.
 
-Script CHỈ ĐỌC 03_ket_qua_huan_luyen/ và ghi vào ../bang/:
-    17_ablation_tung_seed.csv   (25 dòng: 5 cấu hình × 5 seed)
+Script CHỈ ĐỌC 03_ket_qua_huan_luyen/ và ghi vào ../bang/ablation_20seed/:
+    17_ablation_tung_seed.csv   (100 dòng: 5 cấu hình × 20 seed)
     17b_ablation_tong_hop.csv   (5 dòng)
     18_ablation_cau_hinh_args.csv (tham số huấn luyện khác với lượt TSVM chính cùng seed)
 
     python tinh_ablation.py                                        # chỉ số từ results.csv
     C:\\venv_kl_gpu\\Scripts\\python.exe tinh_ablation.py --torch  # thêm số tham số đếm từ best.pt
-    C:\\venv_kl_gpu\\Scripts\\python.exe tinh_ablation.py --torch --seeds 10  # seed 0–9
     C:\\venv_kl_gpu\\Scripts\\python.exe tinh_ablation.py --torch --seeds 20  # seed 0–19 -> ../bang/ablation_20seed/
 """
 from __future__ import annotations

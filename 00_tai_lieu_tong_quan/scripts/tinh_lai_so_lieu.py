@@ -1,6 +1,6 @@
 """Tính lại toàn bộ số liệu dùng trong bộ tài liệu TaiLieu_TongQuan_Base_TSVM_FP32.
 
-Script CHỈ ĐỌC dữ liệu gốc trong các thư mục 01–04 và 99_luu_tru/ và ghi kết quả vào ../bang/.
+Script CHỈ ĐỌC dữ liệu gốc trong các thư mục 01–04 và ghi kết quả vào ../bang/.
 Không huấn luyện, không suy luận, không sửa file nào ngoài ../bang/.
 
 Chạy:
@@ -287,6 +287,9 @@ def compare_package(per: pd.DataFrame) -> None:
 
 def lineage_check() -> None:
     section(f"3b. TSVM cũ (checkpoint FP16) so với TSVM FP32, seed 0-{len(SEEDS) - 1}")
+    if not OLD_TSVM.is_dir():
+        print("Bỏ qua: không có thư mục lượt TSVM cũ (FP16).")
+        return
     old = OLD_TSVM / "Kvasir_BG20_YOLO26s_seg_TSVM_s{}_w2"
     same = diff = 0
     cols = set()

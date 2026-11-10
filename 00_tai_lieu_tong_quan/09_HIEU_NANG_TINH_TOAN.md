@@ -2,7 +2,7 @@
 
 ## Nguồn và mức xác minh
 
-- Số liệu độ trễ lấy từ benchmark có sẵn: [`KQ_Nen_DX_20seed_FP32/efficiency_benchmark/`](../04_phan_tich_20seed/efficiency_benchmark/reports/benchmark_report.md). Bảng tổng hợp ở `tables/efficiency_summary.csv`, 400 lượt đo thô ở `raw/`.
+- Số liệu độ trễ lấy từ benchmark có sẵn: [`04_phan_tich_20seed/efficiency_benchmark/`](../04_phan_tich_20seed/efficiency_benchmark/reports/benchmark_report.md). Bảng tổng hợp ở `tables/efficiency_summary.csv`, 400 lượt đo thô ở `raw/`.
 - Bộ tài liệu này **không đo lại** độ trễ. Bộ tài liệu đã kiểm tra lại:
   - Số tham số: dựng lại mô hình được 11.434.463 và 12.254.688, **trùng** với benchmark ([bang/08_kien_truc_dung_lai.csv](bang/08_kien_truc_dung_lai.csv)).
   - Kích thước và kiểu dữ liệu của `best.pt`: 22,27 MiB (float16) và 47,37 MiB (float32), **trùng** với benchmark ([bang/07_checkpoint_best_pt.csv](bang/07_checkpoint_best_pt.csv)).
@@ -50,7 +50,7 @@ Script [`scripts/do_flops_gpu.py`](scripts/do_flops_gpu.py). Checkpoint `best.pt
 | | Lần 1 (chiều, ở trường) | Lần 2 (tối, **số dùng trong báo cáo**) |
 |---|---|---|
 | Thiết lập | 3 vòng × 300 lần đo, xen kẽ hai mô hình | 5 vòng × 200 lần đo, đảo thứ tự mỗi vòng; trước mỗi khối chờ GPU dưới 55 °C; ghi nhiệt độ và xung nhịp |
-| Kết quả | `16_lan1_*.csv`, `16b_lan1_*.csv`, `_log_flops_gpu_lan1.txt` (đã chuyển ra lưu trữ ngoài) | [bang/16_flops_do_tre_gpu.csv](bang/16_flops_do_tre_gpu.csv), [16b](bang/16b_do_tre_gpu_tung_lan.csv) (2.000 lần đo), [16c](bang/16c_do_tre_gpu_nhiet_do.csv) (nhiệt độ, xung nhịp từng khối), [log](bang/_log_flops_gpu.txt) |
+| Kết quả | Không kèm bản nộp (chỉ dùng để so với lần 2) | [bang/16_flops_do_tre_gpu.csv](bang/16_flops_do_tre_gpu.csv), [16b](bang/16b_do_tre_gpu_tung_lan.csv) (2.000 lần đo), [16c](bang/16c_do_tre_gpu_nhiet_do.csv) (nhiệt độ, xung nhịp từng khối), [log](bang/_log_flops_gpu.txt) |
 
 Chung cho cả hai lần: NVIDIA GeForce RTX 5050 Laptop GPU, PyTorch 2.13.0+cu130, Ultralytics 8.4.127 (fork TSVM FP32); FP32, batch 1, đầu vào 1×3×640×640, đã gộp Conv-BN, chỉ forward (không tiền/hậu xử lý), 50 lần khởi động trước mỗi khối, đo bằng CUDA event. FLOPs: `torch.utils.flop_counter.FlopCounterMode` (conv, matmul, bmm, einsum) và `get_flops` của Ultralytics để đối chiếu.
 

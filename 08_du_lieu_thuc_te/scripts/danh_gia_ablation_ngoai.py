@@ -17,8 +17,7 @@ Giao thức giống hệt danh_gia_du_lieu_ngoai.py (dùng lại hàm của scri
 imgsz 640, conf 0,25, iou 0,7, retina_masks=True, half=False; gộp mọi mặt nạ của ảnh thành một.
 
 Kết quả từng lượt ghi vào ../bang/tung_luot_ablation/<bộ>_<biến thể>_s<seed>.csv (cùng cột với bang/tung_luot/).
-Ghi riêng thư mục vì ablation chỉ có 10 seed; nếu ghi chung, summarize() của danh_gia_du_lieu_ngoai.py sẽ bỏ qua
-bảng 20 seed. Chạy lại sẽ bỏ qua lượt đã có. Không tổng hợp ở đây (tổng hợp làm sau, không cần GPU).
+Ghi riêng thư mục để summarize() của danh_gia_du_lieu_ngoai.py chỉ tổng hợp bốn mô hình chính. Chạy lại sẽ bỏ qua lượt đã có. Không tổng hợp ở đây (tổng hợp làm sau, không cần GPU).
 
 Chạy (cần GPU, dữ liệu ở DoAnTotNghiepV4/Dataset/, checkpoint ở 03_ket_qua_huan_luyen/):
     C:\\venv_kl_gpu\\Scripts\\python.exe 08_du_lieu_thuc_te/scripts/danh_gia_ablation_ngoai.py --kiem-tra   # chỉ kiểm tra file
