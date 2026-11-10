@@ -666,7 +666,7 @@ def e03_tham_so_dung_luong(lang, st):
 
 
 # ---------------------------------------------------------------- Chương 6: so sánh 4 mô hình theo pixel
-BAN_640 = True    # PraNet/U-Net bản 640 (bang/pixel_640/); bản 352 cũ đã chuyển ra lưu trữ ngoài
+BAN_640 = True    # PraNet/U-Net bản 640 (bang/pixel_640/)
 P640 = BANG / "pixel_640"
 NEN_CECUM = BANG / "pixel_640" / "nen_cecum" / "06_nen_cecum_tung_seed.csv"
 # Các hình có PraNet/U-Net, vẽ lại được với bản 640

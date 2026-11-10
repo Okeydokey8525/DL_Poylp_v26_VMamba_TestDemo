@@ -39,7 +39,5 @@ Hai mô hình dùng chung toàn bộ phần còn lại: backbone tầng 0–9, n
 
 | Nội dung | Lý do |
 |---|---|
-| AV, AVF, ITSVM (đã chuyển ra lưu trữ ngoài `_Luu_Tru_Ngoai/<tên thư mục dự án>/99_luu_tru/thu_nghiem_ket_hop/`) | Thử nghiệm các dạng kết hợp khác, **không đưa vào báo cáo** |
-| Baseline seed 20–22, TSVM cũ (checkpoint FP16, 21 seed), bộ 10 seed cũ | Lịch sử, không thuộc bộ chính |
 | PraNet, U-Net | Chỉ dùng để so sánh chỉ số. Hiện chưa có số liệu ([10](10_SO_SANH_PRANET_UNET.md)) |
 | Ứng dụng PolypVision (Web/Mobile) | Không thuộc phần mô hình. Bộ tài liệu này không mô tả ứng dụng |

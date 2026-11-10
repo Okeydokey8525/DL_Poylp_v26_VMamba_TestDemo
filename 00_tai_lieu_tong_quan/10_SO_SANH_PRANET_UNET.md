@@ -1,6 +1,6 @@
 # 10. So sánh với PraNet và U-Net (đánh giá theo pixel)
 
-> **Cập nhật 10/11/2026:** PraNet và U-Net trong báo cáo là bản **huấn luyện lại ở ảnh 640×640, có tăng cường dữ liệu giống YOLO** (theo nhận xét phản biện II.4), 20 seed. Bản 352×352 không tăng cường trước đây đã chuyển ra lưu trữ ngoài (`_Luu_Tru_Ngoai/Test_Mau/`), không còn dùng. Số trong file này khớp Bảng 4.8 của bản Word cuối.
+> **Cập nhật 10/11/2026:** PraNet và U-Net trong báo cáo là bản **huấn luyện lại ở ảnh 640×640, có tăng cường dữ liệu giống YOLO** (theo nhận xét phản biện II.4), 20 seed. Số trong file này khớp Bảng 4.8 của bản Word cuối.
 
 Số liệu do [scripts/danh_gia_pixel.py](scripts/danh_gia_pixel.py) tính (suy luận trên GPU RTX 5050 Laptop). Kết quả:
 - [bang/pixel_640/10_pixel_tung_anh.csv](bang/pixel_640/10_pixel_tung_anh.csv): 4 mô hình × 20 seed × 160 ảnh;

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Repo khóa luận (HUIT, CNTT_KLCN182, GVHD Phùng Thế Bảo): YOLO26s-seg (mô hình gốc) so với YOLO26s-seg + C2TSVMamba (TSVM FP32) cho phân đoạn polyp. Đây là repo **nghiên cứu + báo cáo**, không phải ứng dụng: không có build, lint hay bộ test.
 
-**Trạng thái 10/11/2026:** đã dọn cho bản nộp (hạn 11/11/2026). Bản Word cuối là `06_bao_cao/CNTT_KLCN182-PhungTheBao.docx`. Thư mục dự án đổi tên từ `Test_Mau` thành `CNTT_KLCN182_PhungTheBao`. Kết quả cũ, bản nháp và ghi chú làm việc (kể cả `NGU_CANH_DU_AN.md`, `HUONG_DAN_LAM_VIEC_VOI_CLAUDE.md`, `KE_HOACH_HOAN_THIEN_NOP_BAI.md`, `06_bao_cao/md_bao_cao*/`, `06_bao_cao/slide/KE_HOACH_SLIDE.md`, `07_kiem_toan_va_sua/`, phần lớn `99_luu_tru/`) đã **chuyển** sang `..\_Luu_Tru_Ngoai\Test_Mau\` (giữ đường dẫn con), tra trong `PATH_MAP.csv`.
+**Trạng thái 10/11/2026:** đã dọn cho bản nộp (hạn 11/11/2026). Bản Word cuối là `06_bao_cao/CNTT_KLCN182-PhungTheBao.docx`. Thư mục dự án đổi tên từ `Test_Mau` thành `CNTT_KLCN182_PhungTheBao`. Kết quả cũ, bản nháp và ghi chú làm việc (kể cả `NGU_CANH_DU_AN.md`, `HUONG_DAN_LAM_VIEC_VOI_CLAUDE.md`, `KE_HOACH_HOAN_THIEN_NOP_BAI.md`, `06_bao_cao/md_bao_cao*/`, `06_bao_cao/slide/KE_HOACH_SLIDE.md`, `07_kiem_toan_va_sua/`, toàn bộ `99_luu_tru/`, phần đời đầu của `04_phan_tich_20seed/`, nhận xét GVHD và biểu mẫu) đã **chuyển** sang `..\_Luu_Tru_Ngoai\Test_Mau\` (giữ đường dẫn con), tra trong `PATH_MAP.csv`.
 
 **Đọc trước:**
 1. [README.md](README.md) và [00_tai_lieu_tong_quan/00_README.md](00_tai_lieu_tong_quan/00_README.md): kết quả và mục lục.
@@ -20,7 +20,8 @@ Repo khóa luận (HUIT, CNTT_KLCN182, GVHD Phùng Thế Bảo): YOLO26s-seg (m�
 - **PraNet/U-Net trong báo cáo là bản 640×640 có tăng cường** (`bang/pixel_640/`, khóa `pranet640`/`unet640`): PraNet cao hơn TSVM ở mọi độ đo theo pixel (Dice +0,0316, p < 0,001) và về topology. Không viết "TSVM ngang/vượt PraNet". Bản 352 đã chuyển ra lưu trữ ngoài, không dùng.
 - Ablation và C2PSA rộng là bản **20 seed** (`bang/ablation_20seed/`): ba biến thể không khác bản đầy đủ có ý nghĩa thống kê; C2PSA rộng thấp hơn TSVM 0,0070 (p < 0,001) và không hơn mô hình gốc.
 - Không suy ra TN = 40 − FP, Dice/IoU từ mAP, hay lợi ích topology: TSVM chỉ nhích hơn mô hình gốc, không có ý nghĩa thống kê, và kém PraNet rõ rệt (`00_tai_lieu_tong_quan/14_CHI_SO_TOPOLOGY.md`).
-- Không sửa dữ liệu gốc (`01_du_lieu/`), checkpoint (`03_`, `05_`) hay `99_luu_tru/`. Di chuyển thư mục thì ghi vào `PATH_MAP.md` / `PATH_MAP.csv`. Không xóa file: thứ không nộp chuyển sang `..\_Luu_Tru_Ngoai\Test_Mau\`.
+- Bản nộp dựng ở `..\Nop_Bai\CNTT_KLCN182_PhungTheBao\` bằng hard link: `01_Bao_cao`, `02_Nghien_cuu` (thư mục này), `03_Ung_dung` (chỉ web + FastAPI), `04_Dong_goi` (.jar + mô tả CSDL). Không kèm `last.pt`/`last.pth`, app Flutter, `GhiChu.txt`. Sửa file ở đây thì phải dựng lại bản nộp.
+- Không sửa dữ liệu gốc (`01_du_lieu/`) hay checkpoint (`03_`, `05_`). Di chuyển thư mục thì ghi vào `PATH_MAP.md` / `PATH_MAP.csv`. Không xóa file: thứ không nộp chuyển sang `..\_Luu_Tru_Ngoai\Test_Mau\`.
 - AV/AVF/ITSVM, Polyp-PVT, VM-UNet, MambaPSA không có trong báo cáo (chỉ hướng phát triển).
 - Bản Word đã nộp thầy là gốc, không ghi đè. Không commit `.pt`/`.pth`/`.zip`, PDF đề cương.
 - Commit lên nhánh `Okeydokey` khi được đồng ý; không push nếu chưa được yêu cầu.

@@ -2,7 +2,7 @@
 
 ## Script
 
-[`scripts/tinh_lai_so_lieu.py`](scripts/tinh_lai_so_lieu.py) **chỉ đọc** dữ liệu trong `01_du_lieu/`, `02_ma_nguon/`, `03_ket_qua_huan_luyen/`, `04_phan_tich_20seed/` và `99_luu_tru/ket_qua_cu/TSVM_cu_checkpoint_FP16_seed0-20/` (để so TSVM cũ), và chỉ ghi vào thư mục `bang/`. Script không huấn luyện, không suy luận và không sửa dữ liệu gốc.
+[`scripts/tinh_lai_so_lieu.py`](scripts/tinh_lai_so_lieu.py) **chỉ đọc** dữ liệu trong `01_du_lieu/`, `02_ma_nguon/`, `03_ket_qua_huan_luyen/` và `04_phan_tich_20seed/`, và chỉ ghi vào thư mục `bang/`. Script không huấn luyện, không suy luận và không sửa dữ liệu gốc.
 
 ```bash
 cd 00_tai_lieu_tong_quan/scripts
@@ -55,10 +55,10 @@ Các tệp `pixel_640/10`–`12` do [`scripts/danh_gia_pixel.py`](scripts/danh_g
 
 | Số liệu | Nguồn | Đã kiểm tra gì |
 |---|---|---|
-| Độ trễ, RSS, tham số sau gộp Conv-BN | `KQ_Nen_DX_20seed_FP32/efficiency_benchmark/` | Số tham số chưa gộp, kích thước checkpoint, SHA-256 của checkpoint đều trùng |
-| Levene p = 0,026 | `KQ_Nen_DX_20seed_FP32/06_reports/summary.csv` | Không tính lại |
-| 999/1.000 nhãn tái tạo khớp từng ký tự | `99_luu_tru/tai_lieu_cu/archive_doc/28_HUONG_DAN_TAI_LAP_BG20_2026_10_26.md` (đã chuyển ra lưu trữ ngoài) | Không chạy lại |
-| Môi trường GPU (Tesla T4…) | `99_luu_tru/log_kaggle_cu/*.log` (lượt TSVM cũ, đã chuyển ra lưu trữ ngoài) | Chỉ đọc log |
+| Độ trễ, RSS, tham số sau gộp Conv-BN | `04_phan_tich_20seed/efficiency_benchmark/` | Số tham số chưa gộp, kích thước checkpoint, SHA-256 của checkpoint đều trùng |
+| Levene p = 0,026 | `04_phan_tich_20seed/06_reports/summary.csv` | Không tính lại |
+| 999/1.000 nhãn tái tạo khớp từng ký tự | Ghi chép tái lập ngày 26/10/2026 của nhóm (không kèm bản nộp) | Không chạy lại |
+| Môi trường GPU (Tesla T4…) | Log Kaggle của lượt TSVM trước khi vá (không kèm bản nộp) | Chỉ đọc log |
 
 ## Đối chiếu với gói phân tích có sẵn
 

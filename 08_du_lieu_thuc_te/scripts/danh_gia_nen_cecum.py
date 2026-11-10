@@ -207,8 +207,7 @@ def kiem_tra(args):
         print(f"Ảnh cecum chưa dùng: {len(con_lai)}")
     except Exception as e:  # noqa: BLE001
         thieu.append(f"dữ liệu normal-cecum hoặc danh sách BG20 ({e!r})")
-    for p in (dg.FORK, dg.NB / "pranet-new.ipynb", dg.NB / "unet-new.ipynb",
-              dg.NB_640 / "pranet-new.ipynb", dg.NB_640 / "unet-new.ipynb"):
+    for p in (dg.FORK, dg.NB_640 / "pranet-new.ipynb", dg.NB_640 / "unet-new.ipynb"):
         if not p.exists():
             thieu.append(str(p))
     n_ck = 0

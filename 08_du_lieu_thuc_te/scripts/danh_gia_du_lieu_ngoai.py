@@ -16,7 +16,7 @@ Chạy (cần GPU):
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py --seeds 0 --sets etis   # chạy thử
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_du_lieu_ngoai.py --chi-tong-hop          # chỉ tổng hợp lại
 Bảng tổng hợp 20 seed (baseline, tsvm, pranet640, unet640) ghi vào
-00_tai_lieu_tong_quan/bang/pixel_640/du_lieu_ngoai/20seed/. Bản 352 cũ đã chuyển ra lưu trữ ngoài.
+00_tai_lieu_tong_quan/bang/pixel_640/du_lieu_ngoai/20seed/.
 """
 from __future__ import annotations
 

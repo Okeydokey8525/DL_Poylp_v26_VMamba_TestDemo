@@ -164,3 +164,16 @@ Cùng ngày:
 - Script đổi mặc định sang bản dùng trong báo cáo: `danh_gia_pixel.py`, `danh_gia_topology.py` ghi vào `bang/pixel_640/`; `tinh_ablation.py` mặc định 20 seed; `08_du_lieu_thuc_te/scripts/danh_gia_du_lieu_ngoai.py`, `danh_gia_nen_cecum.py` ghi vào `bang/pixel_640/du_lieu_ngoai/`, `nen_cecum/`; `ve_hinh.py` tự ghi từng hình vào đúng thư mục; `xuat_chi_so_web.py` lấy PraNet/U-Net 640. Đã chạy lại mọi script không cần GPU: bảng sinh lại giống bản trước (chênh lớn nhất 1e-16), hình PNG trùng 100% điểm ảnh.
 - File `research-metrics.json` của web được xuất lại: mốc PraNet/U-Net trên trang `/metrics` đổi từ bản 352 sang bản 640.
 - Đổi tên thư mục dự án `Test_Mau` → `CNTT_KLCN182_PhungTheBao` (bước cuối). Thư mục lưu trữ ngoài giữ tên `_Luu_Tru_Ngoai/Test_Mau/`.
+
+## Dọn lần hai cho bản nộp (10/11/2026, tối)
+
+Rà lại để thư mục nộp chỉ còn mô hình và kết quả có trong bản Word cuối. 23 mục chuyển sang `../_Luu_Tru_Ngoai/Test_Mau/` (giữ đường dẫn con), liệt kê trong `PATH_MAP.csv` với trạng thái `CHUYEN_RA_NGOAI_10_11b`.
+
+| Nhóm | Đã chuyển | Còn lại |
+|---|---|---|
+| TSVM cũ (checkpoint FP16) | `99_luu_tru/` (cả thư mục) | `tinh_lai_so_lieu.py` bỏ qua mục 3b khi không có thư mục này |
+| Gói phân tích 20 seed đời đầu | `04_phan_tich_20seed/{02_statistics, 03_metrics, 04_confusion_matrix, 07_audit}`, `06_reports/*.md`, bốn CSV phụ trong `01_raw_analysis/`, các file ở gốc gói (`facts.json`, `raw_20seeds_*.csv`, `summary_20seeds_paired.csv`, `LEGACY_ARTIFACTS.md`, `README.md` cũ) | `01_raw_analysis/raw_20seeds_{extracted_metrics, confusion_matrices}.csv`, `06_reports/summary.csv`, `efficiency_benchmark/`, README mới |
+| Bảng dữ liệu ngoài 10 seed | `00_tai_lieu_tong_quan/bang/pixel_640/du_lieu_ngoai/10seed/` | `du_lieu_ngoai/20seed/` |
+| Tài liệu làm việc | `06_bao_cao/Nhan_xet_KLCN-CNTT-182*.docx`, `06_bao_cao/Bieu mau do an_khoa luan. K.CNTT_HUIT_2025_V3.docx` | |
+
+Script: bỏ khóa `pranet`/`unet` (bản 352) khỏi `danh_gia_pixel.py`, sửa docstring cũ. Chạy lại mọi script không cần GPU: bảng CSV và hình PNG không đổi.

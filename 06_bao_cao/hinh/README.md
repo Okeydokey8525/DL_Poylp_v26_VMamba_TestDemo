@@ -1,6 +1,6 @@
 # Bộ hình khóa luận và bài báo
 
-Cập nhật 10/11/2026 (bản nộp). Mọi hình vẽ lại từ CSV đã kiểm chứng trong `00_tai_lieu_tong_quan/bang/`. Các hình cũ (PraNet/U-Net 352, bộ 10 seed, ablation 5 và 10 seed) đã chuyển ra lưu trữ ngoài.
+Cập nhật 10/11/2026 (bản nộp). Mọi hình vẽ lại từ CSV đã kiểm chứng trong `00_tai_lieu_tong_quan/bang/`.
 
 Thư mục:
 - `chung/`: hình không phụ thuộc nhóm seed (a01–a08, d01–d04, e02, e03, m01, s01, t01). a05–a08 là hình khổ 16:9 vẽ riêng cho slide bảo vệ.

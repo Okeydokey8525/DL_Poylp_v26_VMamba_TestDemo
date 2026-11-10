@@ -2,7 +2,7 @@
 
 Bộ tài liệu cho phần trọng tâm của khóa luận CNTT_KLCN182: **so sánh YOLO26s-seg với YOLO26s-seg + C2TSVMamba trên dữ liệu BG20**, kèm hai mô hình đối chiếu PraNet, U-Net và các thí nghiệm bổ sung.
 
-> **Cập nhật 10/11/2026 (bản nộp):** mọi số ở đây khớp bản Word cuối `06_bao_cao/CNTT_KLCN182-PhungTheBao.docx`. Báo cáo dùng **20 seed (seed 0–19)**. PraNet và U-Net là bản **ảnh 640×640, có tăng cường dữ liệu** (bảng ở `bang/pixel_640/`). Ablation và C2PSA rộng là bản **20 seed** (`bang/ablation_20seed/`). Các bộ cũ (10 seed, PraNet/U-Net 352, ablation 5 và 10 seed) đã chuyển ra lưu trữ ngoài, không nằm trong thư mục nộp.
+> **Cập nhật 10/11/2026 (bản nộp):** mọi số ở đây khớp bản Word cuối `06_bao_cao/CNTT_KLCN182-PhungTheBao.docx`. Báo cáo dùng **20 seed (seed 0–19)**. PraNet và U-Net là bản **ảnh 640×640, có tăng cường dữ liệu** (bảng ở `bang/pixel_640/`). Ablation và C2PSA rộng là bản **20 seed** (`bang/ablation_20seed/`).
 
 - Mọi con số được **tính lại từ dữ liệu gốc** (`results.csv`, `args.yaml`, `best.pt`, checkpoint `.pth`, thư mục ảnh) bằng các script trong [scripts/](scripts/).
 - Số thập phân trong tài liệu dùng dấu phẩy. Các file CSV trong `bang/` dùng dấu chấm.

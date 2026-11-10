@@ -2,14 +2,14 @@
 
 Mô hình: YOLO26s-seg (đối chứng), YOLO26s-seg + TSVM FP32, PraNet (biến thể ResNet-50), U-Net.
 PraNet và U-Net dùng bản `pranet640`/`unet640` (ảnh 640×640, cùng tăng cường với YOLO, theo nhận xét phản
-biện II.4). Bản 352 cũ (`pranet`/`unet`) đã chuyển ra lưu trữ ngoài; mã vẫn giữ hai khóa này để tái lập khi cần.
+biện II.4).
 Chỉ suy luận, không huấn luyện, không sửa checkpoint. Kết quả ghi vào ../bang/pixel_640/10–12_*.csv (hoặc --out).
 
 Giao thức (đã thống nhất với chủ dự án):
 - Nhãn chuẩn chính: mặt nạ vẽ từ polygon YOLO ở độ phân giải gốc (cv2.fillPoly, giống notebook PraNet/U-Net).
   Nhãn chuẩn phụ: mặt nạ gốc của Kvasir-SEG (ngưỡng > 127), chỉ có cho 120 ảnh polyp.
 - Mọi dự đoán được đưa về kích thước ảnh gốc trước khi so sánh.
-- PraNet/U-Net: tiền xử lý đúng như notebook huấn luyện (kéo thẳng về hình vuông 352×352 hoặc 640×640, không
+- PraNet/U-Net: tiền xử lý đúng như notebook huấn luyện (kéo thẳng về hình vuông 640×640, không
   letterbox; chuẩn hóa ImageNet với PraNet, chia 255 với U-Net), lấy đầu ra thứ nhất của PraNet (nhánh
   lateral_map_s2, đúng đầu ra notebook dùng để chọn checkpoint), phóng song tuyến về kích thước gốc, ngưỡng 0,5.
 - YOLO: dự đoán imgsz 640, conf 0,25, iou 0,7, retina_masks=True, half=False; gộp mọi mặt nạ của ảnh thành một.
@@ -49,20 +49,17 @@ RAW_MASKS = REPO / "01_du_lieu" / "tao_BG20" / "Kvasir-SEG" / "masks"
 FORK = REPO / "02_ma_nguon" / "ultralytics_TSVM_FP32"
 RUNS = REPO / "03_ket_qua_huan_luyen"
 OTHER = REPO / "05_so_sanh_mo_hinh_khac"
-NB = REPO / "99_luu_tru" / "log_kaggle_cu"          # notebook PraNet/U-Net 352 (đã chuyển ra lưu trữ ngoài)
 NB_640 = REPO / "02_ma_nguon" / "notebook_kaggle"   # notebook PraNet/U-Net 640
 QUAL = OUT_PIX / "du_lieu_dinh_tinh"
 
 MODELS = {
     "baseline": ("YOLO26s-seg", lambda s: RUNS / "Baseline_YOLO26s_seg" / f"Kvasir_BG20_Baseline_YOLO26s_seg_s{s}_w2" / "weights" / "best.pt"),
     "tsvm": ("YOLO26s-seg + TSVM", lambda s: RUNS / "TSVM_FP32" / f"Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s{s}_w2" / "weights" / "best.pt"),
-    "pranet": ("PraNet (ResNet-50)", lambda s: OTHER / "PraNet" / f"pranet_best_s{s}.pth"),
-    "unet": ("U-Net", lambda s: OTHER / "UNet" / f"best_unet_s{s}.pth"),
     "pranet640": ("PraNet (ResNet-50) 640", lambda s: OTHER / "PraNet_640" / f"PraNet_640_aug_s{s}" / f"pranet_best_s{s}.pth"),
     "unet640": ("U-Net 640", lambda s: OTHER / "UNet_640" / f"UNet_640_aug_s{s}" / f"best_unet_s{s}.pth"),
 }
 DEFAULT_MODELS = ["baseline", "tsvm", "pranet640", "unet640"]  # bộ dùng trong báo cáo
-SEMANTIC_SIZE = {"pranet": 352, "unet": 352, "pranet640": 640, "unet640": 640}  # cạnh ảnh vuông đưa vào mạng
+SEMANTIC_SIZE = {"pranet640": 640, "unet640": 640}  # cạnh ảnh vuông đưa vào mạng
 MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
 STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
@@ -99,13 +96,9 @@ def notebook_classes():
     """Hàm dựng mạng cho từng khóa, lấy đúng mã lớp trong notebook huấn luyện của bản đó."""
     out = {}
     for key, folder, f, cell, cut in [
-        ("pranet", NB, "pranet-new.ipynb", 1, "# 5. HÀM LOSS"),
-        ("unet", NB, "unet-new.ipynb", 1, "# 4. HÀM LOSS"),
         ("pranet640", NB_640, "pranet-new.ipynb", 2, "# 5. HÀM LOSS"),
         ("unet640", NB_640, "unet-new.ipynb", 2, "# 4. HÀM LOSS"),
     ]:
-        if not (folder / f).is_file():   # notebook bản 352 đã chuyển ra lưu trữ ngoài
-            continue
         nb = json.loads((folder / f).read_text(encoding="utf-8"))
         code = "".join(nb["cells"][cell]["source"])
         assert cut in code, (folder / f, cell, cut)

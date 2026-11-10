@@ -9,7 +9,7 @@ Cập nhật 10/11/2026: các lượt dưới đây **đã chạy xong 20 seed**
 | **U-Net** 640, có tăng cường | `unet-new.ipynb` | `05_so_sanh_mo_hinh_khac/UNet_640/` | như trên |
 | Ba biến thể ablation | `ablation/kvasir-yolo26s-seg-tsvm-ablation.ipynb` | `03_ket_qua_huan_luyen/{Vmamba_only, Shape_only, No_guidance}/` | `00_tai_lieu_tong_quan/15_ABLATION_VA_C2PSA_RONG.md` |
 
-Polyp-PVT, VM-UNet và MambaPSA đã được cân nhắc nhưng **không chạy**; chỉ nêu ở hướng phát triển của báo cáo. Notebook nháp của chúng nằm ở lưu trữ ngoài.
+Polyp-PVT, VM-UNet và MambaPSA đã được cân nhắc nhưng **không chạy**; chỉ nêu ở hướng phát triển của báo cáo.
 
 ## PraNet, U-Net (pipeline 640)
 
