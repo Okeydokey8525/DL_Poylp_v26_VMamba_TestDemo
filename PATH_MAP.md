@@ -142,3 +142,25 @@ Dọn thư mục để nộp. Các mục dưới đây được **chuyển** (kh
 ## Giải nén No_guidance seed 14 và 15 (09/11/2026)
 
 Hai file `runs_Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s{14,15}_w2.zip` ở thư mục gốc qua kiểm tra `unzip -t`, không lỗi. Nội dung được giải nén vào `03_ket_qua_huan_luyen/No_guidance/Kvasir_BG20_YOLO26s_seg_ABL_shape_vmamba_no_guidance_s{14,15}_w2/`; mỗi lượt có `best.pt` và `last.pt`. `args.yaml` khớp seed 13 ở mọi khóa trừ `seed`, `name`. Zip gốc được chuyển sang `../_Luu_Tru_Ngoai/Test_Mau/03_ket_qua_huan_luyen/_zip_goc_ablation/`. No_guidance đủ 20/20 seed.
+
+## Dọn cho bản nộp (10/11/2026)
+
+Đối chiếu với bản Word cuối `06_bao_cao/CNTT_KLCN182-PhungTheBao.docx`. Mọi thứ không thuộc kết quả trong bản Word, cùng bản nháp và ghi chú làm việc, được **chuyển** (không xóa) sang `../_Luu_Tru_Ngoai/Test_Mau/`, giữ nguyên đường dẫn con: 546 mục, 42.258 file, 12,77 GiB. Danh sách từng mục (đường dẫn cũ, mới, số file, số byte, lý do) nằm ở cuối `PATH_MAP.csv` (trạng thái `CHUYEN_RA_NGOAI_10_11`) và ở `../_Luu_Tru_Ngoai/DANH_SACH_DA_CHUYEN.csv`. Muốn trả lại thì chuyển ngược về đúng đường dẫn cũ.
+
+| Nhóm | Đường dẫn cũ | Bản dùng thay |
+|---|---|---|
+| PraNet/U-Net 352 | `05_so_sanh_mo_hinh_khac/PraNet/`, `UNet/`; `00_tai_lieu_tong_quan/bang/10–15`, `20`, `20b`, `_log_danh_gia_pixel.txt`, `_log_topology.txt`; hình `ket_qua_20seed/*/p0*, o0*, x0*`, `chung/*/q01_*`, `hinh/du_lieu_dinh_tinh/`; `08_du_lieu_thuc_te/bang/20seed/`, lượt `*_pranet_s*`, `*_unet_s*`, `du_lieu_dinh_tinh/*_pranet.npz`, `*_unet.npz`, log 352 | `05_so_sanh_mo_hinh_khac/PraNet_640/`, `UNet_640/`; `bang/pixel_640/`; `hinh/ket_qua_20seed_640/` |
+| Bộ 10 seed | `bang/10seed/`, `00_tai_lieu_tong_quan/06b_KET_QUA_10_SEED.md`, `hinh/ket_qua_10seed/`, `08_du_lieu_thuc_te/bang/10seed/` | bộ 20 seed |
+| Ablation 5 và 10 seed | `bang/17_*`, `17b_*`, `18_*`, `_log_ablation.txt`, `bang/ablation_10seed/`, `hinh/ablation_10seed/`, `hinh/chung/*/k01_*`, `k02_*` | `bang/ablation_20seed/`, `hinh/ablation_20seed/` |
+| Lần đo GPU thứ nhất | `bang/16_lan1_*`, `16b_lan1_*`, `_log_flops_gpu_lan1.txt` | `bang/16_*`, `16b_*`, `16c_*` |
+| Word/PDF cũ và nháp | các `.docx`/`.pdf` cũ trong `06_bao_cao/` (kể cả `CNTT_KLCN182-Phung The Bao.pdf`), `06_bao_cao/{md_bao_cao, md_bao_cao_70, md_bao_cao_rut_gon, ghep_word, new_bao_cao, luu_tru_cu, mau}/` | `06_bao_cao/CNTT_KLCN182-PhungTheBao.docx` |
+| Ghi chú làm việc | `AGENTS.md`, `CHUYEN_GIAO_CODEX.md`, `HUONG_DAN_LAM_VIEC_VOI_CLAUDE.md`, `KE_HOACH_HOAN_THIEN_NOP_BAI.md`, `NGU_CANH_DU_AN.md`, `.vscode/`, `06_bao_cao/{chinhsua, sua_theo_nhan_xet, slide}/`, `06_bao_cao/HUONG_DAN_LUONG_CHAY_*.md`, `05_so_sanh_mo_hinh_khac/PHAN_HOI_CHECKPOINT_640.md`, `08_du_lieu_thuc_te/bang/KET_QUA_CHAY_*.md`, `03_ket_qua_huan_luyen/Shape_only/HUONG_DAN_KIEM_TRA_KAGGLE.md` | |
+| Bản trùng, file nén | `06_bao_cao/danh_gia_nen_cecum.py` (trùng `08_du_lieu_thuc_te/scripts/`), `08_du_lieu_thuc_te/bang/*.zip` (đã giải nén) | |
+| Kiểm toán | `07_kiem_toan_va_sua/` | |
+| Lưu trữ cũ | `99_luu_tru/` trừ `ket_qua_cu/TSVM_cu_checkpoint_FP16_seed0-20/` | |
+| Mô hình không chạy | `02_ma_nguon/notebook_kaggle/polyp_pvt/`, `vm_unet/` | |
+
+Cùng ngày:
+- Script đổi mặc định sang bản dùng trong báo cáo: `danh_gia_pixel.py`, `danh_gia_topology.py` ghi vào `bang/pixel_640/`; `tinh_ablation.py` mặc định 20 seed; `08_du_lieu_thuc_te/scripts/danh_gia_du_lieu_ngoai.py`, `danh_gia_nen_cecum.py` ghi vào `bang/pixel_640/du_lieu_ngoai/`, `nen_cecum/`; `ve_hinh.py` tự ghi từng hình vào đúng thư mục; `xuat_chi_so_web.py` lấy PraNet/U-Net 640. Đã chạy lại mọi script không cần GPU: bảng sinh lại giống bản trước (chênh lớn nhất 1e-16), hình PNG trùng 100% điểm ảnh.
+- File `research-metrics.json` của web được xuất lại: mốc PraNet/U-Net trên trang `/metrics` đổi từ bản 352 sang bản 640.
+- Đổi tên thư mục dự án `Test_Mau` → `CNTT_KLCN182_PhungTheBao` (bước cuối). Thư mục lưu trữ ngoài giữ tên `_Luu_Tru_Ngoai/Test_Mau/`.

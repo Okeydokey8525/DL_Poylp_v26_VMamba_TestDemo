@@ -50,7 +50,7 @@ Script [`scripts/do_flops_gpu.py`](scripts/do_flops_gpu.py). Checkpoint `best.pt
 | | Lần 1 (chiều, ở trường) | Lần 2 (tối, **số dùng trong báo cáo**) |
 |---|---|---|
 | Thiết lập | 3 vòng × 300 lần đo, xen kẽ hai mô hình | 5 vòng × 200 lần đo, đảo thứ tự mỗi vòng; trước mỗi khối chờ GPU dưới 55 °C; ghi nhiệt độ và xung nhịp |
-| Kết quả | [bang/16_lan1_flops_do_tre_gpu.csv](bang/16_lan1_flops_do_tre_gpu.csv), [16b_lan1](bang/16b_lan1_do_tre_gpu_tung_lan.csv), [log](bang/_log_flops_gpu_lan1.txt) | [bang/16_flops_do_tre_gpu.csv](bang/16_flops_do_tre_gpu.csv), [16b](bang/16b_do_tre_gpu_tung_lan.csv) (2.000 lần đo), [16c](bang/16c_do_tre_gpu_nhiet_do.csv) (nhiệt độ, xung nhịp từng khối), [log](bang/_log_flops_gpu.txt) |
+| Kết quả | `16_lan1_*.csv`, `16b_lan1_*.csv`, `_log_flops_gpu_lan1.txt` (đã chuyển ra lưu trữ ngoài) | [bang/16_flops_do_tre_gpu.csv](bang/16_flops_do_tre_gpu.csv), [16b](bang/16b_do_tre_gpu_tung_lan.csv) (2.000 lần đo), [16c](bang/16c_do_tre_gpu_nhiet_do.csv) (nhiệt độ, xung nhịp từng khối), [log](bang/_log_flops_gpu.txt) |
 
 Chung cho cả hai lần: NVIDIA GeForce RTX 5050 Laptop GPU, PyTorch 2.13.0+cu130, Ultralytics 8.4.127 (fork TSVM FP32); FP32, batch 1, đầu vào 1×3×640×640, đã gộp Conv-BN, chỉ forward (không tiền/hậu xử lý), 50 lần khởi động trước mỗi khối, đo bằng CUDA event. FLOPs: `torch.utils.flop_counter.FlopCounterMode` (conv, matmul, bmm, einsum) và `get_flops` của Ultralytics để đối chiếu.
 
@@ -74,11 +74,6 @@ Diễn giải:
 - Vẫn là một máy, một seed. Không suy ra tốc độ trên GPU máy chủ hay hệ thống nội soi thật.
 - `get_flops` của Ultralytics cho số lớn hơn FlopCounterMode khoảng 3 GFLOPs ở cả hai mô hình (khác cách đếm); tỉ lệ giữa hai mô hình như nhau.
 
-## Hình cũ (đã chuyển vào lưu trữ)
+## Hình
 
-Bộ hình mới vẽ lại từ CSV nằm ở `06_bao_cao/hinh/`. Các hình cũ dưới đây chỉ giữ để tham khảo.
-
-
-- [fig01_latency_mean.png](../99_luu_tru/hinh_cu/efficiency_benchmark_figures/fig01_latency_mean.png)
-- [fig07_accuracy_latency_tradeoff.png](../99_luu_tru/hinh_cu/efficiency_benchmark_figures/fig07_accuracy_latency_tradeoff.png)
-- [fig05_parameters_fp32_memory.png](../99_luu_tru/hinh_cu/efficiency_benchmark_figures/fig05_parameters_fp32_memory.png)
+`06_bao_cao/hinh/chung/{vi,en}/`: `e02_do_tre_cpu`, `e03_tham_so_dung_luong`, `m01_tham_so_tang10`.

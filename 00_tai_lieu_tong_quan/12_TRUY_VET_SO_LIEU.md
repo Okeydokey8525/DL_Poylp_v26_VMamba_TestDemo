@@ -2,7 +2,7 @@
 
 ## Script
 
-[`scripts/tinh_lai_so_lieu.py`](scripts/tinh_lai_so_lieu.py) **chỉ đọc** dữ liệu trong `01_du_lieu/`, `02_ma_nguon/`, `03_ket_qua_huan_luyen/`, `04_phan_tich_20seed/` và `99_luu_tru/ket_qua_cu/` (để so TSVM cũ), và chỉ ghi vào thư mục `bang/`. Script không huấn luyện, không suy luận và không sửa dữ liệu gốc.
+[`scripts/tinh_lai_so_lieu.py`](scripts/tinh_lai_so_lieu.py) **chỉ đọc** dữ liệu trong `01_du_lieu/`, `02_ma_nguon/`, `03_ket_qua_huan_luyen/`, `04_phan_tich_20seed/` và `99_luu_tru/ket_qua_cu/TSVM_cu_checkpoint_FP16_seed0-20/` (để so TSVM cũ), và chỉ ghi vào thư mục `bang/`. Script không huấn luyện, không suy luận và không sửa dữ liệu gốc.
 
 ```bash
 cd 00_tai_lieu_tong_quan/scripts
@@ -30,22 +30,24 @@ python tinh_lai_so_lieu.py --torch
 | `08_kien_truc_dung_lai.csv` | Dựng lại 2 mô hình: tham số, kích thước đầu ra từng tầng, tham số từng nhánh TSVM, phần nhận trọng số tiền huấn luyện | [03](03_KIEN_TRUC_BASELINE.md), [04](04_KIEN_TRUC_TSVM_FP32.md) |
 | `09_ma_tran_doc_tu_anh.csv` | TP/FP/FN đọc thủ công từ 40 ảnh `confusion_matrix.png` | [08](08_MA_TRAN_NHAM_LAN.md) |
 | `_log_chay.txt` | Toàn bộ đầu ra của lần chạy script | Mọi file |
-| `10_pixel_tung_anh.csv` | TP/FP/FN theo pixel của 4 mô hình × 20 seed × 160 ảnh (nhãn polygon và nhãn gốc Kvasir) | [10](10_SO_SANH_PRANET_UNET.md) |
-| `11_pixel_tung_seed.csv` | Dice/IoU/P/R (trung bình theo ảnh và gộp pixel), tỉ lệ báo nhầm ảnh nền, theo seed | [10](10_SO_SANH_PRANET_UNET.md) |
-| `12_pixel_thong_ke.csv` | Mean ± SD và so sánh ghép cặp TSVM với 3 mô hình còn lại | [10](10_SO_SANH_PRANET_UNET.md) |
-| `_log_danh_gia_pixel.txt` | Log lần chạy đánh giá theo pixel trên GPU | [10](10_SO_SANH_PRANET_UNET.md) |
-| `13_topology_tung_anh.csv` | Số mảnh (b0) và số lỗ (b1) của mặt nạ dự đoán và nhãn, 4 mô hình × 20 seed × 160 ảnh, ngưỡng diện tích 20 và 0 pixel | [10](10_SO_SANH_PRANET_UNET.md) |
-| `14_topology_tung_seed.csv` | Lỗi Betti, tỉ lệ ảnh đúng topology, vỡ mảnh, có lỗ, thiếu mảnh, theo seed | [10](10_SO_SANH_PRANET_UNET.md) |
-| `15_topology_thong_ke.csv` | Mean ± SD và so sánh ghép cặp TSVM với 3 mô hình còn lại | [10](10_SO_SANH_PRANET_UNET.md) |
+| `pixel_640/10_pixel_tung_anh.csv` | TP/FP/FN theo pixel của 4 mô hình × 20 seed × 160 ảnh (nhãn polygon và nhãn gốc Kvasir) | [10](10_SO_SANH_PRANET_UNET.md) |
+| `pixel_640/11_pixel_tung_seed.csv` | Dice/IoU/P/R (trung bình theo ảnh và gộp pixel), tỉ lệ báo nhầm ảnh nền, theo seed | [10](10_SO_SANH_PRANET_UNET.md) |
+| `pixel_640/12_pixel_thong_ke.csv` | Mean ± SD và so sánh ghép cặp TSVM với 3 mô hình còn lại | [10](10_SO_SANH_PRANET_UNET.md) |
+| `pixel_640/_log_pixel.txt` | Log lần chạy đánh giá theo pixel trên GPU | [10](10_SO_SANH_PRANET_UNET.md) |
+| `pixel_640/13_topology_tung_anh.csv` | Số mảnh (b0) và số lỗ (b1) của mặt nạ dự đoán và nhãn, 4 mô hình × 20 seed × 160 ảnh, ngưỡng diện tích 20 và 0 pixel | [14](14_CHI_SO_TOPOLOGY.md) |
+| `pixel_640/14_topology_tung_seed.csv` | Lỗi Betti, tỉ lệ ảnh đúng topology, vỡ mảnh, có lỗ, thiếu mảnh, theo seed | [14](14_CHI_SO_TOPOLOGY.md) |
+| `pixel_640/15_topology_thong_ke.csv` | Mean ± SD và so sánh ghép cặp TSVM với 3 mô hình còn lại | [10](10_SO_SANH_PRANET_UNET.md) |
 | `16_flops_do_tre_gpu.csv`, `16b_do_tre_gpu_tung_lan.csv`, `16c_do_tre_gpu_nhiet_do.csv` | FLOPs (FlopCounterMode) và độ trễ forward trên GPU, checkpoint seed 0, lần đo 2 (có ghi nhiệt độ, xung nhịp) | [09](09_HIEU_NANG_TINH_TOAN.md) |
-| `16_lan1_*.csv`, `16b_lan1_*.csv`, `_log_flops_gpu_lan1.txt` | Lần đo 1, giữ để đối chiếu | [09](09_HIEU_NANG_TINH_TOAN.md) |
-| `17_ablation_tung_seed.csv` | Tách thành phần: 5 cấu hình × seed 0–4. Mask mAP50–95/mAP50/P/R tại epoch đầu tiên đạt cực đại, số tham số toàn mô hình và tầng 10 đếm từ `best.pt`. Sinh bằng `scripts/tinh_ablation.py --torch` (cần GPU venv); log ở `_log_ablation.txt` | Chương 6, mục 6.6 |
-| `17b_ablation_tong_hop.csv` | Mean ± SD từng cấu hình; Δ, CI 95%, paired t, Wilcoxon so với đối chứng và với TSVM đầy đủ (5 cặp, chỉ tham khảo) | Chương 6, mục 6.6 |
-| `18_ablation_cau_hinh_args.csv` | Tham số huấn luyện khác lượt TSVM chính cùng seed (rỗng: không có khác biệt ngoài tên, tệp YAML mô hình, đường dẫn) | Chương 6, mục 6.6 |
+| `19_do_tre_end_to_end.csv`, `19_do_tre_end_to_end_tung_anh.csv` | Độ trễ đầu-cuối qua ứng dụng web (CPU, GPU), 160 ảnh, sinh bằng `scripts/do_tre_end_to_end.py` | Chương 4 (Bảng 4.6) |
+| `pixel_640/20_ma_tran_anh_tung_seed.csv`, `20b_ma_tran_anh_tong_hop.csv` | Ma trận nhầm lẫn theo ảnh (có/không polyp) của 4 mô hình, sinh bằng `scripts/tinh_ma_tran_anh.py` | [10](10_SO_SANH_PRANET_UNET.md) |
+| `pixel_640/du_lieu_ngoai/20seed/01–02_*.csv` | Dice/IoU/P/R và báo nhầm trên CVC-ClinicDB, CVC-ColonDB, ETIS-Larib, PolypGen, 4 mô hình × 20 seed | `08_du_lieu_thuc_te/README.md` |
+| `pixel_640/nen_cecum/06–07_*.csv` | Báo nhầm trên 800 ảnh manh tràng chưa dùng | `08_du_lieu_thuc_te/README.md` |
+| `ablation_20seed/17_*, 17b_*, 18_*` | Ablation 5 cấu hình × seed 0–19 (mask mAP, tham số đếm từ `best.pt`), sinh bằng `scripts/tinh_ablation.py --torch` | [15](15_ABLATION_VA_C2PSA_RONG.md) |
+| `ablation_20seed/19_*, 19b_*, 19c_*` | C2PSA rộng so với mô hình gốc và TSVM, seed 0–19, sinh bằng `scripts/tinh_c2psa_rong.py --torch` | [15](15_ABLATION_VA_C2PSA_RONG.md) |
 
 Các tệp `13`–`15` do [`scripts/danh_gia_topology.py`](scripts/danh_gia_topology.py) sinh ra (dùng lại giao thức suy luận của `danh_gia_pixel.py`); tệp `16` do [`scripts/do_flops_gpu.py`](scripts/do_flops_gpu.py) sinh ra. Cả hai cần GPU.
 
-Các tệp `10`–`12` do script thứ hai, [`scripts/danh_gia_pixel.py`](scripts/danh_gia_pixel.py), sinh ra. Script này cần GPU và chạy bằng `C:\venv_kl_gpu\Scripts\python.exe`. Kiến trúc PraNet và U-Net được nạp trực tiếp từ notebook huấn luyện.
+Các tệp `pixel_640/10`–`12` do [`scripts/danh_gia_pixel.py`](scripts/danh_gia_pixel.py) sinh ra. Script này cần GPU và chạy bằng `C:\venv_kl_gpu\Scripts\python.exe`. Kiến trúc PraNet và U-Net 640 được nạp trực tiếp từ notebook huấn luyện `02_ma_nguon/notebook_kaggle/`.
 
 `09_ma_tran_doc_tu_anh.csv` là tệp **duy nhất không do script sinh ra**. Các số trong đó được đọc bằng mắt từ ảnh ghép lưới, sau đó so với `06_ma_tran_nham_lan_tung_seed.csv` bằng code (khớp 40/40).
 
@@ -55,8 +57,8 @@ Các tệp `10`–`12` do script thứ hai, [`scripts/danh_gia_pixel.py`](script
 |---|---|---|
 | Độ trễ, RSS, tham số sau gộp Conv-BN | `KQ_Nen_DX_20seed_FP32/efficiency_benchmark/` | Số tham số chưa gộp, kích thước checkpoint, SHA-256 của checkpoint đều trùng |
 | Levene p = 0,026 | `KQ_Nen_DX_20seed_FP32/06_reports/summary.csv` | Không tính lại |
-| 999/1.000 nhãn tái tạo khớp từng ký tự | `99_luu_tru/tai_lieu_cu/archive_doc/28_HUONG_DAN_TAI_LAP_BG20_2026_10_26.md` | Không chạy lại |
-| Môi trường GPU (Tesla T4…) | `99_luu_tru/log_kaggle_cu/*.log` (lượt TSVM cũ) | Chỉ đọc log |
+| 999/1.000 nhãn tái tạo khớp từng ký tự | `99_luu_tru/tai_lieu_cu/archive_doc/28_HUONG_DAN_TAI_LAP_BG20_2026_10_26.md` (đã chuyển ra lưu trữ ngoài) | Không chạy lại |
+| Môi trường GPU (Tesla T4…) | `99_luu_tru/log_kaggle_cu/*.log` (lượt TSVM cũ, đã chuyển ra lưu trữ ngoài) | Chỉ đọc log |
 
 ## Đối chiếu với gói phân tích có sẵn
 
@@ -70,7 +72,6 @@ Bộ tài liệu này không sửa tài liệu cũ, chỉ ghi lại những ch�
 
 | Vị trí | Nội dung | Thực tế |
 |---|---|---|
-| `99_luu_tru/tai_lieu_cu/CURRENT_PROJECT_STATUS_goc_cu.md` và `99_luu_tru/tai_lieu_cu/README_goc_cu.md` ở thư mục gốc | Phần thân mô tả bộ 10 seed (0,7210 / 0,7246, p = 0,3839) | Chỉ là snapshot cũ. Bộ chính là 20 seed ([06](06_KET_QUA_20_SEED.md)) |
 | Comment trong `data_bg20.yaml` | "bổ sung 20% ảnh nền" | 200 ảnh bằng 20% của 1.000 ảnh polyp, không phải 20% tổng số ảnh |
 | Notebook TSVM trong `02_ma_nguon/notebook_kaggle/` | Trỏ tới fork cũ, tên run không có `_FP32` | Không phải đúng phiên bản đã chạy bộ chính ([05](05_CAU_HINH_HUAN_LUYEN.md)) |
 | `raw_20seeds_confusion_matrices.csv` ở gốc gói | Có cột `TN_reconstructed = 40 − FP` | Cột không hợp lệ ([08](08_MA_TRAN_NHAM_LAN.md)) |

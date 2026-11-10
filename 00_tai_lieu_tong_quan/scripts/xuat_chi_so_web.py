@@ -1,6 +1,6 @@
 """Xuất số liệu cho trang "Chỉ số nghiên cứu" của web PolypVision từ các bảng đã xác minh trong ../bang/.
 
-Không tính lại gì: chỉ đọc 04, 12, 16, 19 rồi ghi một file JSON để Spring hiển thị, nhờ vậy
+Không tính lại gì: chỉ đọc 04, pixel_640/12, 16, 19 rồi ghi một file JSON để Spring hiển thị, nhờ vậy
 mọi con số trên web truy được về CSV gốc. Chạy lại script này mỗi khi các bảng được cập nhật.
 
 Chạy:  python 00_tai_lieu_tong_quan/scripts/xuat_chi_so_web.py [--ra <đường dẫn JSON>]
@@ -62,7 +62,7 @@ def main() -> None:
             "tsvmBetterSeeds": int(float(r["tsvm_better_seeds"])),
         })
 
-    px = read("12_pixel_thong_ke.csv")
+    px = read("pixel_640/12_pixel_thong_ke.csv")   # PraNet/U-Net bản 640×640
     stat = {(r["model"], r["metric"]): r for r in px}
     pixel = []
     for key, label in PIXEL_METRICS:
@@ -75,12 +75,13 @@ def main() -> None:
             "tsvmBetterSeeds": int(float(d["tsvm_higher"])),
         })
     reference = []
-    for model in ("baseline", "tsvm", "pranet", "unet"):
+    nhan = {"pranet": "PraNet (ResNet-50), ảnh 640×640", "unet": "U-Net, ảnh 640×640"}
+    for model, src in (("baseline", "baseline"), ("tsvm", "tsvm"), ("pranet", "pranet640"), ("unet", "unet640")):
         reference.append({
-            "model": model, "label": stat[(model, "dice")]["label"],
-            "diceMean": num(stat[(model, "dice")]["mean"]), "diceSd": num(stat[(model, "dice")]["sd"]),
-            "iouMean": num(stat[(model, "iou")]["mean"]), "iouSd": num(stat[(model, "iou")]["sd"]),
-            "bgFpImageRate": num(stat[(model, "bg_fp_image_rate")]["mean"]),
+            "model": model, "label": nhan.get(model, stat[(src, "dice")]["label"]),
+            "diceMean": num(stat[(src, "dice")]["mean"]), "diceSd": num(stat[(src, "dice")]["sd"]),
+            "iouMean": num(stat[(src, "iou")]["mean"]), "iouSd": num(stat[(src, "iou")]["sd"]),
+            "bgFpImageRate": num(stat[(src, "bg_fp_image_rate")]["mean"]),
         })
 
     cost = []
@@ -105,7 +106,7 @@ def main() -> None:
         "validation": {"images": 160, "polyp": 120, "background": 40},
         "sources": {
             "mask": "bang/04_thong_ke_ghep_cap.csv",
-            "pixel": "bang/12_pixel_thong_ke.csv",
+            "pixel": "bang/pixel_640/12_pixel_thong_ke.csv",
             "cost": "bang/16_flops_do_tre_gpu.csv",
             "endToEnd": "bang/19_do_tre_end_to_end.csv",
         },

@@ -6,15 +6,15 @@ tách hai nguyên nhân báo nhầm trên PolypGen: ảnh chưa thấy (cùng v�
 
 Giao thức giống hệt 00_tai_lieu_tong_quan/scripts/danh_gia_pixel.py (dùng lại hàm của script đó):
 - YOLO: imgsz 640, conf 0,25, iou 0,7, retina_masks=True, half=False; best.pt của từng seed.
-- PraNet/U-Net: kéo về 352×352 (bản `pranet`/`unet`) hoặc 640×640 (bản `pranet640`/`unet640`), ngưỡng 0,5.
+- PraNet/U-Net: bản `pranet640`/`unet640`, kéo về 640×640, ngưỡng 0,5.
 - Một ảnh bị báo nhầm nếu có ít nhất 1 điểm ảnh bị dự đoán là polyp (như bg_fp_image_rate).
 
 Kiểm tra gần trùng: Kvasir v2 có nhiều khung hình liên tiếp từ cùng video, nên với mỗi ảnh trong 800 ảnh,
 tính tương quan ảnh xám 64×64 (sau khi cắt viền đen) lớn nhất với 160 ảnh nền huấn luyện; >= 0,95 coi là gần trùng
 (cùng ngưỡng với kiem_tra_trung_polypgen.py). Kết quả báo cáo cho cả 800 ảnh và riêng nhóm không gần trùng.
 
-Chỉ đọc 01_du_lieu/, 03_, 05_; chỉ ghi vào ../bang/nen_cecum/ và ../bang/20seed/06–07_*.csv
-(hoặc <--out>/06–07_*.csv khi chạy bản riêng).
+Chỉ đọc 01_du_lieu/, 03_, 05_; ghi từng lượt vào ../bang/nen_cecum/ và bảng tổng hợp vào
+00_tai_lieu_tong_quan/bang/pixel_640/nen_cecum/06–07_*.csv (hoặc --out).
 
 Chạy (cần GPU):
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_nen_cecum.py --kiem-tra         # kiểm tra đủ GPU/dữ liệu/checkpoint
@@ -22,12 +22,7 @@ Chạy (cần GPU):
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_nen_cecum.py --seeds 0          # chạy thử
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_nen_cecum.py                    # 4 mô hình × 20 seed
     C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_nen_cecum.py --chi-tong-hop
-    # PraNet/U-Net 640 (nhận xét II.4): tổng hợp kèm baseline/tsvm đã có, ghi riêng, không đè bang/20seed/06–07
-    C:\\venv_kl_gpu\\Scripts\\python.exe danh_gia_nen_cecum.py --models pranet640 unet640 \\
-        --out ../../00_tai_lieu_tong_quan/bang/pixel_640/nen_cecum
-
-Phần tổng hợp chỉ lấy các mô hình được chọn (mặc định bộ chính: baseline, tsvm, pranet, unet), nên lượt 640
-trong tung_luot/ không lẫn vào bang/20seed/06–07.
+Phần tổng hợp chỉ lấy các mô hình được chọn (mặc định baseline, tsvm, pranet640, unet640).
 """
 from __future__ import annotations
 
@@ -231,9 +226,9 @@ def kiem_tra(args):
 
 
 def doi_chieu():
-    """Chạy mô hình gốc seed 0 trên 40 ảnh nền kiểm định, so pred_px với bang/10_pixel_tung_anh.csv."""
+    """Chạy mô hình gốc seed 0 trên 40 ảnh nền kiểm định, so pred_px với bang/pixel_640/10_pixel_tung_anh.csv."""
     import torch
-    ref = pd.read_csv(REPO / "00_tai_lieu_tong_quan" / "bang" / "10_pixel_tung_anh.csv", encoding="utf-8-sig")
+    ref = pd.read_csv(REPO / "00_tai_lieu_tong_quan" / "bang" / "pixel_640" / "10_pixel_tung_anh.csv", encoding="utf-8-sig")
     ref = ref[(ref.model == "baseline") & (ref.seed == 0) & (ref.is_bg.astype(str) == "True")].set_index("image")
     names = sorted(p.name for p in (BG20 / "images" / "val").glob("bg_*.jpg"))
     assert len(names) == 40 and len(ref) == 40
@@ -248,7 +243,7 @@ def doi_chieu():
         cleanup()
     torch.cuda.empty_cache()
     lech = sum((int(p.sum()) > 0) != (int(ref.loc[it["name"], "pred_px"]) > 0) for it, p in zip(items, preds))
-    print(f"ĐỐI CHIẾU: {lech}/40 ảnh nền lệch kết luận báo nhầm so với bang/10_pixel_tung_anh.csv")
+    print(f"ĐỐI CHIẾU: {lech}/40 ảnh nền lệch kết luận báo nhầm so với bang/pixel_640/10_pixel_tung_anh.csv")
 
 
 def main():
@@ -258,8 +253,9 @@ def main():
     ap.add_argument("--chi-tong-hop", action="store_true")
     ap.add_argument("--kiem-tra", action="store_true", help="chỉ kiểm tra GPU, dữ liệu, checkpoint")
     ap.add_argument("--doi-chieu", action="store_true", help="đối chiếu môi trường trên 40 ảnh nền kiểm định")
-    ap.add_argument("--out", type=Path, default=None,
-                    help="thư mục ghi bảng tổng hợp bản riêng (mặc định: bang/20seed/06–07, chỉ bộ chính)")
+    ap.add_argument("--out", type=Path,
+                    default=REPO / "00_tai_lieu_tong_quan" / "bang" / "pixel_640" / "nen_cecum",
+                    help="thư mục ghi bảng 06–07 (mặc định 00_tai_lieu_tong_quan/bang/pixel_640/nen_cecum)")
     args = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -274,10 +270,7 @@ def main():
     dup = gan_trung(con_lai, tr)
     if not args.chi_tong_hop:
         run(args, con_lai)
-    if args.out is None:
-        models = dg.DEFAULT_MODELS   # bộ chính của báo cáo, giữ nguyên bang/20seed/06–07
-    else:                            # bản riêng: mô hình đã chọn + baseline, tsvm để so sánh ghép cặp
-        models = list(dict.fromkeys(["baseline", "tsvm", *args.models]))
+    models = list(dict.fromkeys(["baseline", "tsvm", *args.models]))   # luôn kèm baseline, tsvm để so ghép cặp
     tong_hop(dup, models, args.out)
 
 

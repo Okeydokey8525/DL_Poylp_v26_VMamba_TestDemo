@@ -40,7 +40,7 @@ Cả hai mô hình đều xuất phát từ trọng số tiền huấn luyện `
 4. TSVM: tạo symlink để nạp fork tùy chỉnh làm gói `ultralytics`, chép YAML TSVM và đặt `scale: s`, rồi `YOLO(yaml).load("yolo26s-seg.pt").train(...)`.
 5. Nén `runs/` và tải về. Kết quả nằm ở `03_ket_qua_huan_luyen/`.
 
-**Lưu ý về notebook trong repo:** notebook TSVM đang lưu trỏ tới fork **cũ** (`ultralytics_Topology-Shape-aware VMamba`, nay ở `99_luu_tru/ma_nguon_cu/ultralytics_TSVM_cu_FP16/`) và đặt tên run **không có** hậu tố `_FP32`. Vậy đây là phiên bản trước bản vá. Các run `TSVM_FP32` có tên `Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s{seed}_w2` theo `args.yaml`, nên khi chạy chúng notebook đã được sửa đường dẫn và tên. Repo không lưu bản notebook đã sửa này. Bằng chứng gián tiếp cho thấy các run này dùng fork FP32: 20/20 file `best.pt` lưu float32 ([bang/07_checkpoint_best_pt.csv](bang/07_checkpoint_best_pt.csv)), trong khi fork cũ ép float16.
+**Lưu ý về notebook trong repo:** notebook TSVM đang lưu trỏ tới fork **cũ** (`ultralytics_Topology-Shape-aware VMamba`, nay ở `99_luu_tru/ma_nguon_cu/ultralytics_TSVM_cu_FP16/` trong lưu trữ ngoài) và đặt tên run **không có** hậu tố `_FP32`. Vậy đây là phiên bản trước bản vá. Các run `TSVM_FP32` có tên `Kvasir_BG20_YOLO26s_seg_TSVM_FP32_s{seed}_w2` theo `args.yaml`, nên khi chạy chúng notebook đã được sửa đường dẫn và tên. Repo không lưu bản notebook đã sửa này. Bằng chứng gián tiếp cho thấy các run này dùng fork FP32: 20/20 file `best.pt` lưu float32 ([bang/07_checkpoint_best_pt.csv](bang/07_checkpoint_best_pt.csv)), trong khi fork cũ ép float16.
 
 ## Môi trường
 
@@ -48,7 +48,7 @@ Cả hai mô hình đều xuất phát từ trọng số tiền huấn luyện `
 |---|---|---|
 | Ultralytics | 8.4.127 | Ghi trong 40/40 file `best.pt` |
 | Fork TSVM | `02_ma_nguon/ultralytics_TSVM_FP32/` (8.4.127 cộng TSVM cộng bản vá FP32) | Mã nguồn có trong repo |
-| GPU, PyTorch | Ba file log Kaggle trong `99_luu_tru/log_kaggle_cu/` ghi Tesla T4 15 GB, torch 2.10.0+cu128, Python 3.12.13 | Các log này thuộc lượt TSVM **cũ**. Chưa có log gắn với 40 lượt của bộ chính |
+| GPU, PyTorch | Ba file log Kaggle trong `99_luu_tru/log_kaggle_cu/` (đã chuyển ra lưu trữ ngoài) ghi Tesla T4 15 GB, torch 2.10.0+cu128, Python 3.12.13 | Các log này thuộc lượt TSVM **cũ**. Chưa có log gắn với 40 lượt của bộ chính |
 | Thời gian huấn luyện (cột `time` ở epoch 100) | Baseline 2,32 giờ (2,16–2,55); TSVM FP32 4,68 giờ (4,52–4,96) | [bang/02_ket_qua_tung_seed.csv](bang/02_ket_qua_tung_seed.csv). Phụ thuộc phần cứng Kaggle cấp cho mỗi lượt |
 
 ## Vì sao gọi là TSVM FP32
