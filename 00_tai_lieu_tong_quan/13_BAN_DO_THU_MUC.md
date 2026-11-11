@@ -14,6 +14,7 @@ CNTT_KLCN182_PhungTheBao/
 ├── 04_phan_tich_20seed/         số liệu trích từ 40 lượt chính, ma trận nhầm lẫn, benchmark độ trễ CPU
 ├── 05_so_sanh_mo_hinh_khac/     PraNet_640, UNet_640 (20 seed mỗi mô hình)
 ├── 06_bao_cao/                  bản Word cuối, hinh/
+├── 07_ung_dung_web/             mã nguồn website PolypVision (Spring Boot + FastAPI), CSDL
 └── 08_du_lieu_thuc_te/          đánh giá trên CVC-ClinicDB, CVC-ColonDB, ETIS-Larib, PolypGen, 800 ảnh manh tràng
 ```
 

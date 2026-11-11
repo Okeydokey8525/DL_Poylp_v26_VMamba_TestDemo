@@ -1,0 +1,43 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Local diagnosis media ###
+/storage/
+
+### Python AI service ###
+/ai-service/.venv/
+**/__pycache__/
+/ai-service/models/*.pt
+!/ai-service/models/yolo26s-seg-best.pt
+!/ai-service/models/yolo26s-tsvm-fp32-best.pt
