@@ -10,7 +10,7 @@ Lý do: xem `archive/doc/27_SU_CO_FP16_CHECKPOINT_TSVM_VA_CACH_KHAC_PHUC.md`. Th
 | `engine/trainer.py` | `MultiTrainer` (`multitrain_base.pt`) | `deepcopy(self.model).half()` | `deepcopy(self.model).float()` |
 | `utils/torch_utils.py` | `strip_optimizer` | `x["model"].half()` | `x["model"].float()`; nếu có NaN/Inf thì `raise FloatingPointError` |
 
-Hai thay đổi ở `save_model` và `strip_optimizer` giống với bản vá trong `../DL_Poylp_v26_VMamba_TestDemo_V2/03_ma_nguon/` (`PATCH_FP32.md`). Thay đổi ở `MultiTrainer` là phần bổ sung.
+Hai thay đổi ở `save_model` và `strip_optimizer` giống với bản vá FP32 nhóm làm ở phiên bản thực nghiệm trước. Thay đổi ở `MultiTrainer` là phần bổ sung.
 
 Phần **không đổi**: `convert_optimizer_state_dict_to_fp16` vẫn nén `exp_avg` của optimizer trong `last.pt` (chỉ dùng khi resume, không chứa thống kê BN). Kiến trúc TSVM cũng giữ nguyên, nên trọng số và kết quả train giống bản gốc.
 

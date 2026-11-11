@@ -4,6 +4,8 @@
 
 **Báo cáo:** [06_bao_cao/CNTT_KLCN182-PhungTheBao.docx](06_bao_cao/CNTT_KLCN182-PhungTheBao.docx) (bản cuối). Mọi số liệu trong thư mục này khớp bản Word đó.
 
+**Mã nguồn website PolypVision:** <https://github.com/Okeydokey8525/UngDung_Poylp> (bản chép nằm trong `07_ung_dung_web/`).
+
 **Trọng tâm:** so sánh YOLO26s-seg (mô hình gốc) với YOLO26s-seg + C2TSVMamba (TSVM FP32) trên dữ liệu BG20, 20 seed (0–19) mỗi mô hình. Kèm theo: PraNet và U-Net (ảnh 640×640, có tăng cường, 20 seed) làm mốc đối chiếu; ablation ba thành phần và đối chứng C2PSA rộng (20 seed); đánh giá trên bốn bộ dữ liệu khác nguồn; ứng dụng web PolypVision.
 
 ## Bắt đầu đọc từ đây
