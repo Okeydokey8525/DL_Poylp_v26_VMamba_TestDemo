@@ -45,3 +45,10 @@ wandb/
 99_luu_tru/pipeline_semantic/datasets/Kvasir_Semantic_880_120/train/
 99_luu_tru/pipeline_semantic/datasets/Kvasir_Semantic_880_120/val/
 99_luu_tru/pipeline_semantic/datasets/Kvasir_Semantic_880_120/qa/previews/
+
+# Ghi chú làm việc nội bộ (để ngoài repo)
+.claude/
+CLAUDE.md
+AGENTS.md
+PATH_MAP.md
+PATH_MAP.csv
