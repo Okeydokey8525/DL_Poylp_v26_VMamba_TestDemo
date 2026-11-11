@@ -21,6 +21,7 @@ Repo khóa luận (HUIT, CNTT_KLCN182, GVHD Phùng Thế Bảo): YOLO26s-seg (m�
 - Ablation và C2PSA rộng là bản **20 seed** (`bang/ablation_20seed/`): ba biến thể không khác bản đầy đủ có ý nghĩa thống kê; C2PSA rộng thấp hơn TSVM 0,0070 (p < 0,001) và không hơn mô hình gốc.
 - Không suy ra TN = 40 − FP, Dice/IoU từ mAP, hay lợi ích topology: TSVM chỉ nhích hơn mô hình gốc, không có ý nghĩa thống kê, và kém PraNet rõ rệt (`00_tai_lieu_tong_quan/14_CHI_SO_TOPOLOGY.md`).
 - Bản nộp dựng ở `..\Nop_Bai\CNTT_KLCN182_PhungTheBao\` bằng hard link: `01_Bao_cao`, `02_Nghien_cuu` (thư mục này), `03_Ung_dung` (chỉ web + FastAPI), `04_Dong_goi` (.jar + mô tả CSDL). Không kèm `last.pt`/`last.pth`, app Flutter, `GhiChu.txt`. Sửa file ở đây thì phải dựng lại bản nộp.
+- `07_ung_dung_web/` là **bản chép** mã nguồn web (nhánh `nop-bai-10-11` của `..\Ung_Dung\polypweb`, chỉ `polypweb/` + `co_so_du_lieu/`, không `.pt`, không `GhiChu.txt`, không app Flutter) để repo GitHub có web. Repo web gốc vẫn là nơi phát triển; sửa web ở đó thì chép lại. Khi dựng lại bản nộp, bỏ `07_ung_dung_web/` khỏi `02_Nghien_cuu` (web đã ở `03_Ung_dung`).
 - Không sửa dữ liệu gốc (`01_du_lieu/`) hay checkpoint (`03_`, `05_`). Di chuyển thư mục thì ghi vào `PATH_MAP.md` / `PATH_MAP.csv`. Không xóa file: thứ không nộp chuyển sang `..\_Luu_Tru_Ngoai\Test_Mau\`.
 - AV/AVF/ITSVM, Polyp-PVT, VM-UNet, MambaPSA không có trong báo cáo (chỉ hướng phát triển).
 - Bản Word đã nộp thầy là gốc, không ghi đè. Không commit `.pt`/`.pth`/`.zip`, PDF đề cương.

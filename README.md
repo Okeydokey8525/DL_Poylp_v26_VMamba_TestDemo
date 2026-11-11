@@ -37,6 +37,7 @@
 | `04_phan_tich_20seed/` | Số liệu trích từ 40 lượt của hai mô hình chính (đối chiếu với bảng ở `bang/`), ma trận nhầm lẫn và benchmark độ trễ CPU |
 | `05_so_sanh_mo_hinh_khac/` | PraNet 640, U-Net 640 (20 seed mỗi mô hình) |
 | `06_bao_cao/` | Bản Word cuối, hình (`hinh/`) |
+| [07_ung_dung_web/](07_ung_dung_web/README.md) | Mã nguồn website PolypVision: Spring Boot (`polypweb/`), dịch vụ AI FastAPI (`polypweb/ai-service/`), mô tả và script khởi tạo CSDL (`co_so_du_lieu/`) |
 | `08_du_lieu_thuc_te/` | Đánh giá trên CVC-ClinicDB, CVC-ColonDB, ETIS-Larib, PolypGen và 800 ảnh manh tràng |
 
 Thư mục chỉ chứa các mô hình và kết quả có trong bản Word cuối.
@@ -45,12 +46,12 @@ Repo GitHub không chứa checkpoint (`best.pt`, `*_best_*.pth` của 160 lượ
 
 ## Chạy ứng dụng web PolypVision
 
-Ứng dụng nằm ở repo riêng, cạnh thư mục này: `..\Ung_Dung\polypweb\` (GitHub: <https://github.com/Okeydokey8525/UngDung_Poylp>). Gồm hai phần chạy song song:
+Mã nguồn ứng dụng nằm trong [07_ung_dung_web/](07_ung_dung_web/README.md) (bản nộp 11/11/2026). Gồm hai phần chạy song song:
 
 | Phần | Thư mục | Cổng | Vai trò |
 |---|---|---|---|
-| AI service (FastAPI, Python) | `..\Ung_Dung\polypweb\polypweb\ai-service\` | 8000 | Nạp hai mô hình, nhận ảnh hoặc video, trả mặt nạ phân đoạn |
-| Web (Spring Boot, Java) | `..\Ung_Dung\polypweb\polypweb\` | 8080 | Giao diện, tài khoản, lịch sử; lưu dữ liệu vào MongoDB |
+| AI service (FastAPI, Python) | `07_ung_dung_web\polypweb\ai-service\` | 8000 | Nạp hai mô hình, nhận ảnh hoặc video, trả mặt nạ phân đoạn |
+| Web (Spring Boot, Java) | `07_ung_dung_web\polypweb\` | 8080 | Giao diện, tài khoản, lịch sử; lưu dữ liệu vào MongoDB |
 
 ### Cần cài sẵn
 
@@ -61,7 +62,7 @@ Repo GitHub không chứa checkpoint (`best.pt`, `*_best_*.pth` của 160 lượ
 
 ### Trọng số mô hình
 
-Web dùng `best.pt` của **seed 15** cho cả hai mô hình (seed có chênh lệch mAP50–95 gần trung vị 20 seed nhất). Hai file đã có sẵn trong `ai-service\models\`:
+Web dùng `best.pt` của **seed 15** cho cả hai mô hình (seed có chênh lệch mAP50–95 gần trung vị 20 seed nhất). Hai file này **không có trên GitHub** (repo không chứa file `.pt`). Trước khi chạy, chép vào `07_ung_dung_web\polypweb\ai-service\models\`:
 
 | File trong `models\` | Lấy từ |
 |---|---|
@@ -84,7 +85,7 @@ Môi trường GPU phải đặt ở đường dẫn ngắn `C:\venv_polyp_ai`: 
 Lần đầu trên máy khác, tạo môi trường GPU (cần Python 3.12):
 
 ```powershell
-cd "..\Ung_Dung\polypweb\polypweb\ai-service"
+cd "07_ung_dung_web\polypweb\ai-service"
 python -m venv C:\venv_polyp_ai
 C:\venv_polyp_ai\Scripts\python.exe -m pip install --upgrade pip
 C:\venv_polyp_ai\Scripts\python.exe -m pip install -r requirements-gpu.txt
@@ -96,7 +97,7 @@ Máy không có GPU thì tạo `.venv` và cài `requirements.txt` như cũ.
 Các lần sau chỉ cần chạy:
 
 ```powershell
-cd "..\Ung_Dung\polypweb\polypweb\ai-service"
+cd "07_ung_dung_web\polypweb\ai-service"
 C:\venv_polyp_ai\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000
 ```
 
@@ -107,7 +108,7 @@ Kiểm tra: mở <http://127.0.0.1:8000/health>, cả hai mô hình phải ở t
 ### Bước 2: chạy web (cửa sổ PowerShell thứ hai)
 
 ```powershell
-cd "..\Ung_Dung\polypweb\polypweb"
+cd "07_ung_dung_web\polypweb"
 $env:SPRING_PROFILES_ACTIVE="dev"
 .\mvnw.cmd spring-boot:run
 ```
@@ -125,7 +126,7 @@ Mở <http://localhost:8080>. Lần đầu bấm **Đăng ký** để tạo tài
 | Lịch sử | Xem lại, xóa các lần phân tích ảnh và so sánh |
 | Chỉ số (`/metrics`, không cần đăng nhập) | Kết quả 20 seed của hai mô hình và mốc PraNet/U-Net 640, đọc từ bảng CSV trong `00_tai_lieu_tong_quan/bang/` (qua file JSON xuất sẵn) |
 
-Ảnh và video được lưu trong `..\Ung_Dung\polypweb\polypweb\storage\`; MongoDB chỉ lưu chỉ số và đường dẫn file.
+Ảnh và video được lưu trong `07_ung_dung_web\polypweb\storage\`; MongoDB chỉ lưu chỉ số và đường dẫn file.
 
 ### Cập nhật số liệu trang Chỉ số
 
@@ -135,7 +136,7 @@ Khi bảng CSV trong `00_tai_lieu_tong_quan/bang/` thay đổi, chạy lại scr
 C:\venv_kl_gpu\Scripts\python.exe 00_tai_lieu_tong_quan/scripts/xuat_chi_so_web.py
 ```
 
-Script ghi đè `..\Ung_Dung\polypweb\polypweb\src\main\resources\research\research-metrics.json`.
+Script ghi đè `07_ung_dung_web\polypweb\src\main\resources\research\research-metrics.json`.
 
 ### Lỗi thường gặp
 
@@ -148,7 +149,7 @@ Script ghi đè `..\Ung_Dung\polypweb\polypweb\src\main\resources\research\resea
 | Chọn "Tất cả khung" bị báo cần GPU | Như dòng trên |
 | Cổng 8080 hoặc 8000 đã bị chiếm | Tắt cửa sổ đang chạy bản cũ rồi chạy lại |
 
-Hướng dẫn đầy đủ (biến môi trường, chạy production, ứng dụng Android): `..\Ung_Dung\polypweb\README.md` và `..\Ung_Dung\polypweb\polypweb\README.md`.
+Hướng dẫn đầy đủ (biến môi trường, chạy production): `07_ung_dung_web\polypweb\README.md` và `07_ung_dung_web\polypweb\ai-service\README.md`.
 
 ## Lưu ý
 
